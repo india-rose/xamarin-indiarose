@@ -25,7 +25,7 @@ namespace IndiaRose.Business.ViewModels.Admin
 
 		private void ChooseIvonaAction()
 		{
-			Container.Resolve<IInstallTTSService>().chooseIvona();
+			Container.Resolve<IInstallTTSService>().ChooseIvona();
 		}
 
 		private void InstallPackAction()

@@ -1,6 +1,5 @@
 #region Usings
 
-using IndiaRose.Business;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
 using Storm.Mvvm.Framework.ColorPicker;

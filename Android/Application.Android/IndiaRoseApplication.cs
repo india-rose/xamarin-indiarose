@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using Android.App;
 using Android.Runtime;
 using IndiaRose.Application.Activities.Admin;
-using IndiaRose.Application.Activities.Admin.Settings;
 using IndiaRose.Application.Activities.Admin.Collection;
+using IndiaRose.Application.Activities.Admin.Settings;
 using IndiaRose.Application.Activities.Admin.Settings.Dialogs;
 using IndiaRose.Business;
 using Storm.Mvvm;
-using Android.App;
 using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Application

@@ -5,7 +5,7 @@ using Android.Util;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Interfaces;
 using Storm.Mvvm.Services;
-using Uri = global::Android.Net.Uri;
+using Uri = Android.Net.Uri;
 
 namespace IndiaRose.Services.Android
 {

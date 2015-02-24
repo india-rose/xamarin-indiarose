@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Diagnostics;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Globalization;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using IndiaRose.Application.CompositionRoot;
-
-// Pour plus d'informations sur le modèle Application vide, consultez la page http://go.microsoft.com/fwlink/?LinkId=234227
 using IndiaRose.Application.Views;
+// Pour plus d'informations sur le modèle Application vide, consultez la page http://go.microsoft.com/fwlink/?LinkId=234227
 
 namespace IndiaRose.Application
 {
@@ -22,8 +23,8 @@ namespace IndiaRose.Application
         /// </summary>
         public App()
         {
-            this.InitializeComponent();
-            this.Suspending += OnSuspending;
+            InitializeComponent();
+            Suspending += OnSuspending;
         }
 
         /// <summary>
@@ -35,9 +36,9 @@ namespace IndiaRose.Application
         {
 
 #if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
+            if (Debugger.IsAttached)
             {
-                this.DebugSettings.EnableFrameRateCounter = true;
+                DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
             Bootstrap b = new Bootstrap();
@@ -49,11 +50,13 @@ namespace IndiaRose.Application
             if (rootFrame == null)
             {
                 // Créez un Frame utilisable comme contexte de navigation et naviguez jusqu'à la première page
-                rootFrame = new Frame();
-                // Définir la page par défaut
-                rootFrame.Language = Windows.Globalization.ApplicationLanguages.Languages[0];
+	            rootFrame = new Frame
+	            {
+					// Définir la page par défaut
+		            Language = ApplicationLanguages.Languages[0]
+	            };
 
-                rootFrame.NavigationFailed += OnNavigationFailed;
+	            rootFrame.NavigationFailed += OnNavigationFailed;
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

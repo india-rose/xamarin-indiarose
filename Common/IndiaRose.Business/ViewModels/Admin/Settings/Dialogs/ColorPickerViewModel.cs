@@ -22,7 +22,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 	    private uint _currentColor;
 	    private uint _oldColor;
 
-		private ISettingsService SettingsService;
+		private readonly ISettingsService _settingsService;
 
 		[NavigationParameter]
 		public string ColorKey { get; set; }
@@ -45,7 +45,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 		{
 			PositiveCommand = new DelegateCommand(PositiveAction);
 
-		    SettingsService = container.Resolve<ISettingsService>();
+		    _settingsService = container.Resolve<ISettingsService>();
 		}
 
 	    public override void OnNavigatedTo(NavigationArgs e, string parametersKey)
@@ -54,15 +54,15 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 
 		    if (ColorKey == TOP_AREA_BACKGROUND_COLOR)
 		    {
-			    OldColor = SettingsService.TopBackgroundColor;
+			    OldColor = _settingsService.TopBackgroundColor;
 		    }
 			else if (ColorKey == BOTTOM_AREA_BACKGROUND_COLOR)
 			{
-				OldColor = SettingsService.BottomBackgroundColor;
+				OldColor = _settingsService.BottomBackgroundColor;
 			}
 			else if (ColorKey == REINFORCER_COLOR)
 			{
-				OldColor = SettingsService.ReinforcerColor;
+				OldColor = _settingsService.ReinforcerColor;
 			}
 	    }
 
@@ -70,15 +70,15 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 		{
 			if (ColorKey == TOP_AREA_BACKGROUND_COLOR)
 			{
-				SettingsService.TopBackgroundColor = CurrentColor;
+				_settingsService.TopBackgroundColor = CurrentColor;
 			}
 			else if (ColorKey == BOTTOM_AREA_BACKGROUND_COLOR)
 			{
-				SettingsService.BottomBackgroundColor = CurrentColor;
+				_settingsService.BottomBackgroundColor = CurrentColor;
 			}
 			else if (ColorKey == REINFORCER_COLOR)
 			{
-				SettingsService.ReinforcerColor = CurrentColor;
+				_settingsService.ReinforcerColor = CurrentColor;
 			}
 		}
 	}

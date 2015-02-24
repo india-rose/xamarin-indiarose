@@ -5,7 +5,7 @@ using Storm.Mvvm.Inject;
 
 #endregion
 
-namespace IndiaRose.Business.ViewModels.Admin
+namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
     public class CollectionViewModel : ViewModelBase
     {

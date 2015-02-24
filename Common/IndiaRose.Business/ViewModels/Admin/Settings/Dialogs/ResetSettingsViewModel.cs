@@ -1,6 +1,5 @@
 ﻿#region Usings
 
-using System;
 using System.Windows.Input;
 using IndiaRose.Interfaces;
 using Storm.Mvvm;
@@ -14,7 +13,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
     {
         #region Fields
 
-        private ISettingsService SettingsService = null;
+        private readonly ISettingsService _settingsService;
 
         #endregion      
 
@@ -31,7 +30,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 			OkCommand = new DelegateCommand(OkAction);
 			CancelCommand = new DelegateCommand(CancelAction);
 
-	        SettingsService = container.Resolve<ISettingsService>();
+	        _settingsService = container.Resolve<ISettingsService>();
         }
 
         #endregion
@@ -40,7 +39,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 
         private void OkAction()
         {
-           SettingsService.Reset();
+           _settingsService.Reset();
         }
 
         private void CancelAction()

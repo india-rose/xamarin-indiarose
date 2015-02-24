@@ -1,13 +1,9 @@
 ﻿#region Usings
 
-using System;
-using System.IO;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings.Dialogs;
-using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
@@ -60,14 +56,14 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 			SettingsService = Container.Resolve<ISettingsService>();
 
 			IndiagramsSize = new ObservableCollection<int>();
-			foreach (int size in new int[] { 32, 48, 64, 80, 128, 160, 200, 256, 280, 300 })
+			foreach (int size in new[] { 32, 48, 64, 80, 128, 160, 200, 256, 280, 300 })
 			{
 				IndiagramsSize.Add(size);
 			}
 			CurrentIndiagramSize = SettingsService.IndiagramDisplaySize;
 
 			IndiagramsFontSize = new ObservableCollection<int>();
-			foreach (int size in new int[] { 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 })
+			foreach (int size in new[] { 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 })
 			{
 				IndiagramsFontSize.Add(size);
 			}

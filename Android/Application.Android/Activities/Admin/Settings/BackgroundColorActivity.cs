@@ -1,12 +1,9 @@
 #region Usings
 
-using System;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
-using Android.Widget;
-using IndiaRose.Business;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
 
@@ -56,7 +53,9 @@ namespace IndiaRose.Application.Activities.Admin.Settings
 		    RightLayout.LayoutChange += OnLayoutInitialized;
 		}
 
+		// ReSharper disable UnusedParameter.Local cause of implicit creation of vars
 		private void OnLayoutInitialized(object sender, View.LayoutChangeEventArgs layoutChangeEventArgs)
+		// ReSharper restore UnusedParameter.Local
 		{
 			if (RightLayout.Height > 0)
 			{

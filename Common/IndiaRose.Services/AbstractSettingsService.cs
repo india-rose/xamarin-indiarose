@@ -103,18 +103,18 @@ namespace IndiaRose.Services
 		{
 			SettingsModel model = new SettingsModel
 			{
-				TopBackgroundColor = this.TopBackgroundColor,
-				BottomBackgroundColor = this.BottomBackgroundColor,
-				SelectionAreaHeight = this.SelectionAreaHeight,
-				IndiagramDisplaySize = this.IndiagramDisplaySize,
-				FontName = this.FontName,
-				FontSize = this.FontSize,
-				IsReinforcerEnabled = this.IsReinforcerEnabled,
-				IsDragAndDropEnabled = this.IsDragAndDropEnabled,
-				IsCategoryNameReadingEnabled = this.IsCategoryNameReadingEnabled,
-				IsBackHomeAfterSelectionEnabled = this.IsBackHomeAfterSelectionEnabled,
-				TimeOfSilenceBetweenWords = this.TimeOfSilenceBetweenWords,
-				ReinforcerColor = this.ReinforcerColor
+				TopBackgroundColor = TopBackgroundColor,
+				BottomBackgroundColor = BottomBackgroundColor,
+				SelectionAreaHeight = SelectionAreaHeight,
+				IndiagramDisplaySize = IndiagramDisplaySize,
+				FontName = FontName,
+				FontSize = FontSize,
+				IsReinforcerEnabled = IsReinforcerEnabled,
+				IsDragAndDropEnabled = IsDragAndDropEnabled,
+				IsCategoryNameReadingEnabled = IsCategoryNameReadingEnabled,
+				IsBackHomeAfterSelectionEnabled = IsBackHomeAfterSelectionEnabled,
+				TimeOfSilenceBetweenWords = TimeOfSilenceBetweenWords,
+				ReinforcerColor = ReinforcerColor
 			};
 
 			SaveOnDisk(model);
@@ -136,34 +136,34 @@ namespace IndiaRose.Services
 				return;
 			}
 
-			this.TopBackgroundColor = model.TopBackgroundColor;
-			this.BottomBackgroundColor = model.BottomBackgroundColor;
-			this.SelectionAreaHeight = model.SelectionAreaHeight;
-			this.IndiagramDisplaySize = model.IndiagramDisplaySize;
-			this.FontName = model.FontName;
-			this.FontSize = model.FontSize;
-			this.IsReinforcerEnabled = model.IsReinforcerEnabled;
-			this.IsDragAndDropEnabled = model.IsDragAndDropEnabled;
-			this.IsCategoryNameReadingEnabled = model.IsCategoryNameReadingEnabled;
-			this.IsBackHomeAfterSelectionEnabled = model.IsBackHomeAfterSelectionEnabled;
-			this.TimeOfSilenceBetweenWords = model.TimeOfSilenceBetweenWords;
-			this.ReinforcerColor = model.ReinforcerColor;
+			TopBackgroundColor = model.TopBackgroundColor;
+			BottomBackgroundColor = model.BottomBackgroundColor;
+			SelectionAreaHeight = model.SelectionAreaHeight;
+			IndiagramDisplaySize = model.IndiagramDisplaySize;
+			FontName = model.FontName;
+			FontSize = model.FontSize;
+			IsReinforcerEnabled = model.IsReinforcerEnabled;
+			IsDragAndDropEnabled = model.IsDragAndDropEnabled;
+			IsCategoryNameReadingEnabled = model.IsCategoryNameReadingEnabled;
+			IsBackHomeAfterSelectionEnabled = model.IsBackHomeAfterSelectionEnabled;
+			TimeOfSilenceBetweenWords = model.TimeOfSilenceBetweenWords;
+			ReinforcerColor = model.ReinforcerColor;
 		}
 
 		public void Reset()
 		{
-			this.TopBackgroundColor = 0xFF3838FF;
-			this.BottomBackgroundColor = 0xFF73739E;
-			this.SelectionAreaHeight = 70;
-			this.IndiagramDisplaySize = 128;
-			this.FontName = "Consolas";
-			this.FontSize = 12;
-			this.IsReinforcerEnabled = true;
-			this.IsDragAndDropEnabled = false;
-			this.IsCategoryNameReadingEnabled = true;
-			this.IsBackHomeAfterSelectionEnabled = true;
-			this.TimeOfSilenceBetweenWords = 1.0f;
-			this.ReinforcerColor = 0xFFFF00FF;
+			TopBackgroundColor = 0xFF3838FF;
+			BottomBackgroundColor = 0xFF73739E;
+			SelectionAreaHeight = 70;
+			IndiagramDisplaySize = 128;
+			FontName = "Consolas";
+			FontSize = 12;
+			IsReinforcerEnabled = true;
+			IsDragAndDropEnabled = false;
+			IsCategoryNameReadingEnabled = true;
+			IsBackHomeAfterSelectionEnabled = true;
+			TimeOfSilenceBetweenWords = 1.0f;
+			ReinforcerColor = 0xFFFF00FF;
 		}
 
 		protected abstract bool ExistsOnDisk();

@@ -1,10 +1,8 @@
-﻿using System.Security.AccessControl;
-using IndiaRose.Business;
+﻿using IndiaRose.Business;
 using IndiaRose.Interfaces;
 using IndiaRose.Services;
 using IndiaRose.Services.Android;
 using Storm.Mvvm.Inject;
-using EmailService = IndiaRose.Services.EmailService;
 
 namespace IndiaRose.Application
 {

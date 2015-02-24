@@ -1,9 +1,9 @@
 ﻿#region Usings
 
 using IndiaRose.Business.ViewModels.Admin;
+using IndiaRose.Business.ViewModels.Admin.Collection;
 using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Business.ViewModels.Admin.Settings.Dialogs;
-using Storm.Mvvm;
 using Storm.Mvvm.Inject;
 
 #endregion

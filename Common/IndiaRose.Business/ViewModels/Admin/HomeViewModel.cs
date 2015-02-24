@@ -28,7 +28,7 @@ namespace IndiaRose.Business.ViewModels.Admin
             CollectionCommand = new DelegateCommand(CollectionAction);
 			HelpCommand = new DelegateCommand(HelpAction);
 			ContactCommand = new DelegateCommand(ContactAction);
-			TtsCommand = new DelegateCommand(TTSAction);
+			TtsCommand = new DelegateCommand(InstallTTSAction);
 			SettingsCommand = new DelegateCommand(SettingsAction);
 			SynchroCommand = new DelegateCommand(SynchroAction);
 		}
@@ -43,17 +43,15 @@ namespace IndiaRose.Business.ViewModels.Admin
 			NavigationService.Navigate(Views.ADMIN_SERVERSYNCHRONIZATION);
 		}
 
-		private void TTSAction()
+		// ReSharper disable once InconsistentNaming
+		private void InstallTTSAction()
 		{
 			NavigationService.Navigate(Views.ADMIN_INSTALLTTS);
 		}
 
 		private void ContactAction()
 		{
-			string subject = Resources.EMAIL_SUBJECT;
-            string address = Resources.EMAIL_ADDR;
-			string body = Resources.EMAIL_TEXT;
-			Container.Resolve<IEmailService>().send(subject, address, body);
+			Container.Resolve<IEmailService>().Send(Resources.EMAIL_SUBJECT, Resources.EMAIL_ADDR, Resources.EMAIL_TEXT);
 		}
 
 		private void HelpAction()

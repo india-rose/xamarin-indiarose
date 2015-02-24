@@ -18,7 +18,7 @@ namespace IndiaRose.Services.Android
 
 	    public SettingsService(IActivityService activityService)
 	    {
-		    this.ActivityService = activityService;
+		    ActivityService = activityService;
 
 			ActivityService.ActivityChanged += OnActivityChanged;
 	    }
@@ -36,7 +36,7 @@ namespace IndiaRose.Services.Android
 	    {
 		    try
 		    {
-			    using (Stream result = this.ActivityService.CurrentActivity.OpenFileInput(SETTINGS_FILE_NAME))
+			    using (Stream result = ActivityService.CurrentActivity.OpenFileInput(SETTINGS_FILE_NAME))
 			    {
 					return result != null;
 			    }
@@ -51,7 +51,7 @@ namespace IndiaRose.Services.Android
 	    {
 		    try
 		    {
-			    using (Stream inputStream = this.ActivityService.CurrentActivity.OpenFileInput(SETTINGS_FILE_NAME))
+			    using (Stream inputStream = ActivityService.CurrentActivity.OpenFileInput(SETTINGS_FILE_NAME))
 			    {
 				    string content;
 				    using (StreamReader reader = new StreamReader(inputStream, Encoding.UTF8))
@@ -74,7 +74,7 @@ namespace IndiaRose.Services.Android
 	    {
 		    try
 		    {
-			    Stream outputStream = this.ActivityService.CurrentActivity.OpenFileOutput(SETTINGS_FILE_NAME, FileCreationMode.Private);
+			    Stream outputStream = ActivityService.CurrentActivity.OpenFileOutput(SETTINGS_FILE_NAME, FileCreationMode.Private);
 			    string content = JsonConvert.SerializeObject(model, Formatting.None);
 			    using (StreamWriter writer = new StreamWriter(outputStream, Encoding.UTF8))
 			    {

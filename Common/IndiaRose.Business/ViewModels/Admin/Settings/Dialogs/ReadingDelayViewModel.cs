@@ -11,7 +11,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 	{
 		#region Fields
 
-		private ISettingsService SettingsService = null;
+		private readonly ISettingsService _settingsService;
 
 		#endregion
 
@@ -59,9 +59,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 			OkCommand = new DelegateCommand(OkAction);
 			CancelCommand = new DelegateCommand(CancelAction);
 
-			SettingsService = container.Resolve<ISettingsService>();
+			_settingsService = container.Resolve<ISettingsService>();
 			// le round est là pour les problèmes de stockage de flottants et des arrondis qui en résultent
-			CurrentValue = (int) Math.Round(SettingsService.TimeOfSilenceBetweenWords * 10.0);
+			CurrentValue = (int) Math.Round(_settingsService.TimeOfSilenceBetweenWords * 10.0);
 		}
 
 		#endregion
@@ -70,8 +70,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 
 		private void OkAction()
 		{
-			SettingsService.TimeOfSilenceBetweenWords = CurrentDelay;
-            SettingsService.Save();
+			_settingsService.TimeOfSilenceBetweenWords = CurrentDelay;
+            _settingsService.Save();
 		}
 
 		private void CancelAction()

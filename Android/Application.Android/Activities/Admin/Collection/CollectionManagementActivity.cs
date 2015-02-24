@@ -1,9 +1,10 @@
 #region
+
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using IndiaRose.Business;
 using Storm.Mvvm;
+
 #endregion
 
 namespace IndiaRose.Application.Activities.Admin.Collection

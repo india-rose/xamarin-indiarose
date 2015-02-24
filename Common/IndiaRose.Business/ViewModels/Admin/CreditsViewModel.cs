@@ -1,6 +1,5 @@
 ﻿#region Usings
 
-using Storm.Mvvm;
 using Storm.Mvvm.Inject;
 
 #endregion

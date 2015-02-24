@@ -1,7 +1,6 @@
-#region Usings
+﻿#region Usings
 
 using Android.Views;
-using IndiaRose.Business;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
 using Storm.Mvvm.Dialogs;

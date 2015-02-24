@@ -1,12 +1,13 @@
 using Android.Content;
+using Android.Net;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Interfaces;
 using Storm.Mvvm.Services;
-using Uri = Android.Net.Uri;
-using Intent = Android.Content.Intent;
 
 namespace IndiaRose.Services.Android
 {
+	// Disable inconsistent naming for this only
+	// ReSharper disable once InconsistentNaming
     public class InstallTTSService : AbstractServiceWithActivity, IInstallTTSService
     {
 	    public InstallTTSService(IActivityService activityService) : base(activityService)
@@ -15,11 +16,11 @@ namespace IndiaRose.Services.Android
 
 	    public void InstallIvona()
         {
-            Intent intent = goToMarket("https://play.google.com/store/apps/details?id=com.ivona.tts&hl=fr");
+            Intent intent = GoToMarket("https://play.google.com/store/apps/details?id=com.ivona.tts&hl=fr");
             CurrentActivity.StartActivity(intent);
         }
 
-        private Intent goToMarket(string url)
+        private Intent GoToMarket(string url)
         {
             Intent intent = new Intent(Intent.ActionView);
             intent.SetData(Uri.Parse(url));
@@ -28,11 +29,11 @@ namespace IndiaRose.Services.Android
 
         public void InstallPack()
         {
-            Intent intent = goToMarket("http://mobile.ivona.com?ap=EMBED&v=1&set_lang=us");
+            Intent intent = GoToMarket("http://mobile.ivona.com?ap=EMBED&v=1&set_lang=us");
             CurrentActivity.StartActivity(intent);
         }
 
-        public void chooseIvona()
+        public void ChooseIvona()
         {
             Intent intent = new Intent();
             intent.SetAction("com.android.settings.TTS_SETTINGS");

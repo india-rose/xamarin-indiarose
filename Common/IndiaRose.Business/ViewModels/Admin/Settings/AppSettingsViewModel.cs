@@ -1,8 +1,6 @@
 ﻿#region Usings
 
 using System.Windows.Input;
-using IndiaRose.Data.Model;
-using IndiaRose.Interfaces;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;

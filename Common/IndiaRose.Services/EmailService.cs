@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using IndiaRose.Interfaces;
 using Lotz.Xam.Messaging;
 
@@ -10,7 +6,7 @@ namespace IndiaRose.Services
 {
     public class EmailService : IEmailService
     {
-        public void send(string title, string address, string body)
+        public void Send(string title, string address, string body)
         {
             var emailTask = MessagingPlugin.EmailMessenger;
             if (emailTask.CanSendEmail)
