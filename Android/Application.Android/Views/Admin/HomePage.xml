@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
+ */
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:paddingLeft="50dip"
+    android:paddingRight="50dip" >
+
+  <ImageView
+      android:id="Logo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_marginTop="10dip"
+      android:scaleType="fitXY"
+      android:src="@drawable/logo" />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_below="@id/Logo"
+      android:gravity="center"
+      android:orientation="vertical"
+      android:paddingBottom="25dip"
+      android:paddingTop="25dip" >
+
+    <LinearLayout
+        android:id="Buttons"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="4dip"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+      <Button
+          android:id="Home_app_settings"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginRight="4dip"
+          android:layout_weight="1"
+          android:background="@drawable/buttonblue"
+          android:text="@string/appSettingsText"
+          android:textColor="@android:color/white"
+          android:textSize="20sp" 
+          click="{Binding SettingsCommand}"/>
+
+      <Button
+          android:id="Home_collection_management"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:background="@drawable/buttongreen"
+          android:text="@string/collectionManagementText"
+          android:textColor="@android:color/white"
+          android:textSize="20sp"
+          click="{Binding CollectionCommand}"/>
+
+      <Button
+          android:id="Home_synchronize"
+          android:layout_width="400dip"
+          android:layout_height="50dip"
+          android:background="@drawable/buttongreen"
+          android:text="@string/synchronizeText"
+          android:textColor="@android:color/white"
+          android:textSize="20sp"
+          android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="Informations"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="4dip"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+      <Button
+          android:id="Help"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginRight="4dip"
+          android:layout_weight="1"
+          android:background="@drawable/buttonpink"
+          android:text="@string/help"
+          android:textColor="@android:color/white"
+          android:textSize="20sp" 
+          click="{Binding HelpCommand}"/>
+
+      <Button
+          android:id="Contact"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginRight="4dip"
+          android:layout_weight="1"
+          android:background="@drawable/buttonred"
+          android:text="@string/contact"
+          android:textColor="@android:color/white"
+          android:textSize="20sp" 
+          click="{Binding ContactCommand}"/>
+
+      <Button
+          android:id="Credits"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginRight="4dip"
+          android:layout_weight="1"
+          android:background="@drawable/buttonviolet"
+          android:text="@string/credits"
+          android:textColor="@android:color/white"
+          android:textSize="20sp" 
+          click="{Binding CreditsCommand}"/>
+
+      <Button
+          android:id="Home_install_tts"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:background="@drawable/buttonblue"
+          android:text="@string/home_install_tts"
+          android:textColor="@android:color/white"
+          android:textSize="20sp" 
+          click="{Binding TtsCommand}"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="Linearquit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="4dip"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+      <Button
+          android:id="Home_sendlog"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginRight="4dip"
+          android:layout_weight="1"
+          android:background="@drawable/buttonblue"
+          android:text="@string/sendLogs"
+          android:textColor="@android:color/white"
+          android:textSize="20sp" />
+
+      <Button
+          android:id="Home_quit"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:background="@drawable/buttonorange"
+          android:text="@string/quitText"
+          android:textColor="@android:color/white"
+          android:textSize="20sp" 
+          click="{Binding ExitCommand}"
+          />
+     
+      <Button
+                android:id="Home_synchro"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/buttongreen"
+                android:text="@string/synchronizeText"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" 
+                click="{Binding SynchroCommand}"/>
+
+    </LinearLayout>
+  </LinearLayout>
+
+</RelativeLayout>

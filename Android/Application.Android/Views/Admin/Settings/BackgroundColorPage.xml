@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
+ */
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+  <Resources>
+    <Converter Key="IntToColorConverter" Class="IndiaRose.Framework.Converters.IntToColorConverter" />
+  </Resources>
+
+  <RelativeLayout
+      android:id="background_color_layout_left"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:background="@android:color/white" >
+
+    <Resources>
+      <Converter Key="StringFormatConverter"
+                 Class="Storm.Mvvm.Converters.StringFormatConverter" 
+                 />
+        
+      <DataTemplate Key="SpinnerDataTemplate">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                      >
+          <TextView android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}%'}"
+                      />
+        </LinearLayout>
+      </DataTemplate>
+      <ViewSelector Key="SpinnerViewSelector"
+					Class="Storm.Mvvm.ViewSelectors.SimpleViewSelector"
+                    View="{Resource SpinnerDataTemplate}"
+                      >
+      </ViewSelector>
+    </Resources>
+
+    <ImageView
+        android:id="logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dip"
+        android:scaleType="fitXY"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_below="@+id/logo"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="4dip"
+        android:layout_marginTop="80dip"
+        android:text="@string/backgroundColorInfo"
+        android:textColor="@android:color/black"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="background_color_text_color_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/backgroundColorSizeLabel"
+        android:textColor="@android:color/black"
+        android:textSize="15sp" />
+
+    <BindableSpinner
+        android:id="background_color_spinner_color_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/background_color_text_color_size"
+        android:layout_centerInParent="true"
+        android:textSize="15sp"
+        adapter="{Binding ZoneHeightCollection, ViewSelector={Resource SpinnerViewSelector}}"
+        currentItem="{Binding CurrentSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
+            />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+      <Button
+          android:id="background_color_button_ok"
+          android:layout_width="match_parent"
+          android:layout_height="75dip"
+          android:layout_margin="4dip"
+          android:layout_weight="1"
+          android:background="@drawable/buttongreen"
+          android:text="@string/okText"
+          android:textColor="@android:color/white"
+          android:textSize="15sp"
+          click="{Binding OkCommand}"/>
+
+      <Button
+          android:id="background_color_button_cancel"
+          android:layout_width="match_parent"
+          android:layout_height="75dip"
+          android:layout_marginBottom="4dip"
+          android:layout_marginRight="4dip"
+          android:layout_marginTop="4dip"
+          android:layout_weight="1"
+          android:background="@drawable/buttonorange"
+          android:text="@string/cancelText"
+          android:textColor="@android:color/white"
+          android:textSize="15sp"
+          click="{Binding BackCommand}"/>
+    </LinearLayout>
+  </RelativeLayout>
+
+  <LinearLayout
+      android:id="RightLayout"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:orientation="vertical" >
+
+    <View
+        android:id="TopArea"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="{Binding SettingsService.TopBackgroundColor, Converter={Resource IntToColorConverter}}"
+        click="{Binding TopAreaColorCommand}"/>
+
+    <View
+        android:id="BottomArea"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        background="{Binding SettingsService.BottomBackgroundColor, Converter={Resource IntToColorConverter}}"
+        click="{Binding BottomAreaColorCommand}"/>
+  </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:paddingLeft="50dip"
+                android:paddingRight="50dip" >
+
+    <ImageView
+        android:id="Logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dip"
+        android:scaleType="fitXY"
+        android:src="@drawable/logo" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/Logo"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="25dip"
+        android:paddingTop="25dip" >
+        <LinearLayout
+            android:id="top"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+          
+            <Button
+                android:id="app_settings_background_properties"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/buttonblue"
+                android:text="@string/backgroundColorText"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" 
+                click="{Binding BackgroundColorCommand}"/>
+
+            <Button
+                android:id="app_settings_indiagram_properties"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="4dip"
+                android:background="@drawable/buttonpink"
+                android:text="@string/indiagramPropertyText"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" 
+				click="{Binding IndiagramPropertyCommand}"
+				/>
+          <Button
+            android:id="app_settings_drag_drop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/buttongreen"
+                android:text="@string/dragDropText"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" 
+				click="{Binding DragAndDropCommand}"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="bot"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="app_settings_lecture_category_properties"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/buttongreen"
+                android:text="@string/categoryReadingText"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" 
+				click="{Binding CategoryReadingCommand}"/>
+
+          <Button
+                android:id="app_settings_reading_delay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/buttonviolet"
+                android:text="@string/readingDelayText"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                click="{Binding ReadingDelayCommand}"/>
+          
+            <Button
+                android:id="app_settings_reinitialisation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/buttonred"
+                android:text="@string/resetSettingsText"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" 
+               click="{Binding ResetSettingsCommand}"  />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="retour"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="4dip"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+            <Button
+                android:id="app_settings_previous"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/buttonorange"
+                android:text="@string/previousText"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" 
+                click="{Binding BackCommand}"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

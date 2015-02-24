@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
+ */
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:paddingLeft="50dip"
+    android:paddingRight="50dip" >
+	<Resources>
+		<Converter Key="StringFormatConverter" Class="IndiaRose.Framework.Converters.StringFormatConverter" />
+	</Resources>
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		<SeekBar
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="25dp"
+			android:layout_marginBottom="5dp"
+			progress="{Binding CurrentValue, Mode=TwoWay, UpdateEvent=ProgressChanged}"
+			/>
+		<TextView
+			text="{Binding CurrentDelay, Converter={Resource StringFormatConverter}, ConverterParameter='{0:0.0} secondes'}"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="25dp"
+			android:layout_marginLeft="15dp"
+			/>
+	</LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
+ */
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:paddingLeft="50dip"
+    android:paddingRight="50dip" >
+
+  <ImageView
+      android:id="Logo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_marginTop="10dip"
+      android:scaleType="fitXY"
+      android:src="@drawable/logo" />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_below="@id/Logo"
+      android:gravity="center"
+      android:orientation="vertical"
+      android:paddingBottom="25dip"
+      android:paddingTop="25dip" >
+
+    <TextView
+        android:id="Label_send_logs"
+        android:layout_width="wrap_content"
+        android:layout_height="20dip"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dip"
+        android:text="Synchronisation des paramètres avec le serveur ...\nVeuillez patienter !"
+        android:textColor="@android:color/black" />
+    
+    <ProgressBar 
+      android:layout_width="50dip"
+      android:layout_height="50dip"
+      android:gravity="center"
+      android:layout_below="@id/Label_send_logs"
+      android:layout_margin="10dip"
+      />
+    
+    <TextView
+      android:id="Label_current_action"
+      android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dip"
+        android:text="Cet écran ne fait rien pour l'instant.\nTout ce qu'il vous reste à faire est de cliquer sur le bouton retour.\nVous pouvez aussi attendre jusqu'à la nuit des temps si ça vous fait plaisir !"
+        android:textColor="@android:color/black" />
+    
+  </LinearLayout>
+
+</RelativeLayout>

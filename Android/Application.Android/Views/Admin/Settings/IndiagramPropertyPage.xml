@@ -1,0 +1,270 @@
+﻿<!--
+/*
+ * This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
+ */
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white" >
+
+  <Resources>
+    <Converter Key="StringFormatConverter"
+				   Class="Storm.Mvvm.Converters.StringFormatConverter" />
+
+    <DataTemplate Key="IndiagramSizeTemplate">
+      <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:orientation="horizontal"
+                      android:layout_width="fill_parent"
+                      android:layout_height="fill_parent">
+
+        <TextView android:layout_width="wrap_content"
+						  android:layout_height="fill_parent"
+						  text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}x{0}'}"
+                      />
+      </LinearLayout>
+    </DataTemplate>
+
+    <DataTemplate Key="FontSizeTemplate">
+      <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:orientation="horizontal"
+                      android:layout_width="fill_parent"
+                      android:layout_height="fill_parent">
+
+        <TextView android:layout_width="wrap_content"
+						  android:layout_height="fill_parent"
+						  text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}'}"
+                      />
+      </LinearLayout>
+    </DataTemplate>
+
+    <DataTemplate Key="FontTemplate">
+      <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:orientation="horizontal"
+                      android:layout_width="fill_parent"
+                      android:layout_height="fill_parent">
+
+        <TextView android:layout_width="wrap_content"
+						  android:layout_height="fill_parent"
+						  text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}'}"
+                      />
+      </LinearLayout>
+    </DataTemplate>
+
+    <ViewSelector Key="IndiagramViewSelector"
+					  Class="Storm.Mvvm.ViewSelectors.SimpleViewSelector"
+					  View="{Resource IndiagramSizeTemplate}"
+					  />
+    <ViewSelector Key="FontSizeViewSelector"
+					  Class="Storm.Mvvm.ViewSelectors.SimpleViewSelector"
+					  View="{Resource FontSizeTemplate}"
+					  />
+    <ViewSelector Key="FontViewSelector"
+					  Class="Storm.Mvvm.ViewSelectors.SimpleViewSelector"
+					  View="{Resource FontTemplate}"
+					  />
+  </Resources>
+
+  <ImageView
+      android:id="logo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_marginTop="10dip"
+      android:scaleType="fitXY"
+      android:src="@drawable/logo" />
+
+
+
+  <LinearLayout
+      android:id="linear_info"
+      android:layout_width="match_parent"
+      android:layout_height="fill_parent"
+      android:orientation="horizontal" >
+
+    <ScrollView
+        android:id="relative_left"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="65dip"
+             >
+
+      <RelativeLayout
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:layout_marginLeft="15dip"
+          android:layout_marginTop="20dip"
+                 >
+
+        <TextView
+            android:id="text_image_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="@string/imageSizeTitle"
+            android:textColor="#006FFF"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+
+        <BindableSpinner
+            android:id="spinnerImageSize"
+            android:layout_width="150dip"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_image_size"
+            android:layout_marginBottom="7dip"
+            android:layout_marginTop="7dip"
+            adapter="{Binding IndiagramsSize, ViewSelector={Resource IndiagramViewSelector}}"
+            currentItem="{Binding CurrentIndiagramSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
+		              />
+
+        <TextView
+            android:id="text_font_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/spinnerImageSize"
+            android:layout_marginBottom="7dip"
+            android:layout_marginTop="7dip"
+            android:text="@string/fontTitle"
+            android:textColor="#006FFF"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+
+        <BindableSpinner
+            android:id="spinnerFont"
+            android:layout_width="150dip"
+            android:layout_height="50dip"
+            android:layout_alignLeft="@+id/spinnerImageSize"
+            android:layout_below="@+id/text_font_label"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="7dip"
+            adapter="{Binding IndiagramsFont, ViewSelector={Resource FontViewSelector}}"
+            currentItem="{Binding CurrentIndiagramFont, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
+					  />
+
+        <TextView
+            android:id="text_font_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/text_font_label"
+            android:layout_centerVertical="true"
+            android:text="@string/fontSizeTitle"
+            android:textColor="#006FFF"
+            android:textSize="15sp"
+            android:layout_marginBottom="7dip"
+            android:layout_marginTop="7dip"
+            android:textStyle="italic" />
+
+        <BindableSpinner
+            android:id="spinnerSizeFont"
+            android:layout_width="150dip"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/spinnerImageSize"
+            android:layout_below="@+id/text_font_size"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="7dip"
+            android:layout_marginTop="7dip"
+            android:layout_toRightOf="@+id/text_font_size"
+            adapter="{Binding IndiagramsFontSize, ViewSelector={Resource FontSizeViewSelector}}"
+            currentItem="{Binding CurrentIndiagramFontSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
+                    />
+
+        <CheckBox
+                    android:id="checkboxhomecategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/spinnerSizeFont"
+                    android:layout_marginBottom="7dip"
+            android:layout_marginTop="7dip"
+                    android:text="@string/checkboxhomecategory"
+                    android:textColor="#006FFF"
+                    android:textSize="14sp" />
+
+        <CheckBox
+            android:id="checkboxMove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkboxhomecategory"
+            android:layout_marginBottom="7dip"
+            android:layout_marginTop="7dip"
+            android:text="@string/checkboxMove"
+            android:textColor="#006FFF"
+            android:textSize="14sp" />
+
+        
+      </RelativeLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="relative_right"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center" >
+      
+  <!--Deuxieme colonne-->
+  <CheckBox
+            android:id="checkboxreinforcer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dip"
+            android:text="@string/reinforcerReadingLabel"
+            android:textColor="#006FFF"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="button_reinforcer_color"
+            android:layout_width="wrap_content"
+            android:layout_height="95dip"
+            android:layout_below="@+id/checkboxreinforcer"
+            android:layout_margin="10dip"
+            android:background="@drawable/buttonviolet"
+            android:text="@string/reinforcerColorButton"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            click="{Binding ReinforcerColorCommand}"/>
+    
+    </RelativeLayout>
+  </LinearLayout>
+  <LinearLayout
+      android:id="linear_bottom"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_above="@+id/linear_info"
+      android:layout_alignParentBottom="true"
+      android:paddingLeft="25dip"
+      android:paddingRight="25dip"
+      android:gravity="center"
+      android:orientation="horizontal" >
+
+    <Button
+        android:id="button_ok"
+        android:layout_width="match_parent"
+        android:layout_height="55dip"
+        android:layout_margin="4dip"
+        android:layout_weight="1"
+        android:background="@drawable/buttongreen"
+        android:text="@string/okText"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        click="{Binding OkCommand}"/>
+
+    <Button
+        android:id="button_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="55dip"
+        android:layout_marginBottom="4dip"
+        android:layout_marginTop="4dip"
+        android:layout_weight="1"
+        android:background="@drawable/buttonorange"
+        android:text="@string/cancelText"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        click="{Binding BackCommand}"/>
+  </LinearLayout>
+</RelativeLayout>
