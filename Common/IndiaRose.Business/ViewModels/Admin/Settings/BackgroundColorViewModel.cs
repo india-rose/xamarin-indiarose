@@ -75,7 +75,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 			// Acces aux parametres de l'appli
 			// Taille mini de la zone d'indiagrams
 			// i.e: la taille d'un indiagram + 20% en pourcentage de la hauteur de l'écran
-			int minHeight = (int) ((SettingsService.IndiagramDisplaySize*1.2)/screenService.ScreenHeight*100);
+			int minHeight = (int) ((SettingsService.IndiagramDisplaySize*1.2)/screenService.Height*100);
 			// Taille maxi de la zone d'indiagrams
 			// i.e: 95% de la hauteur de l'écran - la hauteur minimum de la zone
 			int maxHeight = 95 - minHeight;

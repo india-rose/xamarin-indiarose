@@ -27,7 +27,7 @@ namespace IndiaRose.Application
             ScreenService screenService = new ScreenService(ActivityService);
             RegisterInstance<IScreenService>(screenService);
 
-            SettingsService settingsService = new SettingsService(ActivityService);
+            SettingsService settingsService = new SettingsService(this);
             RegisterInstance<ISettingsService>(settingsService);
 
             FontService fontService = new FontService(ActivityService);

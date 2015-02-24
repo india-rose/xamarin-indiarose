@@ -1,4 +1,6 @@
-﻿namespace IndiaRose.Interfaces
+﻿using System.Threading.Tasks;
+
+namespace IndiaRose.Interfaces
 {
     public interface ISettingsService
     {
@@ -26,9 +28,9 @@
 
 		float TimeOfSilenceBetweenWords { get; set; }
 
-		void Save();
+		Task SaveAsync();
 
-		void Load();
+		Task LoadAsync();
 
 		void Reset();
     }

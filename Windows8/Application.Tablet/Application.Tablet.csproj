@@ -197,6 +197,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Xam.Plugins.Messaging.2.0.0\lib\win8\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="PCLStorage">
+      <HintPath>..\..\packages\PCLStorage.1.0.2\lib\portable-win8+wpa81\PCLStorage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PCLStorage.Abstractions">
+      <HintPath>..\..\packages\PCLStorage.1.0.2\lib\portable-win8+wpa81\PCLStorage.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="Storm.Mvvm, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Storm.Mvvm.1.1.3\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>

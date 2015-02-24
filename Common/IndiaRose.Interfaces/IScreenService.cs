@@ -2,7 +2,7 @@
 {
     public interface IScreenService
     {
-        int ScreenWidth { get; }
-        int ScreenHeight { get; }
+        int Width { get; }
+        int Height { get; }
     }
 }

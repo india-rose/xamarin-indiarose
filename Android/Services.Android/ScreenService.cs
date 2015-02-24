@@ -11,12 +11,12 @@ namespace IndiaRose.Services.Android
 		{
 		}
 
-		public int ScreenWidth
+		public int Width
 		{
 			get { return CurrentActivity.Window.DecorView.Width; }
 		}
 
-		public int ScreenHeight
+		public int Height
 		{
 			get { return CurrentActivity.Window.DecorView.Height; }
 		}

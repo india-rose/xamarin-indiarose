@@ -1,11 +1,20 @@
-﻿using IndiaRose.Data.Model;
+﻿using System;
+using System.Threading.Tasks;
+using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
+using Newtonsoft.Json;
+using PCLStorage;
 using Storm.Mvvm;
+using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 
 namespace IndiaRose.Services
 {
-	public abstract class AbstractSettingsService : NotifierBase, ISettingsService
+	public class SettingsService : NotifierBase, ISettingsService
 	{
+		private const string SETTINGS_FILE = "settings.json";
+		private readonly ILoggerService _loggerService;
+
 		#region Properties backing fields
 
 		private uint _topBackgroundColor;
@@ -99,7 +108,12 @@ namespace IndiaRose.Services
 
 		#endregion
 
-		public void Save()
+		public SettingsService(IContainer container)
+		{
+			_loggerService = container.Resolve<ILoggerService>();
+		}
+
+		public async Task SaveAsync()
 		{
 			SettingsModel model = new SettingsModel
 			{
@@ -117,18 +131,18 @@ namespace IndiaRose.Services
 				ReinforcerColor = ReinforcerColor
 			};
 
-			SaveOnDisk(model);
+			await SaveOnDiskAsync(model);
 		}
 
-		public void Load()
+		public async Task LoadAsync()
 		{
-			if (!ExistsOnDisk())
+			if (! await ExistsOnDiskAsync())
 			{
 				Reset();
 				return;
 			}
 
-			SettingsModel model = LoadFromDisk();
+			SettingsModel model = await LoadFromDiskAsync();
 
 			if (model == null)
 			{
@@ -166,8 +180,48 @@ namespace IndiaRose.Services
 			ReinforcerColor = 0xFFFF00FF;
 		}
 
-		protected abstract bool ExistsOnDisk();
-		protected abstract SettingsModel LoadFromDisk();
-		protected abstract void SaveOnDisk(SettingsModel model);
+		protected async Task<bool> ExistsOnDiskAsync()
+		{
+			try
+			{
+				ExistenceCheckResult result = await FileSystem.Current.LocalStorage.CheckExistsAsync(SETTINGS_FILE);
+				return result == ExistenceCheckResult.FileExists;
+			}
+			catch (Exception)
+			{
+				return false;
+			}
+		}
+
+		protected async Task<SettingsModel> LoadFromDiskAsync()
+		{
+			try
+			{
+				IFile file = await FileSystem.Current.LocalStorage.GetFileAsync(SETTINGS_FILE);
+				string content = await file.ReadAllTextAsync();
+				SettingsModel result = JsonConvert.DeserializeObject<SettingsModel>(content);
+				return result;
+			}
+			catch (Exception e)
+			{
+				_loggerService.Log("IndiaRose.Services.SettingsService.LoadFromDiskAsync() : exception while trying to load content from the settings file " + e, MessageSeverity.Critical);
+				return null;
+			}
+
+		}
+
+		protected async Task SaveOnDiskAsync(SettingsModel model)
+		{
+			try
+			{
+				IFile file = await FileSystem.Current.LocalStorage.GetFileAsync(SETTINGS_FILE);
+				string content = JsonConvert.SerializeObject(model, Formatting.None);
+				await file.WriteAllTextAsync(content);
+			}
+			catch (Exception e)
+			{
+				_loggerService.Log("IndiaRose.Services.SettingsService.SaveOnDiskAsync() : exception while trying to write content to the settings file " + e, MessageSeverity.Critical);
+			}
+		}
 	}
 }
