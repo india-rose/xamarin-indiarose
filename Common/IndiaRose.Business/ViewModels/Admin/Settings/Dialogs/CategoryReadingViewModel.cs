@@ -55,7 +55,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 		private void OkAction()
 		{
 			SettingsService.IsCategoryNameReadingEnabled = IsCategoryReadingEnabled;
-			SettingsService.Save();
+			SettingsService.SaveAsync();
 		}
 
 		private void CancelAction()

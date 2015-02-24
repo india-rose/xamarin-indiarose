@@ -90,7 +90,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 		{
 		    SettingsService.SelectionAreaHeight = CurrentSize;
 
-            SettingsService.Save();
+            SettingsService.SaveAsync();
 			BackAction();
 		}
 	}

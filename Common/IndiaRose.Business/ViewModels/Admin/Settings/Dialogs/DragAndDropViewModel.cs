@@ -60,7 +60,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 		private void OkAction()
 		{
 		    SettingsService.IsDragAndDropEnabled = _isDragAndDropEnabled;
-            SettingsService.Save();
+            SettingsService.SaveAsync();
 		}
 
 		private void CancelAction()

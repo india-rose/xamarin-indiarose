@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
@@ -14,6 +15,8 @@ namespace IndiaRose.Services
 	{
 		private const string SETTINGS_FILE = "settings.json";
 		private readonly ILoggerService _loggerService;
+
+		private bool _hasChanged = false;
 
 		#region Properties backing fields
 
@@ -33,7 +36,7 @@ namespace IndiaRose.Services
 		#endregion
 
 		#region Properties
-		
+
 		public uint ReinforcerColor
 		{
 			get { return _reinforcerColor; }
@@ -111,10 +114,22 @@ namespace IndiaRose.Services
 		public SettingsService(IContainer container)
 		{
 			_loggerService = container.Resolve<ILoggerService>();
+
+			PropertyChanged += OnAnyValueChanged;
+		}
+
+		private void OnAnyValueChanged(object sender, PropertyChangedEventArgs e)
+		{
+			_hasChanged = true;
 		}
 
 		public async Task SaveAsync()
 		{
+			if(!_hasChanged)
+			{ 
+				return;
+			}
+
 			SettingsModel model = new SettingsModel
 			{
 				TopBackgroundColor = TopBackgroundColor,
@@ -136,7 +151,7 @@ namespace IndiaRose.Services
 
 		public async Task LoadAsync()
 		{
-			if (! await ExistsOnDiskAsync())
+			if (!await ExistsOnDiskAsync())
 			{
 				Reset();
 				return;
@@ -162,6 +177,8 @@ namespace IndiaRose.Services
 			IsBackHomeAfterSelectionEnabled = model.IsBackHomeAfterSelectionEnabled;
 			TimeOfSilenceBetweenWords = model.TimeOfSilenceBetweenWords;
 			ReinforcerColor = model.ReinforcerColor;
+
+			_hasChanged = false;
 		}
 
 		public void Reset()

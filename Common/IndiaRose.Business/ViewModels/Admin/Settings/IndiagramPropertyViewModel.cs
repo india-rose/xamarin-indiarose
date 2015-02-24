@@ -91,7 +91,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 
 		private void OkAction()
 		{
-			SettingsService.Save();
+			SettingsService.SaveAsync();
 			BackAction();
 		}
     }

@@ -71,7 +71,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 		private void OkAction()
 		{
 			_settingsService.TimeOfSilenceBetweenWords = CurrentDelay;
-            _settingsService.Save();
+            _settingsService.SaveAsync();
 		}
 
 		private void CancelAction()
