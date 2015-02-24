@@ -12,7 +12,7 @@
     android:paddingLeft="50dip"
     android:paddingRight="50dip" >
 	<Resources>
-		<Converter Key="StringFormatConverter" Class="IndiaRose.Framework.Converters.StringFormatConverter" />
+		<Converter Key="StringFormatConverter" Class="Storm.Mvvm.Converters.StringFormatConverter" />
 	</Resources>
 	<LinearLayout
 		android:orientation="vertical"

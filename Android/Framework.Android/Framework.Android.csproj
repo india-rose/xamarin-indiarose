@@ -41,9 +41,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Converters\BooleanNegationConverter.cs" />
     <Compile Include="Converters\IntToColorConverter.cs" />
-    <Compile Include="Converters\StringFormatConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

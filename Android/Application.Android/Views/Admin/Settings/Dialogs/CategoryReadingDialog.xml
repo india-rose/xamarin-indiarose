@@ -14,7 +14,7 @@
 
 	<Resources>
 		<Converter Key="BooleanNegationConverter"
-				   Class="IndiaRose.Framework.Converters.BooleanNegationConverter" />
+				   Class="Storm.Mvvm.Converters.BooleanNegationConverter" />
 	</Resources>
 	
 	<RadioGroup
