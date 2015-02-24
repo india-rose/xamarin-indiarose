@@ -21,7 +21,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <NuGetPackageImportStamp>bf08087a</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>f5350962</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -202,8 +202,10 @@
     <Reference Include="PCLStorage.Abstractions">
       <HintPath>..\..\packages\PCLStorage.1.0.2\lib\monoandroid\PCLStorage.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Storm.Mvvm.Android, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Storm.Mvvm">
+      <HintPath>..\..\packages\Storm.Mvvm.1.1.4\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
+    </Reference>
+    <Reference Include="Storm.Mvvm.Android">
       <HintPath>..\..\packages\Storm.Mvvm.Android.1.1.14\lib\MonoAndroid22\Storm.Mvvm.Android.dll</HintPath>
     </Reference>
     <Reference Include="System" />
