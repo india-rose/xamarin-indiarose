@@ -4,11 +4,11 @@ namespace IndiaRose.Interfaces
 {
     public interface ISettingsService
     {
-		uint TopBackgroundColor { get; set; }
+		string TopBackgroundColor { get; set; }
 
-		uint BottomBackgroundColor { get; set; }
+		string BottomBackgroundColor { get; set; }
 
-		uint ReinforcerColor { get; set; }
+		string ReinforcerColor { get; set; }
 
 		int SelectionAreaHeight { get; set; }
 

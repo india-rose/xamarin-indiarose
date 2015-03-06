@@ -60,7 +60,7 @@
           android:text="@string/collectionManagementText"
           android:textColor="@android:color/white"
           android:textSize="20sp"
-          click="{Binding CollectionCommand}"/>
+          click="{Binding CollectionManagementCommand}"/>
 
       <Button
           android:id="Home_synchronize"
@@ -127,7 +127,7 @@
           android:text="@string/home_install_tts"
           android:textColor="@android:color/white"
           android:textSize="20sp" 
-          click="{Binding TtsCommand}"/>
+          click="{Binding InstallVoiceSynthesisCommand}"/>
     </LinearLayout>
 
     <LinearLayout
@@ -172,7 +172,7 @@
                 android:text="@string/synchronizeText"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" 
-                click="{Binding SynchroCommand}"/>
+                click="{Binding SyncCollectionCommand}"/>
 
     </LinearLayout>
   </LinearLayout>

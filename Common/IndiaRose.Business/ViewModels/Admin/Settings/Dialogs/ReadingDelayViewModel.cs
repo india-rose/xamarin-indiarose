@@ -1,20 +1,10 @@
 ﻿using System;
-using System.Windows.Input;
-using IndiaRose.Interfaces;
-using Storm.Mvvm;
-using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 {
-	public class ReadingDelayViewModel : ViewModelBase
+	public class ReadingDelayViewModel : AbstractSettingsViewModel
 	{
-		#region Fields
-
-		private readonly ISettingsService _settingsService;
-
-		#endregion
-
 		#region Properties backing fields
 
 		private int _currentValue = 10;
@@ -44,39 +34,23 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 
 		#endregion
 
-		#region Commands
-
-		public ICommand OkCommand { get; private set; }
-		public ICommand CancelCommand { get; private set; }
-
-		#endregion
-
 		#region Constructor
 
 		public ReadingDelayViewModel(IContainer container)
 			: base(container)
 		{
-			OkCommand = new DelegateCommand(OkAction);
-			CancelCommand = new DelegateCommand(CancelAction);
-
-			_settingsService = container.Resolve<ISettingsService>();
-			// le round est là pour les problèmes de stockage de flottants et des arrondis qui en résultent
-			CurrentValue = (int) Math.Round(_settingsService.TimeOfSilenceBetweenWords * 10.0);
+			// Math.Round is needed because of float precision issue
+			CurrentValue = (int) Math.Round(SettingsService.TimeOfSilenceBetweenWords * 10.0);
 		}
 
 		#endregion
 
 		#region Commands implementation
 
-		private void OkAction()
+		protected override void SaveAction()
 		{
-			_settingsService.TimeOfSilenceBetweenWords = CurrentDelay;
-            _settingsService.SaveAsync();
-		}
-
-		private void CancelAction()
-		{
-
+			SettingsService.TimeOfSilenceBetweenWords = CurrentDelay;
+			base.SaveAction();
 		}
 
 		#endregion

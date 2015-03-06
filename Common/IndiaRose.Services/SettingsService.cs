@@ -14,14 +14,21 @@ namespace IndiaRose.Services
 	public class SettingsService : NotifierBase, ISettingsService
 	{
 		private const string SETTINGS_FILE = "settings.json";
-		private readonly ILoggerService _loggerService;
 
-		private bool _hasChanged = false;
+		private readonly IContainer _container;
+		private ILoggerService _loggerService;
+
+		private ILoggerService LoggerService
+		{
+			get { return _loggerService ?? (_loggerService = _container.Resolve<ILoggerService>()); }
+		}
+
+		private bool _hasChanged;
 
 		#region Properties backing fields
 
-		private uint _topBackgroundColor;
-		private uint _bottomBackgroundColor;
+		private string _topBackgroundColor;
+		private string _bottomBackgroundColor;
 		private int _selectionAreaHeight;
 		private int _indiagramDisplaySize;
 		private string _fontName;
@@ -31,13 +38,13 @@ namespace IndiaRose.Services
 		private bool _isCategoryNameReadingEnabled;
 		private bool _isBackHomeAfterSelectionEnabled;
 		private float _timeOfSilenceBetweenWords;
-		private uint _reinforcerColor;
+		private string _reinforcerColor;
 
 		#endregion
 
 		#region Properties
 
-		public uint ReinforcerColor
+		public string ReinforcerColor
 		{
 			get { return _reinforcerColor; }
 			set { SetProperty(ref _reinforcerColor, value); }
@@ -97,13 +104,13 @@ namespace IndiaRose.Services
 			set { SetProperty(ref _selectionAreaHeight, value); }
 		}
 
-		public uint BottomBackgroundColor
+		public string BottomBackgroundColor
 		{
 			get { return _bottomBackgroundColor; }
 			set { SetProperty(ref _bottomBackgroundColor, value); }
 		}
 
-		public uint TopBackgroundColor
+		public string TopBackgroundColor
 		{
 			get { return _topBackgroundColor; }
 			set { SetProperty(ref _topBackgroundColor, value); }
@@ -113,7 +120,7 @@ namespace IndiaRose.Services
 
 		public SettingsService(IContainer container)
 		{
-			_loggerService = container.Resolve<ILoggerService>();
+			_container = container;
 
 			PropertyChanged += OnAnyValueChanged;
 		}
@@ -183,8 +190,8 @@ namespace IndiaRose.Services
 
 		public void Reset()
 		{
-			TopBackgroundColor = 0xFF3838FF;
-			BottomBackgroundColor = 0xFF73739E;
+			TopBackgroundColor = "0xFF3838FF";
+			BottomBackgroundColor = "0xFF73739E";
 			SelectionAreaHeight = 70;
 			IndiagramDisplaySize = 128;
 			FontName = "Consolas";
@@ -194,7 +201,7 @@ namespace IndiaRose.Services
 			IsCategoryNameReadingEnabled = true;
 			IsBackHomeAfterSelectionEnabled = true;
 			TimeOfSilenceBetweenWords = 1.0f;
-			ReinforcerColor = 0xFFFF00FF;
+			ReinforcerColor = "0xFFFF00FF";
 		}
 
 		protected async Task<bool> ExistsOnDiskAsync()
@@ -221,7 +228,7 @@ namespace IndiaRose.Services
 			}
 			catch (Exception e)
 			{
-				_loggerService.Log("IndiaRose.Services.SettingsService.LoadFromDiskAsync() : exception while trying to load content from the settings file " + e, MessageSeverity.Critical);
+				LoggerService.Log("IndiaRose.Services.SettingsService.LoadFromDiskAsync() : exception while trying to load content from the settings file " + e, MessageSeverity.Critical);
 				return null;
 			}
 
@@ -237,7 +244,7 @@ namespace IndiaRose.Services
 			}
 			catch (Exception e)
 			{
-				_loggerService.Log("IndiaRose.Services.SettingsService.SaveOnDiskAsync() : exception while trying to write content to the settings file " + e, MessageSeverity.Critical);
+				LoggerService.Log("IndiaRose.Services.SettingsService.SaveOnDiskAsync() : exception while trying to write content to the settings file " + e, MessageSeverity.Critical);
 			}
 		}
 	}

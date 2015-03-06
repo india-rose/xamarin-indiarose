@@ -9,22 +9,22 @@ using Uri = Android.Net.Uri;
 
 namespace IndiaRose.Services.Android
 {
-    public class ResourcesService : AbstractServiceWithActivity, IResourcesService
+    public class ResourceService : AbstractServiceWithActivity, IResourceService
     {
-	    public ResourcesService(IActivityService activityService) : base(activityService)
+	    public ResourceService(IActivityService activityService) : base(activityService)
 	    {
 	    }
 
-	    public void Show(string id)
+	    public void ShowPdfFile(string pdfFileName)
         {
-            string path = Path.Combine(CurrentActivity.GetExternalFilesDir(null).AbsolutePath, "manuel.pdf");
+            string path = Path.Combine(CurrentActivity.GetExternalFilesDir(null).AbsolutePath, pdfFileName);
 
             if (!File.Exists(path))
             {
                 try
                 {
                     FileStream output = File.OpenWrite(path);
-					Stream input = CurrentActivity.Assets.Open("manuel.pdf");
+					Stream input = CurrentActivity.Assets.Open(pdfFileName);
                     input.CopyTo(output);
                     input.Close();
                     output.Flush();

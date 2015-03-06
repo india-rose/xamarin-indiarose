@@ -8,13 +8,13 @@ namespace IndiaRose.Services.Android
 {
 	// Disable inconsistent naming for this only
 	// ReSharper disable once InconsistentNaming
-    public class InstallTTSService : AbstractServiceWithActivity, IInstallTTSService
+    public class InstallTTSService : AbstractServiceWithActivity, IInstallVoiceSynthesisService
     {
 	    public InstallTTSService(IActivityService activityService) : base(activityService)
 	    {
 	    }
 
-	    public void InstallIvona()
+	    public void InstallVoiceSynthesisEngine()
         {
             Intent intent = GoToMarket("https://play.google.com/store/apps/details?id=com.ivona.tts&hl=fr");
             CurrentActivity.StartActivity(intent);
@@ -27,13 +27,13 @@ namespace IndiaRose.Services.Android
             return intent;
         }
 
-        public void InstallPack()
+        public void InstallLanguagePack()
         {
             Intent intent = GoToMarket("http://mobile.ivona.com?ap=EMBED&v=1&set_lang=us");
             CurrentActivity.StartActivity(intent);
         }
 
-        public void ChooseIvona()
+        public void EnableVoiceSynthesisEngine()
         {
             Intent intent = new Intent();
             intent.SetAction("com.android.settings.TTS_SETTINGS");

@@ -44,7 +44,7 @@
     <Compile Include="FontService.cs" />
     <Compile Include="InstallTTSService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResourcesService.cs" />
+    <Compile Include="ResourceService.cs" />
     <Compile Include="ScreenService.cs" />
   </ItemGroup>
   <ItemGroup>

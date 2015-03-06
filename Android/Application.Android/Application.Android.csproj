@@ -143,7 +143,6 @@
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values-v11\styles.xml" />
     <AndroidResource Include="Resources\values-v14\styles.xml" />
-    <Content Include="Views\Admin\Collection\SelectionIndiagrams.xml" />
     <Content Include="Views\Admin\Settings\Dialogs\CategoryReadingDialog.xml" />
     <Content Include="Views\Admin\Settings\Dialogs\DragAndDropDialog.xml" />
     <Content Include="Views\Admin\Settings\IndiagramPropertyPage.xml" />
@@ -158,6 +157,7 @@
     <Folder Include="Activities\User\" />
     <Folder Include="Resources\drawable-ldpi\" />
     <Folder Include="Resources\layout\" />
+    <Folder Include="Views\Admin\Collection\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>

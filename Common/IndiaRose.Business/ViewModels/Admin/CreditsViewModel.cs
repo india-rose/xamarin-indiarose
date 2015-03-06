@@ -6,7 +6,7 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Business.ViewModels.Admin
 {
-	public class CreditsViewModel : AbstractBackViewModel
+	public class CreditsViewModel : AbstractViewModel
 	{
 		public CreditsViewModel(IContainer container) : base(container)
 		{

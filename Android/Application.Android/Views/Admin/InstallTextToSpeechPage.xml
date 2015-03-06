@@ -36,7 +36,7 @@
         android:text="@string/un"
         android:textColor="@android:color/white"
         android:textSize="20sp"
-        click ="{Binding InstallIvonaCommand}"/>
+        click ="{Binding InstallVoiceSynthesisEngineCommand}"/>
   </RelativeLayout>
 
   <RelativeLayout
@@ -68,7 +68,7 @@
         android:text="@string/deux"
         android:textColor="@android:color/white"
         android:textSize="20sp" 
-        click="{Binding InstallPackCommand}"/>
+        click="{Binding InstallLanguagePackCommand}"/>
   </RelativeLayout>
 
   <RelativeLayout
@@ -100,7 +100,7 @@
         android:text="@string/trois"
         android:textColor="@android:color/white"
         android:textSize="20sp" 
-        click="{Binding ChooseIvonaCommand}"/>
+        click="{Binding EnableVoiceSynthesisEngineCommand}"/>
   </RelativeLayout>
 
   <RelativeLayout

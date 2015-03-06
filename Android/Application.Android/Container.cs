@@ -15,8 +15,8 @@ namespace IndiaRose.Application
 			base.Initialize();
 			ViewModelsLocator.Initialize(this);
 
-            ResourcesService resourcesService = new ResourcesService(ActivityService);
-            RegisterInstance<IResourcesService>(resourcesService);
+            ResourceService resourceService = new ResourceService(ActivityService);
+            RegisterInstance<IResourcesService>(resourceService);
 
 		    EmailService emailService = new EmailService();
             RegisterInstance<IEmailService>(emailService);

@@ -116,8 +116,8 @@
             android:layout_below="@+id/text_image_size"
             android:layout_marginBottom="7dip"
             android:layout_marginTop="7dip"
-            adapter="{Binding IndiagramsSize, ViewSelector={Resource IndiagramViewSelector}}"
-            currentItem="{Binding CurrentIndiagramSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
+            adapter="{Binding IndiagramSizes, ViewSelector={Resource IndiagramViewSelector}}"
+            currentItem="{Binding IndiagramSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
 		              />
 
         <TextView
@@ -141,8 +141,8 @@
             android:layout_below="@+id/text_font_label"
             android:layout_centerInParent="true"
             android:layout_marginBottom="7dip"
-            adapter="{Binding IndiagramsFont, ViewSelector={Resource FontViewSelector}}"
-            currentItem="{Binding CurrentIndiagramFont, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
+            adapter="{Binding FontNames, ViewSelector={Resource FontViewSelector}}"
+            currentItem="{Binding FontName, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
 					  />
 
         <TextView
@@ -169,8 +169,8 @@
             android:layout_marginBottom="7dip"
             android:layout_marginTop="7dip"
             android:layout_toRightOf="@+id/text_font_size"
-            adapter="{Binding IndiagramsFontSize, ViewSelector={Resource FontSizeViewSelector}}"
-            currentItem="{Binding CurrentIndiagramFontSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
+            adapter="{Binding FontSizes, ViewSelector={Resource FontSizeViewSelector}}"
+            currentItem="{Binding FontSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
                     />
 
         <CheckBox

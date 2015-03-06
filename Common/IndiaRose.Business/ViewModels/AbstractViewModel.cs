@@ -9,16 +9,16 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Business.ViewModels
 {
-	public abstract class AbstractBackViewModel : ViewModelBase
+	public abstract class AbstractViewModel : ViewModelBase
 	{
 		public ICommand BackCommand { get; private set; }
 
-		protected AbstractBackViewModel(IContainer container) : base(container)
+		protected AbstractViewModel(IContainer container) : base(container)
 		{
 			BackCommand = new DelegateCommand(BackAction);
 		}
 
-		protected void BackAction()
+		protected virtual void BackAction()
 		{
 			NavigationService.GoBack();
 		}

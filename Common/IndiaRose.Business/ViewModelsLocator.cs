@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using IndiaRose.Business.ViewModels.Admin;
-using IndiaRose.Business.ViewModels.Admin.Collection;
 using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Business.ViewModels.Admin.Settings.Dialogs;
 using Storm.Mvvm.Inject;
@@ -18,17 +17,15 @@ namespace IndiaRose.Business
 		{
 			// Admin
 			container.RegisterFactory(x => new HomeViewModel(x));
-			container.RegisterFactory(x => new InstallTextToSpeechViewModel(x));
+			container.RegisterFactory(x => new InstallVoiceSynthesisViewModel(x));
 			container.RegisterFactory(x => new CreditsViewModel(x));
 			container.RegisterFactory(x => new ServerSynchronizationViewModel(x));
 
 			// Admin/Settings
-			container.RegisterFactory(x => new AppSettingsViewModel(x));
-			container.RegisterFactory(x => new BackgroundColorViewModel(x));
+			container.RegisterFactory(x => new SettingsListViewModel(x));
+			container.RegisterFactory(x => new ApplicationLookViewModel(x));
 			container.RegisterFactory(x => new IndiagramPropertyViewModel(x));
 
-            // Admin/Collection
-            container.RegisterFactory(x => new CollectionViewModel(x));
 
 			// Admin/Settings/Dialogs
 			container.RegisterFactory(x => new ColorPickerViewModel(x));
@@ -47,9 +44,9 @@ namespace IndiaRose.Business
 			get { return _container.Resolve<HomeViewModel>(); }
 		}
 
-		public InstallTextToSpeechViewModel AdminInstallTextToSpeechViewModel
+		public InstallVoiceSynthesisViewModel AdminInstallTextToSpeechViewModel
 		{
-			get { return _container.Resolve<InstallTextToSpeechViewModel>(); }
+			get { return _container.Resolve<InstallVoiceSynthesisViewModel>(); }
 		}
 
 		public CreditsViewModel AdminCreditsViewModel
@@ -66,14 +63,14 @@ namespace IndiaRose.Business
 
 		#region ViewModels : /Admin/Settings
 
-		public AppSettingsViewModel AdminSettingsAppSettingsViewModel
+		public SettingsListViewModel AdminSettingsAppSettingsViewModel
 		{
-			get { return _container.Resolve<AppSettingsViewModel>(); }
+			get { return _container.Resolve<SettingsListViewModel>(); }
 		}
 
-		public BackgroundColorViewModel AdminSettingsBackgroundColorViewModel
+		public ApplicationLookViewModel AdminSettingsBackgroundColorViewModel
 		{
-			get { return _container.Resolve<BackgroundColorViewModel>(); }
+			get { return _container.Resolve<ApplicationLookViewModel>(); }
 		}
 
 		public IndiagramPropertyViewModel AdminSettingsIndiagramPropertyViewModel
@@ -83,12 +80,7 @@ namespace IndiaRose.Business
 
 		#endregion
 
-        #region ViewModels : /Admin/Collection
-        public CollectionViewModel AdminCollectionCollectionViewModel
-        {
-            get { return _container.Resolve<CollectionViewModel>(); }
-        }
-        #endregion
+       
 
         #region ViewModels : /Admin/Settings/Dialogs
 

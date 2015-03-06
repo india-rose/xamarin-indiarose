@@ -8,7 +8,7 @@ using Storm.Mvvm.Framework.ColorPicker;
 
 namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
 {
-	[BindingElement(Path = "PositiveCommand", TargetPath = "PositiveButtonEvent")]
+	[BindingElement(Path = "SaveCommand", TargetPath = "PositiveButtonEvent")]
 	[BindingElement(Path = "CurrentColor", TargetPath = "CurrentColor", Mode = BindingMode.TwoWay)]
 	[BindingElement(Path = "OldColor", TargetPath = "OldColor")]
 	public partial class ColorPickerDialog : AbstractColorPickerDialog

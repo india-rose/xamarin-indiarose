@@ -5,6 +5,7 @@ using IndiaRose.Interfaces;
 using Storm.Mvvm;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 
 #endregion
 
@@ -12,66 +13,130 @@ namespace IndiaRose.Business.ViewModels.Admin
 {
 	public class HomeViewModel : ViewModelBase
 	{
+		private const string HELP_DOCUMENT_UID = "Help";
+		private const string HELP_DOCUMENT_PROPERTY = "Document";
+
+		#region Services
+
+		private IEmailService _emailService;
+		private IResourceService _resourceService;
+		private ILocalizationService _localizationService;
+
+		protected IEmailService EmailService
+		{
+			get { return _emailService ?? (_emailService = Container.Resolve<IEmailService>()); }
+		}
+
+		protected IResourceService ResourceService
+		{
+			get { return _resourceService ?? (_resourceService = Container.Resolve<IResourceService>()); }
+		}
+
+		protected ILocalizationService LocalizationService
+		{
+			get { return _localizationService ?? (_localizationService = Container.Resolve<ILocalizationService>()); }
+		}
+
+		#endregion
+
+		#region Commands
+
+		public ICommand SettingsCommand { get; private set; }
+		public ICommand CollectionManagementCommand { get; private set; }
+
+		public ICommand InstallVoiceSynthesisCommand { get; private set; }
+		public ICommand SendLogCommand { get; private set; }
+		public ICommand SyncCollectionCommand { get; private set; }
+		public ICommand HelpCommand { get; private set; }
+
+		public ICommand ContactCommand { get; private set; }
 		public ICommand ExitCommand { get; private set; }
 		public ICommand CreditsCommand { get; private set; }
-        public ICommand CollectionCommand { get; private set; }
-		public ICommand HelpCommand { get; private set; }
-		public ICommand ContactCommand { get; private set; }
-		public ICommand TtsCommand { get; private set; }
-		public ICommand SettingsCommand { get; private set; }
-		public ICommand SynchroCommand { get; private set; }
 
+		#endregion
+		
 		public HomeViewModel(IContainer container) : base(container)
 		{
+			SettingsCommand = new DelegateCommand(SettingsAction);
+            CollectionManagementCommand = new DelegateCommand(CollectionAction);
+			
+			InstallVoiceSynthesisCommand = new DelegateCommand(InstallVoiceSynthesisAction);
+			SendLogCommand = new DelegateCommand(SendLogAction);
+			SyncCollectionCommand = new DelegateCommand(SyncCollectionAction);
+			HelpCommand = new DelegateCommand(HelpAction);
+			
+			ContactCommand = new DelegateCommand(ContactAction);
 			ExitCommand = new DelegateCommand(ExitAction);
 			CreditsCommand = new DelegateCommand(CreditsAction);
-            CollectionCommand = new DelegateCommand(CollectionAction);
-			HelpCommand = new DelegateCommand(HelpAction);
-			ContactCommand = new DelegateCommand(ContactAction);
-			TtsCommand = new DelegateCommand(InstallTTSAction);
-			SettingsCommand = new DelegateCommand(SettingsAction);
-			SynchroCommand = new DelegateCommand(SynchroAction);
 		}
+
+		#region First line command implementation
 
 		private void SettingsAction()
 		{
-			NavigationService.Navigate(Views.ADMIN_SETTINGS_APPSETTINGS);
+			NavigationService.Navigate(Views.ADMIN_SETTINGS_HOME);
 		}
 
-		private void SynchroAction()
+		private void CollectionAction()
+		{
+			NavigationService.Navigate(Views.ADMIN_COLLECTION_MANAGEMENT);
+		}
+
+		#endregion
+
+		#region Second line command implementation
+
+		private void InstallVoiceSynthesisAction()
+		{
+			NavigationService.Navigate(Views.ADMIN_INSTALLVOICE_SYNTHESIS);
+		}
+
+		private void SendLogAction()
+		{
+			//TODO : implement log sending
+		}
+
+		private void SyncCollectionAction()
 		{
 			NavigationService.Navigate(Views.ADMIN_SERVERSYNCHRONIZATION);
 		}
 
-		// ReSharper disable once InconsistentNaming
-		private void InstallTTSAction()
+		private void HelpAction()
 		{
-			NavigationService.Navigate(Views.ADMIN_INSTALLTTS);
+			string helpDocumentName = LocalizationService.GetString(HELP_DOCUMENT_UID, HELP_DOCUMENT_PROPERTY);
+
+			if (string.IsNullOrWhiteSpace(helpDocumentName))
+			{
+				//TODO : implement message box to say no help
+			}
+			else
+			{
+				ResourceService.ShowPdfFile(helpDocumentName);
+			}
 		}
+
+		#endregion
+
+		#region Third line command implementation
 
 		private void ContactAction()
 		{
-			Container.Resolve<IEmailService>().Send(Resources.EMAIL_SUBJECT, Resources.EMAIL_ADDR, Resources.EMAIL_TEXT);
+			if (!EmailService.SendContactEmail())
+			{
+				//TODO : implement message box to say unable to send email
+			}
 		}
 
-		private void HelpAction()
+		private void ExitAction()
 		{
-			Container.Resolve<IResourcesService>().Show(Resources.HELP);
+			NavigationService.ExitApplication();
 		}
 
 		private void CreditsAction()
 		{
 			NavigationService.Navigate(Views.ADMIN_CREDITS);
 		}
-        private void CollectionAction()
-        {
-            NavigationService.Navigate(Views.ADMIN_COLLECTION_MANAGEMENT);
 
-        }
-
-		private void ExitAction()
-		{
-			NavigationService.ExitApplication();
-		}
+		#endregion
 	}
 }

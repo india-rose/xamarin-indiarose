@@ -1,35 +1,19 @@
 ﻿namespace IndiaRose.Business
 {
-	// ReSharper disable InconsistentNaming
 	public class Views
 	{
 		// Pages in /Admin
-		public const string ADMIN_CREDITS = "Admin_Credits";
-		public const string ADMIN_HOME = "Admin_Home";
-		public const string ADMIN_INSTALLTTS = "Admin_InstallTTS";
-		public const string ADMIN_SERVERSYNCHRONIZATION = "Admin_ServerSynchronization";
+		public const string ADMIN_CREDITS = "Admin_CreditsView";
+		public const string ADMIN_HOME = "Admin_HomeView";
+		public const string ADMIN_INSTALLVOICE_SYNTHESIS = "Admin_InstallVoiceSynthesisView";
+		public const string ADMIN_SERVERSYNCHRONIZATION = "Admin_ServerSynchronizationView";
 
 		// Pages in /Admin/Settings
-		public const string ADMIN_SETTINGS_APPSETTINGS = "Admin_Settings_AppSettings";
-		public const string ADMIN_SETTINGS_BACKGROUNDCOLOR = "Admin_Settings_BackgroundColor";
-		public const string ADMIN_SETTINGS_INDIAGRAMPROPERTIES = "Admin_Settings_IndiagramProperty";
+		public const string ADMIN_SETTINGS_HOME = "Admin_Settings_SettingsListView";
+		public const string ADMIN_SETTINGS_APPLICATIONLOOK = "Admin_Settings_ApplicationLookView";
+		public const string ADMIN_SETTINGS_INDIAGRAMPROPERTIES = "Admin_Settings_IndiagramPropertyView";
 
         //pages in /Admin/Collection
-        public const string ADMIN_COLLECTION_MANAGEMENT = "Admin_Collection_SelectionIndiagrams";
+        public const string ADMIN_COLLECTION_MANAGEMENT = "Admin_Collection_SelectionIndiagramsView";
 	}
-
-	public class Dialogs
-	{
-		//Dialogs in /Admin/Settings
-		public const string ADMIN_SETTINGS_CATEGORYREADING = "Admin_Settings_CategoryReading";
-		public const string ADMIN_SETTINGS_DRAGANDDROP = "Admin_Settings_DragAndDrop";
-		public const string ADMIN_SETTINGS_READINGDELAY = "Admin_Settings_ReadingDelay";
-		public const string ADMIN_SETTINGS_COLORPICKER = "Admin_Settings_ColorPicker";
-		public const string ADMIN_SETTINGS_RESETSETTINGS = "Admin_Settings_ResetSettings";
-	}
-
-  
-
-   
-	// ReSharper restore InconsistentNaming
 }

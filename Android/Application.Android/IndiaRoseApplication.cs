@@ -30,8 +30,8 @@ namespace IndiaRose.Application
                 {Views.ADMIN_CREDITS, typeof(CreditsActivity)},
                 {Views.ADMIN_INSTALLTTS, typeof(InstallTextToSpeechActivity)},
                 {Views.ADMIN_SERVERSYNCHRONIZATION, typeof(ServerSynchronizationActivity)},
-                {Views.ADMIN_SETTINGS_APPSETTINGS, typeof(AppSettingsActivity)},
-                {Views.ADMIN_SETTINGS_BACKGROUNDCOLOR, typeof(BackgroundColorActivity)},
+                {Views.ADMIN_SETTINGS_HOME, typeof(AppSettingsActivity)},
+                {Views.ADMIN_SETTINGS_APPLICATIONLOOK, typeof(BackgroundColorActivity)},
          		{Views.ADMIN_SETTINGS_INDIAGRAMPROPERTIES, typeof(IndiagramPropertyActivity)},
                 {Views.ADMIN_COLLECTION_MANAGEMENT, typeof(CollectionManagementActivity)},
 			};

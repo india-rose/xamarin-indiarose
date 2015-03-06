@@ -4,11 +4,11 @@ namespace IndiaRose.Data.Model
 {
 	public class SettingsModel : NotifierBase
 	{
-		public uint TopBackgroundColor { get; set; }
-		
-		public uint BottomBackgroundColor { get; set; }
-		
-		public uint ReinforcerColor { get; set; }
+		public string TopBackgroundColor { get; set; }
+
+		public string BottomBackgroundColor { get; set; }
+
+		public string ReinforcerColor { get; set; }
 		
 		public int SelectionAreaHeight { get; set; }
 		

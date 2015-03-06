@@ -155,6 +155,12 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <PRIResource Include="..\..\Resources\en\Resources.resw">
+      <Link>Resources\en\Resources.resw</Link>
+    </PRIResource>
+    <PRIResource Include="..\..\Resources\fr\Resources.resw">
+      <Link>Resources\fr\Resources.resw</Link>
+    </PRIResource>
     <None Include="Application.Tablet_TemporaryKey.pfx" />
     <None Include="packages.config" />
   </ItemGroup>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings.Dialogs;
+using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
@@ -13,86 +14,113 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.Admin.Settings
 {
-	public class IndiagramPropertyViewModel : AbstractBackViewModel
+	public class IndiagramPropertyViewModel : AbstractSettingsViewModel
 	{
-		protected ISettingsService SettingsService;
+		#region Services
 
-		private int _currentIndiagramSize;
+		private IFontService _fontService;
+		private IMessageDialogService _messageDialogService;
 
-		public int CurrentIndiagramSize
+		protected IFontService FontService
 		{
-			get { return _currentIndiagramSize; }
-			set { SetProperty(ref _currentIndiagramSize, value); }
+			get { return _fontService ?? (_fontService = Container.Resolve<IFontService>()); }
 		}
 
-		private string _currentIndiagramFont;
-
-		public string CurrentIndiagramFont
+		protected IMessageDialogService MessageDialogService
 		{
-			get { return _currentIndiagramFont; }
-			set { SetProperty(ref _currentIndiagramFont, value); }
+			get { return _messageDialogService ?? (_messageDialogService = Container.Resolve<IMessageDialogService>()); }
 		}
 
-		private int _currentIndiagramFontSize;
+		#endregion
 
-		public int CurrentIndiagramFontSize
+		#region Properties
+
+		private string _fontName;
+		private int _indiagramSize;
+		private int _fontSize;
+		private ColorContainer _reinforcerColor;
+
+		public ColorContainer ReinforcerColor
 		{
-			get { return _currentIndiagramFontSize; }
-			set { SetProperty(ref _currentIndiagramFontSize, value); }
+			get { return _reinforcerColor; }
+			set { SetProperty(ref _reinforcerColor, value); }
 		}
 
-		public ICommand OkCommand { get; private set; }
+		public int IndiagramSize
+		{
+			get { return _indiagramSize; }
+			set { SetProperty(ref _indiagramSize, value); }
+		}
+
+		public string FontName
+		{
+			get { return _fontName; }
+			set { SetProperty(ref _fontName, value); }
+		}
+
+		public int FontSize
+		{
+			get { return _fontSize; }
+			set { SetProperty(ref _fontSize, value); }
+		}
+
+		public ObservableCollection<int> IndiagramSizes { get; private set; }
+		public ObservableCollection<string> FontNames { get; private set; }
+		public ObservableCollection<int> FontSizes { get; private set; }
+
+		#endregion
+
 		public ICommand ReinforcerColorCommand { get; private set; }
-		public ObservableCollection<int> IndiagramsSize { get; private set; }
-		public ObservableCollection<string> IndiagramsFont { get; private set; }
-		public ObservableCollection<int> IndiagramsFontSize { get; private set; }
-        public Dictionary<string, string> FontsList { get; private set; }
 
-		public IndiagramPropertyViewModel(IContainer container)
-			: base(container)
+		public IndiagramPropertyViewModel(IContainer container) : base(container)
 		{
-			OkCommand = new DelegateCommand(OkAction);
 			ReinforcerColorCommand = new DelegateCommand(ReInforcerColorAction);
-			SettingsService = Container.Resolve<ISettingsService>();
 
-			IndiagramsSize = new ObservableCollection<int>();
+			ReinforcerColor = new ColorContainer
+			{
+				Color = SettingsService.ReinforcerColor
+			};
+
+			IndiagramSizes = new ObservableCollection<int>();
+			//TODO : refactor to limit indiagram size with the height of the screen
 			foreach (int size in new[] { 32, 48, 64, 80, 128, 160, 200, 256, 280, 300 })
 			{
-				IndiagramsSize.Add(size);
+				IndiagramSizes.Add(size);
 			}
-			CurrentIndiagramSize = SettingsService.IndiagramDisplaySize;
+			IndiagramSize = SettingsService.IndiagramDisplaySize;
 
-			IndiagramsFontSize = new ObservableCollection<int>();
+			FontSizes = new ObservableCollection<int>();
 			foreach (int size in new[] { 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 })
 			{
-				IndiagramsFontSize.Add(size);
+				FontSizes.Add(size);
 			}
-			CurrentIndiagramFontSize = SettingsService.FontSize;
+			FontSize = SettingsService.FontSize;
 
-			IndiagramsFont = new ObservableCollection<string>();
+			FontNames = new ObservableCollection<string>();
             IFontService fontService = Container.Resolve<IFontService>();
-            FontsList = fontService.FontList;
-            foreach(string font in FontsList.Keys)
+            foreach(string font in fontService.FontList.Keys)
             {
-                IndiagramsFont.Add(font);
+                FontNames.Add(font);
             }
-            CurrentIndiagramFont = SettingsService.FontName;
-
+            FontName = SettingsService.FontName;
 		}
 
 		private void ReInforcerColorAction()
 		{
-			IMessageDialogService messageDialogService = Container.Resolve<IMessageDialogService>();
-			messageDialogService.Show(Business.Dialogs.ADMIN_SETTINGS_COLORPICKER, new Dictionary<string, object>()
+			MessageDialogService.Show(Business.Dialogs.ADMIN_SETTINGS_COLORPICKER, new Dictionary<string, object>
 			{
-				{ColorPickerViewModel.COLOR_KEY_PARAMETER, ColorPickerViewModel.REINFORCER_COLOR}
+				{ColorPickerViewModel.COLOR_CONTAINER_PARAMETER, ReinforcerColor}
 			});
 		}
 
-		private void OkAction()
+		protected override void SaveAction()
 		{
-			SettingsService.SaveAsync();
-			BackAction();
+			SettingsService.IndiagramDisplaySize = IndiagramSize;
+			SettingsService.FontSize = FontSize;
+			SettingsService.FontName = FontName;
+			SettingsService.ReinforcerColor = ReinforcerColor.Color;
+
+			base.SaveAction();
 		}
     }
 }

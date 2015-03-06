@@ -41,26 +41,28 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <Folder Include="ViewModels\Admin\Collection\" />
     <Folder Include="ViewModels\User\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialogs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources.cs" />
     <Compile Include="ViewModelsLocator.cs" />
-    <Compile Include="ViewModels\AbstractBackViewModel.cs" />
-    <Compile Include="ViewModels\Admin\Collection\CollectionViewModel.cs" />
+    <Compile Include="ViewModels\AbstractViewModel.cs" />
     <Compile Include="ViewModels\Admin\CreditsViewModel.cs" />
     <Compile Include="ViewModels\Admin\ServerSynchronizationViewModel.cs" />
-    <Compile Include="ViewModels\Admin\Settings\BackgroundColorViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Settings\AbstractSettingsViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Settings\ApplicationLookViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Settings\Dialogs\AbstractYesNoViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\Dialogs\CategoryReadingViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\Dialogs\DragAndDropViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\Dialogs\ResetSettingsViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\IndiagramPropertyViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\Dialogs\ColorPickerViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\Dialogs\ReadingDelayViewModel.cs" />
-    <Compile Include="ViewModels\Admin\Settings\AppSettingsViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Settings\SettingsListViewModel.cs" />
     <Compile Include="ViewModels\Admin\HomeViewModel.cs" />
-    <Compile Include="ViewModels\Admin\InstallTextToSpeechViewModel.cs" />
+    <Compile Include="ViewModels\Admin\InstallVoiceSynthesisViewModel.cs" />
     <Compile Include="Views.cs" />
   </ItemGroup>
   <ItemGroup>
