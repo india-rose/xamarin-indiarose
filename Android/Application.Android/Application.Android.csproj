@@ -21,7 +21,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <NuGetPackageImportStamp>f5350962</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>a5810308</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -78,6 +78,12 @@
     <AndroidAsset Include="Assets\manuel.pdf" />
     <BindingProcess Include="ActivityDescription.json" />
     <Compile Include="Activities\Admin\Settings\Dialogs\ResetSettingsDialog.cs" />
+    <ReswFile Include="..\..\Resources\en\Resources.resw">
+      <Link>Resources\values\Resources.resw</Link>
+    </ReswFile>
+    <ReswFile Include="..\..\Resources\fr\Resources.resw">
+      <Link>Resources\values-fr\Resources.resw</Link>
+    </ReswFile>
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
@@ -87,7 +93,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\Strings.xml" />
     <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -136,7 +141,6 @@
     <AndroidResource Include="Resources\raw\root.png" />
     <AndroidResource Include="Resources\values\color.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
-    <AndroidResource Include="Resources\values-fr\strings.xml" />
     <AndroidResource Include="Resources\values-v11\styles.xml" />
     <AndroidResource Include="Resources\values-v14\styles.xml" />
     <Content Include="Views\Admin\Collection\SelectionIndiagrams.xml" />
@@ -202,11 +206,13 @@
     <Reference Include="PCLStorage.Abstractions">
       <HintPath>..\..\packages\PCLStorage.1.0.2\lib\monoandroid\PCLStorage.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Storm.Mvvm">
-      <HintPath>..\..\packages\Storm.Mvvm.1.1.4\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
+    <Reference Include="Storm.Mvvm, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Storm.Mvvm.1.2\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
     </Reference>
-    <Reference Include="Storm.Mvvm.Android">
-      <HintPath>..\..\packages\Storm.Mvvm.Android.1.1.14\lib\MonoAndroid22\Storm.Mvvm.Android.dll</HintPath>
+    <Reference Include="Storm.Mvvm.Android, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Storm.Mvvm.Android.1.2\lib\MonoAndroid22\Storm.Mvvm.Android.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -228,8 +234,8 @@
       <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Activez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est le suivant : {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Storm.Mvvm.Android.1.1.14\build\Storm.Mvvm.Android.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Storm.Mvvm.Android.1.1.14\build\Storm.Mvvm.Android.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Storm.Mvvm.Android.1.2\build\Storm.Mvvm.Android.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Storm.Mvvm.Android.1.2\build\Storm.Mvvm.Android.targets'))" />
   </Target>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Import Project="..\..\packages\Storm.Mvvm.Android.1.1.14\build\Storm.Mvvm.Android.targets" Condition="Exists('..\..\packages\Storm.Mvvm.Android.1.1.14\build\Storm.Mvvm.Android.targets')" />
+  <Import Project="..\..\packages\Storm.Mvvm.Android.1.2\build\Storm.Mvvm.Android.targets" Condition="Exists('..\..\packages\Storm.Mvvm.Android.1.2\build\Storm.Mvvm.Android.targets')" />
 </Project>

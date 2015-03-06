@@ -38,6 +38,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{89B927
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{FE0561B4-CBBA-40BB-A29F-004F66219127}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "fr", "fr", "{8139E752-9297-4EAD-A7F9-4C1617BA8012}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\fr\Resources.resw = Resources\fr\Resources.resw
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "en", "en", "{F9CFB966-0740-4611-B4C8-EE3C12B44C18}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\en\Resources.resw = Resources\en\Resources.resw
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -204,5 +216,7 @@ Global
 		{D8C9D71D-8A33-4D76-9CEB-B3458D8EEBC3} = {414A1D59-AB9F-43E7-A04C-0296181F0299}
 		{A2448BAE-7138-442B-8959-9FC6FD2913F5} = {414A1D59-AB9F-43E7-A04C-0296181F0299}
 		{E00242D8-25FB-4A15-A20D-FD40B86E875F} = {414A1D59-AB9F-43E7-A04C-0296181F0299}
+		{8139E752-9297-4EAD-A7F9-4C1617BA8012} = {FE0561B4-CBBA-40BB-A29F-004F66219127}
+		{F9CFB966-0740-4611-B4C8-EE3C12B44C18} = {FE0561B4-CBBA-40BB-A29F-004F66219127}
 	EndGlobalSection
 EndGlobal

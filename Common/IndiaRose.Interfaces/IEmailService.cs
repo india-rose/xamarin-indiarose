@@ -2,6 +2,6 @@
 {
     public interface IEmailService
     {
-        void Send(string title, string address, string body);
+	    void SendContactEmail();
     }
 }
