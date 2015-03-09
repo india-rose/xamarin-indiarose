@@ -129,7 +129,34 @@ Comments : </value>
   <data name="Contact.Title" xml:space="preserve">
     <value>[Contact : India Rose]</value>
   </data>
+  <data name="Exit.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
   <data name="Help.Document" xml:space="preserve">
     <value>manuel.pdf</value>
+  </data>
+  <data name="Home_AppSettings.Text" xml:space="preserve">
+    <value>Application settings</value>
+  </data>
+  <data name="Home_CollectionManagement.Text" xml:space="preserve">
+    <value>Collection management</value>
+  </data>
+  <data name="Home_Contact.Text" xml:space="preserve">
+    <value>Contact us</value>
+  </data>
+  <data name="Home_Credits.Text" xml:space="preserve">
+    <value>Credits</value>
+  </data>
+  <data name="Home_Help.Text" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Home_SendLogs.Text" xml:space="preserve">
+    <value>Send application logs</value>
+  </data>
+  <data name="Home_SyncCollection.Text" xml:space="preserve">
+    <value>Synchronize collection and settings</value>
+  </data>
+  <data name="Home_VoiceSynthesisUpgrade.Text" xml:space="preserve">
+    <value>Upgrade the voice synthesis engine</value>
   </data>
 </root>

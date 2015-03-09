@@ -1,9 +1,8 @@
 ﻿{
     "namespaces": ["IndiaRose.Application"],
-    "list": [
+    "fileDescriptions": [
         {
             "activity": {
-                "outputFile": "Admin_HomeActivity.ui.cs",
                 "className": "HomeActivity",
                 "namespaceName": "IndiaRose.Application.Activities.Admin"
             },
@@ -11,119 +10,6 @@
                 "inputFile": "Views/Admin/HomePage.xml",
                 "outputFile": "Admin_HomePage.axml"
             }
-        },
-		{
-			"activity": {
-				"outputFile": "Admin_CreditsActivity.ui.cs",
-				"className": "CreditsActivity",
-				"namespaceName": "IndiaRose.Application.Activities.Admin"
-			},
-            "view": {
-				"inputFile": "Views/Admin/CreditsPage.xml",
-				"outputFile": "Admin_CreditsPage.axml"
-			}
-		},
-		{
-			"activity": {
-				"outputFile": "Admin_InstallTextToSpeechActivity.ui.cs",
-				"className": "InstallTextToSpeechActivity",
-				"namespaceName": "IndiaRose.Application.Activities.Admin"
-			},
-            "view": {
-				"inputFile": "Views/Admin/InstallTextToSpeechPage.xml",
-				"outputFile": "Admin_InstallTextToSpeechPage.axml"
-			}
-		},
-		{
-            "activity": {
-				"outputFile": "Admin_ServerSynchronizationActivity.ui.cs",
-				"className": "ServerSynchronizationActivity",
-				"namespaceName": "IndiaRose.Application.Activities.Admin"
-			},
-            "view": {
-				"inputFile": "Views/Admin/ServerSynchronizationPage.xml",
-				"outputFile": "Admin_ServerSynchronizationPage.axml"
-			}
-		},
-        
-        
-        {
-			"activity": {
-				"outputFile": "Admin_Settings_AppSettingsActivity.ui.cs",
-				"className": "AppSettingsActivity",
-				"namespaceName": "IndiaRose.Application.Activities.Admin.Settings"
-			},
-            "view": {
-				"inputFile": "Views/Admin/Settings/AppSettingsPage.xml",
-				"outputFile": "Admin_Settings_AppSettingsPage.axml"
-			}
-		},
-        {
-            "activity": {
-                "outputFile": "Admin_Settings_BackgroundColorActivity.ui.cs",
-                "className": "BackgroundColorActivity",
-                "namespaceName": "IndiaRose.Application.Activities.Admin.Settings"
-            },
-            "view": {
-                "inputFile": "Views/Admin/Settings/BackgroundColorPage.xml",
-                "outputFile": "Admin_Settings_BackgroundColorPage.axml"
-            }
-        },
-        {
-			"activity": {
-				"outputFile": "Admin_Settings_IndiagramPropertyActivity.ui.cs",
-				"className": "IndiagramPropertyActivity",
-				"namespaceName": "IndiaRose.Application.Activities.Admin.Settings"
-			},
-			"view": {
-				"inputFile": "Views/Admin/Settings/IndiagramPropertyPage.xml",
-				"outputFile": "Admin_Settings_IndiagramPropertyPage.axml"
-			}
-		},
-		  {
-			"activity": {
-				"outputFile": "Admin_Collection_CollectionManagementActivity.ui.cs",
-				"className": "CollectionManagementActivity",
-				"namespaceName": "IndiaRose.Application.Activities.Admin.Collection"
-			},
-			"view": {
-				"inputFile": "Views/Admin/Collection/SelectionIndiagrams.xml",
-				"outputFile": "Admin_Collection_SelectionIndiagrams.axml"
-			}
-		},
-		
-		{
-            "fragment": {
-				"outputFile": "Admin_Settings_Dialogs_ReadingDelayDialog.ui.cs",
-				"className": "ReadingDelayDialog",
-				"namespaceName": "IndiaRose.Application.Activities.Admin.Settings.Dialogs"
-			},
-            "view": {
-				"inputFile": "Views/Admin/Settings/Dialogs/ReadingDelayDialog.xml",
-				"outputFile": "Admin_Settings_Dialogs_ReadingDelay.axml"
-			}
-		},
-		{
-			"fragment": {
-				"outputFile": "Admin_Settings_Dialogs_DragAndDropDialog.ui.cs",
-				"className": "DragAndDropDialog",
-				"namespaceName": "IndiaRose.Application.Activities.Admin.Settings.Dialogs"
-			},
-			"view": {
-				"inputFile": "Views/Admin/Settings/Dialogs/DragAndDropDialog.xml",
-				"outputFile": "Admin_Settings_Dialogs_DragAndDrop.axml"
-			}
-		},
-		{
-			"fragment": {
-				"outputFile": "Admin_Settings_Dialogs_CategoryReadingDialog.ui.cs",
-				"className": "CategoryReadingDialog",
-				"namespaceName": "IndiaRose.Application.Activities.Admin.Settings.Dialogs"
-			},
-			"view": {
-				"inputFile": "Views/Admin/Settings/Dialogs/CategoryReadingDialog.xml",
-				"outputFile": "Admin_Settings_Dialogs_CategoryReading.axml"
-			}
-		}
+        }
     ]
 }

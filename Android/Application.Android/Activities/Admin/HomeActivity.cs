@@ -16,6 +16,7 @@ namespace IndiaRose.Application.Activities.Admin
 		{
 			base.OnCreate(bundle);
 			SetContentView(Resource.Layout.Admin_HomePage);
+
 			SetViewModel(Container.Locator.AdminHomeViewModel);
 		}
 	}

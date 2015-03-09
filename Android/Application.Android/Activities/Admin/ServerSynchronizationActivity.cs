@@ -15,7 +15,7 @@ namespace IndiaRose.Application.Activities.Admin
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-			SetContentView(Resource.Layout.Admin_ServerSynchronizationPage);
+			//SetContentView(Resource.Layout.Admin_ServerSynchronizationPage);
 			//TODO : ajouter le viewmodel
 		}
 	}

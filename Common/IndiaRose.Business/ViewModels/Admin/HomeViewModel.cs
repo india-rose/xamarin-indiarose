@@ -45,7 +45,7 @@ namespace IndiaRose.Business.ViewModels.Admin
 		public ICommand CollectionManagementCommand { get; private set; }
 
 		public ICommand InstallVoiceSynthesisCommand { get; private set; }
-		public ICommand SendLogCommand { get; private set; }
+		public ICommand SendLogsCommand { get; private set; }
 		public ICommand SyncCollectionCommand { get; private set; }
 		public ICommand HelpCommand { get; private set; }
 
@@ -61,7 +61,7 @@ namespace IndiaRose.Business.ViewModels.Admin
             CollectionManagementCommand = new DelegateCommand(CollectionAction);
 			
 			InstallVoiceSynthesisCommand = new DelegateCommand(InstallVoiceSynthesisAction);
-			SendLogCommand = new DelegateCommand(SendLogAction);
+			SendLogsCommand = new DelegateCommand(SendLogAction);
 			SyncCollectionCommand = new DelegateCommand(SyncCollectionAction);
 			HelpCommand = new DelegateCommand(HelpAction);
 			
@@ -79,7 +79,7 @@ namespace IndiaRose.Business.ViewModels.Admin
 
 		private void CollectionAction()
 		{
-			NavigationService.Navigate(Views.ADMIN_COLLECTION_MANAGEMENT);
+			//NavigationService.Navigate(Views.ADMIN_COLLECTION_MANAGEMENT);
 		}
 
 		#endregion

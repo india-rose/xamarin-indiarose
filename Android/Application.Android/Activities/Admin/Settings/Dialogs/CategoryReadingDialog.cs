@@ -1,5 +1,6 @@
 ﻿#region Usings
 
+using System;
 using Android.Views;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
@@ -27,7 +28,8 @@ namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
 
 		protected override View CreateView(LayoutInflater inflater, ViewGroup container)
 		{
-			return inflater.Inflate(Resource.Layout.Admin_Settings_Dialogs_CategoryReading, container, false);
+			throw new NotImplementedException();
+			//return inflater.Inflate(Resource.Layout.Admin_Settings_Dialogs_CategoryReading, container, false);
 		}
 	}
 

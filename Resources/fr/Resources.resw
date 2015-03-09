@@ -129,7 +129,34 @@ Commentaires :</value>
   <data name="Contact.Title" xml:space="preserve">
     <value>[Contact : India Rose]</value>
   </data>
+  <data name="Exit.Text" xml:space="preserve">
+    <value>Quitter</value>
+  </data>
   <data name="Help.Document" xml:space="preserve">
     <value>manuel.pdf</value>
+  </data>
+  <data name="Home_AppSettings.Text" xml:space="preserve">
+    <value>Paramêtres de l'application</value>
+  </data>
+  <data name="Home_CollectionManagement.Text" xml:space="preserve">
+    <value>Gestion de la collection d'indiagram</value>
+  </data>
+  <data name="Home_Contact.Text" xml:space="preserve">
+    <value>Nous contacter</value>
+  </data>
+  <data name="Home_Credits.Text" xml:space="preserve">
+    <value>Crédits</value>
+  </data>
+  <data name="Home_Help.Text" xml:space="preserve">
+    <value>Aide</value>
+  </data>
+  <data name="Home_SendLogs.Text" xml:space="preserve">
+    <value>Envoyer les logs de l'application</value>
+  </data>
+  <data name="Home_SyncCollection.Text" xml:space="preserve">
+    <value>Synchroniser la collection et les paramêtres</value>
+  </data>
+  <data name="Home_VoiceSynthesisUpgrade.Text" xml:space="preserve">
+    <value>Améliorer le moteur de synthèse vocale</value>
   </data>
 </root>

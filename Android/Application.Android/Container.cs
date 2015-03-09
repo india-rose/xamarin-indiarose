@@ -16,13 +16,13 @@ namespace IndiaRose.Application
 			ViewModelsLocator.Initialize(this);
 
             ResourceService resourceService = new ResourceService(ActivityService);
-            RegisterInstance<IResourcesService>(resourceService);
+            RegisterInstance<IResourceService>(resourceService);
 
-		    EmailService emailService = new EmailService();
+		    EmailService emailService = new EmailService(this);
             RegisterInstance<IEmailService>(emailService);
 
-            InstallTTSService ttsService = new InstallTTSService(ActivityService);
-            RegisterInstance<IInstallTTSService>(ttsService);
+            InstallVoiceSynthesisService voiceSynthesisService = new InstallVoiceSynthesisService(ActivityService);
+            RegisterInstance<IInstallVoiceSynthesisService>(voiceSynthesisService);
 
             ScreenService screenService = new ScreenService(ActivityService);
             RegisterInstance<IScreenService>(screenService);

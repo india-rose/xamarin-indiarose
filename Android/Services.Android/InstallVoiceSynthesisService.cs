@@ -6,11 +6,9 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Services.Android
 {
-	// Disable inconsistent naming for this only
-	// ReSharper disable once InconsistentNaming
-    public class InstallTTSService : AbstractServiceWithActivity, IInstallVoiceSynthesisService
+    public class InstallVoiceSynthesisService : AbstractServiceWithActivity, IInstallVoiceSynthesisService
     {
-	    public InstallTTSService(IActivityService activityService) : base(activityService)
+	    public InstallVoiceSynthesisService(IActivityService activityService) : base(activityService)
 	    {
 	    }
 

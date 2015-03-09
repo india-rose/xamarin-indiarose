@@ -190,8 +190,8 @@ namespace IndiaRose.Services
 
 		public void Reset()
 		{
-			TopBackgroundColor = "0xFF3838FF";
-			BottomBackgroundColor = "0xFF73739E";
+			TopBackgroundColor = "#FF3838FF";
+			BottomBackgroundColor = "#FF73739E";
 			SelectionAreaHeight = 70;
 			IndiagramDisplaySize = 128;
 			FontName = "Consolas";
@@ -201,7 +201,7 @@ namespace IndiaRose.Services
 			IsCategoryNameReadingEnabled = true;
 			IsBackHomeAfterSelectionEnabled = true;
 			TimeOfSilenceBetweenWords = 1.0f;
-			ReinforcerColor = "0xFFFF00FF";
+			ReinforcerColor = "#FFFF00FF";
 		}
 
 		protected async Task<bool> ExistsOnDiskAsync()
