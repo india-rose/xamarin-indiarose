@@ -1,5 +1,10 @@
 ﻿{
-    "namespaces": ["IndiaRose.Application"],
+    "namespaces": [ "IndiaRose.Application" ],
+    "globalResourceFiles": [
+        "Views/Resources/ButtonStyles.xml",
+        "Views/Resources/CommonStyles.xml",
+        "Views/Resources/Converters.xml"
+    ],
     "fileDescriptions": [
         {
             "activity": {
