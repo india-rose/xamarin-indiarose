@@ -15,6 +15,20 @@
                 "inputFile": "Views/Admin/HomePage.xml",
                 "outputFile": "Admin_HomePage.axml"
             }
+
+        }
+    ],
+    "fileDescriptions": [
+        {
+            "activity": {
+                "className": "AppSettingsActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Settings"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Settings/AppSettingsPage.xml",
+                "outputFile": "AppSettingsPage.axml"
+        }
+
         }
     ]
 }

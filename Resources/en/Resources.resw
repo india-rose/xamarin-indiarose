@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="App_Settings_Background_Properties.Text" xml:space="preserve">
+    <value>Background color properties</value>
+  </data>
+  <data name="App_Settings_Drag_Drop.Text" xml:space="preserve">
+    <value>Drag and drop</value>
+  </data>
+  <data name="App_Settings_Indiagram_Properties.Text" xml:space="preserve">
+    <value>Indiagram properties</value>
+  </data>
+  <data name="App_Settings_Lecture_Category_Properties.Text" xml:space="preserve">
+    <value>Category reading</value>
+  </data>
+  <data name="App_Settings_Previous.Text" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="App_Settings_Ready_Delay.Text" xml:space="preserve">
+    <value>Reading delay between words</value>
+  </data>
+  <data name="App_Settings_Reinitialisation.Text" xml:space="preserve">
+    <value>Reset settings</value>
+  </data>
   <data name="Contact.Body" xml:space="preserve">
     <value>User of the application (age / disease) : \n
 Did you know the PECS method or picture exchange communication before using this application : \n

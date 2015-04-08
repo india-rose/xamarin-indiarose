@@ -36,6 +36,18 @@
 		   XmlStyle="{Resource MediumButtonStyle}"
 		   android:background="@drawable/buttonorange"
 		   />
+  <Style Key="MediumRedButtonStyle"
+		   XmlStyle="{Resource MediumButtonStyle}"
+		   android:background="@drawable/buttonred"
+		   />
+  <Style Key="MediumPurpleButtonStyle"
+		   XmlStyle="{Resource MediumButtonStyle}"
+		   android:background="@drawable/buttonpurple"
+		   />
+  <Style Key="MediumPinkButtonStyle"
+      XmlStyle="{Resource MediumButtonStyle}"
+      android:background="@drawable/buttonpink"
+		   />
 	
 	
 	<Style Key="SmallBlueButtonStyle"
