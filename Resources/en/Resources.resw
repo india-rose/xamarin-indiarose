@@ -159,4 +159,25 @@ Comments : </value>
   <data name="Home_VoiceSynthesisUpgrade.Text" xml:space="preserve">
     <value>Upgrade the voice synthesis engine</value>
   </data>
+  <data name="Install_TTS_Back_Button.Text" xml:space="preserve">
+    <value>Return</value>
+  </data>
+  <data name="TTS_1.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TTS_2.Text" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="TTS_3.Text" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="TTS_choose.Text" xml:space="preserve">
+    <value>Choose TTS Ivona</value>
+  </data>
+  <data name="TTS_ivona.Text" xml:space="preserve">
+    <value>Install the TTS Ivona</value>
+  </data>
+  <data name="TTS_lang.Text" xml:space="preserve">
+    <value>Install a language pack</value>
+  </data>
 </root>

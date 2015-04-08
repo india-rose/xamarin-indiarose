@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,123 +8,77 @@
     android:gravity="center"
     android:orientation="vertical" >
 
-  <RelativeLayout
+  
+<Resources>
+		<Style Key="RelativeLayoutStyle"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginLeft="50dip"
       android:layout_marginRight="50dip"
       android:layout_marginTop="10dip"
-      android:gravity="center" >
-
-    <TextView
-        android:id="Label_tts_inova"
+      android:gravity="center"  
+			   />
+  
+		<Style Key="ButtonContainerStyle"
+			   android:layout_width="match_parent"
+			   android:layout_height="match_parent"
+			   android:gravity="center"
+			   android:orientation="vertical"
+			   android:paddingBottom="25dip"
+			   android:paddingTop="25dip" 
+			   />
+    <Style Key="ITTSPButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:minWidth="70dip"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" 
+        />
+	<Style Key= "ITTSPTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="10dip"
-        android:text="@string/installation_tts_inova"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+         />
 
-    <Button
-        android:id="Install_ivona_launch_tts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
+	</Resources>
+  
+  <RelativeLayout XmlStyle="{Resource RelativeLayoutStyle}">  
+    <TextView XmlStyle="{Resource ITTSPTextViewStyle}"
+        Text="{Tr Text, Uid=TTS_ivona}"/>
+    <Button XmlStyle="{Resource ITTSPButtonStyle}"
         android:background="@drawable/buttonred"
-        android:minWidth="70dip"
-        android:text="@string/un"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        click ="{Binding InstallVoiceSynthesisEngineCommand}"/>
+        Text="{Tr Text, Uid=TTS_1}"
+        click ="{Binding InstallVoiceSynthesisEngineCommand}"/> 
   </RelativeLayout>
 
-  <RelativeLayout
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="50dip"
-      android:layout_marginRight="50dip"
-      android:layout_marginTop="10dip"
-      android:gravity="center" >
-
-    <TextView
-        android:id="Label_Install_language_pack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="10dip"
-        android:text="@string/install_pack_language"
-        android:textColor="@android:color/black" />
-
-    <Button
-        android:id="Install_ivona_pack_tts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
+  <RelativeLayout XmlStyle="{Resource RelativeLayoutStyle}">
+    <TextView XmlStyle="{Resource ITTSPTextViewStyle}"
+        Text="{Tr Text, Uid=TTS_lang}"/>
+    <Button XmlStyle="{Resource ITTSPButtonStyle}"
         android:background="@drawable/buttonblue"
-        android:minWidth="70dip"
-        android:text="@string/deux"
-        android:textColor="@android:color/white"
-        android:textSize="20sp" 
-        click="{Binding InstallLanguagePackCommand}"/>
+        Text="{Tr Text, Uid=TTS_2}"
+        click="{Binding InstallLanguagePackCommand}"/> 
   </RelativeLayout>
 
-  <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="50dip"
-      android:layout_marginRight="50dip"
-      android:layout_marginTop="10dip"
-      android:gravity="center" >
-
-    <TextView
-        android:id="Label_choose_Ivona"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="10dip"
-        android:text="@string/choose_ivona"
-        android:textColor="@android:color/black" />
-
-    <Button
-        android:id="Install_ivona_launch_intent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
+  <RelativeLayout XmlStyle="{Resource RelativeLayoutStyle}">
+    <TextView XmlStyle="{Resource ITTSPTextViewStyle}"
+        Text="{Tr Text, Uid=TTS_choose}" />
+    <Button XmlStyle="{Resource ITTSPButtonStyle}"
         android:background="@drawable/buttongreen"
-        android:minWidth="70dip"
-        android:text="@string/trois"
-        android:textColor="@android:color/white"
-        android:textSize="20sp" 
+        Text="{Tr Text, Uid=TTS_3}"
         click="{Binding EnableVoiceSynthesisEngineCommand}"/>
   </RelativeLayout>
 
-  <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dip"
-        android:layout_marginRight="50dip"
-        android:layout_marginTop="10dip"
-        android:gravity="center" >
-    
-  <Button
-        android:id="Install_TTS_Back_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
+  <RelativeLayout XmlStyle="{Resource RelativeLayoutStyle}">
+  <Button XmlStyle="{Resource ITTSPButtonStyle}"
         android:background="@drawable/buttonorange"
-        android:minWidth="70dip"
-        android:text="@string/backText"
-        android:textColor="@android:color/white"
-        android:textSize="20sp" 
+        Text="{Tr Text, Uid=Install_TTS_Back_Button}"
         click="{Binding BackCommand}"/>
-  
   </RelativeLayout>
 
 

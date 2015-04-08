@@ -15,6 +15,22 @@
                 "inputFile": "Views/Admin/HomePage.xml",
                 "outputFile": "Admin_HomePage.axml"
             }
+
         }
+
+    ],
+        "fileDescriptions": [
+        {
+            "activity": {
+                "className": "InstallTextToSpeechActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin"
+            },
+            "view": {
+                "inputFile": "Views/Admin/InstallTextToSpeechPage.xml",
+                "outputFile": "Admin_InstallTextToSpeechPage.xml"
+            }
+
+        }
+
     ]
 }

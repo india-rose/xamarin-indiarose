@@ -15,8 +15,8 @@ namespace IndiaRose.Application.Activities.Admin
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-			//SetContentView(Resource.Layout.Admin_InstallTextToSpeechPage);
-			//SetViewModel(Container.Locator.AdminInstallTextToSpeechViewModel);
+			SetContentView(Resource.Layout.Admin_InstallTextToSpeechPage);
+			SetViewModel(Container.Locator.AdminInstallTextToSpeechViewModel);
 		}
 	}
 }
