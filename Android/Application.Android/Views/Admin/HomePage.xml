@@ -30,7 +30,7 @@
 			   />
 
 	<LinearLayout XmlStyle="{Resource ButtonContainerStyle}"
-				  android:layout_below="@id/Logo">
+				  android:layout_below="@+id/Logo">
 		
 		<LinearLayout XmlStyle="{Resource ButtonLineStyle}">
 			

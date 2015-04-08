@@ -21,7 +21,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <NuGetPackageImportStamp>16c4ece5</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>9246df9d</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -145,7 +145,9 @@
     <Content Include="Views\Admin\Settings\Dialogs\ReadingDelayDialog.xml" />
     <Content Include="Views\Admin\ServerSynchronizationPage.xml" />
     <Content Include="Views\Resources\CommonStyles.xml" />
-    <Content Include="Views\Resources\Converters.xml" />
+    <Content Include="Views\Resources\Converters.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Resources\ButtonStyles.xml" />
     <None Include="Views\Admin\Settings\BackgroundColorPage.xml" />
     <None Include="Views\Admin\Settings\AppSettingsPage.xml" />
@@ -212,7 +214,7 @@
     </Reference>
     <Reference Include="Storm.Mvvm.Android, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Storm.Mvvm.Android.1.2.3\lib\MonoAndroid22\Storm.Mvvm.Android.dll</HintPath>
+      <HintPath>..\..\packages\Storm.Mvvm.Android.1.2.4\lib\MonoAndroid22\Storm.Mvvm.Android.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -234,8 +236,8 @@
       <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Activez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est le suivant : {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Storm.Mvvm.Android.1.2.3\build\Storm.Mvvm.Android.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Storm.Mvvm.Android.1.2.3\build\Storm.Mvvm.Android.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Storm.Mvvm.Android.1.2.4\build\Storm.Mvvm.Android.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Storm.Mvvm.Android.1.2.4\build\Storm.Mvvm.Android.targets'))" />
   </Target>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Import Project="..\..\packages\Storm.Mvvm.Android.1.2.3\build\Storm.Mvvm.Android.targets" Condition="Exists('..\..\packages\Storm.Mvvm.Android.1.2.3\build\Storm.Mvvm.Android.targets')" />
+  <Import Project="..\..\packages\Storm.Mvvm.Android.1.2.4\build\Storm.Mvvm.Android.targets" Condition="Exists('..\..\packages\Storm.Mvvm.Android.1.2.4\build\Storm.Mvvm.Android.targets')" />
 </Project>
