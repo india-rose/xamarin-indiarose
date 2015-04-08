@@ -29,8 +29,7 @@ namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
 		protected override View CreateView(LayoutInflater inflater, ViewGroup container)
 		{
 			throw new NotImplementedException();
-			//return inflater.Inflate(Resource.Layout.Admin_Settings_Dialogs_CategoryReading, container, false);
+            return inflater.Inflate(Resource.Layout.Admin_Settings_Dialogs_CategoryReading, container, false);
 		}
 	}
-
 }

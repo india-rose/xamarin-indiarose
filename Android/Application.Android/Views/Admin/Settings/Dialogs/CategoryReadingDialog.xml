@@ -15,23 +15,36 @@
 	<Resources>
 		<Converter Key="BooleanNegationConverter"
 				   Class="Storm.Mvvm.Converters.BooleanNegationConverter" />
+    
+    <Style Key="RadioButtonOnStyle"
+    android:layout_width="wrap_content"
+	  android:layout_height="wrap_content"
+	  android:text="@string/enableText"
+           />
+
+    <Style Key="RadioButtonOffStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+      android:text="@string/disableText"
+           />
+
+    <Style Key="RadioGroupStyle"
+	  android:layout_width="fill_parent"
+	  android:layout_height="wrap_content"
+	  android:orientation="vertical"
+           />
+    
 	</Resources>
 	
-	<RadioGroup
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:orientation="vertical">
+	<RadioGroup XmlStyle="{Resource RadioGroupStyle}">
 
-	  <RadioButton 
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="@string/enableText"
-				checked="{Binding IsCategoryReadingEnabled, Mode=TwoWay, UpdateEvent=CheckedChange}"/>
-	  <RadioButton 
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="@string/disableText"
-				checked="{Binding IsCategoryReadingEnabled, Mode=TwoWay, UpdateEvent=CheckedChange, Converter={Resource BooleanNegationConverter}}"/>
-	</RadioGroup>
+    <RadioButton XmlStyle="{Resource RadioButtonOnStyle}"
+				checked="{Binding IsCategoryReadingEnabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
+    />
+    
+    <RadioButton XmlStyle="{Resource RadioButtonOffStyle}"
+				checked="{Binding IsCategoryReadingEnabled, Mode=TwoWay, UpdateEvent=CheckedChange, Converter={Resource BooleanNegationConverter}}"
+    />
+  </RadioGroup>
 
 </RelativeLayout>

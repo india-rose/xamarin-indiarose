@@ -6,31 +6,31 @@
 		</LinearLayout>
 		<ScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1">
 			<LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:paddingLeft="50dip" android:paddingRight="50dip" android:paddingBottom="20dip" android:paddingTop="20dip">
-				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#0AC808" android:textSize="40sp" android:id="@+id/Generated_ViewElement_215" />
-				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_216" />
-				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_217" />
-				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_218" />
-				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_219" />
-				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_220" />
-				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_221" />
-				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_222" />
-				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_223" />
-				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_224" />
-				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_225" />
-				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_226" />
-				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_227" />
-				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_228" />
-				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_229" />
-				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_230" />
-				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_231" />
-				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_232" />
-				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_233" />
-				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_234" />
-				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_235" />
-				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_236" />
-				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_237" />
-				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_238" />
-				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_239" />
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#0AC808" android:textSize="40sp" android:id="@+id/Generated_ViewElement_75" />
+				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_76" />
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_77" />
+				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_78" />
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_79" />
+				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_80" />
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_81" />
+				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_82" />
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_83" />
+				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_84" />
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_85" />
+				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_86" />
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_87" />
+				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_88" />
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_89" />
+				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_90" />
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_91" />
+				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_92" />
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_93" />
+				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_94" />
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_95" />
+				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_96" />
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_97" />
+				<TextView android:textColor="#E3081C" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dip" android:textSize="22sp" android:id="@+id/Generated_ViewElement_98" />
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textSize="20sp" android:id="@+id/Generated_ViewElement_99" />
 			</LinearLayout>
 		</ScrollView>
 	</LinearLayout>

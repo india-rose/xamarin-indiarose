@@ -12,26 +12,41 @@
     android:paddingLeft="50dip"
     android:paddingRight="50dip" >
 	<Resources>
-		<Converter Key="StringFormatConverter" Class="Storm.Mvvm.Converters.StringFormatConverter" />
-	</Resources>
-	<LinearLayout
+    
+    <Style Key="RDDLinearLayoutStyle"
 		android:orientation="vertical"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content">
-		<SeekBar
+		android:layout_height="wrap_content"
+           />
+
+    <Style Key="RDDSeekBarStyle"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="25dp"
 			android:layout_marginBottom="5dp"
-			progress="{Binding CurrentValue, Mode=TwoWay, UpdateEvent=ProgressChanged}"
-			/>
-		<TextView
-			text="{Binding CurrentDelay, Converter={Resource StringFormatConverter}, ConverterParameter='{0:0.0} secondes'}"
+           />
+
+    <Style Key="RDDTextViewStyle"
 			android:textAppearance="?android:attr/textAppearanceLarge"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="25dp"
 			android:layout_marginLeft="15dp"
+           />
+    
+		<Converter Key="StringFormatConverter" Class="Storm.Mvvm.Converters.StringFormatConverter" />
+    
+	</Resources>
+  
+  <LinearLayout XmlStyle="{Resource RDDLinearLayoutStyle}">
+    
+    <SeekBar XmlStyle="{Resource RDDSeekBarStyle}"
+			progress="{Binding CurrentValue, Mode=TwoWay, UpdateEvent=ProgressChanged}"
 			/>
-	</LinearLayout>
+    
+    <TextView XmlStyle="{Resource RDDTextViewStyle}"
+			text="{Binding CurrentDelay, Converter={Resource StringFormatConverter}, ConverterParameter='{0:0.0} secondes'}"
+			/>
+    
+  </LinearLayout>
 </RelativeLayout>
