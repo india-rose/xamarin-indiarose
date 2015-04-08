@@ -15,7 +15,7 @@ namespace IndiaRose.Application.Activities.Admin.Settings
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-			SetContentView(Resource.Layout.AppSettingsPage);
+			SetContentView(Resource.Layout.Admin_Settings_AppSettingsPage);
 			SetViewModel(Container.Locator.AdminSettingsAppSettingsViewModel);
 		}
 	}

@@ -28,7 +28,7 @@
 
   <LinearLayout XmlStyle="{Resource ButtonContainerStyle}"
       android:layout_below="@id/Logo">
-    
+
     <LinearLayout XmlStyle="{Resource ButtonLineStyle}" >
       <Button XmlStyle="{Resource MediumBlueButtonStyle}"
           Text="{Tr Text, Uid=App_Settings_Background_Properties}"
@@ -41,7 +41,7 @@
               Text="{Tr Text, Uid=App_Settings_Drag_Drop}"
               Click="{Binding DragAndDropCommand}" />
     </LinearLayout>
-    
+
     <LinearLayout XmlStyle="{Resource ButtonLineStyle}" >
 
       <Button XmlStyle="{Resource MediumGreenButtonStyle}"
@@ -56,7 +56,7 @@
               Text="{Tr Text, Uid=App_Settings_Reinitialisation}"
               Click="{Binding ResetSettingsCommand}" />
     </LinearLayout>
-    
+
     <LinearLayout XmlStyle="{Resource ButtonLineStyle}" >
       <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
               Text="{Tr Text,Uid=App_Settings_Previous}"

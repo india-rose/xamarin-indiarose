@@ -9,32 +9,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white" >
-
-  <LinearLayout
+  <Resources>
+    <Style Key="CreditsButtonContainerStyle"
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"
-      android:orientation="horizontal" >
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="2"
-        android:gravity="center_horizontal"
-        android:paddingTop="50dip" >
-
-      <ImageView
-          android:id="Logo"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:src="@drawable/logo" />
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1" >
-
-      <LinearLayout
+      android:orientation="horizontal" 
+			   />
+    <Style key="ScroleLinearLayoutStyle"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:orientation="vertical"
@@ -42,179 +23,156 @@
           android:paddingRight="50dip"
           android:paddingBottom="20dip"
           android:paddingTop="20dip"
-                 >
-
-        <TextView
+           />
+    <Style Key="LinearLayoutContentStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="2"
+        android:gravity="center_horizontal"
+        android:paddingTop="50dip"
+           />
+    <Style Key="TextViewRedStyle"
+           android:textColor="#E3081C"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Application India Rose"
+            android:layout_marginTop="20dip"
+            android:textSize="22sp"
+          />
+    <Style Key="TextViewBlackStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/black"
+    android:textSize="20sp"
+           />
+    <Style Key="TextViewGreenStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textColor="#0AC808"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+           />
+    <Style Key="ScrollViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+           />
+    <Style Key="CreditsLogoStyle"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:src="@drawable/logo"
+		   />
+  </Resources>
+  <LinearLayout XmlStyle="{Resource CreditsButtonContainerStyle}" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:text="Direction"
-            android:textColor="#E3081C"
-            android:textSize="22sp" />
+    <LinearLayout XmlStyle="{Resource LinearLayoutContentStyle}" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Julien Mialon, José Martins, Anthony Froissant, Julien De Sousa"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+      <ImageView XmlStyle="{Resource CreditsLogoStyle}"
+          android:id="Logo"
+         />
+    </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:text="Graphisme et communication"
-            android:textColor="#E3081C"
-            android:textSize="22sp" />
+    <ScrollView XmlStyle="{Resource ScrollViewStyle}" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Aurélia Masquet, Michel Savariradjalou"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+      <LinearLayout  XmlStyle="{Resource ScroleLinearLayoutStyle}" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:text="Encadrant"
-            android:textColor="#E3081C"
-            android:textSize="22sp" />
+        <TextView XmlStyle="{Resource TextViewGreenStyle}"
+            Text="{Tr Text, Uid=Exit}"
+            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Frédéric Moal, Catherine Julié-Bonnet, Sylvain Jubertie, Wadoud Bousdira"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+        <TextView XmlStyle="{Resource TextViewRedStyle}"
+            Text="{Tr Text, Uid=Credits_Direction}"
+        />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:text="Equipe Xamarin - 2014"
-            android:textColor="#E3081C"
-            android:textSize="22sp" />
+        <TextView XmlStyle="{Resource TextViewBlackStyle}"
+            Text="{Tr Text, Uid=Credits_DirectionStaff}"
+        />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Vincent Fauveau, Nicolas Lacourte-Barbadaux, Lamia Meziani, Arthur Guillaume"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-        
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:text="Stagiaire 2013/2014"
-            android:textColor="#E3081C"
-            android:textSize="22sp" />
+        <TextView XmlStyle="{Resource TextViewRedStyle}"
+            Text="{Tr Text, Uid=Credits_graphics}"
+           />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Marco Da Cunha Fernandez, Nesrine Brahmi, El Mehdi Fahim, Lisa Deloménie, Erwan Durandet, Florian Blain"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+        <TextView XmlStyle="{Resource TextViewBlackStyle}"
+                  Text="{Tr Text, Uid=Credits_graphicsStaff}"
+            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:text="Equipe Android - 2013"
-            android:textColor="#E3081C"
-            android:textSize="22sp" />
+        <TextView XmlStyle="{Resource TextViewRedStyle}"
+                  Text="{Tr Text, Uid=Credits_Managerial}"
+           />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Florent Champigny, Alexandre Masson, Tristan Monediere, Kevin De Jesus Ferreira"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+        <TextView XmlStyle="{Resource TextViewBlackStyle}"
+            Text="{Tr Text, Uid=Credits_ManagerialStaff}"
+            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:text="Equipe Android - 2012"
-            android:textColor="#E3081C"
-            android:textSize="22sp" />
+        <TextView XmlStyle="{Resource TextViewRedStyle}"
+            Text="{Tr Text, Uid=Credits_Team_2014}"
+         />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Léa Muracciole, Arthur Guillaume, Jordan Fontorbe"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+        <TextView XmlStyle="{Resource TextViewBlackStyle}"
+            Text="{Tr Text, Uid=Credits_TeamStaff}"
+            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:text="Equipe Cloud - 2011"
-            android:textColor="#E3081C"
-            android:textSize="22sp" />
+        <TextView XmlStyle="{Resource TextViewRedStyle}"
+                  Text="{Tr Text, Uid=Credits_Trainee2013}"
+         />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mélanie Pothain, Fabienne Bruneau, Alexis Fleuriet, François Lecugy, Adrien Tremblay"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+        <TextView XmlStyle="{Resource TextViewBlackStyle}"
+                  Text="{Tr Text, Uid=Credits_TraineeStaff2013}"
+            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:text="Equipe Android - 2011"
-            android:textColor="#E3081C"
-            android:textSize="22sp" />
+        <TextView XmlStyle="{Resource TextViewRedStyle}"
+                   Text="{Tr Text, Uid=Credits_Trainee2014}"
+         />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cyprien Ruelle, Matthias David, Pauline Lopez, Heloise Suleiman, Quentin Malot, Quentin Duplaix"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+        <TextView XmlStyle="{Resource TextViewBlackStyle}"
+                  Text="{Tr Text, Uid=Credits_TraineeStaff2014}"
+            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:text="Equipe Windows 8 - 2011"
-            android:textColor="#E3081C"
-            android:textSize="22sp" />
+        <TextView XmlStyle="{Resource TextViewRedStyle}"
+                  Text="{Tr Text, Uid=Credits_TeamAndroid2013}"
+            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Benjamin Rousseau, Florent Monin, Corentin Barruet, Benjamin Remy"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+        <TextView XmlStyle="{Resource TextViewBlackStyle}"
+                  Text="{Tr Text, Uid=Credits_TeamStaffAndroid2013}"
+            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:text="Fournisseur Indiagramme"
-            android:textColor="#E3081C"
-            android:textSize="22sp" />
+        <TextView XmlStyle="{Resource TextViewRedStyle}"
+                  Text="{Tr Text, Uid=Credits_TeamAndroid2012}"
+           />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="www.sclera.tv"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+        <TextView XmlStyle="{Resource TextViewBlackStyle}"
+            Text="{Tr Text, Uid=Credits_TeamStaffAndroid2012}"
+            />
+
+        <TextView XmlStyle="{Resource TextViewRedStyle}"
+            Text="{Tr Text, Uid=Credits_TeamAndroid2011}"
+           />
+
+        <TextView XmlStyle="{Resource TextViewBlackStyle}"
+             Text="{Tr Text, Uid=Credits_TeamStaffAndroid2011}"
+            />
+
+        <TextView XmlStyle="{Resource TextViewRedStyle}"
+            Text="{Tr Text, Uid=Credits_TeamCloud2011}"
+           />
+
+        <TextView XmlStyle="{Resource TextViewBlackStyle}"
+            Text="{Tr Text, Uid=Credits_TeamStaffCloud2011}"
+          />
+
+        <TextView XmlStyle="{Resource TextViewRedStyle}"
+            Text="{Tr Text, Uid=Credits_TeamWindows2011}"
+           />
+
+        <TextView XmlStyle="{Resource TextViewBlackStyle}"
+            Text="{Tr Text, Uid=Credits_TeamStaffWindows2011}"
+             />
+
+        <TextView XmlStyle="{Resource TextViewRedStyle}"
+            Text="{Tr Text, Uid=Credits_Supplier}"
+             />
+
+        <TextView XmlStyle="{Resource TextViewBlackStyle}"
+            Text="{Tr Text, Uid=Credits_Sclera}"
+             />
       </LinearLayout>
     </ScrollView>
   </LinearLayout>

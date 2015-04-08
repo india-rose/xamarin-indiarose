@@ -150,6 +150,78 @@ Comments : </value>
   <data name="Contact.Title" xml:space="preserve">
     <value>[Contact : India Rose]</value>
   </data>
+  <data name="Credits_Application.Text" xml:space="preserve">
+    <value>Application India Rose</value>
+  </data>
+  <data name="Credits_Direction.Text" xml:space="preserve">
+    <value>Direction</value>
+  </data>
+  <data name="Credits_DirectionStaff.Text" xml:space="preserve">
+    <value>Julien Mialon, José Martins, Anthony Froissant, Julien De Sousa</value>
+  </data>
+  <data name="Credits_graphics.Text" xml:space="preserve">
+    <value>Graphic communication</value>
+  </data>
+  <data name="Credits_graphicsStaff.Text" xml:space="preserve">
+    <value>Aurélia Masquet, Michel Savariradjalou</value>
+  </data>
+  <data name="Credits_Managerial.Text" xml:space="preserve">
+    <value>Managerial employees</value>
+  </data>
+  <data name="Credits_ManagerialStaff.Text" xml:space="preserve">
+    <value>Frédéric Moal, Catherine Julié-Bonnet, Sylvain Jubertie, Wadoud Bousdira</value>
+  </data>
+  <data name="Credits_Sclera.Text" xml:space="preserve">
+    <value>www.sclera.tv</value>
+  </data>
+  <data name="Credits_Supplier.Text" xml:space="preserve">
+    <value>Indiagramme Supplier</value>
+  </data>
+  <data name="Credits_TeamAndroid2011.Text" xml:space="preserve">
+    <value>Team Android - 2011</value>
+  </data>
+  <data name="Credits_TeamAndroid2012.Text" xml:space="preserve">
+    <value>Team Android - 2012</value>
+  </data>
+  <data name="Credits_TeamCloud2011.Text" xml:space="preserve">
+    <value>Team Cloud - 2011</value>
+  </data>
+  <data name="Credits_TeamStaff.Text" xml:space="preserve">
+    <value>Vincent Fauveau, Nicolas Lacourte-Barbadaux, Lamia Meziani, Arthur Guillaume</value>
+  </data>
+  <data name="Credits_TeamStaffAndroid2011.Text" xml:space="preserve">
+    <value>Cyprien Ruelle, Matthias David, Pauline Lopez, Heloise Suleiman, Quentin Malot, Quentin Duplaix</value>
+  </data>
+  <data name="Credits_TeamStaffAndroid2012.Text" xml:space="preserve">
+    <value>Léa Muracciole, Arthur Guillaume, Jordan Fontorbe</value>
+  </data>
+  <data name="Credits_TeamStaffAndroid2013.Text" xml:space="preserve">
+    <value>Florent Champigny, Alexandre Masson, Tristan Monediere, Kevin De Jesus Ferreira</value>
+  </data>
+  <data name="Credits_TeamStaffCloud2011.Text" xml:space="preserve">
+    <value>Mélanie Pothain, Fabienne Bruneau, Alexis Fleuriet, François Lecugy, Adrien Tremblay</value>
+  </data>
+  <data name="Credits_TeamStaffWindows2011.Text" xml:space="preserve">
+    <value>Benjamin Rousseau, Florent Monin, Corentin Barruet, Benjamin Remy</value>
+  </data>
+  <data name="Credits_TeamWindows2011.Text" xml:space="preserve">
+    <value>Team Windows 8 - 2011</value>
+  </data>
+  <data name="Credits_Team_2014.Text" xml:space="preserve">
+    <value>Team Xamarin - 2014</value>
+  </data>
+  <data name="Credits_Trainee2013.Text" xml:space="preserve">
+    <value>Trainees 2013/2014</value>
+  </data>
+  <data name="Credits_Trainee2014.Text" xml:space="preserve">
+    <value>Trainee 2014/2015</value>
+  </data>
+  <data name="Credits_TraineeStaff2013.Text" xml:space="preserve">
+    <value>Marco Da Cunha Fernandez, Nesrine Brahmi, El Mehdi Fahim, Lisa Deloménie, Erwan Durandet, Florian Blain</value>
+  </data>
+  <data name="Credits_TraineeStaff2014.Text" xml:space="preserve">
+    <value>David Intho, Valentin Jubert, Julien Gauttier, Corentin Colomier</value>
+  </data>
   <data name="Exit.Text" xml:space="preserve">
     <value>Exit</value>
   </data>
@@ -200,5 +272,8 @@ Comments : </value>
   </data>
   <data name="TTS_lang.Text" xml:space="preserve">
     <value>Install a language pack</value>
+    </data>
+  <data name="TeamAndroid2013.Text" xml:space="preserve">
+    <value>Team Android - 2013</value>
   </data>
 </root>

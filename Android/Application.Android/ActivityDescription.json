@@ -15,11 +15,7 @@
                 "inputFile": "Views/Admin/HomePage.xml",
                 "outputFile": "Admin_HomePage.axml"
             }
-
-        }
-
-    ],
-        "fileDescriptions": [
+        },
         {
             "activity": {
                 "className": "InstallTextToSpeechActivity",
@@ -27,13 +23,9 @@
             },
             "view": {
                 "inputFile": "Views/Admin/InstallTextToSpeechPage.xml",
-                "outputFile": "Admin_InstallTextToSpeechPage.xml"
+                "outputFile": "Admin_InstallTextToSpeechPage.axml"
             }
-
-
-        }
-    ],
-    "fileDescriptions": [
+        },
         {
             "activity": {
                 "className": "AppSettingsActivity",
@@ -41,9 +33,18 @@
             },
             "view": {
                 "inputFile": "Views/Admin/Settings/AppSettingsPage.xml",
-                "outputFile": "AppSettingsPage.axml"
-        }
-
+                "outputFile": "Admin_Settings_AppSettingsPage.axml"
+            }
+        },
+        {
+            "activity": {
+                "className": "CreditsActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin"
+            },
+            "view": {
+                "inputFile": "Views/Admin/CreditsPage.xml",
+                "outputFile": "Admin_CreditsPage.axml"
+            }
         }
     ]
 }
