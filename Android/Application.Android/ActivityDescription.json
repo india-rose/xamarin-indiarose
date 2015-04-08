@@ -30,7 +30,20 @@
                 "outputFile": "Admin_InstallTextToSpeechPage.xml"
             }
 
+
+        }
+    ],
+    "fileDescriptions": [
+        {
+            "activity": {
+                "className": "AppSettingsActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Settings"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Settings/AppSettingsPage.xml",
+                "outputFile": "AppSettingsPage.axml"
         }
 
+        }
     ]
 }

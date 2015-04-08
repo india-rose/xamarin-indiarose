@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="App_Settings_Background_Properties.Text" xml:space="preserve">
+    <value>Couleur de fond</value>
+  </data>
+  <data name="App_Settings_Drag_Drop.Text" xml:space="preserve">
+    <value>Glisser-déposer</value>
+  </data>
+  <data name="App_Settings_Indiagram_Properties.Text" xml:space="preserve">
+    <value>Propriétés des indiagrams</value>
+  </data>
+  <data name="App_Settings_Lecture_Category_Properties.Text" xml:space="preserve">
+    <value>Lecture des catégories</value>
+  </data>
+  <data name="App_Settings_Previous.Text" xml:space="preserve">
+    <value>Retour</value>
+  </data>
+  <data name="App_Settings_Ready_Delay.Text" xml:space="preserve">
+    <value>Durée de silence entre les mots</value>
+  </data>
+  <data name="App_Settings_Reinitialisation.Text" xml:space="preserve">
+    <value>Réinitialiser les préférences</value>
+  </data>
   <data name="Contact.Body" xml:space="preserve">
     <value>Personne utilisant l'application (age / pathologie) : \n
 Connaissance de la méthode PECS ou de communication par l'image avant cette application : \n
