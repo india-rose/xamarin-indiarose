@@ -272,11 +272,11 @@ Comments : </value>
   </data>
   <data name="TTS_lang.Text" xml:space="preserve">
     <value>Install a language pack</value>
-    </data>
+  </data>
   <data name="TeamAndroid2013.Text" xml:space="preserve">
     <value>Team Android - 2013</value>
   </data>
-      <data name="Indiagram_Property_cancel.Text" xml:space="preserve">
+  <data name="Indiagram_Property_cancel.Text" xml:space="preserve">
     <value>Cancel</value>
   </data>
   <data name="Indiagram_property_checkboxhomecategory.Text" xml:space="preserve">
@@ -299,5 +299,11 @@ Comments : </value>
   </data>
   <data name="Indiagram_property_reinforcerReadingLabel.Text" xml:space="preserve">
     <value>Reading reinforcer enable</value>
+  </data>
+  <data name="RD_buttonOff.Text" xml:space="preserve">
+    <value>Disable text</value>
+  </data>
+  <data name="RD_buttonOn.Text" xml:space="preserve">
+    <value>Enable text</value>
   </data>
 </root>

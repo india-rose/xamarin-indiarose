@@ -10,5 +10,9 @@
 		   android:scaleType="fitXY"
 		   android:src="@drawable/logo"
 		   />
+  <Style Key="RadioButtonStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+           />
 
 </Resources>

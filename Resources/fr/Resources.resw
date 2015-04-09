@@ -276,7 +276,7 @@ Commentaires :</value>
   <data name="TeamAndroid2013.Text" xml:space="preserve">
     <value>Equipe Android - 2013</value>
   </data>
-      <data name="Indiagram_Property_cancel.Text" xml:space="preserve">
+  <data name="Indiagram_Property_cancel.Text" xml:space="preserve">
     <value>Annuler</value>
   </data>
   <data name="Indiagram_property_checkboxhomecategory.Text" xml:space="preserve">
@@ -299,5 +299,11 @@ Commentaires :</value>
   </data>
   <data name="Indiagram_property_reinforcerReadingLabel.Text" xml:space="preserve">
     <value>Activer la lecture</value>
+  </data>
+  <data name="RD_buttonOff.Text" xml:space="preserve">
+    <value>Desactiver texte</value>
+  </data>
+  <data name="RD_buttonOn.Text" xml:space="preserve">
+    <value>Activer texte</value>
   </data>
 </root>

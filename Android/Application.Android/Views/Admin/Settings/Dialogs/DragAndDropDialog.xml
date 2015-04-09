@@ -16,18 +16,6 @@
 		<Converter Key="BooleanNegationConverter"
 				   Class="Storm.Mvvm.Converters.BooleanNegationConverter" />
 
-    <Style Key="RadioButtonOnStyle"
-    android:layout_width="wrap_content"
-	  android:layout_height="wrap_content"
-	  android:text="@string/enableText"
-           />
-
-    <Style Key="RadioButtonOffStyle"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-      android:text="@string/disableText"
-           />
-
     <Style Key="RadioGroupStyle"
 	  android:layout_width="fill_parent"
 	  android:layout_height="wrap_content"
@@ -38,11 +26,13 @@
 	
   <RadioGroup XmlStyle="{Resource RadioGroupStyle}" >
 	
-	<RadioButton XmlStyle="{Resource RadioButtonOnStyle}"
+	<RadioButton XmlStyle="{Resource RadioButtonStyle}"
+    Text="{Tr RD_buttonOn__Text}"
 	  checked="{Binding IsDragAndDropEnabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
   />
     
-	<RadioButton XmlStyle="{Resource RadioButtonOffStyle}"
+	<RadioButton XmlStyle="{Resource RadioButtonStyle}"
+     Text="{Tr RD_buttonOff__Text}"
      checked="{Binding IsDragAndDropEnabled, Mode=TwoWay, UpdateEvent=CheckedChange, Converter={Resource BooleanNegationConverter}}"
   />
     
