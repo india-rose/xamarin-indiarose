@@ -129,9 +129,6 @@
   <data name="App_Settings_Lecture_Category_Properties.Text" xml:space="preserve">
     <value>Category reading</value>
   </data>
-  <data name="App_Settings_Previous.Text" xml:space="preserve">
-    <value>Back</value>
-  </data>
   <data name="App_Settings_Ready_Delay.Text" xml:space="preserve">
     <value>Reading delay between words</value>
   </data>
@@ -252,14 +249,15 @@ Comments : </value>
   <data name="Home_VoiceSynthesisUpgrade.Text" xml:space="preserve">
     <value>Upgrade the voice synthesis engine</value>
   </data>
-  <data name="Install_TTS_Back_Button.Text" xml:space="preserve">
-    <value>Return</value>
+  <data name="Back_Button.Text" xml:space="preserve">
+    <value>Back</value>
   </data>
   <data name="TTS_1.Text" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="TTS_2.Text" xml:space="preserve">
     <value>2</value>
+    <comment>ff</comment>
   </data>
   <data name="TTS_3.Text" xml:space="preserve">
     <value>3</value>
@@ -305,5 +303,14 @@ Comments : </value>
   </data>
   <data name="RD_buttonOn.Text" xml:space="preserve">
     <value>Enable text</value>
+  </data>
+  <data name="Server_Synchro_Start.Text" xml:space="preserve">
+    <value>Synchronization of properties with server ...\n
+Please wait !</value>
+  </data>
+  <data name="Server_Synchro_Void.Text" xml:space="preserve">
+    <value>This screen do nothing for the time\n
+You must to click on the back button\n
+You can wait until the world's end if you want</value>
   </data>
 </root>

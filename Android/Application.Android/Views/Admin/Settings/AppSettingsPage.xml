@@ -59,7 +59,7 @@
 
     <LinearLayout XmlStyle="{Resource ButtonLineStyle}" >
       <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
-              Text="{Tr Text,Uid=App_Settings_Previous}"
+              Text="{Tr Text,Uid=Back_Button}"
               Click="{Binding BackCommand}"/>
     </LinearLayout>
   </LinearLayout>

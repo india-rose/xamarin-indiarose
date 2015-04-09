@@ -46,7 +46,7 @@
                 "outputFile": "Admin_CreditsPage.axml"
             }
         },
-        {
+       /* {
             "activity": {
                 "className": "ReadingDelayDialog",
                 "namespaceName": "IndiaRose.Application.Activities.Admin.Settings.Dialogs"
@@ -74,6 +74,16 @@
             "view": {
                 "inputFile": "Views/Admin/Settings/Dialogs/CategoryReadingDialog.xml",
                 "outputFile": "Admin_Settings_Dialogs_CategoryReading.axml"
+            }
+        },*/
+        {
+            "activity": {
+                "className": "ServerSynchronizationActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin"
+            },
+            "view": {
+                "inputFile": "Views/Admin/ServerSynchronizationPage.xml",
+                "outputFile": "Admin_ServerSynchronizationPage.axml"
             }
         }
     ]

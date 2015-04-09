@@ -129,9 +129,6 @@
   <data name="App_Settings_Lecture_Category_Properties.Text" xml:space="preserve">
     <value>Lecture des catégories</value>
   </data>
-  <data name="App_Settings_Previous.Text" xml:space="preserve">
-    <value>Retour</value>
-  </data>
   <data name="App_Settings_Ready_Delay.Text" xml:space="preserve">
     <value>Durée de silence entre les mots</value>
   </data>
@@ -252,7 +249,7 @@ Commentaires :</value>
   <data name="Home_VoiceSynthesisUpgrade.Text" xml:space="preserve">
     <value>Améliorer le moteur de synthèse vocale</value>
   </data>
-  <data name="Install_TTS_Back_Button.Text" xml:space="preserve">
+  <data name="Back_Button.Text" xml:space="preserve">
     <value>Retour</value>
   </data>
   <data name="TTS_1.Text" xml:space="preserve">
@@ -305,5 +302,14 @@ Commentaires :</value>
   </data>
   <data name="RD_buttonOn.Text" xml:space="preserve">
     <value>Activer texte</value>
+  </data>
+  <data name="Server_Synchro_Start.Text" xml:space="preserve">
+    <value>Synchronisation des paramètres avec le serveur ...\n
+Veuillez patentiez !</value>
+  </data>
+  <data name="Server_Synchro_Void.Text" xml:space="preserve">
+    <value>Cet écran ne fait rien pour l'instant.\n
+Vous n'avez plus qu'a appuyer sur le bouton retour\n
+Vous pouvez aussi attendre jusqu'a la fin des temps si vous le souhaitez !</value>
   </data>
 </root>
