@@ -121,6 +121,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 			SettingsService.ReinforcerColor = ReinforcerColor.Color;
 
 			base.SaveAction();
+            base.BackAction();
 		}
     }
 }
