@@ -131,11 +131,11 @@
     <LinearLayout XmlStyle="{Resource Linear1}" >
 
       <Button XmlStyle="{Resource Button1}"
-          Text="{Tr Background_Color_ok__Text}"
+          Text="{Tr Button_Ok__Text}"
           Click="{Binding SaveCommand}"/>
 
       <Button XmlStyle="{Resource Button2}"
-          Text="{Tr Background_Color_cancel__Text}"
+          Text="{Tr Button_Back__Text}"
           Click="{Binding BackCommand}"/>
     </LinearLayout>
   </RelativeLayout>
