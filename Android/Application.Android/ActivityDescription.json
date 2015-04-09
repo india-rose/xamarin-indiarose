@@ -87,7 +87,7 @@
             }
         },
 
-                {
+        {
             "activity": {
                 "className": "IndiagramPropertyActivity",
                 "namespaceName": "IndiaRose.Application.Activities.Admin.Settings"

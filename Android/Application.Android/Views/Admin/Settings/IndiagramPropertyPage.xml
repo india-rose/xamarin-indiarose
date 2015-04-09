@@ -6,13 +6,13 @@
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+                xmlns:conv="using:Storm.Mvvm.Converters"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white" >
 
   <Resources>
-    <Converter Key="StringFormatConverter"
-				   Class="Storm.Mvvm.Converters.StringFormatConverter" />
+    <conv:StringFormatConverter Key="StringFormatConverter" />
 
     <DataTemplate Key="IndiagramSizeTemplate">
       <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -198,7 +198,7 @@
 
     <Button XmlStyle="{Resource SmallGreenButtonStyle}"
         Text="{Tr Text, Uid=Indiagram_Property_ok}"
-        Click="{Binding OkCommand}"/>
+        Click="{Binding SaveCommand}"/>
 
     <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
         Text="{Tr Text, Uid=Indiagram_Property_cancel}"

@@ -312,4 +312,16 @@ Veuillez patentiez !</value>
 Vous n'avez plus qu'a appuyer sur le bouton retour\n
 Vous pouvez aussi attendre jusqu'a la fin des temps si vous le souhaitez !</value>
   </data>
+  <data name="Background_Color_backgroundColorInfo.Text" xml:space="preserve">
+    <value>Cliquer sur la zone pour changer la couleur</value>
+  </data>
+  <data name="Background_Color_backgroundColorSizeLabel.Text" xml:space="preserve">
+    <value>Taille de la zone sélectionné :</value>
+  </data>
+  <data name="Background_Color_cancel.Text" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="Background_Color_ok.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

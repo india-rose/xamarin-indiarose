@@ -6,12 +6,13 @@
  */
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:conv="using:Storm.Mvvm.Converters"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal" >
 
   <Resources>
-    <Converter Key="IntToColorConverter" Class="IndiaRose.Framework.Converters.IntToColorConverter" />
+    <conv:IntToColorConverter Key="IntToColorConverter" />
   </Resources>
 
   <RelativeLayout
@@ -38,42 +39,37 @@
                       />
         </LinearLayout>
       </DataTemplate>
-      <ViewSelector Key="SpinnerViewSelector"
-					Class="Storm.Mvvm.ViewSelectors.SimpleViewSelector"
-                    View="{Resource SpinnerDataTemplate}"
-                      >
-      </ViewSelector>
+      
+      <Style Key="TextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="15sp" />
+      
+      <Style Key="ButtonStyle"
+          android:layout_width="match_parent"
+          android:layout_height="75dip"
+          android:layout_margin="4dip"
+          android:layout_weight="1"
+          android:textColor="@android:color/white"
+          android:textSize="15sp" />
     </Resources>
 
-    <ImageView
-        android:id="logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="10dip"
-        android:scaleType="fitXY"
-        android:src="@drawable/logo" />
+    <ImageView XmlStyle="{Resource LogoStyle}"
+        android:id="logo" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView XmlStyle="{Resource TextViewStyle}"
         android:layout_alignParentTop="true"
         android:layout_below="@+id/logo"
         android:gravity="center_horizontal"
         android:layout_marginLeft="4dip"
         android:layout_marginTop="80dip"
-        android:text="@string/backgroundColorInfo"
-        android:textColor="@android:color/black"
-        android:textSize="15sp" />
+        Text="{Tr Background_Color_backgroundColorInfo__Text}" />
 
-    <TextView
+    <TextView XmlStyle="{Resource TextViewStyle}"
         android:id="background_color_text_color_size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="@string/backgroundColorSizeLabel"
-        android:textColor="@android:color/black"
-        android:textSize="15sp" />
+        Text="{Tr Background_Color_backgroundColorSizeLabel__Text}" />
 
     <BindableSpinner
         android:id="background_color_spinner_color_size"
@@ -82,7 +78,7 @@
         android:layout_below="@+id/background_color_text_color_size"
         android:layout_centerInParent="true"
         android:textSize="15sp"
-        adapter="{Binding ZoneHeightCollection, ViewSelector={Resource SpinnerViewSelector}}"
+        adapter="{Binding ZoneHeightCollection, Template={Resource SpinnerDataTemplate}}"
         currentItem="{Binding CurrentSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
             />
 
@@ -93,31 +89,20 @@
         android:gravity="center"
         android:orientation="horizontal" >
 
-      <Button
+      <Button XmlStyle="{Resource ButtonStyle}"
           android:id="background_color_button_ok"
-          android:layout_width="match_parent"
-          android:layout_height="75dip"
-          android:layout_margin="4dip"
-          android:layout_weight="1"
           android:background="@drawable/buttongreen"
-          android:text="@string/okText"
-          android:textColor="@android:color/white"
-          android:textSize="15sp"
-          click="{Binding OkCommand}"/>
+          Text="{Tr Background_Color_ok__Text}"
+          Click="{Binding SaveCommand}"/>
 
-      <Button
+      <Button XmlStyle="{Resource ButtonStyle}"
           android:id="background_color_button_cancel"
-          android:layout_width="match_parent"
-          android:layout_height="75dip"
           android:layout_marginBottom="4dip"
           android:layout_marginRight="4dip"
           android:layout_marginTop="4dip"
-          android:layout_weight="1"
           android:background="@drawable/buttonorange"
-          android:text="@string/cancelText"
-          android:textColor="@android:color/white"
-          android:textSize="15sp"
-          click="{Binding BackCommand}"/>
+          Text="{Tr Background_Color_cancel__Text}"
+          Click="{Binding BackCommand}"/>
     </LinearLayout>
   </RelativeLayout>
 
