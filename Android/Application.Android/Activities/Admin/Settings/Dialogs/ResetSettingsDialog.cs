@@ -9,8 +9,7 @@ using Storm.Mvvm.Dialogs;
 
 namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
 {
-    [BindingElement(Path = "OkCommand", TargetPath = "PositiveButtonEvent")]
-    [BindingElement(Path = "CancelCommand", TargetPath = "NegativeButtonEvent")]
+    [BindingElement(Path = "SaveCommand", TargetPath = "PositiveButtonEvent")]
     public partial class ResetSettingsDialog : AlertDialogFragmentBase
     {
         public ResetSettingsDialog()

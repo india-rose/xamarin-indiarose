@@ -10,12 +10,12 @@ using Storm.Mvvm.Dialogs;
 
 namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
 {
-	[BindingElement(Path = "OkCommand", TargetPath = "PositiveButtonEvent")]
-	[BindingElement(Path = "CancelCommand", TargetPath = "NegativeButtonEvent")]
+	[BindingElement(Path = "SaveCommand", TargetPath = "PositiveButtonEvent")]
 	public partial class ReadingDelayDialog : AlertDialogFragmentBase
 	{
 		public ReadingDelayDialog()
 		{
+            //a changer suivante la trad
 			Title = "Délai entre la lecture de deux mots";
 			Buttons.Add(DialogsButton.Positive, "Ok");
 			Buttons.Add(DialogsButton.Negative, "Cancel");

@@ -56,6 +56,11 @@
       Text="{Tr Server_Synchro_Void__Text}"
          />
 
+    <TextView XmlStyle="{Resource TextViewStyle}"
+     Text="{Binding test}"
+         />
+
+
   </LinearLayout>
 
 </RelativeLayout>

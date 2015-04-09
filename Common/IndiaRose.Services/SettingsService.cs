@@ -238,7 +238,7 @@ namespace IndiaRose.Services
 		{
 			try
 			{
-				IFile file = await FileSystem.Current.LocalStorage.GetFileAsync(SETTINGS_FILE);
+				IFile file = await FileSystem.Current.LocalStorage.CreateFileAsync(SETTINGS_FILE,CreationCollisionOption.OpenIfExists);
 				string content = JsonConvert.SerializeObject(model, Formatting.None);
 				await file.WriteAllTextAsync(content);
 			}
