@@ -95,6 +95,16 @@
                 "inputFile": "Views/Admin/Settings/IndiagramPropertyPage.xml",
                 "outputFile": "Admin_Settings_IndiagramPropertyPage.axml"
             }
+        },
+        {
+            "activity": {
+                "className": "BackgroundColorActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Settings"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Settings/BackgroundColorPage.xml",
+                "outputFile": "Admin_Settings_BackgroundColorPage.axml"
+            }
         }
     ]
 }
