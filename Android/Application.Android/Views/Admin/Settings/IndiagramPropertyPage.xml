@@ -53,18 +53,7 @@
       </LinearLayout>
     </DataTemplate>
 
-    <ViewSelector Key="IndiagramViewSelector"
-					  Class="Storm.Mvvm.ViewSelectors.SimpleViewSelector"
-					  View="{Resource IndiagramSizeTemplate}"
-					  />
-    <ViewSelector Key="FontSizeViewSelector"
-					  Class="Storm.Mvvm.ViewSelectors.SimpleViewSelector"
-					  View="{Resource FontSizeTemplate}"
-					  />
-    <ViewSelector Key="FontViewSelector"
-					  Class="Storm.Mvvm.ViewSelectors.SimpleViewSelector"
-					  View="{Resource FontTemplate}"
-					  />
+
 
     		<Style Key="ButtonLineStyle"
       android:id="linear_info"
@@ -120,7 +109,7 @@
             android:layout_below="@+id/text_image_size"
             android:layout_marginBottom="7dip"
             android:layout_marginTop="7dip"
-            adapter="{Binding IndiagramSizes, ViewSelector={Resource IndiagramViewSelector}}"
+            adapter="{Binding IndiagramSizes, Template={Resource IndiagramSizeTemplate}}"
             currentItem="{Binding IndiagramSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
 		              />
 
@@ -136,7 +125,7 @@
             android:layout_below="@+id/text_font_label"
             android:layout_centerInParent="true"
             android:layout_marginBottom="7dip"
-            adapter="{Binding FontNames, ViewSelector={Resource FontViewSelector}}"
+            adapter="{Binding FontNames, Template={Resource FontTemplate}}"
             currentItem="{Binding FontName, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
 					  />
 
@@ -158,7 +147,7 @@
             android:layout_marginBottom="7dip"
             android:layout_marginTop="7dip"
             android:layout_toRightOf="@+id/text_font_size"
-            adapter="{Binding FontSizes, ViewSelector={Resource FontSizeViewSelector}}"
+            adapter="{Binding FontSizes, Template={Resource FontSizeTemplate}}"
             currentItem="{Binding FontSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
                     />
 
@@ -166,7 +155,7 @@
                     android:id="checkboxhomecategory"
                     android:layout_below="@+id/spinnerSizeFont"
                   Text="{Tr Text, Uid=Indiagram_property_checkboxhomecategory}"
-                    android:text="@string/checkboxhomecategory" />
+                    android:text="gsgd" />
 
         <CheckBox XmlStyle="{Resource CheckStyle}"
             android:id="checkboxMove"

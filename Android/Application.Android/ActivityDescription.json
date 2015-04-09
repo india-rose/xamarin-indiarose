@@ -85,6 +85,17 @@
                 "inputFile": "Views/Admin/ServerSynchronizationPage.xml",
                 "outputFile": "Admin_ServerSynchronizationPage.axml"
             }
+        },
+
+                {
+            "activity": {
+                "className": "IndiagramPropertyActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Settings"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Settings/IndiagramPropertyPage.xml",
+                "outputFile": "Admin_Settings_IndiagramPropertyPage.axml"
+            }
         }
     ]
 }

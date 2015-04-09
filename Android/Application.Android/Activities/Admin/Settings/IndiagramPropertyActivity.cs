@@ -15,7 +15,7 @@ namespace IndiaRose.Application.Activities.Admin.Settings
 		protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
-			//SetContentView(Resource.Layout.Admin_Settings_IndiagramPropertyPage);
+			SetContentView(Resource.Layout.Admin_Settings_IndiagramPropertyPage);
 			SetViewModel(Container.Locator.AdminSettingsIndiagramPropertyViewModel);
 		}
 	}
