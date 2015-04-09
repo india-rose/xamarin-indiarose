@@ -313,4 +313,7 @@ Please wait !</value>
 You must to click on the back button\n
 You can wait until the world's end if you want</value>
   </data>
+  <data name="Credits_TeamAndroid2013.Text" xml:space="preserve">
+    <value>Team Android - 2013</value>
+  </data>
 </root>

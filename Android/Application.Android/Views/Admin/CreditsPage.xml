@@ -75,7 +75,7 @@
       <LinearLayout  XmlStyle="{Resource ScroleLinearLayoutStyle}" >
 
         <TextView XmlStyle="{Resource TextViewGreenStyle}"
-            Text="{Tr Text, Uid=Exit}"
+            Text="{Tr Text, Uid=Credits_Application}"
             />
 
         <TextView XmlStyle="{Resource TextViewRedStyle}"
