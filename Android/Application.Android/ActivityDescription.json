@@ -46,8 +46,8 @@
                 "outputFile": "Admin_CreditsPage.axml"
             }
         },
-       /* {
-            "activity": {
+        {
+            "fragment": {
                 "className": "ReadingDelayDialog",
                 "namespaceName": "IndiaRose.Application.Activities.Admin.Settings.Dialogs"
             },
@@ -57,7 +57,7 @@
             }
         },
         {
-            "activity": {
+            "fragment": {
                 "className": "DragAndDropDialog",
                 "namespaceName": "IndiaRose.Application.Activities.Admin.Settings.Dialogs"
             },
@@ -66,8 +66,8 @@
                 "outputFile": "Admin_Settings_Dialogs_DragAndDrop.axml"
             }
         },
-        { 
-             "activity": {
+        {
+            "fragment": {
                 "className": "CategoryReadingDialog",
                 "namespaceName": "IndiaRose.Application.Activities.Admin.Settings.Dialogs"
             },
@@ -75,7 +75,7 @@
                 "inputFile": "Views/Admin/Settings/Dialogs/CategoryReadingDialog.xml",
                 "outputFile": "Admin_Settings_Dialogs_CategoryReading.axml"
             }
-        },*/
+        },
         {
             "activity": {
                 "className": "ServerSynchronizationActivity",
