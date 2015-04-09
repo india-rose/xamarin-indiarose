@@ -86,7 +86,6 @@
                 "outputFile": "Admin_ServerSynchronizationPage.axml"
             }
         },
-
         {
             "activity": {
                 "className": "IndiagramPropertyActivity",
