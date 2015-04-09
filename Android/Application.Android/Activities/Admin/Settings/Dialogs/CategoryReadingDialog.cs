@@ -19,12 +19,12 @@ namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
 	{
 		public CategoryReadingDialog()
 		{
-		    var ci = CultureInfo.InstalledUICulture;
 		    var trad = DependencyService.Container.Resolve<ILocalizationService>();
 
-		            Title = trad.GetString("Button_Back","Text");
-		            Buttons.Add(DialogsButton.Positive, "Ok");
-		            Buttons.Add(DialogsButton.Negative, "Annuler");
+
+            Title = trad.GetString("Dialogs_ReadingDialog", "Text");
+            Buttons.Add(DialogsButton.Positive, trad.GetString("Button_Ok", "Text"));
+            Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Back", "Text"));
 		}
 
 	    protected override ViewModelBase CreateViewModel()

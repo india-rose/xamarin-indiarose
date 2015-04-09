@@ -315,4 +315,16 @@ Comments : </value>
   <data name="Background_Color_backgroundColorSizeLabel.Text" xml:space="preserve">
     <value>Size of the select area</value>
   </data>
+  <data name="Dialogs_DragAndDrop.Text" xml:space="preserve">
+    <value>Do you want to use the drag and drop ?</value>
+  </data>
+  <data name="Dialogs_ReadingDelay.Text" xml:space="preserve">
+    <value>Delay between two words</value>
+  </data>
+  <data name="Dialogs_ReadingDialog.Text" xml:space="preserve">
+    <value>Play sound associated with the category when selecting ?</value>
+  </data>
+  <data name="Dialogs_reset.Text" xml:space="preserve">
+    <value>Do you want to reset preferences ?</value>
+  </data>
 </root>
