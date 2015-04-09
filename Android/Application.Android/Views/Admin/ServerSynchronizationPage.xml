@@ -52,12 +52,7 @@
       />
 
     <TextView XmlStyle="{Resource TextViewStyle}"
-      android:id="Label_current_action"
       Text="{Tr Server_Synchro_Void__Text}"
-         />
-
-    <TextView XmlStyle="{Resource TextViewStyle}"
-     Text="{Binding test}"
          />
 
 
