@@ -126,6 +126,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 			SettingsService.TopBackgroundColor = TopColor.Color;
 			SettingsService.BottomBackgroundColor = BottomColor.Color;
 			base.SaveAction();
+            base.BackAction();
 		}
 	}
 }

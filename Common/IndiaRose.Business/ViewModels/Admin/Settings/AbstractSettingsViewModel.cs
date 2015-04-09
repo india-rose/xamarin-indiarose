@@ -24,7 +24,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 		protected virtual void SaveAction()
 		{
 			SettingsService.SaveAsync();
-			BackAction();
 		}
 	}
 }
