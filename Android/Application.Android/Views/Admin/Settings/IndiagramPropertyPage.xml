@@ -65,24 +65,39 @@
 					  Class="Storm.Mvvm.ViewSelectors.SimpleViewSelector"
 					  View="{Resource FontTemplate}"
 					  />
-  </Resources>
 
-  <ImageView
-      android:id="logo"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignParentRight="true"
-      android:layout_marginTop="10dip"
-      android:scaleType="fitXY"
-      android:src="@drawable/logo" />
-
-
-
-  <LinearLayout
+    		<Style Key="ButtonLineStyle"
       android:id="linear_info"
       android:layout_width="match_parent"
       android:layout_height="fill_parent"
-      android:orientation="horizontal" >
+      android:orientation="horizontal" 
+			   />
+		<Style Key="ButtonContainerStyle"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:layout_marginLeft="15dip"
+          android:layout_marginTop="20dip"
+			   />
+    <Style Key="TextStyle"
+          android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textColor="#006FFF"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+    <Style Key="CheckStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dip"
+            android:layout_marginTop="7dip"
+            android:textColor="#006FFF"
+            android:textSize="14sp"/>
+  </Resources>
+
+  <ImageView XmlStyle="{Resource LogoStyle}"
+      android:id="logo"/>
+
+  <LinearLayout XmlStyle="{Resource ButtonContainerStyle}" >
 
     <ScrollView
         android:id="relative_left"
@@ -92,22 +107,11 @@
         android:layout_marginBottom="65dip"
              >
 
-      <RelativeLayout
-          android:layout_width="fill_parent"
-          android:layout_height="fill_parent"
-          android:layout_marginLeft="15dip"
-          android:layout_marginTop="20dip"
-                 >
+      <RelativeLayout XmlStyle="{Resource ButtonContainerStyle}" >
 
-        <TextView
+        <TextView XmlStyle="{Resource TextStyle}"
             android:id="text_image_size"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="@string/imageSizeTitle"
-            android:textColor="#006FFF"
-            android:textSize="15sp"
-            android:textStyle="italic" />
+            Text="{Tr Text, Uid=Indiagram_property_imageSizeTitle}" />
 
         <BindableSpinner
             android:id="spinnerImageSize"
@@ -120,18 +124,9 @@
             currentItem="{Binding IndiagramSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
 		              />
 
-        <TextView
+        <TextView XmlStyle="{Resource TextStyle}"
             android:id="text_font_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/spinnerImageSize"
-            android:layout_marginBottom="7dip"
-            android:layout_marginTop="7dip"
-            android:text="@string/fontTitle"
-            android:textColor="#006FFF"
-            android:textSize="15sp"
-            android:textStyle="italic" />
+            Text="{Tr Text, Uid=Indiagram_property_imageSizeLabel}" />
 
         <BindableSpinner
             android:id="spinnerFont"
@@ -145,19 +140,13 @@
             currentItem="{Binding FontName, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
 					  />
 
-        <TextView
+        <TextView XmlStyle="{Resource TextStyle}"
             android:id="text_font_size"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_below="@+id/text_font_label"
             android:layout_centerVertical="true"
-            android:text="@string/fontSizeTitle"
-            android:textColor="#006FFF"
-            android:textSize="15sp"
             android:layout_marginBottom="7dip"
             android:layout_marginTop="7dip"
-            android:textStyle="italic" />
+            Text="{Tr Text, Uid=Indiagram_property_imageSizeTitle}" />
 
         <BindableSpinner
             android:id="spinnerSizeFont"
@@ -173,27 +162,16 @@
             currentItem="{Binding FontSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
                     />
 
-        <CheckBox
+        <CheckBox XmlStyle="{Resource CheckStyle}"
                     android:id="checkboxhomecategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_below="@+id/spinnerSizeFont"
-                    android:layout_marginBottom="7dip"
-            android:layout_marginTop="7dip"
-                    android:text="@string/checkboxhomecategory"
-                    android:textColor="#006FFF"
-                    android:textSize="14sp" />
+                  Text="{Tr Text, Uid=Indiagram_property_checkboxhomecategory}"
+                    android:text="@string/checkboxhomecategory" />
 
-        <CheckBox
+        <CheckBox XmlStyle="{Resource CheckStyle}"
             android:id="checkboxMove"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_below="@+id/checkboxhomecategory"
-            android:layout_marginBottom="7dip"
-            android:layout_marginTop="7dip"
-            android:text="@string/checkboxMove"
-            android:textColor="#006FFF"
-            android:textSize="14sp" />
+                  Text="{Tr Text, Uid=Indiagram_property_checkboxMove}" />
 
         
       </RelativeLayout>
@@ -208,26 +186,13 @@
         android:gravity="center" >
       
   <!--Deuxieme colonne-->
-  <CheckBox
+  <CheckBox XmlStyle="{Resource CheckStyle}"
             android:id="checkboxreinforcer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="7dip"
-            android:text="@string/reinforcerReadingLabel"
-            android:textColor="#006FFF"
-            android:textSize="14sp" />
+            Text="{Tr Text, Uid=Indiagram_property_reinforcerReadingLabel}" />
 
-        <Button
-            android:id="button_reinforcer_color"
-            android:layout_width="wrap_content"
-            android:layout_height="95dip"
-            android:layout_below="@+id/checkboxreinforcer"
-            android:layout_margin="10dip"
-            android:background="@drawable/buttonviolet"
-            android:text="@string/reinforcerColorButton"
-            android:textColor="@android:color/white"
-            android:textSize="14sp"
-            click="{Binding ReinforcerColorCommand}"/>
+        <Button XmlStyle="{Resource MediumPurpleButtonStyle}"
+            Text="{Tr Text, Uid=Indiagram_Property_reinforcerColorButton}"
+            Click="{Binding ReinforcerColorCommand}"/>
     
     </RelativeLayout>
   </LinearLayout>
@@ -242,29 +207,12 @@
       android:gravity="center"
       android:orientation="horizontal" >
 
-    <Button
-        android:id="button_ok"
-        android:layout_width="match_parent"
-        android:layout_height="55dip"
-        android:layout_margin="4dip"
-        android:layout_weight="1"
-        android:background="@drawable/buttongreen"
-        android:text="@string/okText"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        click="{Binding OkCommand}"/>
+    <Button XmlStyle="{Resource SmallGreenButtonStyle}"
+        Text="{Tr Text, Uid=Indiagram_Property_ok}"
+        Click="{Binding OkCommand}"/>
 
-    <Button
-        android:id="button_cancel"
-        android:layout_width="match_parent"
-        android:layout_height="55dip"
-        android:layout_marginBottom="4dip"
-        android:layout_marginTop="4dip"
-        android:layout_weight="1"
-        android:background="@drawable/buttonorange"
-        android:text="@string/cancelText"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        click="{Binding BackCommand}"/>
+    <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
+        Text="{Tr Text, Uid=Indiagram_Property_cancel}"
+        Click="{Binding BackCommand}"/>
   </LinearLayout>
 </RelativeLayout>

@@ -276,4 +276,28 @@ Commentaires :</value>
   <data name="TeamAndroid2013.Text" xml:space="preserve">
     <value>Equipe Android - 2013</value>
   </data>
+      <data name="Indiagram_Property_cancel.Text" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="Indiagram_property_checkboxhomecategory.Text" xml:space="preserve">
+    <value>Retourner à l'accueil</value>
+  </data>
+  <data name="Indiagram_property_checkboxMove.Text" xml:space="preserve">
+    <value>Glisser-déposer</value>
+  </data>
+  <data name="Indiagram_property_imageSizeLabel.Text" xml:space="preserve">
+    <value>Taille de l'indiagramme :</value>
+  </data>
+  <data name="Indiagram_property_imageSizeTitle.Text" xml:space="preserve">
+    <value>Taille de l'indiagramme</value>
+  </data>
+  <data name="Indiagram_Property_ok.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Indiagram_Property_reinforcerColorButton.Text" xml:space="preserve">
+    <value>Changer la couleur de renfort</value>
+  </data>
+  <data name="Indiagram_property_reinforcerReadingLabel.Text" xml:space="preserve">
+    <value>Activer la lecture</value>
+  </data>
 </root>
