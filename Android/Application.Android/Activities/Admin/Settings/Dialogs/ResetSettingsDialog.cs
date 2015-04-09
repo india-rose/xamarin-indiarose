@@ -1,5 +1,6 @@
 ﻿#region Usings
 
+using System.Globalization;
 using Android.Views;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
@@ -14,9 +15,19 @@ namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
     {
         public ResetSettingsDialog()
         {
-            Title ="Êtes-vous sûr de vouloir réinitialiser les paramètres ?";
-            Buttons.Add(DialogsButton.Positive, "Ok");
-            Buttons.Add(DialogsButton.Negative, "Annuler");
+            var ci = CultureInfo.InstalledUICulture;
+            if (ci.TwoLetterISOLanguageName == "fr")
+            {
+                Title = "Êtes-vous sûr de vouloir réinitialiser les paramètres ?";
+                Buttons.Add(DialogsButton.Positive, "Ok");
+                Buttons.Add(DialogsButton.Negative, "Annuler");
+            }
+            else
+            {
+                Title = "Do you want to reset parameters ?";
+                Buttons.Add(DialogsButton.Positive, "Ok");
+                Buttons.Add(DialogsButton.Negative, "Back");
+            }
         }
 
         protected override ViewModelBase CreateViewModel()

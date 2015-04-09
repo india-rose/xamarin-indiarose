@@ -1,6 +1,7 @@
 #region Usings
 
 using System;
+using System.Globalization;
 using Android.Views;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
@@ -15,9 +16,20 @@ namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
 	{
 		public DragAndDropDialog()
 		{
-			Title = "Utiliser le glissez-déposez ?";
-			Buttons.Add(DialogsButton.Positive, "Ok");
-			Buttons.Add(DialogsButton.Negative, "Annuler");
+
+            var ci = CultureInfo.InstalledUICulture;
+            if (ci.TwoLetterISOLanguageName == "fr")
+            {
+                Title = "Utiliser le glisser-deposer ?";
+                Buttons.Add(DialogsButton.Positive, "Ok");
+                Buttons.Add(DialogsButton.Negative, "Annuler");
+            }
+            else
+            {
+                Title = "Use the Drag and drop ?";
+                Buttons.Add(DialogsButton.Positive, "Ok");
+                Buttons.Add(DialogsButton.Negative, "Back");
+            }
 		}
 
 		protected override ViewModelBase CreateViewModel()

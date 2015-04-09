@@ -1,6 +1,7 @@
 #region Usings
 
 using System;
+using System.Globalization;
 using Android.Views;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
@@ -15,10 +16,19 @@ namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
 	{
 		public ReadingDelayDialog()
 		{
-            //a changer suivante la trad
-			Title = "Délai entre la lecture de deux mots";
-			Buttons.Add(DialogsButton.Positive, "Ok");
-			Buttons.Add(DialogsButton.Negative, "Cancel");
+            //a changer maniere trad
+            var ci = CultureInfo.InstalledUICulture;
+            if (ci.TwoLetterISOLanguageName == "fr")
+            {
+                Buttons.Add(DialogsButton.Positive, "Ok");
+                Buttons.Add(DialogsButton.Negative, "Annuler");
+            }
+            else
+            {
+                Title = "Delay between two words"; ;
+                Buttons.Add(DialogsButton.Positive, "Ok");
+                Buttons.Add(DialogsButton.Negative, "Back");
+            }
 		}
 
 		protected override ViewModelBase CreateViewModel()
