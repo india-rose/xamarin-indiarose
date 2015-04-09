@@ -304,13 +304,10 @@ Commentaires :</value>
     <value>Activer texte</value>
   </data>
   <data name="Server_Synchro_Start.Text" xml:space="preserve">
-    <value>Synchronisation des paramètres avec le serveur ...\n
-Veuillez patentiez !</value>
+    <value>Synchronisation des paramètres avec le serveur ...\nVeuillez patentiez !</value>
   </data>
   <data name="Server_Synchro_Void.Text" xml:space="preserve">
-    <value>Cet écran ne fait rien pour l'instant.\n
-Vous n'avez plus qu'a appuyer sur le bouton retour\n
-Vous pouvez aussi attendre jusqu'a la fin des temps si vous le souhaitez !</value>
+    <value>Cet écran ne fait rien pour l'instant.\nVous n'avez plus qu'a appuyer sur le bouton retour\nVous pouvez aussi attendre jusqu'a la fin des temps si vous le souhaitez !</value>
   </data>
   <data name="Background_Color_backgroundColorInfo.Text" xml:space="preserve">
     <value>Cliquer sur la zone pour changer la couleur</value>
