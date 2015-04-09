@@ -17,7 +17,7 @@ namespace IndiaRose.Application.Activities.Admin
 		{
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.Admin_CreditsPage);
-			//TODO : ajouter le viewmodel (même si presque vide, il sera nécessaire pour les autres plateformes)
+            SetViewModel(Container.Locator.AdminCreditsViewModel);
 		}
 	}
 }
