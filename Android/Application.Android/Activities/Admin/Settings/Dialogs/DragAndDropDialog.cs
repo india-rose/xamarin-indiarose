@@ -6,6 +6,8 @@ using Android.Views;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
 using Storm.Mvvm.Dialogs;
+using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 
 #endregion
 
@@ -16,20 +18,11 @@ namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
 	{
 		public DragAndDropDialog()
 		{
+		    var trad = DependencyService.Container.Resolve<ILocalizationService>();
 
-            var ci = CultureInfo.InstalledUICulture;
-            if (ci.TwoLetterISOLanguageName == "fr")
-            {
-                Title = "Utiliser le glisser-deposer ?";
-                Buttons.Add(DialogsButton.Positive, "Ok");
-                Buttons.Add(DialogsButton.Negative, "Annuler");
-            }
-            else
-            {
-                Title = "Use the Drag and drop ?";
-                Buttons.Add(DialogsButton.Positive, "Ok");
-                Buttons.Add(DialogsButton.Negative, "Back");
-            }
+            Title = trad.GetString("Dialogs_DragAndDrop", "Text");
+            Buttons.Add(DialogsButton.Positive, trad.GetString("Button_Ok", "Text"));
+            Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Back", "Text"));
 		}
 
 		protected override ViewModelBase CreateViewModel()

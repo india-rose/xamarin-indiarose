@@ -5,6 +5,8 @@ using Android.Views;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
 using Storm.Mvvm.Dialogs;
+using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 
 #endregion
 
@@ -15,19 +17,11 @@ namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
     {
         public ResetSettingsDialog()
         {
-            var ci = CultureInfo.InstalledUICulture;
-            if (ci.TwoLetterISOLanguageName == "fr")
-            {
-                Title = "Êtes-vous sûr de vouloir réinitialiser les paramètres ?";
-                Buttons.Add(DialogsButton.Positive, "Ok");
-                Buttons.Add(DialogsButton.Negative, "Annuler");
-            }
-            else
-            {
-                Title = "Do you want to reset parameters ?";
-                Buttons.Add(DialogsButton.Positive, "Ok");
-                Buttons.Add(DialogsButton.Negative, "Back");
-            }
+            var trad = DependencyService.Container.Resolve<ILocalizationService>();
+
+            Title = trad.GetString("Dialogs_reset", "Text");
+            Buttons.Add(DialogsButton.Positive, trad.GetString("Button_Ok", "Text"));
+            Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Back", "Text"));
         }
 
         protected override ViewModelBase CreateViewModel()
