@@ -6,6 +6,7 @@
  */
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:conv="using:Storm.Mvvm.Converters"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
@@ -34,7 +35,7 @@
 			android:layout_marginLeft="15dp"
            />
     
-		<Converter Key="StringFormatConverter" Class="Storm.Mvvm.Converters.StringFormatConverter" />
+		<conv:StringFormatConverter Key="StringFormatConverter" />
     
 	</Resources>
   
