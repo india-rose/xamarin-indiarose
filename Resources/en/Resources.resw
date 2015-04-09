@@ -211,7 +211,7 @@ Comments : </value>
     <value>Trainees 2013/2014</value>
   </data>
   <data name="Credits_Trainee2014.Text" xml:space="preserve">
-    <value>Trainee 2014/2015</value>
+    <value>Trainees 2014/2015</value>
   </data>
   <data name="Credits_TraineeStaff2013.Text" xml:space="preserve">
     <value>Marco Da Cunha Fernandez, Nesrine Brahmi, El Mehdi Fahim, Lisa Deloménie, Erwan Durandet, Florian Blain</value>
@@ -249,7 +249,7 @@ Comments : </value>
   <data name="Home_VoiceSynthesisUpgrade.Text" xml:space="preserve">
     <value>Upgrade the voice synthesis engine</value>
   </data>
-  <data name="Back_Button.Text" xml:space="preserve">
+  <data name="Button_Back.Text" xml:space="preserve">
     <value>Back</value>
   </data>
   <data name="TTS_1.Text" xml:space="preserve">
@@ -257,7 +257,6 @@ Comments : </value>
   </data>
   <data name="TTS_2.Text" xml:space="preserve">
     <value>2</value>
-    <comment>ff</comment>
   </data>
   <data name="TTS_3.Text" xml:space="preserve">
     <value>3</value>
@@ -289,8 +288,8 @@ Comments : </value>
   <data name="Indiagram_property_imageSizeTitle.Text" xml:space="preserve">
     <value>Size of indiagram</value>
   </data>
-  <data name="Indiagram_Property_ok.Text" xml:space="preserve">
-    <value>OK</value>
+  <data name="Button_Ok.Text" xml:space="preserve">
+    <value>Ok</value>
   </data>
   <data name="Indiagram_Property_reinforcerColorButton.Text" xml:space="preserve">
     <value>Change reinforcer color</value>
@@ -314,15 +313,9 @@ You must to click on the back button\n
 You can wait until the world's end if you want</value>
   </data>
   <data name="Background_Color_backgroundColorInfo.Text" xml:space="preserve">
-    <value>Background_Color_backgroundColorInfo.Text</value>
+    <value>Click on area to change color</value>
   </data>
   <data name="Background_Color_backgroundColorSizeLabel.Text" xml:space="preserve">
-    <value>Background_Color_backgroundColorSizeLabel.Text</value>
-  </data>
-  <data name="Background_Color_cancel.Text" xml:space="preserve">
-    <value>Background_Color_cancel.Text</value>
-  </data>
-  <data name="Background_Color_ok.Text" xml:space="preserve">
-    <value>Background_Color_ok.Text</value>
+    <value>Size of the select area</value>
   </data>
 </root>

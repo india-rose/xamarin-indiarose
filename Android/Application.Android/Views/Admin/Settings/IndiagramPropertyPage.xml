@@ -197,11 +197,11 @@
       android:orientation="horizontal" >
 
     <Button XmlStyle="{Resource SmallGreenButtonStyle}"
-        Text="{Tr Text, Uid=Indiagram_Property_ok}"
+        Text="{Tr Text, Uid=Button_Ok}"
         Click="{Binding SaveCommand}"/>
 
     <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
-        Text="{Tr Text, Uid=Indiagram_Property_cancel}"
+        Text="{Tr Text, Uid=Button_Back}"
         Click="{Binding BackCommand}"/>
   </LinearLayout>
 </RelativeLayout>

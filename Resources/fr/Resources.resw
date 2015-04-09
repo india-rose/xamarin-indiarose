@@ -226,7 +226,7 @@ Commentaires :</value>
     <value>manuel.pdf</value>
   </data>
   <data name="Home_AppSettings.Text" xml:space="preserve">
-    <value>Paramêtres de l'application</value>
+    <value>Paramètres de l'application</value>
   </data>
   <data name="Home_CollectionManagement.Text" xml:space="preserve">
     <value>Gestion de la collection d'indiagram</value>
@@ -249,7 +249,7 @@ Commentaires :</value>
   <data name="Home_VoiceSynthesisUpgrade.Text" xml:space="preserve">
     <value>Améliorer le moteur de synthèse vocale</value>
   </data>
-  <data name="Back_Button.Text" xml:space="preserve">
+  <data name="Button_Back.Text" xml:space="preserve">
     <value>Retour</value>
   </data>
   <data name="TTS_1.Text" xml:space="preserve">
@@ -288,8 +288,8 @@ Commentaires :</value>
   <data name="Indiagram_property_imageSizeTitle.Text" xml:space="preserve">
     <value>Taille de l'indiagramme</value>
   </data>
-  <data name="Indiagram_Property_ok.Text" xml:space="preserve">
-    <value>OK</value>
+  <data name="Button_Ok.Text" xml:space="preserve">
+    <value>Ok</value>
   </data>
   <data name="Indiagram_Property_reinforcerColorButton.Text" xml:space="preserve">
     <value>Changer la couleur de renfort</value>
@@ -317,11 +317,5 @@ Vous pouvez aussi attendre jusqu'a la fin des temps si vous le souhaitez !</valu
   </data>
   <data name="Background_Color_backgroundColorSizeLabel.Text" xml:space="preserve">
     <value>Taille de la zone sélectionné :</value>
-  </data>
-  <data name="Background_Color_cancel.Text" xml:space="preserve">
-    <value>Annuler</value>
-  </data>
-  <data name="Background_Color_ok.Text" xml:space="preserve">
-    <value>OK</value>
   </data>
 </root>
