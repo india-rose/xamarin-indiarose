@@ -229,7 +229,7 @@ Commentaires :</value>
     <value>Paramètres de l'application</value>
   </data>
   <data name="Home_CollectionManagement.Text" xml:space="preserve">
-    <value>Gestion de la collection d'indiagram</value>
+    <value>Gestion de la collection d'indiagrammes</value>
   </data>
   <data name="Home_Contact.Text" xml:space="preserve">
     <value>Nous contacter</value>
@@ -244,7 +244,7 @@ Commentaires :</value>
     <value>Envoyer les logs de l'application</value>
   </data>
   <data name="Home_SyncCollection.Text" xml:space="preserve">
-    <value>Synchroniser la collection et les paramêtres</value>
+    <value>Synchroniser la collection et les paramètres</value>
   </data>
   <data name="Home_VoiceSynthesisUpgrade.Text" xml:space="preserve">
     <value>Améliorer le moteur de synthèse vocale</value>
@@ -304,27 +304,27 @@ Commentaires :</value>
     <value>Activer texte</value>
   </data>
   <data name="Server_Synchro_Start.Text" xml:space="preserve">
-    <value>Synchronisation des paramètres avec le serveur ...\nVeuillez patentiez !</value>
+    <value>Synchronisation des paramètres avec le serveur ...\nVeuillez patentier !</value>
   </data>
   <data name="Server_Synchro_Void.Text" xml:space="preserve">
-    <value>Cet écran ne fait rien pour l'instant.\nVous n'avez plus qu'a appuyer sur le bouton retour\nVous pouvez aussi attendre jusqu'a la fin des temps si vous le souhaitez !</value>
+    <value>Cet écran ne fait rien pour l'instant.\nVous n'avez plus qu'à appuyer sur le bouton retour\nVous pouvez aussi attendre jusqu'à la fin des temps si vous le souhaitez !</value>
   </data>
   <data name="Background_Color_backgroundColorInfo.Text" xml:space="preserve">
-    <value>Cliquer sur la zone pour changer la couleur</value>
+    <value>Cliquez sur la zone pour changer la couleur</value>
   </data>
   <data name="Background_Color_backgroundColorSizeLabel.Text" xml:space="preserve">
-    <value>Taille de la zone sélectionné :</value>
+    <value>Taille de la zone sélectionnée :</value>
   </data>
   <data name="Dialogs_DragAndDrop.Text" xml:space="preserve">
     <value>Utiliser le glisser déposer ?</value>
   </data>
   <data name="Dialogs_ReadingDelay.Text" xml:space="preserve">
-    <value>Delai entre deux mots</value>
+    <value>Délai entre deux mots</value>
   </data>
   <data name="Dialogs_ReadingDialog.Text" xml:space="preserve">
     <value>Lire le son associé à la catégorie lors de la sélection ?</value>
   </data>
   <data name="Dialogs_reset.Text" xml:space="preserve">
-    <value>Voulez vous reinitialiser les preferences ?</value>
+    <value>Voulez vous reinitialiser les préférences ?</value>
   </data>
 </root>
