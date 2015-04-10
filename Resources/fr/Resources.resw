@@ -327,4 +327,28 @@ Commentaires :</value>
   <data name="Dialogs_reset.Text" xml:space="preserve">
     <value>Voulez vous reinitialiser les préférences ?</value>
   </data>
+  <data name="checkboxhomecategory.Text" xml:space="preserve">
+    <value>Retour au menu d'accueil après sélection d'un indiagram</value>
+  </data>
+  <data name="checkboxMove.Text" xml:space="preserve">
+    <value>Glisser/déposer</value>
+  </data>
+  <data name="fontSizeTitle.Text" xml:space="preserve">
+    <value>Taille de la police</value>
+  </data>
+  <data name="fontTitle.Text" xml:space="preserve">
+    <value>Police</value>
+  </data>
+  <data name="imageSizeTitle.Text" xml:space="preserve">
+    <value>Taille d'un indiagram</value>
+  </data>
+  <data name="okText.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="reinforcerColorButton.Text" xml:space="preserve">
+    <value>Changer la couleur du renforcateur</value>
+  </data>
+  <data name="reinforcerReadingLabel.Text" xml:space="preserve">
+    <value>Activer le renforcateur lors de la lecture</value>
+  </data>
 </root>

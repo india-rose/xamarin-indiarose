@@ -178,3 +178,10 @@
   </LinearLayout>
 
 </RelativeLayout>
+<!-- ipp     <Button XmlStyle="{Resource SmallGreenButtonStyle}"
+        Text="{Tr Text, Uid=Button_Ok}"
+        Click="{Binding SaveCommand}"/>
+
+    <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
+        Text="{Tr Text, Uid=Button_Back}"
+        Click="{Binding BackCommand}"/> -->
