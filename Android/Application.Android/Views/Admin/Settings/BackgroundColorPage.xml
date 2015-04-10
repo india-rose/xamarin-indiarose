@@ -15,7 +15,7 @@
   <Resources>
     <conv2:ColorConverter Key="IntToColorConverter" />
     
-  <style Key="RelativeStyle"
+  <Style Key="RelativeStyle"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
@@ -23,7 +23,9 @@
   />
   </Resources>
 
-  <RelativeLayout XmlStyle="{Resource RelativeStyle}" >
+  <RelativeLayout XmlStyle="{Resource RelativeStyle}"
+       android:id="background_color_layout_left"
+  >
 
     <Resources>
       <conv:StringFormatConverter Key="StringFormatConverter" />
@@ -44,21 +46,21 @@
       <Style Key="Text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textSize="15sp"
         android:layout_alignParentTop="true"
         android:layout_below="@+id/logo"
         android:gravity="center_horizontal"
         android:layout_marginLeft="4dip"
         android:layout_marginTop="80dip"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
              />
       
       <Style Key="Text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:textColor="@android:color/black"
         android:textSize="15sp"
-        android:layout_centerInParent="true"
       />
       
       <Style Key="Button1"
@@ -121,9 +123,11 @@
         Text="{Tr Background_Color_backgroundColorInfo__Text}" />
 
     <TextView XmlStyle="{Resource Text2}"
+        android:id="background_color_text_color_size"
         Text="{Tr Background_Color_backgroundColorSizeLabel__Text}" />
 
     <BindableSpinner XmlStyle="{Resource BindableStyle}"
+        android:id="background_color_spinner_color_size"
         adapter="{Binding ZoneHeightCollection, Template={Resource SpinnerDataTemplate}}"
         currentItem="{Binding CurrentSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
             />
@@ -131,10 +135,12 @@
     <LinearLayout XmlStyle="{Resource Linear1}" >
 
       <Button XmlStyle="{Resource Button1}"
+          android:id="background_color_button_ok"
           Text="{Tr Button_Ok__Text}"
           Click="{Binding SaveCommand}"/>
 
       <Button XmlStyle="{Resource Button2}"
+          android:id="background_color_button_cancel"
           Text="{Tr Button_Back__Text}"
           Click="{Binding BackCommand}"/>
     </LinearLayout>
