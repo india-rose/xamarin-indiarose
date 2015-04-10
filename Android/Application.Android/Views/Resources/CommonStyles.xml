@@ -13,7 +13,6 @@
   <Style Key="RadioButtonStyle"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-		checked="{Binding IsDisabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
            />
   <Style Key="RadioGroupStyle"
 	  android:layout_width="fill_parent"

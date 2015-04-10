@@ -89,7 +89,7 @@
     <Style Key="BindableStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/background_color_text_color_size"
+        android:layout_below="@id/background_color_text_color_size"
         android:layout_centerInParent="true"
         android:textSize="15sp"
            />
@@ -120,14 +120,13 @@
         android:id="logo" />
 
     <TextView XmlStyle="{Resource Text1}"
-        Text="{Tr Background_Color_backgroundColorInfo__Text}" />
+        Text="{Tr Text, Uid=Background_Color_backgroundColorInfo}" />
 
     <TextView XmlStyle="{Resource Text2}"
         android:id="background_color_text_color_size"
-        Text="{Tr Background_Color_backgroundColorSizeLabel__Text}" />
+        Text="{Tr Text, Uid=Background_Color_backgroundColorSizeLabel}" />
 
     <BindableSpinner XmlStyle="{Resource BindableStyle}"
-        android:id="background_color_spinner_color_size"
         adapter="{Binding ZoneHeightCollection, Template={Resource SpinnerDataTemplate}}"
         currentItem="{Binding CurrentSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
             />
@@ -135,13 +134,11 @@
     <LinearLayout XmlStyle="{Resource Linear1}" >
 
       <Button XmlStyle="{Resource Button1}"
-          android:id="background_color_button_ok"
-          Text="{Tr Button_Ok__Text}"
+          Text="{Tr Text, Uid=Button_Ok}"
           Click="{Binding SaveCommand}"/>
 
       <Button XmlStyle="{Resource Button2}"
-          android:id="background_color_button_cancel"
-          Text="{Tr Button_Back__Text}"
+          Text="{Tr Text, Uid=Button_Back}"
           Click="{Binding BackCommand}"/>
     </LinearLayout>
   </RelativeLayout>
