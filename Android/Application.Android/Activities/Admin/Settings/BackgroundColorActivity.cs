@@ -14,7 +14,7 @@ namespace IndiaRose.Application.Activities.Admin.Settings
 	[Activity(ScreenOrientation = ScreenOrientation.Landscape, Theme = "@style/Theme.Sherlock.Light.NoActionBar")]
 	public partial class BackgroundColorActivity : ActivityBase
 	{
-		/*
+		
 	    private int _backgroundTopPercentSize;
 
         [Binding("CurrentSize")]
@@ -64,6 +64,6 @@ namespace IndiaRose.Application.Activities.Admin.Settings
 				RefreshAreasSize();
 			}
 		}
-		 */
+		 
 	}
 }

@@ -7,25 +7,26 @@
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:conv="using:Storm.Mvvm.Converters"
+    xmlns:conv2="using:IndiaRose.Framework.Converters"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal" >
 
   <Resources>
-    <conv:IntToColorConverter Key="IntToColorConverter" />
-  </Resources>
-
-  <RelativeLayout
-      android:id="background_color_layout_left"
+    <conv2:ColorConverter Key="IntToColorConverter" />
+    
+  <style Key="RelativeStyle"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
-      android:background="@android:color/white" >
+      android:background="@android:color/white"
+  />
+  </Resources>
+
+  <RelativeLayout XmlStyle="{Resource RelativeStyle}" >
 
     <Resources>
-      <Converter Key="StringFormatConverter"
-                 Class="Storm.Mvvm.Converters.StringFormatConverter" 
-                 />
+      <conv:StringFormatConverter Key="StringFormatConverter" />
         
       <DataTemplate Key="SpinnerDataTemplate">
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -40,91 +41,117 @@
         </LinearLayout>
       </DataTemplate>
       
-      <Style Key="TextViewStyle"
+      <Style Key="Text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
-        android:textSize="15sp" />
-      
-      <Style Key="ButtonStyle"
-          android:layout_width="match_parent"
-          android:layout_height="75dip"
-          android:layout_margin="4dip"
-          android:layout_weight="1"
-          android:textColor="@android:color/white"
-          android:textSize="15sp" />
-    </Resources>
-
-    <ImageView XmlStyle="{Resource LogoStyle}"
-        android:id="logo" />
-
-    <TextView XmlStyle="{Resource TextViewStyle}"
+        android:textSize="15sp"
         android:layout_alignParentTop="true"
         android:layout_below="@+id/logo"
         android:gravity="center_horizontal"
         android:layout_marginLeft="4dip"
         android:layout_marginTop="80dip"
-        Text="{Tr Background_Color_backgroundColorInfo__Text}" />
-
-    <TextView XmlStyle="{Resource TextViewStyle}"
-        android:id="background_color_text_color_size"
+             />
+      
+      <Style Key="Text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
         android:layout_centerInParent="true"
-        Text="{Tr Background_Color_backgroundColorSizeLabel__Text}" />
+      />
+      
+      <Style Key="Button1"
+          android:layout_width="match_parent"
+          android:layout_height="75dip"
+          android:layout_margin="4dip"
+          android:layout_weight="1"
+          android:background="@drawable/buttongreen"
+          android:textColor="@android:color/white"
+          android:textSize="15sp"
+      />
+      
+      <Style Key="Button2"
+          android:layout_width="match_parent"
+          android:layout_height="75dip"
+          android:layout_marginBottom="4dip"
+          android:layout_marginRight="4dip"
+          android:layout_marginTop="4dip"
+          android:layout_weight="1"
+          android:background="@drawable/buttonorange"
+          android:textColor="@android:color/white"
+          android:textSize="15sp"
 
-    <BindableSpinner
-        android:id="background_color_spinner_color_size"
+     />
+    
+    <Style Key="BindableStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/background_color_text_color_size"
         android:layout_centerInParent="true"
         android:textSize="15sp"
+           />
+    
+    <Style Key="Linear1"
+       android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+    />
+    
+    <Style Key="Linear2"
+       android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:orientation="vertical"
+    />
+    
+    <Style Key="View"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+    />
+    
+    </Resources>
+
+    <ImageView XmlStyle="{Resource LogoStyle}"
+        android:id="logo" />
+
+    <TextView XmlStyle="{Resource Text1}"
+        Text="{Tr Background_Color_backgroundColorInfo__Text}" />
+
+    <TextView XmlStyle="{Resource Text2}"
+        Text="{Tr Background_Color_backgroundColorSizeLabel__Text}" />
+
+    <BindableSpinner XmlStyle="{Resource BindableStyle}"
         adapter="{Binding ZoneHeightCollection, Template={Resource SpinnerDataTemplate}}"
         currentItem="{Binding CurrentSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
             />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:orientation="horizontal" >
+    <LinearLayout XmlStyle="{Resource Linear1}" >
 
-      <Button XmlStyle="{Resource ButtonStyle}"
-          android:id="background_color_button_ok"
-          android:background="@drawable/buttongreen"
-          Text="{Tr Background_Color_ok__Text}"
+      <Button XmlStyle="{Resource Button1}"
+          Text="{Tr Button_Ok__Text}"
           Click="{Binding SaveCommand}"/>
 
-      <Button XmlStyle="{Resource ButtonStyle}"
-          android:id="background_color_button_cancel"
-          android:layout_marginBottom="4dip"
-          android:layout_marginRight="4dip"
-          android:layout_marginTop="4dip"
-          android:background="@drawable/buttonorange"
-          Text="{Tr Background_Color_cancel__Text}"
+      <Button XmlStyle="{Resource Button2}"
+          Text="{Tr Button_Back__Text}"
           Click="{Binding BackCommand}"/>
     </LinearLayout>
   </RelativeLayout>
 
-  <LinearLayout
+  <LinearLayout XmlStyle="{Resource Linear2}"
       android:id="RightLayout"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:orientation="vertical" >
+    >
 
-    <View
-        android:id="TopArea"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="{Binding SettingsService.TopBackgroundColor, Converter={Resource IntToColorConverter}}"
+    <View XmlStyle="{Resource View}"
+          android:id="TopArea"
+          android:background="{Binding SettingsService.TopBackgroundColor, Converter={Resource IntToColorConverter}}"
         click="{Binding TopAreaColorCommand}"/>
 
-    <View
-        android:id="BottomArea"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        background="{Binding SettingsService.BottomBackgroundColor, Converter={Resource IntToColorConverter}}"
+    <View XmlStyle="{Resource View}"
+          android:id="BottomArea"
+          background="{Binding SettingsService.BottomBackgroundColor, Converter={Resource IntToColorConverter}}"
         click="{Binding BottomAreaColorCommand}"/>
   </LinearLayout>
 

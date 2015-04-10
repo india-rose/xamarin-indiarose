@@ -6,6 +6,8 @@ using Android.Views;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
 using Storm.Mvvm.Dialogs;
+using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 
 #endregion
 
@@ -16,19 +18,11 @@ namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
 	{
 		public ReadingDelayDialog()
 		{
-            //a changer maniere trad
-            var ci = CultureInfo.InstalledUICulture;
-            if (ci.TwoLetterISOLanguageName == "fr")
-            {
-                Buttons.Add(DialogsButton.Positive, "Ok");
-                Buttons.Add(DialogsButton.Negative, "Annuler");
-            }
-            else
-            {
-                Title = "Delay between two words"; ;
-                Buttons.Add(DialogsButton.Positive, "Ok");
-                Buttons.Add(DialogsButton.Negative, "Back");
-            }
+            var trad = DependencyService.Container.Resolve<ILocalizationService>();
+
+            Title = trad.GetString("Dialogs_ReadingDelay", "Text");
+            Buttons.Add(DialogsButton.Positive, trad.GetString("Button_Ok", "Text"));
+            Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Back", "Text"));
 		}
 
 		protected override ViewModelBase CreateViewModel()
