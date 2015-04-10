@@ -42,11 +42,11 @@
   <LinearLayout XmlStyle="{Resource RDDLinearLayoutStyle}">
     
     <SeekBar XmlStyle="{Resource RDDSeekBarStyle}"
-			progress="{Binding CurrentValue, Mode=TwoWay, UpdateEvent=ProgressChanged}"
+			 progress="{Binding CurrentValue, Mode=TwoWay, UpdateEvent=ProgressChanged}"
 			/>
     
     <TextView XmlStyle="{Resource RDDTextViewStyle}"
-			text="{Binding CurrentDelay, Converter={Resource StringFormatConverter}, ConverterParameter='{0:0.0} secondes'}"
+			 Text="{Binding CurrentDelay, Converter={Resource StringFormatConverter}, ConverterParameter='{0:0.0} secondes'}"
 			/>
     
   </LinearLayout>

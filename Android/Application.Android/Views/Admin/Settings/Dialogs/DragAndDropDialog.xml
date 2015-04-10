@@ -12,26 +12,14 @@
   android:paddingLeft="50dip"
   android:paddingRight="50dip" >
 
-	<Resources>
-
-    <Style Key="RadioGroupStyle"
-	  android:layout_width="fill_parent"
-	  android:layout_height="wrap_content"
-	  android:orientation="vertical"
-           />
-
-  </Resources>
-
   <RadioGroup XmlStyle="{Resource RadioGroupStyle}">
 
     <RadioButton XmlStyle="{Resource RadioButtonStyle}"
-         Text="{Tr Text, Uid=RD_buttonOn}"
-         checked="{Binding IsEnabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
+        Text="{Tr Text, Uid=RD_buttonOn}"
     />
 
     <RadioButton XmlStyle="{Resource RadioButtonStyle}"
         Text="{Tr Text, Uid=RD_buttonOff}"
-				checked="{Binding IsDisabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
     />
   </RadioGroup>
 
