@@ -28,13 +28,13 @@
 	<RadioGroup XmlStyle="{Resource RadioGroupStyle}">
 
     <RadioButton XmlStyle="{Resource RadioButtonStyle}"
-         Text="{Tr RD_buttonOn__Text}"
-         checked="{Binding IsEnabled, Mode=TwoWay, UpdateEvent=CheckedChange,Converter={Resource BooleanNegationConverter}}"
+         Text="{Tr Text, Uid=RD_buttonOn}"
+         checked="{Binding IsEnabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
     />
     
     <RadioButton XmlStyle="{Resource RadioButtonStyle}"
-        Text="{Tr RD_buttonOff__Text}"
-				checked="{Binding IsEnabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
+        Text="{Tr Text, Uid=RD_buttonOff}"
+				checked="{Binding IsDisabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
     />
   </RadioGroup>
 

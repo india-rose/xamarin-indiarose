@@ -3,6 +3,7 @@
 using System;
 using System.Globalization;
 using Android.Views;
+using Android.Widget;
 using Java.Util;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
@@ -19,7 +20,6 @@ namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
 	{
 		public CategoryReadingDialog()
 		{
-		    var ci = CultureInfo.InstalledUICulture;
 		    var trad = DependencyService.Container.Resolve<ILocalizationService>();
 
 		            Title = trad.GetString("Button_Back","Text");
@@ -28,7 +28,7 @@ namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
 		}
 
 	    protected override ViewModelBase CreateViewModel()
-		{
+	    {
 			return Container.Locator.AdminSettingsDialogsCategoryReadingViewModel;
 		}
 
