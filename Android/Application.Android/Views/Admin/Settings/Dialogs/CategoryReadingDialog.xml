@@ -14,8 +14,6 @@
     android:paddingRight="50dip" >
 
 	<Resources>
-		<conv:BooleanNegationConverter Key="BooleanNegationConverter"
-				    />
     
     <Style Key="RadioGroupStyle"
 	  android:layout_width="fill_parent"
