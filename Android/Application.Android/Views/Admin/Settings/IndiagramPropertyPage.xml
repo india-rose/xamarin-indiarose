@@ -52,197 +52,130 @@
                       />
       </LinearLayout>
     </DataTemplate>
-  <!-- debut des style ajouter par corentin-->
-    <Style Key="IPP_ScrolleStyle"
-        android:layout_weight="1"
+    <!--(android:paddingTop) : To center textview with spinner-->
+    <Style Key="TextViewStyle"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:paddingTop="10dip" 
+           />
+    <Style Key="RelativeTextSpinnerStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           />
+    <Style Key="BindableSpinnerStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+           />
+    <!--(android:textColor="#006FFF") Blue-->
+    <Style Key="CheckBoxStyle"
+            android:textColor="#006FFF"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           />
+           
+  </Resources>
+  <!--Logo-->
+  <ImageView  XmlStyle="{Resource LogoStyle}"
+              android:id="logo"
+              android:layout_alignParentRight="true"/>
+  <!--Middle-->
+  <!--(android:layout_marginBottom="56dip") To let space at button ok & back-->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="65dip"
-           />
-    <Style Key="RelativelayoutStyle"        
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:gravity="center"
-           />
-    <Style Key="IPP_RelativelayoutStyle"
-          android:layout_width="fill_parent"
-          android:layout_height="fill_parent"
-          android:layout_marginLeft="15dip"
-          android:layout_marginTop="20dip"
-     />
-    <Style Key="LinearLayoutStyle"
-      android:paddingLeft="25dip"
-      android:paddingRight="25dip"
-      android:gravity="center"
-      android:orientation="horizontal"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-           />
-    <Style Key="IPP_LinearLayoutStyle"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/logo"
+        android:layout_marginBottom="56dip"
+      >
+      <RelativeLayout
           android:layout_width="match_parent"
           android:layout_height="fill_parent"
-          android:orientation="horizontal" 
-           />
-  <Style Key="IPP_TextViewBlueStyle"
-            android:textColor="#006FFF"
-            android:textSize="15sp"
-            android:textStyle="italic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-         />
-    <Style Key="TextViewBlueStyle"
-            XmlStyle="{Resource IPP_TextViewBlueStyle}"
-            android:layout_marginBottom="7dip"
-            android:layout_marginTop="7dip"
-           />
-
-  <Style Key="BindableSpinerViewStyle"
-            android:layout_width="150dip"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="7dip"
-            android:layout_marginTop="7dip"
-         />
-
-    <Style Key="IPP_BindableSpinerViewStyle"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="7dip"
-            android:layout_width="150dip"
-            android:layout_height="50dip"
-         />
-  <Style Key="CheckBoxStyle"
-            android:layout_marginBottom="7dip"
-            android:layout_marginTop="7dip"
-            android:textColor="#006FFF"
-            android:textSize="14sp" 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-         />
-  <Style Key="IPP_ButtonStyle"
-          android:layout_margin="10dip"
-          android:background="@drawable/buttonpurple"
-          android:textColor="@android:color/white"
-          android:textSize="14sp"
-          android:layout_width="wrap_content"
-          android:layout_height="95dip"
-         />
-  <Style Key="IP_ButtonStyle"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        android:layout_width="match_parent"
-        android:layout_height="55dip"
-        android:layout_marginBottom="4dip"
-        android:layout_marginTop="4dip"
-        android:layout_weight="1"
-         />
-  </Resources>
-
-  <ImageView  XmlStyle="{Resource LogoStyle}" />
-
-
-     <!-- android:id="linear_info" -->
-  <LinearLayout XmlStyle="{Resource IPP_LinearLayoutStyle}">
-<!-- android:id="relative_left" -->
-    <ScrollView XmlStyle="{Resource IPP_ScrolleStyle}">
-
-      <RelativeLayout XmlStyle="{Resource IPP_RelativelayoutStyle}">
-
-        <TextView XmlStyle="{Resource IPP_TextViewBlueStyle}"
-            android:layout_alignParentLeft="true"
+          android:layout_marginLeft="4dip"
+          android:layout_marginRight="4dip"
+        >
+        <RelativeLayout XmlStyle="{Resource RelativeTextSpinnerStyle}"
+            android:id="image_size">
+          <TextView XmlStyle="{Resource TextViewStyle}"
             android:id="text_image_size"
             Text = "{Tr Text, Uid=imageSizeTitle}"
-        />
-
-        <BindableSpinner XmlStyle="{Resource BindableSpinerViewStyle}"
-            android:id="spinnerImageSize"
-            android:layout_below="@+id/text_image_size"
+             />
+          <BindableSpinner XmlStyle="{Resource BindableSpinnerStyle}"
+            android:layout_toRightOf="@id/text_image_size"
             adapter="{Binding IndiagramSize, Template={Resource IndiagramSizeTemplate}}"
             currentItem="{Binding IndiagramSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
-		              />
-
-        <TextView XmlStyle="{Resource TextViewBlueStyle}"
-            android:layout_below="@+id/spinnerImageSize"
-            android:id="text_font_label"
-            Text = "{Tr Text, Uid=fontTitle}"
+		         />
+        </RelativeLayout>
+        <RelativeLayout XmlStyle="{Resource RelativeTextSpinnerStyle}"
+              android:id="font"
+              android:layout_below="@id/image_size">
+          <TextView XmlStyle="{Resource TextViewStyle}"
+              android:id="text_font_label"
+              Text = "{Tr Text, Uid=fontTitle}"
          />
 
-        <BindableSpinner XmlStyle="{Resource IPP_BindableSpinerViewStyle}"
-            android:id="spinnerFont"
-            android:layout_alignLeft="@id/spinnerImageSize"
-            android:layout_below="@id/text_font_label"
-            adapter="{Binding FontName, Template={Resource FontTemplate}}"
-            currentItem="{Binding FontName, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
+          <BindableSpinner XmlStyle="{Resource BindableSpinnerStyle}"
+              android:layout_toRightOf="@id/text_font_label"
+              adapter="{Binding FontName, Template={Resource FontTemplate}}"
+              currentItem="{Binding FontName, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
 					  />
-
-        <TextView XmlStyle="{Resource IPP_TextViewBlueStyle}"
-            android:id="text_font_size"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/text_font_label"
-            Text ="{Tr Text,Uid=fontSizeTitle}"
+        </RelativeLayout>
+        <RelativeLayout XmlStyle="{Resource RelativeTextSpinnerStyle}"
+              android:id="font_size"
+              android:layout_below="@id/font">
+          <TextView XmlStyle="{Resource TextViewStyle}"
+              android:id="text_font_size"
+              Text ="{Tr Text,Uid=fontSizeTitle}"
           />
 
-        <BindableSpinner XmlStyle="{Resource BindableSpinerViewStyle}"
-            android:id="spinnerSizeFont"
-            android:layout_alignLeft="@+id/spinnerImageSize"
-            android:layout_below="@+id/text_font_size"
-            android:layout_toRightOf="@+id/text_font_size"
-            adapter="{Binding FontSize, Template={Resource FontSizeTemplate}}"
-            currentItem="{Binding FontSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
+          <BindableSpinner XmlStyle="{Resource BindableSpinnerStyle}"
+              android:layout_toRightOf="@id/text_font_size"
+              adapter="{Binding FontSize, Template={Resource FontSizeTemplate}}"
+              currentItem="{Binding FontSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
                     />
-
+        </RelativeLayout>
         <CheckBox XmlStyle="{Resource CheckBoxStyle}"
             android:id="checkboxhomecategory"
-            android:layout_below="@id/spinnerSizeFont"
+            android:layout_below="@id/font_size"
             Text ="{Tr Text,Uid=checkboxhomecategory}"
               />
 
         <CheckBox XmlStyle="{Resource CheckBoxStyle}"
-            android:id="checkboxMove"
+            android:id="homecategory"
             android:layout_below="@id/checkboxhomecategory"
             Text =" {Tr Text,Uid=checkboxMove}"
                />
-
-
+        <CheckBox XmlStyle="{Resource CheckBoxStyle}"
+            android:id="checkboxreinforcer"
+            android:layout_below="@id/homecategory"
+            Text ="{Tr Text,Uid=reinforcerReadingLabel}"
+               />
+        <Button XmlStyle="{Resource PurpleButtonStyle}"
+		      android:textColor="@android:color/white"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/checkboxreinforcer"
+          Text="{Tr Text,Uid=reinforcerColorButton}"
+          Click="{Binding ReinforcerColorCommand}"
+              />
       </RelativeLayout>
     </ScrollView>
-
-    <RelativeLayout XmlStyle="{Resource RelativelayoutStyle}"
-        android:id="relative_right" >
-
-      <!--Deuxieme colonne-->
-      <CheckBox XmlStyle="{Resource CheckBoxStyle}"
-          android:id="checkboxreinforcer"
-                Text ="{Tr Text,Uid=reinforcerReadingLabel}"
-               />
-
-      <Button XmlStyle="{Resource IPP_ButtonStyle}"
-          android:id="button_reinforcer_color"
-          android:layout_below="@+id/checkboxreinforcer"
-              Text="{Tr Text,Uid=reinforcerColorButton}"
-          click="{Binding ReinforcerColorCommand}"
-      />
-
-    </RelativeLayout>
-  </LinearLayout>
-  
-  <LinearLayout XmlStyle="{Resource LinearLayoutStyle}"
-      android:id="linear_bottom"
-      android:layout_above="@+id/linear_info"
-      android:layout_alignParentBottom="true"
+  <!--Button Ok & Back-->
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_marginLeft="4dip"
+    android:layout_marginBottom="4dip"
          >
 
-    <Button XmlStyle="{Resource IP_ButtonStyle}"
-        android:id="button_ok"
-        android:background="@drawable/buttongreen"
-            Text="{Tr Text,Uid=okText}"
-        click="{Binding SaveCommand}"/>
+    <Button XmlStyle="{Resource MediumGreenButtonStyle}"
+        Text="{Tr Text,Uid=Button_Ok}"
+        Click="{Binding SaveCommand}"/>
 
-    <Button XmlStyle="{Resource IP_ButtonStyle}"
-        android:id="button_cancel"
-        android:background="@drawable/buttonorange"
+    <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
         Text =" {Tr Text,Uid=Button_Back}"
+        Click="{Binding BackCommand}"
         />
-  
+
   </LinearLayout>
 </RelativeLayout>

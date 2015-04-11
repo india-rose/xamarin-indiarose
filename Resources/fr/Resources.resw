@@ -124,7 +124,7 @@
     <value>Glisser-déposer</value>
   </data>
   <data name="App_Settings_Indiagram_Properties.Text" xml:space="preserve">
-    <value>Propriétés des indiagrams</value>
+    <value>Propriétés des indiagrammes</value>
   </data>
   <data name="App_Settings_Lecture_Category_Properties.Text" xml:space="preserve">
     <value>Lecture des catégories</value>
@@ -211,7 +211,7 @@ Commentaires :</value>
     <value>Stagiaires 2013/2014</value>
   </data>
   <data name="Credits_Trainee2014.Text" xml:space="preserve">
-    <value>Stagiaire 2014/2015</value>
+    <value>Stagiaires 2014/2015</value>
   </data>
   <data name="Credits_TraineeStaff2013.Text" xml:space="preserve">
     <value>Marco Da Cunha Fernandez, Nesrine Brahmi, El Mehdi Fahim, Lisa Deloménie, Erwan Durandet, Florian Blain</value>
@@ -298,7 +298,7 @@ Commentaires :</value>
     <value>Activer la lecture</value>
   </data>
   <data name="RD_buttonOff.Text" xml:space="preserve">
-    <value>Desactiver texte</value>
+    <value>Désactiver texte</value>
   </data>
   <data name="RD_buttonOn.Text" xml:space="preserve">
     <value>Activer texte</value>
@@ -325,10 +325,10 @@ Commentaires :</value>
     <value>Lire le son associé à la catégorie lors de la sélection ?</value>
   </data>
   <data name="Dialogs_reset.Text" xml:space="preserve">
-    <value>Voulez vous reinitialiser les préférences ?</value>
+    <value>Voulez vous réinitialiser les préférences ?</value>
   </data>
   <data name="checkboxhomecategory.Text" xml:space="preserve">
-    <value>Retour au menu d'accueil après sélection d'un indiagram</value>
+    <value>Retour à l'accueil après la sélection d'un indiagramme</value>
   </data>
   <data name="checkboxMove.Text" xml:space="preserve">
     <value>Glisser/déposer</value>
@@ -340,15 +340,12 @@ Commentaires :</value>
     <value>Police</value>
   </data>
   <data name="imageSizeTitle.Text" xml:space="preserve">
-    <value>Taille d'un indiagram</value>
-  </data>
-  <data name="okText.Text" xml:space="preserve">
-    <value>OK</value>
+    <value>Taille d'un indiagramme</value>
   </data>
   <data name="reinforcerColorButton.Text" xml:space="preserve">
-    <value>Changer la couleur du renforcateur</value>
+    <value>Changer la couleur du renforçateur</value>
   </data>
   <data name="reinforcerReadingLabel.Text" xml:space="preserve">
-    <value>Activer le renforcateur lors de la lecture</value>
+    <value>Activer le renforçateur lors de la lecture</value>
   </data>
 </root>

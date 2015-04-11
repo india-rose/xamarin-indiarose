@@ -342,9 +342,6 @@ Comments : </value>
   <data name="imageSizeTitle.Text" xml:space="preserve">
     <value>Size of indiagram</value>
   </data>
-  <data name="okText.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
   <data name="reinforcerColorButton.Text" xml:space="preserve">
     <value>Change reinforcer color</value>
   </data>
