@@ -1,9 +1,11 @@
 #region Usings
 
+using System.Runtime.InteropServices;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
+using Android.Widget;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
 
@@ -21,6 +23,7 @@ namespace IndiaRose.Application.Activities.Admin.Settings
 	    public int BackgroundTopPercentSize
 	    {
             get { return _backgroundTopPercentSize; }
+
 	        set
 	        {
 	            if (SetProperty(ref _backgroundTopPercentSize, value))
@@ -42,18 +45,17 @@ namespace IndiaRose.Application.Activities.Admin.Settings
             ViewGroup.LayoutParams bottom = BottomArea.LayoutParameters;
             bottom.Height = bottomHeight;
 	        BottomArea.LayoutParameters = bottom;
-	    }
+	    } 
 
 	    protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-			SetContentView(Resource.Layout.Admin_Settings_BackgroundColorPage);
-			SetViewModel(Container.Locator.AdminSettingsBackgroundColorViewModel);
 
+			SetContentView(Resource.Layout.Admin_Settings_BackgroundColorPage);
+	        SetViewModel(Container.Locator.AdminSettingsBackgroundColorViewModel);
 
 		    RightLayout.LayoutChange += OnLayoutInitialized;
 		}
-
 		// ReSharper disable UnusedParameter.Local cause of implicit creation of vars
 		private void OnLayoutInitialized(object sender, View.LayoutChangeEventArgs layoutChangeEventArgs)
 		// ReSharper restore UnusedParameter.Local
