@@ -286,7 +286,7 @@ Comments : </value>
     <value>Size of indiagram :</value>
   </data>
   <data name="Indiagram_property_imageSizeTitle.Text" xml:space="preserve">
-    <value>Size of indiagram</value>
+    <value>Size of indiagram :</value>
   </data>
   <data name="Button_Ok.Text" xml:space="preserve">
     <value>Ok</value>
@@ -328,9 +328,9 @@ Comments : </value>
     <value>Do you want to reset preferences ?</value>
   </data>
   <data name="fontSizeTitle.Text" xml:space="preserve">
-    <value>Font size</value>
+    <value>Font size :</value>
   </data>
   <data name="fontTitle.Text" xml:space="preserve">
-    <value>Font</value>
+    <value>Font :</value>
   </data>
 </root>
