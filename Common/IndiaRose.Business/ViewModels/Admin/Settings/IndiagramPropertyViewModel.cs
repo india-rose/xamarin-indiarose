@@ -40,6 +40,22 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 		private int _fontSize;
 		private ColorContainer _reinforcerColor;
 
+	    public bool BackAfterSelection
+	    {
+            get { return SettingsService.IsBackHomeAfterSelectionEnabled ; }
+	        set { SettingsService.IsBackHomeAfterSelectionEnabled=value; }
+	    }
+        public bool DragAndDrop
+        {
+            get { return SettingsService.IsDragAndDropEnabled; }
+            set { SettingsService.IsDragAndDropEnabled = value; }
+        }
+        public bool ReinforcerEnabled
+        {
+            get { return SettingsService.IsReinforcerEnabled; }
+            set { SettingsService.IsReinforcerEnabled = value; }
+        }
+
 		public ColorContainer ReinforcerColor
 		{
 			get { return _reinforcerColor; }
@@ -121,7 +137,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 			SettingsService.ReinforcerColor = ReinforcerColor.Color;
 
 			base.SaveAction();
-            base.BackAction();
+            BackAction();
 		}
     }
 }

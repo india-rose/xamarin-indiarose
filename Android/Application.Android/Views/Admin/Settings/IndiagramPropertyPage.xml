@@ -135,20 +135,22 @@
                     />
         </RelativeLayout>
         <CheckBox XmlStyle="{Resource CheckBoxStyle}"
-            android:id="checkboxhomecategory"
+            android:id="homecategory"
             android:layout_below="@id/font_size"
             Text ="{Tr Text,Uid=Indiagram_property_checkboxhomecategory}"
+            checked="{Binding BackAfterSelection,Mode=TwoWay, UpdateEvent=CheckedChange}"
               />
-
         <CheckBox XmlStyle="{Resource CheckBoxStyle}"
-            android:id="homecategory"
-            android:layout_below="@id/checkboxhomecategory"
+            android:id="draganddrop"
+            android:layout_below="@id/homecategory"
             Text =" {Tr Text,Uid=Indiagram_property_checkboxMove}"
+            checked="{Binding DragAndDrop,Mode=TwoWay, UpdateEvent=CheckedChange}"
                />
         <CheckBox XmlStyle="{Resource CheckBoxStyle}"
             android:id="checkboxreinforcer"
-            android:layout_below="@id/homecategory"
+            android:layout_below="@id/draganddrop"
             Text ="{Tr Text,Uid=Indiagram_property_reinforcerReadingLabel}"
+            checked="{Binding ReinforcerEnabled,Mode=TwoWay, UpdateEvent=CheckedChange}"
                />
         <Button XmlStyle="{Resource PurpleButtonStyle}"
 		      android:textColor="@android:color/white"

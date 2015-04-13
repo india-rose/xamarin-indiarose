@@ -121,8 +121,9 @@ namespace IndiaRose.Services
 		public SettingsService(IContainer container)
 		{
 			_container = container;
-
+            LoadAsync();
 			PropertyChanged += OnAnyValueChanged;
+		    
 		}
 
 		private void OnAnyValueChanged(object sender, PropertyChangedEventArgs e)
