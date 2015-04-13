@@ -327,25 +327,10 @@ Comments : </value>
   <data name="Dialogs_reset.Text" xml:space="preserve">
     <value>Do you want to reset preferences ?</value>
   </data>
-  <data name="checkboxhomecategory.Text" xml:space="preserve">
-    <value>Back to home after picking indiagram</value>
-  </data>
-  <data name="checkboxMove.Text" xml:space="preserve">
-    <value>Drag and drop</value>
-  </data>
   <data name="fontSizeTitle.Text" xml:space="preserve">
     <value>Font size</value>
   </data>
   <data name="fontTitle.Text" xml:space="preserve">
     <value>Font</value>
-  </data>
-  <data name="imageSizeTitle.Text" xml:space="preserve">
-    <value>Size of indiagram</value>
-  </data>
-  <data name="reinforcerColorButton.Text" xml:space="preserve">
-    <value>Change reinforcer color</value>
-  </data>
-  <data name="reinforcerReadingLabel.Text" xml:space="preserve">
-    <value>Reading reinforcer enabl</value>
   </data>
 </root>
