@@ -91,8 +91,8 @@
     <!--First column-->
     <ScrollView
         android:layout_weight="1"
-        android:layout_marginTop="4dip"
-        android:layout_marginLeft="4dip"
+        android:layout_marginTop="20dip"
+        android:layout_marginLeft="20dip"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
              >
@@ -133,44 +133,50 @@
               currentItem="{Binding FontSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
                     />
         <CheckBox XmlStyle="{Resource CheckBoxStyle}"
-            android:id="homecategory"
             android:layout_below="@id/spin_font_size"
             Text ="{Tr Text,Uid=Indiagram_property_checkboxhomecategory}"
             checked="{Binding BackAfterSelection,Mode=TwoWay, UpdateEvent=CheckedChange}" />
-        
-        <CheckBox XmlStyle="{Resource CheckBoxStyle}"
-            android:id="draganddrop"
-            android:layout_below="@id/homecategory"
-            Text =" {Tr Text,Uid=Indiagram_property_checkboxMove}"
-            checked="{Binding DragAndDrop,Mode=TwoWay, UpdateEvent=CheckedChange}" />
-        
-        <CheckBox XmlStyle="{Resource CheckBoxStyle}"
-            android:id="checkboxreinforcer"
-            android:layout_below="@id/draganddrop"
-            Text ="{Tr Text,Uid=Indiagram_property_reinforcerReadingLabel}"
-            checked="{Binding ReinforcerEnabled,Mode=TwoWay, UpdateEvent=CheckedChange}" />
-         <Button XmlStyle="{Resource PurpleButtonStyle}"
-		        android:textColor="@android:color/white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/checkboxreinforcer"
-            Text="{Tr Text,Uid=Indiagram_Property_reinforcerColorButton}"
-            Click="{Binding ReinforcerColorCommand}"
-              />
       </RelativeLayout>
     </ScrollView>
     <!--Second column-->
     <RelativeLayout
-        android:id="relative_right"
+        android:layout_below="@id/logo"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_gravity="center"
-        android:layout_below="@id/logo"
         android:layout_weight="1"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="50dip"
+        >
+          <View
+            android:id="Border"
+            android:layout_width="55dip"
+            android:layout_height="55dip"
+            android:background="#FFFFFF"
+            />
+          <View
+            android:id="Square"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:background="#FF0000"
+            />
 
-        
-    
+      <CheckBox XmlStyle="{Resource CheckBoxStyle}"
+          android:id="checkboxreinforcer"
+          android:layout_below="@id/Square"
+          Text ="{Tr Text,Uid=Indiagram_property_reinforcerReadingLabel}"
+          checked="{Binding ReinforcerEnabled,Mode=TwoWay, UpdateEvent=CheckedChange}" />
+      <Button XmlStyle="{Resource PurpleButtonStyle}"
+         android:textColor="@android:color/white"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@id/checkboxreinforcer"
+         android:layout_marginLeft="8dip"
+         android:layout_marginRight="8dip"
+         android:textSize="14sp"
+         Text="{Tr Text,Uid=Indiagram_Property_reinforcerColorButton}"
+         Click="{Binding ReinforcerColorCommand}"
+              />
     </RelativeLayout>
   </LinearLayout>
   <!--Button Ok & Back-->

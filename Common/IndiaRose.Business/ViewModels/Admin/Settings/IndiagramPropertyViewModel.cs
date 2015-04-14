@@ -88,40 +88,40 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 
 		public ICommand ReinforcerColorCommand { get; private set; }
 
-		public IndiagramPropertyViewModel(IContainer container) : base(container)
-		{
-			ReinforcerColorCommand = new DelegateCommand(ReInforcerColorAction);
+	    public IndiagramPropertyViewModel(IContainer container) : base(container)
+	    {
+	        ReinforcerColorCommand = new DelegateCommand(ReInforcerColorAction);
 
-			ReinforcerColor = new ColorContainer
-			{
-				Color = SettingsService.ReinforcerColor
-			};
+	        ReinforcerColor = new ColorContainer
+	        {
+	            Color = SettingsService.ReinforcerColor
+	        };
 
-			IndiagramSizes = new ObservableCollection<int>();
-			//TODO : refactor to limit indiagram size with the height of the screen
-			foreach (int size in new[] { 32, 48, 64, 80, 128, 160, 200, 256, 280, 300 })
-			{
-				IndiagramSizes.Add(size);
-			}
-			IndiagramSize = SettingsService.IndiagramDisplaySize;
+	        IndiagramSizes = new ObservableCollection<int>();
+	        //TODO : refactor to limit indiagram size with the height of the screen
+	        foreach (int size in new[] {32, 48, 64, 80, 128, 160, 200, 256, 280, 300})
+	        {
+	            IndiagramSizes.Add(size);
+	        }
+	        IndiagramSize = SettingsService.IndiagramDisplaySize;
 
-			FontSizes = new ObservableCollection<int>();
-			foreach (int size in new[] { 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 })
-			{
-				FontSizes.Add(size);
-			}
-			FontSize = SettingsService.FontSize;
+	        FontSizes = new ObservableCollection<int>();
+	        foreach (int size in new[] {8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32})
+	        {
+	            FontSizes.Add(size);
+	        }
+	        FontSize = SettingsService.FontSize;
 
-			FontNames = new ObservableCollection<string>();
-            IFontService fontService = Container.Resolve<IFontService>();
-            foreach(string font in fontService.FontList.Keys)
-            {
-                FontNames.Add(font);
-            }
-            FontName = SettingsService.FontName;
-		}
+	        FontNames = new ObservableCollection<string>();
+	        IFontService fontService = Container.Resolve<IFontService>();
+	        foreach (string font in fontService.FontList.Keys)
+	        {
+	            FontNames.Add(font);
+	        }
+	        FontName = SettingsService.FontName;
+	    }
 
-		private void ReInforcerColorAction()
+	    private void ReInforcerColorAction()
 		{
 			MessageDialogService.Show(Business.Dialogs.ADMIN_SETTINGS_COLORPICKER, new Dictionary<string, object>
 			{
