@@ -103,7 +103,7 @@
     />
     
     <Style Key="Linear2"
-       android:layout_width="match_parent"
+      android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
       android:orientation="vertical"
@@ -149,13 +149,14 @@
 
     <View XmlStyle="{Resource View}"
           android:id="TopArea"
-          android:background="{Binding SettingsService.TopBackgroundColor, Converter={Resource IntToColorConverter}}"
-        click="{Binding TopAreaColorCommand}"/>
+          background="{Binding TopColor, Converter={Resource IntToColorConverter}}"
+          click="{Binding TopAreaColorCommand}"/>
 
     <View XmlStyle="{Resource View}"
           android:id="BottomArea"
-          background="{Binding SettingsService.BottomBackgroundColor, Converter={Resource IntToColorConverter}}"
-        click="{Binding BottomAreaColorCommand}"/>
+          background="{Binding BottomColor, Converter={Resource IntToColorConverter}}"
+          click="{Binding BottomAreaColorCommand}"/>
+    
   </LinearLayout>
 
 </LinearLayout>

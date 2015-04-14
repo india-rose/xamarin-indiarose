@@ -13,21 +13,21 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 {
 	public class ColorPickerViewModel : ViewModelBase
 	{
-		public const string COLOR_CONTAINER_PARAMETER = "ColorContainer";
+		public const string COLOR_CONTAINER_PARAMETER = "Color";
 
 		#region Properties
 
-		private string _currentColor;
-		private string _oldColor;
+        private ColorContainer _currentColor;
+        private ColorContainer _oldColor;
 		private ColorContainer _color;
 
-		public string CurrentColor
+        public ColorContainer CurrentColor
 		{
 			get { return _currentColor; }
 			set { SetProperty(ref _currentColor, value); }
 		}
 
-		public string OldColor
+        public ColorContainer OldColor
 		{
 			get { return _oldColor; }
 			set { SetProperty(ref _oldColor, value); }
@@ -42,8 +42,14 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 				_color = value;
 				if (_color != null)
 				{
-					OldColor = _color.Color;
-					CurrentColor = _color.Color;
+                    OldColor = new ColorContainer()
+                    {
+                        Color = _color.Color,
+                    };
+                    CurrentColor = new ColorContainer()
+                    {
+                        Color = _color.Color,
+                    };
 				}
 			}
 		}
@@ -60,7 +66,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 		{
 			if (Color != null)
 			{
-				Color.Color = CurrentColor;
+				Color.Color = CurrentColor.Color;
 			}
 		}
 	}
