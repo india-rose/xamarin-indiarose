@@ -7,13 +7,13 @@
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:conv="using:Storm.Mvvm.Converters"
-    xmlns:conv2="using:IndiaRose.Framework.Converters"
+    xmlns:colorConverters="using:IndiaRose.Framework.Converters"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal" >
 
   <Resources>
-    <conv2:ColorConverter Key="IntToColorConverter" />
+    <colorConverters:ColorStringToDrawableColor Key="ColorStringToDrawableColor" />
     
   <Style Key="RelativeStyle"
       android:layout_width="match_parent"
@@ -149,12 +149,12 @@
 
     <View XmlStyle="{Resource View}"
           android:id="TopArea"
-          background="{Binding TopColor, Converter={Resource IntToColorConverter}}"
+          background="{Binding TopColor.Color, Converter={Resource ColorStringToDrawableColor}}"
           click="{Binding TopAreaColorCommand}"/>
 
     <View XmlStyle="{Resource View}"
           android:id="BottomArea"
-          background="{Binding BottomColor, Converter={Resource IntToColorConverter}}"
+          background="{Binding BottomColor.Color, Converter={Resource ColorStringToDrawableColor}}"
           click="{Binding BottomAreaColorCommand}"/>
     
   </LinearLayout>

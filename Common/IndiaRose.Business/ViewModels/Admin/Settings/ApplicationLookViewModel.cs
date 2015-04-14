@@ -77,6 +77,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 		    CurrentSize = SettingsService.SelectionAreaHeight;
 			BottomColor = new ColorContainer
 			{
+                // sa a l'aire d etre diese verdammt de constructeur qui pose probleme
 				Color = SettingsService.BottomBackgroundColor
 			};
 			TopColor = new ColorContainer
@@ -89,6 +90,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 		{
 			MessageDialogService.Show(Business.Dialogs.ADMIN_SETTINGS_COLORPICKER, new Dictionary<string, object>
 			{
+                // try avec a la place de BottomColor appelle a la BackgroundsActivity.cs mauvaise idéz
+                // pourquoi tu recoi un null abgedorshen
 				{ColorPickerViewModel.COLOR_CONTAINER_PARAMETER, BottomColor}
 			});
 		}
