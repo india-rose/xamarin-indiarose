@@ -10,8 +10,8 @@ using Storm.Mvvm.Framework.ColorPicker;
 namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
 {
 	[BindingElement(Path = "SaveCommand", TargetPath = "PositiveButtonEvent")]
-	[BindingElement(Path = "CurrentColor", TargetPath = "CurrentColor", Mode = BindingMode.TwoWay, Converter = typeof(ColorConverter))]
-    [BindingElement(Path = "OldColor", TargetPath = "OldColor", Converter = typeof(ColorConverter))]
+	[BindingElement(Path = "CurrentColor", TargetPath = "CurrentColor", Mode = BindingMode.TwoWay, Converter = typeof(ColorStringToIntConverter))]
+    [BindingElement(Path = "OldColor", TargetPath = "OldColor", Converter = typeof(ColorStringToIntConverter))]
 	public partial class ColorPickerDialog : AbstractColorPickerDialog
 	{
 		protected override ViewModelBase CreateViewModel()

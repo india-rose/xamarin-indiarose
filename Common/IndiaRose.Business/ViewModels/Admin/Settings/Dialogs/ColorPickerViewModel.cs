@@ -17,17 +17,17 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 
 		#region Properties
 
-        private ColorContainer _currentColor;
-        private ColorContainer _oldColor;
+        private string _currentColor;
+        private string _oldColor;
 		private ColorContainer _color;
-
-        public ColorContainer CurrentColor
+        // ici si on rajoute un ," " au cette propertie le pickcolor aparai mais linké a rien abracadabra
+        public string CurrentColor
 		{
 			get { return _currentColor; }
-			set { SetProperty(ref _currentColor, value); }
+            set { SetProperty(ref _currentColor, value); }
 		}
 
-        public ColorContainer OldColor
+        public string OldColor
 		{
 			get { return _oldColor; }
 			set { SetProperty(ref _oldColor, value); }
@@ -42,14 +42,12 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 				_color = value;
 				if (_color != null)
 				{
-                    OldColor = new ColorContainer()
-                    {
-                        Color = _color.Color,
-                    };
-                    CurrentColor = new ColorContainer()
-                    {
-                        Color = _color.Color,
-                    };
+				    OldColor = _color.Color;
+				    CurrentColor = _color.Color;
+				}
+				else
+				{
+				    OldColor = CurrentColor = "#FF000000";
 				}
 			}
 		}
@@ -66,8 +64,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 		{
 			if (Color != null)
 			{
-				Color.Color = CurrentColor.Color;
+				Color.Color = CurrentColor;
 			}
 		}
+
 	}
 }
