@@ -21,12 +21,12 @@
 
     <RadioButton XmlStyle="{Resource RadioButtonStyle}"
         Text="{Tr Text, Uid=RD_buttonOn}"
-		    checked="{Binding IsDisabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
+		    checked="{Binding IsEnabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
     />
 
     <RadioButton XmlStyle="{Resource RadioButtonStyle}"
         Text="{Tr Text, Uid=RD_buttonOff}"
-        checked="{Binding IsEnabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
+        checked="{Binding IsDisabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
     />
   </RadioGroup>
 

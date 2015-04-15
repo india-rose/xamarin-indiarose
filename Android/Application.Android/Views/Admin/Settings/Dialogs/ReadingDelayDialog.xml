@@ -41,6 +41,10 @@
   
   <LinearLayout XmlStyle="{Resource RDDLinearLayoutStyle}">
     
+    <TextView XmlStyle="{Resource DialogText}"
+          Text="{Tr Text, Uid=DDDialog_Text}"
+    />
+    
     <SeekBar XmlStyle="{Resource RDDSeekBarStyle}"
 			 progress="{Binding CurrentValue, Mode=TwoWay, UpdateEvent=ProgressChanged}"
 			/>
