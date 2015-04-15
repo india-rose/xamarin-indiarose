@@ -277,7 +277,7 @@ Commentaires :</value>
     <value>Annuler</value>
   </data>
   <data name="Indiagram_property_checkboxhomecategory.Text" xml:space="preserve">
-    <value>Retourner à l'accueil</value>
+    <value>Retourner à l'accueil après la sélection d'un indiagramme</value>
   </data>
   <data name="Indiagram_property_checkboxMove.Text" xml:space="preserve">
     <value>Glisser-déposer</value>
@@ -292,10 +292,10 @@ Commentaires :</value>
     <value>Ok</value>
   </data>
   <data name="Indiagram_Property_reinforcerColorButton.Text" xml:space="preserve">
-    <value>Changer la couleur de renfort</value>
+    <value>Changer la couleur de la bordure</value>
   </data>
   <data name="Indiagram_property_reinforcerReadingLabel.Text" xml:space="preserve">
-    <value>Activer le renforcateur lors de la lecture.</value>
+    <value>Activer la bordure lors de la lecture.</value>
   </data>
   <data name="RD_buttonOff.Text" xml:space="preserve">
     <value>Désactiver texte</value>
