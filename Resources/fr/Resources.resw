@@ -336,7 +336,10 @@ Commentaires :</value>
   <data name="Credits_TeamAndroid2013.Text" xml:space="preserve">
     <value>Equipe Android - 2013</value>
   </data>
-  <data name="RD_inf.Text" xml:space="preserve">
+  <data name="DDDial_Text.Text" xml:space="preserve">
     <value>Glisser-déposer</value>
+  </data>
+  <data name="CDRDial_Text.Text" xml:space="preserve">
+    <value>Si vous activez cette option, les catégories seront lues par l'application lors de la sélection.</value>
   </data>
 </root>
