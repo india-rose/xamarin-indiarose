@@ -20,7 +20,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
         private string _currentColor;
         private string _oldColor;
 		private ColorContainer _color;
-        // ici si on rajoute un ," " au cette propertie le pickcolor aparai mais linké a rien abracadabra
+
         public string CurrentColor
 		{
 			get { return _currentColor; }
