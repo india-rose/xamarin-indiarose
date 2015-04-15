@@ -345,4 +345,7 @@ Commentaires :</value>
   <data name="DDDialog_Text.Text" xml:space="preserve">
     <value>Modifier le délai entre deux mots</value>
   </data>
+  <data name="ColorPicker_title.Text" xml:space="preserve">
+    <value>Choisissez une couleur</value>
+  </data>
 </root>
