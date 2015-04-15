@@ -139,6 +139,7 @@
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values-v11\styles.xml" />
     <AndroidResource Include="Resources\values-v14\styles.xml" />
+    <AndroidResource Include="Resources\drawable\tab.png" />
     <Content Include="Views\Admin\Settings\Dialogs\CategoryReadingDialog.xml" />
     <Content Include="Views\Admin\Settings\Dialogs\DragAndDropDialog.xml" />
     <Content Include="Views\Admin\Settings\IndiagramPropertyPage.xml" />
