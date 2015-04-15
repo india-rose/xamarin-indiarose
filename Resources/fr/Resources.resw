@@ -295,7 +295,7 @@ Commentaires :</value>
     <value>Changer la couleur de renfort</value>
   </data>
   <data name="Indiagram_property_reinforcerReadingLabel.Text" xml:space="preserve">
-    <value>Activer la lecture</value>
+    <value>Activer le renforcateur lors de la lecture.</value>
   </data>
   <data name="RD_buttonOff.Text" xml:space="preserve">
     <value>Désactiver texte</value>
