@@ -298,10 +298,10 @@ Comments : </value>
     <value>Reading reinforcer enable</value>
   </data>
   <data name="RD_buttonOff.Text" xml:space="preserve">
-    <value>Disable text</value>
+    <value>Disabled</value>
   </data>
   <data name="RD_buttonOn.Text" xml:space="preserve">
-    <value>Enable text</value>
+    <value>Enabled</value>
   </data>
   <data name="Server_Synchro_Start.Text" xml:space="preserve">
     <value>Synchronization of properties with server ...\nPlease wait !</value>
@@ -341,5 +341,8 @@ Comments : </value>
   </data>
   <data name="CDRDial_Text.Text" xml:space="preserve">
     <value>If you activate this option, the categories will be read by the application during the selection.</value>
+  </data>
+  <data name="DDDialog_Text.Text" xml:space="preserve">
+    <value>Modify the delay between two words</value>
   </data>
 </root>

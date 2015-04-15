@@ -298,10 +298,10 @@ Commentaires :</value>
     <value>Activer la bordure lors de la lecture.</value>
   </data>
   <data name="RD_buttonOff.Text" xml:space="preserve">
-    <value>Désactiver texte</value>
+    <value>Désactiver</value>
   </data>
   <data name="RD_buttonOn.Text" xml:space="preserve">
-    <value>Activer texte</value>
+    <value>Activer</value>
   </data>
   <data name="Server_Synchro_Start.Text" xml:space="preserve">
     <value>Synchronisation des paramètres avec le serveur ...\nVeuillez patentier !</value>
@@ -341,5 +341,8 @@ Commentaires :</value>
   </data>
   <data name="CDRDial_Text.Text" xml:space="preserve">
     <value>Si vous activez cette option, les catégories seront lues par l'application lors de la sélection.</value>
+  </data>
+  <data name="DDDialog_Text.Text" xml:space="preserve">
+    <value>Modifier le délai entre deux mots</value>
   </data>
 </root>
