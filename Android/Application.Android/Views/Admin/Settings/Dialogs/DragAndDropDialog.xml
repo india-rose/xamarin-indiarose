@@ -12,16 +12,29 @@
   android:paddingLeft="50dip"
   android:paddingRight="50dip" >
 
+  <Resources>
+    <Style Key="Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"    
+    />
+  </Resources>
+
   <RadioGroup XmlStyle="{Resource RadioGroupStyle}">
+    
+      <TextView XmlStyle="{Resource Text}"
+         Text="{Tr Text, Uid=RD_inf}"
+     />
 
     <RadioButton XmlStyle="{Resource RadioButtonStyle}"
         Text="{Tr Text, Uid=RD_buttonOn}"
-		    checked="{Binding IsEnabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
+		    checked="{Binding IsDisabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
     />
 
     <RadioButton XmlStyle="{Resource RadioButtonStyle}"
         Text="{Tr Text, Uid=RD_buttonOff}"
-		    checked="{Binding IsDisabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
+        checked="{Binding IsEnabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
     />
   </RadioGroup>
 

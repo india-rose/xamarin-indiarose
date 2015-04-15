@@ -336,4 +336,7 @@ Comments : </value>
   <data name="Credits_TeamAndroid2013.Text" xml:space="preserve">
     <value>Team Android - 2013</value>
   </data>
+  <data name="RD_inf.Text" xml:space="preserve">
+    <value>Drag and Drop</value>
+  </data>
 </root>
