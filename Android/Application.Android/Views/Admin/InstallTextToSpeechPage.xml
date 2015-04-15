@@ -34,7 +34,7 @@
         android:layout_centerVertical="true"
         android:minWidth="70dip"
         android:textColor="@android:color/white"
-        android:textSize="20sp" 
+        android:textSize="30sp" 
         />
 	<Style Key= "ITTSPTextViewStyle"
         android:layout_width="wrap_content"
