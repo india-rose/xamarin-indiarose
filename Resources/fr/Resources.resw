@@ -325,7 +325,7 @@ Commentaires :</value>
     <value>Lire le son associé à la catégorie lors de la sélection ?</value>
   </data>
   <data name="Dialogs_reset.Text" xml:space="preserve">
-    <value>Voulez vous réinitialiser les préférences ?</value>
+    <value>Voulez vous réinitialiser les paramètres (ne concerne pas la collection) ?</value>
   </data>
   <data name="fontSizeTitle.Text" xml:space="preserve">
     <value>Taille de la police</value>

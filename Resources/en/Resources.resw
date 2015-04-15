@@ -325,7 +325,7 @@ Comments : </value>
     <value>Play sound associated with the category when selecting ?</value>
   </data>
   <data name="Dialogs_reset.Text" xml:space="preserve">
-    <value>Do you want to reset preferences ?</value>
+    <value>Do you want to reset the settings (not the collection)?</value>
   </data>
   <data name="fontSizeTitle.Text" xml:space="preserve">
     <value>Font size :</value>
