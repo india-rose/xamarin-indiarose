@@ -39,21 +39,18 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 		private int _indiagramSize;
 		private int _fontSize;
 		private ColorContainer _reinforcerColor;
+		private bool _backAfterSelection;
+		private bool _reinforcerEnabled;
 
 	    public bool BackAfterSelection
 	    {
-            get { return SettingsService.IsBackHomeAfterSelectionEnabled ; }
-	        set { SettingsService.IsBackHomeAfterSelectionEnabled=value; }
+            get { return _backAfterSelection; }
+	        set { SetProperty(ref _backAfterSelection, value); }
 	    }
-        public bool DragAndDrop
-        {
-            get { return SettingsService.IsDragAndDropEnabled; }
-            set { SettingsService.IsDragAndDropEnabled = value; }
-        }
         public bool ReinforcerEnabled
         {
-            get { return SettingsService.IsReinforcerEnabled; }
-            set { SettingsService.IsReinforcerEnabled = value; }
+            get { return _reinforcerEnabled; }
+			set { SetProperty(ref _reinforcerEnabled, value); }
         }
 
 		public ColorContainer ReinforcerColor
@@ -96,6 +93,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 	        {
 	            Color = SettingsService.ReinforcerColor
 	        };
+		    ReinforcerEnabled = SettingsService.IsReinforcerEnabled;
+		    BackAfterSelection = SettingsService.IsBackHomeAfterSelectionEnabled;
 
 	        IndiagramSizes = new ObservableCollection<int>();
 	        //TODO : refactor to limit indiagram size with the height of the screen

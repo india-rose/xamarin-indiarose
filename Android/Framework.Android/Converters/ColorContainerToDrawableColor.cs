@@ -27,7 +27,7 @@ namespace IndiaRose.Framework.Converters
 	        }
 	        catch (Exception)
 	        {
-		        return null;
+		        return new ColorDrawable(Color.Transparent);
 	        }
         }
 

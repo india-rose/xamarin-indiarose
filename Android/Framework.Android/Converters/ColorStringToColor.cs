@@ -6,7 +6,7 @@ using Android.Graphics.Drawables;
 
 namespace IndiaRose.Framework.Converters
 {
-    public class ColorStringToDrawableColor : IValueConverter
+    public class ColorStringToColor : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -14,12 +14,11 @@ namespace IndiaRose.Framework.Converters
 
 	        try
 	        {
-				Color colorResult = Color.ParseColor(colorString);
-		        return new ColorDrawable(colorResult);
+				return Color.ParseColor(colorString);
 	        }
 	        catch (Exception)
 	        {
-		        return new ColorDrawable(Color.Transparent);
+		        return Color.Transparent;
 	        }
         }
 
