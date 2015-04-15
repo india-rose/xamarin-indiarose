@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
+ */
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white" >
+  <Resources>
+
+  </Resources>
+  <LinearLayout>
+    <ImageView XmlStyle="{Resource LogoStyle}" />
+  </LinearLayout>
+  <RelativeLayout
+    android:id="@+id/Relative"
+    android:background="@color/blue">
+    <!-- on vera -->
+  </RelativeLayout>
+  <RelativeLayout
+    android:layout_below="@id/Relative">
+
+    <Button XmlStyle="{Resource MediumBlueButtonStyle}"
+      Text="{Tr Text,Uid=SelectionIndiagramsHome}"
+      Click="{Binding SaveCommand}"
+      />
+    
+    <Button XmlStyle="{Resource MediumGreenButtonStyle}"
+      Text="{Tr Text,Uid=SelectionIndiagramsAdd}"
+      Click="{Binding SaveCommand}"
+      />
+
+    <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
+        Text =" {Tr Text,Uid=SelectionIndiagramsNext"
+        Click="{Binding BackCommand}"
+        />
+    
+  </RelativeLayout>
+  
+</RelativeLayout>
+

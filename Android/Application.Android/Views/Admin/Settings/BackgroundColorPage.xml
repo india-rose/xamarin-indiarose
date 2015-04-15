@@ -152,6 +152,7 @@
     > 
     
       <View
+        
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="TopArea"
@@ -159,6 +160,7 @@
             click="{Binding TopAreaColorCommand}"/>
 
       <View
+        
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="BottomArea"
