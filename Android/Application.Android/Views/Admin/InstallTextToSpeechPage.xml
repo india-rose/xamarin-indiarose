@@ -74,12 +74,6 @@
         click="{Binding EnableVoiceSynthesisEngineCommand}"/>
   </RelativeLayout>
 
-  <RelativeLayout XmlStyle="{Resource RelativeLayoutStyle}">
-  <Button XmlStyle="{Resource ITTSPButtonStyle}"
-        android:background="@drawable/buttonorange"
-        Text="{Tr Text, Uid=Button_Back}"
-        click="{Binding BackCommand}"/>
-  </RelativeLayout>
 
 
 </LinearLayout>
