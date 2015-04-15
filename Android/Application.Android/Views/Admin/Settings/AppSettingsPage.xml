@@ -57,11 +57,6 @@
               Click="{Binding ResetSettingsCommand}" />
     </LinearLayout>
 
-    <LinearLayout XmlStyle="{Resource ButtonLineStyle}" >
-      <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
-              Text="{Tr Text,Uid=Button_Back}"
-              Click="{Binding BackCommand}"/>
-    </LinearLayout>
   </LinearLayout>
 
 
