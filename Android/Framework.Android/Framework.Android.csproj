@@ -41,6 +41,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Converters\ColorContainerToColor.cs" />
+    <Compile Include="Converters\ColorStringToColor.cs" />
     <Compile Include="Converters\ColorStringToIntConverter.cs" />
     <Compile Include="Converters\ColorStringToDrawableColor.cs" />
     <Compile Include="Converters\ColorContainerToIntConverter.cs" />

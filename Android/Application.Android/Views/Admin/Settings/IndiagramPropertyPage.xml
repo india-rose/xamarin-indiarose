@@ -143,8 +143,7 @@
       </RelativeLayout>
     </ScrollView>
     <!--Second column-->
-    <RelativeLayout
-        android:id="second_column"
+		<RelativeLayout android:id="second_column"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_gravity="center"
@@ -153,26 +152,27 @@
         android:layout_marginTop="50dip"
         android:background="@android:color/white"
         >
-      <RelativeLayout
-        background="{Binding ReinforcerColor.Color, Converter={Resource ColorStringToDrawableColor}}"
-      	android:layout_height="wrap_content"
-    	  android:layout_width="wrap_content"
+			<RelativeLayout android:layout_height="wrap_content"
+							android:layout_width="fill_parent"
     	      android:gravity="center"
     	      android:layout_gravity="center"
-        android:id="Border"
+							android:id="PreviewContainer"
     	  >
-         <ImageView
-    	      android:src="@raw/playbutton"
+				<View android:id="ReinforcerArea"
+					  android:layout_width="wrap_content"
     	      android:layout_height="wrap_content"
+					  android:layout_centerInParent="true"
+					  />
+				<View android:id="IndiagramArea"
     	      android:layout_width="wrap_content"
-    	      android:gravity="center"
-    	      android:layout_gravity="center"
-            android:id="Square"
+					  android:layout_height="wrap_content"
+					  android:layout_centerInParent="true"
     	    />
     	</RelativeLayout>
+			
       <CheckBox XmlStyle="{Resource CheckBoxStyle}"
           android:id="checkboxreinforcer"
-          android:layout_below="@id/Border"
+					  android:layout_below="@id/PreviewContainer"
           Text ="{Tr Text,Uid=Indiagram_property_reinforcerReadingLabel}"
           checked="{Binding ReinforcerEnabled,Mode=TwoWay, UpdateEvent=CheckedChange}" />
       <Button XmlStyle="{Resource PurpleButtonStyle}"

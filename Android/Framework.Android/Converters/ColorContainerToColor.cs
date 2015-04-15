@@ -2,24 +2,30 @@ using System;
 using System.Globalization;
 using System.Windows.Data;
 using Android.Graphics;
-using Android.Graphics.Drawables;
+using IndiaRose.Data.UIModel;
 
 namespace IndiaRose.Framework.Converters
 {
-    public class ColorStringToDrawableColor : IValueConverter
+    public class ColorContainerToColor : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string colorString = value as string;
+	        ColorContainer colorContainer = value as ColorContainer;
+
+	        if (colorContainer == null)
+	        {
+		        return null;
+	        }
+
+	        string colorString = colorContainer.Color;
 
 	        try
 	        {
-				Color colorResult = Color.ParseColor(colorString);
-		        return new ColorDrawable(colorResult);
+				return Color.ParseColor(colorString);
 	        }
 	        catch (Exception)
 	        {
-		        return new ColorDrawable(Color.Transparent);
+		        return Color.Transparent;
 	        }
         }
 
