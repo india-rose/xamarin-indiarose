@@ -69,10 +69,6 @@
 					Text="{Tr Text, Uid=Home_Contact}"
 					Click="{Binding ContactCommand}"
 					/>
-			<Button XmlStyle="{Resource MediumOrangeButtonStyle}"
-					Text="{Tr Exit, Uid=Exit}"
-					Click="{Binding ExitCommand}"
-					/>
 			<Button XmlStyle="{Resource SmallPurpleButtonStyle}"
 					Text="{Tr Text, Uid=Home_Credits}"
 					Click="{Binding CreditsCommand}"
