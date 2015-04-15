@@ -333,4 +333,7 @@ Commentaires :</value>
   <data name="fontTitle.Text" xml:space="preserve">
     <value>Police</value>
   </data>
+  <data name="Credits_TeamAndroid2013.Text" xml:space="preserve">
+    <value>Equipe Android - 2013</value>
+  </data>
 </root>
