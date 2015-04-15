@@ -348,4 +348,13 @@ Commentaires :</value>
   <data name="ColorPicker_title.Text" xml:space="preserve">
     <value>Choisissez une couleur</value>
   </data>
+  <data name="SelectionIndiagramsAdd.Text" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="SelectionIndiagramsHome.Text" xml:space="preserve">
+    <value>Acceuil</value>
+  </data>
+  <data name="SelectionIndiagramsNext.Text" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
 </root>
