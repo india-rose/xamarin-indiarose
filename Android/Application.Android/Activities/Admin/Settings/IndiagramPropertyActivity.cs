@@ -4,6 +4,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
+using Android.Widget;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
 
@@ -30,12 +31,17 @@ namespace IndiaRose.Application.Activities.Admin.Settings
 		}
 
         private void RefreshAreasSize(int size)
-	    {
-	        ViewGroup.LayoutParams square = Square.LayoutParameters;
+        {
+            ViewGroup.LayoutParams square = Square.LayoutParameters;
+            ViewGroup.LayoutParams border = Border.LayoutParameters;
+            int borderSize = size/20;
 	        square.Height = size;
 	        square.Width = size;
+            border.Height = size+borderSize;
+            border.Width = size+borderSize;
 
             Square.LayoutParameters = square;
+            Border.LayoutParameters = square;
             Container.Locator.AdminSettingsIndiagramPropertyViewModel.IndiagramSize = size;
 	    }
 	}

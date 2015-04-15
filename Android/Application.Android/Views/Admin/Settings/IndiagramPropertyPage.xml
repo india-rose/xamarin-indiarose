@@ -7,12 +7,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:conv="using:Storm.Mvvm.Converters"
+    xmlns:colorConverters="using:IndiaRose.Framework.Converters"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white" >
 
   <Resources>
     <conv:StringFormatConverter Key="StringFormatConverter" />
+    <colorConverters:ColorStringToDrawableColor Key="ColorStringToDrawableColor" />
     
     <Style Key="DataTempLinearLayoutStyle"
           android:orientation="horizontal"
@@ -140,30 +142,35 @@
     </ScrollView>
     <!--Second column-->
     <RelativeLayout
-        android:layout_below="@id/logo"
+        android:id="second_column"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_gravity="center"
         android:layout_weight="1"
         android:gravity="center"
         android:layout_marginTop="50dip"
+        android:background="@android:color/white"
         >
-          <View
-            android:id="Border"
-            android:layout_width="55dip"
-            android:layout_height="55dip"
-            android:background="#FFFFFF"
-            />
-          <View
+      <RelativeLayout
+        background="{Binding ReinforcerColor.Color, Converter={Resource ColorStringToDrawableColor}}"
+      	android:layout_height="wrap_content"
+    	  android:layout_width="wrap_content"
+    	      android:gravity="center"
+    	      android:layout_gravity="center"
+        android:id="Border"
+    	  >
+         <ImageView
+    	      android:src="@raw/playbutton"
+    	      android:layout_height="wrap_content"
+    	      android:layout_width="wrap_content"
+    	      android:gravity="center"
+    	      android:layout_gravity="center"
             android:id="Square"
-            android:layout_width="50dip"
-            android:layout_height="50dip"
-            android:background="#FF0000"
-            />
-
+    	    />
+    	</RelativeLayout>
       <CheckBox XmlStyle="{Resource CheckBoxStyle}"
           android:id="checkboxreinforcer"
-          android:layout_below="@id/Square"
+          android:layout_below="@id/Border"
           Text ="{Tr Text,Uid=Indiagram_property_reinforcerReadingLabel}"
           checked="{Binding ReinforcerEnabled,Mode=TwoWay, UpdateEvent=CheckedChange}" />
       <Button XmlStyle="{Resource PurpleButtonStyle}"
@@ -171,9 +178,9 @@
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:layout_below="@id/checkboxreinforcer"
+         android:textSize="14sp"
          android:layout_marginLeft="8dip"
          android:layout_marginRight="8dip"
-         android:textSize="14sp"
          Text="{Tr Text,Uid=Indiagram_Property_reinforcerColorButton}"
          Click="{Binding ReinforcerColorCommand}"
               />
