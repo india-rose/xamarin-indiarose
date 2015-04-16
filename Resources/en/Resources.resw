@@ -363,4 +363,37 @@ Comments : </value>
   <data name="MailError.Text" xml:space="preserve">
     <value>Impossible to send a mail</value>
   </data>
+  <data name="AIP_BCateg.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AIP_BHeard.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AIP_BImage.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AIP_BRoot.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AIP_BSound.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AIP_Catego.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AIP_IsCateg.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AIP_Name.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AIP_Sound.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AIP_Text.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AIP_Way.Text" xml:space="preserve">
+    <value />
+  </data>
 </root>
