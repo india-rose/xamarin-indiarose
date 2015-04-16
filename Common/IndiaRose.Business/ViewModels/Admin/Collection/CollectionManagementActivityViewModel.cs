@@ -1,31 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Input;
+using IndiaRose.Interfaces;
+using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
     class CollectionManagementActivityViewModel : AbstractViewModel
     {
-        #region Constructor
-
-        public CollectionManagementActivityViewModel(IContainer container) : base(container)
-		{
-			//IsEnabled = SettingsService.IsCategoryNameReadingEnabled;
-		}
-
-		#endregion
-
-		#region Commands implementation
-
-		/*protected override void SaveAction()
-		{
-			SettingsService.IsCategoryNameReadingEnabled = IsEnabled;
-			base.SaveAction();
-		}
-        */
-		#endregion
+        public CollectionManagementActivityViewModel(IContainer container)
+            : base(container)
+        {
+        }
     }
 }

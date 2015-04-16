@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Storm.Mvvm;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -19,8 +19,8 @@ namespace IndiaRose.Application.Activities.Admin.Collection
         {
             base.OnCreate(bundle);
 
-            /*SetContentView(Resource.Layout.Admin_Collection_CollectionManagementActivity);
-            SetViewModel(Container.Locator.AdminSettingsBackgroundColorViewModel);*/
+            SetContentView(Resource.Layout.Admin_Collection_CollectionManagementActivity);
+            SetViewModel(Container.Locator.AdminSettingsBackgroundColorViewModel);
         }
     }
 }

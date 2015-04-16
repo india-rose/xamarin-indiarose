@@ -17,7 +17,7 @@
   </LinearLayout>
   <RelativeLayout
     android:id="Relative"
-    android:background="#0000FF">
+    android:background="#00D4FE">
     <!-- on vera -->
   </RelativeLayout>
   <RelativeLayout
@@ -27,18 +27,18 @@
       Text="{Tr Text,Uid=SelectionIndiagramsHome}"
       Click="{Binding SaveCommand}"
       />
-    
+
     <Button XmlStyle="{Resource MediumGreenButtonStyle}"
       Text="{Tr Text,Uid=SelectionIndiagramsAdd}"
-      Click="{Binding SaveCommand}"
+      
       />
 
     <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
         Text =" {Tr Text,Uid=SelectionIndiagramsNext"
-        Click="{Binding BackCommand}"
+       
         />
-    
+
   </RelativeLayout>
-  
+
 </RelativeLayout>
 
