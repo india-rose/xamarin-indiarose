@@ -44,7 +44,7 @@ namespace IndiaRose.Application
                 {Dialogs.ADMIN_SETTINGS_READINGDELAY , typeof(ReadingDelayDialog)},
 				{Dialogs.ADMIN_SETTINGS_CATEGORYREADING, typeof(CategoryReadingDialog)},
                 {Dialogs.ADMIN_SETTINGS_RESETSETTINGS, typeof(ResetSettingsDialog)},
-                //{Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)}
+                {Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)}
 			};
 
 			AndroidContainer.CreateInstance<Container>(this, views, dialogs);

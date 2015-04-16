@@ -51,6 +51,7 @@
     <Compile Include="ViewModels\Admin\Collection\AddIndiagramViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\CollectionManagementViewModel.cs" />
     <Compile Include="ViewModels\Admin\CreditsViewModel.cs" />
+    <Compile Include="ViewModels\Admin\MailErrorViewModel.cs" />
     <Compile Include="ViewModels\Admin\ServerSynchronizationViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\AbstractSettingsViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\ApplicationLookViewModel.cs" />

@@ -357,4 +357,10 @@ Commentaires :</value>
   <data name="SelectionIndiagramsNext.Text" xml:space="preserve">
     <value>Suivant</value>
   </data>
+  <data name="Error.Text" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="MailError.Text" xml:space="preserve">
+    <value>Impossible d'envoyer un mail</value>
+  </data>
 </root>

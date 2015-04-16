@@ -113,7 +113,7 @@ namespace IndiaRose.Business.ViewModels.Admin
 
 			if (string.IsNullOrWhiteSpace(helpDocumentName))
 			{
-				MessageDialogService.Show(Business.Dialogs.ADMIN_MAILERROR);
+				//TODO : if no help in language show english help
             }
 			else
 			{
@@ -129,7 +129,7 @@ namespace IndiaRose.Business.ViewModels.Admin
 		{
 			if (!EmailService.SendContactEmail())
 			{
-				//TODO : implement message box to say unable to send email
+                MessageDialogService.Show(Dialogs.ADMIN_MAILERROR);
 			}
 		}
 

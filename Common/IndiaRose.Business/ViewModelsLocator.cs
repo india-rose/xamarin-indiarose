@@ -20,7 +20,8 @@ namespace IndiaRose.Business
 			container.RegisterFactory(x => new HomeViewModel(x));
 			container.RegisterFactory(x => new InstallVoiceSynthesisViewModel(x));
 			container.RegisterFactory(x => new CreditsViewModel(x));
-			container.RegisterFactory(x => new ServerSynchronizationViewModel(x));
+            container.RegisterFactory(x => new ServerSynchronizationViewModel(x));
+            container.RegisterFactory(x => new MailErrorViewModel(x));
 
 			// Admin/Settings
 			container.RegisterFactory(x => new SettingsListViewModel(x));
@@ -63,6 +64,11 @@ namespace IndiaRose.Business
 		{
 			get { return _container.Resolve<ServerSynchronizationViewModel>(); }
 		}
+
+	    public MailErrorViewModel AdminMailErrorViewModel
+	    {
+            get { return _container.Resolve<MailErrorViewModel>(); }
+	    }
 
 		#endregion
 

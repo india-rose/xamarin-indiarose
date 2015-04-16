@@ -125,6 +125,16 @@
                 "inputFile": "Views/Admin/Collection/AddIndiagramPage.xml",
                 "outputFile": "Admin_Collection_AddIndiagramPage.axml"
             }
-        }
+        },
+        {
+            "fragment": {
+                "className": "MailErrorDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin"
+            },
+            "view": {
+                "inputFile": "Views/Admin/MailErrorDialog.xml",
+                "outputFile": "Admin_MailErrorDialog.axml"
+            }
+        },
     ]
 }

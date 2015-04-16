@@ -69,6 +69,7 @@
     <Compile Include="Activities\Admin\InstallTextToSpeechActivity.cs" />
     <Compile Include="Activities\Admin\Settings\Dialogs\ReadingDelayDialog.cs" />
     <Compile Include="Activities\Admin\ServerSynchronizationActivity.cs" />
+    <Compile Include="Activities\Admin\MailErrorDialog.cs" />
     <Compile Include="Container.cs" />
     <Compile Include="IndiaRoseApplication.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -153,6 +154,7 @@
     </Content>
     <Content Include="Views\Admin\Settings\Dialogs\ReadingDelayDialog.xml" />
     <Content Include="Views\Admin\ServerSynchronizationPage.xml" />
+    <Content Include="Views\Admin\MailErrorDialog.xml" />
     <Content Include="Views\Resources\CommonStyles.xml" />
     <Content Include="Views\Resources\Converters.xml">
       <SubType>Designer</SubType>
