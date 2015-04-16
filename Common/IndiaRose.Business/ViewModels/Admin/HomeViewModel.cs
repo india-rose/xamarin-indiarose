@@ -21,6 +21,7 @@ namespace IndiaRose.Business.ViewModels.Admin
 		private IEmailService _emailService;
 		private IResourceService _resourceService;
 		private ILocalizationService _localizationService;
+        private IMessageDialogService _messageDialogService;
 
 		protected IEmailService EmailService
 		{
@@ -35,6 +36,11 @@ namespace IndiaRose.Business.ViewModels.Admin
 		protected ILocalizationService LocalizationService
 		{
 			get { return _localizationService ?? (_localizationService = Container.Resolve<ILocalizationService>()); }
+		}
+
+		public IMessageDialogService MessageDialogService
+		{
+			get { return _messageDialogService ?? (_messageDialogService = Container.Resolve<IMessageDialogService>()); }
 		}
 
 		#endregion
@@ -107,8 +113,8 @@ namespace IndiaRose.Business.ViewModels.Admin
 
 			if (string.IsNullOrWhiteSpace(helpDocumentName))
 			{
-				//TODO : implement message box to say no help
-			}
+				MessageDialogService.Show(Business.Dialogs.ADMIN_MAILERROR);
+            }
 			else
 			{
 				ResourceService.ShowPdfFile(helpDocumentName);

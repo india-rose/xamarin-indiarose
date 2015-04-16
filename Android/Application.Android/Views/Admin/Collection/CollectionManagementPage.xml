@@ -24,10 +24,11 @@
     android:background="#00D4FE">
     <!-- on vera -->
   </RelativeLayout>
-  <RelativeLayout
+  <LinearLayout
      android:layout_width="wrap_content"
- android:layout_height="wrap_content"
-    android:layout_below="@id/Relative">
+     android:layout_height="wrap_content"
+     android:layout_below="@id/Relative"
+     android:orientation="horizontal">
 
     <Button XmlStyle="{Resource MediumBlueButtonStyle}"
       Text="{Tr Text,Uid=SelectionIndiagramsHome}"
@@ -41,10 +42,10 @@
 
     <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
         Text =" {Tr Text,Uid=SelectionIndiagramsNext}"
-        Click="{Binding AddAction}"
+        Click="{Binding AddCommand}"
         />
 
-  </RelativeLayout>
+  </LinearLayout>
 
 </RelativeLayout>
 
