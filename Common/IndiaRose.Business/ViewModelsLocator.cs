@@ -85,8 +85,6 @@ namespace IndiaRose.Business
 
 		#endregion
 
-       
-
         #region ViewModels : /Admin/Settings/Dialogs
 
         public ColorPickerViewModel AdminSettingsDialogsColorPickerViewModel
