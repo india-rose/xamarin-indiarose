@@ -152,6 +152,8 @@
             android:layout_width="375dip"
             android:layout_height="240dip"
             android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:orientation="vertical"
             android:id="linearok">
       <View
@@ -159,6 +161,9 @@
             android:layout_width="fill_parent"
               android:layout_height="168dip"
             android:id="TopArea"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
             background="{Binding TopColor.Color, Converter={Resource ColorStringToDrawableColor}}"
             click="{Binding TopAreaColorCommand}"/>
 
@@ -167,6 +172,9 @@
             android:layout_width="fill_parent"
               android:layout_height="72dip"
             android:id="BottomArea"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
             background="{Binding BottomColor.Color, Converter={Resource ColorStringToDrawableColor}}"
             click="{Binding BottomAreaColorCommand}"/>
       </LinearLayout>
@@ -175,7 +183,7 @@
        android:layout_height="wrap_content"
         android:src="@drawable/tab"
         android:layout_centerInParent="true"
-       android:background="#FFF000"
+       android:id="image_tab"
         />
     </RelativeLayout>
     

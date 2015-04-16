@@ -16,8 +16,8 @@
     <ImageView XmlStyle="{Resource LogoStyle}" />
   </LinearLayout>
   <RelativeLayout
-    android:id="@+id/Relative"
-    android:background="@color/blue">
+    android:id="Relative"
+    android:background="#0000FF">
     <!-- on vera -->
   </RelativeLayout>
   <RelativeLayout

@@ -13,14 +13,14 @@ using Android.Widget;
 namespace IndiaRose.Application.Activities.Admin.Collection
 {
     [Activity(Label = "CollectionManagementActivity")]
-    public class CollectionManagementActivity : Activity
+    public partial class CollectionManagementActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            SetContentView(Resource.Layout.Admin_Collection_CollectionManagementActivity);
-            SetViewModel(Container.Locator.AdminSettingsBackgroundColorViewModel);
+            /*SetContentView(Resource.Layout.Admin_Collection_CollectionManagementActivity);
+            SetViewModel(Container.Locator.AdminSettingsBackgroundColorViewModel);*/
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
@@ -12,19 +13,19 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
         public CollectionManagementActivityViewModel(IContainer container) : base(container)
 		{
-			IsEnabled = SettingsService.IsCategoryNameReadingEnabled;
+			//IsEnabled = SettingsService.IsCategoryNameReadingEnabled;
 		}
 
 		#endregion
 
 		#region Commands implementation
 
-		protected override void SaveAction()
+		/*protected override void SaveAction()
 		{
 			SettingsService.IsCategoryNameReadingEnabled = IsEnabled;
 			base.SaveAction();
 		}
-
+        */
 		#endregion
     }
 }
