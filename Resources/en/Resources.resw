@@ -364,36 +364,36 @@ Comments : </value>
     <value>Impossible to send a mail</value>
   </data>
   <data name="AIP_BCateg.Text" xml:space="preserve">
-    <value />
+    <value>Select category</value>
   </data>
   <data name="AIP_BHeard.Text" xml:space="preserve">
-    <value />
+    <value>Read</value>
   </data>
   <data name="AIP_BImage.Text" xml:space="preserve">
-    <value />
+    <value>Select picture</value>
   </data>
   <data name="AIP_BRoot.Text" xml:space="preserve">
-    <value />
+    <value>Root</value>
   </data>
   <data name="AIP_BSound.Text" xml:space="preserve">
-    <value />
+    <value>Select sound</value>
   </data>
   <data name="AIP_Catego.Text" xml:space="preserve">
-    <value />
+    <value>Parent category</value>
   </data>
   <data name="AIP_IsCateg.Text" xml:space="preserve">
-    <value />
+    <value>Is a category</value>
   </data>
   <data name="AIP_Name.Text" xml:space="preserve">
-    <value />
+    <value>Name</value>
   </data>
   <data name="AIP_Sound.Text" xml:space="preserve">
-    <value />
+    <value>Sound</value>
   </data>
   <data name="AIP_Text.Text" xml:space="preserve">
-    <value />
+    <value>Text indiagram</value>
   </data>
   <data name="AIP_Way.Text" xml:space="preserve">
-    <value />
+    <value>File path</value>
   </data>
 </root>
