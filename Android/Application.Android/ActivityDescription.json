@@ -105,6 +105,16 @@
                 "inputFile": "Views/Admin/Settings/BackgroundColorPage.xml",
                 "outputFile": "Admin_Settings_BackgroundColorPage.axml"
             }
+        },
+        { 
+            "activity": {
+                "className": "CollectionManagementActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/CollectionManagementActivity.xml",
+                "outputFile": "Admin_Collection_CollectionManagementActivity.axml"
+            }
         }
     ]
 }
