@@ -108,6 +108,12 @@ namespace IndiaRose.Business
 			get { return _container.Resolve<CategoryReadingViewModel>(); }
 		}
 
+	    public CollectionManagementActivityViewModel AdminCollectionManagementActivityViewModel
+	    {
+            get { return _container.Resolve<ResetSettingsViewModel>(); }
+	    }
+
+
 		#endregion
 	}
 }

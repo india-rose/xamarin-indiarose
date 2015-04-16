@@ -144,7 +144,7 @@
 
   <LinearLayout XmlStyle="{Resource Linear2}"
       android:id="RightLayout"
-    >
+    > 
     <RelativeLayout
        android:layout_width="wrap_content"
        android:layout_height="wrap_content">
@@ -154,19 +154,21 @@
             android:layout_centerInParent="true"
             android:orientation="vertical"
             android:id="linearok">
-       <View
-              android:layout_width="fill_parent"
+      <View
+        
+            android:layout_width="fill_parent"
               android:layout_height="168dip"
-              android:id="TopArea"
-              background="{Binding TopColor.Color, Converter={Resource ColorStringToDrawableColor}}"
-              click="{Binding TopAreaColorCommand}"/>
-             
-            <View
-              android:layout_width="fill_parent"
+            android:id="TopArea"
+            background="{Binding TopColor.Color, Converter={Resource ColorStringToDrawableColor}}"
+            click="{Binding TopAreaColorCommand}"/>
+
+      <View
+        
+            android:layout_width="fill_parent"
               android:layout_height="72dip"
-              android:id="BottomArea"
-              background="{Binding BottomColor.Color, Converter={Resource ColorStringToDrawableColor}}"
-              click="{Binding BottomAreaColorCommand}"/>
+            android:id="BottomArea"
+            background="{Binding BottomColor.Color, Converter={Resource ColorStringToDrawableColor}}"
+            click="{Binding BottomAreaColorCommand}"/>
       </LinearLayout>
      <ImageView
        android:layout_width="wrap_content"
@@ -177,6 +179,6 @@
         />
     </RelativeLayout>
     
-  </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
