@@ -13,5 +13,8 @@
 		public const string ADMIN_SETTINGS_APPLICATIONLOOK = "Admin_Settings_ApplicationLookView";
 		public const string ADMIN_SETTINGS_INDIAGRAMPROPERTIES = "Admin_Settings_IndiagramPropertyView";
 
+        //Pages in /Admin/Collection
+	    public const string ADMIN_COLLECTION_MANAGEMENT = "Admin_CollectionManagementView";
+
 	}
 }

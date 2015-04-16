@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Android.App;
 using Android.Runtime;
 using IndiaRose.Application.Activities.Admin;
+using IndiaRose.Application.Activities.Admin.Collection;
 using IndiaRose.Application.Activities.Admin.Settings;
 using IndiaRose.Application.Activities.Admin.Settings.Dialogs;
 using IndiaRose.Business;
@@ -33,6 +34,7 @@ namespace IndiaRose.Application
                 {Views.ADMIN_SETTINGS_HOME, typeof(AppSettingsActivity)},
                 {Views.ADMIN_SETTINGS_APPLICATIONLOOK, typeof(BackgroundColorActivity)},
          		{Views.ADMIN_SETTINGS_INDIAGRAMPROPERTIES, typeof(IndiagramPropertyActivity)},
+                {Views.ADMIN_COLLECTION_MANAGEMENT, typeof(CollectionManagementActivity)}
 			};
             Dictionary<string, Type> dialogs = new Dictionary<string, Type>
 			{

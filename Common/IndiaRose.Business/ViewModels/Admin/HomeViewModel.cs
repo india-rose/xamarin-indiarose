@@ -79,7 +79,7 @@ namespace IndiaRose.Business.ViewModels.Admin
 
 		private void CollectionAction()
 		{
-			//NavigationService.Navigate(Views.ADMIN_COLLECTION_MANAGEMENT);
+			NavigationService.Navigate(Views.ADMIN_COLLECTION_MANAGEMENT);
 		}
 
 		#endregion
