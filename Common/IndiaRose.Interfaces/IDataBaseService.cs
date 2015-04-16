@@ -10,7 +10,6 @@ namespace IndiaRose.Interfaces
 {
     public interface IDataBaseService
     {
-        String DbPath { get; set; }
 
         void Add(IndiagramSql a);
 
