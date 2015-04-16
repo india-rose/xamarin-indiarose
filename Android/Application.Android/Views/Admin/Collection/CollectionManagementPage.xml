@@ -10,42 +10,58 @@
     android:layout_height="match_parent"
     android:background="@android:color/white" >
   <Resources>
-
+    <Style Key="Relative"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+           />
+    <Style Key="CMPRelative"
+      android:layout_marginTop="10dip"
+      android:layout_below="@id/relative"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:layout_marginBottom="215dip"
+      android:background="#2E8AEF"
+           />
+    <Style Key="CMPLinear"
+       android:layout_width="fill_parent"
+       android:layout_height="75dip"
+       android:layout_alignParentBottom="true"
+       android:orientation="horizontal"
+       android:layout_marginLeft="145dip"
+       android:layout_marginRight="145dip"
+       android:background="@android:color/white"
+       android:layout_marginBottom="65dip"
+       android:layout_marginTop="65dip"
+           />
   </Resources>
-  <LinearLayout
-     android:layout_width="wrap_content"
- android:layout_height="wrap_content">
-    <ImageView XmlStyle="{Resource LogoStyle}" />
-  </LinearLayout>
-  <RelativeLayout
-     android:layout_width="wrap_content"
- android:layout_height="wrap_content"
-    android:id="Relative"
-    android:background="#00D4FE">
-    <!-- on vera -->
-  </RelativeLayout>
-  <LinearLayout
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:layout_below="@id/Relative"
-     android:orientation="horizontal">
 
-    <Button XmlStyle="{Resource MediumBlueButtonStyle}"
-      Text="{Tr Text,Uid=SelectionIndiagramsHome}"
+  <RelativeLayout XmlStyle="{Resource Relative}"
+      android:id="relative">
+      <ImageView XmlStyle="{Resource LogoStyle}" 
+         android:layout_alignParentRight="true" />
+    </RelativeLayout>
+  
+    <RelativeLayout XmlStyle="{Resource CMPRelative}">
+      <!-- on vera -->
+    </RelativeLayout>
+
+    <LinearLayout XmlStyle="{Resource CMPLinear}">
+      <Button XmlStyle="{Resource MediumBlueButtonStyle}"
+        Text="{Tr Text,Uid=SelectionIndiagramsHome}"
      
       />
 
-    <Button XmlStyle="{Resource MediumGreenButtonStyle}"
-      Text="{Tr Text,Uid=SelectionIndiagramsAdd}"
+      <Button XmlStyle="{Resource MediumGreenButtonStyle}"
+        Text="{Tr Text,Uid=SelectionIndiagramsAdd}"
       
       />
 
-    <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
-        Text =" {Tr Text,Uid=SelectionIndiagramsNext}"
-        Click="{Binding AddCommand}"
+      <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
+          Text =" {Tr Text,Uid=SelectionIndiagramsNext}"
+          Click="{Binding AddCommand}"
         />
 
-  </LinearLayout>
-
+    </LinearLayout>
 </RelativeLayout>
 
