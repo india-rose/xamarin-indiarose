@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DataBaseService.cs" />
+    <Compile Include="IndiagramService.cs" />
     <Compile Include="SettingsService.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,8 +9,16 @@ namespace IndiaRose.Interfaces
 {
     public interface IIndiagramService
     {
+        //liste de sa catégorie
         List<IndiagramSql> GetList();
+
+        //retourne indiagramsql
+        IndiagramSql GetIndiagramSql(int id);
+
+        //modifie indiagramsql
         void Edit(IndiagramSql a);
-        List<IndiagramSql> SearchCategrorie(CategorySql a);
+
+        //retourne list<indiagramsql> de la catégorie donnée
+        List<IndiagramSql> SearchCategorie(CategorySql a);
     }
 }
