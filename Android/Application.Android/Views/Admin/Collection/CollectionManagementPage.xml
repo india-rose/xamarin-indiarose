@@ -12,20 +12,26 @@
   <Resources>
 
   </Resources>
-  <LinearLayout>
+  <LinearLayout
+     android:layout_width="wrap_content"
+ android:layout_height="wrap_content">
     <ImageView XmlStyle="{Resource LogoStyle}" />
   </LinearLayout>
   <RelativeLayout
+     android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
     android:id="Relative"
     android:background="#00D4FE">
     <!-- on vera -->
   </RelativeLayout>
   <RelativeLayout
+     android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
     android:layout_below="@id/Relative">
 
     <Button XmlStyle="{Resource MediumBlueButtonStyle}"
       Text="{Tr Text,Uid=SelectionIndiagramsHome}"
-      Click="{Binding SaveCommand}"
+     
       />
 
     <Button XmlStyle="{Resource MediumGreenButtonStyle}"
@@ -34,8 +40,8 @@
       />
 
     <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
-        Text =" {Tr Text,Uid=SelectionIndiagramsNext"
-       
+        Text =" {Tr Text,Uid=SelectionIndiagramsNext}"
+        Click="{Binding AddAction}"
         />
 
   </RelativeLayout>

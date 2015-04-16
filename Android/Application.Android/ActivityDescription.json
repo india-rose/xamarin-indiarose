@@ -112,8 +112,8 @@
                 "namespaceName": "IndiaRose.Application.Activities.Admin.Collection"
             },
             "view": {
-                "inputFile": "Views/Admin/Collection/CollectionManagementActivity.xml",
-                "outputFile": "Admin_Collection_CollectionManagementActivity.axml"
+                "inputFile": "Views/Admin/Collection/CollectionManagementPage.xml",
+                "outputFile": "Admin_Collection_CollectionManagementPage.axml"
             }
         },
         { 

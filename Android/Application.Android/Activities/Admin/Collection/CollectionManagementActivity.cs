@@ -19,8 +19,8 @@ namespace IndiaRose.Application.Activities.Admin.Collection
         {
             base.OnCreate(bundle);
 
-            SetContentView(Resource.Layout.Admin_Collection_CollectionManagementActivity);
-            SetViewModel(Container.Locator.AdminSettingsBackgroundColorViewModel);
+            SetContentView(Resource.Layout.Admin_Collection_CollectionManagementPage);
+            SetViewModel(Container.Locator.AdminCollectionManagementViewModel);
         }
     }
 }
