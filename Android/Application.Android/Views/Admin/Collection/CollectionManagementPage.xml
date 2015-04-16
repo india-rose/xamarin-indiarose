@@ -47,10 +47,6 @@
     </RelativeLayout>
 
     <LinearLayout XmlStyle="{Resource CMPLinear}">
-      <Button XmlStyle="{Resource MediumBlueButtonStyle}"
-        Text="{Tr Text,Uid=SelectionIndiagramsHome}"
-     
-      />
 
       <Button XmlStyle="{Resource MediumGreenButtonStyle}"
         Text="{Tr Text,Uid=SelectionIndiagramsAdd}"
