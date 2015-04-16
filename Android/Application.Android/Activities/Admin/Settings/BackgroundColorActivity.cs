@@ -35,7 +35,7 @@ namespace IndiaRose.Application.Activities.Admin.Settings
 
 	    private void RefreshAreasSize()
 	    {
-	        int height = RightLayout.Height;
+	        int height = linearok.Height;
             int topHeight = (int)(height * (BackgroundTopPercentSize / 100.0));
             int bottomHeight = height - topHeight;
 	        
