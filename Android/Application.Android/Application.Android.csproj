@@ -57,6 +57,7 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Activities\Admin\Collection\CollectionManagementActivity.cs" />
     <Compile Include="Activities\Admin\Settings\AppSettingsActivity.cs" />
     <Compile Include="Activities\Admin\Settings\BackgroundColorActivity.cs" />
     <Compile Include="Activities\Admin\Settings\Dialogs\CategoryReadingDialog.cs" />
@@ -140,9 +141,14 @@
     <AndroidResource Include="Resources\values-v11\styles.xml" />
     <AndroidResource Include="Resources\values-v14\styles.xml" />
     <AndroidResource Include="Resources\drawable\tab.png" />
+    <Content Include="Views\Admin\Collection\CollectionManagementActivity.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Admin\Settings\Dialogs\CategoryReadingDialog.xml" />
     <Content Include="Views\Admin\Settings\Dialogs\DragAndDropDialog.xml" />
-    <Content Include="Views\Admin\Settings\IndiagramPropertyPage.xml" />
+    <Content Include="Views\Admin\Settings\IndiagramPropertyPage.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Admin\Settings\Dialogs\ReadingDelayDialog.xml" />
     <Content Include="Views\Admin\ServerSynchronizationPage.xml" />
     <Content Include="Views\Resources\CommonStyles.xml" />
@@ -150,17 +156,17 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Resources\ButtonStyles.xml" />
-    <None Include="Views\Admin\Settings\BackgroundColorPage.xml" />
+    <None Include="Views\Admin\Settings\BackgroundColorPage.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Views\Admin\Settings\AppSettingsPage.xml" />
     <None Include="Views\Admin\CreditsPage.xml" />
     <None Include="Views\Admin\InstallTextToSpeechPage.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Activities\Admin\Collection\" />
     <Folder Include="Activities\User\" />
     <Folder Include="Resources\drawable-ldpi\" />
     <Folder Include="Resources\layout\" />
-    <Folder Include="Views\Admin\Collection\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
