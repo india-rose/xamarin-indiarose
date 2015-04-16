@@ -6,9 +6,9 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
-    class CollectionManagementActivityViewModel : AbstractViewModel
+    public class CollectionManagementViewModel : AbstractViewModel
     {
-        public CollectionManagementActivityViewModel(IContainer container)
+        public CollectionManagementViewModel(IContainer container)
             : base(container)
         {
         }
