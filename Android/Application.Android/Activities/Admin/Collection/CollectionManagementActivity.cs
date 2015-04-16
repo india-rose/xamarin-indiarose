@@ -13,7 +13,7 @@ using Android.Widget;
 namespace IndiaRose.Application.Activities.Admin.Collection
 {
     [Activity(Label = "CollectionManagementActivity")]
-    public partial class CollectionManagementActivity : Activity
+    public partial class CollectionManagementActivity : ActivityBase
     {
         protected override void OnCreate(Bundle bundle)
         {

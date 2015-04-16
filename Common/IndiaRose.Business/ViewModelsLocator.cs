@@ -35,6 +35,9 @@ namespace IndiaRose.Business
 			container.RegisterFactory(x => new CategoryReadingViewModel(x));
             container.RegisterFactory(x => new ResetSettingsViewModel(x));
 
+            //Admin/Collection
+            container.RegisterFactory(x => new CollectionManagementViewModel(x));
+
 			_container = container;
 		}
 
@@ -109,9 +112,9 @@ namespace IndiaRose.Business
 			get { return _container.Resolve<CategoryReadingViewModel>(); }
 		}
 
-        public CollectionManagementActivityViewModel AdminCollectionManagementActivityViewModel
+        public CollectionManagementViewModel AdminCollectionManagementActivityViewModel
 	    {
-            get { return _container.Resolve<ResetSettingsViewModel>(); }
+            get { return _container.Resolve<CollectionManagementViewModel>(); }
 	    }
 
 
