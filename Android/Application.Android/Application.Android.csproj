@@ -57,6 +57,7 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Activities\Admin\Collection\AddIndiagramActivity.cs" />
     <Compile Include="Activities\Admin\Collection\CollectionManagementActivity.cs" />
     <Compile Include="Activities\Admin\Settings\AppSettingsActivity.cs" />
     <Compile Include="Activities\Admin\Settings\BackgroundColorActivity.cs" />
@@ -144,6 +145,7 @@
     <Content Include="Views\Admin\Collection\CollectionManagementActivity.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\Admin\Collection\AddIndiagramPage.xml" />
     <Content Include="Views\Admin\Settings\Dialogs\CategoryReadingDialog.xml" />
     <Content Include="Views\Admin\Settings\Dialogs\DragAndDropDialog.xml" />
     <Content Include="Views\Admin\Settings\IndiagramPropertyPage.xml">

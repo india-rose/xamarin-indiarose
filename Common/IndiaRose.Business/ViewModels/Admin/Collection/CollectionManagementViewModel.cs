@@ -12,5 +12,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             : base(container)
         {
         }
+
+        private void AddAction()
+        {
+            NavigationService.Navigate(Views.ADMIN_COLLECTION_ADD);
+        }
     }
 }

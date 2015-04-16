@@ -37,6 +37,7 @@ namespace IndiaRose.Business
 
             //Admin/Collection
             container.RegisterFactory(x => new CollectionManagementViewModel(x));
+            container.RegisterFactory(x => new AddIndiagramViewModel(x));
 
 			_container = container;
 		}
@@ -112,12 +113,21 @@ namespace IndiaRose.Business
 			get { return _container.Resolve<CategoryReadingViewModel>(); }
 		}
 
-        public CollectionManagementViewModel AdminCollectionManagementActivityViewModel
-	    {
+		#endregion
+
+        #region ViewModels : /Admin/Collection
+
+        public CollectionManagementViewModel AdminCollectionManagementViewModel
+        {
             get { return _container.Resolve<CollectionManagementViewModel>(); }
+        }
+
+	    public AddIndiagramViewModel AdminCollectionAddIndiagramViewModel
+	    {
+            get { return _container.Resolve<AddIndiagramViewModel>(); }
 	    }
 
 
-		#endregion
-	}
+        #endregion
+    }
 }

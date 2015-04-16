@@ -115,6 +115,16 @@
                 "inputFile": "Views/Admin/Collection/CollectionManagementActivity.xml",
                 "outputFile": "Admin_Collection_CollectionManagementActivity.axml"
             }
+        },
+        { 
+            "activity": {
+                "className": "AddIndiagramActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/AddIndiagramPage.xml",
+                "outputFile": "Admin_Collection_AddIndiagramPage.axml"
+            }
         }
     ]
 }

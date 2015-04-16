@@ -48,6 +48,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModelsLocator.cs" />
     <Compile Include="ViewModels\AbstractViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Collection\AddIndiagramViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\CollectionManagementViewModel.cs" />
     <Compile Include="ViewModels\Admin\CreditsViewModel.cs" />
     <Compile Include="ViewModels\Admin\ServerSynchronizationViewModel.cs" />
