@@ -11,5 +11,8 @@
 
         //Dialogs in /Admin
 	    public const string ADMIN_MAILERROR = "Admin_MailErrorDialog";
+
+        //Dialogs in /Admin/Collection
+	    public const string ADMIN_COLLECTION_ADDCOLLECTION = "Admin_Collection_AddCollectionDialog";
 	}
 }

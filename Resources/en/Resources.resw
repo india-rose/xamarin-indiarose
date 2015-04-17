@@ -399,4 +399,13 @@ Comments : </value>
   <data name="AIP_BDel.Text" xml:space="preserve">
     <value>Delete sound</value>
   </data>
+  <data name="goIntoText.Text" xml:space="preserve">
+    <value>Go into</value>
+  </data>
+  <data name="seeText.Text" xml:space="preserve">
+    <value>Look</value>
+  </data>
+  <data name="whichActionQuestion.Text" xml:space="preserve">
+    <value>What do you want to do ?</value>
+  </data>
 </root>
