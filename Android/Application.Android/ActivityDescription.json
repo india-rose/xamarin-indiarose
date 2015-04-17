@@ -136,5 +136,15 @@
                 "outputFile": "Admin_MailErrorDialog.axml"
             }
         },
+        {
+            "fragment": {
+                "className": "AddCollectionDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/AddCollectionDialog.xml",
+                "outputFile": "Admin_Collection_Dialogs_AddCollectionDialog.axml"
+            }
+        }
     ]
 }

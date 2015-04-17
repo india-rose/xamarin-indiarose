@@ -396,4 +396,13 @@ Commentaires :</value>
   <data name="AIP_Way.Text" xml:space="preserve">
     <value>Chemin</value>
   </data>
+  <data name="goIntoText.Text" xml:space="preserve">
+    <value>Aller dedans</value>
+  </data>
+  <data name="seeText.Text" xml:space="preserve">
+    <value>Voir</value>
+  </data>
+  <data name="whichActionQuestion.Text" xml:space="preserve">
+    <value>Que voulez vous faire ?</value>
+  </data>
 </root>

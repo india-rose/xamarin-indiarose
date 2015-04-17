@@ -50,6 +50,7 @@
     <Compile Include="ViewModels\AbstractViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\AddIndiagramViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\CollectionManagementViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Collection\Dialogs\AddCollectionViewModel.cs" />
     <Compile Include="ViewModels\Admin\CreditsViewModel.cs" />
     <Compile Include="ViewModels\Admin\MailErrorViewModel.cs" />
     <Compile Include="ViewModels\Admin\ServerSynchronizationViewModel.cs" />

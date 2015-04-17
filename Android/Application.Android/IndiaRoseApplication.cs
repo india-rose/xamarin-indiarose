@@ -4,6 +4,7 @@ using Android.App;
 using Android.Runtime;
 using IndiaRose.Application.Activities.Admin;
 using IndiaRose.Application.Activities.Admin.Collection;
+using IndiaRose.Application.Activities.Admin.Collection.Dialogs;
 using IndiaRose.Application.Activities.Admin.Settings;
 using IndiaRose.Application.Activities.Admin.Settings.Dialogs;
 using IndiaRose.Business;
@@ -44,7 +45,8 @@ namespace IndiaRose.Application
                 {Dialogs.ADMIN_SETTINGS_READINGDELAY , typeof(ReadingDelayDialog)},
 				{Dialogs.ADMIN_SETTINGS_CATEGORYREADING, typeof(CategoryReadingDialog)},
                 {Dialogs.ADMIN_SETTINGS_RESETSETTINGS, typeof(ResetSettingsDialog)},
-                {Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)}
+                {Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
+                {Dialogs.ADMIN_COLLECTION_ADDCOLLECTION,typeof(AddCollectionDialog)}
 			};
 
 			AndroidContainer.CreateInstance<Container>(this, views, dialogs);

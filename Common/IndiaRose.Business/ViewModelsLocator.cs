@@ -3,6 +3,7 @@
 using IndiaRose.Business.ViewModels.Admin;
 using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Business.ViewModels.Admin.Collection;
+using IndiaRose.Business.ViewModels.Admin.Collection.Dialogs;
 using IndiaRose.Business.ViewModels.Admin.Settings.Dialogs;
 using Storm.Mvvm.Inject;
 
@@ -28,7 +29,6 @@ namespace IndiaRose.Business
 			container.RegisterFactory(x => new ApplicationLookViewModel(x));
 			container.RegisterFactory(x => new IndiagramPropertyViewModel(x));
 
-
 			// Admin/Settings/Dialogs
 			container.RegisterFactory(x => new ColorPickerViewModel(x));
 			container.RegisterFactory(x => new DragAndDropViewModel(x));
@@ -39,6 +39,9 @@ namespace IndiaRose.Business
             //Admin/Collection
             container.RegisterFactory(x => new CollectionManagementViewModel(x));
             container.RegisterFactory(x => new AddIndiagramViewModel(x));
+
+            //Admin/Collection/Dialogs
+            container.RegisterFactory(x => new AddCollectionViewModel(x));
 
 			_container = container;
 		}
@@ -132,6 +135,14 @@ namespace IndiaRose.Business
 	    }
 
 
+        #endregion
+
+        #region ViewModels : /Admin/Collection/Dialogs
+
+	    public AddCollectionViewModel AdminCollectionDialogsAddCollectionDialog
+	    {
+            get { return _container.Resolve<AddCollectionViewModel>(); }
+	    }
         #endregion
     }
 }

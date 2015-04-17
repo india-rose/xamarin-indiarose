@@ -50,12 +50,12 @@
 
       <Button XmlStyle="{Resource MediumGreenButtonStyle}"
         Text="{Tr Text,Uid=SelectionIndiagramsAdd}"
-      
+        Click="{Binding AddCommand}"
       />
 
       <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
           Text =" {Tr Text,Uid=SelectionIndiagramsNext}"
-          Click="{Binding AddCommand}"
+          Click="{Binding AddCollection}"
         />
 
     </LinearLayout>
