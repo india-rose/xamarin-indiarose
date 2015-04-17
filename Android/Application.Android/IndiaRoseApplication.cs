@@ -36,7 +36,8 @@ namespace IndiaRose.Application
                 {Views.ADMIN_SETTINGS_APPLICATIONLOOK, typeof(BackgroundColorActivity)},
          		{Views.ADMIN_SETTINGS_INDIAGRAMPROPERTIES, typeof(IndiagramPropertyActivity)},
                 {Views.ADMIN_COLLECTION_MANAGEMENT, typeof(CollectionManagementActivity)},
-                {Views.ADMIN_COLLECTION_ADD, typeof(AddIndiagramActivity)}
+                {Views.ADMIN_COLLECTION_ADD, typeof(AddIndiagramActivity)},
+                {Views.ADMIN_COLLECTION_WATCH,typeof(WatchIndiagramActivity)}
 			};
             Dictionary<string, Type> dialogs = new Dictionary<string, Type>
 			{

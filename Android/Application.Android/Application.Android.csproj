@@ -60,6 +60,7 @@
     <Compile Include="Activities\Admin\Collection\AddIndiagramActivity.cs" />
     <Compile Include="Activities\Admin\Collection\CollectionManagementActivity.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\AddCollectionDialog.cs" />
+    <Compile Include="Activities\Admin\Collection\WatchIndiagramActivity.cs" />
     <Compile Include="Activities\Admin\Settings\AppSettingsActivity.cs" />
     <Compile Include="Activities\Admin\Settings\BackgroundColorActivity.cs" />
     <Compile Include="Activities\Admin\Settings\Dialogs\CategoryReadingDialog.cs" />
@@ -149,6 +150,7 @@
     </Content>
     <Content Include="Views\Admin\Collection\AddIndiagramPage.xml" />
     <Content Include="Views\Admin\Collection\Dialogs\AddCollectionDialog.xml" />
+    <Content Include="Views\Admin\Collection\WatchIndiagramPage.xml" />
     <Content Include="Views\Admin\Settings\Dialogs\CategoryReadingDialog.xml" />
     <Content Include="Views\Admin\Settings\Dialogs\DragAndDropDialog.xml" />
     <Content Include="Views\Admin\Settings\IndiagramPropertyPage.xml">

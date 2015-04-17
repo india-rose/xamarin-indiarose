@@ -145,6 +145,16 @@
                 "inputFile": "Views/Admin/Collection/Dialogs/AddCollectionDialog.xml",
                 "outputFile": "Admin_Collection_Dialogs_AddCollectionDialog.axml"
             }
+        },
+        { 
+            "activity": {
+                "className": "WatchIndiagramActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/WatchIndiagramPage.xml",
+                "outputFile": "Admin_Collection_WatchIndiagramPage.axml"
+            }
         }
     ]
 }
