@@ -250,7 +250,7 @@ Commentaires :</value>
     <value>Améliorer le moteur de synthèse vocale</value>
   </data>
   <data name="Button_Back.Text" xml:space="preserve">
-    <value>Retour</value>
+    <value>Annuler</value>
   </data>
   <data name="TTS_1.Text" xml:space="preserve">
     <value>1</value>

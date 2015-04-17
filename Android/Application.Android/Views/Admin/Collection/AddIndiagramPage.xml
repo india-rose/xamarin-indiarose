@@ -30,7 +30,6 @@
     <Style Key="ButtonContainer"
           android:layout_width="match_parent"
           android:layout_height="75dip"
-          android:layout_marginLeft="10dip"
           android:layout_marginRight="6dip" />
     <Style Key="ScrollViewStyle"
           android:layout_width="fill_parent"
@@ -44,7 +43,7 @@
         android:layout_height="0px"
         android:focusable="true"
         android:focusableInTouchMode="true" />
-
+    <!--Button ok & back-->
     <LinearLayout XmlStyle="{Resource Ok_Back_Container}"
         android:id="linear_bottom">
 

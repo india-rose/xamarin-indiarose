@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Storm.Mvvm;
+using Storm.Mvvm.Bindings;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Dialogs;
 using Storm.Mvvm.Inject;
@@ -17,7 +18,7 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 {
-    [Activity(Label = "AddCollectionDialog")]
+    [BindingElement(Path = "WatchIndiagramCommand", TargetPath = "PositiveButtonEvent")]
     public partial class AddCollectionDialog : AlertDialogFragmentBase
     {
         public AddCollectionDialog()
@@ -25,9 +26,9 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
             var trad = DependencyService.Container.Resolve<ILocalizationService>();
             Title = trad.GetString("whichActionQuestion", "Text");
 
-            Buttons.Add(DialogsButton.Neutral, trad.GetString("Button_Back", "Text"));
+            Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Back", "Text"));
+            Buttons.Add(DialogsButton.Neutral, trad.GetString("seeText", "Text"));
             Buttons.Add(DialogsButton.Positive, trad.GetString("goIntoText", "Text"));
-            Buttons.Add(DialogsButton.Negative, trad.GetString("seeText", "Text"));
             
         }
 
