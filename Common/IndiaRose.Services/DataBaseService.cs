@@ -12,7 +12,7 @@ namespace IndiaRose.Services
 {
     class DataBaseService : IDataBaseService
     {
-        public string DbPath;
+        public static string DbPath;
 
 
         public DataBaseService(string dbPath)

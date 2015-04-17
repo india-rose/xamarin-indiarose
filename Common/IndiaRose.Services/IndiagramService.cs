@@ -18,6 +18,10 @@ namespace IndiaRose.Services
             var db = new SQLiteConnection(DataBaseService.DbPath);
             var table = db.Table<IndiagramSql>();
 
+            foreach (var t in table)
+            {
+                
+            }
         }
 
         public IndiagramSql GetIndiagramSql(int id)
@@ -25,15 +29,7 @@ namespace IndiaRose.Services
             var db = new SQLiteConnection(DataBaseService.DbPath);
             var table = db.Table<IndiagramSql>();
 
-            foreach (var t in table)
-            {
-                if (t.Id == id)
-                {
-                    return t;
-                }
-            }
-
-            new NotImplementedException();
+            return table.FirstOrDefault(t => t.Id == id);
         }
 
         public void Edit(IndiagramSql a)
@@ -46,15 +42,7 @@ namespace IndiaRose.Services
             var db = new SQLiteConnection(DataBaseService.DbPath);
             var table = db.Table<CategorySql>();
 
-            foreach (var t in table)
-            {
-                if (t.Id == a.Id)
-                {
-                    return t;
-                }
-            }
-
-            new NotImplementedException();
+            return Enumerable.FirstOrDefault((from t in table where t.Id == a.Id select t.Children));
         }
     }
 }
