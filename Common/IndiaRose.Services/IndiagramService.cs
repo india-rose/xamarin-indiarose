@@ -13,16 +13,16 @@ namespace IndiaRose.Services
     class IndiagramService : IIndiagramService
     {
 
-        public List<IndiagramSql> GetList()
+        /*public List<IndiagramSql> GetList()
         {
             var db = new SQLiteConnection(DataBaseService.DbPath);
             var table = db.Table<IndiagramSql>();
 
             foreach (var t in table)
             {
-
+                
             }
-        }
+        }*/
 
         public IndiagramSql GetIndiagramSql(int id)
         {
@@ -34,7 +34,16 @@ namespace IndiaRose.Services
 
         public void Edit(IndiagramSql a)
         {
+            var db = new SQLiteConnection(DataBaseService.DbPath);
+            var query = db.Table<IndiagramSql>().SingleOrDefault(t => t.Id == a.Id);
+            query.ImagePath = a.ImagePath;
+            query.SoundPath = a.SoundPath;
+            query.Text = a.Text;
+            query.Parent = a.Parent;
+            query.Version = a.Version;
 
+            db.Update(query);
+            db.Close();
         }
 
         public List<IndiagramSql> SearchCategorie(CategorySql a)
