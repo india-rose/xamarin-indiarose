@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+/*using System.Text;
 using System.Threading.Tasks;
 using IndiaRose.Data.Model;
 using SQLite;
@@ -13,14 +13,18 @@ namespace IndiaRose.Interfaces
 
         void Add(IndiagramSql a);
 
-        IndiagramSql Edit(IndiagramSql a);
+        void Replace(IndiagramSql current, IndiagramSql _new);
 
-        IndiagramSql Delete(IndiagramSql a);
+        void Delete(IndiagramSql a);
+
+        void Update(IndiagramSql a);
 
         void ResetDataBase();
 
-        IndiagramSql SearchById(int id);
+        Task<IndiagramSql> SearchById(int id);
+
+        Task<List<IndiagramSql>> GetAll();
 
 
     }
-}
+}*/
