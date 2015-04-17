@@ -10,11 +10,90 @@
     android:layout_height="match_parent"
     android:background="@android:color/white" >
   <Resources>
- 
+    <Style Key="BlueStyle"
+      android:textColor="#006FFF"
+         />
+    <Style Key="TextViewTitle"
+        XmlStyle="{Resource BlueStyle}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dip"
+        android:textSize="25sp"
+        android:textStyle="italic"
+           />
   </Resources>
-
-    <ImageView XmlStyle="{Resource LogoStyle}"
+  <!-- button edit and remove -->
+  <LinearLayout XmlStyle="{Resource Ok_Back_Container}"
+       android:id="ButtonContainer">
+    <Button XmlStyle="{Resource MediumGreenButtonStyle}"
+    Text="{Tr Text, Uid=edit}"
+    android:layout_marginLeft="4dip"
+             />
+    <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
+        Text="{Tr Text, Uid=remove}"
+             />
+  </LinearLayout>
+  <!-- logo -->
+  <ImageView XmlStyle="{Resource LogoStyle}"
+       android:id="Logo"
        android:layout_alignParentRight="true" />
+
+  <LinearLayout
+        android:layout_below="@id/Logo"
+        android:layout_above="@id/ButtonContainer"
+        android:layout_width= "fill_parent"
+        android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:layout_width= "fill_parent"
+        android:layout_height="fill_parent">
+      
+      <TextView XmlStyle="{Resource TextViewTitle}"
+        Text="{Tr Text, Uid=AIP_Text}"
+        android:id="title1"
+        />
+      
+      <TextView
+        android:id="text1"
+        android:text="rainbowdash" />
+      
+      <TextView XmlStyle="{Resource TextViewTitle}"
+        Text="{Tr Text, Uid=categorieparent}" 
+        android:id="title2"/>
+
+      <TextView XmlStyle="{Resource TextViewTitle}"
+        Text="{Tr Text, Uid=AIP_Name}"
+        android:id="title3"/>
+
+      <TextView
+        android:text="pinkipie" />
+
+      <TextView XmlStyle="{Resource TextViewTitle}"
+         Text="{Tr Text, Uid=AIP_Sound}"
+         android:id="title4"/>
+      
+      <TextView XmlStyle="{Resource TextViewTitle}"
+        Text="{Tr Text, Uid=AIP_FilePath}"
+        android:id="title5"/>
+
+      <TextView
+        android:text="rarity" />
+      
+      <Button XmlStyle="{Resource MediumBlueButtonStyle}"
+        Text="{Tr Text, Uid=AIP_BHeard}"
+        />
+
+    </RelativeLayout>
+    <!-- midle of the screen -->
+    <LinearLayout
+        android:layout_width= "fill_parent"
+        android:layout_height="fill_parent">
+      
+    </LinearLayout>
+    
+  </LinearLayout> 
+  
+               
 
 </RelativeLayout>
 

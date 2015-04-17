@@ -27,8 +27,8 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
             Title = trad.GetString("whichActionQuestion", "Text");
 
             Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Back", "Text"));
-            Buttons.Add(DialogsButton.Neutral, trad.GetString("seeText", "Text"));
-            Buttons.Add(DialogsButton.Positive, trad.GetString("goIntoText", "Text"));
+            Buttons.Add(DialogsButton.Neutral, trad.GetString("goIntoText", "Text"));
+            Buttons.Add(DialogsButton.Positive, trad.GetString("seeText", "Text"));
             
         }
 

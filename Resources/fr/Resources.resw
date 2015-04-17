@@ -408,4 +408,13 @@ Commentaires :</value>
   <data name="whichActionQuestion.Text" xml:space="preserve">
     <value>Que voulez vous faire ?</value>
   </data>
+  <data name="categorieparent.text" xml:space="preserve">
+    <value>Categorie parente</value>
+  </data>
+  <data name="edit.Text" xml:space="preserve">
+    <value>Editer</value>
+  </data>
+  <data name="remove.Text" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
 </root>
