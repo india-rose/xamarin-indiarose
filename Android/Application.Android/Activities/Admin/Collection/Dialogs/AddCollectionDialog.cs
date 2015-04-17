@@ -25,7 +25,7 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
             var trad = DependencyService.Container.Resolve<ILocalizationService>();
             Title = trad.GetString("whichActionQuestion", "Text");
 
-            Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Back", "Text"));
+            Buttons.Add(DialogsButton.Neutral, trad.GetString("Button_Back", "Text"));
             Buttons.Add(DialogsButton.Positive, trad.GetString("goIntoText", "Text"));
             Buttons.Add(DialogsButton.Negative, trad.GetString("seeText", "Text"));
             
