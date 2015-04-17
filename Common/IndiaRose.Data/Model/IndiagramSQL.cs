@@ -23,6 +23,39 @@ namespace IndiaRose.Data.Model
         public String SoundPath { get; set; }
         [Column("_parent")]
         public int Parent { get; set; }
+
+      public IndiagramSql(int version,string text, string imagepath, string soundpath, int parent)
+        {
+            //Test
+            Version = version;
+            Text = text;
+            ImagePath = imagepath;
+            SoundPath = soundpath;
+            Parent = parent;
+        }
+
+        public IndiagramSql(Indiagram a)
+        {
+            //Test
+            Text = a.Text;
+            ImagePath = a.ImagePath;
+            SoundPath = a.SoundPath;
+            if (a.Parent != null)
+            {
+                Parent = new IndiagramSql(a.Parent).Id;
+            }
+            else
+            {
+                /*null ?*/
+            }
+        }
+
+        public IndiagramSql()
+        {
+            //throw new NotImplementedException();
+
+        }
     }
+    
 
 }

@@ -1,6 +1,9 @@
-﻿using System;
+﻿/*
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using IndiaRose.Data.Model;
@@ -13,16 +16,20 @@ namespace IndiaRose.Services
     class IndiagramService : IIndiagramService
     {
 
-        /*public List<IndiagramSql> GetList()
+        public List<IndiagramSql> GetList(IndiagramSql a)
         {
             var db = new SQLiteConnection(DataBaseService.DbPath);
             var table = db.Table<IndiagramSql>();
-
+            var liste = new List<IndiagramSql>();
             foreach (var t in table)
             {
-                
+                if (t.Parent.Equals(a.Parent))
+                {
+                    liste.Add(t);
+                }
             }
-        }*/
+            return liste;
+        }
 
         public IndiagramSql GetIndiagramSql(int id)
         {
@@ -55,3 +62,5 @@ namespace IndiaRose.Services
         }
     }
 }
+ * 
+ * */
