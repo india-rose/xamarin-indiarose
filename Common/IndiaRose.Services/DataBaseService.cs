@@ -12,7 +12,7 @@ namespace IndiaRose.Services
 {
     class DataBaseService : IDataBaseService
     {
-        public string DbPath;
+        public static string DbPath;
 
 
         public DataBaseService(string dbPath)
@@ -41,7 +41,7 @@ namespace IndiaRose.Services
 
         }
 
-        public void Switch(IndiagramSql current,IndiagramSql _new)
+        public void Switch(IndiagramSql current, IndiagramSql _new)
         {
         }
 

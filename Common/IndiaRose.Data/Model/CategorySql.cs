@@ -11,6 +11,6 @@ namespace IndiaRose.Data.Model
     public class CategorySql : IndiagramSql
     {
         [Column("_children")]
-        private IList<IndiagramSql> Children { get; set; }
+        public List<IndiagramSql> Children { get; set; }
     }
 }

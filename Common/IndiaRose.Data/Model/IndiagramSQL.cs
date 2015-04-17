@@ -12,17 +12,17 @@ namespace IndiaRose.Data.Model
     public class IndiagramSql
     {
         [PrimaryKey, AutoIncrement, Column("_id")]
-        private int Id { get; set; }
+        public int Id { get; set; }
         [Column("_version")]
-        private int Version { get; set; }
+        public int Version { get; set; }
         [Column("_text")]
-        private String Text { get; set; }
+        public String Text { get; set; }
         [Column("_imagePath")]
-        private String ImagePath { get; set; }
+        public String ImagePath { get; set; }
         [Column("_soundPath")]
-        private String SoundPath { get; set; }
+        public String SoundPath { get; set; }
         [Column("_parent")]
-        private int Parent { get; set; }
+        public int Parent { get; set; }
     }
 
 }
