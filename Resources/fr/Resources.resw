@@ -417,4 +417,19 @@ Commentaires :</value>
   <data name="remove.Text" xml:space="preserve">
     <value>Supprimer</value>
   </data>
+  <data name="CI_Camera.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CI_Gallery.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CI_Title.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CS_Save.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CS_Title.Text" xml:space="preserve">
+    <value />
+  </data>
 </root>

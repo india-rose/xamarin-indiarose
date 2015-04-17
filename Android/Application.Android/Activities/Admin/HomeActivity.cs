@@ -9,7 +9,7 @@ using Storm.Mvvm;
 
 namespace IndiaRose.Application.Activities.Admin
 {
-	[Activity(Label = "Application.Android", MainLauncher = true, Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Landscape, Theme = "@style/Theme.Sherlock.Light.NoActionBar")]
+	[Activity(Label = "India Rose Dev", MainLauncher = true, Icon = "@drawable/ir_logo", ScreenOrientation = ScreenOrientation.Landscape, Theme = "@style/Theme.Sherlock.Light.NoActionBar")]
 	public partial class HomeActivity : ActivityBase
 	{
 		protected override void OnCreate(Bundle bundle)
