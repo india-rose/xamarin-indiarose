@@ -1,4 +1,8 @@
-﻿/*using System;
+﻿/*
+ * 
+ * 
+ * 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,17 +13,20 @@ namespace IndiaRose.Interfaces
 {
     public interface IIndiagramService
     {
-        //liste de sa catégorie
-        //List<IndiagramSql> GetList();
+        List<IndiagramSql> GetList(IndiagramSql a);
 
-        //retourne indiagramsql
-        IndiagramSql GetIndiagramSql(int id);
+        IndiagramSql GetIndiagramById(int id);
 
-        //modifie indiagramsql
         void Edit(IndiagramSql a);
 
-        //retourne list<indiagramsql> de la catégorie donnée
         List<IndiagramSql> SearchCategorie(CategorySql a);
+
+        List<CategorySql> GetAllCategorySql();
+
+        List<IndiagramSql> GetChildren(CategorySql parent);
+
+        CategorySql GetParent(IndiagramSql children);
     }
 }
+
 */

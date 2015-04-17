@@ -1,4 +1,7 @@
-﻿/*using System;
+﻿/*
+ * 
+ * 
+ * using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,16 +15,20 @@ namespace IndiaRose.Services
 {
     class DataBaseService : IDataBaseService
     {
-        public string DbPath;
+        public string DbPath { get; set; }
 
 
         public DataBaseService(string dbPath)
         {
             DbPath = dbPath;
+            /*TODO initialisation database with database string path and img
             var db = new SQLiteConnection(DbPath);
             //create or repalce
             db.CreateTable<IndiagramSql>();
             db.CreateTable<CategorySql>();
+             * 
+             */
+/* COMMENT
         }
 
 
@@ -65,8 +72,9 @@ namespace IndiaRose.Services
 
         public void ResetDataBase()
         {
-            throw new NotImplementedException();
+            //TODO droptabase and reset path, img...
         }
+
 
         public async Task<IndiagramSql> SearchById(int id)
         {
@@ -89,4 +97,5 @@ namespace IndiaRose.Services
         }
     }
 }
+
 */
