@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace IndiaRose.Services
 {
     class DataBaseService : IDataBaseService
     {
-        public static string DbPath;
+        public string DbPath;
 
 
         public DataBaseService(string dbPath)
@@ -28,36 +28,64 @@ namespace IndiaRose.Services
         public void Add(IndiagramSql a)
         {
             var db = new SQLiteConnection(DbPath);
+
             if (a is CategorySql)
             {
-                var table = db.Table<CategorySql>();
+               db.Table<CategorySql>();
             }
             else
             {
-                var table = db.Table<IndiagramSql>();
+                db.Table<IndiagramSql>();
             }
             db.Insert(a);
             db.Close();
 
         }
 
-        public void Switch(IndiagramSql current, IndiagramSql _new)
+        public void Replace(IndiagramSql current,IndiagramSql _new)
         {
+            if (current.GetType() == _new.GetType()) return;
+            Delete(current);
+            Add(_new);
         }
 
-        public IndiagramSql Delete(IndiagramSql a)
+        public async void Delete(IndiagramSql a)
         {
-            throw new NotImplementedException();
+            var db = new SQLiteAsyncConnection(DbPath);
+            await db.DeleteAsync(a);
+
         }
+
+        public async void Update(IndiagramSql a)
+        {
+            var db = new SQLiteAsyncConnection(DbPath);
+            await db.UpdateAsync(a);
+        }
+
 
         public void ResetDataBase()
         {
             throw new NotImplementedException();
         }
 
-        public IndiagramSql SearchById(int id)
+        public async Task<IndiagramSql> SearchById(int id)
         {
-            throw new NotImplementedException();
+            var db = new SQLiteAsyncConnection(DbPath);
+
+            var query = db.Table<IndiagramSql>().Where(x => x.Id == id);
+            var result = await query.ToListAsync();
+
+            return result.FirstOrDefault();
+        }
+
+        public async Task<List<IndiagramSql>> GetAll()
+        {
+            var db = new SQLiteAsyncConnection(DbPath);
+
+            var query = db.Table<IndiagramSql>();
+            var result = await query.ToListAsync();
+
+            return result;
         }
     }
 }
