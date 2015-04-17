@@ -45,22 +45,13 @@
         android:focusable="true"
         android:focusableInTouchMode="true" />
 
-    <LinearLayout
-        android:id="linear_bottom"
-        android:layout_width="fill_parent"
-        android:layout_height="75dip"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_centerInParent="true"
-        android:orientation="horizontal"
-        android:layout_marginBottom="4dip"
-        android:layout_marginTop="4dip">
+    <LinearLayout XmlStyle="{Resource Ok_Back_Container}"
+        android:id="linear_bottom">
 
         <Button XmlStyle="{Resource MediumGreenButtonStyle}"
             Text="{Tr Text, Uid=Button_Ok}"
             android:layout_marginLeft="4dip"
-            Click="{Binding BackCommand}"
+            Click="{Binding SaveCommand}"
              />
         <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
             Text="{Tr Text, Uid=Button_Back}"

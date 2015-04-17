@@ -83,13 +83,27 @@
       <ImageView XmlStyle="{Resource LogoStyle}"
         android:id="logo"
         android:layout_alignParentRight="true" />
+    <!--Button ok & back-->
+  <LinearLayout XmlStyle="{Resource Ok_Back_Container}"
+        android:id="linear_bottom">
+
+    <Button XmlStyle="{Resource MediumGreenButtonStyle}"
+        Text="{Tr Text, Uid=Button_Ok}"
+        android:layout_marginLeft="4dip"
+        Click="{Binding SaveCommand}"
+             />
+    <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
+        Text="{Tr Text, Uid=Button_Back}"
+        Click="{Binding BackCommand}"
+             />
+  </LinearLayout>
 
   <LinearLayout
       android:id="linear_info"
       android:layout_width="match_parent"
       android:layout_height="fill_parent"
       android:orientation="horizontal"
-      android:layout_marginBottom="81dip">
+      android:layout_above="@id/linear_bottom">
     <!--First column-->
     <ScrollView
         android:layout_weight="1"
@@ -191,23 +205,4 @@
               />
     </RelativeLayout>
   </LinearLayout>
-  <!--Button Ok & Back-->
-  <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="75dip"
-    android:layout_alignParentBottom="true"
-    android:layout_marginLeft="4dip"
-    android:layout_marginBottom="4dip"
-         >
-
-    <Button XmlStyle="{Resource MediumGreenButtonStyle}"
-        Text="{Tr Text,Uid=Button_Ok}"
-        Click="{Binding SaveCommand}"/>
-
-    <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
-        Text =" {Tr Text,Uid=Button_Back}"
-        Click="{Binding BackCommand}"
-        />
-
-  </LinearLayout>
-</RelativeLayout>
+ </RelativeLayout>

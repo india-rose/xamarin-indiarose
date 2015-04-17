@@ -28,4 +28,16 @@
     marginBottom="2dp"
     />
 
+  <Style Key="Ok_Back_Container"
+    android:layout_width="fill_parent"
+    android:layout_height="75dip"
+    android:layout_alignParentBottom="true"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:layout_centerInParent="true"
+    android:orientation="horizontal"
+    android:layout_marginBottom="4dip"
+    android:layout_marginTop="4dip"
+             />
+
 </Resources>
