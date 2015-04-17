@@ -155,6 +155,26 @@
                 "inputFile": "Views/Admin/Collection/WatchIndiagramPage.xml",
                 "outputFile": "Admin_Collection_WatchIndiagramPage.axml"
             }
+        },
+        {
+            "fragment": {
+                "className": "SoundChoiceDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/SoundChoicePage.xml",
+                "outputFile": "Admin_Collection_Dialogs_SoundChoiceDialog.axml"
+            }
+        },
+        {
+            "fragment": {
+                "className": "ImageChoiceDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/ImageChoicePage.xml",
+                "outputFile": "Admin_Collection_Dialogs_ImageChoiceDialog.axml"
+            }
         }
     ]
 }

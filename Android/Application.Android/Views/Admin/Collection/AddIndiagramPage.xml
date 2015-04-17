@@ -145,7 +145,8 @@
                     <Button XmlStyle="{Resource MediumPinkButtonStyle}"
                         android:id="choose_sound"
                         android:layout_marginBottom="4dip"
-                        Text="{Tr Text, Uid=AIP_Sound}" />
+                        Text="{Tr Text, Uid=AIP_Sound}"
+                        Click="{Binding SoundChoiceCommand}"/>
                 </LinearLayout>
 
                 <LinearLayout XmlStyle="{Resource ButtonContainer}"
@@ -163,7 +164,7 @@
                 </LinearLayout>
             </RelativeLayout>
         </ScrollView>
-
+<!--Second column-->
         <ScrollView XmlStyle="{Resource ScrollViewStyle}"
             android:id="relative_right" >
 
@@ -198,7 +199,9 @@
                     <Button XmlStyle="{Resource MediumPurpleButtonStyle}"
                         android:id="choose_picture"
                         android:layout_marginBottom="4dip"
-                        Text="{Tr Text, Uid=AIP_BImage}" />
+                        Text="{Tr Text, Uid=AIP_BImage}"
+                        Click="{Binding ImageChoiceCommand}"
+                            />
                 </LinearLayout>
 
                 <CheckBox XmlStyle="{Resource SmallBlueText}"
