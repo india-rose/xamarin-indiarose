@@ -385,7 +385,7 @@ Commentaires :</value>
     <value>Est une catégorie</value>
   </data>
   <data name="AIP_Name.Text" xml:space="preserve">
-    <value>Nom</value>
+    <value>Nom : </value>
   </data>
   <data name="AIP_Sound.Text" xml:space="preserve">
     <value>Son</value>
@@ -393,7 +393,10 @@ Commentaires :</value>
   <data name="AIP_Text.Text" xml:space="preserve">
     <value>Texte indiagramme</value>
   </data>
-  <data name="AIP_Way.Text" xml:space="preserve">
-    <value>Chemin</value>
+  <data name="AIP_FilePath.Text" xml:space="preserve">
+    <value>Chemin : </value>
+  </data>
+  <data name="AIP_BDel.Text" xml:space="preserve">
+    <value>Supprimer son</value>
   </data>
 </root>

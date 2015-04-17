@@ -1,27 +1,223 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/white"
-                >
-  <Resources>
-    
-  </Resources>
-  <ImageView XmlStyle="{Resource LogoStyle}"
-             android:layout_alignParentRight="true"
-             />
-  <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        >
-    <Button XmlStyle="{Resource MediumGreenButtonStyle}"
-        Text="{Tr Text,Uid=Button_Ok}"
-        Click="{Binding SaveCommand}"/>
+﻿<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+  
+    <Resources>
+      <Style Key="BlueStyle"
+         android:textColor="#006FFF"
+         />
+      <Style Key="TextViewTitle"
+          XmlStyle="{Resource BlueStyle}"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="7dip"
+          android:textSize="25sp"
+          android:textStyle="italic"
+           />
+      <Style Key="SmallBlueText"
+            XmlStyle="{Resource BlueStyle}"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+      <Style Key="SmallBlackText"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    <Style Key="ButtonContainer"
+          android:layout_width="match_parent"
+          android:layout_height="75dip"
+          android:layout_marginLeft="10dip"
+          android:layout_marginRight="6dip" />
+    <Style Key="ScrollViewStyle"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:layout_weight="1"/>
+    </Resources>
 
-    <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
-        Text =" {Tr Text,Uid=Button_Back}"
-        Click="{Binding BackCommand}"
-        />
-  </LinearLayout>
+    <!-- Dummy item to prevent AutoCompleteTextView from receiving focus -->
+    <LinearLayout
+        android:layout_width="0px"
+        android:layout_height="0px"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+    <LinearLayout
+        android:id="linear_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="75dip"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal"
+        android:layout_marginBottom="4dip"
+        android:layout_marginTop="4dip">
+
+        <Button XmlStyle="{Resource MediumGreenButtonStyle}"
+            Text="{Tr Text, Uid=Button_Ok}"
+            android:layout_marginLeft="4dip"
+            Click="{Binding BackCommand}"
+             />
+        <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
+            Text="{Tr Text, Uid=Button_Back}"
+            Click="{Binding BackCommand}"
+             />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="main_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/linear_bottom"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <ScrollView XmlStyle="{Resource ScrollViewStyle}"
+            android:id="relative_left" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip" >
+
+                <TextView XmlStyle="{Resource TextViewTitle}"
+                    android:id="text"
+                    Text="{Tr Text, Uid=AIP_Text}" />
+
+                <EditText
+                    android:id="edit_text"
+                    android:layout_width="150dip"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text"
+                    android:layout_marginLeft="5dip"
+                    android:inputType="text"
+                    android:textSize="15sp" />
+
+                <TextView XmlStyle="{Resource TextViewTitle}"
+                    android:id="text_parent_category"
+                    android:layout_below="@id/edit_text"
+                    android:layout_marginTop="10dip"
+                    Text="{Tr Text, Uid=AIP_Catego}" />
+
+                <TextView XmlStyle="{Resource SmallBlueText}"
+                    android:id="name_text_parent_category"
+                    android:layout_below="@id/text_parent_category"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginRight="5dip"
+                    Text="{Tr Text, Uid=AIP_Name}" />
+
+                <TextView XmlStyle="{Resource SmallBlackText}"
+                    android:id="m_indiagramCategory"
+                    android:layout_below="@id/text_parent_category"
+                    android:layout_toRightOf="@id/name_text_parent_category"
+                    />
+
+                <LinearLayout XmlStyle="{Resource ButtonContainer}"
+                    android:id="button_category"
+                    android:layout_below="@id/name_text_parent_category"
+                    android:orientation="horizontal" >
+
+                    <Button XmlStyle="{Resource MediumBlueButtonStyle}"
+                        Text="{Tr Text, Uid=AIP_BCateg}"/>
+
+                    <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
+                        Text="{Tr Text, Uid=AIP_BRoot}" />
+                </LinearLayout>
+
+                <TextView XmlStyle="{Resource TextViewTitle}"
+                    android:id="text_sound"
+                    android:layout_below="@id/button_category"
+                    android:layout_marginTop="10dip"
+                    Text="{Tr Text, Uid=AIP_Sound}" />
+
+                <TextView XmlStyle="{Resource SmallBlueText}"
+                    android:id="filepath_sound"
+                    android:layout_below="@id/text_sound"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginRight="5dip"
+                    Text="{Tr Text, Uid=AIP_FilePath}" />
+
+                <TextView XmlStyle="{Resource SmallBlackText}"
+                    android:id="m_indiagramSound"
+                    android:layout_below="@id/text_sound"
+                    android:layout_toRightOf="@id/filepath_sound" />
+
+                <LinearLayout XmlStyle="{Resource ButtonContainer}"
+                    android:id="button_sound_modif"
+                    android:layout_below="@id/filepath_sound"
+                    android:orientation="vertical" >
+
+                    <Button XmlStyle="{Resource MediumPinkButtonStyle}"
+                        android:id="choose_sound"
+                        android:layout_marginBottom="4dip"
+                        Text="{Tr Text, Uid=AIP_Sound}" />
+                </LinearLayout>
+
+                <LinearLayout XmlStyle="{Resource ButtonContainer}"
+                    android:id="button_sound"
+                    android:layout_below="@id/button_sound_modif"
+                    android:orientation="horizontal" >
+
+                    <Button XmlStyle="{Resource MediumBlueButtonStyle}"
+                        android:id="listen"
+                        Text="{Tr Text, Uid=AIP_BHeard}" />
+
+                    <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
+                        android:id="deleteSound"
+                        Text="{Tr Text, Uid=AIP_BDel}" />
+                </LinearLayout>
+            </RelativeLayout>
+        </ScrollView>
+
+        <ScrollView XmlStyle="{Resource ScrollViewStyle}"
+            android:id="relative_right" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+              >
+
+                <ImageView XmlStyle="{Resource LogoStyle}"
+                    android:id="logo"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dip"/>
+
+                <ImageView
+                    android:id="indiagram"
+                    android:layout_width="225dip"
+                    android:layout_height="225dip"
+                    android:layout_below="@id/logo"
+                    android:layout_marginTop="30dip"
+                    android:layout_marginBottom="10dip"/>
+
+                <LinearLayout
+                    android:id="button_picture"
+                    android:layout_width="225dip"
+                    android:layout_height="75dip"
+                    android:layout_below="@id/indiagram"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true">
+
+                    <Button XmlStyle="{Resource MediumPurpleButtonStyle}"
+                        android:id="choose_picture"
+                        android:layout_marginBottom="4dip"
+                        Text="{Tr Text, Uid=AIP_BImage}" />
+                </LinearLayout>
+
+                <CheckBox XmlStyle="{Resource SmallBlueText}"
+                    android:id="isCategory"
+                    android:layout_below="@id/button_picture"
+                    android:layout_centerInParent="true"
+                    Text="{Tr Text, Uid=AIP_IsCateg}"/>
+            </RelativeLayout>
+        </ScrollView>
+    </LinearLayout>
+
 </RelativeLayout>
