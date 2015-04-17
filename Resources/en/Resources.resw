@@ -417,4 +417,19 @@ Comments : </value>
   <data name="remove.Text" xml:space="preserve">
     <value>Remove</value>
   </data>
+  <data name="CI_Camera.Text" xml:space="preserve">
+    <value>Camera</value>
+  </data>
+  <data name="CI_Gallery.Text" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
+  <data name="CI_Title.Text" xml:space="preserve">
+    <value>Select a picture</value>
+  </data>
+  <data name="CS_Save.Text" xml:space="preserve">
+    <value>Record</value>
+  </data>
+  <data name="CS_Title.Text" xml:space="preserve">
+    <value>Select a sound</value>
+  </data>
 </root>
