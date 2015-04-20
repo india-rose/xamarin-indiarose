@@ -6,29 +6,16 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Services
 {
-    public class EmailService : IEmailService
+    public class EmailService : AbstractService, IEmailService
     {
 	    private const string CONTACT_UID = "Contact";
 	    private const string ADDRESS_PROPERTY = "EmailAddress";
 	    private const string TITLE_PROPERTY = "Title";
 	    private const string BODY_PROPERTY = "Body";
 
-	    private readonly IContainer _container;
-	    private ILocalizationService _localizationService;
-	    private ILoggerService _loggerService;
-	    protected ILocalizationService LocalizationService
+	    public EmailService(IContainer container) : base(container)
 	    {
-		    get { return _localizationService ?? (_localizationService = _container.Resolve<ILocalizationService>()); }
-	    }
 
-	    protected ILoggerService LoggerService
-	    {
-			get { return _loggerService ?? (_loggerService = _container.Resolve<ILoggerService>()); }
-	    }
-
-	    public EmailService(IContainer container)
-	    {
-		    _container = container;
 	    }
 
 	    public bool SendContactEmail()

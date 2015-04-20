@@ -1,7 +1,8 @@
 ﻿using System;
+using IndiaRose.Data.Model;
 using SQLite.Net.Attributes;
 
-namespace IndiaRose.Data.Model
+namespace IndiaRose.Storage.Sqlite.Model
 {
     [Table("Indiagram")]
     public class IndiagramSql

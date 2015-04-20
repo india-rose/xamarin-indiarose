@@ -26,23 +26,12 @@ namespace IndiaRose.Application
 			base.Initialize();
 			ViewModelsLocator.Initialize(this);
 
-            ResourceService resourceService = new ResourceService(ActivityService);
-            RegisterInstance<IResourceService>(resourceService);
-
-		    EmailService emailService = new EmailService(this);
-            RegisterInstance<IEmailService>(emailService);
-
-            InstallVoiceSynthesisService voiceSynthesisService = new InstallVoiceSynthesisService(ActivityService);
-            RegisterInstance<IInstallVoiceSynthesisService>(voiceSynthesisService);
-
-            ScreenService screenService = new ScreenService(ActivityService);
-            RegisterInstance<IScreenService>(screenService);
-
-            SettingsService settingsService = new SettingsService(this);
-            RegisterInstance<ISettingsService>(settingsService);
-
-            FontService fontService = new FontService(ActivityService);
-            RegisterInstance<IFontService>(fontService);
+            RegisterInstance<IResourceService>(new ResourceService(ActivityService));
+			RegisterInstance<IEmailService>(new EmailService(this));
+			RegisterInstance<IInstallVoiceSynthesisService>(new InstallVoiceSynthesisService(ActivityService));
+			RegisterInstance<IScreenService>(new ScreenService(ActivityService));
+			RegisterInstance<ISettingsService>(new SettingsService(this));
+			RegisterInstance<IFontService>(new FontService(ActivityService));
 		}
 	}
 }
