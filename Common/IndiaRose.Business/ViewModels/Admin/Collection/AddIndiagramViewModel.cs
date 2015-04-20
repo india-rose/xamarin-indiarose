@@ -1,7 +1,9 @@
 ﻿using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings;
+using IndiaRose.Data.Model;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
+using Storm.Mvvm.Navigation;
 using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
@@ -21,10 +23,15 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         public ICommand SoundChoiceCommand { get; private set; }
 
         #endregion
+        [NavigationParameter]
+        public Indiagram CurrentIndiagram { get; set; }
+
         public AddIndiagramViewModel(IContainer container) : base(container)
         {
             ImageChoiceCommand = new DelegateCommand(ImageChoiceAction);
             SoundChoiceCommand = new DelegateCommand(SoundChoiceAction);
+
+            CurrentIndiagram=new Indiagram("test",null);
         }
 
         protected override void SaveAction()

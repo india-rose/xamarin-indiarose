@@ -1,7 +1,11 @@
 
+using System.ComponentModel;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Widget;
+using IndiaRose.Business.ViewModels.Admin.Collection;
+using IndiaRose.Data.Model;
 using Storm.Mvvm;
 
 namespace IndiaRose.Application.Activities.Admin.Collection
@@ -15,6 +19,22 @@ namespace IndiaRose.Application.Activities.Admin.Collection
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Admin_Collection_AddIndiagramPage);
             SetViewModel(Container.Locator.AdminCollectionAddIndiagramViewModel);
+
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+
+            AddIndiagramViewModel vm = (AddIndiagramViewModel)ViewModel;
+            EditText nameEditText = FindViewById<EditText>(Resource.Id.edit_text);
+            nameEditText.Text = vm.CurrentIndiagram.Text;
+            TextView parentTextView = FindViewById<TextView>(Resource.Id.m_indiagramCategory);
+            Indiagram parent = vm.CurrentIndiagram.Parent;
+            if (parent != null)
+                parentTextView.Text = parent.Text;
+            TextView soundpathTextView = FindViewById<TextView>(Resource.Id.m_indiagramSound);
+            soundpathTextView.Text = vm.CurrentIndiagram.SoundPath ?? "Aucun";
         }
     }
 }
