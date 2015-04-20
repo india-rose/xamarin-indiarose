@@ -427,7 +427,7 @@ Commentaires :</value>
     <value>Choisir une image</value>
   </data>
   <data name="CS_Save.Text" xml:space="preserve">
-    <value>Enregistreur de son</value>
+    <value>Enregistrer un son</value>
   </data>
   <data name="CS_Title.Text" xml:space="preserve">
     <value>Choisir un son</value>

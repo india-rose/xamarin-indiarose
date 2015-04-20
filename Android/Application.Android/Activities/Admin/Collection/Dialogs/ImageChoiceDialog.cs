@@ -1,4 +1,3 @@
-using System;
 using Android.Views;
 using Storm.Mvvm;
 using Storm.Mvvm.Dialogs;
@@ -12,7 +11,7 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
         public ImageChoiceDialog()
         {
             var trad = DependencyService.Container.Resolve<ILocalizationService>();
-            Title = trad.GetString("Dialogs_DragAndDrop", "Text");
+            Title = trad.GetString("CI_Title", "Text");
             Buttons.Add(DialogsButton.Positive, trad.GetString("Button_Ok", "Text"));
             Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Back", "Text"));
         }

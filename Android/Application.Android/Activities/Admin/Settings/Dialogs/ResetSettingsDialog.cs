@@ -1,6 +1,5 @@
 ﻿#region Usings
 
-using System.Globalization;
 using Android.Views;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;

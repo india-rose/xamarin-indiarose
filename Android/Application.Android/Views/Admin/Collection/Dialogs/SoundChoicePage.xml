@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<RelativeLayout
+<LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
   android:layout_gravity="center"
   android:gravity="center"
-  >
-  <ImageView
-      android:layout_width="100dip"
-      android:layout_height="100dip"
-      android:src="@raw/root"
-      android:layout_centerInParent="true"
-      />
-</RelativeLayout>
+  android:orientation="vertical">
+  <Button XmlStyle="{Resource ButtonDialogStyle}"
+    Text="{Tr Text, Uid=CS_Save}"
+    />
+  <View XmlStyle="{Resource LineSeparator}" />
+  <Button XmlStyle="{Resource ButtonDialogStyle}"
+    Text="{Tr Text, Uid=CI_Gallery}"
+    />
+</LinearLayout>

@@ -39,5 +39,16 @@
     android:layout_marginBottom="4dip"
     android:layout_marginTop="4dip"
              />
+  <Style Key="ButtonDialogStyle"
+    android:layout_width="fill_parent"
+    android:paddingLeft="10dip"
+    android:layout_height="wrap_content"
+    android:textSize="19sp"
+    android:background="@android:color/white"
+    android:gravity="center|left" />
+  <Style Key="LineSeparator"
+    android:layout_width="fill_parent"
+    android:layout_height="1px"
+    android:background="#090909"/>
 
 </Resources>

@@ -1,11 +1,9 @@
 #region Usings
 
-using System.Runtime.InteropServices;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
-using Android.Widget;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
 
