@@ -89,12 +89,25 @@ namespace IndiaRose.Storage.Sqlite
 		    //db.Delete<IndiagramSql>(GetIndiagramSql(indiagram));
 		}
 
-	    public IndiagramSql GetIndiagramSql(Indiagram indiagram)
+	    private IndiagramSql GetIndiagramSql(Indiagram indiagram)
 	    {
             throw new NotImplementedException();
 
            /*var temp = from s in db.Table<Indiagram>()
                         where
+            * 
+            * Return same position
+            * */
+	    }
+
+	    private Indiagram GetIndiagramFromSql(IndiagramSql indiagram)
+	    {
+
+            throw new NotImplementedException();
+            /*var temp = from s in db.Table<Indiagram>()
+                        where
+            * 
+            * Return same position <-->
             * */
 	    }
 
@@ -149,7 +162,38 @@ namespace IndiaRose.Storage.Sqlite
 
             /*var db = new SQLiteConnection(dbPath);
             var table = db.Table<CategorySql>();
-
+            var table2 = db.Table<IndiagramSQL>();
+             
+            
+             * 
+             * 
+             * 
+             * CODE EN BAS
+             * 
+             * 
+            var list = new List<Indiagram>();
+            foreach (var t in table)
+            {
+                if (t.parent == 0)
+                {
+                    list.Add(t);
+                }
+            }
+            foreach (var t in table2)
+            {
+                if (t.parent == 0)
+                {
+                    list.Add(t);
+                }
+            }
+            
+             * 
+             * 
+             * 
+             * 
+             * CODE EN HAUT
+             * 
+             * 
             foreach (var v in table)
             {
                 list2.Add(SearchCategory(v));
@@ -221,7 +265,7 @@ namespace IndiaRose.Storage.Sqlite
 
 		}
 
-	    public List<Indiagram> AddChildren(List<Indiagram> list, Indiagram indiagram)
+	    private List<Indiagram> AddChildren(List<Indiagram> list, Indiagram indiagram)
 	    {
 	        if (!(indiagram is Category)) return list;
 	        foreach (var t in indiagram.Children)
