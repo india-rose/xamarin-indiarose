@@ -43,8 +43,9 @@
   <LinearLayout XmlStyle="{Resource Ok_Back_Container}"
        android:id="ButtonContainer">
     <Button XmlStyle="{Resource MediumGreenButtonStyle}"
-    Text="{Tr Text, Uid=edit}"
-    android:layout_marginLeft="4dip"
+            Text="{Tr Text, Uid=edit}"
+            android:layout_marginLeft="4dip"
+            Click="{Binding EditCommand}"
              />
     <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
         Text="{Tr Text, Uid=remove}"
@@ -73,7 +74,7 @@
       <TextView XmlStyle="{Resource TextView}"
         android:layout_below="@id/title1"
         android:id="text1"
-        android:text="rainbowdash" />
+        android:text="" />
       
       <TextView XmlStyle="{Resource TextViewTitle}"
         Text="{Tr Text, Uid=AIP_Catego}" 
@@ -88,7 +89,8 @@
       <TextView XmlStyle="{Resource TextView}"
         android:layout_below="@id/title2"
         android:layout_toRightOf="@id/title3"
-        android:text="pinkipie" />
+        android:text="Home"
+        android:id="text2"/>
 
       <TextView XmlStyle="{Resource TextViewTitle}"
          android:layout_below="@id/title3"
@@ -103,7 +105,8 @@
       <TextView XmlStyle="{Resource TextView}"
         android:layout_below="@id/title4"
         android:layout_toRightOf="@id/title5"
-        android:text="rarity" />
+        android:text=""
+        android:id="text3"/>
       <LinearLayout
         android:layout_width= "200dip"
         android:layout_height="50dip"

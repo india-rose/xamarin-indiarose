@@ -182,6 +182,10 @@
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\IndiaRose.Data\IndiaRose.Data.csproj">
+      <Project>{4c9de63b-da7f-4e65-8638-a4953f4a07e0}</Project>
+      <Name>IndiaRose.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Framework.Android\Framework.Android.csproj">
       <Project>{a927a4b2-e383-4c4a-a1e8-1c4a0e53e093}</Project>
       <Name>Framework.Android</Name>
