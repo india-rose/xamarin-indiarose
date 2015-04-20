@@ -2,7 +2,7 @@
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
-    class ManagementViewModel : AbstractViewModel
+    public class ManagementViewModel : AbstractViewModel
     {
         public ManagementViewModel(IContainer container)
             : base(container)
