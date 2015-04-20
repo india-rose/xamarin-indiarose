@@ -40,6 +40,7 @@ namespace IndiaRose.Business
             container.RegisterFactory(x => new WatchIndiagramViewModel(x));
             container.RegisterFactory(x => new CollectionManagementViewModel(x));
             container.RegisterFactory(x => new AddIndiagramViewModel(x));
+            container.RegisterFactory(x => new ManagementViewModel(x));
 
             //Admin/Collection/Dialogs
             container.RegisterFactory(x => new AddCollectionViewModel(x));
@@ -141,6 +142,11 @@ namespace IndiaRose.Business
 	    {
             get { return _container.Resolve<WatchIndiagramViewModel>(); }
 	    }
+
+        public ManagementViewModel AdminManagementViewModel
+        {
+            get { return _container.Resolve<ManagementViewModel>(); }
+        }
 
         #endregion
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Android.App;
 using Android.Runtime;
+using Android.Views;
 using IndiaRose.Application.Activities.Admin;
 using IndiaRose.Application.Activities.Admin.Collection;
 using IndiaRose.Application.Activities.Admin.Collection.Dialogs;
@@ -37,7 +38,8 @@ namespace IndiaRose.Application
          		{Views.ADMIN_SETTINGS_INDIAGRAMPROPERTIES, typeof(IndiagramPropertyActivity)},
                 {Views.ADMIN_COLLECTION_MANAGEMENT, typeof(CollectionManagementActivity)},
                 {Views.ADMIN_COLLECTION_ADD, typeof(AddIndiagramActivity)},
-                {Views.ADMIN_COLLECTION_WATCH,typeof(WatchIndiagramActivity)}
+                {Views.ADMIN_COLLECTION_WATCH,typeof(WatchIndiagramActivity)},
+                {Views.ADMIN_COLLECTION_MANA,typeof(ManagementFragment)}
 			};
             Dictionary<string, Type> dialogs = new Dictionary<string, Type>
 			{

@@ -175,6 +175,16 @@
                 "inputFile": "Views/Admin/Collection/Dialogs/ImageChoicePage.xml",
                 "outputFile": "Admin_Collection_Dialogs_ImageChoiceDialog.axml"
             }
+        },
+        {
+            "fragment": {
+                "className": "ManagementFragment",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/ManagementPage.xml",
+                "outputFile": "Views_Admin_Collection_ManagementPage.axml"
+            }
         }
     ]
 }
