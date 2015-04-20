@@ -1,7 +1,4 @@
-﻿/*
- * 
- * 
- * 
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,5 +25,3 @@ namespace IndiaRose.Interfaces
         CategorySql GetParent(IndiagramSql children);
     }
 }
-
-*/

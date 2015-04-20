@@ -1,13 +1,5 @@
-﻿/**
- * 
- * 
- * using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQLite;
-
+﻿using System;
+using SQLite.Net.Attributes;
 
 namespace IndiaRose.Data.Model
 {
@@ -29,7 +21,6 @@ namespace IndiaRose.Data.Model
 
       public IndiagramSql(int version,string text, string imagepath, string soundpath, int parent)
         {
-            //Test
             Version = version;
             Text = text;
             ImagePath = imagepath;
@@ -39,7 +30,6 @@ namespace IndiaRose.Data.Model
 
         public IndiagramSql(Indiagram a)
         {
-            //Test
             Text = a.Text;
             ImagePath = a.ImagePath;
             SoundPath = a.SoundPath;
@@ -49,19 +39,15 @@ namespace IndiaRose.Data.Model
             }
             else
             {
-                //null ?
+
             }
         }
 
         public IndiagramSql()
         {
-            //throw new NotImplementedException();
 
         }
     }
     
 
 }
-
- 
- */

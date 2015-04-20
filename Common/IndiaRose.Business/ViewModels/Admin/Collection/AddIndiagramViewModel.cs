@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
@@ -13,7 +8,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
     public class AddIndiagramViewModel : AbstractSettingsViewModel
     {
-        #region Service Boite de dialogue
+        #region MessageDialog
 
         private IMessageDialogService _messageDialogService;
         public IMessageDialogService MessageDialogService

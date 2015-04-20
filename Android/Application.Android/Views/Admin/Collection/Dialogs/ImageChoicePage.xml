@@ -6,10 +6,4 @@
   android:layout_gravity="center"
   android:gravity="center"
   >
-  <ImageView
-      android:layout_width="100dip"
-      android:layout_height="100dip"
-      android:src="@raw/root"
-      android:layout_centerInParent="true"
-      />
 </RelativeLayout>
