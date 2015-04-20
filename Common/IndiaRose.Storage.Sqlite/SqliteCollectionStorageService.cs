@@ -1,17 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using IndiaRose.Data.Model;
 using IndiaRose.Storage.Sqlite.Model;
+
+using SQLite;
+using SQLite.Net;
 using SQLite.Net.Async;
 
 namespace IndiaRose.Storage.Sqlite
 {
 	public class SqliteCollectionStorageService : ICollectionStorageService
 	{
-		public void Create(Indiagram indiagram)
-		{
+        //public string DbPath { get; set; } ??
+
+	    public void Create(Indiagram indiagram)
+	    {
+
             throw new NotImplementedException();
-		}
+
+            //TODO connexion impossible
+	        if (indiagram is Category)
+	        {
+	            var temp = new CategorySql
+	            {
+	                ImagePath = indiagram.ImagePath,
+	                SoundPath = indiagram.SoundPath,
+	                Text = indiagram.Text
+	            };
+	            temp.Position = temp.Id;
+	            temp.Parent = (GetIndiagramSql(indiagram.Parent)).Id;
+	            //TODO add avec connexion
+	        }
+	        else
+	        {
+	            var temp = new IndiagramSql
+	            {
+	                ImagePath = indiagram.ImagePath,
+	                SoundPath = indiagram.SoundPath,
+	                Text = indiagram.Text
+	            };
+	            temp.Position = temp.Id;
+                //TODO add avec connexion
+	        }
+
+	    }
 
 		public void Update(Indiagram indiagram)
 		{
@@ -20,8 +53,22 @@ namespace IndiaRose.Storage.Sqlite
 
 		public void Delete(Indiagram indiagram)
 		{
-			throw new NotImplementedException();
+
+            throw new NotImplementedException();
+
+            //connection
+		    //var db = new SQLiteConnection();
+		    //db.Delete<IndiagramSql>(GetIndiagramSql(indiagram));
 		}
+
+	    public IndiagramSql GetIndiagramSql(Indiagram indiagram)
+	    {
+            throw new NotImplementedException();
+
+           /*var temp = from s in db.Table<Indiagram>()
+                        where
+            * */
+	    }
 
 		public List<Indiagram> GetTopLevel()
 		{
@@ -35,6 +82,8 @@ namespace IndiaRose.Storage.Sqlite
 
 		public List<Indiagram> GetFullCollection()
 		{
+            throw new NotImplementedException();
+
 		    var list = new List<Indiagram>();
 		    foreach (var t in GetTopLevel())
 		    {
