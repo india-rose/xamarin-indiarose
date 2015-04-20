@@ -30,5 +30,10 @@ namespace IndiaRose.Storage.Sqlite
 		{
 			throw new NotImplementedException();
 		}
+
+		public List<Indiagram> GetFullCollection()
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

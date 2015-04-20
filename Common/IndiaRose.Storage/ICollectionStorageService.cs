@@ -14,5 +14,7 @@ namespace IndiaRose.Storage
 		List<Indiagram> GetTopLevel();
 
 		List<Indiagram> GetChildren(Indiagram parent);
+
+		List<Indiagram> GetFullCollection();
 	}
 }
