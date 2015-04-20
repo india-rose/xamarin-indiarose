@@ -162,6 +162,25 @@
                         android:id="deleteSound"
                         Text="{Tr Text, Uid=AIP_BDel}" />
                 </LinearLayout>
+              <TextView XmlStyle="{Resource TextViewTitle}"
+                    android:id="title_copy"
+                    android:layout_below="@id/button_sound"
+                    android:layout_marginTop="10dip"
+                    Text="{Tr Text, Uid=AIP_Copy}" />
+              <LinearLayout XmlStyle="{Resource ButtonContainer}"
+                    android:id="button_copy_paste"
+                    android:layout_below="@id/title_copy"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dip">
+
+                <Button XmlStyle="{Resource MediumBlueButtonStyle}"
+                    android:id="copy"
+                    Text="{Tr Text, Uid=Copy}" />
+
+                <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
+                    android:id="paste"
+                    Text="{Tr Text, Uid=Paste}" />
+              </LinearLayout>
             </RelativeLayout>
         </ScrollView>
 <!--Second column-->
