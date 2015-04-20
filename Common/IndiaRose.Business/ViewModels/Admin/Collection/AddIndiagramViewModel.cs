@@ -31,7 +31,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             ImageChoiceCommand = new DelegateCommand(ImageChoiceAction);
             SoundChoiceCommand = new DelegateCommand(SoundChoiceAction);
 
-            CurrentIndiagram=new Indiagram("test",null);
         }
 
         protected override void SaveAction()

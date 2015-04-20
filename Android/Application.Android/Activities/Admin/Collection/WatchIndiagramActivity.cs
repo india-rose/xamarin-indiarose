@@ -1,5 +1,6 @@
 using Android.App;
 using Android.Content.PM;
+using Android.Media;
 using Android.OS;
 using Android.Widget;
 using IndiaRose.Business.ViewModels.Admin.Collection;
@@ -33,7 +34,6 @@ namespace IndiaRose.Application.Activities.Admin.Collection
             TextView soundpathTextView = FindViewById<TextView>(Resource.Id.text3);
             soundpathTextView.Text = vm.CurrentIndiagram.SoundPath ?? "Aucun";
             ImageView imageView = FindViewById<ImageView>(Resource.Id.Watch_Img);
-            imageView.SetImageResource(Resource.Raw.playbutton);
         }
     }
 }

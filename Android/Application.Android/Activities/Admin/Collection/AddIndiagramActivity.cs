@@ -27,6 +27,8 @@ namespace IndiaRose.Application.Activities.Admin.Collection
         {
 
             AddIndiagramViewModel vm = (AddIndiagramViewModel)ViewModel;
+            if (vm.CurrentIndiagram == null)
+                return;
             EditText nameEditText = FindViewById<EditText>(Resource.Id.edit_text);
             nameEditText.Text = vm.CurrentIndiagram.Text;
             TextView parentTextView = FindViewById<TextView>(Resource.Id.m_indiagramCategory);
