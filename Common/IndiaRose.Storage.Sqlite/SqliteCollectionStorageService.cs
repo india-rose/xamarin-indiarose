@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using IndiaRose.Data.Model;
 using IndiaRose.Storage.Sqlite.Model;
 
@@ -46,10 +47,37 @@ namespace IndiaRose.Storage.Sqlite
 
 	    }
 
-		public void Update(Indiagram indiagram)
-		{
-			throw new NotImplementedException();
-		}
+        public void Update(Indiagram indiagram)
+        {
+            throw new NotImplementedException();
+
+            //TODO connexion impossible
+            /*var db = new SQLiteConnection(dbPath);
+
+            if (indiagram is Category)
+            {
+                var query = db.Table<CategorySql>().SingleOrDefault(t => t.Text == indiagram.Text ||
+                    t.ImagePath == indiagram.ImagePath || t.SoundPath == indiagram.SoundPath ||
+                    t.Position == indiagram.Position ||
+                    t.Position == indiagram.Position);
+                query.Text = indiagram.Text;
+                query.ImagePath = indiagram.ImagePath;
+                query.SoundPath = indiagram.SoundPath;
+                //query.Children.CopyTo(indiagram.Children);
+                db.Update(query);
+            }
+            else
+            {
+                var query = db.Table<IndiagramSql>().SingleOrDefault(t => t.Text == indiagram.Text ||
+                    t.ImagePath == indiagram.ImagePath || t.SoundPath == indiagram.SoundPath ||
+                    t.Position == indiagram.Position || t.Position == indiagram.Position);
+                query.Text = indiagram.Text;
+                query.ImagePath = indiagram.ImagePath;
+                query.SoundPath = indiagram.SoundPath;
+                db.Update(query);
+            }
+            db.Close();*/
+        }
 
 		public void Delete(Indiagram indiagram)
 		{
@@ -70,15 +98,115 @@ namespace IndiaRose.Storage.Sqlite
             * */
 	    }
 
-		public List<Indiagram> GetTopLevel()
-		{
-			throw new NotImplementedException();
-		}
+	    private Indiagram SearchCategory(IndiagramSql csql)
+	    {
+	        if (csql is CategorySql)
+	        {
+	            Category c = new Category()
+	            {
+	                Text = csql.Text,
+	                ImagePath = csql.ImagePath,
+	                SoundPath = csql.SoundPath,
+	                Position = csql.Position,
+	                //Children = {AddCategory(((CategorySql) csql).Children)},
+	            };
 
-		public List<Indiagram> GetChildren(Indiagram parent)
-		{
-			throw new NotImplementedException();
-		}
+	            return c;
+	        }
+	        else
+	        {
+	            Indiagram i = new Indiagram()
+	            {
+	                Text = csql.Text,
+	                ImagePath = csql.ImagePath,
+	                SoundPath = csql.SoundPath,
+	                Position = csql.Position,
+	            };
+
+	            return i;
+	        }
+	    }
+
+        private List<Indiagram> AddCategory(CategorySql csql)
+        {
+            Indiagram i;
+            List<Indiagram> list = new List<Indiagram>();
+
+            foreach (var c in csql.Children)
+            {
+                list.Add(SearchCategory(c));
+            }
+
+            return list;
+        }
+
+        public List<Indiagram> GetTopLevel()
+        {
+            throw new NotImplementedException();
+
+            //TODO connexion impossible
+            List<Indiagram> list = new List<Indiagram>(), list2 = new List<Indiagram>();
+
+            /*var db = new SQLiteConnection(dbPath);
+            var table = db.Table<CategorySql>();
+
+            foreach (var v in table)
+            {
+                list2.Add(SearchCategory(v));
+            }
+
+            foreach (var i in list2)
+            {
+                foreach (var j in list2)
+                {
+                    foreach (var k in j.Children)
+                    {
+                        if (i.Equals(k))
+                        {
+                            i.Parent = j;
+                        }
+                    }
+                }
+            }
+
+            foreach (var i in list2)
+            {
+                if (i.Parent != null)
+                {
+                    list.Add(i);
+                }
+            }
+
+            return list;*/
+        }
+
+	    private List<Indiagram> SearchChildren(List<Indiagram> topLevel, Indiagram parent)
+	    {
+	        foreach (var table in topLevel)
+	        {
+	            if (table is Category)
+	            {
+	                if (table.Equals(parent))
+	                {
+	                    return table.Children;
+	                }
+	                return SearchChildren(table.Children, parent);
+	            } 
+	        }
+
+	        return null;
+	    }
+
+        public List<Indiagram> GetChildren(Indiagram parent)
+        {
+            throw new NotImplementedException();
+
+            //TODO connexion impossible
+
+            List<Indiagram> list = GetTopLevel();
+
+            return SearchChildren(list, parent);
+        }
 
 		public List<Indiagram> GetFullCollection()
 		{
