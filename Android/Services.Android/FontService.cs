@@ -1,15 +1,14 @@
 using System.Collections.Generic;
 using System.IO;
 using IndiaRose.Interfaces;
-using Storm.Mvvm.Interfaces;
-using Storm.Mvvm.Services;
+using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Services.Android
 {
-    public class FontService : AbstractServiceWithActivity, IFontService
+	public class FontService : AbstractAndroidService, IFontService
     {
-        public FontService(IActivityService activityService)
-            : base(activityService)
+        public FontService(IContainer container)
+			: base(container)
         {
         }
 

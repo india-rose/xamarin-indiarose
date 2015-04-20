@@ -5,23 +5,14 @@ using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
 using Newtonsoft.Json;
 using PCLStorage;
-using Storm.Mvvm;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 
 namespace IndiaRose.Services
 {
-	public class SettingsService : NotifierBase, ISettingsService
+	public class SettingsService : AbstractService, ISettingsService
 	{
 		private const string SETTINGS_FILE = "settings.json";
-
-		private readonly IContainer _container;
-		private ILoggerService _loggerService;
-
-		private ILoggerService LoggerService
-		{
-			get { return _loggerService ?? (_loggerService = _container.Resolve<ILoggerService>()); }
-		}
 
 		private bool _hasChanged;
 
@@ -118,12 +109,12 @@ namespace IndiaRose.Services
 
 		#endregion
 
-		public SettingsService(IContainer container)
+		public SettingsService(IContainer container) : base(container)
 		{
-			_container = container;
+			PropertyChanged += OnAnyValueChanged;   
+#pragma warning disable 4014
             LoadAsync();
-			PropertyChanged += OnAnyValueChanged;
-		    
+#pragma warning restore 4014
 		}
 
 		private void OnAnyValueChanged(object sender, PropertyChangedEventArgs e)

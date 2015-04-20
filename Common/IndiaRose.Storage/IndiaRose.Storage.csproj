@@ -5,20 +5,16 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4C9DE63B-DA7F-4E65-8638-A4953F4A07E0}</ProjectGuid>
+    <ProjectGuid>{E6229843-7567-4215-8AAA-AEB7D21D5DD1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IndiaRose.Data</RootNamespace>
-    <AssemblyName>IndiaRose.Data</AssemblyName>
-    <DefaultLanguage>fr-FR</DefaultLanguage>
+    <RootNamespace>IndiaRose.Storage</RootNamespace>
+    <AssemblyName>IndiaRose.Storage</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -40,11 +36,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Model\Category.cs" />
-    <Compile Include="Model\Indiagram.cs" />
-    <Compile Include="Model\SettingsModel.cs" />
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\IndiaRose.Data\IndiaRose.Data.csproj">
+      <Project>{4c9de63b-da7f-4e65-8638-a4953f4a07e0}</Project>
+      <Name>IndiaRose.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ICollectionStorageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UIModel\ColorContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Funq.Portable">

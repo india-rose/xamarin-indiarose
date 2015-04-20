@@ -5,7 +5,6 @@ using Android.Content.PM;
 using Android.Graphics;
 using Android.OS;
 using Android.Views;
-using Android.Widget;
 using IndiaRose.Framework.Converters;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;

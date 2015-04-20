@@ -432,4 +432,13 @@ Comments : </value>
   <data name="CS_Title.Text" xml:space="preserve">
     <value>Select a sound</value>
   </data>
+  <data name="AIP_Copy.Text" xml:space="preserve">
+    <value>Copy Indiagram</value>
+  </data>
+  <data name="Copy.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="Paste.Text" xml:space="preserve">
+    <value>Paste</value>
+  </data>
 </root>

@@ -1,17 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
-using Android.Widget;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
-using Storm.Mvvm.Commands;
 using Storm.Mvvm.Dialogs;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;

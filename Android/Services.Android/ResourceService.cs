@@ -1,17 +1,17 @@
 using System;
 using System.IO;
 using Android.Content;
-using Android.Util;
 using IndiaRose.Interfaces;
-using Storm.Mvvm.Interfaces;
+using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 using Uri = Android.Net.Uri;
 
 namespace IndiaRose.Services.Android
 {
-    public class ResourceService : AbstractServiceWithActivity, IResourceService
+    public class ResourceService : AbstractAndroidService, IResourceService
     {
-	    public ResourceService(IActivityService activityService) : base(activityService)
+		public ResourceService(IContainer container)
+			: base(container)
 	    {
 	    }
 
@@ -32,7 +32,7 @@ namespace IndiaRose.Services.Android
                 }
                 catch (Exception e)
                 {
-                    Log.Error("TAG", "ERROR", e);
+                    LoggerService.Log(string.Format("ResourceService.ShowPdfFile() : Cannot create external file {0}", path), MessageSeverity.Error);
                 }
             }
             try

@@ -47,10 +47,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDataBaseService.cs" />
     <Compile Include="IEmailService.cs" />
     <Compile Include="IFontService.cs" />
-    <Compile Include="IIndiagramService.cs" />
     <Compile Include="IInstallVoiceSynthesisService.cs" />
     <Compile Include="IResourceService.cs" />
     <Compile Include="IScreenService.cs" />

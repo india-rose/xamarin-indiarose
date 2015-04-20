@@ -5,11 +5,17 @@ namespace IndiaRose.Data.Model
 {
 	public class Indiagram : NotifierBase
 	{
+	    private int _position;
 		private string _text;
 		private string _imagePath;
 		private string _soundPath;
 		private Indiagram _parent;
 
+	    public int Position
+	    {
+            get { return _position;}
+            set { SetProperty(ref _position, value); }
+	    }
 		public string Text
 		{
 			get { return _text; }

@@ -1,10 +1,6 @@
 ﻿#region Usings
 
-using System;
-using System.Globalization;
 using Android.Views;
-using Android.Widget;
-using Java.Util;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
 using Storm.Mvvm.Dialogs;

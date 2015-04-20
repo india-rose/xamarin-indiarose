@@ -1,8 +1,8 @@
 
-using Storm.Mvvm;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Storm.Mvvm;
 
 namespace IndiaRose.Application.Activities.Admin.Collection
 {

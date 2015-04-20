@@ -3,7 +3,6 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Android.Widget;
 using Storm.Mvvm;
 
 #endregion

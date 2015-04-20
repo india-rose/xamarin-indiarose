@@ -1,13 +1,12 @@
 using IndiaRose.Interfaces;
-using Storm.Mvvm.Interfaces;
-using Storm.Mvvm.Services;
+using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Services.Android
 {
-	public class ScreenService : AbstractServiceWithActivity, IScreenService
+	public class ScreenService : AbstractAndroidService, IScreenService
 	{
-		public ScreenService(IActivityService activityService)
-			: base(activityService)
+		public ScreenService(IContainer container)
+			: base(container)
 		{
 		}
 

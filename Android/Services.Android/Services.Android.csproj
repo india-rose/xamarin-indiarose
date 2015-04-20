@@ -41,6 +41,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AbstractAndroidService.cs" />
     <Compile Include="FontService.cs" />
     <Compile Include="InstallVoiceSynthesisService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
