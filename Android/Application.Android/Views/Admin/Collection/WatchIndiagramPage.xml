@@ -21,11 +21,18 @@
         android:textSize="25sp"
         android:textStyle="italic"
            />
+    <Style Key="TextViewLabel"
+        XmlStyle="{Resource BlueStyle}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dip"
+        android:layout_marginRight="5dip"
+        android:textSize="23sp"/>
   <Style Key="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="7dip"
-        android:textSize="25sp"
+        android:textSize="23sp"
          />
          
   <Style Key="WIcolumn"
@@ -73,7 +80,7 @@
         android:layout_below="@id/text1"
         android:id="title2"/>
 
-      <TextView XmlStyle="{Resource TextViewTitle}"
+      <TextView XmlStyle="{Resource TextViewLabel}"
         android:layout_below="@id/title2"
         Text="{Tr Text, Uid=AIP_Name}"
         android:id="title3"/>
@@ -88,7 +95,7 @@
          Text="{Tr Text, Uid=AIP_Sound}"
          android:id="title4"/>
       
-      <TextView XmlStyle="{Resource TextViewTitle}"
+      <TextView XmlStyle="{Resource TextViewLabel}"
         android:layout_below="@id/title4"
         Text="{Tr Text, Uid=AIP_FilePath}"
         android:id="title5"/>
@@ -97,15 +104,14 @@
         android:layout_below="@id/title4"
         android:layout_toRightOf="@id/title5"
         android:text="rarity" />
-      <Button 
-        android:textColor="@android:color/white"
-        android:background="@drawable/buttonblue"
+      <LinearLayout
         android:layout_width= "200dip"
-        android:layout_height="50dip"        
-        android:layout_below="@id/title5"
-        Text="{Tr Text, Uid=AIP_BHeard}"
-        android:layout_marginBottom="20dip"
-      />
+        android:layout_height="50dip"
+        android:layout_below="@id/title5">
+        <Button XmlStyle="{Resource MediumBlueButtonStyle}"
+        Text="{Tr Text, Uid=AIP_BHeard}"/>
+      </LinearLayout>
+      
     </RelativeLayout>
     <!-- midle of the screen -->
     <LinearLayout XmlStyle="{Resource WIcolumn}"

@@ -5,6 +5,7 @@ using IndiaRose.Interfaces;
 using IndiaRose.Services;
 using IndiaRose.Services.Android;
 using Storm.Mvvm.Inject;
+using Storm.Mvvm.Interfaces;
 using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application
@@ -26,12 +27,13 @@ namespace IndiaRose.Application
 			base.Initialize();
 			ViewModelsLocator.Initialize(this);
 
-            RegisterInstance<IResourceService>(new ResourceService(ActivityService));
+            RegisterInstance<IActivityService>(ActivityService);
+            RegisterInstance<IResourceService>(new ResourceService(this));
 			RegisterInstance<IEmailService>(new EmailService(this));
-			RegisterInstance<IInstallVoiceSynthesisService>(new InstallVoiceSynthesisService(ActivityService));
-			RegisterInstance<IScreenService>(new ScreenService(ActivityService));
+			RegisterInstance<IInstallVoiceSynthesisService>(new InstallVoiceSynthesisService(this));
+			RegisterInstance<IScreenService>(new ScreenService(this));
 			RegisterInstance<ISettingsService>(new SettingsService(this));
-			RegisterInstance<IFontService>(new FontService(ActivityService));
+			RegisterInstance<IFontService>(new FontService(this));
 		}
 	}
 }

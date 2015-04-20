@@ -15,7 +15,7 @@ namespace IndiaRose.Services.Android
 
 		protected Activity CurrentActivity
 		{
-			get { return _activityService.CurrentActivity; }
+			get { return ActivityService.CurrentActivity; }
 		}
 
 		protected AbstractAndroidService(IContainer container) : base(container)
