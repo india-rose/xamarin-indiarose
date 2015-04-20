@@ -86,7 +86,8 @@
                     android:layout_below="@id/text"
                     android:layout_marginLeft="5dip"
                     android:inputType="text"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:text=""/>
 
                 <TextView XmlStyle="{Resource TextViewTitle}"
                     android:id="text_parent_category"
@@ -105,6 +106,7 @@
                     android:id="m_indiagramCategory"
                     android:layout_below="@id/text_parent_category"
                     android:layout_toRightOf="@id/name_text_parent_category"
+                    android:text="Home"
                     />
 
                 <LinearLayout XmlStyle="{Resource ButtonContainer}"

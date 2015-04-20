@@ -32,7 +32,8 @@ namespace IndiaRose.Application.Activities.Admin.Collection
                 parentTextView.Text = parent.Text;
             TextView soundpathTextView = FindViewById<TextView>(Resource.Id.text3);
             soundpathTextView.Text = vm.CurrentIndiagram.SoundPath ?? "Aucun";
-
+            ImageView imageView = FindViewById<ImageView>(Resource.Id.Watch_Img);
+            imageView.SetImageResource(Resource.Raw.playbutton);
         }
     }
 }

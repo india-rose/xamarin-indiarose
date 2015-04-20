@@ -116,7 +116,7 @@
       </LinearLayout>
       
     </RelativeLayout>
-    <!-- midle of the screen -->
+    <!-- middle of the screen -->
     <LinearLayout XmlStyle="{Resource WIcolumn}"
         android:gravity="center" >
       
@@ -124,7 +124,8 @@
         android:scaleType="centerInside"
         android:layout_width="100dip"
         android:layout_height="100dip"
-        android:src="@raw/root" />
+        android:src="@raw/root"
+        android:id="Watch_Img"/>
     
     </LinearLayout>
   </LinearLayout> 
