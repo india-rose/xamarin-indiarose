@@ -21,7 +21,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             : base(container)
         {
              EditCommand=new DelegateCommand(EditAction);
-             CurrentIndiagram=new Indiagram("test",null);
+             CurrentIndiagram = new Indiagram("test", "@raw/playbutton");
         }
          private void EditAction()
          {
