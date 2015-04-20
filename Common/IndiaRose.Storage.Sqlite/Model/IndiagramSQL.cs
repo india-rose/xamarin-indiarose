@@ -19,6 +19,8 @@ namespace IndiaRose.Storage.Sqlite.Model
         public String SoundPath { get; set; }
         [Column("_parent")]
         public int Parent { get; set; }
+        [Column ("_position")]
+        public int Position { get; set;}
 
       public IndiagramSql(int version,string text, string imagepath, string soundpath, int parent)
         {
