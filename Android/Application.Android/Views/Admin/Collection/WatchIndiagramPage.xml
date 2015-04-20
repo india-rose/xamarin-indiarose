@@ -21,6 +21,16 @@
         android:textSize="25sp"
         android:textStyle="italic"
            />
+  <Style Key="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dip"
+        android:textSize="25sp"
+         />
+         
+  <Style Key="WIcolumn"
+        XmlStyle="{Resource column}"
+        android:orientation="vertical" />
   </Resources>
   <!-- button edit and remove -->
   <LinearLayout XmlStyle="{Resource Ok_Back_Container}"
@@ -42,58 +52,71 @@
         android:layout_below="@id/Logo"
         android:layout_above="@id/ButtonContainer"
         android:layout_width= "fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="wrap_content"
+       >
 
-    <RelativeLayout
-        android:layout_width= "fill_parent"
-        android:layout_height="fill_parent">
+    <RelativeLayout XmlStyle="{Resource WIcolumn}"
+        android:layout_marginLeft="10dip" >
       
       <TextView XmlStyle="{Resource TextViewTitle}"
         Text="{Tr Text, Uid=AIP_Text}"
         android:id="title1"
         />
-      
-      <TextView
+
+      <TextView XmlStyle="{Resource TextView}"
+        android:layout_below="@id/title1"
         android:id="text1"
         android:text="rainbowdash" />
       
       <TextView XmlStyle="{Resource TextViewTitle}"
-        Text="{Tr Text, Uid=categorieparent}" 
+        Text="{Tr Text, Uid=AIP_Catego}" 
+        android:layout_below="@id/text1"
         android:id="title2"/>
 
       <TextView XmlStyle="{Resource TextViewTitle}"
+        android:layout_below="@id/title2"
         Text="{Tr Text, Uid=AIP_Name}"
         android:id="title3"/>
 
-      <TextView
+      <TextView XmlStyle="{Resource TextView}"
+        android:layout_below="@id/title2"
+        android:layout_toRightOf="@id/title3"
         android:text="pinkipie" />
 
       <TextView XmlStyle="{Resource TextViewTitle}"
+         android:layout_below="@id/title3"
          Text="{Tr Text, Uid=AIP_Sound}"
          android:id="title4"/>
       
       <TextView XmlStyle="{Resource TextViewTitle}"
+        android:layout_below="@id/title4"
         Text="{Tr Text, Uid=AIP_FilePath}"
         android:id="title5"/>
 
-      <TextView
+      <TextView XmlStyle="{Resource TextView}"
+        android:layout_below="@id/title4"
+        android:layout_toRightOf="@id/title5"
         android:text="rarity" />
-      
-      <Button XmlStyle="{Resource MediumBlueButtonStyle}"
+      <Button 
+        android:textColor="@android:color/white"
+        android:background="@drawable/buttonblue"
+        android:layout_width= "200dip"
+        android:layout_height="50dip"        
+        android:layout_below="@id/title5"
         Text="{Tr Text, Uid=AIP_BHeard}"
-        />
-
+        android:layout_marginBottom="20dip"
+      />
     </RelativeLayout>
     <!-- midle of the screen -->
-    <LinearLayout
-        android:layout_width= "fill_parent"
-        android:layout_height="fill_parent">
+    <LinearLayout XmlStyle="{Resource WIcolumn}"
+        android:gravity="center" >
       
-    </LinearLayout>
+      <ImageView
+        android:scaleType="centerInside"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:src="@raw/root" />
     
+    </LinearLayout>
   </LinearLayout> 
-  
-               
-
 </RelativeLayout>
-

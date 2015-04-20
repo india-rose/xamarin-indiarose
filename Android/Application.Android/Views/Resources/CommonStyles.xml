@@ -39,5 +39,10 @@
     android:layout_marginBottom="4dip"
     android:layout_marginTop="4dip"
              />
-
+  
+  <Style Key="column"
+        android:layout_weight="1"
+        android:layout_width= "fill_parent"
+        android:layout_height="fill_parent" />
+  
 </Resources>

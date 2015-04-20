@@ -427,7 +427,7 @@ Comments : </value>
     <value>Select a picture</value>
   </data>
   <data name="CS_Save.Text" xml:space="preserve">
-    <value>Record</value>
+    <value>Record a sound</value>
   </data>
   <data name="CS_Title.Text" xml:space="preserve">
     <value>Select a sound</value>
