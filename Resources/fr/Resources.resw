@@ -441,4 +441,7 @@ Commentaires :</value>
   <data name="Paste.Text" xml:space="preserve">
     <value>Coller</value>
   </data>
+  <data name="AIP_NoSound.Text" xml:space="preserve">
+    <value>Aucun</value>
+  </data>
 </root>

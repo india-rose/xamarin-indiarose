@@ -66,7 +66,7 @@
         android:layout_alignParentTop="true"
         android:gravity="center"
         android:orientation="horizontal" >
-
+<!--First column-->
         <ScrollView XmlStyle="{Resource ScrollViewStyle}"
             android:id="relative_left" >
 
@@ -137,7 +137,8 @@
                 <TextView XmlStyle="{Resource SmallBlackText}"
                     android:id="m_indiagramSound"
                     android:layout_below="@id/text_sound"
-                    android:layout_toRightOf="@id/filepath_sound" />
+                    android:layout_toRightOf="@id/filepath_sound"
+                    Text="{Tr Text, Uid=AIP_NoSound}"/>
 
                 <LinearLayout XmlStyle="{Resource ButtonContainer}"
                     android:id="button_sound_modif"
@@ -186,36 +187,24 @@
             </RelativeLayout>
         </ScrollView>
 <!--Second column-->
-        <ScrollView XmlStyle="{Resource ScrollViewStyle}"
-            android:id="relative_right" >
 
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center"
-              >
-
+            <RelativeLayout XmlStyle="{Resource ScrollViewStyle}">
                 <ImageView XmlStyle="{Resource LogoStyle}"
-                    android:id="logo"
+                    android:layout_marginRight="10dip"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dip"/>
-
-                <ImageView
-                    android:id="indiagram"
-                    android:layout_width="225dip"
-                    android:layout_height="225dip"
-                    android:layout_below="@id/logo"
-                    android:layout_marginTop="30dip"
-                    android:layout_marginBottom="10dip"/>
-
+                    android:id="logo"
+                    />=
+              <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:id="bottom_field">
                 <LinearLayout
-                    android:id="button_picture"
-                    android:layout_width="225dip"
+                    android:layout_width="fill_parent"
                     android:layout_height="75dip"
-                    android:layout_below="@id/indiagram"
-                    android:orientation="vertical"
-                    android:layout_centerInParent="true">
+                    android:orientation="vertical">
 
                     <Button XmlStyle="{Resource MediumPurpleButtonStyle}"
                         android:id="choose_picture"
@@ -227,11 +216,21 @@
 
                 <CheckBox XmlStyle="{Resource SmallBlueText}"
                     android:id="isCategory"
-                    android:layout_below="@id/button_picture"
                     android:layout_centerInParent="true"
                     Text="{Tr Text, Uid=AIP_IsCateg}"/>
+              </LinearLayout>
+                <ImageView
+                    android:id="Add_Img"
+                    android:layout_width="300dip"
+                    android:layout_height="300dip"
+                    android:layout_marginTop="30dip"
+                    android:layout_marginBottom="10dip"
+                    android:layout_below="@id/logo"
+                    android:layout_above="@id/bottom_field"
+                    android:layout_centerInParent="true"
+                    android:src="@raw/root"/>
+
             </RelativeLayout>
-        </ScrollView>
     </LinearLayout>
 
 </RelativeLayout>

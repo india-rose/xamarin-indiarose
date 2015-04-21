@@ -24,13 +24,12 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
         #endregion
         [NavigationParameter]
-        public Indiagram CurrentIndiagram { get; set; }
+        public Indiagram CurrentIndiagram { get; private set; }
 
         public AddIndiagramViewModel(IContainer container) : base(container)
         {
             ImageChoiceCommand = new DelegateCommand(ImageChoiceAction);
             SoundChoiceCommand = new DelegateCommand(SoundChoiceAction);
-
         }
 
         protected override void SaveAction()

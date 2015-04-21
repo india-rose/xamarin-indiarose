@@ -441,4 +441,7 @@ Comments : </value>
   <data name="Paste.Text" xml:space="preserve">
     <value>Paste</value>
   </data>
+  <data name="AIP_NoSound.Text" xml:space="preserve">
+    <value>No sound</value>
+  </data>
 </root>
