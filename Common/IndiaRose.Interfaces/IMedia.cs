@@ -1,6 +1,6 @@
 ﻿namespace IndiaRose.Interfaces
 {
-    interface IMedia
+    public interface IMedia
     {
         void StartWrite(string path);
         string StopWrite();
