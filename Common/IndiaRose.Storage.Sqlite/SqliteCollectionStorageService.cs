@@ -47,6 +47,14 @@ namespace IndiaRose.Storage.Sqlite
 
 	    }
 
+        public void ChangeCategory(Indiagram indiagram, Category category)
+        {
+            throw new NotImplementedException();
+
+            indiagram.Parent = category;
+            Update(indiagram);
+        }
+
         public void Update(Indiagram indiagram)
         {
             throw new NotImplementedException();
@@ -92,12 +100,16 @@ namespace IndiaRose.Storage.Sqlite
 	    private IndiagramSql GetIndiagramSql(Indiagram indiagram)
 	    {
             throw new NotImplementedException();
-
-           /*var temp = from s in db.Table<Indiagram>()
-                        where
-            * 
-            * Return same position
-            * */
+	        /*IndiagramSql tsql;
+	        foreach (var t in GetFullCollection())
+	        {
+	            tsql =
+	            if((t.ImagePath.Equals(indiagram.ImagePath))&&(t.Position==indiagram.Position)&&(t.SoundPath.Equals(indiagram.SoundPath)))
+	            {
+	                return tsql;
+	            }
+             * return null;
+	        }*/
 	    }
 
 	    private Indiagram GetIndiagramFromSql(IndiagramSql indiagram)
