@@ -37,7 +37,7 @@
           android:layout_weight="1"/>
     </Resources>
 
-    <!-- Dummy item to prevent AutoCompleteTextView from receiving focus -->
+    <!-- Dummy item to prevent EditView from receiving focus -->
     <LinearLayout
         android:layout_width="0px"
         android:layout_height="0px"
@@ -57,7 +57,6 @@
             Click="{Binding BackCommand}"
              />
     </LinearLayout>
-
     <LinearLayout
         android:id="main_screen"
         android:layout_width="match_parent"
@@ -187,7 +186,6 @@
             </RelativeLayout>
         </ScrollView>
 <!--Second column-->
-
             <RelativeLayout XmlStyle="{Resource ScrollViewStyle}">
                 <ImageView XmlStyle="{Resource LogoStyle}"
                     android:layout_marginRight="10dip"
@@ -216,7 +214,6 @@
 
                 <CheckBox XmlStyle="{Resource SmallBlueText}"
                     android:id="isCategory"
-                    android:layout_centerInParent="true"
                     Text="{Tr Text, Uid=AIP_IsCateg}"/>
               </LinearLayout>
                 <ImageView
@@ -227,8 +224,7 @@
                     android:layout_marginBottom="10dip"
                     android:layout_below="@id/logo"
                     android:layout_above="@id/bottom_field"
-                    android:layout_centerInParent="true"
-                    android:src="@raw/root"/>
+                    android:layout_centerInParent="true"/>
 
             </RelativeLayout>
     </LinearLayout>

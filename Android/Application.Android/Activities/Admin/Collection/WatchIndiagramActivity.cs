@@ -1,7 +1,8 @@
 using Android.App;
 using Android.Content.PM;
-using Android.Media;
+using Android.Graphics;
 using Android.OS;
+using Android.Views;
 using Android.Widget;
 using IndiaRose.Business.ViewModels.Admin.Collection;
 using IndiaRose.Data.Model;
@@ -25,6 +26,10 @@ namespace IndiaRose.Application.Activities.Admin.Collection
         private void Initialize()
         {
             WatchIndiagramViewModel vm = (WatchIndiagramViewModel)ViewModel;
+            ViewGroup.LayoutParams indiagramParam = Watch_Img.LayoutParameters;
+            indiagramParam.Height = vm.SettingsService.IndiagramDisplaySize;
+            indiagramParam.Width = vm.SettingsService.IndiagramDisplaySize;
+            Watch_Img.LayoutParameters = indiagramParam;
             TextView nameTextView = FindViewById<TextView>(Resource.Id.text1);
             nameTextView.Text = vm.CurrentIndiagram.Text;
             TextView parentTextView = FindViewById<TextView>(Resource.Id.text2);
@@ -34,6 +39,20 @@ namespace IndiaRose.Application.Activities.Admin.Collection
             TextView soundpathTextView = FindViewById<TextView>(Resource.Id.text3);
             soundpathTextView.Text = vm.CurrentIndiagram.SoundPath ?? "Aucun";
             ImageView imageView = FindViewById<ImageView>(Resource.Id.Watch_Img);
+            //TODO linké l'image avec l'image de l'indiagram
+            /*
+             * https://github.com/Julien-Mialon/IndiaRose/blob/master/JavaVersion/EclipseWS/IndiaRoseLibrary/src/org/indiarose/lib/utils/ImageManager.java
+             * https://github.com/Julien-Mialon/IndiaRose/blob/master/JavaVersion/EclipseWS/IndiaRoseLibrary/src/org/indiarose/lib/PathData.java
+             * try
+		{
+			m_indiagramImage.setImageBitmap(ImageManager.loadImage(PathData.IMAGE_DIRECTORY + m_indiagram.imagePath, AppData.settings.indiagramSize, AppData.settings.indiagramSize));
+		} 
+		catch (Exception e)
+		{
+			//Log.wtf("AddIndiagram", "Unable to load image", e);
+		}
+             */
+            
         }
     }
 }

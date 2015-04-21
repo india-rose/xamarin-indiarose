@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Data.Model;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
@@ -11,7 +12,7 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
-    public class WatchIndiagramViewModel : AbstractViewModel
+    public class WatchIndiagramViewModel : AbstractSettingsViewModel
     {
         public ICommand EditCommand { get; private set; }
         [NavigationParameter]
