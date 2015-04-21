@@ -3,9 +3,11 @@ using System.ComponentModel;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Views;
 using Android.Widget;
 using IndiaRose.Business.ViewModels.Admin.Collection;
 using IndiaRose.Data.Model;
+using IndiaRose.Services;
 using Storm.Mvvm;
 
 namespace IndiaRose.Application.Activities.Admin.Collection
@@ -25,8 +27,13 @@ namespace IndiaRose.Application.Activities.Admin.Collection
 
         private void Initialize()
         {
-
             AddIndiagramViewModel vm = (AddIndiagramViewModel)ViewModel;
+
+            ViewGroup.LayoutParams indiagramParam = Add_Img.LayoutParameters;
+            indiagramParam.Height = vm.SettingsService.IndiagramDisplaySize;
+            indiagramParam.Width = vm.SettingsService.IndiagramDisplaySize;
+            Add_Img.LayoutParameters = indiagramParam;
+
             if (vm.CurrentIndiagram == null)
                 return;
             EditText nameEditText = FindViewById<EditText>(Resource.Id.edit_text);
@@ -36,7 +43,8 @@ namespace IndiaRose.Application.Activities.Admin.Collection
             if (parent != null)
                 parentTextView.Text = parent.Text;
             TextView soundpathTextView = FindViewById<TextView>(Resource.Id.m_indiagramSound);
-            soundpathTextView.Text = vm.CurrentIndiagram.SoundPath ?? "Aucun";
+            soundpathTextView.Text = vm.CurrentIndiagram.SoundPath ?? soundpathTextView.Text;
+
         }
     }
 }
