@@ -161,7 +161,7 @@ namespace IndiaRose.Storage.Sqlite
 
             //TODO connexion impossible
             /*Indiagram indiagram;
-            List<Indiagram> list = new List<Indiagram>(), list2 = new List<Indiagram>();
+            List<Indiagram> list = new List<Indiagram>();
 
             var db = new SQLiteConnection(dbPath);
             var table = db.Table<CategorySql>();
@@ -169,14 +169,11 @@ namespace IndiaRose.Storage.Sqlite
 
             foreach (var v in table)
             {
-                list2.Add(SearchCategory(v));
-            }
+                indiagram = SearchCategory(v);
 
-            foreach (var v in list2)
-            {
-                if (v.Parent != null)
+                if (indiagram.Parent != null)
                 {
-                    list.Add(v);
+                    list.Add(SearchCategory(v));
                 }
             }
 
