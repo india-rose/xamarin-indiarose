@@ -122,6 +122,7 @@ namespace IndiaRose.Storage.Sqlite
 	                SoundPath = csql.SoundPath,
 	                Position = csql.Position,
 	                //Children = {AddCategory(((CategorySql) csql).Children)},
+                    //{ if (csql.Position != 0) Position = csql.Position }
 	            };
 
 	            return c;
@@ -134,6 +135,7 @@ namespace IndiaRose.Storage.Sqlite
 	                ImagePath = csql.ImagePath,
 	                SoundPath = csql.SoundPath,
 	                Position = csql.Position,
+                    //{ if (csql.Position != 0) Position = csql.Position }
 	            };
 
 	            return i;
@@ -158,66 +160,40 @@ namespace IndiaRose.Storage.Sqlite
             throw new NotImplementedException();
 
             //TODO connexion impossible
+            /*Indiagram indiagram;
             List<Indiagram> list = new List<Indiagram>(), list2 = new List<Indiagram>();
 
-            /*var db = new SQLiteConnection(dbPath);
+            var db = new SQLiteConnection(dbPath);
             var table = db.Table<CategorySql>();
-            var table2 = db.Table<IndiagramSQL>();
-             
-            
-             * 
-             * 
-             * 
-             * CODE EN BAS
-             * 
-             * 
-            var list = new List<Indiagram>();
-            foreach (var t in table)
-            {
-                if (t.parent == 0)
-                {
-                    list.Add(t);
-                }
-            }
-            foreach (var t in table2)
-            {
-                if (t.parent == 0)
-                {
-                    list.Add(t);
-                }
-            }
-            
-             * 
-             * 
-             * 
-             * 
-             * CODE EN HAUT
-             * 
-             * 
+            var table2 = db.Table<IndiagramSql>();
+
             foreach (var v in table)
             {
                 list2.Add(SearchCategory(v));
             }
 
-            foreach (var i in list2)
+            foreach (var v in list2)
             {
-                foreach (var j in list2)
+                if (v.Parent != null)
                 {
-                    foreach (var k in j.Children)
-                    {
-                        if (i.Equals(k))
-                        {
-                            i.Parent = j;
-                        }
-                    }
+                    list.Add(v);
                 }
             }
 
-            foreach (var i in list2)
+            foreach (var i in table2)
             {
-                if (i.Parent != null)
+                if (i.Parent != 0)
                 {
-                    list.Add(i);
+                    indiagram = new Indiagram()
+                    {
+                        Text = i.Text,
+                        ImagePath = i.ImagePath,
+                        SoundPath = i.SoundPath,
+                        Position = i.Position,
+                        Parent = null
+                    };
+
+                    list.Add(indiagram);
                 }
             }
 
