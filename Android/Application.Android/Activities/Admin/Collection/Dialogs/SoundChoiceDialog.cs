@@ -10,9 +10,6 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
     public partial class SoundChoiceDialog : AlertDialogFragmentBase
     {
 
-        private MediaRecorder _recorder;
-        private string _url;
-
         public SoundChoiceDialog()
         {
             var trad = DependencyService.Container.Resolve<ILocalizationService>();
@@ -28,26 +25,6 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
         protected override ViewModelBase CreateViewModel()
         {
             return Container.Locator.AdminCollectionDialogsSoundChoiceDialog;
-        }
-
-        public void StartWrite(string url)
-        {
-            _url = url;
-            _recorder = new MediaRecorder();
-            _recorder.SetAudioSource(AudioSource.Mic);
-            _recorder.SetOutputFormat(OutputFormat.ThreeGpp);
-            _recorder.SetAudioEncoder(AudioEncoder.AmrNb);
-            _recorder.SetOutputFile(_url);
-            _recorder.Prepare();
-            _recorder.Start();
-        }
-
-        public string StopWrite()
-        {
-            _recorder.Stop();
-            _recorder.Reset();
-
-            return _url;
         }
     }
 }
