@@ -4,6 +4,9 @@ using IndiaRose.Business;
 using IndiaRose.Interfaces;
 using IndiaRose.Services;
 using IndiaRose.Services.Android;
+using IndiaRose.Storage;
+using IndiaRose.Storage.Sqlite;
+using SQLite.Net.Platform.XamarinAndroid;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Interfaces;
 using Storm.Mvvm.Services;
@@ -34,6 +37,8 @@ namespace IndiaRose.Application
 			RegisterInstance<IScreenService>(new ScreenService(this));
 			RegisterInstance<ISettingsService>(new SettingsService(this));
 			RegisterInstance<IFontService>(new FontService(this));
+			RegisterInstance<ICollectionStorageService>(new SqliteCollectionStorageService(new SQLitePlatformAndroid()));
+			
 		}
 	}
 }

@@ -188,6 +188,14 @@
       <Project>{4c9de63b-da7f-4e65-8638-a4953f4a07e0}</Project>
       <Name>IndiaRose.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Common\IndiaRose.Storage.Sqlite\IndiaRose.Storage.Sqlite.csproj">
+      <Project>{7264F4CF-E626-4069-B5A1-87D1D51EB3D9}</Project>
+      <Name>IndiaRose.Storage.Sqlite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\IndiaRose.Storage\IndiaRose.Storage.csproj">
+      <Project>{E6229843-7567-4215-8AAA-AEB7D21D5DD1}</Project>
+      <Name>IndiaRose.Storage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Framework.Android\Framework.Android.csproj">
       <Project>{a927a4b2-e383-4c4a-a1e8-1c4a0e53e093}</Project>
       <Name>Framework.Android</Name>

@@ -41,7 +41,12 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
             throw new System.NotImplementedException();
         }
 
-        public string StopRead(System.Uri data)
+	    public void StartRead(string path)
+	    {
+		    throw new System.NotImplementedException();
+	    }
+
+	    public string StopRead(System.Uri data)
         {
             throw new System.NotImplementedException();
         }

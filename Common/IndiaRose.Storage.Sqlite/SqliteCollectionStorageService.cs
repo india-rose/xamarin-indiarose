@@ -8,19 +8,37 @@ using IndiaRose.Storage.Sqlite.Model;
 using SQLite;
 using SQLite.Net;
 using SQLite.Net.Async;
+using SQLite.Net.Interop;
 
 namespace IndiaRose.Storage.Sqlite
 {
 	public class SqliteCollectionStorageService : ICollectionStorageService
 	{
-        //public string DbPath { get; set; } ??
+		private const string DB_PATH = "india.sqlite";
+		private readonly ISQLitePlatform _platform;
+		private SQLiteConnection _connection;
+
+		protected SQLiteConnection Connection
+		{
+			get { return _connection ?? (_connection = OpenDatabase()); }
+		}
+
+		public SqliteCollectionStorageService(ISQLitePlatform platform)
+		{
+			_platform = platform;
+		}
+
+		private SQLiteConnection OpenDatabase()
+		{
+			SQLiteConnection database = new SQLiteConnection(_platform, DB_PATH);
+
+			//TODO : create table ?
+
+			return database;
+		}
 
 	    public void Create(Indiagram indiagram)
 	    {
-
-            throw new NotImplementedException();
-
-            //TODO connexion impossible
 	        if (indiagram is Category)
 	        {
 	            var temp = new CategorySql
@@ -31,7 +49,6 @@ namespace IndiaRose.Storage.Sqlite
 	            };
 	            temp.Position = temp.Id;
 	            temp.Parent = (GetIndiagramSql(indiagram.Parent)).Id;
-	            //TODO add avec connexion
 	        }
 	        else
 	        {
@@ -44,7 +61,6 @@ namespace IndiaRose.Storage.Sqlite
 	            temp.Position = temp.Id;
                 //TODO add avec connexion
 	        }
-
 	    }
 
         public void ChangeCategory(Indiagram indiagram, Category category)
