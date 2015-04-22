@@ -447,4 +447,7 @@ Comments : </value>
   <data name="Root_Categ.Text" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="RSD_Title.Text" xml:space="preserve">
+    <value>Record a sound</value>
+  </data>
 </root>
