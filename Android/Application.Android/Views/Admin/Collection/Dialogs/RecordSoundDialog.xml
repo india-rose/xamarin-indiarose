@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+/*
+ * This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
+ */
+ -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="380dip"
+    android:layout_height="200dip"
+    android:orientation="vertical"
+    android:background="#006FFF"
+    >
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="10dip"
+      android:layout_marginLeft="10dip"
+      android:layout_marginTop="10dip"
+      android:text="test"
+      android:textColor="@android:color/white"
+      android:textSize="20sp" />
+
+  <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:orientation="horizontal" >
+
+    <Button
+        android:id="alertdialog_record_sound_start"
+        android:layout_width="120dip"
+        android:layout_height="120dip"
+        android:layout_marginLeft="10dip"
+        android:background="@drawable/buttonselector" />
+
+    <Button
+        android:id="alertdialog_record_sound_stop"
+        android:layout_width="120dip"
+        android:layout_height="120dip"
+        android:background="@drawable/stop"
+        android:visibility="gone" />
+
+    <Button
+        android:id="alertdialog_record_sound_cancel"
+        android:layout_width="120dip"
+        android:layout_height="120dip"
+        android:layout_marginLeft="10dip"
+        android:background="@drawable/buttoncancel"/>
+  </LinearLayout>
+
+</LinearLayout>

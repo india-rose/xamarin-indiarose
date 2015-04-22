@@ -8,6 +8,7 @@
   android:orientation="vertical">
   <Button XmlStyle="{Resource ButtonDialogStyle}"
     Text="{Tr Text, Uid=CS_Save}"
+    Click="{Binding RecordSoundCommand}"
     />
   <View XmlStyle="{Resource LineSeparator}" />
   <Button XmlStyle="{Resource ButtonDialogStyle}"
