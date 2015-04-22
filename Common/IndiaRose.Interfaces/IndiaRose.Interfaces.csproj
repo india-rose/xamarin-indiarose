@@ -60,9 +60,6 @@
     <Reference Include="Funq.Portable">
       <HintPath>..\..\packages\Funq.Portable.1.0.1\lib\Funq.Portable.dll</HintPath>
     </Reference>
-    <Reference Include="SQLite">
-      <HintPath>..\..\..\..\..\..\Desktop\sqlite-net-1.0.8.3\sqlite-net-1.0.8.3\lib\android\SQLite.dll</HintPath>
-    </Reference>
     <Reference Include="Storm.Mvvm">
       <HintPath>..\..\packages\Storm.Mvvm.1.2.1\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
     </Reference>

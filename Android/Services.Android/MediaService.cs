@@ -20,7 +20,7 @@ namespace IndiaRose.Services.Android
 
         public void RecordSound()
         {
-            _url = "/sdcard/IndiaRose/sound/test.3gpp";
+            _url = string.Format(Environment.ExternalStorageDirectory.Path + "/IndiaRose/sound/IndiaRose_sound_{0}.3gpp", Guid.NewGuid());
             _recorder = new MediaRecorder();
             _recorder.SetAudioSource(AudioSource.Mic);
             _recorder.SetOutputFormat(OutputFormat.ThreeGpp);
@@ -33,7 +33,6 @@ namespace IndiaRose.Services.Android
         public string StopRecord()
         {
             _recorder.Stop();
-            _recorder.Reset();
 
             return _url;
         }
