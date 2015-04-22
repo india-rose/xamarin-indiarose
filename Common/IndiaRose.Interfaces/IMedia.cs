@@ -7,6 +7,6 @@ namespace IndiaRose.Interfaces
         void StartWrite(string path);
         string StopWrite();
         void StartRead(string path);
-        string StopRead(Uri data);
+        string StopRead(string data);
     }
 }
