@@ -101,4 +101,6 @@ namespace IndiaRose.Application.Activities.Admin.Settings
 			IndiagramArea.SetBackgroundColor(Color.Red);
 		}
 	}
+
+    //TODO COULEUR TEXTE
 }

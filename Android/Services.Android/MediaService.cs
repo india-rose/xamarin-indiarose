@@ -1,12 +1,13 @@
 using System;
+using Java.IO;
+using Android.App;
 using Android.Content;
 using Android.Media;
 using Android.Provider;
 using IndiaRose.Interfaces;
-using Java.IO;
-using Java.Lang;
 using Storm.Mvvm.Inject;
-using String = System.String;
+using Environment= Android.OS.Environment;
+using Storm.Mvvm.Interfaces;
 using Uri = Android.Net.Uri;
 
 namespace IndiaRose.Services.Android
@@ -39,14 +40,19 @@ namespace IndiaRose.Services.Android
 
         public string Camera()
         {
-            string path = string.Format("sdcard/IndiaRose/image/IndiaRose_photo_{0}.jpg", Guid.NewGuid());
+            string path = string.Format(Environment.ExternalStorageDirectory.Path+"/IndiaRose/image/IndiaRose_photo_{0}.jpg", Guid.NewGuid());
             File file = new File(path);
 
             Intent intent = new Intent(MediaStore.ActionImageCapture);
             intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(file));
-            CurrentActivity.StartActivityForResult(intent, 0);
+            ActivityService.StartActivityForResult(intent, callback);
             return path;
 
+        }
+
+        private void callback(Result arg1, Intent arg2)
+        {
+            return ;
         }
 
         public string StopRead(System.Uri data)
