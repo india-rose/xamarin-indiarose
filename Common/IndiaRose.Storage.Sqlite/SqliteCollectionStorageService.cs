@@ -133,8 +133,6 @@ namespace IndiaRose.Storage.Sqlite
 
         public void Update(Indiagram indiagram)
         {
-            throw new NotImplementedException();
-
             if (indiagram is Category)
             {
                 var query = Connection.Table<CategorySql>().SingleOrDefault(t => t.Text == indiagram.Text ||
@@ -143,7 +141,6 @@ namespace IndiaRose.Storage.Sqlite
                 query.Text = indiagram.Text;
                 query.ImagePath = indiagram.ImagePath;
                 query.SoundPath = indiagram.SoundPath;
-                //query.Children.CopyTo(indiagram.Children);
                 query.Position = indiagram.Position;
                 Connection.Update(query);
             }
