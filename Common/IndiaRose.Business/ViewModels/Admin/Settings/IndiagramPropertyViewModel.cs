@@ -1,7 +1,9 @@
 ﻿#region Usings
 
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings.Dialogs;
 using IndiaRose.Data.UIModel;
@@ -113,7 +115,15 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 	        {
 	            FontNames.Add(font);
 	        }
-	        FontName = SettingsService.FontName;
+		    if (FontService.FontList.ContainsValue(SettingsService.FontName))
+		    {
+			    FontName = FontService.FontList.First(
+				    x => string.Equals(x.Value, SettingsService.FontName, StringComparison.OrdinalIgnoreCase)).Key;
+		    }
+		    else
+		    {
+			    FontName = FontService.FontList.First().Key;
+		    }
 	    }
 
 	    private void ReInforcerColorAction()
@@ -128,7 +138,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 		{
 			SettingsService.IndiagramDisplaySize = IndiagramSize;
 			SettingsService.FontSize = FontSize;
-			SettingsService.FontName = FontName;
+			SettingsService.FontName = FontService.FontList[FontName];
 			SettingsService.ReinforcerColor = ReinforcerColor.Color;
 
 			base.SaveAction();

@@ -9,46 +9,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white" >
-  <Resources>
-    <Style Key="Relative"
-       android:layout_width="fill_parent"
-       android:layout_height="wrap_content"
-       android:layout_alignParentTop="true"
+	<Resources>
+		<Style Key="Relative"
+		   android:layout_width="fill_parent"
+		   android:layout_height="wrap_content"
+		   android:layout_alignParentTop="true"
            />
-    <Style Key="CMPRelative"
-      android:layout_marginTop="5dip"
-      android:layout_below="@id/relative"
-      android:layout_above="@id/linear_button"
-      android:layout_width="fill_parent"
-      android:layout_height="fill_parent"
-      android:background="#2E8AEF"
+		<Style Key="CMPRelative"
+		  android:layout_marginTop="5dip"
+		  android:layout_below="@id/relative"
+		  android:layout_above="@id/linear_button"
+		  android:layout_width="fill_parent"
+		  android:layout_height="fill_parent"
+		  android:background="#2E8AEF"
            />
-  </Resources>
-<!--Logo-->
-      <ImageView XmlStyle="{Resource LogoStyle}" 
-          android:layout_alignParentRight="true"
-          android:id="relative" />
-<!--Button add & next-->
-  <LinearLayout XmlStyle="{Resource Ok_Back_Container}"
-                android:id="linear_button">
+	</Resources>
+	<!--Logo-->
+	<ImageView XmlStyle="{Resource LogoStyle}"
+		android:layout_alignParentRight="true"
+		android:id="relative" />
+	<!--Button add & next-->
+	<LinearLayout XmlStyle="{Resource Ok_Back_Container}"
+				  android:id="linear_button">
 
-    <Button XmlStyle="{Resource MediumGreenButtonStyle}"
-      Text="{Tr Text,Uid=SelectionIndiagramsAdd}"
-      Click="{Binding AddCommand}"
-      android:layout_marginLeft="4dip"
+		<Button XmlStyle="{Resource MediumGreenButtonStyle}"
+		  Text="{Tr Text,Uid=SelectionIndiagramsAdd}"
+		  Click="{Binding AddCommand}"
+		  android:layout_marginLeft="4dip"
       />
-    <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
-        Text =" {Tr Text,Uid=SelectionIndiagramsNext}"
-        Click="{Binding AddCollection}"
+		<Button XmlStyle="{Resource MediumOrangeButtonStyle}"
+			Text =" {Tr Text,Uid=SelectionIndiagramsNext}"
+			Click="{Binding AddCollection}"
         />
-  </LinearLayout>
-  
-    <fragment
-      class="IndiaRose.Application.Activities.Admin.Collection.ManagementFragment"
-      XmlStyle="{Resource CMPRelative}"
-      android:id="ManagementFragment">
-      <!-- on vera -->
-    </fragment>
+	</LinearLayout>
+
+	<fragment
+	  class="IndiaRose.Application.Activities.Admin.Collection.ManagementFragment"
+	  XmlStyle="{Resource CMPRelative}"
+	  android:id="ManagementFragment"/>
 
 </RelativeLayout>
 

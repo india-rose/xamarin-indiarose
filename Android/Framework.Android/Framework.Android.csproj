@@ -47,7 +47,10 @@
     <Compile Include="Converters\ColorStringToDrawableColor.cs" />
     <Compile Include="Converters\ColorContainerToIntConverter.cs" />
     <Compile Include="Converters\ColorContainerToDrawableColor.cs" />
+    <Compile Include="Helper\FontHelper.cs" />
+    <Compile Include="Helper\ImageHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\IndiagramView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Funq.Portable">
@@ -82,6 +85,10 @@
     <ProjectReference Include="..\..\Common\IndiaRose.Data\IndiaRose.Data.csproj">
       <Project>{4c9de63b-da7f-4e65-8638-a4953f4a07e0}</Project>
       <Name>IndiaRose.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\IndiaRose.Interfaces\IndiaRose.Interfaces.csproj">
+      <Project>{4A1F6C63-F97F-4E4B-A20C-8842CC486670}</Project>
+      <Name>IndiaRose.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
