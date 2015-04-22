@@ -142,6 +142,7 @@ namespace IndiaRose.Storage.Sqlite
                 query.ImagePath = indiagram.ImagePath;
                 query.SoundPath = indiagram.SoundPath;
                 query.Position = indiagram.Position;
+                query.Parent = GetIndiagramSql(indiagram.Parent).Id;
                 Connection.Update(query);
             }
             else
@@ -153,6 +154,7 @@ namespace IndiaRose.Storage.Sqlite
                 query.ImagePath = indiagram.ImagePath;
                 query.SoundPath = indiagram.SoundPath;
                 query.Position = indiagram.Position;
+                query.Parent = GetIndiagramSql(indiagram.Parent).Id;
                 Connection.Update(query);
             }
         }
@@ -234,13 +236,20 @@ namespace IndiaRose.Storage.Sqlite
             return SearchChildren(list, parent);*/
         }
 
+    
+        //others methods
+
+        /*
+        private IndiagramSql SearchByIdSql(int id)
+        {
+                return Connection.Table<IndiagramSql>().SingleOrDefault(t => t.Id == id);
+        }*/
     }
-
-
-    /*
-     *TODO void Update(Indiagram indigram) & Test Service
+    
+    //TODO void Update(Indiagram indigram) & Test Service
+    /*"useless" methods ?
      * 
-     * "useless" methods ?
+     *
      * 
      * utile mais pas encore utilisee
      * 
@@ -248,9 +257,8 @@ namespace IndiaRose.Storage.Sqlite
             {
                 return Connection.Table<IndiagramSql>().SingleOrDefault(t => t.Id == id);
             }
-     * */
-
-    /*
+     *
+     *
      * 
      *  pas forcement utile
      * 
@@ -260,15 +268,15 @@ namespace IndiaRose.Storage.Sqlite
             indiagram.Parent = category;
             Update(indiagram);
         }
-     * */
+     * *
 
 
-    /*
+     *
      * 
      * A voir si besoin
      * 
-     */
-    /*private List<Indiagram> AddCategory(CategorySql csql)
+     *
+     *private List<Indiagram> AddCategory(CategorySql csql)
 {
     Indiagram i;
     List<Indiagram> list = new List<Indiagram>();
@@ -279,9 +287,9 @@ namespace IndiaRose.Storage.Sqlite
     }
 
     return list;
-}*/
+}
 
-    /*
+    
      * peut etre inutile
      * 
      *         private List<Indiagram> SearchChildren(List<Indiagram> topLevel, Indiagram parent)
@@ -299,9 +307,8 @@ namespace IndiaRose.Storage.Sqlite
 	        }
 
 	        return null;
-	    }*/
+	    }
 
-    /*        //TODO 
         private Indiagram SearchCategory(CategorySql p0)
         {
             throw new NotImplementedException();
