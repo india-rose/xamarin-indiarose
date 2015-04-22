@@ -444,4 +444,7 @@ Comments : </value>
   <data name="AIP_NoSound.Text" xml:space="preserve">
     <value>No sound</value>
   </data>
+  <data name="Root_Categ.Text" xml:space="preserve">
+    <value>Home</value>
+  </data>
 </root>
