@@ -72,37 +72,31 @@ namespace IndiaRose.Storage.Sqlite
 
         public void Update(Indiagram indiagram)
         {
-            //Connection.Update(indiagram);
-            /**
-             * 
-             * a tester
-             * 
-            //TODO connexion impossible
-            /*var db = new SQLiteConnection(dbPath);
-
+            throw new NotImplementedException();
+            
             if (indiagram is Category)
             {
-                var query = db.Table<CategorySql>().SingleOrDefault(t => t.Text == indiagram.Text ||
+                var query = Connection.Table<CategorySql>().SingleOrDefault(t => t.Text == indiagram.Text ||
                     t.ImagePath == indiagram.ImagePath || t.SoundPath == indiagram.SoundPath ||
-                    t.Position == indiagram.Position ||
                     t.Position == indiagram.Position);
                 query.Text = indiagram.Text;
                 query.ImagePath = indiagram.ImagePath;
                 query.SoundPath = indiagram.SoundPath;
                 //query.Children.CopyTo(indiagram.Children);
-                db.Update(query);
+                query.Position = indiagram.Position;
+                Connection.Update(query);
             }
             else
             {
-                var query = db.Table<IndiagramSql>().SingleOrDefault(t => t.Text == indiagram.Text ||
+                var query = Connection.Table<IndiagramSql>().SingleOrDefault(t => t.Text == indiagram.Text ||
                     t.ImagePath == indiagram.ImagePath || t.SoundPath == indiagram.SoundPath ||
-                    t.Position == indiagram.Position || t.Position == indiagram.Position);
+                    t.Position == indiagram.Position);
                 query.Text = indiagram.Text;
                 query.ImagePath = indiagram.ImagePath;
                 query.SoundPath = indiagram.SoundPath;
-                db.Update(query);
+                query.Position = indiagram.Position;
+                Connection.Update(query);
             }
-            db.Close();*/
         }
 
         public void Delete(Indiagram indiagram)
@@ -125,14 +119,12 @@ namespace IndiaRose.Storage.Sqlite
                 return Connection.Table<CategorySql>().SingleOrDefault(t => t.Text == indiagram.Text &&
                                                                             t.ImagePath == indiagram.ImagePath &&
                                                                             t.SoundPath == indiagram.SoundPath &&
-                                                                            t.Position == indiagram.Position &&
                                                                             t.Position == indiagram.Position);
             }
 
             return Connection.Table<IndiagramSql>().SingleOrDefault(t => t.Text == indiagram.Text &&
                                                                          t.ImagePath == indiagram.ImagePath &&
                                                                          t.SoundPath == indiagram.SoundPath &&
-                                                                         t.Position == indiagram.Position &&
                                                                          t.Position == indiagram.Position);
         }
 
