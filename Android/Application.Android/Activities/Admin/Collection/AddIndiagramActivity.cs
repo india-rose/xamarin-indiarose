@@ -1,5 +1,3 @@
-
-using System.ComponentModel;
 using Android.App;
 using Android.Content.PM;
 using Android.Graphics;
@@ -8,7 +6,6 @@ using Android.Views;
 using Android.Widget;
 using IndiaRose.Business.ViewModels.Admin.Collection;
 using IndiaRose.Data.Model;
-using IndiaRose.Services;
 using Storm.Mvvm;
 
 namespace IndiaRose.Application.Activities.Admin.Collection

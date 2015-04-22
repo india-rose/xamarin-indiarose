@@ -89,7 +89,7 @@
       <TextView XmlStyle="{Resource TextView}"
         android:layout_below="@id/title2"
         android:layout_toRightOf="@id/title3"
-        android:text="Home"
+        Text="{Tr Text,Uid=Root_Categ}"
         android:id="text2"/>
 
       <TextView XmlStyle="{Resource TextViewTitle}"

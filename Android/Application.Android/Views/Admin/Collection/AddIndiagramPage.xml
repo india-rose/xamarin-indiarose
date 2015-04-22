@@ -105,7 +105,7 @@
                     android:id="m_indiagramCategory"
                     android:layout_below="@id/text_parent_category"
                     android:layout_toRightOf="@id/name_text_parent_category"
-                    android:text="Home"
+                    Text="{Tr Text,Uid=Root_Categ}"
                     />
 
                 <LinearLayout XmlStyle="{Resource ButtonContainer}"

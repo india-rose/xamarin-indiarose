@@ -7,9 +7,6 @@ using Android.Widget;
 using IndiaRose.Business.ViewModels.Admin.Collection;
 using IndiaRose.Data.Model;
 using Storm.Mvvm;
-using Java.IO;
-using Java.Lang;
-using Exception = System.Exception;
 
 namespace IndiaRose.Application.Activities.Admin.Collection
 {
