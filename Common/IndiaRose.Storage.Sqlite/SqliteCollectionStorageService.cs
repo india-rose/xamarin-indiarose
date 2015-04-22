@@ -12,69 +12,71 @@ using SQLite.Net.Interop;
 
 namespace IndiaRose.Storage.Sqlite
 {
-	public class SqliteCollectionStorageService : ICollectionStorageService
-	{
-		private const string DB_PATH = "india.sqlite";
-		private readonly ISQLitePlatform _platform;
-		private SQLiteConnection _connection;
+    public class SqliteCollectionStorageService : ICollectionStorageService
+    {
+        private const string DB_PATH = "india.sqlite";
+        private readonly ISQLitePlatform _platform;
+        private SQLiteConnection _connection;
 
-		protected SQLiteConnection Connection
-		{
-			get { return _connection ?? (_connection = OpenDatabase()); }
-		}
+        protected SQLiteConnection Connection
+        {
+            get { return _connection ?? (_connection = OpenDatabase()); }
+        }
 
-		public SqliteCollectionStorageService(ISQLitePlatform platform)
-		{
-			_platform = platform;
-		}
+        public SqliteCollectionStorageService(ISQLitePlatform platform)
+        {
+            _platform = platform;
+        }
 
-		private SQLiteConnection OpenDatabase()
-		{
-			SQLiteConnection database = new SQLiteConnection(_platform, DB_PATH);
+        private SQLiteConnection OpenDatabase()
+        {
+            var database = new SQLiteConnection(_platform, DB_PATH);
+            database.CreateTable<IndiagramSql>();
+            database.CreateTable<CategorySql>();
+            return database;
+        }
 
-			//TODO : create table ?
+        public void Create(Indiagram indiagram)
+        {
 
-			return database;
-		}
-
-	    public void Create(Indiagram indiagram)
-	    {
-	        if (indiagram is Category)
-	        {
-	            var temp = new CategorySql
-	            {
-	                ImagePath = indiagram.ImagePath,
-	                SoundPath = indiagram.SoundPath,
-	                Text = indiagram.Text
-	            };
-	            temp.Position = temp.Id;
-	            temp.Parent = (GetIndiagramSql(indiagram.Parent)).Id;
-	        }
-	        else
-	        {
-	            var temp = new IndiagramSql
-	            {
-	                ImagePath = indiagram.ImagePath,
-	                SoundPath = indiagram.SoundPath,
-	                Text = indiagram.Text
-	            };
-	            temp.Position = temp.Id;
-                //TODO add avec connexion
-	        }
-	    }
+            if (indiagram is Category)
+            {
+                var temp = new CategorySql
+                {
+                    ImagePath = indiagram.ImagePath,
+                    SoundPath = indiagram.SoundPath,
+                    Text = indiagram.Text
+                };
+                temp.Position = temp.Id;
+                temp.Parent = (GetIndiagramSql(indiagram.Parent)).Id;
+                Connection.Insert(temp);
+            }
+            else
+            {
+                var temp = new IndiagramSql
+                {
+                    ImagePath = indiagram.ImagePath,
+                    SoundPath = indiagram.SoundPath,
+                    Text = indiagram.Text
+                };
+                temp.Position = temp.Id;
+                Connection.Insert(temp);
+            }
+        }
 
         public void ChangeCategory(Indiagram indiagram, Category category)
         {
-            throw new NotImplementedException();
-
             indiagram.Parent = category;
             Update(indiagram);
         }
 
         public void Update(Indiagram indiagram)
         {
-            throw new NotImplementedException();
-
+            //Connection.Update(indiagram);
+            /**
+             * 
+             * a tester
+             * 
             //TODO connexion impossible
             /*var db = new SQLiteConnection(dbPath);
 
@@ -103,71 +105,75 @@ namespace IndiaRose.Storage.Sqlite
             db.Close();*/
         }
 
-		public void Delete(Indiagram indiagram)
-		{
+        public void Delete(Indiagram indiagram)
+        {
+            var current = GetIndiagramSql(indiagram);
+            if (current is CategorySql)
+            {
+                Connection.Delete<CategorySql>(current.Id);
+            }
+            else
+            {
+                Connection.Delete<IndiagramSql>(current.Id);
+            }
+        }
 
+        private IndiagramSql GetIndiagramSql(Indiagram indiagram)
+        {
+            if (indiagram is Category)
+            {
+                return Connection.Table<CategorySql>().SingleOrDefault(t => t.Text == indiagram.Text &&
+                                                                            t.ImagePath == indiagram.ImagePath &&
+                                                                            t.SoundPath == indiagram.SoundPath &&
+                                                                            t.Position == indiagram.Position &&
+                                                                            t.Position == indiagram.Position);
+            }
+
+            return Connection.Table<IndiagramSql>().SingleOrDefault(t => t.Text == indiagram.Text &&
+                                                                         t.ImagePath == indiagram.ImagePath &&
+                                                                         t.SoundPath == indiagram.SoundPath &&
+                                                                         t.Position == indiagram.Position &&
+                                                                         t.Position == indiagram.Position);
+        }
+
+        private Indiagram GetIndiagramFromSql(IndiagramSql indiagram)
+        {
             throw new NotImplementedException();
+            if (indiagram is CategorySql)
+            {
+                var csql = (CategorySql) indiagram;
+                var c = new Category()
+                {
+                    Text = csql.Text,
+                    ImagePath = csql.ImagePath,
+                    SoundPath = csql.SoundPath,
+                    Position = csql.Position,
+                };
+                if ((csql.Children) == null)
+                    return c;
 
-            //connection
-		    //var db = new SQLiteConnection();
-		    //db.Delete<IndiagramSql>(GetIndiagramSql(indiagram));
-		}
+            }
+            var i = new Indiagram
+            {
+                Text = indiagram.Text,
+                ImagePath = indiagram.ImagePath,
+                SoundPath = indiagram.SoundPath,
+                Position = indiagram.Position,
+                Parent = GetIndiagramFromSql(SearchByIdSql(indiagram.Parent)),
+            };
 
-	    private IndiagramSql GetIndiagramSql(Indiagram indiagram)
+            return i;
+        }
+
+        private IndiagramSql SearchByIdSql(int id)
+        {
+            return Connection.Table<IndiagramSql>().SingleOrDefault(t => t.Id == id);
+        }
+
+
+    private List<Indiagram> GetChildren(Category category)
 	    {
-            throw new NotImplementedException();
-	        /*IndiagramSql tsql;
-	        foreach (var t in GetFullCollection())
-	        {
-	            tsql =
-	            if((t.ImagePath.Equals(indiagram.ImagePath))&&(t.Position==indiagram.Position)&&(t.SoundPath.Equals(indiagram.SoundPath)))
-	            {
-	                return tsql;
-	            }
-             * return null;
-	        }*/
-	    }
-
-	    private Indiagram GetIndiagramFromSql(IndiagramSql indiagram)
-	    {
-
-            throw new NotImplementedException();
-            /*var temp = from s in db.Table<Indiagram>()
-                        where
-            * 
-            * Return same position <-->
-            * */
-	    }
-
-	    private Indiagram SearchCategory(IndiagramSql csql)
-	    {
-	        if (csql is CategorySql)
-	        {
-	            Category c = new Category()
-	            {
-	                Text = csql.Text,
-	                ImagePath = csql.ImagePath,
-	                SoundPath = csql.SoundPath,
-	                Position = csql.Position,
-	                //Children = {AddCategory(((CategorySql) csql).Children)},
-                    //{ if (csql.Position != 0) Position = csql.Position }
-	            };
-
-	            return c;
-	        }
-	        else
-	        {
-	            Indiagram i = new Indiagram()
-	            {
-	                Text = csql.Text,
-	                ImagePath = csql.ImagePath,
-	                SoundPath = csql.SoundPath,
-	                Position = csql.Position,
-                    //{ if (csql.Position != 0) Position = csql.Position }
-	            };
-
-	            return i;
-	        }
+	       return category.Children;
 	    }
 
         private List<Indiagram> AddCategory(CategorySql csql)
@@ -177,7 +183,7 @@ namespace IndiaRose.Storage.Sqlite
 
             foreach (var c in csql.Children)
             {
-                list.Add(SearchCategory(c));
+                list.Add(GetIndiagramFromSql(c));
             }
 
             return list;
@@ -185,47 +191,38 @@ namespace IndiaRose.Storage.Sqlite
 
         public List<Indiagram> GetTopLevel()
         {
-            throw new NotImplementedException();
-
-            //TODO connexion impossible
-            /*Indiagram indiagram;
-            List<Indiagram> list = new List<Indiagram>();
-
-            var db = new SQLiteConnection(dbPath);
-            var table = db.Table<CategorySql>();
-            var table2 = db.Table<IndiagramSql>();
+            Indiagram indiagram;
+            var list = new List<Indiagram>();
+            var table = Connection.Table<CategorySql>();
+            var table2 = Connection.Table<IndiagramSql>();
 
             foreach (var v in table)
             {
-                indiagram = SearchCategory(v);
+                indiagram = GetIndiagramFromSql(v);
 
                 if (indiagram.Parent != null)
                 {
-                    list.Add(SearchCategory(v));
-                }
-            }
-
-            foreach (var i in table2)
-            {
-                if (i.Parent != 0)
-                {
-                    indiagram = new Indiagram()
-                    {
-                        Text = i.Text,
-                        ImagePath = i.ImagePath,
-                        SoundPath = i.SoundPath,
-                        Position = i.Position,
-                        Parent = null
-                    };
-
                     list.Add(indiagram);
                 }
             }
 
-            return list;*/
+            foreach (var i in table2.Where(i => i.Parent != 0))
+            {
+                indiagram = GetIndiagramFromSql(i);
+
+                list.Add(indiagram);
+            }
+
+            return list;
         }
 
-	    private List<Indiagram> SearchChildren(List<Indiagram> topLevel, Indiagram parent)
+        //TODO 
+        private Indiagram SearchCategory(CategorySql p0)
+        {
+            throw new NotImplementedException();
+        }
+
+        private List<Indiagram> SearchChildren(List<Indiagram> topLevel, Indiagram parent)
 	    {
 	        foreach (var table in topLevel)
 	        {
@@ -255,12 +252,15 @@ namespace IndiaRose.Storage.Sqlite
 
 		public List<Indiagram> GetFullCollection()
 		{
-            throw new NotImplementedException();
-
 		    var list = new List<Indiagram>();
+            //Parcourir le topLevel dans un premier temps
 		    foreach (var t in GetTopLevel())
 		    {
-		        list = AddChildren(list, t);
+                list = AddChildren(list, t);/*ajouter les enfants avec la methode recursive
+                                             *(1er appel)
+                                             * 
+                                             * 
+                                             */
 		    }
 		    return list;
 
@@ -268,16 +268,17 @@ namespace IndiaRose.Storage.Sqlite
 
 	    private List<Indiagram> AddChildren(List<Indiagram> list, Indiagram indiagram)
 	    {
-	        if (!(indiagram is Category)) return list;
-	        foreach (var t in indiagram.Children)
+	        if (!(indiagram is Category)) return list;      //un indigram n'a pas d'enfant
+	        foreach (var t in indiagram.Children)           //une categorie si, on parcours les fils
 	        {
-	            list.Add(t);
+	            list.Add(t);                                //on les ajoute
 	            if (t is Category)
 	            {
-	                return AddChildren(list, t);
+	                return AddChildren(list, t);            //et si les fils sont des categories on rappel avec la meme liste
 	            }
 	        }
-	        return list;
+	        return list;                                    //si tous les fils sont des indiagrames on ne rappel pas la fonction
 	    }
 	}
 }
+
