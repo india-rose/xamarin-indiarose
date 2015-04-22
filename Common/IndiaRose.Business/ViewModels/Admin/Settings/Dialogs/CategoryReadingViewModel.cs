@@ -1,6 +1,6 @@
 ﻿#region Usings
 
-using Storm.Mvvm.Inject;
+
 
 #endregion
 
@@ -10,7 +10,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 	{
 		#region Constructor
 
-		public CategoryReadingViewModel(IContainer container) : base(container)
+		public CategoryReadingViewModel()
 		{
 			IsEnabled = SettingsService.IsCategoryNameReadingEnabled;
 		}

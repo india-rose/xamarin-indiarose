@@ -18,29 +18,24 @@ namespace IndiaRose.Business.ViewModels.Admin
 
 		#region Services
 
-		private IEmailService _emailService;
-		private IResourceService _resourceService;
-		private ILocalizationService _localizationService;
-        private IMessageDialogService _messageDialogService;
-
 		protected IEmailService EmailService
 		{
-			get { return _emailService ?? (_emailService = Container.Resolve<IEmailService>()); }
+			get { return LazyResolver<IEmailService>.Service; }
 		}
 
 		protected IResourceService ResourceService
 		{
-			get { return _resourceService ?? (_resourceService = Container.Resolve<IResourceService>()); }
+			get { return LazyResolver<IResourceService>.Service; }
 		}
 
 		protected ILocalizationService LocalizationService
 		{
-			get { return _localizationService ?? (_localizationService = Container.Resolve<ILocalizationService>()); }
+			get { return LazyResolver<ILocalizationService>.Service; }
 		}
 
 		public IMessageDialogService MessageDialogService
 		{
-			get { return _messageDialogService ?? (_messageDialogService = Container.Resolve<IMessageDialogService>()); }
+			get { return LazyResolver<IMessageDialogService>.Service; }
 		}
 
 		#endregion
@@ -61,7 +56,7 @@ namespace IndiaRose.Business.ViewModels.Admin
 
 		#endregion
 		
-		public HomeViewModel(IContainer container) : base(container)
+		public HomeViewModel()
 		{
 			SettingsCommand = new DelegateCommand(SettingsAction);
             CollectionManagementCommand = new DelegateCommand(CollectionAction);

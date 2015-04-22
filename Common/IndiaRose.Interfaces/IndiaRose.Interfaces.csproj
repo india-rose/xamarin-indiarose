@@ -64,7 +64,7 @@
       <HintPath>..\..\..\..\..\..\Desktop\sqlite-net-1.0.8.3\sqlite-net-1.0.8.3\lib\android\SQLite.dll</HintPath>
     </Reference>
     <Reference Include="Storm.Mvvm">
-      <HintPath>..\..\packages\Storm.Mvvm.1.2\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
+      <HintPath>..\..\packages\Storm.Mvvm.1.2.1\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

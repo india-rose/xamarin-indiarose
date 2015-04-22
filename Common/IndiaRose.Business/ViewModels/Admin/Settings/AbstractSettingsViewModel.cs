@@ -7,16 +7,14 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 {
 	public abstract class AbstractSettingsViewModel : AbstractViewModel
 	{
-		private ISettingsService _settingsService;
-
 		public ISettingsService SettingsService
 		{
-			get { return _settingsService ?? (_settingsService = Container.Resolve<ISettingsService>()); }
+			get { return LazyResolver<ISettingsService>.Service; }
 		}
 
 		public ICommand SaveCommand { get; private set; }
 
-		protected AbstractSettingsViewModel(IContainer container) : base(container)
+		protected AbstractSettingsViewModel()
 		{
 			SaveCommand = new DelegateCommand(SaveAction);
 		}

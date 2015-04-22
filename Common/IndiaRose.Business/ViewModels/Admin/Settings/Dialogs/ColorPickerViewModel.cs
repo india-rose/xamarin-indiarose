@@ -4,7 +4,6 @@ using System.Windows.Input;
 using IndiaRose.Data.UIModel;
 using Storm.Mvvm;
 using Storm.Mvvm.Commands;
-using Storm.Mvvm.Inject;
 using Storm.Mvvm.Navigation;
 
 #endregion
@@ -55,7 +54,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 		#endregion
 		public ICommand SaveCommand { get; set; }
 
-		public ColorPickerViewModel(IContainer container) : base(container)
+		public ColorPickerViewModel()
 		{
 			SaveCommand = new DelegateCommand(SaveAction);
 		}

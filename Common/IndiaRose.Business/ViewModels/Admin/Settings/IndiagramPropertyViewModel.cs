@@ -18,17 +18,14 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 	{
 		#region Services
 
-		private IFontService _fontService;
-		private IMessageDialogService _messageDialogService;
-
 		protected IFontService FontService
 		{
-			get { return _fontService ?? (_fontService = Container.Resolve<IFontService>()); }
+			get { return LazyResolver<IFontService>.Service; }
 		}
 
 		protected IMessageDialogService MessageDialogService
 		{
-			get { return _messageDialogService ?? (_messageDialogService = Container.Resolve<IMessageDialogService>()); }
+			get { return LazyResolver<IMessageDialogService>.Service; }
 		}
 
 		#endregion
@@ -85,7 +82,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 
 		public ICommand ReinforcerColorCommand { get; private set; }
 
-	    public IndiagramPropertyViewModel(IContainer container) : base(container)
+	    public IndiagramPropertyViewModel()
 	    {
 	        ReinforcerColorCommand = new DelegateCommand(ReInforcerColorAction);
 
@@ -112,8 +109,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 	        FontSize = SettingsService.FontSize;
 
 	        FontNames = new ObservableCollection<string>();
-	        IFontService fontService = Container.Resolve<IFontService>();
-	        foreach (string font in fontService.FontList.Keys)
+	        foreach (string font in FontService.FontList.Keys)
 	        {
 	            FontNames.Add(font);
 	        }

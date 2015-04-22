@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using Android.App;
 using Android.Runtime;
-using Android.Views;
 using IndiaRose.Application.Activities.Admin;
 using IndiaRose.Application.Activities.Admin.Collection;
 using IndiaRose.Application.Activities.Admin.Collection.Dialogs;
 using IndiaRose.Application.Activities.Admin.Settings;
 using IndiaRose.Application.Activities.Admin.Settings.Dialogs;
 using IndiaRose.Business;
-using IndiaRose.Services;
 using Storm.Mvvm;
 using Storm.Mvvm.Inject;
 

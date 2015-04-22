@@ -1,8 +1,6 @@
-﻿using Storm.Mvvm.Inject;
-
-namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
+﻿namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 {
-	public class AbstractYesNoViewModel : AbstractSettingsViewModel
+	public abstract class AbstractYesNoViewModel : AbstractSettingsViewModel
 	{
 		private bool _isEnabled = false;
         private bool _isDisabled = true;
@@ -28,10 +26,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 		            IsEnabled = !value;
 		        }
 		    }
-		}
-
-		public AbstractYesNoViewModel(IContainer container) : base(container)
-		{
 		}
 	}
 }

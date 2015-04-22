@@ -8,6 +8,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using IndiaRose.Application.CompositionRoot;
 using IndiaRose.Application.Views;
+
 // Pour plus d'informations sur le modèle Application vide, consultez la page http://go.microsoft.com/fwlink/?LinkId=234227
 
 namespace IndiaRose.Application

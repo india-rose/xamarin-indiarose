@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace IndiaRose.Interfaces
+﻿namespace IndiaRose.Interfaces
 {
     public interface IMediaService
     {

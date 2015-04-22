@@ -44,17 +44,14 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 
 		#region Services
 
-		private IMessageDialogService _messageDialogService;
-		private IScreenService _screenService;
-
 		public IMessageDialogService MessageDialogService
 		{
-			get { return _messageDialogService ?? (_messageDialogService = Container.Resolve<IMessageDialogService>()); }
+			get { return LazyResolver<IMessageDialogService>.Service; }
 		}
 
 		public IScreenService ScreenService
 		{
-			get { return _screenService ?? (_screenService = Container.Resolve<IScreenService>()); }
+			get { return LazyResolver<IScreenService>.Service; }
 		}
 
 		#endregion
@@ -66,8 +63,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 
 		#endregion
 
-		public ApplicationLookViewModel(IContainer container)
-			: base(container)
+		public ApplicationLookViewModel()
 		{
 			TopAreaColorCommand = new DelegateCommand(TopAreaColorAction);
 			BottomAreaColorCommand = new DelegateCommand(BottomAreaColorAction);
@@ -128,7 +124,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 			SettingsService.TopBackgroundColor = TopColor.Color;
 			SettingsService.BottomBackgroundColor = BottomColor.Color;
 			base.SaveAction();
-            base.BackAction();
+            BackAction();
 		}
 	}
 }

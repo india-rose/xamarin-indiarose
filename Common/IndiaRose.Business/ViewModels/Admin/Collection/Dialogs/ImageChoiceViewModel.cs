@@ -1,8 +1,6 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
-using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
@@ -10,12 +8,12 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
     {
         public ICommand GalleryCommand;
             
-	    private IMediaService _mediaService;
         public IMediaService MediaService
         {
-            get { return _mediaService ?? (_mediaService = Container.Resolve<IMediaService>()); }
+            get { return LazyResolver<IMediaService>.Service; }
         }
-        public ImageChoiceViewModel(IContainer container) : base(container)
+
+        public ImageChoiceViewModel()
         {
         }
     }

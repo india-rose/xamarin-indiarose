@@ -21,7 +21,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <NuGetPackageImportStamp>9246df9d</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>17601626</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -247,13 +247,13 @@
     <Reference Include="SQLite.Net.Platform.XamarinAndroid">
       <HintPath>..\..\packages\SQLite.Net.Platform.XamarinAndroid.2.5.1\lib\MonoAndroid\SQLite.Net.Platform.XamarinAndroid.dll</HintPath>
     </Reference>
-    <Reference Include="Storm.Mvvm, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Storm.Mvvm.1.2\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
+    <Reference Include="Storm.Mvvm">
+      <HintPath>..\..\packages\Storm.Mvvm.1.2.1\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Storm.Mvvm.Android, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Storm.Mvvm.Android.1.2.4\lib\MonoAndroid22\Storm.Mvvm.Android.dll</HintPath>
+      <HintPath>..\..\packages\Storm.Mvvm.Android.1.2.5\lib\MonoAndroid22\Storm.Mvvm.Android.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -275,8 +275,8 @@
       <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Activez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est le suivant : {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Storm.Mvvm.Android.1.2.4\build\Storm.Mvvm.Android.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Storm.Mvvm.Android.1.2.4\build\Storm.Mvvm.Android.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Storm.Mvvm.Android.1.2.5\build\Storm.Mvvm.Android.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Storm.Mvvm.Android.1.2.5\build\Storm.Mvvm.Android.targets'))" />
   </Target>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Import Project="..\..\packages\Storm.Mvvm.Android.1.2.4\build\Storm.Mvvm.Android.targets" Condition="Exists('..\..\packages\Storm.Mvvm.Android.1.2.4\build\Storm.Mvvm.Android.targets')" />
+  <Import Project="..\..\packages\Storm.Mvvm.Android.1.2.5\build\Storm.Mvvm.Android.targets" Condition="Exists('..\..\packages\Storm.Mvvm.Android.1.2.5\build\Storm.Mvvm.Android.targets')" />
 </Project>

@@ -1,5 +1,4 @@
 ﻿using System;
-using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 {
@@ -36,8 +35,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 
 		#region Constructor
 
-		public ReadingDelayViewModel(IContainer container)
-			: base(container)
+		public ReadingDelayViewModel()
 		{
 			// Math.Round is needed because of float precision issue
 			CurrentValue = (int) Math.Round(SettingsService.TimeOfSilenceBetweenWords * 10.0);

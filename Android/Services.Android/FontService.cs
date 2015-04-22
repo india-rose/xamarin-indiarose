@@ -1,17 +1,11 @@
 using System.Collections.Generic;
 using System.IO;
 using IndiaRose.Interfaces;
-using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Services.Android
 {
 	public class FontService : AbstractAndroidService, IFontService
     {
-        public FontService(IContainer container)
-			: base(container)
-        {
-        }
-
         public Dictionary<string, string> FontList
         {
             get 

@@ -1,9 +1,9 @@
 ﻿#region Usings
 
 using IndiaRose.Business.ViewModels.Admin;
-using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Business.ViewModels.Admin.Collection;
 using IndiaRose.Business.ViewModels.Admin.Collection.Dialogs;
+using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Business.ViewModels.Admin.Settings.Dialogs;
 using Storm.Mvvm.Inject;
 
@@ -18,34 +18,34 @@ namespace IndiaRose.Business
 		public static void Initialize(IContainer container)
 		{
 			// Admin
-			container.RegisterFactory(x => new HomeViewModel(x));
-			container.RegisterFactory(x => new InstallVoiceSynthesisViewModel(x));
-			container.RegisterFactory(x => new CreditsViewModel(x));
-            container.RegisterFactory(x => new ServerSynchronizationViewModel(x));
-            container.RegisterFactory(x => new MailErrorViewModel(x));
+			container.RegisterFactory(x => new HomeViewModel());
+			container.RegisterFactory(x => new InstallVoiceSynthesisViewModel());
+			container.RegisterFactory(x => new CreditsViewModel());
+            container.RegisterFactory(x => new ServerSynchronizationViewModel());
+            container.RegisterFactory(x => new MailErrorViewModel());
 
 			// Admin/Settings
-			container.RegisterFactory(x => new SettingsListViewModel(x));
-			container.RegisterFactory(x => new ApplicationLookViewModel(x));
-			container.RegisterFactory(x => new IndiagramPropertyViewModel(x));
+			container.RegisterFactory(x => new SettingsListViewModel());
+			container.RegisterFactory(x => new ApplicationLookViewModel());
+			container.RegisterFactory(x => new IndiagramPropertyViewModel());
 
 			// Admin/Settings/Dialogs
-			container.RegisterFactory(x => new ColorPickerViewModel(x));
-			container.RegisterFactory(x => new DragAndDropViewModel(x));
-			container.RegisterFactory(x => new ReadingDelayViewModel(x));
-			container.RegisterFactory(x => new CategoryReadingViewModel(x));
-            container.RegisterFactory(x => new ResetSettingsViewModel(x));
+			container.RegisterFactory(x => new ColorPickerViewModel());
+			container.RegisterFactory(x => new DragAndDropViewModel());
+			container.RegisterFactory(x => new ReadingDelayViewModel());
+			container.RegisterFactory(x => new CategoryReadingViewModel());
+            container.RegisterFactory(x => new ResetSettingsViewModel());
 
             //Admin/Collection
-            container.RegisterFactory(x => new WatchIndiagramViewModel(x));
-            container.RegisterFactory(x => new CollectionManagementViewModel(x));
-            container.RegisterFactory(x => new AddIndiagramViewModel(x));
-            container.RegisterFactory(x => new ManagementViewModel(x));
+            container.RegisterFactory(x => new WatchIndiagramViewModel());
+            container.RegisterFactory(x => new CollectionManagementViewModel());
+            container.RegisterFactory(x => new AddIndiagramViewModel());
+            container.RegisterFactory(x => new ManagementViewModel());
 
             //Admin/Collection/Dialogs
-            container.RegisterFactory(x => new AddCollectionViewModel(x));
-            container.RegisterFactory(x => new ImageChoiceViewModel(x));
-            container.RegisterFactory(x => new SoundChoiceViewModel(x));
+            container.RegisterFactory(x => new AddCollectionViewModel());
+            container.RegisterFactory(x => new ImageChoiceViewModel());
+            container.RegisterFactory(x => new SoundChoiceViewModel());
 
 			_container = container;
 		}

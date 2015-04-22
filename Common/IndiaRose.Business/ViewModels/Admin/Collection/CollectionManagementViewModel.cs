@@ -1,8 +1,6 @@
 ﻿using System.Windows.Input;
-using IndiaRose.Interfaces;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
-using System.Windows.Input;
 using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
@@ -12,15 +10,12 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         public ICommand AddCommand { get; private set; }
         public ICommand AddCollection{ get; private set; }
 
-        private IMessageDialogService _messageDialogService;
-
         public IMessageDialogService MessageDialogService
         {
-            get { return _messageDialogService ?? (_messageDialogService = Container.Resolve<IMessageDialogService>()); }
+            get { return LazyResolver<IMessageDialogService>.Service; }
         }
 
-        public CollectionManagementViewModel(IContainer container)
-            : base(container)
+        public CollectionManagementViewModel()
         {
             AddCommand = new DelegateCommand(AddAction);
             AddCollection = new DelegateCommand(AddCollectionAction);

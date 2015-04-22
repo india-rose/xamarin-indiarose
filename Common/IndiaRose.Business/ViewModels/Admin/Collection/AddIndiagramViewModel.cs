@@ -12,21 +12,22 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
     {
         #region MessageDialog
 
-        private IMessageDialogService _messageDialogService;
         public IMessageDialogService MessageDialogService
         {
-            get { return _messageDialogService ?? (_messageDialogService = Container.Resolve<IMessageDialogService>()); }
+            get { return LazyResolver<IMessageDialogService>.Service; }
         }
         #endregion
+
         #region Command
         public ICommand ImageChoiceCommand { get; private set; }
         public ICommand SoundChoiceCommand { get; private set; }
 
         #endregion
+
         [NavigationParameter]
         public Indiagram CurrentIndiagram { get; set; }
 
-        public AddIndiagramViewModel(IContainer container) : base(container)
+        public AddIndiagramViewModel()
         {
             ImageChoiceCommand = new DelegateCommand(ImageChoiceAction);
             SoundChoiceCommand = new DelegateCommand(SoundChoiceAction);

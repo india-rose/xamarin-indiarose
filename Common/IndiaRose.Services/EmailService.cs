@@ -1,7 +1,6 @@
 ﻿using System;
 using IndiaRose.Interfaces;
 using Lotz.Xam.Messaging;
-using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 
 namespace IndiaRose.Services
@@ -12,11 +11,6 @@ namespace IndiaRose.Services
 	    private const string ADDRESS_PROPERTY = "EmailAddress";
 	    private const string TITLE_PROPERTY = "Title";
 	    private const string BODY_PROPERTY = "Body";
-
-	    public EmailService(IContainer container) : base(container)
-	    {
-
-	    }
 
 	    public bool SendContactEmail()
 	    {

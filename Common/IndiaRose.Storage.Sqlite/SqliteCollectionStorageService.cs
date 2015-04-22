@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using IndiaRose.Data.Model;
 using IndiaRose.Storage.Sqlite.Model;
-
-using SQLite;
 using SQLite.Net;
-using SQLite.Net.Async;
 using SQLite.Net.Interop;
 
 namespace IndiaRose.Storage.Sqlite

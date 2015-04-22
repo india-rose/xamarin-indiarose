@@ -1,38 +1,22 @@
-﻿using Storm.Mvvm;
-using Storm.Mvvm.Inject;
+﻿using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 
 namespace IndiaRose.Services
 {
-	public abstract class AbstractService : NotifierBase
+	public abstract class AbstractService
 	{
-		#region Service backing fields
-
-		private ILocalizationService _localizationService;
-		private ILoggerService _loggerService;
-
-		#endregion
-
-		protected IContainer Container { get; private set; }
-
 		#region Service property
 
 		protected ILocalizationService LocalizationService
 		{
-			get { return _localizationService ?? (_localizationService = Container.Resolve<ILocalizationService>()); }
+			get { return LazyResolver<ILocalizationService>.Service; }
 		}
 
 		protected ILoggerService LoggerService
 		{
-			get { return _loggerService ?? (_loggerService = Container.Resolve<ILoggerService>()); }
+			get { return LazyResolver<ILoggerService>.Service; }
 		}
 
 		#endregion
-
-
-		protected AbstractService(IContainer container)
-		{
-			Container = container;
-		}
 	}
 }

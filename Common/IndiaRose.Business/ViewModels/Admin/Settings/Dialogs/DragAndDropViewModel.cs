@@ -1,6 +1,6 @@
 ﻿#region Usings
 
-using Storm.Mvvm.Inject;
+
 
 #endregion
 
@@ -10,7 +10,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 	{
 		#region Constructor
 
-		public DragAndDropViewModel(IContainer container) : base(container)
+		public DragAndDropViewModel()
 		{
 			IsEnabled = SettingsService.IsDragAndDropEnabled;
 		}

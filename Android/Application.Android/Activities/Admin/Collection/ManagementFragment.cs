@@ -1,12 +1,4 @@
-using System.Collections.Generic;
-using Android.App;
-using Android.Content.PM;
-using Android.Graphics;
-using Android.OS;
 using Android.Views;
-using Android.Widget;
-using IndiaRose.Business.ViewModels.Admin.Collection;
-using IndiaRose.Data.Model;
 using Storm.Mvvm;
 
 namespace IndiaRose.Application.Activities.Admin.Collection

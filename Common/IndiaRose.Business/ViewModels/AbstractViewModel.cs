@@ -3,7 +3,6 @@
 using System.Windows.Input;
 using Storm.Mvvm;
 using Storm.Mvvm.Commands;
-using Storm.Mvvm.Inject;
 
 #endregion
 
@@ -13,7 +12,7 @@ namespace IndiaRose.Business.ViewModels
 	{
 		public ICommand BackCommand { get; private set; }
 
-		protected AbstractViewModel(IContainer container) : base(container)
+		protected AbstractViewModel()
 		{
 			BackCommand = new DelegateCommand(BackAction);
 		}

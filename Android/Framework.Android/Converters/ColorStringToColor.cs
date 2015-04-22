@@ -2,7 +2,6 @@ using System;
 using System.Globalization;
 using System.Windows.Data;
 using Android.Graphics;
-using Android.Graphics.Drawables;
 
 namespace IndiaRose.Framework.Converters
 {

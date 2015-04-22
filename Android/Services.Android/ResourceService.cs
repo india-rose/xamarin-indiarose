@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using Android.Content;
 using IndiaRose.Interfaces;
-using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 using Uri = Android.Net.Uri;
 
@@ -10,11 +9,6 @@ namespace IndiaRose.Services.Android
 {
     public class ResourceService : AbstractAndroidService, IResourceService
     {
-		public ResourceService(IContainer container)
-			: base(container)
-	    {
-	    }
-
 	    public void ShowPdfFile(string pdfFileName)
         {
             string path = Path.Combine(CurrentActivity.GetExternalFilesDir(null).AbsolutePath, pdfFileName);
@@ -30,7 +24,7 @@ namespace IndiaRose.Services.Android
                     output.Flush();
                     output.Close();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     LoggerService.Log(string.Format("ResourceService.ShowPdfFile() : Cannot create external file {0}", path), MessageSeverity.Error);
                 }

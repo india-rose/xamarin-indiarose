@@ -13,11 +13,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 	{
 		#region Services
 
-		private IMessageDialogService _messageDialogService;
-
 		public IMessageDialogService MessageDialogService
 		{
-			get { return _messageDialogService ?? (_messageDialogService = Container.Resolve<IMessageDialogService>()); }
+			get { return LazyResolver<IMessageDialogService>.Service; }
 		}
 
 		#endregion
@@ -34,7 +32,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 
 		#endregion
 
-		public SettingsListViewModel(IContainer container) : base(container)
+		public SettingsListViewModel()
 		{
 			ApplicationLookCommand = new DelegateCommand(ApplicationLookAction);
 			ReadingDelayCommand = new DelegateCommand(ReadingDelayAction);

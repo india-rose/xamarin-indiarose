@@ -11,11 +11,9 @@ namespace IndiaRose.Business.ViewModels.Admin
 {
 	public class InstallVoiceSynthesisViewModel : AbstractViewModel
 	{
-		private IInstallVoiceSynthesisService _installVoiceSynthesisService;
-
 		public IInstallVoiceSynthesisService InstallVoiceSynthesisService
 		{
-			get { return _installVoiceSynthesisService ?? (_installVoiceSynthesisService = Container.Resolve<IInstallVoiceSynthesisService>()); }
+			get { return LazyResolver<IInstallVoiceSynthesisService>.Service; }
 		}
 
 		#region Commands
@@ -27,7 +25,7 @@ namespace IndiaRose.Business.ViewModels.Admin
 		#endregion
 
 
-		public InstallVoiceSynthesisViewModel(IContainer container) : base(container)
+		public InstallVoiceSynthesisViewModel()
 		{
 			InstallVoiceSynthesisEngineCommand = new DelegateCommand(InstallVoiceSynthesisEngineAction);
 			InstallLanguagePackCommand = new DelegateCommand(InstallLanguagePackAction);

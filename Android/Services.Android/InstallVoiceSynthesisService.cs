@@ -1,18 +1,11 @@
 using Android.Content;
 using Android.Net;
 using IndiaRose.Interfaces;
-using Storm.Mvvm.Inject;
-using Storm.Mvvm.Interfaces;
-using Storm.Mvvm.Services;
 
 namespace IndiaRose.Services.Android
 {
     public class InstallVoiceSynthesisService : AbstractAndroidService, IInstallVoiceSynthesisService
     {
-	    public InstallVoiceSynthesisService(IContainer container) : base(container)
-	    {
-	    }
-
 	    public void InstallVoiceSynthesisEngine()
         {
             Intent intent = GoToMarket("https://play.google.com/store/apps/details?id=com.ivona.tts&hl=fr");

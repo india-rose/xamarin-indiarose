@@ -1,10 +1,4 @@
-using System.Diagnostics;
-using Android.App;
-using Android.Content;
-using Android.Net;
 using Android.Views;
-using Android.Widget;
-using IndiaRose.Interfaces;
 using Storm.Mvvm;
 using Storm.Mvvm.Dialogs;
 using Storm.Mvvm.Inject;

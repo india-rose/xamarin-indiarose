@@ -8,7 +8,6 @@ using IndiaRose.Storage;
 using IndiaRose.Storage.Sqlite;
 using SQLite.Net.Platform.XamarinAndroid;
 using Storm.Mvvm.Inject;
-using Storm.Mvvm.Interfaces;
 using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application
@@ -30,13 +29,12 @@ namespace IndiaRose.Application
 			base.Initialize();
 			ViewModelsLocator.Initialize(this);
 
-            RegisterInstance<IActivityService>(ActivityService);
-            RegisterInstance<IResourceService>(new ResourceService(this));
-			RegisterInstance<IEmailService>(new EmailService(this));
-			RegisterInstance<IInstallVoiceSynthesisService>(new InstallVoiceSynthesisService(this));
-			RegisterInstance<IScreenService>(new ScreenService(this));
-			RegisterInstance<ISettingsService>(new SettingsService(this));
-			RegisterInstance<IFontService>(new FontService(this));
+            RegisterInstance<IResourceService>(new ResourceService());
+			RegisterInstance<IEmailService>(new EmailService());
+			RegisterInstance<IInstallVoiceSynthesisService>(new InstallVoiceSynthesisService());
+			RegisterInstance<IScreenService>(new ScreenService());
+			RegisterInstance<ISettingsService>(new SettingsService());
+			RegisterInstance<IFontService>(new FontService());
 			RegisterInstance<ICollectionStorageService>(new SqliteCollectionStorageService(new SQLitePlatformAndroid()));
 			
 		}

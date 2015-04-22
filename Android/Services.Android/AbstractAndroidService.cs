@@ -6,20 +6,14 @@ namespace IndiaRose.Services.Android
 {
 	public abstract class AbstractAndroidService : AbstractService
 	{
-		private IActivityService _activityService;
-
 		protected IActivityService ActivityService
 		{
-			get { return _activityService ?? (_activityService = Container.Resolve<IActivityService>()); }
+			get { return LazyResolver<IActivityService>.Service; }
 		}
 
 		protected Activity CurrentActivity
 		{
 			get { return ActivityService.CurrentActivity; }
-		}
-
-		protected AbstractAndroidService(IContainer container) : base(container)
-		{
 		}
 	}
 }
