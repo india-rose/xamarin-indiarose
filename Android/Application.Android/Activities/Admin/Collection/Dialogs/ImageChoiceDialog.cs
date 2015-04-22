@@ -12,7 +12,7 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 {
-    public partial class ImageChoiceDialog : AlertDialogFragmentBase
+    public partial class ImageChoiceDialog : AlertDialogFragmentBase, IMedia
     {
         public ImageChoiceDialog()
         {
@@ -31,9 +31,19 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
             return Container.Locator.AdminCollectionDialogsImageChoiceDialog;
         }
         // path : "image/*"
-        public void StartRead(string path)
+        public void StartWrite(string path)
         {
-            Initialize(path);
+            throw new System.NotImplementedException();
+        }
+
+        public string StopWrite()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string StopRead(System.Uri data)
+        {
+            throw new System.NotImplementedException();
         }
 
         protected void Initialize(string path)
@@ -57,14 +67,14 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
             //verif result activity
             if (resultCode == Result.Ok)
             {
-                StopRead(data.Data);
+                StopRead(data.Data.ToString());
             }
         }
 
-        public string StopRead(Uri data)
+        public string StopRead(string data)
         {
             //set axml
-            return data.Path;
+            return data;
         }
         /*
          * 
