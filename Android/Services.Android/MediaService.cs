@@ -20,7 +20,7 @@ namespace IndiaRose.Services.Android
             throw new NotImplementedException();
         }
 
-        public string StopRead(Uri data)
+        public string StopRead(string data)
         {
             throw new NotImplementedException();
         }
