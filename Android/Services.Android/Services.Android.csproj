@@ -44,6 +44,7 @@
     <Compile Include="AbstractAndroidService.cs" />
     <Compile Include="FontService.cs" />
     <Compile Include="InstallVoiceSynthesisService.cs" />
+    <Compile Include="MediaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceService.cs" />
     <Compile Include="ScreenService.cs" />
