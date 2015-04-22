@@ -12,7 +12,7 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 {
-    public partial class ImageChoiceDialog : AlertDialogFragmentBase, IMedia
+    public partial class ImageChoiceDialog : AlertDialogFragmentBase, IMediaService
     {
         public ImageChoiceDialog()
         {

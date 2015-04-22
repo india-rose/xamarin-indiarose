@@ -3,7 +3,7 @@ using IndiaRose.Interfaces;
 
 namespace IndiaRose.Services.Android
 {
-    public class MediaService : IMedia
+    public class MediaService : IMediaService
     {
         public void StartWrite(string path)
         {

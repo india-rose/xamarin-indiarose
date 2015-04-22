@@ -12,5 +12,6 @@
   <View XmlStyle="{Resource LineSeparator}" />
   <Button XmlStyle="{Resource ButtonDialogStyle}"
     Text="{Tr Text, Uid=CI_Gallery}"
+          Click="{Binding GalleryCommand}"
     />
 </LinearLayout>

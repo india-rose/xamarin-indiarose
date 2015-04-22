@@ -22,7 +22,6 @@ namespace IndiaRose.Business.ViewModels.Admin
 		private IResourceService _resourceService;
 		private ILocalizationService _localizationService;
         private IMessageDialogService _messageDialogService;
-	    private IMedia _mediaService;
 
 		protected IEmailService EmailService
 		{
@@ -43,11 +42,6 @@ namespace IndiaRose.Business.ViewModels.Admin
 		{
 			get { return _messageDialogService ?? (_messageDialogService = Container.Resolve<IMessageDialogService>()); }
 		}
-
-        public IMedia MediaService
-        {
-            get { return _mediaService ?? (_mediaService = Container.Resolve<IMedia>()); }
-        }
 
 		#endregion
 

@@ -50,7 +50,7 @@
     <Compile Include="IEmailService.cs" />
     <Compile Include="IFontService.cs" />
     <Compile Include="IInstallVoiceSynthesisService.cs" />
-    <Compile Include="IMedia.cs" />
+    <Compile Include="IMediaService.cs" />
     <Compile Include="IResourceService.cs" />
     <Compile Include="IScreenService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
