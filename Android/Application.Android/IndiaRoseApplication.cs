@@ -49,7 +49,8 @@ namespace IndiaRose.Application
                 {Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
                 {Dialogs.ADMIN_COLLECTION_ADDCOLLECTION,typeof(AddCollectionDialog)},
                 {Dialogs.ADMIN_COLLECTION_IMAGECHOICE,typeof(ImageChoiceDialog)},
-                {Dialogs.ADMIN_COLLECTION_SOUNDCHOICE,typeof(SoundChoiceDialog)}
+                {Dialogs.ADMIN_COLLECTION_SOUNDCHOICE,typeof(SoundChoiceDialog)},
+                {Dialogs.ADMIN_COLLECTION_RECORDSOUND,typeof(RecordSoundDialog)},
 			};
 
 			AndroidContainer.CreateInstance<Container>(this, views, dialogs);

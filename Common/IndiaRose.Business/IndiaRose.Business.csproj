@@ -52,6 +52,7 @@
     <Compile Include="ViewModels\Admin\Collection\CollectionManagementViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\Dialogs\AddCollectionViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\Dialogs\ImageChoiceViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Collection\Dialogs\RecordSoundViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\Dialogs\SoundChoiceViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\ManagementViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\WatchIndiagramViewModel.cs" />

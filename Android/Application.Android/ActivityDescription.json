@@ -185,6 +185,16 @@
                 "inputFile": "Views/Admin/Collection/ManagementPage.xml",
                 "outputFile": "Views_Admin_Collection_ManagementPage.axml"
             }
+        },
+        {
+            "fragment": {
+                "className": "RecordSoundDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/RecordSoundDialog.xml",
+                "outputFile": "Views_Admin_Collection_Dialogs_RecordSoundDialog.axml"
+            }
         }
     ]
 }

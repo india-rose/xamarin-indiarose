@@ -43,9 +43,12 @@
         />
   </LinearLayout>
   
-    <RelativeLayout XmlStyle="{Resource CMPRelative}">
+    <fragment
+      class="IndiaRose.Application.Activities.Admin.Collection.ManagementFragment"
+      XmlStyle="{Resource CMPRelative}"
+      android:id="ManagementFragment">
       <!-- on vera -->
-    </RelativeLayout>
+    </fragment>
 
 </RelativeLayout>
 
