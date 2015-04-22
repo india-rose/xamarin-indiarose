@@ -22,7 +22,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             : base(container)
         {
              EditCommand=new DelegateCommand(EditAction);
-             CurrentIndiagram = new Indiagram("test", "@raw/playbutton");
+             CurrentIndiagram = new Indiagram("test", "5317034a965b6suer.png");
         }
          private void EditAction()
          {

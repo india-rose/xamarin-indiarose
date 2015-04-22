@@ -24,7 +24,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
         #endregion
         [NavigationParameter]
-        public Indiagram CurrentIndiagram { get; private set; }
+        public Indiagram CurrentIndiagram { get; set; }
 
         public AddIndiagramViewModel(IContainer container) : base(container)
         {

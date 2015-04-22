@@ -4,6 +4,7 @@ using Android.Content;
 using Android.Net;
 using Android.Views;
 using Android.Widget;
+using IndiaRose.Interfaces;
 using Storm.Mvvm;
 using Storm.Mvvm.Dialogs;
 using Storm.Mvvm.Inject;
@@ -11,7 +12,7 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 {
-    public partial class ImageChoiceDialog : AlertDialogFragmentBase, IMedia
+    public partial class ImageChoiceDialog : AlertDialogFragmentBase
     {
         public ImageChoiceDialog()
         {

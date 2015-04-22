@@ -7,6 +7,9 @@ using Android.Widget;
 using IndiaRose.Business.ViewModels.Admin.Collection;
 using IndiaRose.Data.Model;
 using Storm.Mvvm;
+using Java.IO;
+using Java.Lang;
+using Exception = System.Exception;
 
 namespace IndiaRose.Application.Activities.Admin.Collection
 {
@@ -20,6 +23,11 @@ namespace IndiaRose.Application.Activities.Admin.Collection
             SetContentView(Resource.Layout.Admin_Collection_WatchIndiagramPage);
             SetViewModel(Container.Locator.AdminCollectionWatchIndiagramViewModel);
 
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
             Initialize();
         }
 
@@ -37,21 +45,10 @@ namespace IndiaRose.Application.Activities.Admin.Collection
             if (parent != null)
                 parentTextView.Text = parent.Text;
             TextView soundpathTextView = FindViewById<TextView>(Resource.Id.text3);
-            soundpathTextView.Text = vm.CurrentIndiagram.SoundPath ?? "Aucun";
+            soundpathTextView.Text = vm.CurrentIndiagram.SoundPath ?? soundpathTextView.Text;
             ImageView imageView = FindViewById<ImageView>(Resource.Id.Watch_Img);
-            //TODO linké l'image avec l'image de l'indiagram
-            /*
-             * https://github.com/Julien-Mialon/IndiaRose/blob/master/JavaVersion/EclipseWS/IndiaRoseLibrary/src/org/indiarose/lib/utils/ImageManager.java
-             * https://github.com/Julien-Mialon/IndiaRose/blob/master/JavaVersion/EclipseWS/IndiaRoseLibrary/src/org/indiarose/lib/PathData.java
-             * try
-		{
-			m_indiagramImage.setImageBitmap(ImageManager.loadImage(PathData.IMAGE_DIRECTORY + m_indiagram.imagePath, AppData.settings.indiagramSize, AppData.settings.indiagramSize));
-		} 
-		catch (Exception e)
-		{
-			//Log.wtf("AddIndiagram", "Unable to load image", e);
-		}
-             */
+            imageView.SetImageBitmap(Bitmap.CreateScaledBitmap(BitmapFactory.DecodeFile(Environment.ExternalStorageDirectory.Path+"/IndiaRose/image/"+vm.CurrentIndiagram.ImagePath),vm.SettingsService.IndiagramDisplaySize,vm.SettingsService.IndiagramDisplaySize,true));
+           
             
         }
     }
