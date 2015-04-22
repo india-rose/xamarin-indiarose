@@ -29,6 +29,7 @@ namespace IndiaRose.Application
 			base.Initialize();
 			ViewModelsLocator.Initialize(this);
 
+        
             RegisterInstance<IResourceService>(new ResourceService());
 			RegisterInstance<IEmailService>(new EmailService());
 			RegisterInstance<IInstallVoiceSynthesisService>(new InstallVoiceSynthesisService());
@@ -36,7 +37,8 @@ namespace IndiaRose.Application
 			RegisterInstance<ISettingsService>(new SettingsService());
 			RegisterInstance<IFontService>(new FontService());
 			RegisterInstance<ICollectionStorageService>(new SqliteCollectionStorageService(new SQLitePlatformAndroid()));
-			
-		}
+            RegisterInstance<IMediaService>(new MediaService());
+
+	    }
 	}
 }
