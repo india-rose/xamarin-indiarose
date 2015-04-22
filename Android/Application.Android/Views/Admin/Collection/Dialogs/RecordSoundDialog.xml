@@ -12,13 +12,19 @@
     android:background="#006FFF"
     >
 
+  <Resources>
+    <Style Key="ButtonStyle"
+          android:layout_width="120dip"
+          android:layout_height="120dip"
+         />
+  </Resources>
   <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginBottom="10dip"
       android:layout_marginLeft="10dip"
       android:layout_marginTop="10dip"
-      android:text="test"
+      Text="{Tr Text,Uid=RSD_Title}"
       android:textColor="@android:color/white"
       android:textSize="20sp" />
 
@@ -28,26 +34,20 @@
       android:gravity="center"
       android:orientation="horizontal" >
 
-    <Button
+    <Button XmlStyle="{Resource ButtonStyle}"
         android:id="alertdialog_record_sound_start"
-        android:layout_width="120dip"
-        android:layout_height="120dip"
-        android:layout_marginLeft="10dip"
-        android:background="@drawable/buttonselector" />
+        android:background="@drawable/buttonselector"
+        android:layout_marginLeft="10dip" />
 
-    <Button
+    <Button XmlStyle="{Resource ButtonStyle}"
         android:id="alertdialog_record_sound_stop"
-        android:layout_width="120dip"
-        android:layout_height="120dip"
         android:background="@drawable/stop"
         android:visibility="gone" />
 
-    <Button
+    <Button XmlStyle="{Resource ButtonStyle}"
         android:id="alertdialog_record_sound_cancel"
-        android:layout_width="120dip"
-        android:layout_height="120dip"
-        android:layout_marginLeft="10dip"
-        android:background="@drawable/buttoncancel"/>
+        android:background="@drawable/buttoncancel"
+        android:layout_marginLeft="10dip"/>
   </LinearLayout>
 
 </LinearLayout>
