@@ -1,7 +1,10 @@
 using System;
 using Android.Content;
 using Android.Media;
+using Android.Provider;
 using IndiaRose.Interfaces;
+using Java.IO;
+using Uri = Android.Net.Uri;
 
 namespace IndiaRose.Services.Android
 {
@@ -29,6 +32,18 @@ namespace IndiaRose.Services.Android
             _recorder.Reset();
 
             return _url;
+        }
+
+        public string Camera()
+        {
+            string path = string.Format("sdcard/IndiaRose/image/IndiaRose_photo_{0}.jpg", Guid.NewGuid());
+            File file = new File(path);
+
+            Intent intent = new Intent(MediaStore.ActionImageCapture);
+            intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(file));
+            StartActivityForResult(intent, 0);
+
+            return path;
         }
 
         public string StopRead(System.Uri data)
