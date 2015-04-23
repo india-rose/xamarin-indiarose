@@ -457,6 +457,6 @@ Comments : </value>
     <value>Text's color</value>
   </data>
   <data name="text_color_test.Text" xml:space="preserve">
-    <value>Text has this color</value>
+    <value>Text has this color :</value>
   </data>
 </root>

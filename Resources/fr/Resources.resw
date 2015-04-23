@@ -457,6 +457,6 @@ Commentaires :</value>
     <value>Couleur du texte</value>
   </data>
   <data name="text_color_test.Text" xml:space="preserve">
-    <value>Le texte a cette couleur</value>
+    <value>Le texte a cette couleur :</value>
   </data>
 </root>

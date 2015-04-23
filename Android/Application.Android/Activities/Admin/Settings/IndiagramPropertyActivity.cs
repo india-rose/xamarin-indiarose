@@ -1,8 +1,10 @@
 #region Usings
 
+using System;
 using Android.App;
 using Android.Content.PM;
 using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -113,8 +115,8 @@ namespace IndiaRose.Application.Activities.Admin.Settings
 
 			ReinforcerArea.SetBackgroundColor(ReinforcerEnabled ? ReinforcerColor : Color.Transparent);
 			IndiagramArea.SetBackgroundColor(Color.Red);
-
-            text_color_test.SetTextColor(TextColor);
+            
+            preview_text_color.SetImageDrawable(new ColorDrawable(TextColor));
 		}
 	}
 }

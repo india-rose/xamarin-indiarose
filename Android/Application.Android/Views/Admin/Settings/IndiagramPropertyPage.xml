@@ -115,42 +115,42 @@
              >
       <RelativeLayout
           android:layout_width="fill_parent"
-    	      android:gravity="center"
-    	      android:layout_gravity="center"
+    	    android:gravity="center"
+    	    android:layout_gravity="center"
           android:layout_height="fill_parent"
                  >
-          <TextView XmlStyle="{Resource TextViewStyle}"
-              android:id="text_image_size"
-              Text="{Tr Text, Uid=Indiagram_property_imageSizeTitle}" />
+        <TextView XmlStyle="{Resource TextViewStyle}"
+            android:id="text_image_size"
+            Text="{Tr Text, Uid=Indiagram_property_imageSizeTitle}" />
 
-          <BindableSpinner XmlStyle="{Resource BindableSpinnerStyle}"
-              android:id="spin_image_size"
-              android:layout_below="@id/text_image_size"
-              adapter="{Binding IndiagramSizes, Template={Resource IndiagramSizeTemplate}}"
-              currentItem="{Binding IndiagramSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
+        <BindableSpinner XmlStyle="{Resource BindableSpinnerStyle}"
+            android:id="spin_image_size"
+            android:layout_below="@id/text_image_size"
+            adapter="{Binding IndiagramSizes, Template={Resource IndiagramSizeTemplate}}"
+            currentItem="{Binding IndiagramSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
 		              />
-          <TextView XmlStyle="{Resource TextViewStyle}"
-              android:id="text_font_label"
-              android:layout_below="@id/spin_image_size"
-              Text="{Tr Text, Uid=fontTitle}" />
+        <TextView XmlStyle="{Resource TextViewStyle}"
+            android:id="text_font_label"
+            android:layout_below="@id/spin_image_size"
+            Text="{Tr Text, Uid=fontTitle}" />
 
-          <BindableSpinner XmlStyle="{Resource BindableSpinnerStyle}"
-              android:id="spin_font"
-              android:layout_below="@id/text_font_label"
-              adapter="{Binding FontNames, Template={Resource FontTemplate}}"
-              currentItem="{Binding FontName, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
+        <BindableSpinner XmlStyle="{Resource BindableSpinnerStyle}"
+            android:id="spin_font"
+            android:layout_below="@id/text_font_label"
+            adapter="{Binding FontNames, Template={Resource FontTemplate}}"
+            currentItem="{Binding FontName, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
 					  />
-          <TextView XmlStyle="{Resource TextViewStyle}"
-              android:id="text_font_size"
-              android:layout_below="@id/spin_font"
-              Text="{Tr Text,Uid=fontSizeTitle}" />
+        <TextView XmlStyle="{Resource TextViewStyle}"
+            android:id="text_font_size"
+            android:layout_below="@id/spin_font"
+            Text="{Tr Text,Uid=fontSizeTitle}" />
 
-          <BindableSpinner XmlStyle="{Resource BindableSpinnerStyle}"
-              android:id="spin_font_size"
-              android:layout_below="@id/text_font_size"
-              android:layout_marginBottom="20dip"
-              adapter="{Binding FontSizes, Template={Resource FontSizeTemplate}}"
-              currentItem="{Binding FontSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
+        <BindableSpinner XmlStyle="{Resource BindableSpinnerStyle}"
+            android:id="spin_font_size"
+            android:layout_below="@id/text_font_size"
+            android:layout_marginBottom="20dip"
+            adapter="{Binding FontSizes, Template={Resource FontSizeTemplate}}"
+            currentItem="{Binding FontSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
                     />
         <TextView XmlStyle="{Resource TextViewStyle}"
             android:id="text_color_label"
@@ -163,27 +163,45 @@
           android:id="text_color_layout"
           android:layout_below="@id/text_color_label"
           android:orientation="horizontal"
-          android:layout_marginBottom="20dip"
+          android:layout_marginBottom="10dip"
           >
           <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="text_color_test"
             android:textSize="16sp"
+            android:textColor="#000"
             android:layout_marginRight="20dip"
             Text="{Tr Text,Uid=text_color_test}"
             />
-          <Button XmlStyle="{Resource BlueButtonStyle}"
-                  Text="{Tr Text,Uid=text_color_button}"
-                  Click="{Binding TextColorCommand}"  
-                  android:textColor="@android:color/white"
-                  android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:textSize="14sp"
+          <ImageView
+            android:id="preview_text_color"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@android:color/black"
+            android:src="#F00"
+            android:padding="1dip"
+            />
+
+        </LinearLayout>
+        <LinearLayout
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/text_color_layout"
+          android:id="button_layout"
+          android:layout_marginBottom="20dip"
+          >
+        <Button XmlStyle="{Resource BlueButtonStyle}"
+                Text="{Tr Text,Uid=text_color_button}"
+                Click="{Binding TextColorCommand}"
+                android:textColor="@android:color/white"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
                   />
         </LinearLayout>
         <CheckBox XmlStyle="{Resource CheckBoxStyle}"
-            android:layout_below="@id/text_color_layout"
+            android:layout_below="@id/button_layout"
             Text ="{Tr Text,Uid=Indiagram_property_checkboxhomecategory}"
             checked="{Binding BackAfterSelection,Mode=TwoWay, UpdateEvent=CheckedChange}" />
       </RelativeLayout>
@@ -199,10 +217,10 @@
         android:background="@android:color/white"
         >
 			<RelativeLayout android:layout_height="wrap_content"
-							android:layout_width="fill_parent"
+						android:layout_width="fill_parent"
     	      android:gravity="center"
     	      android:layout_gravity="center"
-							android:id="PreviewContainer"
+						android:id="PreviewContainer"
     	  >
 				<View android:id="ReinforcerArea"
 					  android:layout_width="wrap_content"
