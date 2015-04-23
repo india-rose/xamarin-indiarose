@@ -47,16 +47,10 @@ namespace IndiaRose.Storage.Sqlite
             //Cherche dans la base de donnees l'indiagramme pour entre autre recuperer les liens pere/fils si besoin
             if (indiagram is Category)
             {
-                return Connection.Table<CategorySql>().SingleOrDefault(t => t.Text == indiagram.Text &&
-                                                                            t.ImagePath == indiagram.ImagePath &&
-                                                                            t.SoundPath == indiagram.SoundPath &&
-                                                                            t.Position == indiagram.Position);
+                return Connection.Table<CategorySql>().SingleOrDefault(t =>t.Id==indiagram.Id);
             }
 
-            return Connection.Table<IndiagramSql>().SingleOrDefault(t => t.Text == indiagram.Text &&
-                                                                         t.ImagePath == indiagram.ImagePath &&
-                                                                         t.SoundPath == indiagram.SoundPath &&
-                                                                         t.Position == indiagram.Position);
+            return Connection.Table<IndiagramSql>().SingleOrDefault(t => t.Id==indiagram.Id);
         }
 
         private static Indiagram GetIndiagramFromSql(IndiagramSql indiagram)
@@ -68,15 +62,17 @@ namespace IndiaRose.Storage.Sqlite
                 var csql = (CategorySql)indiagram;
                 var c = new Category()
                 {
+                    Id = csql.Id,
                     Text = csql.Text,
                     ImagePath = csql.ImagePath,
                     SoundPath = csql.SoundPath,
                     Position = csql.Position,
                 };
-
+                return c;
             }
-            var i = new Indiagram
+            var i = new Indiagram()
             {
+                Id = indiagram.Id,
                 Text = indiagram.Text,
                 ImagePath = indiagram.ImagePath,
                 SoundPath = indiagram.SoundPath,
@@ -103,6 +99,7 @@ namespace IndiaRose.Storage.Sqlite
                 temp.Position = temp.Id;
                 temp.Parent = (GetIndiagramSql(indiagram.Parent)).Id;
                 Connection.Insert(temp);
+                indiagram.Id = temp.Id;
             }
             else
             {
@@ -114,20 +111,20 @@ namespace IndiaRose.Storage.Sqlite
                 };
                 temp.Position = temp.Id;
                 Connection.Insert(temp);
+                indiagram.Id = temp.Id;
             }
         }
 
         public void Delete(Indiagram indiagram)
         {
             //supprime dans la table adequate
-            var current = GetIndiagramSql(indiagram);
-            if (current is CategorySql)
+            if (indiagram is Category)
             {
-                Connection.Delete<CategorySql>(current.Id);
+                Connection.Delete<CategorySql>(indiagram.Id);
             }
             else
             {
-                Connection.Delete<IndiagramSql>(current.Id);
+                Connection.Delete<IndiagramSql>(indiagram.Id);
             }
         }
 
@@ -238,12 +235,11 @@ namespace IndiaRose.Storage.Sqlite
 
     
         //others methods
-
-        /*
+        
         private IndiagramSql SearchByIdSql(int id)
         {
                 return Connection.Table<IndiagramSql>().SingleOrDefault(t => t.Id == id);
-        }*/
+        }
     }
     
     //TODO void Update(Indiagram indigram) & Test Service
@@ -251,12 +247,6 @@ namespace IndiaRose.Storage.Sqlite
      * 
      *
      * 
-     * utile mais pas encore utilisee
-     * 
-     * private IndiagramSql SearchByIdSql(int id)
-            {
-                return Connection.Table<IndiagramSql>().SingleOrDefault(t => t.Id == id);
-            }
      *
      *
      * 
