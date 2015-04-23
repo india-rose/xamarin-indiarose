@@ -8,6 +8,8 @@ using IndiaRose.Business.ViewModels.Admin.Collection;
 using IndiaRose.Data.Model;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
+using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application.Activities.Admin.Collection
 {
@@ -125,6 +127,11 @@ namespace IndiaRose.Application.Activities.Admin.Collection
                     Indiagram parent = ParentIndiagram;
                     if (parent != null)
                         parentTextView.Text = parent.Text;
+                    else
+                    {
+                        var trad = DependencyService.Container.Resolve<ILocalizationService>();
+                        parentTextView.Text = trad.GetString("Root_Categ", "Text");
+                    }
                     break;
                 case "position":
                     break;

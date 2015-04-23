@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Reflection.Context;
+using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Data.Model;
 using IndiaRose.Storage;
@@ -27,7 +28,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         #region Command
         public ICommand ImageChoiceCommand { get; private set; }
         public ICommand SoundChoiceCommand { get; private set; }
-        //Bind with activity
         public ICommand RootCommand { get; private set; }
 
         #endregion
@@ -41,6 +41,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         {
             ImageChoiceCommand = new DelegateCommand(ImageChoiceAction);
             SoundChoiceCommand = new DelegateCommand(SoundChoiceAction);
+            RootCommand = new DelegateCommand(RootAction);
             if (InitialIndiagram == null)
             {
                 CurrentIndiagram = new Indiagram();
@@ -75,6 +76,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         protected void SoundChoiceAction()
         {
             MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_SOUNDCHOICE);
+        }
+
+        protected void RootAction()
+        {
+            CurrentIndiagram.Parent = null;
         }
     }
 }
