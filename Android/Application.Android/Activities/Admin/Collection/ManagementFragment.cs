@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -112,15 +113,21 @@ namespace IndiaRose.Application.Activities.Admin.Collection
 			{
 				for (int column = 0; column < _indiagramByLine; ++column)
 				{
+					if (_displayableViews[line, column] != null)
+					{
+						_displayableViews[line, column].Touch -= IndiagramTouched;
+					}
+
 					if (index < toDisplay.Count)
 					{
-						_displayableViews[line, column] = new IndiagramView(Activity)
+						var view = new IndiagramView(Activity)
 						{
-                            
 							Indiagram = toDisplay[index++],
-							TextColor = TextColor, //TODO : put real value in Textcolor
+							TextColor = TextColor, 
 							Id = id++,
 						};
+						view.Touch += IndiagramTouched;
+						_displayableViews[line, column] = view;
 					}
 					else
 					{
@@ -196,5 +203,13 @@ namespace IndiaRose.Application.Activities.Admin.Collection
 
 			DisplayCount = count;
 		}
-    }
+
+	    private void IndiagramTouched(object sender, View.TouchEventArgs touchEventArgs)
+	    {
+		    throw new NotImplementedException();
+	    }
+
+	    // for the botton next
+
+	}
 }

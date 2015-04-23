@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using IndiaRose.Business.ViewModels.Admin.Settings;
+using System.Windows.Input;
+using Storm.Mvvm.Commands;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
@@ -48,6 +49,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
         public ManagementViewModel()
         {
+	        CollectionManagementViewModel.SubViewModel = this;
+
             TextColor = new ColorContainer
             {
                 Color = SettingsService.TextColor
@@ -77,6 +80,19 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 				new Indiagram("hellom", ""),
 				new Indiagram("hellow", ""),
 			};
+
         }
+
+	    public void NotifyNextAction()
+	    {
+		    int offset = CollectionOffset;
+		    offset += DisplayCount;
+
+		    if (offset >= Displayed.Count)
+		    {
+			    offset = 0;
+		    }
+		    CollectionOffset = offset;
+	    }
     }
 }

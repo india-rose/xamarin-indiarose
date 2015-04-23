@@ -39,8 +39,10 @@
       />
 		<Button XmlStyle="{Resource MediumOrangeButtonStyle}"
 			Text =" {Tr Text,Uid=SelectionIndiagramsNext}"
-			Click="{Binding AddCollection}"
+			Click="{Binding NextCommand}"
         />
+		<!--amettre dur le indiagram
+			Click="{Binding AddCollection}"-->
 	</LinearLayout>
 
 	<fragment
