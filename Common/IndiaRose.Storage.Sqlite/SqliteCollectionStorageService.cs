@@ -85,10 +85,13 @@ namespace IndiaRose.Storage.Sqlite
 			return i;
 		}
 
-        private void DropTable()
+        //TODO delete after test
+        public void DropTable()
         {
             Connection.DropTable<IndiagramSql>();
             Connection.DropTable<CategorySql>();
+            Connection.CreateTable<IndiagramSql>();
+            Connection.CreateTable<CategorySql>();
         }
 
 		//Interface
@@ -116,6 +119,7 @@ namespace IndiaRose.Storage.Sqlite
 				}
 				Connection.Insert(temp);
 				indiagram.Id = temp.Id;
+                
 			}
 			else
 			{
@@ -145,6 +149,11 @@ namespace IndiaRose.Storage.Sqlite
 			if (indiagram is Category)
 			{
 				Connection.Delete<CategorySql>(indiagram.Id);
+			    foreach (var t in indiagram.Children)
+			    {
+			        t.Parent = null;
+                    Update(t);
+			    }
 			}
 			else
 			{
@@ -168,6 +177,10 @@ namespace IndiaRose.Storage.Sqlite
 			    {
 			        query.Parent = GetIndiagramSql(indiagram.Parent).Id;
 			    }
+			    else
+			    {
+                    query.Parent = 0;
+			    }
 			    Connection.Update(query);
 			}
 			else
@@ -183,6 +196,10 @@ namespace IndiaRose.Storage.Sqlite
                 if (indiagram.Parent != null)
                 {
                     query.Parent = GetIndiagramSql(indiagram.Parent).Id;
+                }
+                else
+                {
+                    query.Parent = 0;
                 }
 
 				Connection.Update(query);

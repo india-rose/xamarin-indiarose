@@ -16,5 +16,8 @@ namespace IndiaRose.Storage
 		List<Indiagram> GetChildren(Indiagram parent);
 
 		List<Indiagram> GetFullCollection();
+
+        //TODO delete after test
+	    void DropTable();
 	}
 }

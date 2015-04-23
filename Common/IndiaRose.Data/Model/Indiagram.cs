@@ -94,5 +94,11 @@ namespace IndiaRose.Data.Model
             SoundPath = cloneIndiagram.SoundPath;
             Parent = cloneIndiagram.Parent;
         }
+        public Indiagram(string text, string imagePath, Category a)
+        {
+            Parent = a;
+            Text = text;
+            ImagePath = imagePath;
+        }
     }
 }

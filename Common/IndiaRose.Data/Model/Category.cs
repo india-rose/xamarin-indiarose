@@ -25,5 +25,9 @@ namespace IndiaRose.Data.Model
 		{
 
 		}
+
+	    public Category(string text, string imagePath, Category a): base(text,imagePath,a)
+        {
+        }
 	}
 }
