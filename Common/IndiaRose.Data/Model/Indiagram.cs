@@ -13,6 +13,12 @@ namespace IndiaRose.Data.Model
 		private string _soundPath;
 		private Indiagram _parent;
 
+	    public int Id
+	    {
+            get { return _id; }
+            set { SetProperty(ref _id, value); }
+	    }
+
 	    public int Position
 	    {
             get { return _position;}
@@ -51,12 +57,6 @@ namespace IndiaRose.Data.Model
 		{
 			get { return null; }
 		}
-
-        public virtual int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
 
 	    public Indiagram(int id)
 		{
