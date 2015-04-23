@@ -1,9 +1,14 @@
 ﻿
+using System.Threading.Tasks;
+
 namespace IndiaRose.Interfaces
 {
     public interface IMediaService
     {
-        string Camera();
+        Task<string> GetPictureFromCameraAsync();
+
+	    Task<string> GetPictureFromGalleryAsync();
+
         void RecordSound();
         string StopRecord();
     }
