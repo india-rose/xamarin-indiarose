@@ -68,6 +68,7 @@ namespace IndiaRose.Data.Model
 			Text = text;
 			ImagePath = imagePath;
 	        SoundPath = soundPath;
+            
 		}
 
 	    public Indiagram()
