@@ -82,8 +82,11 @@
 	<Style Key="RedButtonStyle"
 		   android:background="@drawable/buttonred"
 		   />
-	<Style Key="PurpleButtonStyle"
+  <Style Key="PurpleButtonStyle"
 		   android:background="@drawable/buttonpurple"
+		   />
+	<Style Key="BlueButtonStyle"
+		   android:background="@drawable/buttonblue"
 		   />
 
 

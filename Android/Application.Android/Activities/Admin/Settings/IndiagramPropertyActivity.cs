@@ -5,6 +5,7 @@ using Android.Content.PM;
 using Android.Graphics;
 using Android.OS;
 using Android.Views;
+using Android.Widget;
 using IndiaRose.Framework.Converters;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
@@ -20,6 +21,7 @@ namespace IndiaRose.Application.Activities.Admin.Settings
 		private int _indiagramSize;
 		private bool _reinforcerEnabled;
 		private Color _reinforcerColor;
+	    private Color _textColor;
 
         [Binding("IndiagramSize")]
 	    public int IndiagramSize
@@ -46,6 +48,18 @@ namespace IndiaRose.Application.Activities.Admin.Settings
 				}
 			}
 		}
+        [Binding("TextColor.Color", Converter = typeof(ColorStringToColor))]
+	    public Color TextColor
+	    {
+            get { return _textColor; }
+	        set
+	        {
+	            if (SetProperty(ref _textColor, value))
+	            {
+	                RefreshPreview();
+	            }
+	        }
+	    }
 
 		[Binding("ReinforcerEnabled")]
 		public bool ReinforcerEnabled
@@ -99,8 +113,8 @@ namespace IndiaRose.Application.Activities.Admin.Settings
 
 			ReinforcerArea.SetBackgroundColor(ReinforcerEnabled ? ReinforcerColor : Color.Transparent);
 			IndiagramArea.SetBackgroundColor(Color.Red);
+
+            text_color_test.SetTextColor(TextColor);
 		}
 	}
-
-    //TODO COULEUR TEXTE
 }

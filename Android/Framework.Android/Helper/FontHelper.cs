@@ -1,6 +1,7 @@
-using System;
 using System.Collections.Generic;
 using Android.Graphics;
+using Java.Lang;
+using String = System.String;
 
 namespace IndiaRose.Framework.Helper
 {
@@ -12,7 +13,15 @@ namespace IndiaRose.Framework.Helper
         {
             if (!_fonts.ContainsKey(fontPath))
             {
-                Typeface font = Typeface.CreateFromFile(fontPath) ?? Typeface.Default;
+                Typeface font;
+                try
+                {
+                    font = Typeface.CreateFromFile(fontPath);
+                }
+                catch (RuntimeException)
+                {
+                    font = Typeface.Default;
+                }
                 _fonts.Add(fontPath, font);
             }
 

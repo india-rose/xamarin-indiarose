@@ -1,14 +1,30 @@
 ﻿using System.Collections.Generic;
 using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Data.Model;
+using IndiaRose.Data.UIModel;
+using IndiaRose.Interfaces;
+using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
     public class ManagementViewModel : AbstractViewModel
     {
+
+        public ISettingsService SettingsService
+        {
+            get { return LazyResolver<ISettingsService>.Service; }
+        }
+
 	    private int _collectionOffset;
 	    private int _displayCount;
-	    private List<Indiagram> _displayed; 
+	    private List<Indiagram> _displayed;
+        private ColorContainer _textColor;
+
+        public ColorContainer TextColor
+        {
+            get { return _textColor; }
+            set { SetProperty(ref _textColor, value); }
+        }
 
 	    public int CollectionOffset
 	    {
@@ -32,6 +48,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
         public ManagementViewModel()
         {
+            TextColor = new ColorContainer
+            {
+                Color = SettingsService.TextColor
+            };
+
 			Displayed = new List<Indiagram>()
 			{
 				new Indiagram("helloa", ""),

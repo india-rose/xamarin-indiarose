@@ -21,6 +21,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         #region Command
         public ICommand ImageChoiceCommand { get; private set; }
         public ICommand SoundChoiceCommand { get; private set; }
+        //Bind with activity
+        public ICommand RootCommand { get; private set; }
 
         #endregion
 

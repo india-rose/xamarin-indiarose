@@ -450,4 +450,13 @@ Comments : </value>
   <data name="RSD_Title.Text" xml:space="preserve">
     <value>Record a sound</value>
   </data>
+  <data name="text_color_button.Text" xml:space="preserve">
+    <value>Change text's color</value>
+  </data>
+  <data name="text_color_label.Text" xml:space="preserve">
+    <value>Text's color</value>
+  </data>
+  <data name="text_color_test.Text" xml:space="preserve">
+    <value>Text has this color</value>
+  </data>
 </root>

@@ -38,6 +38,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 		private int _indiagramSize;
 		private int _fontSize;
 		private ColorContainer _reinforcerColor;
+	    private ColorContainer _textColor;
 		private bool _backAfterSelection;
 		private bool _reinforcerEnabled;
 
@@ -57,6 +58,12 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 			get { return _reinforcerColor; }
 			set { SetProperty(ref _reinforcerColor, value); }
 		}
+
+	    public ColorContainer TextColor
+	    {
+			get { return _textColor; }
+			set { SetProperty(ref _textColor, value); }
+	    }
 
 		public int IndiagramSize
 		{
@@ -83,15 +90,21 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 		#endregion
 
 		public ICommand ReinforcerColorCommand { get; private set; }
+        public ICommand TextColorCommand { get; private set; }
 
 	    public IndiagramPropertyViewModel()
 	    {
 	        ReinforcerColorCommand = new DelegateCommand(ReInforcerColorAction);
+            TextColorCommand = new DelegateCommand(TextColorAction);
 
 	        ReinforcerColor = new ColorContainer
 	        {
 	            Color = SettingsService.ReinforcerColor
-	        };
+            }; 
+            TextColor = new ColorContainer
+            {
+                Color = SettingsService.TextColor
+            };
 		    ReinforcerEnabled = SettingsService.IsReinforcerEnabled;
 		    BackAfterSelection = SettingsService.IsBackHomeAfterSelectionEnabled;
 
@@ -134,12 +147,21 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 			});
 		}
 
+	    private void TextColorAction()
+	    {
+            MessageDialogService.Show(Business.Dialogs.ADMIN_SETTINGS_COLORPICKER, new Dictionary<string, object>
+			{
+				{ColorPickerViewModel.COLOR_CONTAINER_PARAMETER, TextColor}
+			});
+	    }
+
 		protected override void SaveAction()
 		{
 			SettingsService.IndiagramDisplaySize = IndiagramSize;
 			SettingsService.FontSize = FontSize;
 			SettingsService.FontName = FontService.FontList[FontName];
 			SettingsService.ReinforcerColor = ReinforcerColor.Color;
+		    SettingsService.TextColor = TextColor.Color;
 
 			base.SaveAction();
             BackAction();
