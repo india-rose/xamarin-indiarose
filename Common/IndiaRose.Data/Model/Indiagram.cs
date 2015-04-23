@@ -63,11 +63,10 @@ namespace IndiaRose.Data.Model
 		    _id = id;
 		}
 
-	    public Indiagram(string text, string imagePath, int id, string soundPath = null)
+	    public Indiagram(string text, string imagePath, string soundPath = null)
 		{
 			Text = text;
 			ImagePath = imagePath;
-	        _id = id;
 	        SoundPath = soundPath;
 		}
 
