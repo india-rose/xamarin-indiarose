@@ -8,7 +8,9 @@ namespace IndiaRose.Data.Model
 
 		public string BottomBackgroundColor { get; set; }
 
-		public string ReinforcerColor { get; set; }
+        public string ReinforcerColor { get; set; }
+
+        public string TextColor { get; set; }
 		
 		public int SelectionAreaHeight { get; set; }
 		

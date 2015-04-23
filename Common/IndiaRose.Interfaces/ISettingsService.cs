@@ -10,6 +10,8 @@ namespace IndiaRose.Interfaces
 
 		string ReinforcerColor { get; set; }
 
+        string TextColor { get; set; }
+
 		int SelectionAreaHeight { get; set; }
 
 		int IndiagramDisplaySize { get; set; }

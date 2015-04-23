@@ -148,12 +148,42 @@
           <BindableSpinner XmlStyle="{Resource BindableSpinnerStyle}"
               android:id="spin_font_size"
               android:layout_below="@id/text_font_size"
+              android:layout_marginBottom="20dip"
               adapter="{Binding FontSizes, Template={Resource FontSizeTemplate}}"
               currentItem="{Binding FontSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
                     />
-        <CheckBox XmlStyle="{Resource CheckBoxStyle}"
+        <TextView XmlStyle="{Resource TextViewStyle}"
+            android:id="text_color_label"
             android:layout_below="@id/spin_font_size"
-                  android:layout_marginTop="20dip"
+            Text="{Tr Text, Uid=text_color_label}"
+                  />
+        <LinearLayout
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:id="text_color_layout"
+          android:layout_below="@id/text_color_label"
+          android:orientation="horizontal"
+          android:layout_marginBottom="20dip"
+          >
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="text_color_test"
+            android:textSize="16sp"
+            android:layout_marginRight="20dip"
+            Text="{Tr Text,Uid=text_color_test}"
+            />
+          <Button XmlStyle="{Resource BlueButtonStyle}"
+                  Text="{Tr Text,Uid=text_color_button}"
+                  Click="{Binding TextColorCommand}"  
+                  android:textColor="@android:color/white"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:textSize="14sp"
+                  />
+        </LinearLayout>
+        <CheckBox XmlStyle="{Resource CheckBoxStyle}"
+            android:layout_below="@id/text_color_layout"
             Text ="{Tr Text,Uid=Indiagram_property_checkboxhomecategory}"
             checked="{Binding BackAfterSelection,Mode=TwoWay, UpdateEvent=CheckedChange}" />
       </RelativeLayout>

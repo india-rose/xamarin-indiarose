@@ -47,7 +47,8 @@
     <Button XmlStyle="{Resource ButtonStyle}"
         android:id="alertdialog_record_sound_cancel"
         android:background="@drawable/buttoncancel"
-        android:layout_marginLeft="10dip"/>
+        android:layout_marginLeft="10dip"
+        Click="{Binding CloseCommand}"/>
   </LinearLayout>
 
 </LinearLayout>

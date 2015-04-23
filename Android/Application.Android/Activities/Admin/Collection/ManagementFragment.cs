@@ -4,8 +4,10 @@ using System.Linq;
 using Android.Views;
 using Android.Widget;
 using IndiaRose.Data.Model;
+using IndiaRose.Framework.Converters;
 using IndiaRose.Framework.Views;
 using IndiaRose.Interfaces;
+using Java.Lang;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
 using Storm.Mvvm.Inject;
@@ -14,9 +16,18 @@ namespace IndiaRose.Application.Activities.Admin.Collection
 {
     public partial class ManagementFragment : FragmentBase
     {
+
 		private int _collectionOffset;
 		private int _displayCount;
 		private List<Indiagram> _displayed;
+        private uint _textColor;
+
+        [Binding("TextColor", Converter = typeof(ColorContainerToIntConverter))]
+        public uint TextColor
+        {
+            get { return _textColor;}
+            set { SetProperty(ref _textColor, value); }
+        }
 
 		[Binding("CollectionOffset")]
 		public int CollectionOffset
@@ -105,8 +116,9 @@ namespace IndiaRose.Application.Activities.Admin.Collection
 					{
 						_displayableViews[line, column] = new IndiagramView(Activity)
 						{
+                            
 							Indiagram = toDisplay[index++],
-							TextColor = 0xFFFF0000, //TODO : put real value in Textcolor
+							TextColor = TextColor, //TODO : put real value in Textcolor
 							Id = id++,
 						};
 					}

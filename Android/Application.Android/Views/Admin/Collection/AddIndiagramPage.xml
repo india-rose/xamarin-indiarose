@@ -117,7 +117,9 @@
                         Text="{Tr Text, Uid=AIP_BCateg}"/>
 
                     <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
-                        Text="{Tr Text, Uid=AIP_BRoot}" />
+                        Text="{Tr Text, Uid=AIP_BRoot}"
+                        Click="{Binding RootCommand}"
+                     />
                 </LinearLayout>
 
                 <TextView XmlStyle="{Resource TextViewTitle}"

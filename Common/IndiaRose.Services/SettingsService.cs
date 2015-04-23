@@ -38,18 +38,24 @@ namespace IndiaRose.Services
 		private bool _isDragAndDropEnabled;
 		private bool _isCategoryNameReadingEnabled;
 		private bool _isBackHomeAfterSelectionEnabled;
-		private float _timeOfSilenceBetweenWords;
-		private string _reinforcerColor;
+        private float _timeOfSilenceBetweenWords;
+        private string _reinforcerColor;
+        private string _textColor;
 
 		#endregion
 
 		#region Properties
 
-		public string ReinforcerColor
-		{
-			get { return _reinforcerColor; }
-			set { SetProperty(ref _reinforcerColor, value); }
-		}
+        public string ReinforcerColor
+        {
+            get { return _reinforcerColor; }
+            set { SetProperty(ref _reinforcerColor, value); }
+        }
+        public string TextColor
+        {
+            get { return _textColor; }
+            set { SetProperty(ref _textColor, value); }
+        }
 
 		public float TimeOfSilenceBetweenWords
 		{
@@ -152,7 +158,8 @@ namespace IndiaRose.Services
 				IsCategoryNameReadingEnabled = IsCategoryNameReadingEnabled,
 				IsBackHomeAfterSelectionEnabled = IsBackHomeAfterSelectionEnabled,
 				TimeOfSilenceBetweenWords = TimeOfSilenceBetweenWords,
-				ReinforcerColor = ReinforcerColor
+				ReinforcerColor = ReinforcerColor,
+                TextColor = TextColor
 			};
 
 			await SaveOnDiskAsync(model);
@@ -186,6 +193,7 @@ namespace IndiaRose.Services
 			IsBackHomeAfterSelectionEnabled = model.IsBackHomeAfterSelectionEnabled;
 			TimeOfSilenceBetweenWords = model.TimeOfSilenceBetweenWords;
 			ReinforcerColor = model.ReinforcerColor;
+		    TextColor = model.TextColor;
 
 			_hasChanged = false;
 		}
@@ -204,6 +212,7 @@ namespace IndiaRose.Services
 			IsBackHomeAfterSelectionEnabled = true;
 			TimeOfSilenceBetweenWords = 1.0f;
 			ReinforcerColor = "#FFFF00FF";
+		    TextColor = "#FFFF0000";
 		}
 
 		protected async Task<bool> ExistsOnDiskAsync()
