@@ -7,7 +7,8 @@ namespace IndiaRose.Interfaces
     {
         Task<string> GetPictureFromCameraAsync();
 
-	    Task<string> GetPictureFromGalleryAsync();
+        Task<string> GetPictureFromGalleryAsync(); 
+        Task<string> GetSoundFromGalleryAsync();
 
         void RecordSound();
         string StopRecord();

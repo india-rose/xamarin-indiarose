@@ -60,23 +60,40 @@ namespace IndiaRose.Services.Android
 			});
 		}
 
-		public Task<string> GetPictureFromGalleryAsync()
-		{
-			return AsyncHelper.CreateAsyncFromCallback<string>(resultCallback =>
-			{
-				var intent = new Intent(Intent.ActionPick, MediaStore.Images.Media.ExternalContentUri);
-				ActivityService.StartActivityForResult(intent, (result, data) =>
-				{
-					string res = null;
-					if (result == Result.Ok)
-					{
-						Uri selectedImage = data.Data;
-						res = selectedImage.Path;
-					}
-					resultCallback(res);
-				});
-			});
-		}
+        public Task<string> GetPictureFromGalleryAsync()
+        {
+            return AsyncHelper.CreateAsyncFromCallback<string>(resultCallback =>
+            {
+                var intent = new Intent(Intent.ActionPick, MediaStore.Images.Media.ExternalContentUri);
+                ActivityService.StartActivityForResult(intent, (result, data) =>
+                {
+                    string res = null;
+                    if (result == Result.Ok)
+                    {
+                        Uri selectedImage = data.Data;
+                        res = selectedImage.Path;
+                    }
+                    resultCallback(res);
+                });
+            });
+        }
+        public Task<string> GetSoundFromGalleryAsync()
+        {
+            return AsyncHelper.CreateAsyncFromCallback<string>(resultCallback =>
+            {
+                var intent = new Intent(Intent.ActionPick, MediaStore.Audio.Media.ExternalContentUri);
+                ActivityService.StartActivityForResult(intent, (result, data) =>
+                {
+                    string res = null;
+                    if (result == Result.Ok)
+                    {
+                        Uri selectedImage = data.Data;
+                        res = selectedImage.Path;
+                    }
+                    resultCallback(res);
+                });
+            });
+        }
 
         public string StopRead(Uri data)
         {
