@@ -157,8 +157,12 @@ namespace IndiaRose.Storage.Sqlite
 				query.ImagePath = indiagram.ImagePath;
 				query.SoundPath = indiagram.SoundPath;
 				query.Position = indiagram.Position;
-				query.Parent = GetIndiagramSql(indiagram.Parent).Id;
-				Connection.Update(query);
+
+			    if (indiagram.Parent != null)
+			    {
+			        query.Parent = GetIndiagramSql(indiagram.Parent).Id;
+			    }
+			    Connection.Update(query);
 			}
 			else
 			{
@@ -169,7 +173,12 @@ namespace IndiaRose.Storage.Sqlite
 				query.ImagePath = indiagram.ImagePath;
 				query.SoundPath = indiagram.SoundPath;
 				query.Position = indiagram.Position;
-				query.Parent = GetIndiagramSql(indiagram.Parent).Id;
+
+                if (indiagram.Parent != null)
+                {
+                    query.Parent = GetIndiagramSql(indiagram.Parent).Id;
+                }
+
 				Connection.Update(query);
 			}
 		}
