@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using IndiaRose.Business;
 using IndiaRose.Interfaces;
@@ -36,7 +37,7 @@ namespace IndiaRose.Application
 			RegisterInstance<IScreenService>(new ScreenService());
 			RegisterInstance<ISettingsService>(new SettingsService());
 			RegisterInstance<IFontService>(new FontService());
-			RegisterInstance<ICollectionStorageService>(new SqliteCollectionStorageService(new SQLitePlatformAndroid()));
+			RegisterInstance<ICollectionStorageService>(new SqliteCollectionStorageService(new SQLitePlatformAndroid(), Path.Combine(Android.OS.Environment.ExternalStorageDirectory.Path, "IndiaRose")));
             RegisterInstance<IMediaService>(new MediaService());
 
 	    }

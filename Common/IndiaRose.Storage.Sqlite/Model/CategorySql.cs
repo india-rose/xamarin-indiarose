@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
 
 namespace IndiaRose.Storage.Sqlite.Model
 {
     [Table("Category")]
     public class CategorySql : IndiagramSql
     {
-        [Column("_children")]
+        [OneToMany]
         public List<IndiagramSql> Children { get; set; }
 
 

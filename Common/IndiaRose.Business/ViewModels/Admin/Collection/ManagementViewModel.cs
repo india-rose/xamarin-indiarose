@@ -63,33 +63,32 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
                 Color = SettingsService.TextColor
             };
 
-            
-
-			Displayed = new List<Indiagram>()
-			{
-				new Indiagram("helloa", ""),
-				new Indiagram("helloz", ""),
-				new Indiagram("helloe", ""),
-				new Indiagram("hellor", ""),
-				new Indiagram("hellot", ""),
-				new Indiagram("helloy", ""),
-				new Indiagram("hellou", ""),
-				new Indiagram("helloi", ""),
-				new Indiagram("helloo", ""),
-				new Indiagram("hellop", ""),
-				new Indiagram("helloq", ""),
-				new Indiagram("hellos", ""),
-				new Indiagram("hellod", ""),
-				new Indiagram("hellof", ""),
-				new Indiagram("hellog", ""),
-				new Indiagram("helloh", ""),
-				new Indiagram("helloj", ""),
-				new Indiagram("hellok", ""),
-				new Indiagram("hellol", ""),
-				new Indiagram("hellom", ""),
-				new Indiagram("hellow", ""),
-			};
-
+	        if (LazyResolver<ICollectionStorageService>.Service.GetTopLevel().Count == 0)
+	        {
+		        LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("azerty", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("helloa", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("helloz", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("helloe", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("hellor", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("hellot", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("helloy", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("hellou", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("helloi", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("helloo", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("hellop", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("helloq", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("hellos", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("hellod", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("hellof", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("hellog", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("helloh", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("helloj", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("hellok", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("hellol", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("hellom", ""));
+				LazyResolver<ICollectionStorageService>.Service.Create(new Indiagram("hellow", ""));
+	        }
+			Displayed = LazyResolver<ICollectionStorageService>.Service.GetTopLevel();
         }
 
 	    public void NotifyNextAction()
