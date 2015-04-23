@@ -85,6 +85,12 @@ namespace IndiaRose.Storage.Sqlite
 			return i;
 		}
 
+        private void DropTable()
+        {
+            Connection.DropTable<IndiagramSql>();
+            Connection.DropTable<CategorySql>();
+        }
+
 		//Interface
 
 		public void Create(Indiagram indiagram)
@@ -250,7 +256,6 @@ namespace IndiaRose.Storage.Sqlite
 			}
 			return current;
 		}
-
 
 		//others methods
 
