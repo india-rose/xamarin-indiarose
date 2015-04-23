@@ -132,9 +132,9 @@ namespace IndiaRose.Storage.Sqlite
         {
             if (indiagram is Category)
             {
-                var query = Connection.Table<CategorySql>().SingleOrDefault(t => t.Text == indiagram.Text ||
-                    t.ImagePath == indiagram.ImagePath || t.SoundPath == indiagram.SoundPath ||
-                    t.Position == indiagram.Position);
+                var query = Connection.Table<CategorySql>().SingleOrDefault(t => t.Id == indiagram.Id);
+
+                if (query == null) return;
                 query.Text = indiagram.Text;
                 query.ImagePath = indiagram.ImagePath;
                 query.SoundPath = indiagram.SoundPath;
@@ -144,9 +144,9 @@ namespace IndiaRose.Storage.Sqlite
             }
             else
             {
-                var query = Connection.Table<IndiagramSql>().SingleOrDefault(t => t.Text == indiagram.Text ||
-                    t.ImagePath == indiagram.ImagePath || t.SoundPath == indiagram.SoundPath ||
-                    t.Position == indiagram.Position);
+                var query = Connection.Table<IndiagramSql>().SingleOrDefault(t => t.Id == indiagram.Id);
+
+                if (query == null) return;
                 query.Text = indiagram.Text;
                 query.ImagePath = indiagram.ImagePath;
                 query.SoundPath = indiagram.SoundPath;
@@ -215,22 +215,15 @@ namespace IndiaRose.Storage.Sqlite
 
         public List<Indiagram> GetChildren(Indiagram parent)
         {
-            //throw new NotImplementedException();
-
-            //TODO connexion impossible
             if (!(parent is Category)) return new List<Indiagram>();
+
             var current = new List<Indiagram>();
-            CategorySql parentSql = (CategorySql)GetIndiagramSql(parent);
-            List<IndiagramSql> listChildren = parentSql.Children;
-            foreach (var t in listChildren)
+            CategorySql parentSql = (CategorySql) GetIndiagramSql(parent);
+            foreach (var t in parentSql.Children)
             {
                 current.Add(GetIndiagramFromSql(t));
             }
             return current;
-
-            /*List<Indiagram> list = GetTopLevel();
-
-            return SearchChildren(list, parent);*/
         }
 
     
