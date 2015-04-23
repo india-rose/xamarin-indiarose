@@ -22,7 +22,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
          {
              NavigationService.Navigate(Views.ADMIN_COLLECTION_ADD,new Dictionary<string, object>()
              {
-                 {"CurrentIndiagram",CurrentIndiagram}
+                 {"InitialIndiagram",CurrentIndiagram}
              });
          }
     }

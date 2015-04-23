@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Data.Model;
+using IndiaRose.Storage;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Navigation;
@@ -10,11 +11,16 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
     public class AddIndiagramViewModel : AbstractSettingsViewModel
     {
-        #region MessageDialog
+        #region Service
 
         public IMessageDialogService MessageDialogService
         {
             get { return LazyResolver<IMessageDialogService>.Service; }
+        }
+
+        public ICollectionStorageService CollectionStorageService
+        {
+            get { return LazyResolver<ICollectionStorageService>.Service; }
         }
         #endregion
 
@@ -27,16 +33,37 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         #endregion
 
         [NavigationParameter]
+        protected Indiagram InitialIndiagram { get; set; }
+
         public Indiagram CurrentIndiagram { get; set; }
 
         public AddIndiagramViewModel()
         {
             ImageChoiceCommand = new DelegateCommand(ImageChoiceAction);
             SoundChoiceCommand = new DelegateCommand(SoundChoiceAction);
+            if (InitialIndiagram == null)
+            {
+                CurrentIndiagram = new Indiagram();
+            }
+            else
+            {
+                CurrentIndiagram = new Indiagram(CurrentIndiagram);
+            }
         }
 
         protected override void SaveAction()
         {
+            if (InitialIndiagram == null)
+            {
+                InitialIndiagram = CurrentIndiagram;
+                CollectionStorageService.Create(InitialIndiagram);
+            }
+            else
+            {
+                InitialIndiagram.Edit(CurrentIndiagram);
+                CollectionStorageService.Update(InitialIndiagram);
+            }
+
             BackAction();
         }
 

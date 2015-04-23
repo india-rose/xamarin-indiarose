@@ -7,6 +7,7 @@ using Android.Widget;
 using IndiaRose.Business.ViewModels.Admin.Collection;
 using IndiaRose.Data.Model;
 using Storm.Mvvm;
+using Storm.Mvvm.Bindings;
 
 namespace IndiaRose.Application.Activities.Admin.Collection
 {
@@ -14,6 +15,68 @@ namespace IndiaRose.Application.Activities.Admin.Collection
     [Activity(ScreenOrientation = ScreenOrientation.Landscape, Theme = "@style/Theme.Sherlock.Light.NoActionBar")]
     public partial class AddIndiagramActivity : ActivityBase
     {
+        private string _text;
+        private Indiagram _parent;
+        private string _imagePath;
+        private string _soundPath;
+        private int _position;
+
+        [Binding("CurrentIndiagram.Text")]
+        public string Text
+        {
+            get { return _text; }
+            set
+            {
+                if (SetProperty(ref _text, value))
+                {
+                    RefreshView("text");
+                }
+            }
+        }
+        [Binding("CurrentIndiagram.Parent")]
+        public Indiagram ParentIndiagram
+        {
+            get { return _parent; }
+            set { if(SetProperty(ref _parent, value)){
+                    RefreshView("parent");
+                }}
+        }
+        [Binding("CurrentIndiagram.ImagePath")]
+        public string ImagePath
+        {
+            get { return _imagePath; }
+            set
+            {
+                if(SetProperty(ref _imagePath, value))
+                {
+                    RefreshView("imagepath");
+                }
+            }
+        }
+        [Binding("CurrentIndiagram.SoundPath")]
+        public string SoundPath
+        {
+            get { return _soundPath; }
+            set
+            {
+                if(SetProperty(ref _soundPath, value))
+                {
+                    RefreshView("soundpath");
+                }
+            }
+        }
+
+        public int Position
+        {
+            get { return _position; }
+            set
+            {
+                if(SetProperty(ref _position, value))
+                {
+                    RefreshView("position");
+                }
+            }
+        }
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -36,21 +99,43 @@ namespace IndiaRose.Application.Activities.Admin.Collection
             indiagramParam.Height = vm.SettingsService.IndiagramDisplaySize;
             indiagramParam.Width = vm.SettingsService.IndiagramDisplaySize;
             Add_Img.LayoutParameters = indiagramParam;
+            RefreshView("all");
 
-            if (vm.CurrentIndiagram == null)
-                return;
-            EditText nameEditText = FindViewById<EditText>(Resource.Id.edit_text);
-            nameEditText.Text = vm.CurrentIndiagram.Text;
-            TextView parentTextView = FindViewById<TextView>(Resource.Id.m_indiagramCategory);
-            Indiagram parent = vm.CurrentIndiagram.Parent;
-            if (parent != null)
-                parentTextView.Text = parent.Text;
-            TextView soundpathTextView = FindViewById<TextView>(Resource.Id.m_indiagramSound);
-            soundpathTextView.Text = vm.CurrentIndiagram.SoundPath ?? soundpathTextView.Text;
-            ImageView imageView = FindViewById<ImageView>(Resource.Id.Add_Img);
-            imageView.SetImageBitmap(Bitmap.CreateScaledBitmap(BitmapFactory.DecodeFile(Environment.ExternalStorageDirectory.Path + "/IndiaRose/image/" + vm.CurrentIndiagram.ImagePath), vm.SettingsService.IndiagramDisplaySize, vm.SettingsService.IndiagramDisplaySize, true));
+        }
 
-
+        private void RefreshView(string champ)
+        {
+            switch (champ)
+            {
+                case "text":
+                    EditText nameEditText = FindViewById<EditText>(Resource.Id.edit_text);
+                    nameEditText.Text = Text;
+                    break;
+                case "imagepath":
+                    ImageView imageView = FindViewById<ImageView>(Resource.Id.Add_Img);
+                    if (ImagePath != null)
+                        imageView.SetImageBitmap(Bitmap.CreateScaledBitmap(BitmapFactory.DecodeFile(Environment.ExternalStorageDirectory.Path + "/IndiaRose/image/" + ImagePath), imageView.Height, imageView.Width, true));
+                    break;
+                case "soundpath":
+                    TextView soundpathTextView = FindViewById<TextView>(Resource.Id.m_indiagramSound);
+                    soundpathTextView.Text = SoundPath ?? soundpathTextView.Text;
+                    break;
+                case "parent":
+                    TextView parentTextView = FindViewById<TextView>(Resource.Id.m_indiagramCategory);
+                    Indiagram parent = ParentIndiagram;
+                    if (parent != null)
+                        parentTextView.Text = parent.Text;
+                    break;
+                case "position":
+                    break;
+                case "all":
+                    RefreshView("text");
+                    RefreshView("imagepath");
+                    RefreshView("soundpath");
+                    RefreshView("parent");
+                    RefreshView("position");
+                    break;
+            }
         }
     }
 }

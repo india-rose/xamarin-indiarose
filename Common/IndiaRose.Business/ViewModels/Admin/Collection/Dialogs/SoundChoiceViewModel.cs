@@ -10,8 +10,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
     {
 
         #region Service & Command
-
-        private IMessageDialogService _messageDialogService;
         public IMessageDialogService MessageDialogService
         {
             get { return LazyResolver<IMessageDialogService>.Service; }
@@ -22,7 +20,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
         }
         public ICommand RecordSoundCommand { get; private set; }
         public ICommand GalleryCommand { get; private set; }
-
         #endregion
         public SoundChoiceViewModel()
         {
@@ -35,9 +32,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
             MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_RECORDSOUND);
         }
 
-        private void GalleryAction()
+        private async void GalleryAction()
         {
-            MediaService.GetSoundFromGalleryAsync();
+            string soundPath= await MediaService.GetSoundFromGalleryAsync();
+            //TODO : faire un truc avec soundpath
         }
     }
 }

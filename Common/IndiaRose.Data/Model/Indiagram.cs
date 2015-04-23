@@ -80,5 +80,19 @@ namespace IndiaRose.Data.Model
             Text = text;
 	        ImagePath = imagePath;
 	    }
-	}
+
+        public Indiagram(Indiagram cloneIndiagram)
+        {
+            Edit(cloneIndiagram);
+        }
+
+        public void Edit(Indiagram cloneIndiagram)
+        {
+            Position = cloneIndiagram.Position;
+            Text = cloneIndiagram.Text;
+            ImagePath = cloneIndiagram.ImagePath;
+            SoundPath = cloneIndiagram.SoundPath;
+            Parent = cloneIndiagram.Parent;
+        }
+    }
 }
