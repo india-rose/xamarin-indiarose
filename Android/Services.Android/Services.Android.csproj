@@ -54,6 +54,10 @@
       <Project>{4C9DE63B-DA7F-4E65-8638-A4953F4A07E0}</Project>
       <Name>IndiaRose.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Common\IndiaRose.Framework\IndiaRose.Framework.csproj">
+      <Project>{0423E61F-EBFF-4CAC-B3E6-AB446E4DA4C8}</Project>
+      <Name>IndiaRose.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\IndiaRose.Interfaces\IndiaRose.Interfaces.csproj">
       <Project>{4A1F6C63-F97F-4E4B-A20C-8842CC486670}</Project>
       <Name>IndiaRose.Interfaces</Name>

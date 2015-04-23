@@ -20,10 +20,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
             CameraCommand = new DelegateCommand(CameraAction);
         }
 
-        public void CameraAction()
+        public async void CameraAction()
         {
-            MediaService.Camera();
-            
+            string imagePath = await MediaService.GetPictureFromCameraAsync();
+            //TODO : faire quelque chose avec imagePath.
         }
     }
 }
