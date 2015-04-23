@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Storm.Mvvm;
 
+
 namespace IndiaRose.Data.Model
 {
 	public class Indiagram : NotifierBase
@@ -72,6 +73,12 @@ namespace IndiaRose.Data.Model
 
 	    public Indiagram()
 	    {
+	    }
+
+	    public Indiagram(string text, string imagePath)
+	    {
+            Text = text;
+	        ImagePath = imagePath;
 	    }
 	}
 }
