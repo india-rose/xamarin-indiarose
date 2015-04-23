@@ -164,11 +164,11 @@ namespace IndiaRose.Framework.Views
             Initialize();
         }
 
-        public IndiagramView(Context context, IAttributeSet attrs, int defStyleAttr, int defStyleRes)
+      /*  public IndiagramView(Context context, IAttributeSet attrs, int defStyleAttr, int defStyleRes)
             : base(context, attrs, defStyleAttr, defStyleRes)
         {
             Initialize();
-        }
+        }*/
 
         #endregion
 
