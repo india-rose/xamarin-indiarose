@@ -3,6 +3,8 @@ using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
+using IndiaRose.Storage;
+using IndiaRose.Storage.Sqlite;
 using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
@@ -13,6 +15,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         public ISettingsService SettingsService
         {
             get { return LazyResolver<ISettingsService>.Service; }
+        }
+
+        public ICollectionStorageService CollectionStorageService
+        {
+            get { return LazyResolver<ICollectionStorageService>.Service; }
         }
 
 	    private int _collectionOffset;
@@ -52,6 +59,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             {
                 Color = SettingsService.TextColor
             };
+
+            
 
 			Displayed = new List<Indiagram>()
 			{
