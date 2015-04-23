@@ -97,6 +97,7 @@ namespace IndiaRose.Data.Model
         public Indiagram(string text, string imagePath, Category a)
         {
             Parent = a;
+            a.Children.Add(this);
             Text = text;
             ImagePath = imagePath;
         }

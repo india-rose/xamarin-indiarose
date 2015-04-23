@@ -234,10 +234,12 @@ namespace IndiaRose.Storage.Sqlite
 		public List<Indiagram> GetFullCollection()
 		{
 			var list = new List<Indiagram>();
+		    List<Indiagram> current;
 			//Parcourir le topLevel dans un premier temps
 			foreach (var t in GetTopLevel())
 			{
-				list = GetFullCollectionRec(list, t);/*ajouter les enfants avec la methode recursive
+			    current = new List<Indiagram>();
+			    list.AddRange(GetFullCollectionRec(current, t));/*ajouter les enfants avec la methode recursive
                                              *(1er appel)
                                              * 
                                              * 
@@ -246,10 +248,14 @@ namespace IndiaRose.Storage.Sqlite
 			return list;
 
 		}
-
+        //TODO Bug for children
 		private static List<Indiagram> GetFullCollectionRec(List<Indiagram> list, Indiagram indiagram)
 		{
-			if (!(indiagram is Category)) return list;      //un indigram n'a pas d'enfant
+            list.Add(indiagram); 
+
+			if (!(indiagram is Category)){
+                return list;      //un indigram n'a pas d'enfant
+                }
 			foreach (var t in indiagram.Children)           //une categorie si, on parcours les fils
 			{
 				list.Add(t);                                //on les ajoute
@@ -260,7 +266,6 @@ namespace IndiaRose.Storage.Sqlite
 			}
 			return list;                                    //si tous les fils sont des indiagrames on ne rappel pas la fonction
 		}
-
 		public List<Indiagram> GetChildren(Indiagram parent)
 		{
 			if (!(parent is Category)) return new List<Indiagram>();
