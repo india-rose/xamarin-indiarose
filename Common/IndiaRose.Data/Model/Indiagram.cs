@@ -5,6 +5,7 @@ namespace IndiaRose.Data.Model
 {
 	public class Indiagram : NotifierBase
 	{
+	    private int _id;
 	    private int _position;
 		private string _text;
 		private string _imagePath;
@@ -50,16 +51,27 @@ namespace IndiaRose.Data.Model
 			get { return null; }
 		}
 
-		public Indiagram()
-		{
+        public virtual int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
 
+	    public Indiagram(int id)
+		{
+		    _id = id;
 		}
 
-		public Indiagram(string text, string imagePath, string soundPath = null)
+	    public Indiagram(string text, string imagePath, int id, string soundPath = null)
 		{
 			Text = text;
 			ImagePath = imagePath;
-			SoundPath = soundPath;
+	        _id = id;
+	        SoundPath = soundPath;
 		}
+
+	    public Indiagram()
+	    {
+	    }
 	}
 }
