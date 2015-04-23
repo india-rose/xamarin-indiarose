@@ -245,10 +245,7 @@ namespace IndiaRose.Storage.Sqlite
     
         //others methods
         
-        private IndiagramSql SearchByIdSql(int id)
-        {
-                return Connection.Table<IndiagramSql>().SingleOrDefault(t => t.Id == id);
-        }
+        
     }
     
     //TODO void Update(Indiagram indigram) & Test Service
@@ -261,6 +258,10 @@ namespace IndiaRose.Storage.Sqlite
      * 
      *  pas forcement utile
      * 
+     * private IndiagramSql SearchByIdSql(int id)
+     *    {
+     *       return Connection.Table<IndiagramSql>().SingleOrDefault(t => t.Id == id);
+     *    }
      * 
             public void ChangeCategory(Indiagram indiagram, Category category)
         {
