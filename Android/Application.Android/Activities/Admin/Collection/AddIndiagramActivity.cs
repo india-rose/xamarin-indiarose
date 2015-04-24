@@ -17,6 +17,7 @@ namespace IndiaRose.Application.Activities.Admin.Collection
     [Activity(ScreenOrientation = ScreenOrientation.Landscape, Theme = "@style/Theme.Sherlock.Light.NoActionBar")]
     public partial class AddIndiagramActivity : ActivityBase
     {
+        #region Properties
         private string _text;
         private Indiagram _parent;
         private string _imagePath;
@@ -79,6 +80,7 @@ namespace IndiaRose.Application.Activities.Admin.Collection
                 }
             }
         }
+        #endregion
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -116,11 +118,17 @@ namespace IndiaRose.Application.Activities.Admin.Collection
                 case "imagepath":
                     ImageView imageView = FindViewById<ImageView>(Resource.Id.Add_Img);
                     if (ImagePath != null)
-                        imageView.SetImageBitmap(Bitmap.CreateScaledBitmap(BitmapFactory.DecodeFile(Environment.ExternalStorageDirectory.Path + "/IndiaRose/image/" + ImagePath), imageView.Height, imageView.Width, true));
+                        imageView.SetImageBitmap(Bitmap.CreateScaledBitmap(BitmapFactory.DecodeFile(ImagePath), imageView.Height, imageView.Width, true));
                     break;
                 case "soundpath":
                     TextView soundpathTextView = FindViewById<TextView>(Resource.Id.m_indiagramSound);
-                    soundpathTextView.Text = SoundPath ?? soundpathTextView.Text;
+                    if (SoundPath != null)
+                        soundpathTextView.Text = SoundPath;
+                    else
+                    {
+                        var trad = DependencyService.Container.Resolve<ILocalizationService>();
+                        soundpathTextView.Text = trad.GetString("AIP_NoSound", "Text");
+                    }
                     break;
                 case "parent":
                     TextView parentTextView = FindViewById<TextView>(Resource.Id.m_indiagramCategory);

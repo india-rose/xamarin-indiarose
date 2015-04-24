@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Reflection.Context;
 using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings;
@@ -30,9 +31,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         public ICommand ImageChoiceCommand { get; private set; }
         public ICommand SoundChoiceCommand { get; private set; }
         public ICommand RootCommand { get; private set; }
+        public ICommand ResetSoundCommand { get; private set; }
 
         #endregion
 
+        #region Properties
         private string _bro1;
 
         public string Bro1
@@ -47,12 +50,13 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         protected Indiagram InitialIndiagram { get; set; }
 
         public Indiagram CurrentIndiagram { get; set; }
-
+        #endregion
         public AddIndiagramViewModel()
         {
             ImageChoiceCommand = new DelegateCommand(ImageChoiceAction);
             SoundChoiceCommand = new DelegateCommand(SoundChoiceAction);
             RootCommand = new DelegateCommand(RootAction);
+            ResetSoundCommand=new DelegateCommand(ResetSoundAction);
             CurrentIndiagram = InitialIndiagram == null ? new Indiagram() : new Indiagram(CurrentIndiagram);
         }
 
@@ -74,17 +78,28 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
         protected void ImageChoiceAction()
         {
-            MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_IMAGECHOICE);
+            MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_IMAGECHOICE,new Dictionary<string, object>
+            {
+                {"Indiagram",CurrentIndiagram}
+            });
         }
 
         protected void SoundChoiceAction()
         {
-            MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_SOUNDCHOICE);
+            MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_SOUNDCHOICE, new Dictionary<string, object>
+            {
+                {"Indiagram",CurrentIndiagram}
+            });
         }
 
         protected void RootAction()
         {
             CurrentIndiagram.Parent = null;
+        }
+
+        protected void ResetSoundAction()
+        {
+            CurrentIndiagram.SoundPath = null;
         }
     }
 }

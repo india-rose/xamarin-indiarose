@@ -207,7 +207,8 @@
 
                     <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
                         android:id="deleteSound"
-                        Text="{Tr Text, Uid=AIP_BDel}" />
+                        Text="{Tr Text, Uid=AIP_BDel}"
+                        Click="{Binding ResetSoundCommand}"/>
                 </LinearLayout>
               <TextView XmlStyle="{Resource TextViewTitle}"
                     android:id="title_copy"
