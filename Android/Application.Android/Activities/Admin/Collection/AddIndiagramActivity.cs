@@ -118,7 +118,12 @@ namespace IndiaRose.Application.Activities.Admin.Collection
                 case "imagepath":
                     ImageView imageView = FindViewById<ImageView>(Resource.Id.Add_Img);
                     if (ImagePath != null)
-                        imageView.SetImageBitmap(Bitmap.CreateScaledBitmap(BitmapFactory.DecodeFile(ImagePath), imageView.Height, imageView.Width, true));
+                    {
+                        AddIndiagramViewModel vm = (AddIndiagramViewModel)ViewModel;
+                        var size = vm.SettingsService.IndiagramDisplaySize;
+                        imageView.SetImageBitmap(Bitmap.CreateScaledBitmap(BitmapFactory.DecodeFile(ImagePath),size,size,true));
+
+                    }
                     break;
                 case "soundpath":
                     TextView soundpathTextView = FindViewById<TextView>(Resource.Id.m_indiagramSound);

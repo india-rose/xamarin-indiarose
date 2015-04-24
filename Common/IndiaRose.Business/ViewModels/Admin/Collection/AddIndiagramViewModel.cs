@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Reflection.Context;
 using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Data.Model;
@@ -51,6 +50,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
         public Indiagram CurrentIndiagram { get; set; }
         #endregion
+
         public AddIndiagramViewModel()
         {
             ImageChoiceCommand = new DelegateCommand(ImageChoiceAction);
@@ -60,6 +60,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             CurrentIndiagram = InitialIndiagram == null ? new Indiagram() : new Indiagram(CurrentIndiagram);
         }
 
+        #region Action
         protected override void SaveAction()
         {
             if (InitialIndiagram == null)
@@ -101,5 +102,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         {
             CurrentIndiagram.SoundPath = null;
         }
+        #endregion
     }
 }
