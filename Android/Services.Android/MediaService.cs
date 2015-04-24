@@ -67,13 +67,17 @@ namespace IndiaRose.Services.Android
                 var intent = new Intent(Intent.ActionPick, MediaStore.Images.Media.ExternalContentUri);
                 ActivityService.StartActivityForResult(intent, (result, data) =>
                 {
-                    string res = null;
+                    string path = null;
                     if (result == Result.Ok)
                     {
                         Uri selectedImage = data.Data;
-                        res = selectedImage.Path;
+                        string res = selectedImage.Path; 
+                        path = Path.Combine(Environment.ExternalStorageDirectory.Path, string.Format("IndiaRose/image/IndiaRose_photo_{0}.jpg", Guid.NewGuid()));
+                        System.IO.File.Copy(res,path);
+                        //TODO le res va pas
+                        
                     }
-                    resultCallback(res);
+                    resultCallback(path);
                 });
             });
         }
@@ -84,30 +88,18 @@ namespace IndiaRose.Services.Android
                 var intent = new Intent(Intent.ActionPick, MediaStore.Audio.Media.ExternalContentUri);
                 ActivityService.StartActivityForResult(intent, (result, data) =>
                 {
-                    string res = null;
+                    string path = null;
                     if (result == Result.Ok)
                     {
                         Uri selectedImage = data.Data;
-                        res = selectedImage.Path;
+                        string res = selectedImage.Path;
+                        path = Path.Combine(Environment.ExternalStorageDirectory.Path, string.Format("IndiaRose/sound/IndiaRose_sound_{0}.jpg", Guid.NewGuid()));
+                        System.IO.File.Copy(res, path);
+                        //TODO le res va pas
                     }
-                    resultCallback(res);
+                    resultCallback(path);
                 });
             });
-        }
-
-        public string StopRead(Uri data)
-        {
-            throw new NotImplementedException();
-        }
-		
-        public void StartRead(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string StopRead(string data)
-        {
-            throw new NotImplementedException();
         }
     }
 }

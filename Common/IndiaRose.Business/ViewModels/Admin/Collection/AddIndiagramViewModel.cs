@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net;
 using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Data.Model;
@@ -43,6 +44,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         public ICommand RootCommand { get; private set; }
         public ICommand ResetSoundCommand { get; private set; }
         public ICommand ListenCommand { get; private set; }
+        public ICommand ChooseCategoryCommand { get; private set; }
 
         #endregion
 
@@ -70,15 +72,21 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             RootCommand = new DelegateCommand(RootAction);
             ResetSoundCommand=new DelegateCommand(ResetSoundAction);
             ListenCommand=new DelegateCommand(ListenAction);
+            ChooseCategoryCommand=new DelegateCommand(ChooseCategoryAction);
             CurrentIndiagram = InitialIndiagram == null ? new Indiagram() : new Indiagram(CurrentIndiagram);
         }
 
         #region Action
+
+        protected void ChooseCategoryAction()
+        {
+            //TODO a faire avec le frag
+        }
         protected override void SaveAction()
         {
             if (CurrentIndiagram.Text == null)
             {
-                PopupService.AfficherPopup(LocalizationService.GetString("AIP_NoSoundError","Text"));
+                PopupService.AfficherPopup(LocalizationService.GetString("AIP_NoName","Text"));
                 return;
             }
             if (InitialIndiagram == null)
@@ -125,7 +133,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         {
             if (CurrentIndiagram.Text == null)
             {
-                PopupService.AfficherPopup(LocalizationService.GetString("AIP_NoName", "Text"));
+                PopupService.AfficherPopup(LocalizationService.GetString("AIP_NoSoundError", "Text"));
             }
             
         }

@@ -134,7 +134,8 @@
                     android:orientation="horizontal" >
 
                     <Button XmlStyle="{Resource MediumBlueButtonStyle}"
-                        Text="{Tr Text, Uid=AIP_BCateg}"/>
+                        Text="{Tr Text, Uid=AIP_BCateg}"
+                        Click="{Binding ChooseCatgoryCommand}"/>
 
                     <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
                         Text="{Tr Text, Uid=AIP_BRoot}"
