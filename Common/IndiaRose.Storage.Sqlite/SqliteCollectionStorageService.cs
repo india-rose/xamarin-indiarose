@@ -180,7 +180,7 @@ namespace IndiaRose.Storage.Sqlite
 		    if (indiagram is Category)
 			{
 				Connection.Delete<CategorySql>(indiagram.Id);
-			    foreach (var t in indiagram.Children)
+			    foreach (var t in indiagram.Children.ToList())
 			    {
 			        indiagram.Children.Remove(t);
 			        t.Parent = null;
