@@ -5,7 +5,7 @@ using SQLiteNetExtensions.Attributes;
 namespace IndiaRose.Storage.Sqlite.Model
 {
     [Table("Category")]
-    public class CategorySql : IndiagramSql
+    class CategorySql : IndiagramSql
     {
         [OneToMany]
         public List<IndiagramSql> Children { get; set; }

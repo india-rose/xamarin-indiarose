@@ -5,7 +5,7 @@ using SQLite.Net.Attributes;
 namespace IndiaRose.Storage.Sqlite.Model
 {
     [Table("Indiagram")]
-    public class IndiagramSql
+    class IndiagramSql
     {
         [PrimaryKey, AutoIncrement, Column("_id")]
         public int Id { get; set; }

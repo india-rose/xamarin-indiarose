@@ -37,7 +37,6 @@ namespace IndiaRose.Application
                 {Views.ADMIN_COLLECTION_MANAGEMENT, typeof(CollectionManagementActivity)},
                 {Views.ADMIN_COLLECTION_ADD, typeof(AddIndiagramActivity)},
                 {Views.ADMIN_COLLECTION_WATCH,typeof(WatchIndiagramActivity)},
-                {Views.ADMIN_COLLECTION_MANA,typeof(ManagementFragment)}
 			};
             Dictionary<string, Type> dialogs = new Dictionary<string, Type>
 			{
