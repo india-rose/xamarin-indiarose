@@ -64,29 +64,37 @@ namespace IndiaRose.Services.Android
         {
             return AsyncHelper.CreateAsyncFromCallback<string>(resultCallback =>
             {
-                var intent = new Intent(Intent.ActionPick, MediaStore.Images.Media.ExternalContentUri);
-                ActivityService.StartActivityForResult(intent, (result, data) =>
-                {
-                    string path = null;
-                    if (result == Result.Ok)
+
+                Intent intent = new Intent();
+                // Show only images, no videos or anything else
+                intent.SetType("image/*");
+                intent.SetAction(Intent.ActionGetContent);
+                // Always show the chooser (if there are multiple options available)
+                ActivityService.StartActivityForResult(Intent.CreateChooser(intent, "Select Picture"),
+                    (result, data) =>
                     {
-                        Uri selectedImage = data.Data;
-                        string res = selectedImage.Path; 
-                        path = Path.Combine(Environment.ExternalStorageDirectory.Path, string.Format("IndiaRose/image/IndiaRose_photo_{0}.jpg", Guid.NewGuid()));
-                        System.IO.File.Copy(res,path);
-                        //TODO le res va pas
-                        
-                    }
-                    resultCallback(path);
-                });
+                        string path = null;
+                        if (result == Result.Ok)
+                        {
+                            Uri selectedImage = data.Data;
+                            string res = selectedImage.Path;
+                            path = Path.Combine(Environment.ExternalStorageDirectory.Path, string.Format("IndiaRose/image/IndiaRose_photo_{0}.jpg", Guid.NewGuid()));
+                            System.IO.File.Copy(res, path);
+                            //TODO le res va pas
+
+                        }
+                        resultCallback(path);
+                    });
             });
         }
         public Task<string> GetSoundFromGalleryAsync()
         {
             return AsyncHelper.CreateAsyncFromCallback<string>(resultCallback =>
             {
-                var intent = new Intent(Intent.ActionPick, MediaStore.Audio.Media.ExternalContentUri);
-                ActivityService.StartActivityForResult(intent, (result, data) =>
+                Intent intent = new Intent();
+                intent.SetType("audio/*");
+                intent.SetAction(Intent.ActionGetContent);
+                ActivityService.StartActivityForResult(Intent.CreateChooser(intent, "Select Sound"), (result, data) =>
                 {
                     string path = null;
                     if (result == Result.Ok)
