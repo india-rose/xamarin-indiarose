@@ -122,17 +122,21 @@ namespace IndiaRose.Application.Activities.Admin.Collection
                         AddIndiagramViewModel vm = (AddIndiagramViewModel)ViewModel;
                         var size = vm.SettingsService.IndiagramDisplaySize;
                         imageView.SetImageBitmap(Bitmap.CreateScaledBitmap(BitmapFactory.DecodeFile(ImagePath),size,size,true));
-
                     }
                     break;
                 case "soundpath":
                     TextView soundpathTextView = FindViewById<TextView>(Resource.Id.m_indiagramSound);
+                    Button b = FindViewById<Button>(Resource.Id.deleteSound);
                     if (SoundPath != null)
+                    {
                         soundpathTextView.Text = SoundPath;
+                        b.Visibility = ViewStates.Visible;
+                    }
                     else
                     {
                         var trad = DependencyService.Container.Resolve<ILocalizationService>();
                         soundpathTextView.Text = trad.GetString("AIP_NoSound", "Text");
+                        b.Visibility = ViewStates.Gone;
                     }
                     break;
                 case "parent":
