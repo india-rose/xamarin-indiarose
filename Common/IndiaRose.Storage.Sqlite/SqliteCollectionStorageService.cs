@@ -71,7 +71,7 @@ namespace IndiaRose.Storage.Sqlite
 					SoundPath = csql.SoundPath,
 					Position = csql.Position,
 				};
-                /* Instancie les liens pere/fils
+
 			    if (csql.Parent != 0)
 			    {
 			        c.Parent = GetIndiagramFromSql(SearchById(new List<Category>(), csql.Parent));
@@ -81,7 +81,6 @@ namespace IndiaRose.Storage.Sqlite
 			    {
 			        c.Parent = null;
 			    }
-              * */
                 return c;
 
 			}
@@ -93,7 +92,6 @@ namespace IndiaRose.Storage.Sqlite
 				SoundPath = indiagram.SoundPath,
 				Position = indiagram.Position,
 			};
-            /* *
             if (indiagram.Parent != 0)
             {
                 i.Parent = GetIndiagramFromSql(SearchById(new List<Category>(), indiagram.Parent));
@@ -103,7 +101,6 @@ namespace IndiaRose.Storage.Sqlite
             {
                 i.Parent = null;
             }
-                         * */
             return i;
 
 		}
@@ -125,23 +122,26 @@ namespace IndiaRose.Storage.Sqlite
 
 			if (indiagram is Category)
 			{
-				var temp = new CategorySql
+                var temp = new CategorySql
 				{
 					ImagePath = indiagram.ImagePath,
 					SoundPath = indiagram.SoundPath,
 					Text = indiagram.Text
 				};
 				temp.Position = temp.Id;
-				if (indiagram.Parent != null)
+                if ((indiagram.Parent != null) && (GetIndiagramSql(indiagram.Parent) != null))
 				{
 					temp.Parent = (GetIndiagramSql(indiagram.Parent)).Id;
+                    indiagram.Parent.Children.Add(indiagram);
+                    Update(indiagram.Parent);
 				}
 				else
 				{
 					temp.Parent = 0;
 				}
-				Connection.Insert(temp);
+			    Connection.Insert(temp);
 				indiagram.Id = temp.Id;
+                
                 
 			}
 			else
@@ -152,9 +152,11 @@ namespace IndiaRose.Storage.Sqlite
 					SoundPath = indiagram.SoundPath,
 					Text = indiagram.Text
 				};
-				if (indiagram.Parent != null)
+				if ((indiagram.Parent != null)&&(GetIndiagramSql(indiagram.Parent)!=null))
 				{
 					temp.Parent = (GetIndiagramSql(indiagram.Parent)).Id;
+                    indiagram.Parent.Children.Add(indiagram);
+                    Update(indiagram.Parent);
 				}
 				else
 				{
@@ -169,11 +171,18 @@ namespace IndiaRose.Storage.Sqlite
 		public void Delete(Indiagram indiagram)
 		{
 			//supprime dans la table adequate
-			if (indiagram is Category)
+		    if (indiagram.Parent != null)
+		    {
+		        indiagram.Parent.Children.Remove(indiagram);
+                Update(indiagram.Parent);
+		    }
+
+		    if (indiagram is Category)
 			{
 				Connection.Delete<CategorySql>(indiagram.Id);
 			    foreach (var t in indiagram.Children)
 			    {
+			        indiagram.Children.Remove(t);
 			        t.Parent = null;
                     Update(t);
 			    }
