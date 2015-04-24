@@ -129,7 +129,7 @@ namespace IndiaRose.Storage.Sqlite
 					Text = indiagram.Text
 				};
 				temp.Position = temp.Id;
-				if (indiagram.Parent != null)
+                if ((indiagram.Parent != null) && (GetIndiagramSql(indiagram.Parent) != null))
 				{
 					temp.Parent = (GetIndiagramSql(indiagram.Parent)).Id;
                     indiagram.Parent.Children.Add(indiagram);
@@ -152,7 +152,7 @@ namespace IndiaRose.Storage.Sqlite
 					SoundPath = indiagram.SoundPath,
 					Text = indiagram.Text
 				};
-				if (indiagram.Parent != null)
+				if ((indiagram.Parent != null)&&(GetIndiagramSql(indiagram.Parent)!=null))
 				{
 					temp.Parent = (GetIndiagramSql(indiagram.Parent)).Id;
                     indiagram.Parent.Children.Add(indiagram);
@@ -171,7 +171,13 @@ namespace IndiaRose.Storage.Sqlite
 		public void Delete(Indiagram indiagram)
 		{
 			//supprime dans la table adequate
-			if (indiagram is Category)
+		    if (indiagram.Parent != null)
+		    {
+		        indiagram.Parent.Children.Remove(indiagram);
+                Update(indiagram.Parent);
+		    }
+
+		    if (indiagram is Category)
 			{
 				Connection.Delete<CategorySql>(indiagram.Id);
 			    foreach (var t in indiagram.Children)
