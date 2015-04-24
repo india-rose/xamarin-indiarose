@@ -342,12 +342,15 @@ namespace IndiaRose.Storage.Sqlite
 			if (!(parent is Category)) return new List<Indiagram>();
 
 			var current = new List<Indiagram>();
-			CategorySql parentSql = (CategorySql)GetIndiagramSql(parent);
-			foreach (var t in parentSql.Children)
-			{
-				current.Add(GetIndiagramFromSql(t));
-			}
-			return current;
+		    var i = GetIndiagramSql(parent).Id;
+		    var list = Connection.Table<IndiagramSql>();
+
+		    foreach (var table in list.Where(t => t.Parent == i))
+		    {
+		        current.Add(GetIndiagramFromSql(table));
+		    }
+
+		    return current;
 		}
 
 		//others methods
