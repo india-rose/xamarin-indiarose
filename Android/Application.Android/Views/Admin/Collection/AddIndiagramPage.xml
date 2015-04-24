@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:orientation="vertical" >
+    android:orientation="vertical">
   
     <Resources>
       <conv:StringFormatConverter Key="StringFormatConverter" />
@@ -135,7 +135,7 @@
 
                     <Button XmlStyle="{Resource MediumBlueButtonStyle}"
                         Text="{Tr Text, Uid=AIP_BCateg}"
-                        Click="{Binding ChooseCatgoryCommand}"/>
+                        Click="{Binding ChooseCategoryCommand}"/>
 
                     <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
                         Text="{Tr Text, Uid=AIP_BRoot}"

@@ -18,10 +18,8 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 	[BindingElement(Path = "WatchIndiagramCommand", TargetPath = "PositiveButtonEvent")]
 	public partial class AddCollectionDialog : AlertDialogFragmentBase
 	{
-		[Binding("indiagram")]
-		public Indiagram indiagram{ get; set; }
-
-
+		[Binding("Indiagram")]
+		public Indiagram Indiagram{ get; set; }
 
 		public AddCollectionDialog()
 		{
@@ -53,10 +51,10 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 		private void Initialize()
 		{
 			ImageView imageView = RootView.FindViewById<ImageView>(Resource.Id.image);
-			if (indiagram.ImagePath != null)
+			if (Indiagram.ImagePath != null)
 				imageView.SetImageBitmap(
 					Bitmap.CreateScaledBitmap(
-						BitmapFactory.DecodeFile(Environment.ExternalStorageDirectory.Path + "/IndiaRose/image/" + indiagram.ImagePath),
+						BitmapFactory.DecodeFile(Environment.ExternalStorageDirectory.Path + "/IndiaRose/image/" + Indiagram.ImagePath),
 						imageView.Height, imageView.Width, true));
 			else
 				imageView.SetImageDrawable(new ColorDrawable(Color.Red));
