@@ -7,9 +7,9 @@
   android:gravity="center"
   >
   <ImageView 
+	  android:id="image"
       android:layout_width="100dip"
       android:layout_height="100dip"
-      android:src="@raw/root"
       android:layout_centerInParent="true"
       />
 </RelativeLayout>

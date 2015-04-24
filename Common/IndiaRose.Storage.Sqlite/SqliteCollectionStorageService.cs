@@ -181,6 +181,13 @@ namespace IndiaRose.Storage.Sqlite
 			    {
                     query.Parent = 0;
 			    }
+
+                query.Children = new List<IndiagramSql>();
+			        foreach (var children in indiagram.Children)
+			        {
+			            query.Children.Add(GetIndiagramSql(children));
+			        }
+
 			    Connection.Update(query);
 			}
 			else
@@ -231,7 +238,20 @@ namespace IndiaRose.Storage.Sqlite
 			return list;
 		}
 
-		public List<Indiagram> GetFullCollection()
+	    public List<Indiagram> GetFullCollection()
+	    {
+	        var list = new List<Indiagram>();
+	        var list2 = Connection.Table<IndiagramSql>();
+
+	        foreach (var table in list2)
+	        {
+	            list.Add(GetIndiagramFromSql(table));
+	        }
+
+	        return list;
+	    }
+
+		/*public List<Indiagram> GetFullCollection()
 		{
 			var list = new List<Indiagram>();
 		    List<Indiagram> current;
@@ -243,7 +263,7 @@ namespace IndiaRose.Storage.Sqlite
                                              *(1er appel)
                                              * 
                                              * 
-                                             */
+                                             *
 			}
 			return list;
 
@@ -265,7 +285,7 @@ namespace IndiaRose.Storage.Sqlite
 				}
 			}
 			return list;                                    //si tous les fils sont des indiagrames on ne rappel pas la fonction
-		}
+		}*/
 		public List<Indiagram> GetChildren(Indiagram parent)
 		{
 			if (!(parent is Category)) return new List<Indiagram>();

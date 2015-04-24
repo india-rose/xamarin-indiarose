@@ -1,10 +1,16 @@
-﻿using System.Windows.Input;
+﻿using System.Dynamic;
+using System.Windows.Input;
+using IndiaRose.Data.Model;
 using Storm.Mvvm.Commands;
+using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
     public class AddCollectionViewModel : AbstractViewModel
     {
+		 [NavigationParameter]
+		private Indiagram indiagram { get; set; }
+
         public ICommand WatchIndiagramCommand{ get; private set; }
 
         public AddCollectionViewModel()
