@@ -56,7 +56,7 @@ namespace IndiaRose.Storage.Sqlite
 			return Connection.Table<IndiagramSql>().SingleOrDefault(t => t.Id == indiagram.Id);
 		}
 
-		private static Indiagram GetIndiagramFromSql(IndiagramSql indiagram)
+		private Indiagram GetIndiagramFromSql(IndiagramSql indiagram)
 		{
 			//Instancie l'indiagramme sans les fils et peres
 			//Des methodes sont prevues si on en a besoin
@@ -70,9 +70,20 @@ namespace IndiaRose.Storage.Sqlite
 					ImagePath = csql.ImagePath,
 					SoundPath = csql.SoundPath,
 					Position = csql.Position,
-
 				};
-				return c;
+                /* Instancie les liens pere/fils
+			    if (csql.Parent != 0)
+			    {
+			        c.Parent = GetIndiagramFromSql(SearchById(new List<Category>(), csql.Parent));
+                    c.Parent.Children.Add(c);
+			    }
+			    else
+			    {
+			        c.Parent = null;
+			    }
+              * */
+                return c;
+
 			}
 			var i = new Indiagram()
 			{
@@ -82,8 +93,19 @@ namespace IndiaRose.Storage.Sqlite
 				SoundPath = indiagram.SoundPath,
 				Position = indiagram.Position,
 			};
+            /* *
+            if (indiagram.Parent != 0)
+            {
+                i.Parent = GetIndiagramFromSql(SearchById(new List<Category>(), indiagram.Parent));
+                i.Parent.Children.Add(i);
+            }
+            else
+            {
+                i.Parent = null;
+            }
+                         * */
+            return i;
 
-			return i;
 		}
 
         //TODO delete after test
@@ -257,6 +279,16 @@ namespace IndiaRose.Storage.Sqlite
 	        return list;
 	    }
 
+        private IndiagramSql SearchById(IEnumerable<object> list,int id)
+        {
+            //Cherche dans la base de donnees l'indiagramme pour entre autre recuperer les liens pere/fils si besoin
+            if (list is List<Category>)
+            {
+                return Connection.Table<CategorySql>().SingleOrDefault(t => t.Id == id);
+            }
+
+            return Connection.Table<IndiagramSql>().SingleOrDefault(t => t.Id == id);
+        }
 		/*public List<Indiagram> GetFullCollection()
 		{
 			var list = new List<Indiagram>();
