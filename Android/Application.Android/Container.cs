@@ -39,6 +39,7 @@ namespace IndiaRose.Application
 			RegisterInstance<IFontService>(new FontService());
 			RegisterInstance<ICollectionStorageService>(new SqliteCollectionStorageService(new SQLitePlatformAndroid(), Path.Combine(Android.OS.Environment.ExternalStorageDirectory.Path, "IndiaRose")));
             RegisterInstance<IMediaService>(new MediaService());
+            RegisterInstance<IPopupService>(new PopupService());
 
 	    }
 	}

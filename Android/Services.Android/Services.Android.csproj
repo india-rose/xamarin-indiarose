@@ -45,6 +45,7 @@
     <Compile Include="FontService.cs" />
     <Compile Include="InstallVoiceSynthesisService.cs" />
     <Compile Include="MediaService.cs" />
+    <Compile Include="PopupService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceService.cs" />
     <Compile Include="ScreenService.cs" />

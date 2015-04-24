@@ -24,7 +24,7 @@ namespace IndiaRose.Application.Activities.Admin.Collection
         private string _soundPath;
         private int _position;
 
-        [Binding("CurrentIndiagram.Text")]
+        [Binding("CurrentIndiagram.Text", Mode = BindingMode.TwoWay)]
         public string Text
         {
             get { return _text; }
@@ -126,17 +126,17 @@ namespace IndiaRose.Application.Activities.Admin.Collection
                     break;
                 case "soundpath":
                     TextView soundpathTextView = FindViewById<TextView>(Resource.Id.m_indiagramSound);
-                    Button b = FindViewById<Button>(Resource.Id.deleteSound);
+                    Button deleteSound = FindViewById<Button>(Resource.Id.deleteSound);
                     if (SoundPath != null)
                     {
                         soundpathTextView.Text = SoundPath;
-                        b.Visibility = ViewStates.Visible;
+                        deleteSound.Visibility = ViewStates.Visible;
                     }
                     else
                     {
                         var trad = DependencyService.Container.Resolve<ILocalizationService>();
                         soundpathTextView.Text = trad.GetString("AIP_NoSound", "Text");
-                        b.Visibility = ViewStates.Gone;
+                        deleteSound.Visibility = ViewStates.Gone;
                     }
                     break;
                 case "parent":

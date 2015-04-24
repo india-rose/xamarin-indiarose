@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Data.Model;
+using IndiaRose.Interfaces;
 using IndiaRose.Storage;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
@@ -24,6 +25,16 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         {
             get { return LazyResolver<ICollectionStorageService>.Service; }
         }
+
+        public IPopupService PopupService
+        {
+            get { return LazyResolver<IPopupService>.Service; }
+        }
+
+        public ILocalizationService LocalizationService
+        {
+            get { return LazyResolver<ILocalizationService>.Service; }
+        }
         #endregion
 
         #region Command
@@ -31,6 +42,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         public ICommand SoundChoiceCommand { get; private set; }
         public ICommand RootCommand { get; private set; }
         public ICommand ResetSoundCommand { get; private set; }
+        public ICommand ListenCommand { get; private set; }
 
         #endregion
 
@@ -57,12 +69,18 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             SoundChoiceCommand = new DelegateCommand(SoundChoiceAction);
             RootCommand = new DelegateCommand(RootAction);
             ResetSoundCommand=new DelegateCommand(ResetSoundAction);
+            ListenCommand=new DelegateCommand(ListenAction);
             CurrentIndiagram = InitialIndiagram == null ? new Indiagram() : new Indiagram(CurrentIndiagram);
         }
 
         #region Action
         protected override void SaveAction()
         {
+            if (CurrentIndiagram.Text == null)
+            {
+                PopupService.AfficherPopup(LocalizationService.GetString("AIP_NoSoundError","Text"));
+                return;
+            }
             if (InitialIndiagram == null)
             {
                 InitialIndiagram = CurrentIndiagram;
@@ -102,6 +120,16 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         {
             CurrentIndiagram.SoundPath = null;
         }
+
+        protected void ListenAction()
+        {
+            if (CurrentIndiagram.Text == null)
+            {
+                PopupService.AfficherPopup(LocalizationService.GetString("AIP_NoName", "Text"));
+            }
+            
+        }
+
         #endregion
     }
 }

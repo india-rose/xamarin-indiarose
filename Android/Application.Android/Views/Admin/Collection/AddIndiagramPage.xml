@@ -205,8 +205,9 @@
 
                     <Button XmlStyle="{Resource MediumBlueButtonStyle}"
                         android:id="listen"
-                        Text="{Tr Text, Uid=AIP_BHeard}" />
-
+                        Text="{Tr Text, Uid=AIP_BHeard}"
+                        Click="{Binding ListenCommand}"
+                            />
                     <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
                         android:id="deleteSound"
                         Text="{Tr Text, Uid=AIP_BDel}"

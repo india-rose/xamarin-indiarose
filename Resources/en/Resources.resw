@@ -465,4 +465,10 @@ Comments : </value>
   <data name="AIP_PosTitle.Text" xml:space="preserve">
     <value>Position</value>
   </data>
+  <data name="AIP_NoName.Text" xml:space="preserve">
+    <value>Veuillez renseigner un nom pour cet indiagram</value>
+  </data>
+  <data name="AIP_NoSoundError.Text" xml:space="preserve">
+    <value>Un texte ou un son doit être choisi</value>
+  </data>
 </root>
