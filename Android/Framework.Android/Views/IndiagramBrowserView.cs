@@ -191,7 +191,7 @@ namespace IndiaRose.Framework.Views
 			}
 
 			LazyResolver<ILoggerService>.Service.Log(string.Format("XXXXXXXX ====> Want to display column: {0} line: {1}", _columnCount, _lineCount), MessageSeverity.Critical); 
-
+			RemoveAllViews();
 			List<Indiagram> toDisplay = Indiagrams.Where((o, i) => i >= Offset).ToList();
 			int displayCount = 0;
 			int index = 0;

@@ -25,11 +25,13 @@ namespace IndiaRose.Application
 			RegisterInstance(localizationService);
 		}
 
-		protected override void Initialize()
+		protected override async void Initialize()
 		{
 			base.Initialize();
 			ViewModelsLocator.Initialize(this);
 
+			IStorageService storageService = new StorageService(Android.OS.Environment.ExternalStorageDirectory.Path);
+			await storageService.InitializeAsync();
         
             RegisterInstance<IResourceService>(new ResourceService());
 			RegisterInstance<IEmailService>(new EmailService());
@@ -37,9 +39,11 @@ namespace IndiaRose.Application
 			RegisterInstance<IScreenService>(new ScreenService());
 			RegisterInstance<ISettingsService>(new SettingsService());
 			RegisterInstance<IFontService>(new FontService());
-			RegisterInstance<ICollectionStorageService>(new SqliteCollectionStorageService(new SQLitePlatformAndroid(), Path.Combine(Android.OS.Environment.ExternalStorageDirectory.Path, "IndiaRose")));
             RegisterInstance<IMediaService>(new MediaService());
             RegisterInstance<IPopupService>(new PopupService());
+
+			RegisterInstance<IStorageService>(storageService);
+			RegisterInstance<ICollectionStorageService>(new SqliteCollectionStorageService(new SQLitePlatformAndroid()));
 
 	    }
 	}

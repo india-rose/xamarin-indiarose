@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
 using IndiaRose.Data.Model;
 using IndiaRose.Storage.Sqlite.Model;
-
-using SQLite;
 using SQLite.Net;
-using SQLite.Net.Async;
 using SQLite.Net.Interop;
-using Storm.Mvvm.Navigation;
+using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Storage.Sqlite
 {
 	public class SqliteCollectionStorageService : ICollectionStorageService
 	{
 		//Attributes 
-
-		private const string DB_NAME = "india.sqlite";
 		private readonly ISQLitePlatform _platform;
 		private readonly string _dbPath;
 		private SQLiteConnection _connection;
@@ -29,10 +22,10 @@ namespace IndiaRose.Storage.Sqlite
 			get { return _connection ?? (_connection = OpenDatabase()); }
 		}
 
-		public SqliteCollectionStorageService(ISQLitePlatform platform, string storageFolder)
+		public SqliteCollectionStorageService(ISQLitePlatform platform)
 		{
 			_platform = platform;
-			_dbPath = Path.Combine(storageFolder, DB_NAME);
+			_dbPath = LazyResolver<IStorageService>.Service.DabatabasePath;
 		}
 
 		private SQLiteConnection OpenDatabase()
