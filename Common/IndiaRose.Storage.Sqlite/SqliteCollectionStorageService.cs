@@ -128,7 +128,7 @@ namespace IndiaRose.Storage.Sqlite
 					SoundPath = indiagram.SoundPath,
 					Text = indiagram.Text
 				};
-				temp.Position = temp.Id;
+
                 if ((indiagram.Parent != null) && (GetIndiagramSql(indiagram.Parent) != null))
 				{
 					temp.Parent = (GetIndiagramSql(indiagram.Parent)).Id;
@@ -140,7 +140,8 @@ namespace IndiaRose.Storage.Sqlite
 					temp.Parent = 0;
 				}
 			    Connection.Insert(temp);
-				indiagram.Id = temp.Id;
+				indiagram.Id = indiagram.Position = temp.Position = temp.Id;
+                Update(indiagram);
                 
                 
 			}
@@ -152,6 +153,7 @@ namespace IndiaRose.Storage.Sqlite
 					SoundPath = indiagram.SoundPath,
 					Text = indiagram.Text
 				};
+
 				if ((indiagram.Parent != null)&&(GetIndiagramSql(indiagram.Parent)!=null))
 				{
 					temp.Parent = (GetIndiagramSql(indiagram.Parent)).Id;
@@ -162,9 +164,11 @@ namespace IndiaRose.Storage.Sqlite
 				{
 					temp.Parent = 0;
 				}
+
 				temp.Position = temp.Id;
 				Connection.Insert(temp);
-				indiagram.Id = temp.Id;
+                indiagram.Id = indiagram.Position = temp.Position = temp.Id;
+                Update(indiagram);
 			}
 		}
 
