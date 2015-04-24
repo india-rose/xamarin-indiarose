@@ -459,4 +459,10 @@ Commentaires :</value>
   <data name="text_color_test.Text" xml:space="preserve">
     <value>Le texte a cette couleur :</value>
   </data>
+  <data name="AIP_PosLabel.Text" xml:space="preserve">
+    <value>Avant :</value>
+  </data>
+  <data name="AIP_PosTitle.Text" xml:space="preserve">
+    <value>Position</value>
+  </data>
 </root>

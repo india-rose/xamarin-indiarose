@@ -1,4 +1,5 @@
-﻿using System.Reflection.Context;
+﻿using System.Collections.ObjectModel;
+using System.Reflection.Context;
 using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Data.Model;
@@ -32,6 +33,16 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
         #endregion
 
+        private string _bro1;
+
+        public string Bro1
+        {
+            get { return _bro1; }
+            set { SetProperty(ref _bro1, value); }
+        }
+        public ObservableCollection<string> Brothers { get; private set; }
+
+
         [NavigationParameter]
         protected Indiagram InitialIndiagram { get; set; }
 
@@ -42,14 +53,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             ImageChoiceCommand = new DelegateCommand(ImageChoiceAction);
             SoundChoiceCommand = new DelegateCommand(SoundChoiceAction);
             RootCommand = new DelegateCommand(RootAction);
-            if (InitialIndiagram == null)
-            {
-                CurrentIndiagram = new Indiagram();
-            }
-            else
-            {
-                CurrentIndiagram = new Indiagram(CurrentIndiagram);
-            }
+            CurrentIndiagram = InitialIndiagram == null ? new Indiagram() : new Indiagram(CurrentIndiagram);
         }
 
         protected override void SaveAction()

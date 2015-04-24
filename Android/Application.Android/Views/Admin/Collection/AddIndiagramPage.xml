@@ -1,11 +1,31 @@
 ﻿<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:conv="using:Storm.Mvvm.Converters"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical" >
   
     <Resources>
+      <conv:StringFormatConverter Key="StringFormatConverter" />
+      <Style Key="DataTempTextViewStyle"
+             android:layout_width="wrap_content"
+             android:layout_height="fill_parent"
+           />
+      <Style Key="DataTempLinearLayoutStyle"
+             android:orientation="horizontal"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+           />
+      <DataTemplate Key="DataTemplate">
+        <LinearLayout XmlStyle="{Resource DataTempLinearLayoutStyle}">
+
+          <TextView XmlStyle="{Resource DataTempTextViewStyle}"
+                text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}'}"
+                      />
+        </LinearLayout>
+      </DataTemplate>
+
       <Style Key="BlueStyle"
          android:textColor="#006FFF"
          />
@@ -121,10 +141,33 @@
                         Click="{Binding RootCommand}"
                      />
                 </LinearLayout>
-
+              <TextView XmlStyle="{Resource TextViewTitle}"
+                        android:id="position_title"
+                        android:layout_below="@id/button_category"
+                        android:layout_marginTop="10dip"
+                        Text="{Tr Text,Uid=AIP_PosTitle}"
+                        />
+              <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="position_layout"
+                android:layout_below="@id/position_title"
+                android:layout_marginRight="6dip">
+              <TextView XmlStyle="{Resource SmallBlueText}"
+                        Text="{Tr Text,Uid=AIP_PosLabel}"
+                        android:layout_marginRight="5dip"
+                        />
+              <BindableSpinner 
+                          android:layout_width="fill_parent"
+                          android:layout_height="wrap_content"
+                          adapter="{Binding Brothers, Template={Resource DataTemplate}}"
+                          currentItem="{Binding Bro1, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
+		              />
+              </LinearLayout>
                 <TextView XmlStyle="{Resource TextViewTitle}"
                     android:id="text_sound"
-                    android:layout_below="@id/button_category"
+                    android:layout_below="@id/position_layout"
                     android:layout_marginTop="10dip"
                     Text="{Tr Text, Uid=AIP_Sound}" />
 
