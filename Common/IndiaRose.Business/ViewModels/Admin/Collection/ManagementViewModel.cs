@@ -7,11 +7,16 @@ using IndiaRose.Interfaces;
 using IndiaRose.Storage;
 using IndiaRose.Storage.Sqlite;
 using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
     public class ManagementViewModel : AbstractViewModel
     {
+		public IMessageDialogService MessageDialogService
+		{
+			get { return LazyResolver<IMessageDialogService>.Service; }
+		}
 
         public ISettingsService SettingsService
         {
@@ -27,7 +32,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 	    private int _displayCount;
 	    private List<Indiagram> _displayed;
         private ColorContainer _textColor;
-
         public ColorContainer TextColor
         {
             get { return _textColor; }
@@ -102,5 +106,14 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 		    }
 		    CollectionOffset = offset;
 	    }
+
+		public void AddCollectionAction(Indiagram Indiagram)
+		{
+			MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_ADDCOLLECTION, new Dictionary<string, object>()
+             {
+                 {"indiagram",Indiagram}
+             });
+		}
+
     }
 }

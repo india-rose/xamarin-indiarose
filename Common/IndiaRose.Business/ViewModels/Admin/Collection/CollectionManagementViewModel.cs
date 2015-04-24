@@ -10,18 +10,12 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 	    public static ManagementViewModel SubViewModel;
 
         public ICommand AddCommand { get; private set; }
-        public ICommand AddCollection{ get; private set; }
 		public ICommand NextCommand { get; private set; }
 
-        public IMessageDialogService MessageDialogService
-        {
-            get { return LazyResolver<IMessageDialogService>.Service; }
-        }
 
         public CollectionManagementViewModel()
         {
             AddCommand = new DelegateCommand(AddAction);
-            AddCollection = new DelegateCommand(AddCollectionAction);
 			NextCommand = new DelegateCommand(NextAction);
         }
 
@@ -30,10 +24,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 		    SubViewModel.NotifyNextAction();
 	    }
 
-	    private void AddCollectionAction()
-        {
-            MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_ADDCOLLECTION);
-        }
 
         private void AddAction()
         {

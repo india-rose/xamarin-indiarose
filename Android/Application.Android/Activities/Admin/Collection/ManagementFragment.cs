@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using Android.Views;
 using Android.Widget;
+using IndiaRose.Business.ViewModels.Admin.Collection;
 using IndiaRose.Data.Model;
 using IndiaRose.Framework.Converters;
 using IndiaRose.Framework.Views;
@@ -206,10 +207,11 @@ namespace IndiaRose.Application.Activities.Admin.Collection
 
 	    private void IndiagramTouched(object sender, View.TouchEventArgs touchEventArgs)
 	    {
-		    throw new NotImplementedException();
+		    var dialog = (ManagementViewModel) ViewModel;
+		    var s = (IndiagramView) sender;
+			dialog.AddCollectionAction(s.Indiagram);
 	    }
 
-	    // for the botton next
 
 	}
 }

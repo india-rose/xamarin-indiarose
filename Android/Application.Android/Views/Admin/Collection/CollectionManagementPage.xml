@@ -41,8 +41,7 @@
 			Text =" {Tr Text,Uid=SelectionIndiagramsNext}"
 			Click="{Binding NextCommand}"
         />
-		<!--amettre dur le indiagram
-			Click="{Binding AddCollection}"-->
+
 	</LinearLayout>
 
 	<fragment
