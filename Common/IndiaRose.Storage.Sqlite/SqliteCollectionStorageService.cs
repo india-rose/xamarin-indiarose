@@ -9,6 +9,7 @@ using SQLite;
 using SQLite.Net;
 using SQLite.Net.Async;
 using SQLite.Net.Interop;
+using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Storage.Sqlite
 {
@@ -242,8 +243,13 @@ namespace IndiaRose.Storage.Sqlite
 	    {
 	        var list = new List<Indiagram>();
 	        var list2 = Connection.Table<IndiagramSql>();
+	        var list3 = Connection.Table<CategorySql>();
 
 	        foreach (var table in list2)
+	        {
+	            list.Add(GetIndiagramFromSql(table));
+	        }
+	        foreach (var table in list3)
 	        {
 	            list.Add(GetIndiagramFromSql(table));
 	        }
