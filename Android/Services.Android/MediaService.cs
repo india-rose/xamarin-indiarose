@@ -1,24 +1,27 @@
 using System;
-using System.IO;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.Media;
+using Android.OS;
 using Android.Provider;
 using IndiaRose.Framework;
 using IndiaRose.Interfaces;
+using Java.IO;
 using Environment = Android.OS.Environment;
 using File = Java.IO.File;
+using Path = System.IO.Path;
 using Uri = Android.Net.Uri;
 
 namespace IndiaRose.Services.Android
 {
-    public class MediaService : AbstractAndroidService,IMediaService
+    public class MediaService : AbstractAndroidService, IMediaService
     {
         private MediaRecorder _recorder;
         private String _url;
 
-	    public void RecordSound()
+        public void RecordSound()
         {
             _url = string.Format(Environment.ExternalStorageDirectory.Path + "/IndiaRose/sound/IndiaRose_sound_{0}.3gpp", Guid.NewGuid());
             _recorder = new MediaRecorder();
@@ -37,29 +40,39 @@ namespace IndiaRose.Services.Android
             return _url;
         }
 
-		public Task<string> GetPictureFromCameraAsync()
-		{
-			return AsyncHelper.CreateAsyncFromCallback<string>(callbackResult =>
-			{
-				string path = Path.Combine(Environment.ExternalStorageDirectory.Path, string.Format("IndiaRose/image/IndiaRose_photo_{0}.jpg", Guid.NewGuid()));
-				File file = new File(path);
+        public Task<string> GetPictureFromCameraAsync()
+        {
+            return AsyncHelper.CreateAsyncFromCallback<string>(callbackResult =>
+            {
+                string path = Path.Combine(Environment.ExternalStorageDirectory.Path, string.Format("IndiaRose/image/IndiaRose_photo_{0}.jpg", Guid.NewGuid()));
+                File file = new File(path);
 
-				Intent intent = new Intent(MediaStore.ActionImageCapture);
-				intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(file));
-				ActivityService.StartActivityForResult(intent, (result, data) =>
-				{
-					if (result == Result.Ok)
-					{
-						callbackResult(path);
-					}
-					else
-					{
-						callbackResult(null);
-					}
-				});
-			});
-		}
+                Intent intent = new Intent(MediaStore.ActionImageCapture);
+                intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(file));
+                ActivityService.StartActivityForResult(intent, (result, data) =>
+                {
+                    if (result == Result.Ok)
+                    {
+                        callbackResult(path);
+                    }
+                    else
+                    {
+                        callbackResult(null);
+                    }
+                });
+            });
+        }
+        private string SavePhoto(Bitmap bitmap)
+        {
+            string filename = Path.Combine(Environment.ExternalStorageDirectory.Path, string.Format("IndiaRose/image/IndiaRose_photo_{0}.png", Guid.NewGuid()));
 
+            using (System.IO.Stream stream = System.IO.File.OpenWrite(filename))
+            {
+                bitmap.Compress(Bitmap.CompressFormat.Png, 0, stream);
+            }
+
+            return filename;
+        }
         public Task<string> GetPictureFromGalleryAsync()
         {
             return AsyncHelper.CreateAsyncFromCallback<string>(resultCallback =>
@@ -77,11 +90,12 @@ namespace IndiaRose.Services.Android
                         if (result == Result.Ok)
                         {
                             Uri selectedImage = data.Data;
-                            string res = selectedImage.Path;
-                            path = Path.Combine(Environment.ExternalStorageDirectory.Path, string.Format("IndiaRose/image/IndiaRose_photo_{0}.jpg", Guid.NewGuid()));
-                            System.IO.File.Copy(res, path);
-                            //TODO le res va pas
 
+                            ParcelFileDescriptor parcelFileDescriptor = ActivityService.CurrentActivity.ContentResolver.OpenFileDescriptor(selectedImage, "r");
+                            FileDescriptor fileDescriptor = parcelFileDescriptor.FileDescriptor;
+                            Bitmap photo = BitmapFactory.DecodeFileDescriptor(fileDescriptor);
+                            parcelFileDescriptor.Close();
+                            path = SavePhoto(photo);
                         }
                         resultCallback(path);
                     });
@@ -99,11 +113,28 @@ namespace IndiaRose.Services.Android
                     string path = null;
                     if (result == Result.Ok)
                     {
-                        Uri selectedImage = data.Data;
-                        string res = selectedImage.Path;
-                        path = Path.Combine(Environment.ExternalStorageDirectory.Path, string.Format("IndiaRose/sound/IndiaRose_sound_{0}.jpg", Guid.NewGuid()));
-                        System.IO.File.Copy(res, path);
-                        //TODO le res va pas
+                        Uri selectedSound = data.Data;
+                        ParcelFileDescriptor parcelFileDescriptor = ActivityService.CurrentActivity.ContentResolver.OpenFileDescriptor(selectedSound, "r");
+                        FileDescriptor fileDescriptor = parcelFileDescriptor.FileDescriptor;
+                        FileInputStream inputStream = new FileInputStream(fileDescriptor); 
+                        path = Path.Combine(Environment.ExternalStorageDirectory.Path,
+                               string.Format("IndiaRose/sound/IndiaRose_sound_{0}.3gp", Guid.NewGuid()));
+                        File outputFile = new File(path);
+                        InputStream inStream = null;
+                        OutputStream outStream = null;
+                        inStream = inputStream;
+                        outStream = new FileOutputStream(outputFile);
+
+                        byte[] buffer = new byte[1024];
+
+                        int length;
+                        //copy the file content in bytes 
+                        while ((length = inStream.Read(buffer)) > 0)
+                        {
+                            outStream.Write(buffer, 0, length);
+                        }
+                        inStream.Close();
+                        outStream.Close();
                     }
                     resultCallback(path);
                 });

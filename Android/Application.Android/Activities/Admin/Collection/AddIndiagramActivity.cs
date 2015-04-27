@@ -125,7 +125,8 @@ namespace IndiaRose.Application.Activities.Admin.Collection
                     Button deleteSound = FindViewById<Button>(Resource.Id.deleteSound);
                     if (SoundPath != null)
                     {
-                        soundpathTextView.Text = SoundPath;
+                        string[] s = SoundPath.Split('/');
+                        soundpathTextView.Text = s[s.Length-1];
                         deleteSound.Visibility = ViewStates.Visible;
                     }
                     else
