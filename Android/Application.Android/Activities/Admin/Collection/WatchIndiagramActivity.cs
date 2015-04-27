@@ -1,6 +1,7 @@
 using Android.App;
 using Android.Content.PM;
 using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -15,8 +16,18 @@ namespace IndiaRose.Application.Activities.Admin.Collection
     {
         protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(bundle);
-
+	        base.OnCreate(bundle);
+			
+			WatchIndiagramViewModel vm = new WatchIndiagramViewModel();
+			ImageView imageView = FindViewById<ImageView>(Resource.Id.image);
+			if (vm.CurrentIndiagram != null && vm.CurrentIndiagram.ImagePath != null)
+				imageView.SetImageBitmap(
+					Bitmap.CreateScaledBitmap(
+						BitmapFactory.DecodeFile(Environment.ExternalStorageDirectory.Path + "/IndiaRose/image/" + vm.CurrentIndiagram.ImagePath),
+						imageView.Height, imageView.Width, true));
+			else
+				imageView.SetImageDrawable(new ColorDrawable(Color.Red));
+				
             SetContentView(Resource.Layout.Admin_Collection_WatchIndiagramPage);
             SetViewModel(Container.Locator.AdminCollectionWatchIndiagramViewModel);
 

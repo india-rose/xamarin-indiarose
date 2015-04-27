@@ -17,7 +17,6 @@
 	    public const string ADMIN_COLLECTION_MANAGEMENT = "Admin_CollectionManagementView";
 	    public const string ADMIN_COLLECTION_ADD = "Admin_AddIndiagramView";
 	    public const string ADMIN_COLLECTION_WATCH = "Admin_WatchIndiaframe";
-	    public const string ADMIN_COLLECTION_MANA = "Admin_Management";
 		public const string ADMIN_COLLECTION_SELECTCATEGORY = "Admin_SelectCategory";
 	}
 }

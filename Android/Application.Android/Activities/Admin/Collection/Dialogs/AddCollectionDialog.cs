@@ -19,7 +19,7 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 	public partial class AddCollectionDialog : AlertDialogFragmentBase
 	{
 		[Binding("Indiagram")]
-		public Indiagram Indiagram{ get; set; }
+		public Indiagram Indiagram { get; set; }
 
 		public AddCollectionDialog()
 		{
@@ -51,7 +51,7 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 		private void Initialize()
 		{
 			ImageView imageView = RootView.FindViewById<ImageView>(Resource.Id.image);
-			if (Indiagram.ImagePath != null)
+			if (Indiagram != null && Indiagram.ImagePath != null)
 				imageView.SetImageBitmap(
 					Bitmap.CreateScaledBitmap(
 						BitmapFactory.DecodeFile(Environment.ExternalStorageDirectory.Path + "/IndiaRose/image/" + Indiagram.ImagePath),
