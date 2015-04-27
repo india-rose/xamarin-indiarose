@@ -22,6 +22,7 @@ namespace IndiaRose.Application.Activities.Admin.Collection
         private string _imagePath;
         private string _soundPath;
         private int _position;
+        private bool _isEnable;
 
         [Binding("CurrentIndiagram.Parent")]
         public Indiagram ParentIndiagram
@@ -64,6 +65,18 @@ namespace IndiaRose.Application.Activities.Admin.Collection
                 if(SetProperty(ref _position, value))
                 {
                     RefreshView("position");
+                }
+            }
+        }
+        [Binding("CurrentIndiagram.IsEnabled")]
+        public bool IsEnable
+        {
+            get { return _isEnable; }
+            set
+            {
+                if (SetProperty(ref _isEnable, value))
+                {
+                    RefreshView("isEnable");
                 }
             }
         }
@@ -135,6 +148,23 @@ namespace IndiaRose.Application.Activities.Admin.Collection
                     break;
                 case "position":
                     break;
+                case "isEnable":
+                    Button button;
+                    if (IsEnable)
+                    {
+                        button = FindViewById<Button>(Resource.Id.act);
+                        button.Visibility = ViewStates.Gone;
+                        button = FindViewById<Button>(Resource.Id.desact);
+                        button.Visibility = ViewStates.Visible;
+                    }
+                    else
+                    {
+                        button = FindViewById<Button>(Resource.Id.act);
+                        button.Visibility = ViewStates.Visible;
+                        button = FindViewById<Button>(Resource.Id.desact);
+                        button.Visibility = ViewStates.Gone;
+                    }
+                    break;
                 case "all":
                     LinearLayout focusLinearLayout = FindViewById<LinearLayout>(Resource.Id.focus);
                     focusLinearLayout.RequestFocus();
@@ -142,6 +172,7 @@ namespace IndiaRose.Application.Activities.Admin.Collection
                     RefreshView("soundpath");
                     RefreshView("parent");
                     RefreshView("position");
+                    RefreshView("isEnable");
                     break;
             }
         }

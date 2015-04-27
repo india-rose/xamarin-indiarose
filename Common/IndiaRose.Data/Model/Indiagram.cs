@@ -75,17 +75,12 @@ namespace IndiaRose.Data.Model
 			Text = text;
 			ImagePath = imagePath;
 	        SoundPath = soundPath;
-            
+	        IsEnabled = true;
 		}
 
 	    public Indiagram()
 	    {
-	    }
-
-	    public Indiagram(string text, string imagePath)
-	    {
-            Text = text;
-	        ImagePath = imagePath;
+	        IsEnabled = true;
 	    }
 
         public Indiagram(Indiagram cloneIndiagram)
@@ -100,6 +95,7 @@ namespace IndiaRose.Data.Model
             ImagePath = cloneIndiagram.ImagePath;
             SoundPath = cloneIndiagram.SoundPath;
             Parent = cloneIndiagram.Parent;
+            IsEnabled = cloneIndiagram.IsEnabled;
         }
         public Indiagram(string text, string imagePath, Category a)
         {
@@ -107,6 +103,7 @@ namespace IndiaRose.Data.Model
             a.Children.Add(this);
             Text = text;
             ImagePath = imagePath;
+            IsEnabled = true;
         }
     }
 }

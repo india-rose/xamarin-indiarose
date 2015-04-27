@@ -44,6 +44,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         public ICommand ResetSoundCommand { get; private set; }
         public ICommand ListenCommand { get; private set; }
         public ICommand ChooseCategoryCommand { get; private set; }
+        public ICommand ActivateCommand { get; private set; }
+        public ICommand DesactivateCommand { get; private set; }
 
         #endregion
 
@@ -72,11 +74,21 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             ResetSoundCommand=new DelegateCommand(ResetSoundAction);
             ListenCommand=new DelegateCommand(ListenAction);
             ChooseCategoryCommand=new DelegateCommand(ChooseCategoryAction);
+            ActivateCommand = new DelegateCommand(ActivateAction);
+            DesactivateCommand = new DelegateCommand(DesactivateAction);
             CurrentIndiagram = InitialIndiagram == null ? new Indiagram() : new Indiagram(CurrentIndiagram);
         }
 
         #region Action
 
+        protected void ActivateAction()
+        {
+            CurrentIndiagram.IsEnabled = true;
+        }
+        protected void DesactivateAction()
+        {
+            CurrentIndiagram.IsEnabled = false;
+        }
         protected void ChooseCategoryAction()
         {
             //TODO a faire avec le frag
@@ -101,7 +113,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
             BackAction();
         }
-
         protected void ImageChoiceAction()
         {
             MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_IMAGECHOICE,new Dictionary<string, object>
@@ -109,7 +120,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
                 {"Indiagram",CurrentIndiagram}
             });
         }
-
         protected void SoundChoiceAction()
         {
             MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_SOUNDCHOICE, new Dictionary<string, object>
@@ -117,17 +127,14 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
                 {"Indiagram",CurrentIndiagram}
             });
         }
-
         protected void RootAction()
         {
             CurrentIndiagram.Parent = null;
         }
-
         protected void ResetSoundAction()
         {
             CurrentIndiagram.SoundPath = null;
         }
-
         protected void ListenAction()
         {
             if (CurrentIndiagram.Text == null)

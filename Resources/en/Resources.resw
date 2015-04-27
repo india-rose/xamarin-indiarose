@@ -471,4 +471,13 @@ Comments : </value>
   <data name="AIP_NoSoundError.Text" xml:space="preserve">
     <value>Un texte ou un son doit être choisi</value>
   </data>
+  <data name="AIP_Activate.Text" xml:space="preserve">
+    <value>Activate</value>
+  </data>
+  <data name="AIP_ActTitle.Text" xml:space="preserve">
+    <value>Activate/Desactivate Indiagram</value>
+  </data>
+  <data name="AIP_Desactivate.Text" xml:space="preserve">
+    <value>Desactivate</value>
+  </data>
 </root>
