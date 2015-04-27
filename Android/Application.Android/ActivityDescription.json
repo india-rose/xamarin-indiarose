@@ -195,6 +195,26 @@
                 "inputFile": "Views/Admin/Collection/Dialogs/RecordSoundDialog.xml",
                 "outputFile": "Views_Admin_Collection_Dialogs_RecordSoundDialog.axml"
             }
+        },
+        {
+            "fragment": {
+                "className": "SelectManagementDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/SelectManagementPage.xml",
+                "outputFile": "Admin_Collection_Dialogs_SelectManagementDialog.axml"
+            }
+        },
+        { 
+            "activity": {
+                "className": "SelectCategoryActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/SelectCategoryPage.xml",
+                "outputFile": "Admin_Collection_SelectCategoryPage.axml"
+            }
         }
     ]
 }

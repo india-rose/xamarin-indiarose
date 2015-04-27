@@ -54,7 +54,9 @@
     <Compile Include="ViewModels\Admin\Collection\Dialogs\AddCollectionViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\Dialogs\ImageChoiceViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\Dialogs\RecordSoundViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Collection\Dialogs\SelectManagementViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\Dialogs\SoundChoiceViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Collection\SelectCategoryViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\WatchIndiagramViewModel.cs" />
     <Compile Include="ViewModels\Admin\CreditsViewModel.cs" />
     <Compile Include="ViewModels\Admin\MailErrorViewModel.cs" />

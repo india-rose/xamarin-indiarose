@@ -62,7 +62,9 @@
     <Compile Include="Activities\Admin\Collection\Dialogs\AddCollectionDialog.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\ImageChoiceDialog.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\RecordSoundDialog.cs" />
+    <Compile Include="Activities\Admin\Collection\Dialogs\SelectManagementDialog.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\SoundChoiceDialog.cs" />
+    <Compile Include="Activities\Admin\Collection\SelectCategoryActivity.cs" />
     <Compile Include="Activities\Admin\Collection\WatchIndiagramActivity.cs" />
     <Compile Include="Activities\Admin\Settings\AppSettingsActivity.cs" />
     <Compile Include="Activities\Admin\Settings\BackgroundColorActivity.cs" />
@@ -155,7 +157,9 @@
     <Content Include="Views\Admin\Collection\AddIndiagramPage.xml" />
     <Content Include="Views\Admin\Collection\Dialogs\AddCollectionDialog.xml" />
     <Content Include="Views\Admin\Collection\Dialogs\ImageChoicePage.xml" />
+    <Content Include="Views\Admin\Collection\Dialogs\SelectManagementPage.xml" />
     <Content Include="Views\Admin\Collection\Dialogs\SoundChoicePage.xml" />
+    <Content Include="Views\Admin\Collection\SelectCategoryPage.xml" />
     <Content Include="Views\Admin\Collection\WatchIndiagramPage.xml" />
     <Content Include="Views\Admin\Settings\Dialogs\CategoryReadingDialog.xml" />
     <Content Include="Views\Admin\Settings\Dialogs\DragAndDropDialog.xml" />

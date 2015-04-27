@@ -37,6 +37,7 @@ namespace IndiaRose.Application
                 {Views.ADMIN_COLLECTION_MANAGEMENT, typeof(CollectionManagementActivity)},
                 {Views.ADMIN_COLLECTION_ADD, typeof(AddIndiagramActivity)},
                 {Views.ADMIN_COLLECTION_WATCH,typeof(WatchIndiagramActivity)},
+				{Views.ADMIN_COLLECTION_SELECTCATEGORY,typeof(SelectCategoryActivity)}
 			};
             Dictionary<string, Type> dialogs = new Dictionary<string, Type>
 			{
@@ -50,6 +51,7 @@ namespace IndiaRose.Application
                 {Dialogs.ADMIN_COLLECTION_IMAGECHOICE,typeof(ImageChoiceDialog)},
                 {Dialogs.ADMIN_COLLECTION_SOUNDCHOICE,typeof(SoundChoiceDialog)},
                 {Dialogs.ADMIN_COLLECTION_RECORDSOUND,typeof(RecordSoundDialog)},
+				{Dialogs.ADMIN_COLLECTION_SELECT,typeof(SelectManagementDialog)},
 			};
 
 			AndroidContainer.CreateInstance<Container>(this, views, dialogs);
