@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:orientation="vertical"
-    android:windowSoftInputMode="stateHidden">
+    android:orientation="vertical">
   
     <Resources>
       <conv:StringFormatConverter Key="StringFormatConverter" />
@@ -187,7 +186,8 @@
                     android:id="m_indiagramSound"
                     android:layout_below="@id/text_sound"
                     android:layout_toRightOf="@id/filepath_sound"
-                    Text="{Tr Text, Uid=AIP_NoSound}"/>
+                    Text="{Tr Text, Uid=AIP_NoSound}"
+                    android:singleLine="true"/>
 
                 <LinearLayout XmlStyle="{Resource ButtonContainer}"
                     android:id="button_sound_modif"
