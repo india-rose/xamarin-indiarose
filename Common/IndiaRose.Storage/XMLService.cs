@@ -1,45 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using PCLStorage;
 
 
 namespace IndiaRose.Storage
 {
     class XmlService : IXmlService
     {
-        /*private const string Path = ""; //dossier de destination à rajouter
+        private const string Path = ""; //dossier de destination à rajouter
 
-        public List<string> SearchXml()
+        public async Task<List<string>> SearchXml()
         {
-            string[] fichiers = Directory.GetDirectories(Path);
+            IFolder folders = await FileSystem.Current.GetFolderFromPathAsync(Path);
+            IList<IFolder> listFolders = await folders.GetFoldersAsync();
             List<string> xml = new List<string>();
 
-            foreach (string t in fichiers)
+            foreach (IFolder t in listFolders)
             {
-                Dossiers(ref xml, t);
+                Dossiers(xml, t);
             }
 
-            fichiers = Directory.GetFiles(Path);
+            IFile Files = await FileSystem.Current.GetFileFromPathAsync(Path);
 
-            xml.AddRange(fichiers);
+            xml.AddRange(new[] {Files.Path});
 
             return xml;
         }
 
-        public static void Dossiers(ref List<string> list, string path)
+        public static async void Dossiers(List<string> list, IFolder path)
         {
-            var fichiers = Directory.GetDirectories(path);
-
-            foreach (string t in fichiers)
+            IFolder folders = await FileSystem.Current.GetFolderFromPathAsync(Path);
+            IList<IFolder> listFolders = await folders.GetFoldersAsync();
+            foreach (var t in listFolders)
             {
-                Dossiers(ref list, t);
+                Dossiers(list, t);
             }
 
-            fichiers = Directory.GetFiles(path);
+            IFile files = await FileSystem.Current.GetFileFromPathAsync(Path);
 
-            list.AddRange(fichiers);
-        }*/
+            list.AddRange(new[] { files.Path });
+        }
+
     }
 }
