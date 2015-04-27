@@ -74,6 +74,16 @@ namespace IndiaRose.Storage.Sqlite
 			    {
 			        c.Parent = null;
 			    }
+
+			    if (csql.Enabled == 0)
+			    {
+			        c.IsEnabled = false;
+			    }
+			    else
+			    {
+			        c.IsEnabled = true;
+			    }
+
                 return c;
 
 			}
@@ -94,6 +104,16 @@ namespace IndiaRose.Storage.Sqlite
             {
                 i.Parent = null;
             }
+
+            if (indiagram.Enabled == 0)
+            {
+                i.IsEnabled = false;
+            }
+            else
+            {
+                i.IsEnabled = true;
+            }
+
             return i;
 
 		}
@@ -122,6 +142,15 @@ namespace IndiaRose.Storage.Sqlite
 					Text = indiagram.Text
 				};
 
+			    if (indiagram.IsEnabled)
+			    {
+			        temp.Enabled = 1;
+			    }
+			    else
+			    {
+			        temp.Enabled = 0;
+			    }
+
                 if ((indiagram.Parent != null) && (GetIndiagramSql(indiagram.Parent) != null))
 				{
 					temp.Parent = (GetIndiagramSql(indiagram.Parent)).Id;
@@ -146,6 +175,15 @@ namespace IndiaRose.Storage.Sqlite
 					SoundPath = indiagram.SoundPath,
 					Text = indiagram.Text
 				};
+
+                if (indiagram.IsEnabled)
+                {
+                    temp.Enabled = 1;
+                }
+                else
+                {
+                    temp.Enabled = 0;
+                }
 
 				if ((indiagram.Parent != null)&&(GetIndiagramSql(indiagram.Parent)!=null))
 				{
@@ -211,11 +249,20 @@ namespace IndiaRose.Storage.Sqlite
                     query.Parent = 0;
 			    }
 
-                query.Children = new List<IndiagramSql>();
+			    if (indiagram.IsEnabled)
+			    {
+			        query.Enabled = 1;
+			    }
+			    else
+			    {
+			        query.Enabled = 0;
+			    }
+
+                /*query.Children = new List<IndiagramSql>();
 			        foreach (var children in indiagram.Children)
 			        {
 			            query.Children.Add(GetIndiagramSql(children));
-			        }
+			        }*/
 
 			    Connection.Update(query);
 			}
@@ -236,6 +283,15 @@ namespace IndiaRose.Storage.Sqlite
                 else
                 {
                     query.Parent = 0;
+                }
+
+                if (indiagram.IsEnabled)
+                {
+                    query.Enabled = 1;
+                }
+                else
+                {
+                    query.Enabled = 0;
                 }
 
 				Connection.Update(query);
@@ -336,12 +392,19 @@ namespace IndiaRose.Storage.Sqlite
 
 			var current = new List<Indiagram>();
 		    var i = GetIndiagramSql(parent).Id;
-		    var list = Connection.Table<IndiagramSql>();
+		    var list = Connection.Table<CategorySql>();
 
 		    foreach (var table in list.Where(t => t.Parent == i))
 		    {
 		        current.Add(GetIndiagramFromSql(table));
 		    }
+
+            var list2 = Connection.Table<IndiagramSql>();
+
+            foreach (var table in list2.Where(t => t.Parent == i))
+            {
+                current.Add(GetIndiagramFromSql(table));
+            }
 
 		    return current;
 		}

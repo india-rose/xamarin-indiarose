@@ -21,6 +21,8 @@ namespace IndiaRose.Storage.Sqlite.Model
         public int Parent { get; set; }
         [Column ("_position")]
         public int Position { get; set;}
+        [Column("_isEnabled")]
+        public int Enabled { get; set; }
 
       public IndiagramSql(int version,string text, string imagepath, string soundpath, int parent)
         {
