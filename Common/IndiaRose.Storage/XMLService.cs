@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 using System.IO;
 using IndiaRose.Data.Model;
 using PCLStorage;
-
+using System.Xml;
+using System.Xml.Linq;
 
 namespace IndiaRose.Storage
 {
@@ -35,6 +36,34 @@ namespace IndiaRose.Storage
 
             IList<IFile> files = await path.GetFilesAsync();
             list.AddRange(files);
+        }
+
+        //TODO test impossible
+
+        public static List<Indiagram> Indiagrams(List<IFile> list)
+        {
+            List<Indiagram> indiagrams = new List<Indiagram>();
+            foreach (var t in list)
+            {
+                string str = t.ReadAllTextAsync().ToString();
+                XmlReader reader = XmlReader.Create(new StringReader(str));
+                if (str.StartsWith("<cat"))
+                {
+                    //categorie
+                    var category = new Category();
+
+                    indiagrams.Add(category);
+                }
+                else
+                {
+                    //indiagram
+                    var indiagram = new Indiagram();
+
+
+                    indiagrams.Add(indiagram);
+                }
+            }
+            return indiagrams;
         }
     }
 }
