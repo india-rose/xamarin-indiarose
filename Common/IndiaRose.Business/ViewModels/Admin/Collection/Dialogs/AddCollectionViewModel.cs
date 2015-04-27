@@ -9,7 +9,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
     public class AddCollectionViewModel : AbstractViewModel
     {
 		[NavigationParameter]
-		private Indiagram Indiagram { get; set; }
+		public Indiagram Indiagram { get; set; }
 
         public ICommand WatchIndiagramCommand{ get; private set; }
 
