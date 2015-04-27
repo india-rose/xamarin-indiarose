@@ -1,45 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using IndiaRose.Data.Model;
+using PCLStorage;
 
 
 namespace IndiaRose.Storage
 {
     class XmlService : IXmlService
     {
-        /*private const string Path = ""; //dossier de destination à rajouter
+        private const string Path = ""; //dossier de destination à rajouter
 
-        public List<string> SearchXml()
+        public async Task<List<IFile>> SearchXml()
         {
-            string[] fichiers = Directory.GetDirectories(Path);
-            List<string> xml = new List<string>();
+            IFolder folder = await FileSystem.Current.GetFolderFromPathAsync(Path);
+            List<IFile> xml = new List<IFile>();
 
-            foreach (string t in fichiers)
-            {
-                Dossiers(ref xml, t);
-            }
-
-            fichiers = Directory.GetFiles(Path);
-
-            xml.AddRange(fichiers);
+            Dossiers(xml, folder);
 
             return xml;
         }
 
-        public static void Dossiers(ref List<string> list, string path)
+        public static async void Dossiers(List<IFile> list, IFolder path)
         {
-            var fichiers = Directory.GetDirectories(path);
-
-            foreach (string t in fichiers)
+            IList<IFolder> folders = await path.GetFoldersAsync();
+            foreach (var t in folders)
             {
-                Dossiers(ref list, t);
+                Dossiers(list, t);
             }
 
-            fichiers = Directory.GetFiles(path);
-
-            list.AddRange(fichiers);
-        }*/
+            IList<IFile> files = await path.GetFilesAsync();
+            list.AddRange(files);
+        }
     }
 }
