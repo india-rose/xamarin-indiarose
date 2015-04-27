@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:windowSoftInputMode="stateHidden">
   
     <Resources>
       <conv:StringFormatConverter Key="StringFormatConverter" />
@@ -62,7 +63,8 @@
         android:layout_width="0px"
         android:layout_height="0px"
         android:focusable="true"
-        android:focusableInTouchMode="true" />
+        android:focusableInTouchMode="true"
+        android:id="focus"/>
     <!--Button ok & back-->
     <LinearLayout XmlStyle="{Resource Ok_Back_Container}"
         android:id="linear_bottom">
@@ -106,7 +108,7 @@
                     android:layout_marginLeft="5dip"
                     android:inputType="text"
                     android:textSize="15sp"
-                    android:text=""/>
+                    Text="{Binding CurrentIndiagram.Text, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"/>
                 <!--Category-->
                 <TextView XmlStyle="{Resource TextViewTitle}"
                     android:id="text_parent_category"

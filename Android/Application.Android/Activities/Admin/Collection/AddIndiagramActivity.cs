@@ -18,24 +18,11 @@ namespace IndiaRose.Application.Activities.Admin.Collection
     public partial class AddIndiagramActivity : ActivityBase
     {
         #region Properties
-        private string _text;
         private Indiagram _parent;
         private string _imagePath;
         private string _soundPath;
         private int _position;
 
-        [Binding("CurrentIndiagram.Text", Mode = BindingMode.TwoWay)]
-        public string Text
-        {
-            get { return _text; }
-            set
-            {
-                if (SetProperty(ref _text, value))
-                {
-                    RefreshView("text");
-                }
-            }
-        }
         [Binding("CurrentIndiagram.Parent")]
         public Indiagram ParentIndiagram
         {
@@ -111,10 +98,6 @@ namespace IndiaRose.Application.Activities.Admin.Collection
         {
             switch (champ)
             {
-                case "text":
-                    EditText nameEditText = FindViewById<EditText>(Resource.Id.edit_text);
-                    nameEditText.Text = Text;
-                    break;
                 case "imagepath":
                     ImageView imageView = FindViewById<ImageView>(Resource.Id.Add_Img);
                     if (ImagePath != null)
@@ -153,7 +136,8 @@ namespace IndiaRose.Application.Activities.Admin.Collection
                 case "position":
                     break;
                 case "all":
-                    RefreshView("text");
+                    LinearLayout focusLinearLayout = FindViewById<LinearLayout>(Resource.Id.focus);
+                    focusLinearLayout.RequestFocus();
                     RefreshView("imagepath");
                     RefreshView("soundpath");
                     RefreshView("parent");

@@ -421,7 +421,7 @@ Comments : </value>
     <value>Camera</value>
   </data>
   <data name="CI_Gallery.Text" xml:space="preserve">
-    <value>Gallery</value>
+    <value>Album</value>
   </data>
   <data name="CI_Title.Text" xml:space="preserve">
     <value>Select a picture</value>
