@@ -63,25 +63,17 @@ namespace IndiaRose.Storage.Sqlite
 					ImagePath = csql.ImagePath,
 					SoundPath = csql.SoundPath,
 					Position = csql.Position,
+                    IsEnabled = indiagram.Enabled != 0
 				};
 
 			    if (csql.Parent != 0)
 			    {
 			        c.Parent = GetIndiagramFromSql(SearchById(true, csql.Parent));
-                    //c.Parent.Children.Add(c);
+                    c.Parent.Children.Add(c);
 			    }
 			    else
 			    {
 			        c.Parent = null;
-			    }
-
-			    if (csql.Enabled == 0)
-			    {
-			        c.IsEnabled = false;
-			    }
-			    else
-			    {
-			        c.IsEnabled = true;
 			    }
 
                 return c;
@@ -94,24 +86,16 @@ namespace IndiaRose.Storage.Sqlite
 				ImagePath = indiagram.ImagePath,
 				SoundPath = indiagram.SoundPath,
 				Position = indiagram.Position,
+                IsEnabled = indiagram.Enabled != 0,
 			};
             if (indiagram.Parent != 0)
             {
                 i.Parent = GetIndiagramFromSql(SearchById(false, indiagram.Parent));
-                //i.Parent.Children.Add(i);
+                i.Parent.Children.Add(i);
             }
             else
             {
                 i.Parent = null;
-            }
-
-            if (indiagram.Enabled == 0)
-            {
-                i.IsEnabled = false;
-            }
-            else
-            {
-                i.IsEnabled = true;
             }
 
             return i;
@@ -139,22 +123,14 @@ namespace IndiaRose.Storage.Sqlite
 				{
 					ImagePath = indiagram.ImagePath,
 					SoundPath = indiagram.SoundPath,
-					Text = indiagram.Text
+					Text = indiagram.Text,
+                    Enabled = indiagram.IsEnabled ? 1 : 0
 				};
-
-			    if (indiagram.IsEnabled)
-			    {
-			        temp.Enabled = 1;
-			    }
-			    else
-			    {
-			        temp.Enabled = 0;
-			    }
 
                 if ((indiagram.Parent != null) && (GetIndiagramSql(indiagram.Parent) != null))
 				{
 					temp.Parent = (GetIndiagramSql(indiagram.Parent)).Id;
-                    //indiagram.Parent.Children.Add(indiagram);
+                    indiagram.Parent.Children.Add(indiagram);
                     Update(indiagram.Parent);
 				}
 				else
@@ -173,22 +149,14 @@ namespace IndiaRose.Storage.Sqlite
 				{
 					ImagePath = indiagram.ImagePath,
 					SoundPath = indiagram.SoundPath,
-					Text = indiagram.Text
+					Text = indiagram.Text,
+                    Enabled = indiagram.IsEnabled ? 1 : 0
 				};
-
-                if (indiagram.IsEnabled)
-                {
-                    temp.Enabled = 1;
-                }
-                else
-                {
-                    temp.Enabled = 0;
-                }
 
 				if ((indiagram.Parent != null)&&(GetIndiagramSql(indiagram.Parent)!=null))
 				{
 					temp.Parent = (GetIndiagramSql(indiagram.Parent)).Id;
-                    //indiagram.Parent.Children.Add(indiagram);
+                    indiagram.Parent.Children.Add(indiagram);
                     Update(indiagram.Parent);
 				}
 				else
@@ -239,6 +207,7 @@ namespace IndiaRose.Storage.Sqlite
 				query.ImagePath = indiagram.ImagePath;
 				query.SoundPath = indiagram.SoundPath;
 				query.Position = indiagram.Position;
+                query.Enabled = indiagram.IsEnabled ? 1 : 0;
 
 			    if (indiagram.Parent != null)
 			    {
@@ -247,15 +216,6 @@ namespace IndiaRose.Storage.Sqlite
 			    else
 			    {
                     query.Parent = 0;
-			    }
-
-			    if (indiagram.IsEnabled)
-			    {
-			        query.Enabled = 1;
-			    }
-			    else
-			    {
-			        query.Enabled = 0;
 			    }
 
                 /*query.Children = new List<IndiagramSql>();
@@ -275,6 +235,7 @@ namespace IndiaRose.Storage.Sqlite
 				query.ImagePath = indiagram.ImagePath;
 				query.SoundPath = indiagram.SoundPath;
 				query.Position = indiagram.Position;
+                query.Enabled = indiagram.IsEnabled ? 1 : 0;
 
                 if (indiagram.Parent != null)
                 {
@@ -283,15 +244,6 @@ namespace IndiaRose.Storage.Sqlite
                 else
                 {
                     query.Parent = 0;
-                }
-
-                if (indiagram.IsEnabled)
-                {
-                    query.Enabled = 1;
-                }
-                else
-                {
-                    query.Enabled = 0;
                 }
 
 				Connection.Update(query);
