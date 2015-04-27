@@ -67,8 +67,8 @@ namespace IndiaRose.Storage.Sqlite
 
 			    if (csql.Parent != 0)
 			    {
-			        c.Parent = GetIndiagramFromSql(SearchById(new List<Category>(), csql.Parent));
-                    c.Parent.Children.Add(c);
+			        c.Parent = GetIndiagramFromSql(SearchById(true, csql.Parent));
+                    //c.Parent.Children.Add(c);
 			    }
 			    else
 			    {
@@ -97,8 +97,8 @@ namespace IndiaRose.Storage.Sqlite
 			};
             if (indiagram.Parent != 0)
             {
-                i.Parent = GetIndiagramFromSql(SearchById(new List<Category>(), indiagram.Parent));
-                i.Parent.Children.Add(i);
+                i.Parent = GetIndiagramFromSql(SearchById(false, indiagram.Parent));
+                //i.Parent.Children.Add(i);
             }
             else
             {
@@ -154,7 +154,7 @@ namespace IndiaRose.Storage.Sqlite
                 if ((indiagram.Parent != null) && (GetIndiagramSql(indiagram.Parent) != null))
 				{
 					temp.Parent = (GetIndiagramSql(indiagram.Parent)).Id;
-                    indiagram.Parent.Children.Add(indiagram);
+                    //indiagram.Parent.Children.Add(indiagram);
                     Update(indiagram.Parent);
 				}
 				else
@@ -188,7 +188,7 @@ namespace IndiaRose.Storage.Sqlite
 				if ((indiagram.Parent != null)&&(GetIndiagramSql(indiagram.Parent)!=null))
 				{
 					temp.Parent = (GetIndiagramSql(indiagram.Parent)).Id;
-                    indiagram.Parent.Children.Add(indiagram);
+                    //indiagram.Parent.Children.Add(indiagram);
                     Update(indiagram.Parent);
 				}
 				else
@@ -341,10 +341,10 @@ namespace IndiaRose.Storage.Sqlite
 	        return list;
 	    }
 
-        private IndiagramSql SearchById(IEnumerable<object> list,int id)
+        private IndiagramSql SearchById(bool isCategory, int id)
         {
             //Cherche dans la base de donnees l'indiagramme pour entre autre recuperer les liens pere/fils si besoin
-            if (list is List<Category>)
+            if (isCategory)
             {
                 return Connection.Table<CategorySql>().SingleOrDefault(t => t.Id == id);
             }
