@@ -34,13 +34,14 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 
         private void RecordSoundAction()
         {
+            MessageDialogService.DismissCurrentDialog();
             MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_RECORDSOUND);
         }
 
         private async void GalleryAction()
         {
             Indiagram.SoundPath= await MediaService.GetSoundFromGalleryAsync();
-            
+            MessageDialogService.DismissCurrentDialog();
         }
     }
 }
