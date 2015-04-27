@@ -40,12 +40,14 @@ namespace IndiaRose.Business
             container.RegisterFactory(x => new WatchIndiagramViewModel());
             container.RegisterFactory(x => new CollectionManagementViewModel());
             container.RegisterFactory(x => new AddIndiagramViewModel());
+			container.RegisterFactory(x => new SelectCategoryViewModel());
 
             //Admin/Collection/Dialogs
             container.RegisterFactory(x => new AddCollectionViewModel());
             container.RegisterFactory(x => new ImageChoiceViewModel());
             container.RegisterFactory(x => new SoundChoiceViewModel());
             container.RegisterFactory(x => new RecordSoundViewModel());
+			container.RegisterFactory(x => new SelectManagementViewModel());
 
 			_container = container;
 		}
@@ -143,6 +145,10 @@ namespace IndiaRose.Business
             get { return _container.Resolve<WatchIndiagramViewModel>(); }
 	    }
 
+		public SelectCategoryViewModel AdminCollectionSelectCategoryViewModel
+		{
+			get { return _container.Resolve<SelectCategoryViewModel>(); }
+		}
         #endregion
 
         #region ViewModels : /Admin/Collection/Dialogs
@@ -166,6 +172,11 @@ namespace IndiaRose.Business
         {
             get { return _container.Resolve<RecordSoundViewModel>(); }
         }
+
+		public SelectManagementViewModel AdminCollectionDialogSelectManagementViewModel
+		{
+			get { return _container.Resolve<SelectManagementViewModel>(); }
+		}
 
         #endregion
     }
