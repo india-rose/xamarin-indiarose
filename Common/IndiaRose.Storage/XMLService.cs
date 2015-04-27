@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using IndiaRose.Data.Model;
 using PCLStorage;
 
 
@@ -14,37 +15,26 @@ namespace IndiaRose.Storage
     {
         private const string Path = ""; //dossier de destination à rajouter
 
-        public async Task<List<string>> SearchXml()
+        public async Task<List<IFile>> SearchXml()
         {
-            IFolder folders = await FileSystem.Current.GetFolderFromPathAsync(Path);
-            IList<IFolder> listFolders = await folders.GetFoldersAsync();
-            List<string> xml = new List<string>();
+            IFolder folder = await FileSystem.Current.GetFolderFromPathAsync(Path);
+            List<IFile> xml = new List<IFile>();
 
-            foreach (IFolder t in listFolders)
-            {
-                Dossiers(xml, t);
-            }
-
-            IFile Files = await FileSystem.Current.GetFileFromPathAsync(Path);
-
-            xml.AddRange(new[] {Files.Path});
+            Dossiers(xml, folder);
 
             return xml;
         }
 
-        public static async void Dossiers(List<string> list, IFolder path)
+        public static async void Dossiers(List<IFile> list, IFolder path)
         {
-            IFolder folders = await FileSystem.Current.GetFolderFromPathAsync(Path);
-            IList<IFolder> listFolders = await folders.GetFoldersAsync();
-            foreach (var t in listFolders)
+            IList<IFolder> folders = await path.GetFoldersAsync();
+            foreach (var t in folders)
             {
                 Dossiers(list, t);
             }
 
-            IFile files = await FileSystem.Current.GetFileFromPathAsync(Path);
-
-            list.AddRange(new[] { files.Path });
+            IList<IFile> files = await path.GetFilesAsync();
+            list.AddRange(files);
         }
-
     }
 }
