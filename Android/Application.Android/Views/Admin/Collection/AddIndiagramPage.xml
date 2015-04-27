@@ -108,7 +108,7 @@
                     android:layout_marginLeft="5dip"
                     android:inputType="text"
                     android:textSize="15sp"
-                    Text="{Binding CurrentIndiagram.Text, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"/>
+                    Text="{Binding CurrentIndiagram.Text, Mode=TwoWay, UpdateEvent=TextChanged}"/>
                 <!--Category-->
                 <TextView XmlStyle="{Resource TextViewTitle}"
                     android:id="text_parent_category"
@@ -237,6 +237,29 @@
                 <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
                     android:id="paste"
                     Text="{Tr Text, Uid=Paste}" />
+              </LinearLayout>
+              <!--Activate & Desactivate-->
+              <TextView XmlStyle="{Resource TextViewTitle}"
+                    android:id="title_act"
+                    android:layout_below="@id/button_copy_paste"
+                    android:layout_marginTop="10dip"
+                    Text="{Tr Text, Uid=AIP_ActTitle}" />
+              <LinearLayout XmlStyle="{Resource ButtonContainer}"
+                    android:id="button_activate_desactive"
+                    android:layout_below="@id/title_act"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dip">
+
+                <Button XmlStyle="{Resource MediumBlueButtonStyle}"
+                    android:id="act"
+                    Text="{Tr Text, Uid=AIP_Activate}"
+                    Click="{Binding ActivateCommand}"
+                    android:visibility="gone"/>
+
+                <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
+                    android:id="desact"
+                    Text="{Tr Text, Uid=AIP_Desactivate}"
+                    Click="{Binding DesactivateCommand}"/>
               </LinearLayout>
             </RelativeLayout>
         </ScrollView>
