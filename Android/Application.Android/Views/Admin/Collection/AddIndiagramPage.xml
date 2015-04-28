@@ -136,7 +136,7 @@
 
                     <Button XmlStyle="{Resource MediumBlueButtonStyle}"
                         Text="{Tr Text, Uid=AIP_BCateg}"
-                        Click="{Binding ChooseCategoryCommand}"/>
+                        Click="{Binding SelectCategoryCommand}"/>
 
                     <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
                         Text="{Tr Text, Uid=AIP_BRoot}"
