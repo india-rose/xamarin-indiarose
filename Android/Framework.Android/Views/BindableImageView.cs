@@ -15,88 +15,103 @@ using Android.Widget;
 
 namespace IndiaRose.Framework.Views
 {
-	public class BindableImageView : ImageView
-	{
-		private string _sourcePath;
-		private int _size;
+    public class BindableImageView : ImageView
+    {
+        private string _sourcePath;
+        private int _size;
+        private bool _redSquare;
 
-		public string SourcePath
-		{
-			get { return _sourcePath; }
-			set
-			{
-				if (Equals(_sourcePath, value))
-				{
-					return;
-				}
-				_sourcePath = value;
-				if (value != null)
-				{
-					RefreshImage();
-				}
-			}
-		}
+        public bool RedSquare
+        {
+            get
+            {
+                return _redSquare;
+            }
+            set
+            {
+                _redSquare = value;
+                RefreshImage();
+            }
+        }
 
-		public int Size
-		{
-			get { return _size; }
-			set
-			{
-				if (_size != value)
-				{
-					_size = value;
-					RefreshImage();
-				}
-			}
-		}
+        public string SourcePath
+        {
+            get { return _sourcePath; }
+            set
+            {
+                if (Equals(_sourcePath, value))
+                {
+                    return;
+                }
+                _sourcePath = value;
+                if (value != null)
+                {
+                    RefreshImage();
+                }
+            }
+        }
 
-		private void RefreshImage()
-		{
-			
-			ViewGroup.LayoutParams top = LayoutParameters;
-			top.Height = Size;
-			top.Width = Size;
-			Post(() =>
-			{
-				LayoutParameters = top;
-			});
+        public int Size
+        {
+            get { return _size; }
+            set
+            {
+                if (_size != value)
+                {
+                    _size = value;
+                    RefreshImage();
+                }
+            }
+        }
 
-			if (SourcePath != null)
-			{
-				Bitmap originalImage = BitmapFactory.DecodeFile(SourcePath);
-				if (originalImage != null)
-				{
-					Bitmap image = Bitmap.CreateScaledBitmap(originalImage, Size, Size, true);
-					Post(() =>
-					{
-						SetImageBitmap(image);
-						Invalidate();
-					});
-					return;
-				}
-			}
-			Post(() => SetImageDrawable(new ColorDrawable(Color.Red)));
-		}
+        private void RefreshImage()
+        {
 
-		protected BindableImageView(IntPtr javaReference, JniHandleOwnership transfer)
-			: base(javaReference, transfer)
-		{
-		}
+            ViewGroup.LayoutParams top = LayoutParameters;
+            top.Height = Size;
+            top.Width = Size;
+            Post(() =>
+            {
+                LayoutParameters = top;
+            });
 
-		public BindableImageView(Context context)
-			: base(context)
-		{
-		}
+            if (SourcePath != null)
+            {
+                Bitmap originalImage = BitmapFactory.DecodeFile(SourcePath);
+                if (originalImage != null)
+                {
+                    Bitmap image = Bitmap.CreateScaledBitmap(originalImage, Size, Size, true);
+                    Post(() =>
+                    {
+                        SetImageBitmap(image);
+                        Invalidate();
+                    });
+                    return;
+                }
+            }
+            if (RedSquare)
+                Post(() => SetImageDrawable(new ColorDrawable(Color.Red)));
+        }
 
-		public BindableImageView(Context context, IAttributeSet attrs)
-			: base(context, attrs)
-		{
-		}
+        protected BindableImageView(IntPtr javaReference, JniHandleOwnership transfer)
+            : base(javaReference, transfer)
+        {
+        }
 
-		public BindableImageView(Context context, IAttributeSet attrs, int defStyleAttr)
-			: base(context, attrs, defStyleAttr)
-		{
-		}
+        public BindableImageView(Context context)
+            : base(context)
+        {
+        }
 
-	}
+        public BindableImageView(Context context, IAttributeSet attrs)
+            : base(context, attrs)
+        {
+        }
+
+        public BindableImageView(Context context, IAttributeSet attrs, int defStyleAttr)
+            : base(context, attrs, defStyleAttr)
+        {
+        }
+
+    }
 }

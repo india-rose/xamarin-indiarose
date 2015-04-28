@@ -55,6 +55,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
         #region Properties
         private string _bro1;
+        private Indiagram _currentIndiagram;
 
         public string Bro1
         {
@@ -83,7 +84,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         [NavigationParameter]
         protected Indiagram InitialIndiagram { get; set; }
 
-        public Indiagram CurrentIndiagram { get; set; }
+        public Indiagram CurrentIndiagram
+        {
+            get { return _currentIndiagram ; }
+            set { SetProperty(ref _currentIndiagram, value); }
+        }
         #endregion
 
         public AddIndiagramViewModel()
@@ -198,11 +203,13 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         }
         protected void CopyAction()
         {
-            CopyPasteService.Copy(CurrentIndiagram);
+            CopyPasteService.Copy(CurrentIndiagram,Categ);
         }
         protected void PasteAction()
         {
-            CopyPasteService.Paste(CurrentIndiagram);
+            CurrentIndiagram = CopyPasteService.Paste();
+            Categ = CurrentIndiagram.IsCategory;
+            RaisePropertyChanged();
         }
 
         #endregion
