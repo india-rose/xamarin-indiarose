@@ -152,12 +152,12 @@
         },
         {
             "fragment": {
-                "className": "AddCollectionDialog",
+                "className": "ExploreCollectionDialog",
                 "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
             },
             "view": {
-                "inputFile": "Views/Admin/Collection/Dialogs/AddCollectionDialog.xml",
-                "outputFile": "Admin_Collection_Dialogs_AddCollectionDialog.axml"
+                "inputFile": "Views/Admin/Collection/Dialogs/ExploreCollectionDialog.xml",
+                "outputFile": "Admin_Collection_Dialogs_ExploreCollectionDialog.axml"
             }
         },
         { 

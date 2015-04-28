@@ -14,5 +14,4 @@
 	  SourcePath="{Binding Indiagram.ImagePath}"
 	  Size="{Binding SettingsService.IndiagramDisplaySize}"
 		/>
-      />
 </RelativeLayout>

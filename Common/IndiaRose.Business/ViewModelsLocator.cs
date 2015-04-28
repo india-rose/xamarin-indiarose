@@ -43,7 +43,7 @@ namespace IndiaRose.Business
 			container.RegisterFactory(x => new SelectCategoryViewModel());
 
             //Admin/Collection/Dialogs
-            container.RegisterFactory(x => new AddCollectionViewModel());
+            container.RegisterFactory(x => new ExploreCollectionViewModel());
             container.RegisterFactory(x => new ImageChoiceViewModel());
             container.RegisterFactory(x => new SoundChoiceViewModel());
             container.RegisterFactory(x => new RecordSoundViewModel());
@@ -153,9 +153,9 @@ namespace IndiaRose.Business
 
         #region ViewModels : /Admin/Collection/Dialogs
 
-	    public AddCollectionViewModel AdminCollectionDialogsAddCollectionDialog
+		public ExploreCollectionViewModel AdminCollectionDialogsExploreCollectionDialog
 	    {
-            get { return _container.Resolve<AddCollectionViewModel>(); }
+            get { return _container.Resolve<ExploreCollectionViewModel>(); }
 	    }
 
 	    public ImageChoiceViewModel AdminCollectionDialogsImageChoiceDialog

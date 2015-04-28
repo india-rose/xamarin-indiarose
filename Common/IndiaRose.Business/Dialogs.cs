@@ -13,7 +13,7 @@
 	    public const string ADMIN_MAILERROR = "Admin_MailErrorDialog";
 
         //Dialogs in /Admin/Collection
-	    public const string ADMIN_COLLECTION_ADDCOLLECTION = "Admin_Collection_AddCollectionDialog";
+	    public const string ADMIN_COLLECTION_EXPLORECOLLECTION = "Admin_Collection_ExploreCollectionDialog";
 	    public const string ADMIN_COLLECTION_IMAGECHOICE = "Admin_Collection_ImageChoiceDialog";
 	    public const string ADMIN_COLLECTION_SOUNDCHOICE = "Admin_Collection_SoundChoiceDialog";
 	    public const string ADMIN_COLLECTION_RECORDSOUND = "Admin_Collection_RecordSoundDialog";

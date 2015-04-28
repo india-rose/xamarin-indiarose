@@ -25,7 +25,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 	    protected override void IndiagramSelectedAction(Indiagram indiagram)
 	    {
 		    base.IndiagramSelectedAction(indiagram);
-			MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_ADDCOLLECTION, new Dictionary<string, object>()
+			MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION, new Dictionary<string, object>()
              {
                  {"Indiagram",indiagram}
              });

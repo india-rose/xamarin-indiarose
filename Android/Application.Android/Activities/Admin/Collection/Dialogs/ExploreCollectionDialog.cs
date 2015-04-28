@@ -16,9 +16,9 @@ using Environment = Android.OS.Environment;
 namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 {
 	[BindingElement(Path = "WatchIndiagramCommand", TargetPath = "PositiveButtonEvent")]
-	public partial class AddCollectionDialog : AlertDialogFragmentBase
+	public partial class ExploreCollectionDialog : AlertDialogFragmentBase
 	{
-		public AddCollectionDialog()
+		public ExploreCollectionDialog()
 		{
 			var trad = DependencyService.Container.Resolve<ILocalizationService>();
 			Title = trad.GetString("whichActionQuestion", "Text");
@@ -30,12 +30,12 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 
 		protected override View CreateView(LayoutInflater inflater, ViewGroup container)
 		{
-			return inflater.Inflate(Resource.Layout.Admin_Collection_Dialogs_AddCollectionDialog, container, false);
+			return inflater.Inflate(Resource.Layout.Admin_Collection_Dialogs_ExploreCollectionDialog, container, false);
 		}
 
 		protected override ViewModelBase CreateViewModel()
 		{
-			return Container.Locator.AdminCollectionDialogsAddCollectionDialog;
+			return Container.Locator.AdminCollectionDialogsExploreCollectionDialog;
 		}
 	}
 }

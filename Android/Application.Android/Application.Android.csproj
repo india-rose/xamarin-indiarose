@@ -59,7 +59,7 @@
   <ItemGroup>
     <Compile Include="Activities\Admin\Collection\AddIndiagramActivity.cs" />
     <Compile Include="Activities\Admin\Collection\CollectionManagementActivity.cs" />
-    <Compile Include="Activities\Admin\Collection\Dialogs\AddCollectionDialog.cs" />
+    <Compile Include="Activities\Admin\Collection\Dialogs\ExploreCollectionDialog.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\ImageChoiceDialog.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\RecordSoundDialog.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\SelectManagementDialog.cs" />
@@ -155,7 +155,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Admin\Collection\AddIndiagramPage.xml" />
-    <Content Include="Views\Admin\Collection\Dialogs\AddCollectionDialog.xml" />
+    <Content Include="Views\Admin\Collection\Dialogs\ExploreCollectionDialog.xml" />
     <Content Include="Views\Admin\Collection\Dialogs\ImageChoicePage.xml" />
     <Content Include="Views\Admin\Collection\Dialogs\SelectManagementPage.xml" />
     <Content Include="Views\Admin\Collection\Dialogs\SoundChoicePage.xml" />
