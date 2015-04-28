@@ -136,18 +136,23 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
                 //edition d'un indi
                 if (InitialIndiagram.IsCategory && !Categ)
                 {
+                    CollectionStorageService.Delete(InitialIndiagram);
                     InitialIndiagram = new Indiagram(CurrentIndiagram);
+                    CollectionStorageService.Create(InitialIndiagram);
+
                 }
                 else if (!InitialIndiagram.IsCategory && Categ)
                 {
+                    CollectionStorageService.Delete(InitialIndiagram);
                     InitialIndiagram = new Category(CurrentIndiagram);
+                    CollectionStorageService.Create(InitialIndiagram);
                 }
                 else
                 {
                     InitialIndiagram.Edit(CurrentIndiagram);
+                    CollectionStorageService.Update(InitialIndiagram);
                 }
 
-                CollectionStorageService.Update(InitialIndiagram);
             }
 
             BackAction();
