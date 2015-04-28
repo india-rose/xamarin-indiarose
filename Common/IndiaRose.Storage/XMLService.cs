@@ -73,7 +73,7 @@ namespace IndiaRose.Storage
 
             if (doc.FirstNode.ToString().StartsWith("<c"))
             {
-                Category c = new Category()
+                Category c = new Category
                 {
                     Text = doc.Descendants("text").First().Value,
                     ImagePath = doc.Descendants("picture").First().Value,
@@ -84,7 +84,7 @@ namespace IndiaRose.Storage
                 return c;
             }
 
-            Indiagram i = new Indiagram()
+            Indiagram i = new Indiagram
             {
                 Text = doc.Descendants("text").First().Value,
                 ImagePath = doc.Descendants("picture").First().Value,
@@ -99,6 +99,30 @@ namespace IndiaRose.Storage
         {
             Task<List<IFile>> files = SearchXml();
 
+        }
+
+        public static Indiagram FillTextAndPaths(string path)
+        {
+            var xd = XDocument.Load("path");
+            var xe = xd.Element("indiagram");
+            var india = new Indiagram();
+            if (xe == null) return india;
+            foreach (var t in xe.Nodes().Cast<XElement>())
+            {
+                if (t.ToString().StartsWith("<text>"))
+                {
+                    india.Text = t.Value;
+                }
+                if (t.ToString().StartsWith("<picture>"))
+                {
+                    india.ImagePath = t.Value;
+                }
+                if (t.ToString().StartsWith("<sound>"))
+                {
+                    india.SoundPath = t.Value;
+                }
+            }
+            return india;
         }
     }
 }
