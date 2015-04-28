@@ -15,6 +15,7 @@
       <converters:ParentCategoryTextConverter Key="SoundPathTextConverter"
                         Uid="AIP_NoSound"
                         Property="Text"/>
+      
       <Style Key="DataTempTextViewStyle"
              android:layout_width="wrap_content"
              android:layout_height="fill_parent"

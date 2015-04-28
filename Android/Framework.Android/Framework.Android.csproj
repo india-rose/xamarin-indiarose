@@ -41,6 +41,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\ColorContainerToColor.cs" />
     <Compile Include="Converters\ColorStringToColor.cs" />
     <Compile Include="Converters\ColorStringToIntConverter.cs" />
