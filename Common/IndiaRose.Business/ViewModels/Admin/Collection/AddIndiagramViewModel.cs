@@ -14,6 +14,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
     public class AddIndiagramViewModel : AbstractSettingsViewModel
     {
+        //TODO A TESTE LES CATEGORIES
         #region Service
 
         public IMessageDialogService MessageDialogService
@@ -65,9 +66,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             get { return _categ; }
             set
             {
-                //TODO a testé avec une categorie et le popup
-                Category currentCategory = CurrentIndiagram as Category;
-                if (currentCategory == null || currentCategory.Children == null)
+                if (!CurrentIndiagram.HasChildren())
                 {
                     SetProperty(ref _categ, value);
                 }
@@ -82,11 +81,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
         public AddIndiagramViewModel()
         {
-            Category currentCategory=InitialIndiagram as Category;
-            if (currentCategory != null)
-            {
-                Categ = true;
-            }
             ImageChoiceCommand = new DelegateCommand(ImageChoiceAction);
             SoundChoiceCommand = new DelegateCommand(SoundChoiceAction);
             RootCommand = new DelegateCommand(RootAction);
@@ -95,7 +89,19 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             ChooseCategoryCommand=new DelegateCommand(ChooseCategoryAction);
             ActivateCommand = new DelegateCommand(ActivateAction);
             DesactivateCommand = new DelegateCommand(DesactivateAction);
-            CurrentIndiagram = InitialIndiagram == null ? new Indiagram() : new Indiagram(CurrentIndiagram);
+            if (InitialIndiagram == null)
+            {
+                CurrentIndiagram = new Indiagram();
+            } 
+            else if (InitialIndiagram.IsCategory)
+            {
+                CurrentIndiagram = new Category(InitialIndiagram);
+                Categ = true;
+            }
+            else
+            {
+                CurrentIndiagram = new Indiagram(InitialIndiagram);
+            }
         }
 
         #region Action
@@ -121,12 +127,26 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             }
             if (InitialIndiagram == null)
             {
-                InitialIndiagram = CurrentIndiagram;
+                //creation d'un indi
+                InitialIndiagram = Categ ? new Category(CurrentIndiagram) : CurrentIndiagram;
                 CollectionStorageService.Create(InitialIndiagram);
             }
             else
             {
-                InitialIndiagram.Edit(CurrentIndiagram);
+                //edition d'un indi
+                if (InitialIndiagram.IsCategory && !Categ)
+                {
+                    InitialIndiagram = new Indiagram(CurrentIndiagram);
+                }
+                else if (!InitialIndiagram.IsCategory && Categ)
+                {
+                    InitialIndiagram = new Category(CurrentIndiagram);
+                }
+                else
+                {
+                    InitialIndiagram.Edit(CurrentIndiagram);
+                }
+
                 CollectionStorageService.Update(InitialIndiagram);
             }
 
