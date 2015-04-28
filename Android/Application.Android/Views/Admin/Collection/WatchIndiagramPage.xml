@@ -133,9 +133,9 @@
         android:scaleType="centerInside"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-		SourcePath="{Binding CurrentIndiagram.ImagePath}"
-		Size="{Binding SettingsService.IndiagramDisplaySize}"
-		/>
+		    SourcePath="{Binding CurrentIndiagram.ImagePath}"
+		    Size="{Binding SettingsService.IndiagramDisplaySize}"
+		  />
     
     </LinearLayout>
   </LinearLayout> 

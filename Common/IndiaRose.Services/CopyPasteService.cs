@@ -8,14 +8,14 @@ namespace IndiaRose.Services
     {
         private Indiagram _indiagram;
 
-        public void Copy(Indiagram indiagram)
+        public void Copy(Indiagram indiagram, bool categ)
         {
-            _indiagram = indiagram.IsCategory ? new Category(indiagram) : new Indiagram(indiagram);
+            _indiagram = categ ? new Category(indiagram) : new Indiagram(indiagram);
         }
 
-        public void Paste(Indiagram indiagram)
+        public Indiagram Paste()
         {
-            indiagram.Edit(_indiagram);
+            return _indiagram;
         }
     }
 }

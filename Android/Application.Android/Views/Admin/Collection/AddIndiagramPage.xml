@@ -1,6 +1,7 @@
 ﻿<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:conv="using:Storm.Mvvm.Converters"
+    xmlns:converters="using:IndiaRose.Framework.Converters"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
@@ -8,6 +9,13 @@
   
     <Resources>
       <conv:StringFormatConverter Key="StringFormatConverter" />
+      <converters:ParentCategoryTextConverter Key="ParentCategoryTextConverter"
+											Uid="Root_Categ"
+											Property="Text" />
+      <converters:ParentCategoryTextConverter Key="SoundPathTextConverter"
+                        Uid="AIP_NoSound"
+                        Property="Text"/>
+      
       <Style Key="DataTempTextViewStyle"
              android:layout_width="wrap_content"
              android:layout_height="fill_parent"
@@ -126,7 +134,7 @@
                     android:id="m_indiagramCategory"
                     android:layout_below="@id/text_parent_category"
                     android:layout_toRightOf="@id/name_text_parent_category"
-                    Text="{Binding CurrentIndiagram.Parent.Text}"
+                    Text="{Binding CurrentIndiagram.Parent, Converter={Resource ParentCategoryTextConverter}}"
                     />
 
                 <LinearLayout XmlStyle="{Resource ButtonContainer}"
@@ -186,7 +194,7 @@
                     android:id="m_indiagramSound"
                     android:layout_below="@id/text_sound"
                     android:layout_toRightOf="@id/filepath_sound"
-                    Text="{Binding CurrentIndiagram.SoundPath}"
+                    Text="{Binding CurrentIndiagram.SoundPath, Converter={Resource SoundPathTextConverter}}"
                     android:singleLine="true"/>
 
                 <LinearLayout XmlStyle="{Resource ButtonContainer}"
@@ -291,21 +299,23 @@
                         Click="{Binding ImageChoiceCommand}"
                             />
                 </LinearLayout>
-
                 <CheckBox XmlStyle="{Resource SmallBlueText}"
                     android:id="isCategory"
                     Text="{Tr Text, Uid=AIP_IsCateg}"
                     android:checked="{Binding Categ,Mode=TwoWay, UpdateEvent=CheckedChange}"/>
               </LinearLayout>
-                <ImageView
+              <BindableImageView
                     android:id="Add_Img"
-                    android:layout_width="300dip"
-                    android:layout_height="300dip"
                     android:layout_marginTop="30dip"
                     android:layout_marginBottom="10dip"
                     android:layout_below="@id/logo"
                     android:layout_above="@id/bottom_field"
-                    android:layout_centerInParent="true"/>
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+		                SourcePath="{Binding CurrentIndiagram.ImagePath}"
+		                Size="{Binding SettingsService.IndiagramDisplaySize}"
+		            />
 
             </RelativeLayout>
     </LinearLayout>

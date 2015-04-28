@@ -1,13 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
-using Android.OS;
 using Android.Runtime;
 using Android.Util;
 using Android.Views;
@@ -15,88 +9,108 @@ using Android.Widget;
 
 namespace IndiaRose.Framework.Views
 {
-	public class BindableImageView : ImageView
-	{
-		private string _sourcePath;
-		private int _size;
+    public class BindableImageView : ImageView
+    {
+        private string _sourcePath;
+        private int _size;
+        private bool _displayDefaultRedSquare = true;
 
-		public string SourcePath
-		{
-			get { return _sourcePath; }
-			set
-			{
-				if (Equals(_sourcePath, value))
-				{
-					return;
-				}
-				_sourcePath = value;
-				if (value != null)
-				{
-					RefreshImage();
-				}
-			}
-		}
+        public bool DisplayDefaultRedSquare
+        {
+            get
+            {
+                return _displayDefaultRedSquare;
+            }
+            set
+            {
+	            if (value != _displayDefaultRedSquare)
+	            {
+		            _displayDefaultRedSquare = value;
+		            RefreshImage();
+	            }
+            }
+        }
 
-		public int Size
-		{
-			get { return _size; }
-			set
-			{
-				if (_size != value)
-				{
-					_size = value;
-					RefreshImage();
-				}
-			}
-		}
+        public string SourcePath
+        {
+            get { return _sourcePath; }
+            set
+            {
+                if (!Equals(_sourcePath, value))
+                {
+					_sourcePath = value;
+					if (value != null)
+					{
+						RefreshImage();
+					}
+                }
+            }
+        }
 
-		private void RefreshImage()
-		{
-			
-			ViewGroup.LayoutParams top = LayoutParameters;
-			top.Height = Size;
-			top.Width = Size;
+        public int Size
+        {
+            get { return _size; }
+            set
+            {
+                if (_size != value)
+                {
+                    _size = value;
+                    RefreshImage();
+                }
+            }
+        }
+
+        private void RefreshImage()
+        {
+            ViewGroup.LayoutParams parameters = LayoutParameters;
+            parameters.Height = Size;
+            parameters.Width = Size;
+            Post(() =>
+            {
+                LayoutParameters = parameters;
+            });
+
+            if (SourcePath != null)
+            {
+                Bitmap originalImage = BitmapFactory.DecodeFile(SourcePath);
+                if (originalImage != null)
+                {
+                    Bitmap image = Bitmap.CreateScaledBitmap(originalImage, Size, Size, true);
+                    Post(() =>
+                    {
+                        SetImageBitmap(image);
+                        Invalidate();
+                    });
+	                return; //to not put default color
+                }
+            }
+
 			Post(() =>
 			{
-				LayoutParameters = top;
+				SetImageDrawable(new ColorDrawable(DisplayDefaultRedSquare ? Color.Red : Color.Transparent));
+				Invalidate();
 			});
+        }
 
-			if (SourcePath != null)
-			{
-				Bitmap originalImage = BitmapFactory.DecodeFile(SourcePath);
-				if (originalImage != null)
-				{
-					Bitmap image = Bitmap.CreateScaledBitmap(originalImage, Size, Size, true);
-					Post(() =>
-					{
-						SetImageBitmap(image);
-						Invalidate();
-					});
-					return;
-				}
-			}
-			Post(() => SetImageDrawable(new ColorDrawable(Color.Red)));
-		}
+        protected BindableImageView(IntPtr javaReference, JniHandleOwnership transfer)
+            : base(javaReference, transfer)
+        {
+        }
 
-		protected BindableImageView(IntPtr javaReference, JniHandleOwnership transfer)
-			: base(javaReference, transfer)
-		{
-		}
+        public BindableImageView(Context context)
+            : base(context)
+        {
+        }
 
-		public BindableImageView(Context context)
-			: base(context)
-		{
-		}
+        public BindableImageView(Context context, IAttributeSet attrs)
+            : base(context, attrs)
+        {
+        }
 
-		public BindableImageView(Context context, IAttributeSet attrs)
-			: base(context, attrs)
-		{
-		}
+        public BindableImageView(Context context, IAttributeSet attrs, int defStyleAttr)
+            : base(context, attrs, defStyleAttr)
+        {
+        }
 
-		public BindableImageView(Context context, IAttributeSet attrs, int defStyleAttr)
-			: base(context, attrs, defStyleAttr)
-		{
-		}
-
-	}
+    }
 }
