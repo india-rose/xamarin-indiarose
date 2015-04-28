@@ -41,6 +41,7 @@ namespace IndiaRose.Application
 			RegisterInstance<IFontService>(new FontService());
             RegisterInstance<IMediaService>(new MediaService());
             RegisterInstance<IPopupService>(new PopupService());
+            RegisterInstance<ICopyPasteService>(new CopyPasteService());
 
 			RegisterInstance<IStorageService>(storageService);
 			RegisterInstance<ICollectionStorageService>(new SqliteCollectionStorageService(new SQLitePlatformAndroid()));

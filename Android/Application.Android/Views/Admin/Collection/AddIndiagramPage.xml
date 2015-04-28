@@ -126,7 +126,7 @@
                     android:id="m_indiagramCategory"
                     android:layout_below="@id/text_parent_category"
                     android:layout_toRightOf="@id/name_text_parent_category"
-                    Text="{Tr Text,Uid=Root_Categ}"
+                    Text="{Binding CurrentIndiagram.Parent.Text}"
                     />
 
                 <LinearLayout XmlStyle="{Resource ButtonContainer}"
@@ -186,7 +186,7 @@
                     android:id="m_indiagramSound"
                     android:layout_below="@id/text_sound"
                     android:layout_toRightOf="@id/filepath_sound"
-                    Text="{Tr Text, Uid=AIP_NoSound}"
+                    Text="{Binding CurrentIndiagram.SoundPath}"
                     android:singleLine="true"/>
 
                 <LinearLayout XmlStyle="{Resource ButtonContainer}"
@@ -232,11 +232,13 @@
 
                 <Button XmlStyle="{Resource MediumBlueButtonStyle}"
                     android:id="copy"
-                    Text="{Tr Text, Uid=Copy}" />
+                    Text="{Tr Text, Uid=Copy}"
+                    Click="{Binding CopyCommand}"/>
 
                 <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
                     android:id="paste"
-                    Text="{Tr Text, Uid=Paste}" />
+                    Text="{Tr Text, Uid=Paste}"
+                    Click="{Binding PasteCommand}"/>
               </LinearLayout>
               <!--Activate & Desactivate-->
               <TextView XmlStyle="{Resource TextViewTitle}"
@@ -292,7 +294,8 @@
 
                 <CheckBox XmlStyle="{Resource SmallBlueText}"
                     android:id="isCategory"
-                    Text="{Tr Text, Uid=AIP_IsCateg}"/>
+                    Text="{Tr Text, Uid=AIP_IsCateg}"
+                    android:checked="{Binding Categ,Mode=TwoWay, UpdateEvent=CheckedChange}"/>
               </LinearLayout>
                 <ImageView
                     android:id="Add_Img"

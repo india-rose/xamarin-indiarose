@@ -47,6 +47,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICopyPasteService.cs" />
     <Compile Include="IEmailService.cs" />
     <Compile Include="IFontService.cs" />
     <Compile Include="IInstallVoiceSynthesisService.cs" />

@@ -105,5 +105,10 @@ namespace IndiaRose.Data.Model
             ImagePath = imagePath;
             IsEnabled = true;
         }
-    }
+
+	    public virtual bool HasChildren()
+	    {
+	        return false;
+	    }
+	}
 }

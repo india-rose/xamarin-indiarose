@@ -14,26 +14,27 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
     public class AddIndiagramViewModel : AbstractSettingsViewModel
     {
+        //TODO A TESTE LES CATEGORIES
         #region Service
-
         public IMessageDialogService MessageDialogService
         {
             get { return LazyResolver<IMessageDialogService>.Service; }
         }
-
         public ICollectionStorageService CollectionStorageService
         {
             get { return LazyResolver<ICollectionStorageService>.Service; }
         }
-
         public IPopupService PopupService
         {
             get { return LazyResolver<IPopupService>.Service; }
         }
-
         public ILocalizationService LocalizationService
         {
             get { return LazyResolver<ILocalizationService>.Service; }
+        }
+        public ICopyPasteService CopyPasteService
+        {
+            get { return LazyResolver<ICopyPasteService>.Service; }
         }
         #endregion
 
@@ -46,6 +47,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         public ICommand ChooseCategoryCommand { get; private set; }
         public ICommand ActivateCommand { get; private set; }
         public ICommand DesactivateCommand { get; private set; }
+        public ICommand CopyCommand { get; private set; }
+        public ICommand PasteCommand { get; private set; }
+
 
         #endregion
 
@@ -59,6 +63,22 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         }
         public ObservableCollection<string> Brothers { get; private set; }
 
+        private bool _categ ;
+        public bool Categ
+        {
+            get { return _categ; }
+            set
+            {
+                if (!CurrentIndiagram.HasChildren())
+                {
+                    SetProperty(ref _categ, value);
+                }
+                else
+                {
+                    RaisePropertyChanged();
+                }
+            }
+        }
 
         [NavigationParameter]
         protected Indiagram InitialIndiagram { get; set; }
@@ -76,7 +96,21 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             ChooseCategoryCommand=new DelegateCommand(ChooseCategoryAction);
             ActivateCommand = new DelegateCommand(ActivateAction);
             DesactivateCommand = new DelegateCommand(DesactivateAction);
-            CurrentIndiagram = InitialIndiagram == null ? new Indiagram() : new Indiagram(CurrentIndiagram);
+            CopyCommand = new DelegateCommand(CopyAction);
+            PasteCommand = new DelegateCommand(PasteAction);
+            if (InitialIndiagram == null)
+            {
+                CurrentIndiagram = new Indiagram();
+            } 
+            else if (InitialIndiagram.IsCategory)
+            {
+                CurrentIndiagram = new Category(InitialIndiagram);
+                Categ = true;
+            }
+            else
+            {
+                CurrentIndiagram = new Indiagram(InitialIndiagram);
+            }
         }
 
         #region Action
@@ -102,13 +136,32 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             }
             if (InitialIndiagram == null)
             {
-                InitialIndiagram = CurrentIndiagram;
+                //creation d'un indi
+                InitialIndiagram = Categ ? new Category(CurrentIndiagram) : CurrentIndiagram;
                 CollectionStorageService.Create(InitialIndiagram);
             }
             else
             {
-                InitialIndiagram.Edit(CurrentIndiagram);
-                CollectionStorageService.Update(InitialIndiagram);
+                //edition d'un indi
+                if (InitialIndiagram.IsCategory && !Categ)
+                {
+                    CollectionStorageService.Delete(InitialIndiagram);
+                    InitialIndiagram = new Indiagram(CurrentIndiagram);
+                    CollectionStorageService.Create(InitialIndiagram);
+
+                }
+                else if (!InitialIndiagram.IsCategory && Categ)
+                {
+                    CollectionStorageService.Delete(InitialIndiagram);
+                    InitialIndiagram = new Category(CurrentIndiagram);
+                    CollectionStorageService.Create(InitialIndiagram);
+                }
+                else
+                {
+                    InitialIndiagram.Edit(CurrentIndiagram);
+                    CollectionStorageService.Update(InitialIndiagram);
+                }
+
             }
 
             BackAction();
@@ -142,6 +195,14 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
                 PopupService.AfficherPopup(LocalizationService.GetString("AIP_NoSoundError", "Text"));
             }
             
+        }
+        protected void CopyAction()
+        {
+            CopyPasteService.Copy(CurrentIndiagram);
+        }
+        protected void PasteAction()
+        {
+            CopyPasteService.Paste(CurrentIndiagram);
         }
 
         #endregion
