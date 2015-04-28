@@ -59,6 +59,20 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         }
         public ObservableCollection<string> Brothers { get; private set; }
 
+        private bool _categ ;
+        public bool Categ
+        {
+            get { return _categ; }
+            set
+            {
+                //TODO a testé avec une categorie et le popup
+                Category currentCategory = CurrentIndiagram as Category;
+                if (currentCategory == null || currentCategory.Children == null)
+                {
+                    SetProperty(ref _categ, value);
+                }
+            }
+        }
 
         [NavigationParameter]
         protected Indiagram InitialIndiagram { get; set; }
@@ -68,6 +82,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
         public AddIndiagramViewModel()
         {
+            Category currentCategory=InitialIndiagram as Category;
+            if (currentCategory != null)
+            {
+                Categ = true;
+            }
             ImageChoiceCommand = new DelegateCommand(ImageChoiceAction);
             SoundChoiceCommand = new DelegateCommand(SoundChoiceAction);
             RootCommand = new DelegateCommand(RootAction);

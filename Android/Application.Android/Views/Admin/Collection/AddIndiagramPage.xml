@@ -292,7 +292,8 @@
 
                 <CheckBox XmlStyle="{Resource SmallBlueText}"
                     android:id="isCategory"
-                    Text="{Tr Text, Uid=AIP_IsCateg}"/>
+                    Text="{Tr Text, Uid=AIP_IsCateg}"
+                    android:checked="{Binding Categ}"/>
               </LinearLayout>
                 <ImageView
                     android:id="Add_Img"
