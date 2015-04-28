@@ -1,16 +1,10 @@
-﻿using System.Collections.Generic;
-using SQLite.Net.Attributes;
-using SQLiteNetExtensions.Attributes;
+﻿using SQLite.Net.Attributes;
 
 namespace IndiaRose.Storage.Sqlite.Model
 {
     [Table("Category")]
     class CategorySql : IndiagramSql
     {
-        [OneToMany]
-        public List<IndiagramSql> Children { get; set; }
-
-
         public CategorySql(int version,
             string text, 
             string imagepath, 
@@ -18,8 +12,6 @@ namespace IndiaRose.Storage.Sqlite.Model
             int parent)
             : base(version,text,imagepath,soundpath,parent)
         {
-            //Test
-            Children = new List<IndiagramSql>();
         }
 
         public CategorySql()

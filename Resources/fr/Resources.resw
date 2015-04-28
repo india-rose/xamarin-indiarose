@@ -480,4 +480,7 @@ Commentaires :</value>
   <data name="AIP_Desactivate.Text" xml:space="preserve">
     <value>Désactiver</value>
   </data>
+  <data name="select.Text" xml:space="preserve">
+    <value>Sélectionner</value>
+  </data>
 </root>
