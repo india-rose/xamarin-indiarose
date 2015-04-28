@@ -168,8 +168,6 @@ namespace IndiaRose.Framework.Views
 
         private void Initialize()
         {
-            Touch += OnTouch;
-
             _picturePainter.Color = Color.Red;
             _textPainter.SetTypeface(FontHelper.LoadFont(SettingsService.FontName));
             _textPainter.Color = new Color((int)_textColor);
@@ -188,12 +186,6 @@ namespace IndiaRose.Framework.Views
 
             DispatcherService.InvokeOnUIThread(Invalidate);
         }
-
-        private void OnTouch(object sender, TouchEventArgs touchEventArgs)
-        {
-            //TODO : voir quoi faire de ça 
-        }
-
         protected void RefreshDimension()
         {
             float textWidth = _textPainter.MeasureText(_indiagram.Text);

@@ -8,7 +8,7 @@ namespace IndiaRose.Storage
 {
 	public interface IStorageService
 	{
-		string DabatabasePath { get; }
+		string DatabasePath { get; }
 
 		string RootPath { get; }
 

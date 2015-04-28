@@ -25,7 +25,7 @@ namespace IndiaRose.Storage.Sqlite
 		public SqliteCollectionStorageService(ISQLitePlatform platform)
 		{
 			_platform = platform;
-			_dbPath = LazyResolver<IStorageService>.Service.DabatabasePath;
+			_dbPath = LazyResolver<IStorageService>.Service.DatabasePath;
 		}
 
 		private SQLiteConnection OpenDatabase()
