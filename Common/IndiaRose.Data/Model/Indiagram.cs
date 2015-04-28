@@ -60,11 +60,6 @@ namespace IndiaRose.Data.Model
 			get { return false; }
 		}
 
-		public virtual List<Indiagram> Children
-		{
-			get { return null; }
-		}
-
 	    public Indiagram(int id)
 		{
 		    _id = id;

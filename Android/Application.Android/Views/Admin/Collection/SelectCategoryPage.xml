@@ -1,78 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				xmlns:converters="using:IndiaRose.Framework.Converters"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:background="@android:color/white"
-				android:paddingLeft="50dip"
-				android:paddingRight="50dip"
 				>
 	<Resources>
-		<Style Key="ButtonLineStyle"
-			   android:layout_width="match_parent"
-			   android:layout_height="match_parent"
-			   android:layout_marginBottom="4dip"
-			   android:layout_weight="1"
-			   android:gravity="center_horizontal"
-			   android:orientation="horizontal"
-			   />
-		<Style Key="ButtonContainerStyle"
-			   android:layout_width="match_parent"
-			   android:layout_height="match_parent"
-			   android:gravity="center"
-			   android:orientation="vertical"
-			   android:paddingBottom="25dip"
-			   android:paddingTop="25dip"
-			   />
+		<Style Key="Relative"
+		   android:layout_width="fill_parent"
+		   android:layout_height="wrap_content"
+		   android:layout_alignParentTop="true"
+           />
+		<Style Key="CMPRelative"
+		  android:layout_marginTop="5dip"
+		  android:layout_below="@id/relative"
+		  android:layout_above="@id/linear_button"
+		  android:layout_width="fill_parent"
+		  android:layout_height="fill_parent"
+		  android:background="#2E8AEF"
+           />
+
+		<converters:ColorContainerToIntConverter Key="ColorContainerToIntConverter" />
 	</Resources>
-
+	<!--Logo-->
 	<ImageView XmlStyle="{Resource LogoStyle}"
-			   android:id="Logo"
+			   android:layout_alignParentRight="true"
+			   android:id="relative"
 			   />
 
-	<LinearLayout XmlStyle="{Resource ButtonContainerStyle}"
-				  android:layout_below="@+id/Logo">
+	<!--Button add & next-->
+	<LinearLayout XmlStyle="{Resource Ok_Back_Container}"
+				  android:id="linear_button">
 
-		<LinearLayout XmlStyle="{Resource ButtonLineStyle}">
 
-			<Button XmlStyle="{Resource MediumBlueButtonStyle}"
-					Text="{Tr Text, Uid=Home_AppSettings}"
-					Click="{Binding SettingsCommand}"
-					/>
-			<Button XmlStyle="{Resource MediumGreenButtonStyle}"
-					Text="{Tr Text, Uid=Home_CollectionManagement}"
-					Click="{Binding CollectionManagementCommand}"
-					/>
-		</LinearLayout>
-
-		<LinearLayout XmlStyle="{Resource ButtonLineStyle}">
-
-			<Button XmlStyle="{Resource SmallBlueButtonStyle}"
-					Text="{Tr Text, Uid=Home_VoiceSynthesisUpgrade}"
-					Click="{Binding InstallVoiceSynthesisCommand}"
-					/>
-			<Button XmlStyle="{Resource SmallBlueButtonStyle}"
-					Text="{Tr Text, Uid=Home_SendLogs}"
-					Click="{Binding SendLogsCommand}"
-					/>
-			<Button XmlStyle="{Resource SmallGreenButtonStyle}"
-					Text="{Tr Text, Uid=Home_SyncCollection}"
-					Click="{Binding SyncCollectionCommand}"
-					/>
-			<Button XmlStyle="{Resource SmallPinkButtonStyle}"
-					Text="{Tr Text, Uid=Home_Help}"
-					Click="{Binding HelpCommand}"/>
-		</LinearLayout>
-
-		<LinearLayout XmlStyle="{Resource ButtonLineStyle}">
-
-			<Button XmlStyle="{Resource SmallRedButtonStyle}"
-					Text="{Tr Text, Uid=Home_Contact}"
-					Click="{Binding ContactCommand}"
-					/>
-			<Button XmlStyle="{Resource SmallPurpleButtonStyle}"
-					Text="{Tr Text, Uid=Home_Credits}"
-					Click="{Binding CreditsCommand}"
-					/>
-		</LinearLayout>
+		<Button XmlStyle="{Resource SmallGreenButtonStyle}"
+				Text ="{Tr Text,Uid=SelectionIndiagramsNext}"
+				Click="{Binding NextCommand}"
+				/>
 	</LinearLayout>
+
+	<!-- Browser -->
+	<IndiagramBrowserView XmlStyle="{Resource CMPRelative}"
+						  Count="{Binding CollectionDisplayCount, Mode=TwoWay, UpdateEvent=CountChanged}"
+						  Offset="{Binding CollectionOffset}"
+						  Indiagrams="{Binding DisplayedIndiagrams}"
+						  TextColor="{Binding TextColor, Converter={Resource ColorContainerToIntConverter}}"
+						  IndiagramSelected="{Binding IndiagramSelectedCommand}"
+						  />
 </RelativeLayout>
+

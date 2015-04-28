@@ -49,6 +49,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         public ICommand DesactivateCommand { get; private set; }
         public ICommand CopyCommand { get; private set; }
         public ICommand PasteCommand { get; private set; }
+		public ICommand SelectCategoryCommand { get; private set; }
 
 
         #endregion
@@ -112,6 +113,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
         public AddIndiagramViewModel()
         {
+			SelectCategoryCommand = new DelegateCommand(SelectCategoryAction);
             ImageChoiceCommand = new DelegateCommand(ImageChoiceAction);
             SoundChoiceCommand = new DelegateCommand(SoundChoiceAction);
             RootCommand = new DelegateCommand(RootAction);
@@ -127,6 +129,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         }
 
 	    #region Action
+
+	    protected void SelectCategoryAction()
+	    {
+			NavigationService.Navigate(Views.ADMIN_COLLECTION_SELECTCATEGORY);
+	    }
 
         protected void ActivateAction()
         {
