@@ -9,6 +9,7 @@ using IndiaRose.Data.Model;
 using PCLStorage;
 using System.Xml;
 using System.Xml.Linq;
+using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Storage
 {
@@ -70,26 +71,28 @@ namespace IndiaRose.Storage
         {
             XDocument doc = XDocument.Load(path);
 
-            if (doc.FirstNode.ToString().Contains("category"))
+            if (doc.FirstNode.ToString().StartsWith("<c"))
             {
                 Category c = new Category()
                 {
-                    Text = doc.Descendants("category").Descendants("text").First().Value,
-                    ImagePath = doc.Descendants("category").Descendants("picture").First().Value,
+                    Text = doc.Descendants("text").First().Value,
+                    ImagePath = doc.Descendants("picture").First().Value,
+                    SoundPath = doc.Descendants("sound").First().Value
                 };
 
+                LazyResolver<ICollectionStorageService>.Service.Create(c);
                 return c;
             }
-            else
-            {
-                Indiagram i = new Indiagram()
-                {
-                    Text = doc.Descendants("indiagram").Descendants("text").First().Value,
-                    ImagePath = doc.Descendants("indiagram").Descendants("picture").First().Value,
-                };
 
-                return i;
-            }
+            Indiagram i = new Indiagram()
+            {
+                Text = doc.Descendants("text").First().Value,
+                ImagePath = doc.Descendants("picture").First().Value,
+                SoundPath = doc.Descendants("sound").First().Value
+            };
+
+            LazyResolver<ICollectionStorageService>.Service.Create(i);
+            return i;
         }
 
         public void XmlToSql()
