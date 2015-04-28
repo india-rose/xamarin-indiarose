@@ -1,13 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
-using Android.OS;
 using Android.Runtime;
 using Android.Util;
 using Android.Views;
@@ -19,18 +13,21 @@ namespace IndiaRose.Framework.Views
     {
         private string _sourcePath;
         private int _size;
-        private bool _redSquare;
+        private bool _displayDefaultRedSquare = true;
 
-        public bool RedSquare
+        public bool DisplayDefaultRedSquare
         {
             get
             {
-                return _redSquare;
+                return _displayDefaultRedSquare;
             }
             set
             {
-                _redSquare = value;
-                RefreshImage();
+	            if (value != _displayDefaultRedSquare)
+	            {
+		            _displayDefaultRedSquare = value;
+		            RefreshImage();
+	            }
             }
         }
 
@@ -39,14 +36,13 @@ namespace IndiaRose.Framework.Views
             get { return _sourcePath; }
             set
             {
-                if (Equals(_sourcePath, value))
+                if (!Equals(_sourcePath, value))
                 {
-                    return;
-                }
-                _sourcePath = value;
-                if (value != null)
-                {
-                    RefreshImage();
+					_sourcePath = value;
+					if (value != null)
+					{
+						RefreshImage();
+					}
                 }
             }
         }
@@ -66,13 +62,12 @@ namespace IndiaRose.Framework.Views
 
         private void RefreshImage()
         {
-
-            ViewGroup.LayoutParams top = LayoutParameters;
-            top.Height = Size;
-            top.Width = Size;
+            ViewGroup.LayoutParams parameters = LayoutParameters;
+            parameters.Height = Size;
+            parameters.Width = Size;
             Post(() =>
             {
-                LayoutParameters = top;
+                LayoutParameters = parameters;
             });
 
             if (SourcePath != null)
@@ -86,11 +81,15 @@ namespace IndiaRose.Framework.Views
                         SetImageBitmap(image);
                         Invalidate();
                     });
-                    return;
+	                return; //to not put default color
                 }
             }
-            if (RedSquare)
-                Post(() => SetImageDrawable(new ColorDrawable(Color.Red)));
+
+			Post(() =>
+			{
+				SetImageDrawable(new ColorDrawable(DisplayDefaultRedSquare ? Color.Red : Color.Transparent));
+				Invalidate();
+			});
         }
 
         protected BindableImageView(IntPtr javaReference, JniHandleOwnership transfer)

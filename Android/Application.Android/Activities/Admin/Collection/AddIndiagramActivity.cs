@@ -13,6 +13,8 @@ namespace IndiaRose.Application.Activities.Admin.Collection
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Admin_Collection_AddIndiagramPage);
             SetViewModel(Container.Locator.AdminCollectionAddIndiagramViewModel);
+
+	        Add_Img.DisplayDefaultRedSquare = false;
         }  
     }
 }

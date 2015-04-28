@@ -313,7 +313,6 @@
                     android:layout_centerInParent="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    Redsquare="false"
 		                SourcePath="{Binding CurrentIndiagram.ImagePath}"
 		                Size="{Binding SettingsService.IndiagramDisplaySize}"
 		            />
