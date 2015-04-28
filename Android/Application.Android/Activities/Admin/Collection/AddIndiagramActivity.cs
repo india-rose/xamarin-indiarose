@@ -6,6 +6,8 @@ using Android.Views;
 using Android.Widget;
 using IndiaRose.Business.ViewModels.Admin.Collection;
 using IndiaRose.Data.Model;
+using IndiaRose.Interfaces;
+using IndiaRose.Services;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
 using Storm.Mvvm.Inject;
@@ -17,6 +19,10 @@ namespace IndiaRose.Application.Activities.Admin.Collection
     [Activity(ScreenOrientation = ScreenOrientation.Landscape, Theme = "@style/Theme.Sherlock.Light.NoActionBar")]
     public partial class AddIndiagramActivity : ActivityBase
     {
+        public ISettingsService SettingsService
+        {
+            get { return LazyResolver<ISettingsService>.Service; }
+        }
         #region Properties
         private string _imagePath;
         private bool _isEnable;
@@ -80,8 +86,7 @@ namespace IndiaRose.Application.Activities.Admin.Collection
                     ImageView imageView = FindViewById<ImageView>(Resource.Id.Add_Img);
                     if (ImagePath != null)
                     {
-                        AddIndiagramViewModel vm = (AddIndiagramViewModel)ViewModel;
-                        var size = vm.SettingsService.IndiagramDisplaySize;
+                        var size = SettingsService.IndiagramDisplaySize;
                         imageView.SetImageBitmap(Bitmap.CreateScaledBitmap(BitmapFactory.DecodeFile(ImagePath),size,size,true));
                     }
                     break;
