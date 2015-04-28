@@ -55,6 +55,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
         #region Properties
         private string _bro1;
+	    private Indiagram _initialIndiagram;
         private Indiagram _currentIndiagram;
 
         public string Bro1
@@ -81,8 +82,26 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             }
         }
 
-        [NavigationParameter]
-        protected Indiagram InitialIndiagram { get; set; }
+	    [NavigationParameter]
+	    protected Indiagram InitialIndiagram
+	    {
+		    get {return _initialIndiagram;}
+		    set
+		    {
+			    if (SetProperty(ref _initialIndiagram, value) && value != null)
+			    {
+					if (InitialIndiagram.IsCategory)
+					{
+						CurrentIndiagram = new Category(InitialIndiagram);
+						Categ = true;
+					}
+					else
+					{
+						CurrentIndiagram = new Indiagram(InitialIndiagram);
+					}
+			    }
+		    }
+	    }
 
         public Indiagram CurrentIndiagram
         {
@@ -103,22 +122,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             DesactivateCommand = new DelegateCommand(DesactivateAction);
             CopyCommand = new DelegateCommand(CopyAction);
             PasteCommand = new DelegateCommand(PasteAction);
-            if (InitialIndiagram == null)
-            {
-                CurrentIndiagram = new Indiagram();
-            } 
-            else if (InitialIndiagram.IsCategory)
-            {
-                CurrentIndiagram = new Category(InitialIndiagram);
-                Categ = true;
-            }
-            else
-            {
-                CurrentIndiagram = new Indiagram(InitialIndiagram);
-            }
+
+			CurrentIndiagram = new Indiagram();
         }
 
-        #region Action
+	    #region Action
 
         protected void ActivateAction()
         {
