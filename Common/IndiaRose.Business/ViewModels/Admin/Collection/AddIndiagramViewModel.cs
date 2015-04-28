@@ -16,25 +16,25 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
     {
         //TODO A TESTE LES CATEGORIES
         #region Service
-
         public IMessageDialogService MessageDialogService
         {
             get { return LazyResolver<IMessageDialogService>.Service; }
         }
-
         public ICollectionStorageService CollectionStorageService
         {
             get { return LazyResolver<ICollectionStorageService>.Service; }
         }
-
         public IPopupService PopupService
         {
             get { return LazyResolver<IPopupService>.Service; }
         }
-
         public ILocalizationService LocalizationService
         {
             get { return LazyResolver<ILocalizationService>.Service; }
+        }
+        public ICopyPasteService CopyPasteService
+        {
+            get { return LazyResolver<ICopyPasteService>.Service; }
         }
         #endregion
 
@@ -47,6 +47,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         public ICommand ChooseCategoryCommand { get; private set; }
         public ICommand ActivateCommand { get; private set; }
         public ICommand DesactivateCommand { get; private set; }
+        public ICommand CopyCommand { get; private set; }
+        public ICommand PasteCommand { get; private set; }
+
 
         #endregion
 
@@ -70,6 +73,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
                 {
                     SetProperty(ref _categ, value);
                 }
+                else
+                {
+                    RaisePropertyChanged();
+                }
             }
         }
 
@@ -89,6 +96,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             ChooseCategoryCommand=new DelegateCommand(ChooseCategoryAction);
             ActivateCommand = new DelegateCommand(ActivateAction);
             DesactivateCommand = new DelegateCommand(DesactivateAction);
+            CopyCommand = new DelegateCommand(CopyAction);
+            PasteCommand = new DelegateCommand(PasteAction);
             if (InitialIndiagram == null)
             {
                 CurrentIndiagram = new Indiagram();
@@ -186,6 +195,14 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
                 PopupService.AfficherPopup(LocalizationService.GetString("AIP_NoSoundError", "Text"));
             }
             
+        }
+        protected void CopyAction()
+        {
+            CopyPasteService.Copy(CurrentIndiagram);
+        }
+        protected void PasteAction()
+        {
+            CopyPasteService.Paste(CurrentIndiagram);
         }
 
         #endregion

@@ -19,7 +19,7 @@ namespace IndiaRose.Data.Model
 	    {
 	        return Children.Count > 0;
 	    }
-		public Category()
+	    public Category()
 		{	
 		}
 		public Category(string text, string imagePath, string soundPath = null) : base(text, imagePath, soundPath)
