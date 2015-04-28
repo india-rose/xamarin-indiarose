@@ -16,22 +16,22 @@ namespace IndiaRose.Storage
     {
         private const string Path = ""; //dossier de destination à rajouter
 
-        public async Task<List<IFile>> SearchXml()
+        private async Task<List<IFile>> SearchXml()
         {
             IFolder folder = await FileSystem.Current.GetFolderFromPathAsync(Path);
             List<IFile> xml = new List<IFile>();
 
-            Dossiers(xml, folder);
+            Folders(xml, folder);
 
             return xml;
         }
 
-        public static async void Dossiers(List<IFile> list, IFolder path)
+        private static async void Folders(List<IFile> list, IFolder path)
         {
             IList<IFolder> folders = await path.GetFoldersAsync();
             foreach (var t in folders)
             {
-                Dossiers(list, t);
+                Folders(list, t);
             }
 
             IList<IFile> files = await path.GetFilesAsync();
@@ -64,6 +64,38 @@ namespace IndiaRose.Storage
                 }
             }
             return indiagrams;
+        }
+
+        private static Indiagram Create(string path)
+        {
+            XDocument doc = XDocument.Load(path);
+
+            if (doc.FirstNode.ToString().Contains("category"))
+            {
+                Category c = new Category()
+                {
+                    Text = doc.Descendants("category").Descendants("text").First().Value,
+                    ImagePath = doc.Descendants("category").Descendants("picture").First().Value,
+                };
+
+                return c;
+            }
+            else
+            {
+                Indiagram i = new Indiagram()
+                {
+                    Text = doc.Descendants("indiagram").Descendants("text").First().Value,
+                    ImagePath = doc.Descendants("indiagram").Descendants("picture").First().Value,
+                };
+
+                return i;
+            }
+        }
+
+        public void XmlToSql()
+        {
+            Task<List<IFile>> files = SearchXml();
+
         }
     }
 }
