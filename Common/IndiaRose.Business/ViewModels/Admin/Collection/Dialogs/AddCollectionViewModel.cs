@@ -1,16 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Dynamic;
 using System.Windows.Input;
+using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Data.Model;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
-    public class AddCollectionViewModel : AbstractViewModel
+    public class AddCollectionViewModel : AbstractSettingsViewModel
     {
+		private Indiagram _indiagram;
+
 		[NavigationParameter]
-		public Indiagram Indiagram { get; set; }
+		public Indiagram Indiagram
+		{
+			get { return _indiagram; }
+			set { SetProperty(ref _indiagram, value); }
+		}
 
         public ICommand WatchIndiagramCommand{ get; private set; }
 
@@ -22,7 +29,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
         {
 			NavigationService.Navigate(Views.ADMIN_COLLECTION_WATCH, new Dictionary<string, object>()
              {
-                 {"CurrentIndiagram",Indiagram}
+                 {"CurrentIndiagram", Indiagram}
              });
         }
     }

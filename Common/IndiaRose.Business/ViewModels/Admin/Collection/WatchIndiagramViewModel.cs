@@ -11,8 +11,14 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 	{
 		public ICommand EditCommand { get; private set; }
 
+		private Indiagram _currentIndiagram;
+
 		[NavigationParameter]
-		public Indiagram CurrentIndiagram { get; private set; }
+		public Indiagram CurrentIndiagram
+		{
+			get { return _currentIndiagram; }
+			set { SetProperty(ref _currentIndiagram, value); }
+		}
 
 		public WatchIndiagramViewModel()
 		{
