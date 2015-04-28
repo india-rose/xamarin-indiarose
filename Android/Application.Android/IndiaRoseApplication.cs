@@ -47,7 +47,7 @@ namespace IndiaRose.Application
 				{Dialogs.ADMIN_SETTINGS_CATEGORYREADING, typeof(CategoryReadingDialog)},
                 {Dialogs.ADMIN_SETTINGS_RESETSETTINGS, typeof(ResetSettingsDialog)},
                 {Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
-                {Dialogs.ADMIN_COLLECTION_ADDCOLLECTION,typeof(AddCollectionDialog)},
+                {Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION,typeof(ExploreCollectionDialog)},
                 {Dialogs.ADMIN_COLLECTION_IMAGECHOICE,typeof(ImageChoiceDialog)},
                 {Dialogs.ADMIN_COLLECTION_SOUNDCHOICE,typeof(SoundChoiceDialog)},
                 {Dialogs.ADMIN_COLLECTION_RECORDSOUND,typeof(RecordSoundDialog)},

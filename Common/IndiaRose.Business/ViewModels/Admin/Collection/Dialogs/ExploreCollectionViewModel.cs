@@ -8,7 +8,7 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
-    public class AddCollectionViewModel : AbstractSettingsViewModel
+    public class ExploreCollectionViewModel : AbstractSettingsViewModel
     {
 		private Indiagram _indiagram;
 
@@ -21,7 +21,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 
         public ICommand WatchIndiagramCommand{ get; private set; }
 
-        public AddCollectionViewModel()
+        public ExploreCollectionViewModel()
         {
             WatchIndiagramCommand = new DelegateCommand(WatchIndiagram);
         }

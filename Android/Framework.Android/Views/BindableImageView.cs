@@ -89,7 +89,7 @@ namespace IndiaRose.Framework.Views
                     return;
                 }
             }
-            if (RedSquare)
+            //if (RedSquare)
                 Post(() => SetImageDrawable(new ColorDrawable(Color.Red)));
         }
 
