@@ -124,5 +124,65 @@ namespace IndiaRose.Storage
             }
             return india;
         }
+
+        public static Indiagram LireXml(XDocument xd)
+        {
+           
+            //initialise les premiers noeud en fonction de si le doc concerne un indiagram
+            XElement xe = xd.Element("indiagram");
+            //... ou une categorie
+            if (xd.FirstNode.ToString().StartsWith("<category>"))
+            {
+                xe = xd.Element("category");
+            }
+
+            //instancie le futur return
+            Indiagram indiagram = new Indiagram();
+
+
+            foreach (var t in xe.Nodes())
+            {
+                var element = (XElement) t;
+
+                //prend les champs text picture et sound
+                if (element.ToString().StartsWith("<text>"))
+                {
+                    indiagram.Text = element.Value;
+                }
+                if (element.ToString().StartsWith("<picture>"))
+                {
+                    indiagram.ImagePath = element.Value;
+                }
+                if (element.ToString().StartsWith("<sound>"))
+                {
+                    indiagram.SoundPath = element.Value;
+                }
+                //si le noeud indiagrams est trouve
+                if (element.ToString().StartsWith("<indiagrams>"))
+                {
+                    //on instancie une nouvelle liste d'indiagram
+                    var list = new List<Indiagram>();
+
+                    //et pour tout element dans ce noeud on rappel la fonction pour initialiser les fils
+                    foreach (var xNode in element.Nodes())
+                    {
+                        var u = (XElement) xNode;
+                        //TODO PATH A FIXER
+                        list.Add(LireXml(XDocument.Load(Path+"/base/xml/fr" + u.Value)));
+                    }
+
+                    //on recopie dans une nouvelle instance d'une category on l'on y fait les liens pere/fils
+                    var category = new Category(indiagram);
+                    foreach (var v in list)
+                    {
+                        category.Children.Add(v);
+                        v.Parent = category;
+                    }
+                    return category;
+
+                }
+            }
+            return indiagram;
+        }
     }
 }
