@@ -47,9 +47,12 @@
     <Compile Include="Converters\ColorStringToDrawableColor.cs" />
     <Compile Include="Converters\ColorContainerToIntConverter.cs" />
     <Compile Include="Converters\ColorContainerToDrawableColor.cs" />
+    <Compile Include="Converters\ParentCategoryTextConverter.cs" />
+    <Compile Include="Converters\DefaultLocalizedStringIfNullConverter.cs" />
     <Compile Include="Helper\FontHelper.cs" />
     <Compile Include="Helper\ImageHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\BindableImageView.cs" />
     <Compile Include="Views\IndiagramBrowserView.cs" />
     <Compile Include="Views\IndiagramView.cs" />
   </ItemGroup>

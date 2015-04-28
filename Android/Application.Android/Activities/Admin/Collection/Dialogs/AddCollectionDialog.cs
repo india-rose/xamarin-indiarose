@@ -18,8 +18,19 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 	[BindingElement(Path = "WatchIndiagramCommand", TargetPath = "PositiveButtonEvent")]
 	public partial class AddCollectionDialog : AlertDialogFragmentBase
 	{
+		public Indiagram _Indiagram;
 		[Binding("Indiagram")]
-		public Indiagram Indiagram { get; set; }
+		public Indiagram Indiagram
+		{
+			get { return _Indiagram; }
+			set
+			{
+				if (SetProperty(ref _Indiagram, value))
+				{
+					RefreshView();
+				}
+			}
+		}
 
 		public AddCollectionDialog()
 		{
@@ -48,6 +59,18 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 			Initialize();
 		}
 
+		private void RefreshView()
+		{
+			TextView parentTextView = RootView.FindViewById<TextView>(Resource.Id.m_indiagramCategory);
+			Indiagram parent = Indiagram;
+			if (parent != null)
+				parentTextView.Text = parent.Text;
+			else
+			{
+				var trad = DependencyService.Container.Resolve<ILocalizationService>();
+				parentTextView.Text = trad.GetString("Root_Categ", "Text");
+			}
+		}
 		private void Initialize()
 		{
 			ImageView imageView = RootView.FindViewById<ImageView>(Resource.Id.image);

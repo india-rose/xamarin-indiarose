@@ -8,6 +8,10 @@
         {
             "alias": "IndiagramBrowserView",
             "fullclassname": "IndiaRose.Framework.Views.IndiagramBrowserView"
+        },
+        {
+            "alias": "BindableImageView",
+            "fullclassname": "IndiaRose.Framework.Views.BindableImageView"
         }
     ],
     "globalResourceFiles": [

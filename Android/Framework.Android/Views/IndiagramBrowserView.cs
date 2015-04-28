@@ -287,12 +287,15 @@ namespace IndiaRose.Framework.Views
 				return;
 			}
 
-			Indiagram indiagram = senderView.Indiagram;
-
-			ICommand command = IndiagramSelected;
-			if (command != null && command.CanExecute(indiagram))
+			if (touchEventArgs.Event.ActionMasked == MotionEventActions.Down)
 			{
-				command.Execute(indiagram);
+				Indiagram indiagram = senderView.Indiagram;
+
+				ICommand command = IndiagramSelected;
+				if (command != null && command.CanExecute(indiagram))
+				{
+					command.Execute(indiagram);
+				}
 			}
 		}
 

@@ -7,23 +7,23 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
-    public class WatchIndiagramViewModel : AbstractSettingsViewModel
-    {
-        public ICommand EditCommand { get; private set; }
-        [NavigationParameter]
-        public Indiagram CurrentIndiagram { get; private set; }
+	public class WatchIndiagramViewModel : AbstractSettingsViewModel
+	{
+		public ICommand EditCommand { get; private set; }
 
-         public WatchIndiagramViewModel()
-        {
-             EditCommand=new DelegateCommand(EditAction);
-             CurrentIndiagram = new Indiagram("test", "5317034a965b6suer.png");
-        }
-         private void EditAction()
-         {
-             NavigationService.Navigate(Views.ADMIN_COLLECTION_ADD,new Dictionary<string, object>()
+		[NavigationParameter]
+		public Indiagram CurrentIndiagram { get; private set; }
+
+		public WatchIndiagramViewModel()
+		{
+			EditCommand = new DelegateCommand(EditAction);
+		}
+		private void EditAction()
+		{
+			NavigationService.Navigate(Views.ADMIN_COLLECTION_ADD, new Dictionary<string, object>()
              {
                  {"InitialIndiagram",CurrentIndiagram}
              });
-         }
-    }
+		}
+	}
 }

@@ -1,4 +1,5 @@
-﻿using System.Dynamic;
+﻿using System.Collections.Generic;
+using System.Dynamic;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
 using Storm.Mvvm.Commands;
@@ -19,7 +20,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
         }
         private void WatchIndiagram()
         {
-            NavigationService.Navigate(Views.ADMIN_COLLECTION_WATCH);
+			NavigationService.Navigate(Views.ADMIN_COLLECTION_WATCH, new Dictionary<string, object>()
+             {
+                 {"CurrentIndiagram",Indiagram}
+             });
         }
     }
 }
