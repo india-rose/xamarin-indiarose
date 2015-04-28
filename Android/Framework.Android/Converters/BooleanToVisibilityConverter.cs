@@ -19,13 +19,11 @@ namespace IndiaRose.Framework.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new Exception(value.ToString() + "\n" + targetType.ToString() + "\n" + parameter.ToString() + "\n" + culture.ToString());
-            /*bool b = value as bool;
-            if (b != null)
-            {
-                return b ? ViewStates.Visible : ViewStates.Gone;
-            }
-             */
+            string param = parameter as string ?? "";
+            bool res = (bool) value;
+            if (Equals(param, "Negation"))
+                res = !res;
+            return res ? ViewStates.Visible : ViewStates.Gone;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -15,6 +15,7 @@
       <converters:ParentCategoryTextConverter Key="SoundPathTextConverter"
                         Uid="AIP_NoSound"
                         Property="Text"/>
+      <converters:BooleanToVisibilityConverter Key="EnabledConverter"/>
       
       <Style Key="DataTempTextViewStyle"
              android:layout_width="wrap_content"
@@ -264,12 +265,15 @@
                     android:id="act"
                     Text="{Tr Text, Uid=AIP_Activate}"
                     Click="{Binding ActivateCommand}"
-                    android:visibility="gone"/>
+                    android:visibility="{Binding CurrentIndiagram.IsEnabled, Converter={Resource EnabledConverter}, ConverterParameter=Negation}"
+                    />
+/>
 
                 <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
                     android:id="desact"
                     Text="{Tr Text, Uid=AIP_Desactivate}"
-                    Click="{Binding DesactivateCommand}"/>
+                    Click="{Binding DesactivateCommand}"
+                    android:visibility="{Binding CurrentIndiagram.IsEnabled, Converter={Resource EnabledConverter}}"/>
               </LinearLayout>
             </RelativeLayout>
         </ScrollView>
