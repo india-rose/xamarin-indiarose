@@ -175,7 +175,7 @@ namespace IndiaRose.Storage.Sqlite
 			//supprime dans la table adequate
 		    if (indiagram.Parent != null)
 		    {
-		        var parentNull = indiagram.Parent as Category;
+		        var parentNull = indiagram.Parent;
 		        if (parentNull != null) parentNull.Children.Remove(indiagram);
 		        Update(indiagram.Parent);
 		    }
@@ -186,9 +186,8 @@ namespace IndiaRose.Storage.Sqlite
 				Connection.Delete<CategorySql>(category.Id);
 			    foreach (var t in category.Children.ToList())
 			    {
+                    Delete(t);
 			        category.Children.Remove(t);
-			        t.Parent = null;
-                    Update(t);
 			    }
 			}
 			else
