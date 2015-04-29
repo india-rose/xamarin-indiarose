@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--
 /*
  * This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
@@ -6,187 +7,171 @@
  */
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:conv="using:Storm.Mvvm.Converters"
-    xmlns:colorConverters="using:IndiaRose.Framework.Converters"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal" >
+              xmlns:conv="using:Storm.Mvvm.Converters"
+              xmlns:colorConverters="using:IndiaRose.Framework.Converters"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal">
 
-  <Resources>
-    <colorConverters:ColorStringToDrawableColor Key="ColorStringToDrawableColor" />
-    
-  <Style Key="RelativeStyle"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:background="@android:color/white"
-  />
-  </Resources>
+	<Resources>
+		<colorConverters:ColorStringToDrawableColor Key="ColorStringToDrawableColor" />
 
-  <RelativeLayout XmlStyle="{Resource RelativeStyle}"
-       android:id="background_color_layout_left"
-  >
+		<Style Key="RelativeStyle"
+		       android:layout_width="match_parent"
+		       android:layout_height="match_parent"
+		       android:layout_weight="1"
+		       android:background="@android:color/white" />
+	</Resources>
 
-    <Resources>
-      <conv:StringFormatConverter Key="StringFormatConverter" />
-        
-      <DataTemplate Key="SpinnerDataTemplate">
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:orientation="horizontal"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                      >
-          <TextView android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:textSize="20sp"
-                    text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}%'}"
-                      />
-        </LinearLayout>
-      </DataTemplate>
-      
-      <Style Key="Text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/logo"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="4dip"
-        android:layout_marginTop="80dip"
-        android:textColor="@android:color/black"
-        android:textSize="15sp"
-             />
-      
-      <Style Key="Text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textColor="@android:color/black"
-        android:textSize="15sp"
-      />
-      
-      <Style Key="Button1"
-          android:layout_width="match_parent"
-          android:layout_height="75dip"
-          android:layout_margin="4dip"
-          android:layout_weight="1"
-          android:background="@drawable/buttongreen"
-          android:textColor="@android:color/white"
-          android:textSize="15sp"
-      />
-      
-      <Style Key="Button2"
-          android:layout_width="match_parent"
-          android:layout_height="75dip"
-          android:layout_marginBottom="4dip"
-          android:layout_marginRight="4dip"
-          android:layout_marginTop="4dip"
-          android:layout_weight="1"
-          android:background="@drawable/buttonorange"
-          android:textColor="@android:color/white"
-          android:textSize="15sp"
+	<RelativeLayout XmlStyle="{Resource RelativeStyle}"
+	                android:id="background_color_layout_left">
 
-     />
-    
-    <Style Key="BindableStyle"
-        android:layout_width="100dip"
-        android:layout_height="40dip"
-        android:layout_below="@id/background_color_text_color_size"
-        android:layout_centerInParent="true"
-           />
-    
-    <Style Key="Linear1"
-       android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:orientation="horizontal"
-    />
-    
-    <Style Key="Linear2"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:orientation="vertical"
-    />
-    
-    <Style Key="View"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-    />
-    
-    </Resources>
+		<Resources>
+			<conv:StringFormatConverter Key="StringFormatConverter" />
 
-    <ImageView XmlStyle="{Resource LogoStyle}"
-        android:id="logo" />
+			<DataTemplate Key="SpinnerDataTemplate">
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				              android:orientation="horizontal"
+				              android:layout_width="fill_parent"
+				              android:layout_height="fill_parent">
+					<TextView android:layout_width="wrap_content"
+					          android:layout_height="fill_parent"
+					          android:textSize="20sp"
+					          text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}%'}" />
+				</LinearLayout>
+			</DataTemplate>
 
-    <TextView XmlStyle="{Resource Text1}"
-        Text="{Tr Text, Uid=Background_Color_backgroundColorInfo}" />
+			<Style Key="Text1"
+			       android:layout_width="wrap_content"
+			       android:layout_height="wrap_content"
+			       android:layout_below="@+id/logo"
+			       android:layout_centerInParent="true"
+			       android:layout_marginLeft="4dip"
+			       android:layout_marginTop="80dip"
+			       android:textColor="@android:color/black"
+			       android:textSize="15sp" />
 
-    <TextView XmlStyle="{Resource Text2}"
-        android:id="background_color_text_color_size"
-        Text="{Tr Text, Uid=Background_Color_backgroundColorSizeLabel}" />
+			<Style Key="Text2"
+			       android:layout_width="wrap_content"
+			       android:layout_height="wrap_content"
+			       android:layout_centerInParent="true"
+			       android:textColor="@android:color/black"
+			       android:textSize="15sp" />
 
-    <BindableSpinner XmlStyle="{Resource BindableStyle}"
-        adapter="{Binding ZoneHeightCollection, Template={Resource SpinnerDataTemplate}}"
-        currentItem="{Binding CurrentSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
-            />
+			<Style Key="Button1"
+			       android:layout_width="match_parent"
+			       android:layout_height="75dip"
+			       android:layout_margin="4dip"
+			       android:layout_weight="1"
+			       android:background="@drawable/buttongreen"
+			       android:textColor="@android:color/white"
+			       android:textSize="15sp" />
 
-    <LinearLayout XmlStyle="{Resource Linear1}" >
+			<Style Key="Button2"
+			       android:layout_width="match_parent"
+			       android:layout_height="75dip"
+			       android:layout_marginBottom="4dip"
+			       android:layout_marginRight="4dip"
+			       android:layout_marginTop="4dip"
+			       android:layout_weight="1"
+			       android:background="@drawable/buttonorange"
+			       android:textColor="@android:color/white"
+			       android:textSize="15sp" />
 
-      <Button XmlStyle="{Resource Button1}"
-          Text="{Tr Text, Uid=Button_Ok}"
-          Click="{Binding SaveCommand}"/>
+			<Style Key="BindableStyle"
+			       android:layout_width="100dip"
+			       android:layout_height="40dip"
+			       android:layout_below="@id/background_color_text_color_size"
+			       android:layout_centerInParent="true" />
 
-      <Button XmlStyle="{Resource Button2}"
-          Text="{Tr Text, Uid=Button_Back}"
-          Click="{Binding BackCommand}"/>
-    </LinearLayout>
-  </RelativeLayout>
+			<Style Key="Linear1"
+			       android:layout_width="match_parent"
+			       android:layout_height="wrap_content"
+			       android:layout_alignParentBottom="true"
+			       android:gravity="center"
+			       android:orientation="horizontal" />
 
-  <LinearLayout XmlStyle="{Resource Linear2}"
-      android:id="RightLayout"
-    > 
-    <RelativeLayout
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content">
-      <LinearLayout
-            android:layout_width="375dip"
-            android:layout_height="240dip"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:id="linearok">
-      <View
-        
-            android:layout_width="fill_parent"
-              android:layout_height="168dip"
-            android:id="TopArea"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:gravity="center"
-            background="{Binding TopColor.Color, Converter={Resource ColorStringToDrawableColor}}"
-            click="{Binding TopAreaColorCommand}"/>
+			<Style Key="Linear2"
+			       android:layout_width="match_parent"
+			       android:layout_height="match_parent"
+			       android:layout_weight="1"
+			       android:orientation="vertical" />
 
-      <View
-        
-            android:layout_width="fill_parent"
-              android:layout_height="72dip"
-            android:id="BottomArea"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:gravity="center"
-            background="{Binding BottomColor.Color, Converter={Resource ColorStringToDrawableColor}}"
-            click="{Binding BottomAreaColorCommand}"/>
-      </LinearLayout>
-     <ImageView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-        android:src="@drawable/tab"
-        android:layout_centerInParent="true"
-       android:id="image_tab"
-        />
-    </RelativeLayout>
-    
-    </LinearLayout>
+			<Style Key="View"
+			       android:layout_width="fill_parent"
+			       android:layout_height="wrap_content" />
+
+		</Resources>
+
+		<ImageView XmlStyle="{Resource LogoStyle}"
+		           android:id="logo" />
+
+		<TextView XmlStyle="{Resource Text1}"
+		          Text="{Tr Text, Uid=Background_Color_backgroundColorInfo}" />
+
+		<TextView XmlStyle="{Resource Text2}"
+		          android:id="background_color_text_color_size"
+		          Text="{Tr Text, Uid=Background_Color_backgroundColorSizeLabel}" />
+
+		<BindableSpinner XmlStyle="{Resource BindableStyle}"
+		                 adapter="{Binding ZoneHeightCollection, Template={Resource SpinnerDataTemplate}}"
+		                 currentItem="{Binding CurrentSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}" />
+
+		<LinearLayout XmlStyle="{Resource Linear1}">
+
+			<Button XmlStyle="{Resource Button1}"
+			        Text="{Tr Text, Uid=Button_Ok}"
+			        Click="{Binding SaveCommand}" />
+
+			<Button XmlStyle="{Resource Button2}"
+			        Text="{Tr Text, Uid=Button_Back}"
+			        Click="{Binding BackCommand}" />
+		</LinearLayout>
+	</RelativeLayout>
+
+	<LinearLayout XmlStyle="{Resource Linear2}"
+	              android:id="RightLayout">
+		<RelativeLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+			<LinearLayout
+				android:layout_width="375dip"
+				android:layout_height="240dip"
+				android:layout_centerInParent="true"
+				android:layout_gravity="center"
+				android:gravity="center"
+				android:orientation="vertical"
+				android:id="linearok">
+				<View
+
+					android:layout_width="fill_parent"
+					android:layout_height="168dip"
+					android:id="TopArea"
+					android:layout_centerInParent="true"
+					android:layout_gravity="center"
+					android:gravity="center"
+					background="{Binding TopColor.Color, Converter={Resource ColorStringToDrawableColor}}"
+					click="{Binding TopAreaColorCommand}" />
+
+				<View
+
+					android:layout_width="fill_parent"
+					android:layout_height="72dip"
+					android:id="BottomArea"
+					android:layout_centerInParent="true"
+					android:layout_gravity="center"
+					android:gravity="center"
+					background="{Binding BottomColor.Color, Converter={Resource ColorStringToDrawableColor}}"
+					click="{Binding BottomAreaColorCommand}" />
+			</LinearLayout>
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/tab"
+				android:layout_centerInParent="true"
+				android:id="image_tab" />
+		</RelativeLayout>
+
+	</LinearLayout>
 
 </LinearLayout>

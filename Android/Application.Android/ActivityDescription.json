@@ -12,6 +12,10 @@
         {
             "alias": "BindableImageView",
             "fullclassname": "IndiaRose.Framework.Views.BindableImageView"
+        },
+        {
+            "alias": "IndiagramPreviewView",
+            "fullclassname": "IndiaRose.Framework.Views.IndiagramPreviewView"
         }
     ],
     "globalResourceFiles": [
