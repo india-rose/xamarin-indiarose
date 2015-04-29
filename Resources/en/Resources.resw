@@ -495,4 +495,7 @@ Comments : </value>
   <data name="Del_Confirm.Text" xml:space="preserve">
     <value>Are you sur to delete this indiagram ?\nIf it contains childrens they will be delete too</value>
   </data>
+  <data name="ConfirmeDeletion.Text" xml:space="preserve">
+    <value>Are you sur to delete this indiagram ?</value>
+  </data>
 </root>

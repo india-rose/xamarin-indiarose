@@ -27,18 +27,18 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			set { SetProperty(ref _currentIndiagram, value); }
 		}
 
-	/*	protected virtual IEnumerable<Indiagram> FilterCollection(List<Indiagram> input)
+		protected override IEnumerable<Indiagram> FilterCollection(List<Indiagram> input)
 		{
 			List<Indiagram> send = new List<Indiagram>();
 			foreach (Indiagram indiagram in input)
 			{
-				if (LazyResolver<ICollectionStorageService>.Service.GetChildren(indiagram).Count != 0)
+				if (indiagram.IsCategory)
 					send.Add(indiagram);
 				else
 					;
 			}
 			return send;
-		}*/
+		}
 
 		protected override void IndiagramSelectedAction(Indiagram indiagram)
 		{

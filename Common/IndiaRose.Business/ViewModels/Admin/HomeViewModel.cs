@@ -1,12 +1,14 @@
 ﻿#region Usings
 
+using System.IO;
+using System.IO.Compression;
 using System.Windows.Input;
 using IndiaRose.Interfaces;
 using Storm.Mvvm;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
-
+using IndiaRose.Storage;
 #endregion
 
 namespace IndiaRose.Business.ViewModels.Admin
@@ -69,6 +71,11 @@ namespace IndiaRose.Business.ViewModels.Admin
 			ContactCommand = new DelegateCommand(ContactAction);
 			ExitCommand = new DelegateCommand(ExitAction);
 			CreditsCommand = new DelegateCommand(CreditsAction);
+		    //if (LazyResolver<ICollectionStorageService>.Service.GetFullCollection().Count == 0)//Si pas zip
+		    //{
+		        //Initialiser
+                //LazyResolver<IXmlService>.Service.Initialize();
+		    //}
 		}
 
 		#region First line command implementation
