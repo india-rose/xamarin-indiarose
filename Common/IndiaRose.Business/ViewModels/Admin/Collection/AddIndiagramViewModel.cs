@@ -126,7 +126,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             CopyCommand = new DelegateCommand(CopyAction);
             PasteCommand = new DelegateCommand(PasteAction);
 
-			CurrentIndiagram = new IndiagramContainer(new Indiagram());
+            CurrentIndiagram = new IndiagramContainer(new Indiagram());
+            InitialIndiagram = new IndiagramContainer(new Indiagram());
         }
 
 	    #region Action
