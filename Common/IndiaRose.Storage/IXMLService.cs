@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IndiaRose.Storage
 {
-    interface IXmlService
+    public interface IXmlService
     {
         void Initialize(Stream path);
     }
