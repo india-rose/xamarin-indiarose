@@ -21,7 +21,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <NuGetPackageImportStamp>06d10399</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>977fca2e</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -55,6 +55,16 @@
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <AndroidLinkSkip />
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <BundleAssemblies>False</BundleAssemblies>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+    <AndroidSupportedAbis>armeabi-v7a</AndroidSupportedAbis>
+    <AndroidStoreUncompressedFileExtensions />
+    <MandroidI18n />
+    <JavaMaximumHeapSize />
+    <JavaOptions />
+    <MonoDroidExtraArgs />
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Activities\Admin\Collection\AddIndiagramActivity.cs" />
@@ -64,6 +74,7 @@
     <Compile Include="Activities\Admin\Collection\Dialogs\RecordSoundDialog.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\SelectManagementDialog.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\SoundChoiceDialog.cs" />
+    <Compile Include="Activities\Admin\Collection\Dialogs\DeleteWarningDialog.cs" />
     <Compile Include="Activities\Admin\Collection\SelectCategoryActivity.cs" />
     <Compile Include="Activities\Admin\Collection\WatchIndiagramActivity.cs" />
     <Compile Include="Activities\Admin\Settings\AppSettingsActivity.cs" />
@@ -82,6 +93,9 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Activities\Admin\HomeActivity.cs" />
+    <Content Include="Views\Admin\Collection\Dialogs\DeleteWarningPage.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Admin\Collection\Dialogs\RecordSoundDialog.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -260,16 +274,17 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Storm.Mvvm.Android.Support, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Storm.Mvvm.Android.Support.1.2.7.1\lib\MonoAndroid22\Storm.Mvvm.Android.Support.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Storm.Mvvm.Android.Support.1.2.8\lib\MonoAndroid22\Storm.Mvvm.Android.Support.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Xamarin.Android.Support.v4">
+    <Reference Include="Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Xamarin.Android.Support.v4.21.0.3.0\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -288,8 +303,8 @@
       <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Activez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est le suivant : {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Storm.Mvvm.Android.Support.1.2.7.1\build\Storm.Mvvm.Android.Support.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Storm.Mvvm.Android.Support.1.2.7.1\build\Storm.Mvvm.Android.Support.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Storm.Mvvm.Android.Support.1.2.8\build\Storm.Mvvm.Android.Support.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Storm.Mvvm.Android.Support.1.2.8\build\Storm.Mvvm.Android.Support.targets'))" />
   </Target>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Import Project="..\..\packages\Storm.Mvvm.Android.Support.1.2.7.1\build\Storm.Mvvm.Android.Support.targets" Condition="Exists('..\..\packages\Storm.Mvvm.Android.Support.1.2.7.1\build\Storm.Mvvm.Android.Support.targets')" />
+  <Import Project="..\..\packages\Storm.Mvvm.Android.Support.1.2.8\build\Storm.Mvvm.Android.Support.targets" Condition="Exists('..\..\packages\Storm.Mvvm.Android.Support.1.2.8\build\Storm.Mvvm.Android.Support.targets')" />
 </Project>

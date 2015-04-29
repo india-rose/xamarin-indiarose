@@ -480,4 +480,19 @@ Comments : </value>
   <data name="AIP_Desactivate.Text" xml:space="preserve">
     <value>Desactivate</value>
   </data>
+  <data name="select.Text" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="PictureSelection.Text" xml:space="preserve">
+    <value>Select Picture</value>
+  </data>
+  <data name="SoundSelection.Text" xml:space="preserve">
+    <value>Select Sound</value>
+  </data>
+  <data name="DelWarning_Title.Text" xml:space="preserve">
+    <value>Warning !</value>
+  </data>
+  <data name="Del_Confirm.Text" xml:space="preserve">
+    <value>Are you sur to delete this indiagram ?\nIf it contains childrens they will be delete too</value>
+  </data>
 </root>

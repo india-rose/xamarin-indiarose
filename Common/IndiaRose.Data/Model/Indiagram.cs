@@ -11,7 +11,7 @@ namespace IndiaRose.Data.Model
 		private string _text;
 		private string _imagePath;
 		private string _soundPath;
-		private Indiagram _parent;
+		private Category _parent;
 	    private bool _isEnabled;
 
 	    public int Id
@@ -43,7 +43,7 @@ namespace IndiaRose.Data.Model
 			set { SetProperty(ref _soundPath, value); }
 		}
 
-		public Indiagram Parent
+		public Category Parent
 		{
 			get { return _parent; }
 			set { SetProperty(ref _parent, value); }
@@ -58,11 +58,6 @@ namespace IndiaRose.Data.Model
 		public virtual bool IsCategory
 		{
 			get { return false; }
-		}
-
-		public virtual List<Indiagram> Children
-		{
-			get { return null; }
 		}
 
 	    public Indiagram(int id)

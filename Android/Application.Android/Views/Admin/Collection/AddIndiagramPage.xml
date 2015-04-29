@@ -12,9 +12,12 @@
       <converters:ParentCategoryTextConverter Key="ParentCategoryTextConverter"
 											Uid="Root_Categ"
 											Property="Text" />
-      <converters:ParentCategoryTextConverter Key="SoundPathTextConverter"
+      <converters:DefaultLocalizedStringIfNullConverter Key="SoundPathTextConverter"
                         Uid="AIP_NoSound"
                         Property="Text"/>
+      <converters:BooleanToVisibilityConverter Key="EnabledConverter"/>
+      <converters:BooleanToColorConverter Key="OrangeConverter"/>
+      
       <Style Key="DataTempTextViewStyle"
              android:layout_width="wrap_content"
              android:layout_height="fill_parent"
@@ -108,13 +111,14 @@
 
                 <EditText
                     android:id="edit_text"
-                    android:layout_width="150dip"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text"
                     android:layout_marginLeft="5dip"
+                    android:layout_marginRight="6dip"
                     android:inputType="text"
                     android:textSize="15sp"
-                    Text="{Binding CurrentIndiagram.Text, Mode=TwoWay, UpdateEvent=TextChanged}"/>
+                    Text="{Binding CurrentIndiagram.Indiagram.Text, Mode=TwoWay, UpdateEvent=TextChanged}"/>
                 <!--Category-->
                 <TextView XmlStyle="{Resource TextViewTitle}"
                     android:id="text_parent_category"
@@ -133,7 +137,7 @@
                     android:id="m_indiagramCategory"
                     android:layout_below="@id/text_parent_category"
                     android:layout_toRightOf="@id/name_text_parent_category"
-                    Text="{Binding CurrentIndiagram.Parent, Converter={Resource ParentCategoryTextConverter}}"
+                    Text="{Binding CurrentIndiagram.Indiagram.Parent, Converter={Resource ParentCategoryTextConverter}}"
                     />
 
                 <LinearLayout XmlStyle="{Resource ButtonContainer}"
@@ -143,7 +147,7 @@
 
                     <Button XmlStyle="{Resource MediumBlueButtonStyle}"
                         Text="{Tr Text, Uid=AIP_BCateg}"
-                        Click="{Binding ChooseCategoryCommand}"/>
+                        Click="{Binding SelectCategoryCommand}"/>
 
                     <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
                         Text="{Tr Text, Uid=AIP_BRoot}"
@@ -193,7 +197,7 @@
                     android:id="m_indiagramSound"
                     android:layout_below="@id/text_sound"
                     android:layout_toRightOf="@id/filepath_sound"
-                    Text="{Binding CurrentIndiagram.SoundPath, Converter={Resource SoundPathTextConverter}}"
+                    Text="{Binding CurrentIndiagram.Indiagram.SoundPath, Converter={Resource SoundPathTextConverter}}"
                     android:singleLine="true"/>
 
                 <LinearLayout XmlStyle="{Resource ButtonContainer}"
@@ -245,7 +249,8 @@
                 <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
                     android:id="paste"
                     Text="{Tr Text, Uid=Paste}"
-                    Click="{Binding PasteCommand}"/>
+                    Click="{Binding PasteCommand}"
+                    android:enabled="{Binding CopyPasteService.IndiaPresent}"/>
               </LinearLayout>
               <!--Activate & Desactivate-->
               <TextView XmlStyle="{Resource TextViewTitle}"
@@ -263,12 +268,13 @@
                     android:id="act"
                     Text="{Tr Text, Uid=AIP_Activate}"
                     Click="{Binding ActivateCommand}"
-                    android:visibility="gone"/>
-
+                    android:visibility="{Binding CurrentIndiagram.Indiagram.IsEnabled, Converter={Resource EnabledConverter}, ConverterParameter=Negation}"
+                    />
                 <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
                     android:id="desact"
                     Text="{Tr Text, Uid=AIP_Desactivate}"
-                    Click="{Binding DesactivateCommand}"/>
+                    Click="{Binding DesactivateCommand}"
+                    android:visibility="{Binding CurrentIndiagram.Indiagram.IsEnabled, Converter={Resource EnabledConverter}}"/>
               </LinearLayout>
             </RelativeLayout>
         </ScrollView>
@@ -312,7 +318,7 @@
                     android:layout_centerInParent="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-		                SourcePath="{Binding CurrentIndiagram.ImagePath}"
+		                SourcePath="{Binding CurrentIndiagram.Indiagram.ImagePath}"
 		                Size="{Binding SettingsService.IndiagramDisplaySize}"
 		            />
 

@@ -45,6 +45,7 @@
     <Compile Include="Model\SettingsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIModel\ColorContainer.cs" />
+    <Compile Include="UIModel\IndiagramContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Funq.Portable">

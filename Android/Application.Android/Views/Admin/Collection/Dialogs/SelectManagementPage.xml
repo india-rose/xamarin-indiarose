@@ -6,10 +6,12 @@
   android:layout_gravity="center"
   android:gravity="center"
   >
-	<ImageView
-		android:id="image"
-		android:layout_width="100dip"
-		android:layout_height="100dip"
-		android:layout_centerInParent="true"
-      />
+	<BindableImageView
+	  android:id="image"
+      android:layout_width="100dip"
+      android:layout_height="100dip"
+      android:layout_centerInParent="true"
+	  SourcePath="{Binding CurrentIndiagram.Indiagram.ImagePath}"
+	  Size="{Binding SettingsService.IndiagramDisplaySize}"
+		/>
 </RelativeLayout>

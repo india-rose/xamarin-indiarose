@@ -1,5 +1,7 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.Generic;
+using System.Windows.Input;
 using IndiaRose.Data.Model;
+using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
@@ -24,23 +26,31 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
         public ICommand GalleryCommand { get; private set; }
         #endregion
 
+        private IndiagramContainer _indiagramContainer;
         [NavigationParameter]
-        public Indiagram Indiagram { get; set; }
+        public IndiagramContainer Indiagram
+        {
+            get { return _indiagramContainer; }
+            set { SetProperty(ref _indiagramContainer, value); }
+        }
         public SoundChoiceViewModel()
         {
             RecordSoundCommand = new DelegateCommand(RecordSoundAction);
-            GalleryCommand=new DelegateCommand(GalleryAction);
+            GalleryCommand = new DelegateCommand(GalleryAction);
         }
 
         private void RecordSoundAction()
         {
             MessageDialogService.DismissCurrentDialog();
-            MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_RECORDSOUND);
+            MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_RECORDSOUND, new Dictionary<string, object>
+            {
+                {"Indiagram",Indiagram}
+            });
         }
 
         private async void GalleryAction()
         {
-            Indiagram.SoundPath= await MediaService.GetSoundFromGalleryAsync();
+            Indiagram.Indiagram.SoundPath = await MediaService.GetSoundFromGalleryAsync();
             MessageDialogService.DismissCurrentDialog();
         }
     }

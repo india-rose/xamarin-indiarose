@@ -6,8 +6,9 @@
  */
  -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="380dip"
-    android:layout_height="200dip"
+    xmlns:converters="using:IndiaRose.Framework.Converters"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="#006FFF"
     >
@@ -17,6 +18,7 @@
           android:layout_width="120dip"
           android:layout_height="120dip"
          />
+    <converters:BooleanToVisibilityConverter Key="EnabledConverter"/>
   </Resources>
   <TextView
       android:layout_width="wrap_content"
@@ -30,25 +32,33 @@
 
   <LinearLayout
       android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
+      android:layout_height="wrap_content" 
+      android:layout_marginBottom="10dip"
       android:gravity="center"
       android:orientation="horizontal" >
 
     <Button XmlStyle="{Resource ButtonStyle}"
         android:id="alertdialog_record_sound_start"
         android:background="@drawable/buttonselector"
-        android:layout_marginLeft="10dip" />
+        android:layout_marginLeft="10dip"
+        Click="{Binding RecordCommand}"
+        android:visibility="{Binding IsRecording, Converter={Resource EnabledConverter}, ConverterParameter=Negation}"
+    />
 
     <Button XmlStyle="{Resource ButtonStyle}"
         android:id="alertdialog_record_sound_stop"
         android:background="@drawable/stop"
-        android:visibility="gone" />
+        Click="{Binding StopCommand}"
+        android:visibility="{Binding IsRecording, Converter={Resource EnabledConverter}}"
+       />
 
     <Button XmlStyle="{Resource ButtonStyle}"
         android:id="alertdialog_record_sound_cancel"
         android:background="@drawable/buttoncancel"
         android:layout_marginLeft="10dip"
-        Click="{Binding CloseCommand}"/>
+        Click="{Binding CloseCommand}"
+        android:visibility="{Binding IsRecording, Converter={Resource EnabledConverter}, ConverterParameter=Negation}"
+      />
   </LinearLayout>
 
 </LinearLayout>

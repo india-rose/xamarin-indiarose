@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
+using IndiaRose.Data.UIModel;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
@@ -25,9 +26,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 	    protected override void IndiagramSelectedAction(Indiagram indiagram)
 	    {
 		    base.IndiagramSelectedAction(indiagram);
+
 			MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION, new Dictionary<string, object>()
              {
-                 {"Indiagram",indiagram}
+                 {"Indiagram",new IndiagramContainer(indiagram)}
              });
 	    }
     }

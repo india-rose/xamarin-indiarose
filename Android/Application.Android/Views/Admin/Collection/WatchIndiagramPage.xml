@@ -58,6 +58,7 @@
              />
     <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
         Text="{Tr Text, Uid=remove}"
+        Click="{Binding DeleteCommand}"
              />
   </LinearLayout>
   <!-- logo -->
@@ -83,7 +84,7 @@
       <TextView XmlStyle="{Resource TextView}"
         android:layout_below="@id/title1"
         android:id="text1"
-        Text="{Binding CurrentIndiagram.Text}" />
+        Text="{Binding CurrentIndiagram.Indiagram.Text}" />
       
       <TextView XmlStyle="{Resource TextViewTitle}"
         Text="{Tr Text, Uid=AIP_Catego}" 
@@ -98,7 +99,7 @@
       <TextView XmlStyle="{Resource TextView}"
         android:layout_below="@id/title2"
         android:layout_toRightOf="@id/title3"
-        Text="{Binding CurrentIndiagram.Parent, Converter={Resource ParentCategoryTextConverter}}"
+        Text="{Binding CurrentIndiagram.Indiagram.Parent, Converter={Resource ParentCategoryTextConverter}}"
         android:id="text2"/>
 
       <TextView XmlStyle="{Resource TextViewTitle}"
@@ -114,7 +115,7 @@
       <TextView XmlStyle="{Resource TextView}"
         android:layout_below="@id/title4"
         android:layout_toRightOf="@id/title5"
-        Text="{Binding CurrentIndiagram.SoundPath, Converter={Resource SoundPathTextConverter}}"
+        Text="{Binding CurrentIndiagram.Indiagram.SoundPath, Converter={Resource SoundPathTextConverter}}"
         android:id="text3"/>
       <LinearLayout
         android:layout_width= "200dip"
@@ -133,7 +134,7 @@
         android:scaleType="centerInside"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-		    SourcePath="{Binding CurrentIndiagram.ImagePath}"
+		    SourcePath="{Binding CurrentIndiagram.Indiagram.ImagePath}"
 		    Size="{Binding SettingsService.IndiagramDisplaySize}"
 		  />
     

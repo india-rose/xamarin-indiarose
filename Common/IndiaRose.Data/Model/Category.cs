@@ -6,7 +6,7 @@ namespace IndiaRose.Data.Model
 	{
 		private readonly List<Indiagram> _children = new List<Indiagram>();
 
-		public override List<Indiagram> Children
+		public List<Indiagram> Children
 		{
 			get { return _children; }
 		}
@@ -21,17 +21,20 @@ namespace IndiaRose.Data.Model
 	    }
 	    public Category()
 		{	
+			//TODO : a remplire
 		}
 		public Category(string text, string imagePath, string soundPath = null) : base(text, imagePath, soundPath)
 		{
-
+			//TODO : a remplire
 		}
 	    public Category(string text, string imagePath, Category a): base(text,imagePath,a)
         {
+			//TODO : a remplire
         }
 
 	    public Category(Indiagram cloneIndiagram) : base(cloneIndiagram)
 	    {
+			//TODO : a remplire
 	    }
 	}
 }

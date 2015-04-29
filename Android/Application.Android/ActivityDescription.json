@@ -223,6 +223,16 @@
                 "inputFile": "Views/Admin/Collection/SelectCategoryPage.xml",
                 "outputFile": "Admin_Collection_SelectCategoryPage.axml"
             }
+        },
+        {
+            "fragment": {
+                "className": "DeleteWarningDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/DeleteWarningPage.xml",
+                "outputFile": "Admin_Collection_Dialogs_DeleteWarningDialog.axml"
+            }
         }
     ]
 }

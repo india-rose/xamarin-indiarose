@@ -18,5 +18,6 @@
 	    public const string ADMIN_COLLECTION_SOUNDCHOICE = "Admin_Collection_SoundChoiceDialog";
 	    public const string ADMIN_COLLECTION_RECORDSOUND = "Admin_Collection_RecordSoundDialog";
 		public const string ADMIN_COLLECTION_SELECT = "Admin_Collection_SelectManagementDialog";
+	    public const string ADMIN_COLLECTION_DELETEWARNING = "Admin_Collection_DeleteWarningDialog";
 	}
 }

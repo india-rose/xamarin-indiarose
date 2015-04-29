@@ -124,7 +124,7 @@
     <value>Glisser-déposer</value>
   </data>
   <data name="App_Settings_Indiagram_Properties.Text" xml:space="preserve">
-    <value>Propriétés des indiagrammes</value>
+    <value>Propriétés des indiagram</value>
   </data>
   <data name="App_Settings_Lecture_Category_Properties.Text" xml:space="preserve">
     <value>Lecture des catégories</value>
@@ -172,7 +172,7 @@ Commentaires :</value>
     <value>www.sclera.tv</value>
   </data>
   <data name="Credits_Supplier.Text" xml:space="preserve">
-    <value>Fournisseur Indiagramme</value>
+    <value>Fournisseur Indiagram</value>
   </data>
   <data name="Credits_TeamAndroid2011.Text" xml:space="preserve">
     <value>Equipe Android - 2011</value>
@@ -229,7 +229,7 @@ Commentaires :</value>
     <value>Paramètres de l'application</value>
   </data>
   <data name="Home_CollectionManagement.Text" xml:space="preserve">
-    <value>Gestion de la collection d'indiagrammes</value>
+    <value>Gestion de la collection d'indiagram</value>
   </data>
   <data name="Home_Contact.Text" xml:space="preserve">
     <value>Nous contacter</value>
@@ -277,16 +277,16 @@ Commentaires :</value>
     <value>Annuler</value>
   </data>
   <data name="Indiagram_property_checkboxhomecategory.Text" xml:space="preserve">
-    <value>Retourner à l'accueil après la sélection d'un indiagramme</value>
+    <value>Retourner à l'accueil après la sélection d'un indiagram</value>
   </data>
   <data name="Indiagram_property_checkboxMove.Text" xml:space="preserve">
     <value>Glisser-déposer</value>
   </data>
   <data name="Indiagram_property_imageSizeLabel.Text" xml:space="preserve">
-    <value>Taille de l'indiagramme :</value>
+    <value>Taille de l'indiagram :</value>
   </data>
   <data name="Indiagram_property_imageSizeTitle.Text" xml:space="preserve">
-    <value>Taille de l'indiagramme</value>
+    <value>Taille de l'indiagram</value>
   </data>
   <data name="Button_Ok.Text" xml:space="preserve">
     <value>Ok</value>
@@ -391,7 +391,7 @@ Commentaires :</value>
     <value>Son</value>
   </data>
   <data name="AIP_Text.Text" xml:space="preserve">
-    <value>Texte indiagramme</value>
+    <value>Texte indiagram</value>
   </data>
   <data name="AIP_FilePath.Text" xml:space="preserve">
     <value>Chemin : </value>
@@ -475,9 +475,24 @@ Commentaires :</value>
     <value>Activer</value>
   </data>
   <data name="AIP_ActTitle.Text" xml:space="preserve">
-    <value>Activer/Désactiver Indiagramme</value>
+    <value>Activer/Désactiver Indiagram</value>
   </data>
   <data name="AIP_Desactivate.Text" xml:space="preserve">
     <value>Désactiver</value>
+  </data>
+  <data name="select.Text" xml:space="preserve">
+    <value>Sélectionner</value>
+  </data>
+  <data name="PictureSelection.Text" xml:space="preserve">
+    <value>Sélectionner Image</value>
+  </data>
+  <data name="SoundSelection.Text" xml:space="preserve">
+    <value>Sélectionner Son</value>
+  </data>
+  <data name="DelWarning_Title.Text" xml:space="preserve">
+    <value>Attention !</value>
+  </data>
+  <data name="Del_Confirm.Text" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir supprimer l'indiagram ?\nS'il possède des enfants ils seront aussi supprimés</value>
   </data>
 </root>

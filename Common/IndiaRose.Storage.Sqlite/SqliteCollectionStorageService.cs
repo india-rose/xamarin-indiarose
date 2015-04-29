@@ -25,7 +25,7 @@ namespace IndiaRose.Storage.Sqlite
 		public SqliteCollectionStorageService(ISQLitePlatform platform)
 		{
 			_platform = platform;
-			_dbPath = LazyResolver<IStorageService>.Service.DabatabasePath;
+			_dbPath = LazyResolver<IStorageService>.Service.DatabasePath;
 		}
 
 		private SQLiteConnection OpenDatabase()
@@ -55,20 +55,19 @@ namespace IndiaRose.Storage.Sqlite
 			//Des methodes sont prevues si on en a besoin
 			if (indiagram is CategorySql)
 			{
-				var csql = (CategorySql)indiagram;
-				var c = new Category()
+				var c = new Category
 				{
-					Id = csql.Id,
-					Text = csql.Text,
-					ImagePath = csql.ImagePath,
-					SoundPath = csql.SoundPath,
-					Position = csql.Position,
+                    Id = indiagram.Id,
+                    Text = indiagram.Text,
+                    ImagePath = indiagram.ImagePath,
+                    SoundPath = indiagram.SoundPath,
+                    Position = indiagram.Position,
                     IsEnabled = indiagram.Enabled != 0
 				};
 
-			    if (csql.Parent != 0)
+                if (indiagram.Parent != 0)
 			    {
-			        c.Parent = GetIndiagramFromSql(SearchById(true, csql.Parent));
+                    c.Parent = (Category)GetIndiagramFromSql(SearchById(true, indiagram.Parent));
                     c.Parent.Children.Add(c);
 			    }
 			    else
@@ -90,7 +89,7 @@ namespace IndiaRose.Storage.Sqlite
 			};
             if (indiagram.Parent != 0)
             {
-                i.Parent = GetIndiagramFromSql(SearchById(false, indiagram.Parent));
+                i.Parent = (Category) GetIndiagramFromSql(SearchById(false, indiagram.Parent));
                 i.Parent.Children.Add(i);
             }
             else
@@ -176,18 +175,19 @@ namespace IndiaRose.Storage.Sqlite
 			//supprime dans la table adequate
 		    if (indiagram.Parent != null)
 		    {
-		        indiagram.Parent.Children.Remove(indiagram);
-                Update(indiagram.Parent);
+		        var parentNull = indiagram.Parent;
+		        if (parentNull != null) parentNull.Children.Remove(indiagram);
+		        Update(indiagram.Parent);
 		    }
 
 		    if (indiagram is Category)
-			{
-				Connection.Delete<CategorySql>(indiagram.Id);
-			    foreach (var t in indiagram.Children.ToList())
+		    {
+		        var category = indiagram as Category;
+				Connection.Delete<CategorySql>(category.Id);
+			    foreach (var t in category.Children.ToList())
 			    {
-			        indiagram.Children.Remove(t);
-			        t.Parent = null;
-                    Update(t);
+                    Delete(t);
+			        category.Children.Remove(t);
 			    }
 			}
 			else

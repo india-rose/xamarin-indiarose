@@ -9,6 +9,8 @@ using Android.Provider;
 using IndiaRose.Framework;
 using IndiaRose.Interfaces;
 using Java.IO;
+using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 using Environment = Android.OS.Environment;
 using File = Java.IO.File;
 using Path = System.IO.Path;
@@ -23,6 +25,7 @@ namespace IndiaRose.Services.Android
 
         public void RecordSound()
         {
+            //todo utiliser le storage service
             _url = string.Format(Environment.ExternalStorageDirectory.Path + "/IndiaRose/sound/IndiaRose_sound_{0}.3gpp", Guid.NewGuid());
             _recorder = new MediaRecorder();
             _recorder.SetAudioSource(AudioSource.Mic);
@@ -36,7 +39,6 @@ namespace IndiaRose.Services.Android
         public string StopRecord()
         {
             _recorder.Stop();
-
             return _url;
         }
 
@@ -83,7 +85,8 @@ namespace IndiaRose.Services.Android
                 intent.SetType("image/*");
                 intent.SetAction(Intent.ActionGetContent);
                 // Always show the chooser (if there are multiple options available)
-                ActivityService.StartActivityForResult(Intent.CreateChooser(intent, "Select Picture"),
+                var trad = DependencyService.Container.Resolve<ILocalizationService>();
+                ActivityService.StartActivityForResult(Intent.CreateChooser(intent, trad.GetString("PictureSelection","Text")),
                     (result, data) =>
                     {
                         string path = null;
@@ -107,8 +110,9 @@ namespace IndiaRose.Services.Android
             {
                 Intent intent = new Intent();
                 intent.SetType("audio/*");
-                intent.SetAction(Intent.ActionGetContent);
-                ActivityService.StartActivityForResult(Intent.CreateChooser(intent, "Select Sound"), (result, data) =>
+                intent.SetAction(Intent.ActionGetContent); 
+                var trad = DependencyService.Container.Resolve<ILocalizationService>();
+                ActivityService.StartActivityForResult(Intent.CreateChooser(intent, trad.GetString("SoundSelection","Text")), (result, data) =>
                 {
                     string path = null;
                     if (result == Result.Ok)

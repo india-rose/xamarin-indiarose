@@ -1,17 +1,9 @@
-using Android.Graphics;
-using Android.Graphics.Drawables;
 using Android.Views;
-using Android.Widget;
-using IndiaRose.Business.ViewModels.Admin.Collection;
-using IndiaRose.Business.ViewModels.Admin.Collection.Dialogs;
-using IndiaRose.Data.Model;
-using IndiaRose.Interfaces;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;
 using Storm.Mvvm.Dialogs;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
-using Environment = Android.OS.Environment;
 
 namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 {
