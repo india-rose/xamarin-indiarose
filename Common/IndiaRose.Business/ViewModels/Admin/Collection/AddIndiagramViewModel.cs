@@ -15,7 +15,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
     public class AddIndiagramViewModel : AbstractSettingsViewModel
     {
-        //TODO A TESTE LES CATEGORIES
         #region Service
         public IMessageDialogService MessageDialogService
         {

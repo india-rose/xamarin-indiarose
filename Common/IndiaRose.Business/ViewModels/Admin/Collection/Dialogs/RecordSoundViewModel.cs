@@ -53,7 +53,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
         {
             MessageDialogService.DismissCurrentDialog();
         }
-
         protected void RecordAction()
         {
             MediaService.RecordSound();
