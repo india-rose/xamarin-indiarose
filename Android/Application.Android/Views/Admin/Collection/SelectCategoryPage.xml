@@ -34,6 +34,7 @@
 
 
 		<Button XmlStyle="{Resource SmallGreenButtonStyle}"
+				android:layout_marginLeft="4dip"
 				Text ="{Tr Text,Uid=SelectionIndiagramsNext}"
 				Click="{Binding NextCommand}"
 				/>
