@@ -95,35 +95,28 @@ namespace IndiaRose.Framework.Views
 
 		protected IndiagramBrowserView(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
 		{
-			Initialize();
 		}
 
 		public IndiagramBrowserView(Context context) : base(context)
 		{
-			Initialize();
 		}
 
 		public IndiagramBrowserView(Context context, IAttributeSet attrs) : base(context, attrs)
 		{
-			Initialize();
 		}
 
 		public IndiagramBrowserView(Context context, IAttributeSet attrs, int defStyleAttr) : base(context, attrs, defStyleAttr)
 		{
-			Initialize();
 		}
 
 		#endregion
 
 		#region Private methods
 
-		private void Initialize()
+		protected override void OnSizeChanged(int w, int h, int oldw, int oldh)
 		{
-			LayoutChange += OnLayoutChange;
-		}
+			base.OnSizeChanged(w, h, oldw, oldh);
 
-		private void OnLayoutChange(object sender, LayoutChangeEventArgs layoutChangeEventArgs)
-		{
 			LazyResolver<ILoggerService>.Service.Log(string.Format("XXXXXXXX ====> Layout width: {0} height: {1}", Width, Height), MessageSeverity.Critical);
 			if (Reset())
 			{

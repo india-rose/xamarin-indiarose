@@ -15,7 +15,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
     public class AddIndiagramViewModel : AbstractSettingsViewModel
     {
-        //TODO A TESTE LES CATEGORIES
         #region Service
         public IMessageDialogService MessageDialogService
         {
@@ -135,7 +134,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 	    {
 			NavigationService.Navigate(Views.ADMIN_COLLECTION_SELECTCATEGORY, new Dictionary<string, object>()
              {
-                 {"addIndiagramContainer", CurrentIndiagram}
+                 {"AddIndiagramContainer", CurrentIndiagram}
              });
 	    }
         protected void ActivateAction()

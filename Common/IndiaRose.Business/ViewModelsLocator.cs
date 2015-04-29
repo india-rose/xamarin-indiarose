@@ -49,6 +49,8 @@ namespace IndiaRose.Business
             container.RegisterFactory(x => new RecordSoundViewModel());
             container.RegisterFactory(x => new SelectManagementViewModel());
             container.RegisterFactory(x => new DeleteWarningViewModel());
+			container.RegisterFactory(x => new DeleteIndiagramViewModel());
+			container.RegisterFactory(x => new ConfirmationDeleteViewModel());
 
 			_container = container;
 		}
@@ -183,6 +185,15 @@ namespace IndiaRose.Business
             get { return _container.Resolve<DeleteWarningViewModel>(); }
         }
 
+		public DeleteIndiagramViewModel AdminCollectionDialogsDeleteIndiagramViewModel
+		{
+			get { return _container.Resolve<DeleteIndiagramViewModel>(); }
+		}
+
+		public ConfirmationDeleteViewModel AdminCollectionDialogsConfirmationdeleteViewModel
+		{
+			get { return _container.Resolve<ConfirmationDeleteViewModel>(); }
+		}
         #endregion
     }
 }
