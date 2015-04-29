@@ -12,7 +12,7 @@
       <converters:ParentCategoryTextConverter Key="ParentCategoryTextConverter"
 											Uid="Root_Categ"
 											Property="Text" />
-      <converters:ParentCategoryTextConverter Key="SoundPathTextConverter"
+      <converters:DefaultLocalizedStringIfNullConverter Key="SoundPathTextConverter"
                         Uid="AIP_NoSound"
                         Property="Text"/>
       <converters:BooleanToVisibilityConverter Key="EnabledConverter"/>
@@ -268,8 +268,6 @@
                     Click="{Binding ActivateCommand}"
                     android:visibility="{Binding CurrentIndiagram.Indiagram.IsEnabled, Converter={Resource EnabledConverter}, ConverterParameter=Negation}"
                     />
-/>
-
                 <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
                     android:id="desact"
                     Text="{Tr Text, Uid=AIP_Desactivate}"

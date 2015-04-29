@@ -14,7 +14,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
 	public class SelectManagementViewModel : AbstractSettingsViewModel
 	{
-
+		private IndiagramContainer _AddIndiagram;
 		private IndiagramContainer _currentIndiagram;
 
 		[NavigationParameter]
@@ -22,6 +22,13 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 		{
 			get { return _currentIndiagram; }
 			set { SetProperty(ref _currentIndiagram, value); }
+		}
+
+		[NavigationParameter]
+		public IndiagramContainer AddIndiagram
+		{
+			get { return _AddIndiagram; }
+			set { SetProperty(ref _AddIndiagram, value); }
 		}
 		public ICommand SendIndiagramCommand{ get; private set; }
 
@@ -31,10 +38,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
         }
         private void SendIndiagramAction()
         {
-			NavigationService.Navigate(Views.ADMIN_COLLECTION_ADD, new Dictionary<string, object>()
-             {
-                 {"CurrentIndiagram.Indiagram.Parent", new Category(CurrentIndiagram.Indiagram)}
-             });
+	        _AddIndiagram.Indiagram.Parent = new Category(_currentIndiagram.Indiagram);
+			BackAction();
         }
 	}
 }

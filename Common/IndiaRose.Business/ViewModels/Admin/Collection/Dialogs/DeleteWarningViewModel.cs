@@ -15,7 +15,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
     public class DeleteWarningViewModel : AbstractViewModel
     {
+        #region Command
         public ICommand DeleteCommand { get; private set; }
+        #endregion
+        #region Properties
         private IndiagramContainer _indiagramContainer;
         
         [NavigationParameter]
@@ -24,12 +27,13 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
             get { return _indiagramContainer; }
             set { SetProperty(ref _indiagramContainer, value); }
         }
-
+        #endregion
+        #region Service
         public ICollectionStorageService CollectionStorageService
         {
             get { return LazyResolver<ICollectionStorageService>.Service; }
         }
-
+        #endregion
         public DeleteWarningViewModel()
         {
            DeleteCommand=new DelegateCommand(DeleteAction); 
@@ -37,15 +41,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 
         protected void DeleteAction()
         {
-            //todo voir avec julien pour fils;
-           /* Category b=null;
-            if (IndiagramContainer.Indiagram.IsCategory)
-                b = IndiagramContainer.Indiagram as Category;
-            foreach (var india in b.Children)
-            {
-                CollectionStorageService.Delete(india);
-            }
-            * */
             CollectionStorageService.Delete(IndiagramContainer.Indiagram);
             BackAction();
         }
