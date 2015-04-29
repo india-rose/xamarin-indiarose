@@ -17,7 +17,7 @@ namespace IndiaRose.Storage
     class XmlService : IXmlService
     {
 
-        public static void Initialize(Stream path)
+        public void Initialize(Stream path)
         {
             var archive = ArchiveFactory.Open(path);
 
@@ -30,7 +30,7 @@ namespace IndiaRose.Storage
             }
         }
 
-        public static void FillIndiagram(List<Category> listCategories, XDocument xd, string key)
+        private static void FillIndiagram(List<Category> listCategories, XDocument xd, string key)
         {
 
             XElement xe = xd.Element("indiagram");
@@ -48,7 +48,6 @@ namespace IndiaRose.Storage
                 {
                     if (t.Text.Equals(parent))
                     {
-                        t.Children.Add(current);
                         current.Parent = t;
                     }
                 }
