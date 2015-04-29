@@ -85,7 +85,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         }
 
 	    [NavigationParameter]
-	    protected IndiagramContainer InitialIndiagram
+        protected IndiagramContainer InitialIndiagram
 	    {
 		    get {return _initialIndiagram;}
 		    set
@@ -104,7 +104,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			    }
 		    }
 	    }
-		[NavigationParameter]
         public IndiagramContainer CurrentIndiagram
         {
             get { return _currentIndiagram ; }
@@ -126,7 +125,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             CopyCommand = new DelegateCommand(CopyAction);
             PasteCommand = new DelegateCommand(PasteAction);
 
-			CurrentIndiagram = new IndiagramContainer(new Indiagram());
+            CurrentIndiagram = new IndiagramContainer(new Indiagram());
+            InitialIndiagram = new IndiagramContainer(new Indiagram());
         }
 
 	    #region Action

@@ -51,7 +51,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
         #region Action
         protected void CloseAction()
         {
-            //todo a voir avec julien
             MessageDialogService.DismissCurrentDialog();
         }
 

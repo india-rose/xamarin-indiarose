@@ -268,8 +268,6 @@
                     Click="{Binding ActivateCommand}"
                     android:visibility="{Binding CurrentIndiagram.Indiagram.IsEnabled, Converter={Resource EnabledConverter}, ConverterParameter=Negation}"
                     />
-/>
-
                 <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
                     android:id="desact"
                     Text="{Tr Text, Uid=AIP_Desactivate}"
