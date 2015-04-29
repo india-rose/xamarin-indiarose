@@ -12,7 +12,7 @@
       <converters:ParentCategoryTextConverter Key="ParentCategoryTextConverter"
 											Uid="Root_Categ"
 											Property="Text" />
-      <converters:ParentCategoryTextConverter Key="SoundPathTextConverter"
+      <converters:DefaultLocalizedStringIfNullConverter Key="SoundPathTextConverter"
                         Uid="AIP_NoSound"
                         Property="Text"/>
       <converters:BooleanToVisibilityConverter Key="EnabledConverter"/>

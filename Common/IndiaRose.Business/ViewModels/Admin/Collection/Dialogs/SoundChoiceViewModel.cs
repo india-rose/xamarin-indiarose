@@ -41,7 +41,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 
         private void RecordSoundAction()
         {
-            //MessageDialogService.DismissCurrentDialog();
+            MessageDialogService.DismissCurrentDialog();
             MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_RECORDSOUND, new Dictionary<string, object>
             {
                 {"Indiagram",Indiagram}
