@@ -489,4 +489,10 @@ Commentaires :</value>
   <data name="SoundSelection.Text" xml:space="preserve">
     <value>Sélectionner Son</value>
   </data>
+  <data name="DelWarning_Title.Text" xml:space="preserve">
+    <value>Attention !</value>
+  </data>
+  <data name="Del_Confirm.Text" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir supprimer l'indiagram ?\nS'il possède des enfants ils seront aussi supprimés</value>
+  </data>
 </root>
