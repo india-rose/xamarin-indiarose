@@ -155,13 +155,19 @@
 						android:textColor="#000"
 						android:layout_marginRight="10dip"
 						Text="{Tr Text,Uid=text_color_test}" />
-					<View
-						android:id="preview_text_color"
+          <RelativeLayout
 						android:layout_width="fill_parent"
 						android:layout_height="fill_parent"
-						background="{Binding TextColor.Color, Converter={Resource ColorStringToDrawableColor}}"
-						android:src="#F00"
-						android:padding="1dip" />
+            android:gravity="center"
+            android:background="#000"
+            >
+            <ViewWithBorder
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               BackgroundColor="#FF0"
+               BorderColor="#000"/>
+          </RelativeLayout>
+					
 
 				</LinearLayout>
 				<LinearLayout

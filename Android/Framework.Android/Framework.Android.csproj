@@ -58,6 +58,7 @@
     <Compile Include="Views\IndiagramBrowserView.cs" />
     <Compile Include="Views\IndiagramPreviewView.cs" />
     <Compile Include="Views\IndiagramView.cs" />
+    <Compile Include="Views\ViewWithBorder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Funq.Portable">
