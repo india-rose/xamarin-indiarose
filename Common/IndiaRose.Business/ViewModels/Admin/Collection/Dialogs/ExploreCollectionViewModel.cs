@@ -21,17 +21,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 		}
 
         public ICommand WatchIndiagramCommand{ get; private set; }
-		public ICommand DeleteCommand { get; set; }
         public ExploreCollectionViewModel()
         {
             WatchIndiagramCommand = new DelegateCommand(WatchIndiagram);
-	        DeleteCommand = new DelegateCommand(DeleteAction);
         }
 
-	    private void DeleteAction()
-	    {
-		    //Delete();
-	    }
         private void WatchIndiagram()
         {
 			NavigationService.Navigate(Views.ADMIN_COLLECTION_WATCH, new Dictionary<string, object>()

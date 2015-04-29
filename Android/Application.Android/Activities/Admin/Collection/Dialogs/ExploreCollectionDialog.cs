@@ -13,7 +13,7 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 		public ExploreCollectionDialog()
 		{
 			var trad = DependencyService.Container.Resolve<ILocalizationService>();
-			Title = trad.GetString("whichActionQuestion", "Text");
+			Title = trad.GetString("ConfirmeDeletion", "Text");
 
 			Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Back", "Text"));
 			Buttons.Add(DialogsButton.Neutral, trad.GetString("goIntoText", "Text"));

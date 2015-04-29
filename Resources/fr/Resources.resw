@@ -495,4 +495,7 @@ Commentaires :</value>
   <data name="Del_Confirm.Text" xml:space="preserve">
     <value>Êtes-vous sûr de vouloir supprimer l'indiagram ?\nS'il possède des enfants ils seront aussi supprimés</value>
   </data>
+  <data name="ConfirmeDeletion.Text" xml:space="preserve">
+    <value>Etes vous sûr de vouloir supprimer cet indiagram ?</value>
+  </data>
 </root>
