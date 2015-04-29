@@ -133,7 +133,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
 	    protected void SelectCategoryAction()
 	    {
-			NavigationService.Navigate(Views.ADMIN_COLLECTION_SELECTCATEGORY);
+			NavigationService.Navigate(Views.ADMIN_COLLECTION_SELECTCATEGORY, new Dictionary<string, object>()
+             {
+                 {"addIndiagramContainer", CurrentIndiagram}
+             });
 	    }
         protected void ActivateAction()
         {
