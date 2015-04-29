@@ -58,6 +58,7 @@
              />
     <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
         Text="{Tr Text, Uid=remove}"
+        Click="{Binding DeleteCommand}"
              />
   </LinearLayout>
   <!-- logo -->

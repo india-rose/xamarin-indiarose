@@ -16,6 +16,8 @@ namespace IndiaRose.Storage
 
         string SoundPath { get; }
 
+	    string GenerationPath(string type, string extension);
+
 		Task InitializeAsync();
 	}
 }
