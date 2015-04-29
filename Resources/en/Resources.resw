@@ -483,4 +483,10 @@ Comments : </value>
   <data name="select.Text" xml:space="preserve">
     <value>Select</value>
   </data>
+  <data name="PictureSelection.Text" xml:space="preserve">
+    <value>Select Picture</value>
+  </data>
+  <data name="SoundSelection.Text" xml:space="preserve">
+    <value>Select Sound</value>
+  </data>
 </root>

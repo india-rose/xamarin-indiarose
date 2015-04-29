@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Data.Model;
+using IndiaRose.Data.UIModel;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Navigation;
 
@@ -11,10 +12,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 	{
 		public ICommand EditCommand { get; private set; }
 
-		private Indiagram _currentIndiagram;
+		private IndiagramContainer _currentIndiagram;
 
 		[NavigationParameter]
-		public Indiagram CurrentIndiagram
+		public IndiagramContainer CurrentIndiagram
 		{
 			get { return _currentIndiagram; }
 			set { SetProperty(ref _currentIndiagram, value); }

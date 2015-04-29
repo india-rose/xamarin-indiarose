@@ -3,6 +3,7 @@ using System.Dynamic;
 using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Data.Model;
+using IndiaRose.Data.UIModel;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Navigation;
 
@@ -10,10 +11,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
     public class ExploreCollectionViewModel : AbstractSettingsViewModel
     {
-		private Indiagram _indiagram;
+		private IndiagramContainer _indiagram;
 
 		[NavigationParameter]
-		public Indiagram Indiagram
+		public IndiagramContainer Indiagram
 		{
 			get { return _indiagram; }
 			set { SetProperty(ref _indiagram, value); }

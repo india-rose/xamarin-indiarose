@@ -11,7 +11,7 @@
       android:layout_width="100dip"
       android:layout_height="100dip"
       android:layout_centerInParent="true"
-	  SourcePath="{Binding Indiagram.ImagePath}"
+	  SourcePath="{Binding Indiagram.Indiagram.ImagePath}"
 	  Size="{Binding SettingsService.IndiagramDisplaySize}"
 		/>
 </RelativeLayout>

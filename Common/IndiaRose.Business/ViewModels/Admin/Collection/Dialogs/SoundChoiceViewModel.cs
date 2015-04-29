@@ -1,5 +1,6 @@
 ﻿using System.Windows.Input;
 using IndiaRose.Data.Model;
+using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
@@ -25,7 +26,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
         #endregion
 
         [NavigationParameter]
-        public Indiagram Indiagram { get; set; }
+        public IndiagramContainer Indiagram { get; set; }
         public SoundChoiceViewModel()
         {
             RecordSoundCommand = new DelegateCommand(RecordSoundAction);
@@ -40,7 +41,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 
         private async void GalleryAction()
         {
-            Indiagram.SoundPath= await MediaService.GetSoundFromGalleryAsync();
+            Indiagram.Indiagram.SoundPath= await MediaService.GetSoundFromGalleryAsync();
             MessageDialogService.DismissCurrentDialog();
         }
     }

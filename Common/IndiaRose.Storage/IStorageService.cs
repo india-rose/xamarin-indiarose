@@ -12,6 +12,10 @@ namespace IndiaRose.Storage
 
 		string RootPath { get; }
 
+        string ImagePath { get; }
+
+        string SoundPath { get; }
+
 		Task InitializeAsync();
 	}
 }

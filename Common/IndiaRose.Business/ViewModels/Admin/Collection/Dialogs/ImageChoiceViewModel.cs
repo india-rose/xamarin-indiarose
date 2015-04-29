@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
+using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
@@ -27,7 +28,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
         #endregion
 
         [NavigationParameter]
-        public Indiagram Indiagram { get; set; }
+        public IndiagramContainer Indiagram { get; set; }
 
         public ImageChoiceViewModel()
         {
@@ -37,13 +38,13 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 
         public async void CameraAction()
         {
-            Indiagram.ImagePath = await MediaService.GetPictureFromCameraAsync();
+            Indiagram.Indiagram.ImagePath = await MediaService.GetPictureFromCameraAsync();
             MessageDialogService.DismissCurrentDialog();
         }
 
         public async void GalleryAction()
         {
-            Indiagram.ImagePath = await MediaService.GetPictureFromGalleryAsync();
+            Indiagram.Indiagram.ImagePath = await MediaService.GetPictureFromGalleryAsync();
             MessageDialogService.DismissCurrentDialog();
         }
     }

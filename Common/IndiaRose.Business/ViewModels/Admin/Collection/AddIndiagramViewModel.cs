@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Data.Model;
+using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
 using IndiaRose.Storage;
 using Storm.Mvvm.Commands;
@@ -56,8 +57,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
         #region Properties
         private string _bro1;
-	    private Indiagram _initialIndiagram;
-        private Indiagram _currentIndiagram;
+	    private IndiagramContainer _initialIndiagram;
+        private IndiagramContainer _currentIndiagram;
 
         public string Bro1
         {
@@ -72,7 +73,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             get { return _categ; }
             set
             {
-                if (!CurrentIndiagram.HasChildren())
+                if (!CurrentIndiagram.Indiagram.HasChildren())
                 {
                     SetProperty(ref _categ, value);
                 }
@@ -84,27 +85,27 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         }
 
 	    [NavigationParameter]
-	    protected Indiagram InitialIndiagram
+	    protected IndiagramContainer InitialIndiagram
 	    {
 		    get {return _initialIndiagram;}
 		    set
 		    {
 			    if (SetProperty(ref _initialIndiagram, value) && value != null)
 			    {
-					if (InitialIndiagram.IsCategory)
+					if (InitialIndiagram.Indiagram.IsCategory)
 					{
-						CurrentIndiagram = new Category(InitialIndiagram);
+						CurrentIndiagram.Indiagram = new Category(InitialIndiagram.Indiagram);
 						Categ = true;
 					}
 					else
 					{
-						CurrentIndiagram = new Indiagram(InitialIndiagram);
+						CurrentIndiagram.Indiagram = new Indiagram(InitialIndiagram.Indiagram);
 					}
 			    }
 		    }
 	    }
 
-        public Indiagram CurrentIndiagram
+        public IndiagramContainer CurrentIndiagram
         {
             get { return _currentIndiagram ; }
             set { SetProperty(ref _currentIndiagram, value); }
@@ -125,7 +126,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             CopyCommand = new DelegateCommand(CopyAction);
             PasteCommand = new DelegateCommand(PasteAction);
 
-			CurrentIndiagram = new Indiagram();
+			CurrentIndiagram = new IndiagramContainer(new Indiagram());
         }
 
 	    #region Action
@@ -137,11 +138,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
         protected void ActivateAction()
         {
-            CurrentIndiagram.IsEnabled = true;
+            CurrentIndiagram.Indiagram.IsEnabled = true;
         }
         protected void DesactivateAction()
         {
-            CurrentIndiagram.IsEnabled = false;
+            CurrentIndiagram.Indiagram.IsEnabled = false;
         }
         protected void ChooseCategoryAction()
         {
@@ -149,7 +150,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         }
         protected override void SaveAction()
         {
-            if (CurrentIndiagram.Text == null)
+            if (CurrentIndiagram.Indiagram.Text == null)
             {
                 PopupService.AfficherPopup(LocalizationService.GetString("AIP_NoName","Text"));
                 return;
@@ -157,29 +158,29 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             if (InitialIndiagram == null)
             {
                 //creation d'un indi
-                InitialIndiagram = Categ ? new Category(CurrentIndiagram) : CurrentIndiagram;
-                CollectionStorageService.Create(InitialIndiagram);
+                InitialIndiagram.Indiagram = Categ ? new Category(CurrentIndiagram.Indiagram) : CurrentIndiagram.Indiagram;
+                CollectionStorageService.Create(InitialIndiagram.Indiagram);
             }
             else
             {
                 //edition d'un indi
-                if (InitialIndiagram.IsCategory && !Categ)
+                if (InitialIndiagram.Indiagram.IsCategory && !Categ)
                 {
-                    CollectionStorageService.Delete(InitialIndiagram);
-                    InitialIndiagram = new Indiagram(CurrentIndiagram);
-                    CollectionStorageService.Create(InitialIndiagram);
+                    CollectionStorageService.Delete(InitialIndiagram.Indiagram);
+                    InitialIndiagram.Indiagram = new Indiagram(CurrentIndiagram.Indiagram);
+                    CollectionStorageService.Create(InitialIndiagram.Indiagram);
 
                 }
-                else if (!InitialIndiagram.IsCategory && Categ)
+                else if (!InitialIndiagram.Indiagram.IsCategory && Categ)
                 {
-                    CollectionStorageService.Delete(InitialIndiagram);
-                    InitialIndiagram = new Category(CurrentIndiagram);
-                    CollectionStorageService.Create(InitialIndiagram);
+                    CollectionStorageService.Delete(InitialIndiagram.Indiagram);
+                    InitialIndiagram.Indiagram = new Category(CurrentIndiagram.Indiagram);
+                    CollectionStorageService.Create(InitialIndiagram.Indiagram);
                 }
                 else
                 {
-                    InitialIndiagram.Edit(CurrentIndiagram);
-                    CollectionStorageService.Update(InitialIndiagram);
+                    InitialIndiagram.Indiagram.Edit(CurrentIndiagram.Indiagram);
+                    CollectionStorageService.Update(InitialIndiagram.Indiagram);
                 }
 
             }
@@ -202,29 +203,27 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         }
         protected void RootAction()
         {
-            CurrentIndiagram.Parent = null;
+            CurrentIndiagram.Indiagram.Parent = null;
         }
         protected void ResetSoundAction()
         {
-            CurrentIndiagram.SoundPath = null;
+            CurrentIndiagram.Indiagram.SoundPath = null;
         }
         protected void ListenAction()
         {
-            if (CurrentIndiagram.Text == null)
+            if (CurrentIndiagram.Indiagram.Text == null)
             {
                 PopupService.AfficherPopup(LocalizationService.GetString("AIP_NoSoundError", "Text"));
             }
-            
         }
         protected void CopyAction()
         {
-            CopyPasteService.Copy(CurrentIndiagram,Categ);
+            CopyPasteService.Copy(CurrentIndiagram.Indiagram,Categ);
         }
         protected void PasteAction()
         {
-            CurrentIndiagram = CopyPasteService.Paste();
-            Categ = CurrentIndiagram.IsCategory;
-            RaisePropertyChanged();
+            CurrentIndiagram.Indiagram = CopyPasteService.Paste();
+            Categ = CurrentIndiagram.Indiagram.IsCategory;
         }
 
         #endregion
