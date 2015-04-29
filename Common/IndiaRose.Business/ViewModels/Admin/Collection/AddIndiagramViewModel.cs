@@ -85,7 +85,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         }
 
 	    [NavigationParameter]
-	    protected IndiagramContainer InitialIndiagram
+        protected IndiagramContainer InitialIndiagram
 	    {
 		    get {return _initialIndiagram;}
 		    set
@@ -104,7 +104,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			    }
 		    }
 	    }
-		[NavigationParameter]
         public IndiagramContainer CurrentIndiagram
         {
             get { return _currentIndiagram ; }

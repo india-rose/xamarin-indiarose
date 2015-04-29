@@ -39,7 +39,6 @@ namespace IndiaRose.Services.Android
         public string StopRecord()
         {
             _recorder.Stop();
-
             return _url;
         }
 
