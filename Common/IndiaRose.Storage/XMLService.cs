@@ -15,23 +15,27 @@ namespace IndiaRose.Storage
 {
     class XmlService : IXmlService
     {
+        //TODO path a complteter
         private const string Path = ""; //dossier de destination à rajouter
 
-        private static async void Folders(IFolder path)
+        private static async void Initialize(IFolder path)
         {
             var files = await path.GetFilesAsync();
-            var list = files.Select(t => FillIndiagram(t.Path)).ToList();
-            //TODO Create ici ou alors pendant le parcours des xml
-            CreateData(list);
+
+            foreach (var t in files)
+            {
+                FillIndiagram(t.Path);
+            }
+            //*CreateData(list);
         }
 
-        public static void CreateData(List<Indiagram> list)
+        /*public static void CreateData(List<Indiagram> list)
         {
             foreach (var t in list)
             {
                 LazyResolver<ICollectionStorageService>.Service.Create(t);
             }
-        }
+        }*/
         
         public static Indiagram FillIndiagram(string path)
         {
@@ -87,10 +91,12 @@ namespace IndiaRose.Storage
                         category.Children.Add(v);
                         v.Parent = category;
                     }
+                    LazyResolver<ICollectionStorageService>.Service.Create(category);
                     return category;
 
                 }
             }
+            LazyResolver<ICollectionStorageService>.Service.Create(indiagram);
             return indiagram;
         }
     }
