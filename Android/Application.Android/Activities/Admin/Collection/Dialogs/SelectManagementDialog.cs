@@ -2,13 +2,14 @@ using Android.App;
 using Android.OS;
 using Android.Views;
 using Storm.Mvvm;
+using Storm.Mvvm.Bindings;
 using Storm.Mvvm.Dialogs;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 {
-	[Activity(Label = "SelectManagementDialog")]
+	[BindingElement(Path = "SendIndiagramCommand", TargetPath = "PositiveButtonEvent")]
 	public partial class SelectManagementDialog : AlertDialogFragmentBase
 	{
 		public SelectManagementDialog()

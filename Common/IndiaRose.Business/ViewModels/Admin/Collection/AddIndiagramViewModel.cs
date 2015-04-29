@@ -104,7 +104,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			    }
 		    }
 	    }
-
+		[NavigationParameter]
         public IndiagramContainer CurrentIndiagram
         {
             get { return _currentIndiagram ; }

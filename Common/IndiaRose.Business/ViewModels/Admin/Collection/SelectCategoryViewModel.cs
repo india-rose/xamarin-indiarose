@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
 using IndiaRose.Data.Model;
+using IndiaRose.Data.UIModel;
 using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
 	public class SelectCategoryViewModel : AbstractBrowserViewModel
 	{
-		private Indiagram _currentIndiagram;
+		private IndiagramContainer _currentIndiagram;
 
 		[NavigationParameter]
-		public Indiagram CurrentIndiagram
+		public IndiagramContainer CurrentIndiagram
 		{
 			get { return _currentIndiagram; }
 			set { SetProperty(ref _currentIndiagram, value); }
@@ -20,7 +21,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			base.IndiagramSelectedAction(indiagram);
 			MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_SELECT, new Dictionary<string, object>()
              {
-                 {"CurrentIndiagram",indiagram}
+                 {"CurrentIndiagram",new IndiagramContainer(indiagram)}
              });
 		}
 	}
