@@ -9,6 +9,7 @@ using IndiaRose.Data.Model;
 using PCLStorage;
 using System.Xml;
 using System.Xml.Linq;
+using SharpCompress.Archive;
 using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Storage
@@ -16,28 +17,28 @@ namespace IndiaRose.Storage
     class XmlService : IXmlService
     {
         //TODO path a complteter
-        private const string Path = ""; //dossier de destination à rajouter
 
-        private static async void Initialize(IFolder path)
+        public static void Initialize(Stream path)
         {
-            var files = await path.GetFilesAsync();
+            /*var files = await path.GetFilesAsync();
 
             foreach (var t in files)
             {
                 FillIndiagram(t.Path);
             }
-            //*CreateData(list);
-        }
+            //*CreateData(list);*/
 
-        /*public static void CreateData(List<Indiagram> list)
-        {
-            foreach (var t in list)
+            var archive = ArchiveFactory.Open(path);
+
+            foreach (var t in archive.Entries)
             {
-                LazyResolver<ICollectionStorageService>.Service.Create(t);
+                var xd = XDocument.Load(t.OpenEntryStream());
+
+                //TODO Rajouter la méthode qui récupère un XDocument
             }
-        }*/
+        }
         
-        public static Indiagram FillIndiagram(string path)
+        private static Indiagram FillIndiagram(string path)
         {
            
             XDocument xd = new XDocument(path);
@@ -81,7 +82,7 @@ namespace IndiaRose.Storage
                     {
                         var u = (XElement) xNode;
                         //TODO PATH A FIXER
-                        list.Add(FillIndiagram(Path + u.Value));
+                        //list.Add(FillIndiagram(Path + u.Value));
                     }
 
                     //on recopie dans une nouvelle instance d'une category on l'on y fait les liens pere/fils
