@@ -1,16 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Dynamic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings;
-using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
-    public class ExploreCollectionViewModel : AbstractSettingsViewModel
-    {
+	public class DeleteIndiagramViewModel : AbstractSettingsViewModel
+	{
 		private IndiagramContainer _indiagram;
 
 		[NavigationParameter]
@@ -21,17 +23,12 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 		}
 
         public ICommand WatchIndiagramCommand{ get; private set; }
-		public ICommand DeleteCommand { get; set; }
-        public ExploreCollectionViewModel()
+
+        public DeleteIndiagramViewModel()
         {
             WatchIndiagramCommand = new DelegateCommand(WatchIndiagram);
-	        DeleteCommand = new DelegateCommand(DeleteAction);
         }
 
-	    private void DeleteAction()
-	    {
-		    //Delete();
-	    }
         private void WatchIndiagram()
         {
 			NavigationService.Navigate(Views.ADMIN_COLLECTION_WATCH, new Dictionary<string, object>()
@@ -39,5 +36,5 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
                  {"CurrentIndiagram", Indiagram}
              });
         }
-    }
+	}
 }

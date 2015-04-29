@@ -53,6 +53,9 @@ namespace IndiaRose.Application
                 {Dialogs.ADMIN_COLLECTION_RECORDSOUND,typeof(RecordSoundDialog)},
 				{Dialogs.ADMIN_COLLECTION_SELECT,typeof(SelectManagementDialog)},
 				{Dialogs.ADMIN_COLLECTION_DELETEWARNING,typeof(DeleteWarningDialog)},
+				{Dialogs.ADMIN_COLLECTION_DELETEINDIAGRAM,typeof(DeleteIndiagramDialog)},
+				{Dialogs.ADMIN_COLLECTION_CONFIRMATION,typeof(ConfirmationDeleteDialog)}
+
 			};
 
 			AndroidContainer.CreateInstance<Container>(this, views, dialogs);
