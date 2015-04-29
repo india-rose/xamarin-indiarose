@@ -50,6 +50,7 @@ namespace IndiaRose.Application.Activities.Admin.Settings
 				}
 			}
 		}
+        //todo faire avec binding
         [Binding("TextColor.Color", Converter = typeof(ColorStringToColor))]
 	    public Color TextColor
 	    {

@@ -16,6 +16,7 @@
                         Uid="AIP_NoSound"
                         Property="Text"/>
       <converters:BooleanToVisibilityConverter Key="EnabledConverter"/>
+      <converters:BooleanToColorConverter Key="OrangeConverter"/>
       
       <Style Key="DataTempTextViewStyle"
              android:layout_width="wrap_content"
@@ -248,7 +249,8 @@
                 <Button XmlStyle="{Resource MediumOrangeButtonStyle}"
                     android:id="paste"
                     Text="{Tr Text, Uid=Paste}"
-                    Click="{Binding PasteCommand}"/>
+                    Click="{Binding PasteCommand}"
+                    android:enabled="{Binding CopyPasteService.IndiaPresent}"/>
               </LinearLayout>
               <!--Activate & Desactivate-->
               <TextView XmlStyle="{Resource TextViewTitle}"
