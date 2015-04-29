@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.Generic;
+using System.Windows.Input;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
@@ -36,7 +37,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
         private void RecordSoundAction()
         {
             MessageDialogService.DismissCurrentDialog();
-            MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_RECORDSOUND);
+            MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_RECORDSOUND,new Dictionary<string, object>
+            {
+                {"Indiagram",Indiagram}
+            });
         }
 
         private async void GalleryAction()

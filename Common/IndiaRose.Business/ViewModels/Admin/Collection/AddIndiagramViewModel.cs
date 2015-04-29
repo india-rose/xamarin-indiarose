@@ -135,7 +135,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 	    {
 			NavigationService.Navigate(Views.ADMIN_COLLECTION_SELECTCATEGORY);
 	    }
-
         protected void ActivateAction()
         {
             CurrentIndiagram.Indiagram.IsEnabled = true;
