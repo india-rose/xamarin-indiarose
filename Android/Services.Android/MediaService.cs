@@ -8,6 +8,7 @@ using Android.OS;
 using Android.Provider;
 using IndiaRose.Framework;
 using IndiaRose.Interfaces;
+using IndiaRose.Storage;
 using Java.IO;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
@@ -20,13 +21,16 @@ namespace IndiaRose.Services.Android
 {
     public class MediaService : AbstractAndroidService, IMediaService
     {
+        public IStorageService StorageService
+        {
+            get { return LazyResolver<IStorageService>.Service; }
+        }
         private MediaRecorder _recorder;
         private String _url;
 
         public void RecordSound()
         {
-            //todo utiliser le storage service
-            _url = string.Format(Environment.ExternalStorageDirectory.Path + "/IndiaRose/sound/IndiaRose_sound_{0}.3gpp", Guid.NewGuid());
+            _url = StorageService.GenerationPath("sound","3gpp");
             _recorder = new MediaRecorder();
             _recorder.SetAudioSource(AudioSource.Mic);
             _recorder.SetOutputFormat(OutputFormat.ThreeGpp);
@@ -46,7 +50,7 @@ namespace IndiaRose.Services.Android
         {
             return AsyncHelper.CreateAsyncFromCallback<string>(callbackResult =>
             {
-                string path = Path.Combine(Environment.ExternalStorageDirectory.Path, string.Format("IndiaRose/image/IndiaRose_photo_{0}.jpg", Guid.NewGuid()));
+                string path = StorageService.GenerationPath("image", "png");
                 File file = new File(path);
 
                 Intent intent = new Intent(MediaStore.ActionImageCapture);
@@ -66,8 +70,7 @@ namespace IndiaRose.Services.Android
         }
         private string SavePhoto(Bitmap bitmap)
         {
-            string filename = Path.Combine(Environment.ExternalStorageDirectory.Path, string.Format("IndiaRose/image/IndiaRose_photo_{0}.png", Guid.NewGuid()));
-
+            string filename = StorageService.GenerationPath("image", "png");
             using (System.IO.Stream stream = System.IO.File.OpenWrite(filename))
             {
                 bitmap.Compress(Bitmap.CompressFormat.Png, 0, stream);
@@ -120,9 +123,8 @@ namespace IndiaRose.Services.Android
                         Uri selectedSound = data.Data;
                         ParcelFileDescriptor parcelFileDescriptor = ActivityService.CurrentActivity.ContentResolver.OpenFileDescriptor(selectedSound, "r");
                         FileDescriptor fileDescriptor = parcelFileDescriptor.FileDescriptor;
-                        FileInputStream inputStream = new FileInputStream(fileDescriptor); 
-                        path = Path.Combine(Environment.ExternalStorageDirectory.Path,
-                               string.Format("IndiaRose/sound/IndiaRose_sound_{0}.3gp", Guid.NewGuid()));
+                        FileInputStream inputStream = new FileInputStream(fileDescriptor);
+                        path = StorageService.GenerationPath("sound", "3gpp");
                         File outputFile = new File(path);
                         InputStream inStream = null;
                         OutputStream outStream = null;

@@ -16,89 +16,70 @@ namespace IndiaRose.Storage
 {
     class XmlService : IXmlService
     {
-        //TODO path a complteter
 
-        public static void Initialize(Stream path)
+        public void Initialize(Stream path)
         {
-            /*var files = await path.GetFilesAsync();
-
-            foreach (var t in files)
-            {
-                FillIndiagram(t.Path);
-            }
-            //*CreateData(list);*/
-
             var archive = ArchiveFactory.Open(path);
 
+            List<Category> listCategories = new List<Category>();
             foreach (var t in archive.Entries)
             {
                 var xd = XDocument.Load(t.OpenEntryStream());
 
-                //TODO Rajouter la méthode qui récupère un XDocument
+                FillIndiagram(listCategories, xd, t.Key);
             }
         }
-        
-        private static Indiagram FillIndiagram(string path)
+
+        private static void FillIndiagram(List<Category> listCategories, XDocument xd, string key)
         {
-           
-            XDocument xd = new XDocument(path);
-            //initialise les premiers noeud en fonction de si le doc concerne un indiagram
+
             XElement xe = xd.Element("indiagram");
-            //... ou une categorie
             if (xd.FirstNode.ToString().StartsWith("<category>"))
             {
                 xe = xd.Element("category");
             }
 
-            //instancie le futur return
-            Indiagram indiagram = new Indiagram();
-
-
-            foreach (var t in xe.Nodes())
+            Indiagram current = new Indiagram();
+            if (key.Contains("/"))
             {
-                var element = (XElement) t;
-
-                //prend les champs text picture et sound
-                if (element.ToString().StartsWith("<text>"))
+                string[] tab = key.Split('/');
+                string parent = tab[tab.Length - 2];
+                foreach (var t in listCategories)
                 {
-                    indiagram.Text = element.Value;
-                }
-                if (element.ToString().StartsWith("<picture>"))
-                {
-                    indiagram.ImagePath = element.Value;
-                }
-                if (element.ToString().StartsWith("<sound>"))
-                {
-                    indiagram.SoundPath = element.Value;
-                }
-                //si le noeud indiagrams est trouve
-                if (element.ToString().StartsWith("<indiagrams>"))
-                {
-                    //on instancie une nouvelle liste d'indiagram
-                    var list = new List<Indiagram>();
-
-                    //et pour tout element dans ce noeud on rappel la fonction pour initialiser les fils
-                    foreach (var xNode in element.Nodes())
+                    if (t.Text.Equals(parent))
                     {
-                        var u = (XElement) xNode;
-                        //TODO PATH A FIXER
-                        //list.Add(FillIndiagram(Path + u.Value));
+                        current.Parent = t;
                     }
+                }
 
-                    //on recopie dans une nouvelle instance d'une category on l'on y fait les liens pere/fils
-                    var category = new Category(indiagram);
-                    foreach (var v in list)
-                    {
-                        category.Children.Add(v);
-                        v.Parent = category;
-                    }
-                    LazyResolver<ICollectionStorageService>.Service.Create(category);
-                    return category;
+            }
 
+            foreach (var xNode in xe.Nodes())
+            {
+                var t = (XElement) xNode;
+                if (t.ToString().StartsWith("<text>"))
+                {
+                    current.Text = t.Value;
+                }
+                if (t.ToString().StartsWith("<picture>"))
+                {
+                    current.ImagePath = t.Value;
+                }
+                if (t.ToString().StartsWith("<sound>"))
+                {
+                    current.SoundPath = t.Value;
+                }
+                if (t.ToString().StartsWith("<indiagrams>"))
+                {
+                    Category currentL = new Category(current);
+                    listCategories.Add(currentL);
+                    LazyResolver<ICollectionStorageService>.Service.Create(currentL);
+                }
+                else
+                {
+                    LazyResolver<ICollectionStorageService>.Service.Create(current);
                 }
             }
-            LazyResolver<ICollectionStorageService>.Service.Create(indiagram);
-            return indiagram;
         }
     }
 }

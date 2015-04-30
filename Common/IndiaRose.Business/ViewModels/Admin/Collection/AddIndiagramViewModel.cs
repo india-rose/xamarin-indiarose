@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings;
@@ -44,7 +45,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         public ICommand RootCommand { get; private set; }
         public ICommand ResetSoundCommand { get; private set; }
         public ICommand ListenCommand { get; private set; }
-        public ICommand ChooseCategoryCommand { get; private set; }
         public ICommand ActivateCommand { get; private set; }
         public ICommand DesactivateCommand { get; private set; }
         public ICommand CopyCommand { get; private set; }
@@ -64,7 +64,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             get { return _bro1; }
             set { SetProperty(ref _bro1, value); }
         }
-        public ObservableCollection<string> Brothers { get; private set; }
+        public List<Indiagram> Brothers { get; private set; }
 
         private bool _categ ;
         public bool Categ
@@ -118,14 +118,25 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             RootCommand = new DelegateCommand(RootAction);
             ResetSoundCommand=new DelegateCommand(ResetSoundAction);
             ListenCommand=new DelegateCommand(ListenAction);
-            ChooseCategoryCommand=new DelegateCommand(ChooseCategoryAction);
             ActivateCommand = new DelegateCommand(ActivateAction);
             DesactivateCommand = new DelegateCommand(DesactivateAction);
             CopyCommand = new DelegateCommand(CopyAction);
             PasteCommand = new DelegateCommand(PasteAction);
 
             CurrentIndiagram = new IndiagramContainer(new Indiagram());
-            InitialIndiagram = new IndiagramContainer(new Indiagram());
+            /*try
+            {
+                Brothers = CurrentIndiagram.Indiagram.Parent.Children;
+                Brothers.Add(new Indiagram("Fin", null));
+                Bro1 = Brothers[CurrentIndiagram.Indiagram.Position].Text;
+            }
+            catch (NullReferenceException)
+            {
+                Brothers = CollectionStorageService.GetTopLevel();
+                Brothers.Add(new Indiagram("Fin",null));
+                Bro1 = Brothers[Brothers.Count-1].Text;
+            }*/
+            //pourquoi il veut pas avec les catégories ??
         }
 
 	    #region Action
@@ -134,7 +145,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 	    {
 			NavigationService.Navigate(Views.ADMIN_COLLECTION_SELECTCATEGORY, new Dictionary<string, object>()
              {
-                 {"addIndiagramContainer", CurrentIndiagram}
+                 {"AddIndiagramContainer", CurrentIndiagram}
              });
 	    }
         protected void ActivateAction()
@@ -144,10 +155,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         protected void DesactivateAction()
         {
             CurrentIndiagram.Indiagram.IsEnabled = false;
-        }
-        protected void ChooseCategoryAction()
-        {
-            //TODO a faire avec le frag
         }
         protected override void SaveAction()
         {
@@ -159,8 +166,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             if (InitialIndiagram == null)
             {
                 //creation d'un indi
-                InitialIndiagram.Indiagram = Categ ? new Category(CurrentIndiagram.Indiagram) : CurrentIndiagram.Indiagram;
-                CollectionStorageService.Create(InitialIndiagram.Indiagram);
+                var toAddIndiagram = Categ ? new Category(CurrentIndiagram.Indiagram,true) : new Indiagram(CurrentIndiagram.Indiagram,true);
+                CollectionStorageService.Create(toAddIndiagram);
             }
             else
             {
@@ -168,19 +175,19 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
                 if (InitialIndiagram.Indiagram.IsCategory && !Categ)
                 {
                     CollectionStorageService.Delete(InitialIndiagram.Indiagram);
-                    InitialIndiagram.Indiagram = new Indiagram(CurrentIndiagram.Indiagram);
+                    InitialIndiagram.Indiagram = new Indiagram(CurrentIndiagram.Indiagram,true);
                     CollectionStorageService.Create(InitialIndiagram.Indiagram);
 
                 }
                 else if (!InitialIndiagram.Indiagram.IsCategory && Categ)
                 {
                     CollectionStorageService.Delete(InitialIndiagram.Indiagram);
-                    InitialIndiagram.Indiagram = new Category(CurrentIndiagram.Indiagram);
+                    InitialIndiagram.Indiagram = new Category(CurrentIndiagram.Indiagram,true);
                     CollectionStorageService.Create(InitialIndiagram.Indiagram);
                 }
                 else
                 {
-                    InitialIndiagram.Indiagram.Edit(CurrentIndiagram.Indiagram);
+                    InitialIndiagram.Indiagram.Edit(CurrentIndiagram.Indiagram,true);
                     CollectionStorageService.Update(InitialIndiagram.Indiagram);
                 }
 

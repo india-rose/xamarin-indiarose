@@ -51,6 +51,9 @@
     <Compile Include="ViewModels\AbstractViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\AddIndiagramViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\CollectionManagementViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Collection\Dialogs\ConfirmationDeleteViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Collection\Dialogs\DelCategoryWarningViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Collection\Dialogs\DeleteIndiagramViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\Dialogs\DeleteWarningViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\Dialogs\ExploreCollectionViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\Dialogs\ImageChoiceViewModel.cs" />

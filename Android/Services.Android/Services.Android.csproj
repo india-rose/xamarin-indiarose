@@ -22,6 +22,7 @@
     <NuGetPackageImportStamp>f760dc6a</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -66,6 +67,10 @@
     <ProjectReference Include="..\..\Common\IndiaRose.Services\IndiaRose.Services.csproj">
       <Project>{d5e65cc0-2f09-47fc-aa26-74fc9e43de01}</Project>
       <Name>IndiaRose.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\IndiaRose.Storage\IndiaRose.Storage.csproj">
+      <Project>{e6229843-7567-4215-8aaa-aeb7d21d5dd1}</Project>
+      <Name>IndiaRose.Storage</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

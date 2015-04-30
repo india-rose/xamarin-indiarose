@@ -18,6 +18,10 @@
             "fullclassname": "IndiaRose.Framework.Views.IndiagramPreviewView"
         },
         {
+            "alias": "ViewWithBorder",
+            "fullclassname": "IndiaRose.Framework.Views.ViewWithBorder"
+        },
+        {
             "alias": "TabletPreviewView",
             "fullclassname": "IndiaRose.Framework.Views.TabletPreviewView"
         }
@@ -236,6 +240,36 @@
             "view": {
                 "inputFile": "Views/Admin/Collection/Dialogs/DeleteWarningPage.xml",
                 "outputFile": "Admin_Collection_Dialogs_DeleteWarningDialog.axml"
+            }
+        },
+        {
+            "fragment": {
+                "className": "DeleteIndiagramDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/DeleteIndiagramPage.xml",
+                "outputFile": "Admin_Collection_Dialogs_DeleteIndiagramDialog.axml"
+            }
+        },
+        {
+            "fragment": {
+                "className": "ConfirmationDeleteDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/ConfirmationDeletePage.xml",
+                "outputFile": "Admin_Collection_Dialogs_ConfirmationDeleteDialog.axml"
+            }
+        },
+        {
+            "fragment": {
+                "className": "DelCategoryWarningDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/DelCategoryWarningPage.xml",
+                "outputFile": "Admin_Collection_Dialogs_DelCategoryWarningDialog.axml"
             }
         }
     ]
