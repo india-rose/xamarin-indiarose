@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Dynamic;
 using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings;
-using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Navigation;

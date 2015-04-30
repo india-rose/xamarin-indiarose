@@ -10,6 +10,7 @@ using IndiaRose.Storage;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Navigation;
+using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
@@ -20,7 +21,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
         #endregion
         #region Properties
         private IndiagramContainer _indiagramContainer;
-        
+
         [NavigationParameter]
         public IndiagramContainer IndiagramContainer
         {
@@ -33,16 +34,31 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
         {
             get { return LazyResolver<ICollectionStorageService>.Service; }
         }
+        public IMessageDialogService MessageDialogService
+        {
+            get { return LazyResolver<IMessageDialogService>.Service; }
+        }
         #endregion
         public DeleteWarningViewModel()
         {
-           DeleteCommand=new DelegateCommand(DeleteAction); 
+            DeleteCommand = new DelegateCommand(DeleteAction);
         }
 
         protected void DeleteAction()
         {
-            CollectionStorageService.Delete(IndiagramContainer.Indiagram);
-            BackAction();
+            if (IndiagramContainer.Indiagram.HasChildren())
+            {
+                    MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_DELCATEGORYWARNING, new Dictionary<string, object>
+	                {
+	                    {"IndiagramContainer",IndiagramContainer}
+	                });
+                    MessageDialogService.DismissCurrentDialog();
+            }
+            else
+            {
+                CollectionStorageService.Delete(IndiagramContainer.Indiagram);
+                BackAction();
+            }
         }
     }
 }
