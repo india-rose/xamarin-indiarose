@@ -20,6 +20,10 @@
         {
             "alias": "ViewWithBorder",
             "fullclassname": "IndiaRose.Framework.Views.ViewWithBorder"
+        },
+        {
+            "alias": "TabletPreviewView",
+            "fullclassname": "IndiaRose.Framework.Views.TabletPreviewView"
         }
     ],
     "globalResourceFiles": [
@@ -256,6 +260,16 @@
             "view": {
                 "inputFile": "Views/Admin/Collection/Dialogs/ConfirmationDeletePage.xml",
                 "outputFile": "Admin_Collection_Dialogs_ConfirmationDeleteDialog.axml"
+            }
+        },
+        {
+            "fragment": {
+                "className": "DelCategoryWarningDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/DelCategoryWarningPage.xml",
+                "outputFile": "Admin_Collection_Dialogs_DelCategoryWarningDialog.axml"
             }
         }
     ]

@@ -1,16 +1,7 @@
 using Android.App;
 using Android.Content.PM;
-using Android.Graphics;
-using Android.Graphics.Drawables;
 using Android.OS;
-using Android.Views;
-using Android.Widget;
-using IndiaRose.Business.ViewModels.Admin.Collection;
-using IndiaRose.Data.Model;
 using Storm.Mvvm;
-using Storm.Mvvm.Bindings;
-using Storm.Mvvm.Inject;
-using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application.Activities.Admin.Collection
 {

@@ -1,5 +1,6 @@
 ﻿#region Usings
 
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -108,9 +109,13 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 			// : indiagram size + 20% 
 			int minHeight = (int) ((SettingsService.IndiagramDisplaySize*1.2)/ScreenService.Height*100);
 			
+
 			// calculate the maximal size of the top area
 			// : 95% of the screen minus the minimal size of the bottom area.
 			int maxHeight = 95 - minHeight;
+
+			// Limit automatically to 50%
+			minHeight = Math.Max(minHeight, 50);
 
 			for (int i = minHeight; i <= maxHeight; ++i)
 			{

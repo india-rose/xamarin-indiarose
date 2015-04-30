@@ -59,6 +59,7 @@
     <Compile Include="Views\IndiagramBrowserView.cs" />
     <Compile Include="Views\IndiagramPreviewView.cs" />
     <Compile Include="Views\IndiagramView.cs" />
+    <Compile Include="Views\TabletPreviewView.cs" />
     <Compile Include="Views\ViewWithBorder.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +118,15 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\root.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\tab.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\playbutton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\rightarrow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <PropertyGroup>

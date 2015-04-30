@@ -21,13 +21,11 @@ namespace IndiaRose.Storage.Sqlite
 		{
 			get { return _connection ?? (_connection = OpenDatabase()); }
 		}
-
 		public SqliteCollectionStorageService(ISQLitePlatform platform)
 		{
 			_platform = platform;
 			_dbPath = LazyResolver<IStorageService>.Service.DatabasePath;
 		}
-
 		private SQLiteConnection OpenDatabase()
 		{
 			var database = new SQLiteConnection(_platform, _dbPath);

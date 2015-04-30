@@ -45,7 +45,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			base.IndiagramSelectedAction(indiagram);
 			MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_SELECT, new Dictionary<string, object>()
              {
-                 {"CurrentIndiagram",new IndiagramContainer(indiagram)},{"AddIndiagram",AddIndiagramContainer}
+                 {"SelectedParent",new IndiagramContainer(indiagram)},{"CurrentIndiagram",AddIndiagramContainer}
              });
 		}
 	}

@@ -493,9 +493,12 @@ Comments : </value>
     <value>Warning !</value>
   </data>
   <data name="Del_Confirm.Text" xml:space="preserve">
-    <value>Are you sur to delete this indiagram ?\nIf it contains childrens they will be delete too</value>
+    <value>Are you sur to delete this indiagram ?</value>
   </data>
   <data name="ConfirmeDeletion.Text" xml:space="preserve">
     <value>Are you sur to delete this indiagram ?</value>
+  </data>
+  <data name="DelCategory_Confirm.Text" xml:space="preserve">
+    <value>This indiagram is a category and contains other indiagrams. If you delete it you will delete all its children.\nDo you want continue ?</value>
   </data>
 </root>
