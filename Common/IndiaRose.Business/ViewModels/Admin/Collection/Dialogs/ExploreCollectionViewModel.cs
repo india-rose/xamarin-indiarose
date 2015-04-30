@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using Storm.Mvvm.Commands;
+using Storm.Mvvm.Inject;
+using Storm.Mvvm.Messaging;
 using Storm.Mvvm.Navigation;
+using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
@@ -22,6 +24,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 		}
 		public ICommand GoInToCommand { get; set; }
         public ICommand WatchIndiagramCommand{ get; private set; }
+
         public ExploreCollectionViewModel()
         {
             WatchIndiagramCommand = new DelegateCommand(WatchIndiagram);
@@ -29,9 +32,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
         }
 
 
-		private Void GoInToAction()
+		private void GoInToAction()
 		{
-			
+			LazyResolver<IMessageDialogService>.Service.DismissCurrentDialog();
+			Messenger.Send<Indiagram>(Messages.ADMIN_COLLECTION_GOINTO, Indiagram.Indiagram);
 		}  
         private void WatchIndiagram()
         {

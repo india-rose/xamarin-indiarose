@@ -7,6 +7,7 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 {
+	[BindingElement(Path = "GoInToCommand", TargetPath = "NeutralButtonEvent")]
 	[BindingElement(Path = "WatchIndiagramCommand", TargetPath = "PositiveButtonEvent")]
 	public partial class ExploreCollectionDialog : AlertDialogFragmentBase
 	{
