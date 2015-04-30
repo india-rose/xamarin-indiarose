@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
 using IndiaRose.Business;
 using IndiaRose.Interfaces;
@@ -10,6 +9,7 @@ using IndiaRose.Storage.Sqlite;
 using SQLite.Net.Platform.XamarinAndroid;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
+using Environment = Android.OS.Environment;
 
 namespace IndiaRose.Application
 {
@@ -30,7 +30,7 @@ namespace IndiaRose.Application
 			base.Initialize();
 			ViewModelsLocator.Initialize(this);
 
-			IStorageService storageService = new StorageService(Android.OS.Environment.ExternalStorageDirectory.Path);
+			IStorageService storageService = new StorageService(Environment.ExternalStorageDirectory.Path);
 			await storageService.InitializeAsync();
         
             RegisterInstance<IResourceService>(new ResourceService());

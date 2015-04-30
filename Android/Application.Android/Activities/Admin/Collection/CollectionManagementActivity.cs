@@ -1,11 +1,8 @@
 
-using System.Collections.Generic;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using IndiaRose.Data.Model;
 using Storm.Mvvm;
-using Storm.Mvvm.Bindings;
 
 namespace IndiaRose.Application.Activities.Admin.Collection
 {

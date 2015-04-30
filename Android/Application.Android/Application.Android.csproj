@@ -164,7 +164,6 @@
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values-v11\styles.xml" />
     <AndroidResource Include="Resources\values-v14\styles.xml" />
-    <AndroidResource Include="Resources\drawable\tab.png" />
     <Content Include="Views\Admin\Collection\CollectionManagementPage.xml">
       <SubType>Designer</SubType>
     </Content>

@@ -16,6 +16,10 @@
         {
             "alias": "IndiagramPreviewView",
             "fullclassname": "IndiaRose.Framework.Views.IndiagramPreviewView"
+        },
+        {
+            "alias": "TabletPreviewView",
+            "fullclassname": "IndiaRose.Framework.Views.TabletPreviewView"
         }
     ],
     "globalResourceFiles": [

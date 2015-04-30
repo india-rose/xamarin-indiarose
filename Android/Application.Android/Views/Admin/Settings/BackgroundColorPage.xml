@@ -15,6 +15,7 @@
 
 	<Resources>
 		<colorConverters:ColorStringToDrawableColor Key="ColorStringToDrawableColor" />
+		<colorConverters:ColorStringToColor Key="ColorStringToColor" />
 
 		<Style Key="RelativeStyle"
 		       android:layout_width="match_parent"
@@ -131,47 +132,15 @@
 
 	<LinearLayout XmlStyle="{Resource Linear2}"
 	              android:id="RightLayout">
-		<RelativeLayout
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content">
-			<LinearLayout
-				android:layout_width="375dip"
-				android:layout_height="240dip"
-				android:layout_centerInParent="true"
-				android:layout_gravity="center"
-				android:gravity="center"
-				android:orientation="vertical"
-				android:id="linearok">
-				<View
-
-					android:layout_width="fill_parent"
-					android:layout_height="168dip"
-					android:id="TopArea"
-					android:layout_centerInParent="true"
-					android:layout_gravity="center"
-					android:gravity="center"
-					background="{Binding TopColor.Color, Converter={Resource ColorStringToDrawableColor}}"
-					click="{Binding TopAreaColorCommand}" />
-
-				<View
-
-					android:layout_width="fill_parent"
-					android:layout_height="72dip"
-					android:id="BottomArea"
-					android:layout_centerInParent="true"
-					android:layout_gravity="center"
-					android:gravity="center"
-					background="{Binding BottomColor.Color, Converter={Resource ColorStringToDrawableColor}}"
-					click="{Binding BottomAreaColorCommand}" />
-			</LinearLayout>
-			<ImageView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:src="@drawable/tab"
-				android:layout_centerInParent="true"
-				android:id="image_tab" />
-		</RelativeLayout>
-
+		<TabletPreviewView android:layout_width="fill_parent"
+						   android:layout_height="fill_parent"
+						   IndiagramSize="{Binding SettingsService.IndiagramDisplaySize}"
+						   Percentage="{Binding CurrentSize}"
+						   TopAreaColor="{Binding TopColor.Color, Converter={Resource ColorStringToColor}}"
+						   BottomAreaColor="{Binding BottomColor.Color, Converter={Resource ColorStringToColor}}"
+						   TopAreaCommand="{Binding TopAreaColorCommand}"
+						   BottomAreaCommand="{Binding BottomAreaColorCommand}"
+						   />
 	</LinearLayout>
 
 </LinearLayout>

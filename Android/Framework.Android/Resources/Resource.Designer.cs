@@ -41,7 +41,16 @@ namespace IndiaRose.Framework
 		{
 			
 			// aapt resource value: 0x7f020000
-			public static int root = 2130837504;
+			public static int playbutton = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public static int rightarrow = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public static int root = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public static int tab = 2130837507;
 			
 			static Drawable()
 			{
