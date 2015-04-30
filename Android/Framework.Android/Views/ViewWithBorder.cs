@@ -80,13 +80,13 @@ namespace IndiaRose.Framework.Views
         protected override void OnDraw(Canvas canvas)
         {
             base.OnDraw(canvas);
-            canvas.DrawRect(0,0,_width,_height, new Paint
+            /*canvas.DrawRect(0,0,_width,_height, new Paint
             {
-                Color=BorderColor
-            });
+                Color=Color.Black
+            });*/
             canvas.DrawRect(1, 1, _width - 1, _height - 1, new Paint
             {
-                Color = BackgroundColor
+                Color = Color.Red
             });
             
         }
