@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using IndiaRose.Business.ViewModels.Admin.Settings;
@@ -63,7 +64,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             get { return _bro1; }
             set { SetProperty(ref _bro1, value); }
         }
-        public ObservableCollection<string> Brothers { get; private set; }
+        public List<Indiagram> Brothers { get; private set; }
 
         private bool _categ ;
         public bool Categ
@@ -123,6 +124,19 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             PasteCommand = new DelegateCommand(PasteAction);
 
             CurrentIndiagram = new IndiagramContainer(new Indiagram());
+            /*try
+            {
+                Brothers = CurrentIndiagram.Indiagram.Parent.Children;
+                Brothers.Add(new Indiagram("Fin", null));
+                Bro1 = Brothers[CurrentIndiagram.Indiagram.Position].Text;
+            }
+            catch (NullReferenceException)
+            {
+                Brothers = CollectionStorageService.GetTopLevel();
+                Brothers.Add(new Indiagram("Fin",null));
+                Bro1 = Brothers[Brothers.Count-1].Text;
+            }*/
+            //pourquoi il veut pas avec les catégories ??
         }
 
 	    #region Action
@@ -152,8 +166,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             if (InitialIndiagram == null)
             {
                 //creation d'un indi
-                Indiagram toAddIndiagram;
-                toAddIndiagram = Categ ? new Category(CurrentIndiagram.Indiagram,true) : new Indiagram(CurrentIndiagram.Indiagram,true);
+                var toAddIndiagram = Categ ? new Category(CurrentIndiagram.Indiagram,true) : new Indiagram(CurrentIndiagram.Indiagram,true);
                 CollectionStorageService.Create(toAddIndiagram);
             }
             else
