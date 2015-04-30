@@ -25,11 +25,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
         public ExploreCollectionViewModel()
         {
             WatchIndiagramCommand = new DelegateCommand(WatchIndiagram);
-			GoInToCommand = new DelegateCommand(GoInToAction);
+			GoInToCommand = new DelegateCommand(GoIntoAction);
         }
 
 
-		private Void GoInToAction()
+		private void GoIntoAction()
 		{
 			
 		}  

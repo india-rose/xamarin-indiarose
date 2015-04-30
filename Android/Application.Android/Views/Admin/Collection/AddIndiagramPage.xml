@@ -258,12 +258,14 @@
                     android:id="title_act"
                     android:layout_below="@id/button_copy_paste"
                     android:layout_marginTop="10dip"
-                    Text="{Tr Text, Uid=AIP_ActTitle}" />
+                    Text="{Tr Text, Uid=AIP_ActTitle}"
+                    android:visibility="{Binding EditMode, Converter={Resource EnabledConverter}}"/>
               <LinearLayout XmlStyle="{Resource ButtonContainer}"
                     android:id="button_activate_desactive"
                     android:layout_below="@id/title_act"
                     android:orientation="horizontal"
-                    android:layout_marginTop="10dip">
+                    android:layout_marginTop="10dip"
+                    android:visibility="{Binding EditMode, Converter={Resource EnabledConverter}}">
 
                 <Button XmlStyle="{Resource MediumBlueButtonStyle}"
                     android:id="act"
