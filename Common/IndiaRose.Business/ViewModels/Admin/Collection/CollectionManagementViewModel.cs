@@ -4,6 +4,7 @@ using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Messaging;
+using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
@@ -12,6 +13,20 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 		public CollectionManagementViewModel()
 		{
 			AddCommand = new DelegateCommand(AddAction);
+		}
+
+		public override void OnNavigatedTo(NavigationArgs e, string parametersKey)
+		{
+			base.OnNavigatedTo(e, parametersKey);
+
+			Messenger.Register<Category>(Messages.ADMIN_COLLECTION_GOINTO, this, DisplayChildren);
+		}
+
+		public override void OnNavigatedFrom(NavigationArgs e)
+		{
+			base.OnNavigatedFrom(e);
+
+			Messenger.Unregister(this, Messages.ADMIN_COLLECTION_GOINTO);
 		}
 
 		public ICommand AddCommand { get; private set; }
@@ -31,7 +46,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			base.IndiagramSelectedAction(indiagram);
 			if (indiagram.IsCategory)
 			{
-				Messenger.Register<Category>(Messages.ADMIN_COLLECTION_GOINTO, this, DisplayChildren);
 				MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION, new Dictionary<string, object>
 				{
 					{"Indiagram", new IndiagramContainer(indiagram)}
