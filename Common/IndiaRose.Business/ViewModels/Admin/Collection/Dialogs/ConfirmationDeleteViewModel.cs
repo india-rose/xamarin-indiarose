@@ -9,7 +9,7 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
-	public class ConfirmationDeleteViewModel : AbstractViewModel
+	public class ConfirmationDeleteViewModel : AbstractSettingsViewModel
 	{
 		private Indiagram _currentIndiagram;
 
