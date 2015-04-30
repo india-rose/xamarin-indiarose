@@ -251,7 +251,7 @@ namespace IndiaRose.Framework.Views
                     while (txtOffset < text.Length)
                     {
                         int textSize = _textPainter.BreakText(text, txtOffset, text.Length, true, _pictureWidth, null);
-                        string text2 = text.Substring(txtOffset, textSize + txtOffset);
+                        string text2 = text.Substring(txtOffset, textSize);
 
                         canvas.DrawText(text2, xindex, yindex, _textPainter);
 
