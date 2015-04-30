@@ -44,7 +44,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         public ICommand RootCommand { get; private set; }
         public ICommand ResetSoundCommand { get; private set; }
         public ICommand ListenCommand { get; private set; }
-        public ICommand ChooseCategoryCommand { get; private set; }
         public ICommand ActivateCommand { get; private set; }
         public ICommand DesactivateCommand { get; private set; }
         public ICommand CopyCommand { get; private set; }
@@ -118,14 +117,12 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             RootCommand = new DelegateCommand(RootAction);
             ResetSoundCommand=new DelegateCommand(ResetSoundAction);
             ListenCommand=new DelegateCommand(ListenAction);
-            ChooseCategoryCommand=new DelegateCommand(ChooseCategoryAction);
             ActivateCommand = new DelegateCommand(ActivateAction);
             DesactivateCommand = new DelegateCommand(DesactivateAction);
             CopyCommand = new DelegateCommand(CopyAction);
             PasteCommand = new DelegateCommand(PasteAction);
 
             CurrentIndiagram = new IndiagramContainer(new Indiagram());
-            InitialIndiagram = new IndiagramContainer(new Indiagram());
         }
 
 	    #region Action
@@ -145,10 +142,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         {
             CurrentIndiagram.Indiagram.IsEnabled = false;
         }
-        protected void ChooseCategoryAction()
-        {
-            //TODO a faire avec le frag
-        }
         protected override void SaveAction()
         {
             if (CurrentIndiagram.Indiagram.Text == null)
@@ -159,8 +152,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             if (InitialIndiagram == null)
             {
                 //creation d'un indi
-                InitialIndiagram.Indiagram = Categ ? new Category(CurrentIndiagram.Indiagram) : CurrentIndiagram.Indiagram;
-                CollectionStorageService.Create(InitialIndiagram.Indiagram);
+                Indiagram toAddIndiagram;
+                toAddIndiagram = Categ ? new Category(CurrentIndiagram.Indiagram) : CurrentIndiagram.Indiagram;
+                CollectionStorageService.Create(toAddIndiagram);
             }
             else
             {

@@ -81,6 +81,7 @@ namespace IndiaRose.Data.Model
         public Indiagram(Indiagram cloneIndiagram)
         {
             Edit(cloneIndiagram);
+            Parent.Children.Add(this);
         }
 
         public void Edit(Indiagram cloneIndiagram)

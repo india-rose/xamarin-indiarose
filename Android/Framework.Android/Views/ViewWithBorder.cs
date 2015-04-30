@@ -26,14 +26,6 @@ namespace IndiaRose.Framework.Views
         private Color _borderColor;
         private Color _backgroundColor;
 
-        /**
-        * Current width of the view.
-        */
-        private int _width;
-        /**
-         * Current height of the view.
-         */
-        private int _height;
 
         public int BorderSize { get; set; }
 
@@ -42,7 +34,7 @@ namespace IndiaRose.Framework.Views
             get { return _borderColor;}
             set
             {
-                _borderColor = new Color(value);
+                _borderColor = value;
             }
         }
 
@@ -51,7 +43,8 @@ namespace IndiaRose.Framework.Views
             get { return _backgroundColor; }
             set
             {
-                _backgroundColor = new Color(value);
+                _backgroundColor = value;
+                Post(Invalidate);
             }
         }
 
@@ -71,22 +64,16 @@ namespace IndiaRose.Framework.Views
         {
         }
 
-        protected override void OnMeasure(int widthMeasureSpec, int heightMeasureSpec)
-        {
-            base.OnMeasure(widthMeasureSpec, heightMeasureSpec);
-            SetMeasuredDimension(_width, _height);
-        }
-
         protected override void OnDraw(Canvas canvas)
         {
             base.OnDraw(canvas);
-            /*canvas.DrawRect(0,0,_width,_height, new Paint
+            canvas.DrawRect(0,0,Width,Height, new Paint
             {
                 Color=Color.Black
-            });*/
-            canvas.DrawRect(1, 1, _width - 1, _height - 1, new Paint
+            });
+            canvas.DrawRect(1, 1, Width - 1, Height - 1, new Paint
             {
-                Color = Color.Red
+                Color = BackgroundColor
             });
             
         }

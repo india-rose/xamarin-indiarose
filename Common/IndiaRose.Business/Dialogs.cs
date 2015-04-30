@@ -19,6 +19,7 @@
 	    public const string ADMIN_COLLECTION_RECORDSOUND = "Admin_Collection_RecordSoundDialog";
 		public const string ADMIN_COLLECTION_SELECT = "Admin_Collection_SelectManagementDialog";
 	    public const string ADMIN_COLLECTION_DELETEWARNING = "Admin_Collection_DeleteWarningDialog";
+	    public const string ADMIN_COLLECTION_DELCATEGORYWARNING = "Admin_Collection_DelCategoryWarningDialog";
 		public const string ADMIN_COLLECTION_DELETEINDIAGRAM = "Admin_Collection_DeleteIndiagramDialog";
 		public const string ADMIN_COLLECTION_CONFIRMATION = "Admin_Collection_ConfirmationDeleteDialog";
 	}
