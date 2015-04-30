@@ -1,5 +1,3 @@
-using Android.App;
-using Android.OS;
 using Android.Views;
 using Storm.Mvvm;
 using Storm.Mvvm.Bindings;

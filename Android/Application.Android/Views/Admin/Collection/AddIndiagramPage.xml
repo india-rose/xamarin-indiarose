@@ -31,7 +31,7 @@
         <LinearLayout XmlStyle="{Resource DataTempLinearLayoutStyle}">
 
           <TextView XmlStyle="{Resource DataTempTextViewStyle}"
-                text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}'}"
+                text="{Binding Text}"
                       />
         </LinearLayout>
       </DataTemplate>
@@ -57,11 +57,11 @@
             android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-    <Style Key="ButtonContainer"
-          android:layout_width="match_parent"
-          android:layout_height="75dip"
-          android:layout_marginRight="6dip" />
-    <Style Key="ScrollViewStyle"
+      <Style Key="ButtonContainer"
+            android:layout_width="match_parent"
+            android:layout_height="75dip"
+            android:layout_marginRight="6dip" />
+      <Style Key="ScrollViewStyle"
           android:layout_width="fill_parent"
           android:layout_height="fill_parent"
           android:layout_weight="1"/>
@@ -74,6 +74,7 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:id="focus"/>
+    
     <!--Button ok & back-->
     <LinearLayout XmlStyle="{Resource Ok_Back_Container}"
         android:id="linear_bottom">
@@ -88,7 +89,9 @@
             Click="{Binding BackCommand}"
              />
     </LinearLayout>
-    <LinearLayout
+  
+  <!--Main Screen-->
+  <LinearLayout
         android:id="main_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -104,11 +107,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dip" >
+              
                 <!--Text-->
                 <TextView XmlStyle="{Resource TextViewTitle}"
                     android:id="text"
                     Text="{Tr Text, Uid=AIP_Text}" />
-
                 <EditText
                     android:id="edit_text"
                     android:layout_width="fill_parent"
@@ -119,27 +122,25 @@
                     android:inputType="text"
                     android:textSize="15sp"
                     Text="{Binding CurrentIndiagram.Indiagram.Text, Mode=TwoWay, UpdateEvent=TextChanged}"/>
-                <!--Category-->
+                
+              <!--Category-->
                 <TextView XmlStyle="{Resource TextViewTitle}"
                     android:id="text_parent_category"
                     android:layout_below="@id/edit_text"
                     android:layout_marginTop="10dip"
                     Text="{Tr Text, Uid=AIP_Catego}" />
-
                 <TextView XmlStyle="{Resource SmallBlueText}"
                     android:id="name_text_parent_category"
                     android:layout_below="@id/text_parent_category"
                     android:layout_marginBottom="10dip"
                     android:layout_marginRight="5dip"
                     Text="{Tr Text, Uid=AIP_Name}" />
-
                 <TextView XmlStyle="{Resource SmallBlackText}"
                     android:id="m_indiagramCategory"
                     android:layout_below="@id/text_parent_category"
                     android:layout_toRightOf="@id/name_text_parent_category"
                     Text="{Binding CurrentIndiagram.Indiagram.Parent, Converter={Resource ParentCategoryTextConverter}}"
                     />
-
                 <LinearLayout XmlStyle="{Resource ButtonContainer}"
                     android:id="button_category"
                     android:layout_below="@id/name_text_parent_category"
@@ -154,6 +155,7 @@
                         Click="{Binding RootCommand}"
                      />
                 </LinearLayout>
+              
               <!--Position-->
               <TextView XmlStyle="{Resource TextViewTitle}"
                         android:id="position_title"
@@ -179,27 +181,25 @@
                           currentItem="{Binding Bro1, Mode=TwoWay, UpdateEvent=CurrentItemChanged}"
 		              />
               </LinearLayout>
+              
               <!--Sound-->
                 <TextView XmlStyle="{Resource TextViewTitle}"
                     android:id="text_sound"
                     android:layout_below="@id/position_layout"
                     android:layout_marginTop="10dip"
                     Text="{Tr Text, Uid=AIP_Sound}" />
-
                 <TextView XmlStyle="{Resource SmallBlueText}"
                     android:id="filepath_sound"
                     android:layout_below="@id/text_sound"
                     android:layout_marginBottom="10dip"
                     android:layout_marginRight="5dip"
                     Text="{Tr Text, Uid=AIP_FilePath}" />
-
                 <TextView XmlStyle="{Resource SmallBlackText}"
                     android:id="m_indiagramSound"
                     android:layout_below="@id/text_sound"
                     android:layout_toRightOf="@id/filepath_sound"
                     Text="{Binding CurrentIndiagram.Indiagram.SoundPath, Converter={Resource SoundPathTextConverter}}"
                     android:singleLine="true"/>
-
                 <LinearLayout XmlStyle="{Resource ButtonContainer}"
                     android:id="button_sound_modif"
                     android:layout_below="@id/filepath_sound"
@@ -211,7 +211,6 @@
                         Text="{Tr Text, Uid=AIP_Sound}"
                         Click="{Binding SoundChoiceCommand}"/>
                 </LinearLayout>
-
                 <LinearLayout XmlStyle="{Resource ButtonContainer}"
                     android:id="button_sound"
                     android:layout_below="@id/button_sound_modif"
@@ -229,6 +228,7 @@
                         android:visibility="gone"
                             />
                 </LinearLayout>
+
               <!--copy&paste-->
               <TextView XmlStyle="{Resource TextViewTitle}"
                     android:id="title_copy"
@@ -252,6 +252,7 @@
                     Click="{Binding PasteCommand}"
                     android:enabled="{Binding CopyPasteService.IndiaPresent}"/>
               </LinearLayout>
+              
               <!--Activate & Desactivate-->
               <TextView XmlStyle="{Resource TextViewTitle}"
                     android:id="title_act"

@@ -20,21 +20,16 @@ namespace IndiaRose.Data.Model
 	        return Children.Count > 0;
 	    }
 	    public Category()
-		{	
-			//TODO : a remplire
+		{
 		}
 		public Category(string text, string imagePath, string soundPath = null) : base(text, imagePath, soundPath)
 		{
-			//TODO : a remplire
 		}
 	    public Category(string text, string imagePath, Category a): base(text,imagePath,a)
         {
-			//TODO : a remplire
         }
-
-	    public Category(Indiagram cloneIndiagram) : base(cloneIndiagram)
+	    public Category(Indiagram cloneIndiagram,bool updateparent = false) : base(cloneIndiagram,updateparent)
 	    {
-			//TODO : a remplire
 	    }
 	}
 }

@@ -159,13 +159,11 @@
 						android:layout_width="fill_parent"
 						android:layout_height="fill_parent"
             android:gravity="center"
-            android:background="#000"
             >
             <ViewWithBorder
                android:layout_width="fill_parent"
                android:layout_height="fill_parent"
-               BackgroundColor="#FF0"
-               BorderColor="#000"/>
+               BackgroundColor="{Binding TextColor.Color, Converter={Resource ColorStringToColor}}"/>
           </RelativeLayout>
 					
 
