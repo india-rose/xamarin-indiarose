@@ -153,7 +153,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             {
                 //creation d'un indi
                 Indiagram toAddIndiagram;
-                toAddIndiagram = Categ ? new Category(CurrentIndiagram.Indiagram) : CurrentIndiagram.Indiagram;
+                toAddIndiagram = Categ ? new Category(CurrentIndiagram.Indiagram,true) : new Indiagram(CurrentIndiagram.Indiagram,true);
                 CollectionStorageService.Create(toAddIndiagram);
             }
             else
@@ -162,19 +162,19 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
                 if (InitialIndiagram.Indiagram.IsCategory && !Categ)
                 {
                     CollectionStorageService.Delete(InitialIndiagram.Indiagram);
-                    InitialIndiagram.Indiagram = new Indiagram(CurrentIndiagram.Indiagram);
+                    InitialIndiagram.Indiagram = new Indiagram(CurrentIndiagram.Indiagram,true);
                     CollectionStorageService.Create(InitialIndiagram.Indiagram);
 
                 }
                 else if (!InitialIndiagram.Indiagram.IsCategory && Categ)
                 {
                     CollectionStorageService.Delete(InitialIndiagram.Indiagram);
-                    InitialIndiagram.Indiagram = new Category(CurrentIndiagram.Indiagram);
+                    InitialIndiagram.Indiagram = new Category(CurrentIndiagram.Indiagram,true);
                     CollectionStorageService.Create(InitialIndiagram.Indiagram);
                 }
                 else
                 {
-                    InitialIndiagram.Indiagram.Edit(CurrentIndiagram.Indiagram);
+                    InitialIndiagram.Indiagram.Edit(CurrentIndiagram.Indiagram,true);
                     CollectionStorageService.Update(InitialIndiagram.Indiagram);
                 }
 
