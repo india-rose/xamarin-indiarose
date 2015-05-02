@@ -32,7 +32,7 @@ namespace IndiaRose.Application
                 {Views.ADMIN_INSTALLVOICE_SYNTHESIS, typeof(InstallTextToSpeechActivity)},
                 {Views.ADMIN_SERVERSYNCHRONIZATION, typeof(ServerSynchronizationActivity)},
                 {Views.ADMIN_SETTINGS_HOME, typeof(AppSettingsActivity)},
-                {Views.ADMIN_SETTINGS_APPLICATIONLOOK, typeof(BackgroundColorActivity)},
+                {Views.ADMIN_SETTINGS_APPLICATIONLOOK, typeof(ApplicationLookActivity)},
          		{Views.ADMIN_SETTINGS_INDIAGRAMPROPERTIES, typeof(IndiagramPropertyActivity)},
                 {Views.ADMIN_COLLECTION_MANAGEMENT, typeof(CollectionManagementActivity)},
                 {Views.ADMIN_COLLECTION_ADD, typeof(AddIndiagramActivity)},

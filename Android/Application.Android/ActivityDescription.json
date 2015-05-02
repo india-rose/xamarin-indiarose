@@ -29,7 +29,8 @@
     "globalResourceFiles": [
         "Views/Resources/ButtonStyles.xml",
         "Views/Resources/CommonStyles.xml",
-        "Views/Resources/Converters.xml"
+        "Views/Resources/Converters.xml",
+        "Views/Resources/DialogStyles.xml"
     ],
     "fileDescriptions": [
         {
@@ -124,12 +125,12 @@
         },
         {
             "activity": {
-                "className": "BackgroundColorActivity",
+                "className": "ApplicationLookActivity",
                 "namespaceName": "IndiaRose.Application.Activities.Admin.Settings"
             },
             "view": {
-                "inputFile": "Views/Admin/Settings/BackgroundColorPage.xml",
-                "outputFile": "Admin_Settings_BackgroundColorPage.axml"
+                "inputFile": "Views/Admin/Settings/ApplicationLookPage.xml",
+                "outputFile": "Admin_Settings_ApplicationLookPage.axml"
             }
         },
         { 

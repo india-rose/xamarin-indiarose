@@ -28,6 +28,9 @@ namespace IndiaRose.Framework.Views
 		private Color _topAreaColor;
 		private Color _bottomAreaColor;
 
+		private int _width;
+		private int _height;
+
 		public int IndiagramSize
 		{
 			get { return _indiagramSize; }
@@ -160,9 +163,19 @@ namespace IndiaRose.Framework.Views
 			}
 		}
 
+		protected override void OnMeasure(int widthMeasureSpec, int heightMeasureSpec)
+		{
+			base.OnMeasure(widthMeasureSpec, heightMeasureSpec);
+			if (_width > 0)
+			{
+				SetMeasuredDimension(_width, _height);
+			}
+		}
+
 		protected override void OnSizeChanged(int w, int h, int oldw, int oldh)
 		{
 			base.OnSizeChanged(w, h, oldw, oldh);
+
 			if (w != oldw || h != oldh)
 			{
 				RefreshSize();
@@ -178,6 +191,11 @@ namespace IndiaRose.Framework.Views
 
 		private void RefreshSize()
 		{
+			if (Width == 0)
+			{
+				return;
+			}
+
 			// get available size in width and height
 			// calculate ratio with image width and height
 			double widthRatio = Width / (double)FULL_WIDTH;
@@ -187,8 +205,8 @@ namespace IndiaRose.Framework.Views
 			double ratio = Math.Min(widthRatio, heightRatio);
 
 			// find the correct dimension and center it
-			int imageWidth = (int)(ratio * FULL_WIDTH);
-			int imageHeight = (int)(ratio * FULL_HEIGHT);
+			int imageWidth = _width = (int)(ratio * FULL_WIDTH);
+			int imageHeight = _height = (int)(ratio * FULL_HEIGHT);
 
 			// find left/top offset to center the view in it's parent
 			int leftOffset = (Width - imageWidth) / 2;
@@ -222,6 +240,8 @@ namespace IndiaRose.Framework.Views
 
 			int topPlayButton = topEmptyArea + topHeight + (bottomHeight - indiagramSize) / 2;
 			UpdatePosition(_playImageView, leftEmptyArea + widthEmptyArea - indiagramSize - indiagramLeftMargin, topPlayButton, indiagramSize, indiagramSize);
+
+			Measure(imageWidth, imageHeight);
 		}
 
 		private void UpdatePosition(View view, int left, int top, int width, int height)

@@ -92,7 +92,7 @@ namespace IndiaRose.Business
 			get { return _container.Resolve<SettingsListViewModel>(); }
 		}
 
-		public ApplicationLookViewModel AdminSettingsBackgroundColorViewModel
+		public ApplicationLookViewModel AdminSettingsApplicationLookViewModel
 		{
 			get { return _container.Resolve<ApplicationLookViewModel>(); }
 		}

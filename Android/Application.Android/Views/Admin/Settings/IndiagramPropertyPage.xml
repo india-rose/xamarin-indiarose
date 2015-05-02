@@ -1,222 +1,117 @@
-﻿<!--
-/*
- * This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
- * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
- */
--->
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
-                xmlns:conv="using:Storm.Mvvm.Converters"
-                xmlns:colorConverters="using:IndiaRose.Framework.Converters"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/white">
+                XmlStyle="{Resource RootLayoutStyle}">
 
 	<Resources>
-		<conv:StringFormatConverter Key="StringFormatConverter" />
-		<colorConverters:ColorStringToDrawableColor Key="ColorStringToDrawableColor" />
-		<colorConverters:ColorStringToColor Key="ColorStringToColor" />
-
-		<Style Key="DataTempLinearLayoutStyle"
-		       android:orientation="horizontal"
-		       android:layout_width="fill_parent"
-		       android:layout_height="fill_parent" />
-		<Style Key="DataTempTextViewStyle"
-		       android:layout_width="wrap_content"
-		       android:layout_height="fill_parent" />
-
 		<DataTemplate Key="IndiagramSizeTemplate">
-			<LinearLayout XmlStyle="{Resource DataTempLinearLayoutStyle}">
-
-				<TextView XmlStyle="{Resource DataTempTextViewStyle}"
+			<LinearLayout XmlStyle="{Resource SpinnerItemLayoutStyle}">
+				<TextView XmlStyle="{Resource SpinnerItemTextStyle}"
 				          Text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}x{0}'}" />
 			</LinearLayout>
 		</DataTemplate>
 
 		<DataTemplate Key="FontSizeTemplate">
-			<LinearLayout XmlStyle="{Resource DataTempLinearLayoutStyle}">
-
-				<TextView XmlStyle="{Resource DataTempTextViewStyle}"
+			<LinearLayout XmlStyle="{Resource SpinnerItemLayoutStyle}">
+				<TextView XmlStyle="{Resource SpinnerItemTextStyle}"
 				          text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}'}" />
 			</LinearLayout>
 		</DataTemplate>
 
 		<DataTemplate Key="FontTemplate">
-			<LinearLayout XmlStyle="{Resource DataTempLinearLayoutStyle}">
-
-				<TextView XmlStyle="{Resource DataTempTextViewStyle}"
+			<LinearLayout XmlStyle="{Resource SpinnerItemLayoutStyle}">
+				<TextView XmlStyle="{Resource SpinnerItemTextStyle}"
 				          text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}'}" />
 			</LinearLayout>
 		</DataTemplate>
-
-		<Style Key="BlueItalicTextStyle"
-		       android:textColor="#006FFF"
-		       android:textSize="16sp" />
-		<!--(android:paddingTop) : To center textview with spinner-->
-		<Style Key="TextViewStyle"
-		       XmlStyle="{Resource BlueItalicTextStyle}"
-		       android:layout_width="wrap_content"
-		       android:layout_height="wrap_content"
-		       android:textStyle="italic" />
-		<Style Key="RelativeTextSpinnerStyle"
-		       android:layout_width="fill_parent"
-		       android:layout_height="wrap_content" />
-		<Style Key="BindableSpinnerStyle"
-		       android:layout_width="fill_parent"
-		       android:layout_height="wrap_content" />
-		<Style Key="CheckBoxStyle"
-		       XmlStyle="{Resource BlueItalicTextStyle}"
-		       android:layout_width="wrap_content"
-		       android:layout_height="wrap_content" />
-
 	</Resources>
 
-	<ImageView XmlStyle="{Resource LogoStyle}"
-	           android:id="logo"
-	           android:layout_alignParentRight="true" />
-	<!--Button ok & back-->
-	<LinearLayout XmlStyle="{Resource Ok_Back_Container}"
-	              android:id="linear_bottom">
-
-		<Button XmlStyle="{Resource MediumGreenButtonStyle}"
-		        Text="{Tr Text, Uid=Button_Ok}"
-		        android:layout_marginLeft="4dip"
-		        Click="{Binding SaveCommand}" />
-		<Button XmlStyle="{Resource MediumOrangeButtonStyle}"
-		        Text="{Tr Text, Uid=Button_Back}"
-		        Click="{Binding BackCommand}" />
-	</LinearLayout>
-
-	<LinearLayout
-		android:id="linear_info"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:orientation="horizontal"
-		android:layout_above="@id/linear_bottom"
-		android:layout_marginLeft="20dip"
-		android:layout_marginRight="20dip">
+	<LinearLayout XmlStyle="{Resource ColumnContainerLinearLayoutStyle}">
 		<!--First column-->
-		<ScrollView
-			android:layout_weight="1"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent">
-			<RelativeLayout
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content">
+		<ScrollView XmlStyle="{Resource ColumnLayoutStyle}">
+			<LinearLayout android:layout_width="match_parent"
+			              android:layout_height="wrap_content"
+			              android:orientation="vertical">
 
-				<TextView XmlStyle="{Resource TextViewStyle}"
-				          android:id="text_image_size"
+				<!-- Indiagram size -->
+				<TextView XmlStyle="{Resource FormLabelStyle}"
 				          Text="{Tr Text, Uid=Indiagram_property_imageSizeTitle}" />
 
-				<BindableSpinner XmlStyle="{Resource BindableSpinnerStyle}"
-				                 android:id="spin_image_size"
-				                 android:layout_below="@id/text_image_size"
+				<BindableSpinner XmlStyle="{Resource SpinnerStyle}"
 				                 adapter="{Binding IndiagramSizes, Template={Resource IndiagramSizeTemplate}}"
 				                 currentItem="{Binding IndiagramSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}" />
-				<TextView XmlStyle="{Resource TextViewStyle}"
-				          android:id="text_font_label"
-				          android:layout_below="@id/spin_image_size"
+				<!-- Font family -->
+				<TextView XmlStyle="{Resource FormLabelStyle}"
 				          Text="{Tr Text, Uid=fontTitle}" />
 
-				<BindableSpinner XmlStyle="{Resource BindableSpinnerStyle}"
-				                 android:id="spin_font"
-				                 android:layout_below="@id/text_font_label"
+				<BindableSpinner XmlStyle="{Resource SpinnerStyle}"
 				                 adapter="{Binding FontNames, Template={Resource FontTemplate}}"
 				                 currentItem="{Binding FontName, Mode=TwoWay, UpdateEvent=CurrentItemChanged}" />
-				<TextView XmlStyle="{Resource TextViewStyle}"
-				          android:id="text_font_size"
-				          android:layout_below="@id/spin_font"
-				          Text="{Tr Text,Uid=fontSizeTitle}" />
 
-				<BindableSpinner XmlStyle="{Resource BindableSpinnerStyle}"
-				                 android:id="spin_font_size"
-				                 android:layout_below="@id/text_font_size"
+				<!-- Font size -->
+				<TextView XmlStyle="{Resource FormLabelStyle}"
+				          Text="{Tr Text, Uid=fontSizeTitle}" />
+
+				<BindableSpinner XmlStyle="{Resource SpinnerStyle}"
 				                 android:layout_marginBottom="20dip"
 				                 adapter="{Binding FontSizes, Template={Resource FontSizeTemplate}}"
 				                 currentItem="{Binding FontSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}" />
-				<TextView XmlStyle="{Resource TextViewStyle}"
-				          android:id="text_color_label"
-				          android:layout_below="@id/spin_font_size"
+
+				<!-- Text color -->
+				<TextView XmlStyle="{Resource FormLabelStyle}"
 				          Text="{Tr Text, Uid=text_color_label}" />
-				<LinearLayout
-					android:layout_width="fill_parent"
-					android:layout_height="wrap_content"
-					android:id="text_color_layout"
-					android:layout_below="@id/text_color_label"
-					android:orientation="horizontal"
-					android:layout_marginBottom="10dip">
-					<TextView
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:id="text_color_test"
-						android:textSize="16sp"
-						android:textColor="#000"
-						android:layout_marginRight="10dip"
-						Text="{Tr Text,Uid=text_color_test}" />
-					<RelativeLayout
-						android:layout_width="fill_parent"
-						android:layout_height="fill_parent"
-						android:gravity="center">
-						<ViewWithBorder
-							android:layout_width="fill_parent"
-							android:layout_height="fill_parent"
-							BackgroundColor="{Binding TextColor.Color, Converter={Resource ColorStringToColor}}" />
-					</RelativeLayout>
+				<LinearLayout android:layout_width="match_parent"
+				              android:layout_height="wrap_content"
+				              android:orientation="horizontal"
+				              android:layout_marginBottom="10dip">
+					<TextView XmlStyle="{Resource DefaultTextStyle}"
+					          android:layout_marginRight="10dip"
+					          Text="{Tr Text,Uid=text_color_test}" />
+
+					<ViewWithBorder android:layout_width="match_parent"
+					                android:layout_height="match_parent"
+					                BackgroundColor="{Binding TextColor.Color, Converter={Resource ColorStringToColorConverter}}" />
+
 				</LinearLayout>
 
-				<LinearLayout
-					android:layout_width="fill_parent"
-					android:layout_height="wrap_content"
-					android:layout_below="@id/text_color_layout"
-					android:id="button_layout"
-					android:layout_marginBottom="20dip">
-					<Button XmlStyle="{Resource BlueButtonStyle}"
-					        Text="{Tr Text,Uid=text_color_button}"
-					        Click="{Binding TextColorCommand}"
-					        android:textColor="@android:color/white"
-					        android:layout_width="fill_parent"
-					        android:layout_height="wrap_content"
-					        android:textSize="14sp" />
-				</LinearLayout>
-				<CheckBox XmlStyle="{Resource CheckBoxStyle}"
-				          android:layout_below="@id/button_layout"
+				<Button XmlStyle="{Resource BlueButtonStyle}"
+				        Text="{Tr Text,Uid=text_color_button}"
+				        Click="{Binding TextColorCommand}" />
+
+				<CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
 				          Text="{Tr Text,Uid=Indiagram_property_checkboxhomecategory}"
 				          checked="{Binding BackAfterSelection,Mode=TwoWay, UpdateEvent=CheckedChange}" />
-			</RelativeLayout>
+			</LinearLayout>
 		</ScrollView>
 		<!--Second column-->
-		<RelativeLayout android:id="second_column"
-		                android:layout_width="fill_parent"
-		                android:layout_height="fill_parent"
-		                android:layout_gravity="center"
-		                android:layout_weight="1"
-		                android:gravity="center"
-		                android:layout_marginTop="50dip"
-		                android:background="@android:color/white">
+		<LinearLayout XmlStyle="{Resource ColumnLinearLayoutStyle}"
+		              android:layout_gravity="center"
+		              android:gravity="center">
 			<IndiagramPreviewView android:layout_height="wrap_content"
-			                      android:layout_width="fill_parent"
-			                      android:gravity="center"
-			                      android:layout_gravity="center"
-			                      android:id="PreviewContainer"
+			                      android:layout_width="wrap_content"
 			                      IndiagramSize="{Binding IndiagramSize}"
-			                      ReinforcerColor="{Binding ReinforcerColor.Color, Converter={Resource ColorStringToColor}}"
+			                      ReinforcerColor="{Binding ReinforcerColor.Color, Converter={Resource ColorStringToColorConverter}}"
 			                      ReinforcerEnabled="{Binding ReinforcerEnabled}" />
 
-			<CheckBox XmlStyle="{Resource CheckBoxStyle}"
-			          android:id="checkboxreinforcer"
-			          android:layout_below="@id/PreviewContainer"
+			<CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
 			          Text="{Tr Text,Uid=Indiagram_property_reinforcerReadingLabel}"
-			          checked="{Binding ReinforcerEnabled,Mode=TwoWay, UpdateEvent=CheckedChange}" />
+			          Checked="{Binding ReinforcerEnabled,Mode=TwoWay, UpdateEvent=CheckedChange}" />
+
 			<Button XmlStyle="{Resource PurpleButtonStyle}"
-			        android:textColor="@android:color/white"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-			        android:layout_below="@id/checkboxreinforcer"
-			        android:textSize="14sp"
-			        android:layout_marginLeft="8dip"
-			        android:layout_marginRight="8dip"
 			        Text="{Tr Text,Uid=Indiagram_Property_reinforcerColorButton}"
 			        Click="{Binding ReinforcerColorCommand}" />
-		</RelativeLayout>
+		</LinearLayout>
+	</LinearLayout>
+
+	<!--Button ok & back-->
+	<LinearLayout XmlStyle="{Resource ValidationButtonLinearLayoutStyle}">
+
+		<Button XmlStyle="{Resource OkButtonStyle}"
+		        Text="{Tr Text, Uid=Button_Ok}"
+		        Click="{Binding SaveCommand}" />
+		<Button XmlStyle="{Resource CancelButtonStyle}"
+		        Text="{Tr Text, Uid=Button_Back}"
+		        Click="{Binding BackCommand}" />
 	</LinearLayout>
 </RelativeLayout>

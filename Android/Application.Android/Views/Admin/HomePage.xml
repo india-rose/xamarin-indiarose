@@ -1,38 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:background="@android:color/white"
-				android:paddingLeft="50dip"
-				android:paddingRight="50dip" 
+				XmlStyle="{Resource RootPaddingLayoutStyle}"
 				>
-	<Resources>
-		<Style Key="ButtonLineStyle"
-			   android:layout_width="match_parent"
-			   android:layout_height="match_parent"
-			   android:layout_marginBottom="4dip"
-			   android:layout_weight="1"
-			   android:gravity="center_horizontal"
-			   android:orientation="horizontal" 
-			   />
-		<Style Key="ButtonContainerStyle"
-			   android:layout_width="match_parent"
-			   android:layout_height="match_parent"
-			   android:gravity="center"
-			   android:orientation="vertical"
-			   android:paddingBottom="25dip"
-			   android:paddingTop="25dip" 
-			   />
-	</Resources>
-
 	<ImageView XmlStyle="{Resource LogoStyle}"
 			   android:id="Logo"
 			   />
 
-	<LinearLayout XmlStyle="{Resource ButtonContainerStyle}"
+	<LinearLayout XmlStyle="{Resource ButtonPageContainerStyle}"
 				  android:layout_below="@+id/Logo">
 		
-		<LinearLayout XmlStyle="{Resource ButtonLineStyle}">
+		<LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}">
 			
 			<Button XmlStyle="{Resource MediumBlueButtonStyle}"
 					Text="{Tr Text, Uid=Home_AppSettings}"
@@ -44,7 +21,7 @@
 					/>
 		</LinearLayout>
 		
-		<LinearLayout XmlStyle="{Resource ButtonLineStyle}">
+		<LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}">
 			
 			<Button XmlStyle="{Resource SmallBlueButtonStyle}"
 					Text="{Tr Text, Uid=Home_VoiceSynthesisUpgrade}"
@@ -63,7 +40,7 @@
 					Click="{Binding HelpCommand}"/>
 		</LinearLayout>
 
-		<LinearLayout XmlStyle="{Resource ButtonLineStyle}">
+		<LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}">
 			
 			<Button XmlStyle="{Resource SmallRedButtonStyle}" 
 					Text="{Tr Text, Uid=Home_Contact}"

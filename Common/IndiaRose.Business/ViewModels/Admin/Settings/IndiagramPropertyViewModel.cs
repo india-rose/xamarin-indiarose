@@ -109,15 +109,17 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 		    BackAfterSelection = SettingsService.IsBackHomeAfterSelectionEnabled;
 
 	        IndiagramSizes = new ObservableCollection<int>();
-	        //TODO : refactor to limit indiagram size with the height of the screen
-	        foreach (int size in new[] {32, 48, 64, 80, 128, 160, 200, 256, 280, 300})
+		    int maxIndiagramSize = (int)(LazyResolver<IScreenService>.Service.Height*0.4);
+
+	        foreach (int size in new[] {32, 48, 64, 80, 128, 160, 200, 256, 280, 300, 350, 400, 450, 500, 550, 600}.Where(x => x <= maxIndiagramSize))
 	        {
 	            IndiagramSizes.Add(size);
 	        }
 	        IndiagramSize = SettingsService.IndiagramDisplaySize;
 
 	        FontSizes = new ObservableCollection<int>();
-	        foreach (int size in new[] {8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32})
+			
+	        foreach (int size in Enumerable.Range(8, 50).Where(x => x % 2 == 0))
 	        {
 	            FontSizes.Add(size);
 	        }

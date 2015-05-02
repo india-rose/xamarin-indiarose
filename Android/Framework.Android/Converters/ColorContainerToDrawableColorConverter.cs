@@ -3,14 +3,22 @@ using System.Globalization;
 using System.Windows.Data;
 using Android.Graphics;
 using Android.Graphics.Drawables;
+using IndiaRose.Data.UIModel;
 
 namespace IndiaRose.Framework.Converters
 {
-    public class ColorStringToDrawableColor : IValueConverter
+    public class ColorContainerToDrawableColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string colorString = value as string;
+	        ColorContainer colorContainer = value as ColorContainer;
+
+	        if (colorContainer == null)
+	        {
+		        return null;
+	        }
+
+	        string colorString = colorContainer.Color;
 
 	        try
 	        {

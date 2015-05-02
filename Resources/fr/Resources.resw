@@ -147,64 +147,64 @@ Commentaires :</value>
   <data name="Contact.Title" xml:space="preserve">
     <value>[Contact : India Rose]</value>
   </data>
-  <data name="Credits_Application.Text" xml:space="preserve">
+  <data name="Credits_ApplicationName.Text" xml:space="preserve">
     <value>Application India Rose</value>
   </data>
-  <data name="Credits_Direction.Text" xml:space="preserve">
+  <data name="Credits_Officer.Text" xml:space="preserve">
     <value>Direction</value>
   </data>
-  <data name="Credits_DirectionStaff.Text" xml:space="preserve">
+  <data name="Credits_OfficerTeam.Text" xml:space="preserve">
     <value>Julien Mialon, José Martins, Anthony Froissant, Julien De Sousa</value>
   </data>
-  <data name="Credits_graphics.Text" xml:space="preserve">
+  <data name="Credits_Graphics.Text" xml:space="preserve">
     <value>Graphisme et communication</value>
   </data>
-  <data name="Credits_graphicsStaff.Text" xml:space="preserve">
+  <data name="Credits_GraphicsTeam.Text" xml:space="preserve">
     <value>Aurélia Masquet, Michel Savariradjalou</value>
   </data>
-  <data name="Credits_Managerial.Text" xml:space="preserve">
-    <value>Encadrants</value>
+  <data name="Credits_University.Text" xml:space="preserve">
+    <value>Université d'Orléans</value>
   </data>
-  <data name="Credits_ManagerialStaff.Text" xml:space="preserve">
+  <data name="Credits_UniversityTeam.Text" xml:space="preserve">
     <value>Frédéric Moal, Catherine Julié-Bonnet, Sylvain Jubertie, Wadoud Bousdira</value>
   </data>
   <data name="Credits_Sclera.Text" xml:space="preserve">
     <value>www.sclera.tv</value>
   </data>
-  <data name="Credits_Supplier.Text" xml:space="preserve">
+  <data name="Credits_IndiagramProvider.Text" xml:space="preserve">
     <value>Fournisseur Indiagram</value>
   </data>
-  <data name="Credits_TeamAndroid2011.Text" xml:space="preserve">
+  <data name="Credits_Android2011.Text" xml:space="preserve">
     <value>Equipe Android - 2011</value>
   </data>
-  <data name="Credits_TeamAndroid2012.Text" xml:space="preserve">
+  <data name="Credits_Android2012.Text" xml:space="preserve">
     <value>Equipe Android - 2012</value>
   </data>
-  <data name="Credits_TeamCloud2011.Text" xml:space="preserve">
+  <data name="Credits_Cloud2011.Text" xml:space="preserve">
     <value>Equipe Cloud - 2011</value>
   </data>
-  <data name="Credits_TeamStaff.Text" xml:space="preserve">
+  <data name="Credits_Xamarin2014Team.Text" xml:space="preserve">
     <value>Vincent Fauveau, Nicolas Lacourte-Barbadaux, Lamia Meziani, Arthur Guillaume</value>
   </data>
-  <data name="Credits_TeamStaffAndroid2011.Text" xml:space="preserve">
+  <data name="Credits_Android2011Team.Text" xml:space="preserve">
     <value>Cyprien Ruelle, Matthias David, Pauline Lopez, Heloise Suleiman, Quentin Malot, Quentin Duplaix</value>
   </data>
-  <data name="Credits_TeamStaffAndroid2012.Text" xml:space="preserve">
+  <data name="Credits_Android2012Team.Text" xml:space="preserve">
     <value>Léa Muracciole, Arthur Guillaume, Jordan Fontorbe</value>
   </data>
-  <data name="Credits_TeamStaffAndroid2013.Text" xml:space="preserve">
+  <data name="Credits_Android2013Team.Text" xml:space="preserve">
     <value>Florent Champigny, Alexandre Masson, Tristan Monediere, Kevin De Jesus Ferreira</value>
   </data>
-  <data name="Credits_TeamStaffCloud2011.Text" xml:space="preserve">
+  <data name="Credits_Cloud2011Team.Text" xml:space="preserve">
     <value>Mélanie Pothain, Fabienne Bruneau, Alexis Fleuriet, François Lecugy, Adrien Tremblay</value>
   </data>
-  <data name="Credits_TeamStaffWindows2011.Text" xml:space="preserve">
+  <data name="Credits_Windows2011Team.Text" xml:space="preserve">
     <value>Benjamin Rousseau, Florent Monin, Corentin Barruet, Benjamin Remy</value>
   </data>
-  <data name="Credits_TeamWindows2011.Text" xml:space="preserve">
+  <data name="Credits_Windows2011.Text" xml:space="preserve">
     <value>Equipe Windows 8 - 2011</value>
   </data>
-  <data name="Credits_Team_2014.Text" xml:space="preserve">
+  <data name="Credits_Xamarin2014.Text" xml:space="preserve">
     <value>Equipe Xamarin - 2014</value>
   </data>
   <data name="Credits_Trainee2013.Text" xml:space="preserve">
@@ -213,10 +213,10 @@ Commentaires :</value>
   <data name="Credits_Trainee2014.Text" xml:space="preserve">
     <value>Stagiaires 2014/2015</value>
   </data>
-  <data name="Credits_TraineeStaff2013.Text" xml:space="preserve">
-    <value>Marco Da Cunha Fernandez, Nesrine Brahmi, El Mehdi Fahim, Lisa Deloménie, Erwan Durandet, Florian Blain</value>
+  <data name="Credits_Trainee2013Team.Text" xml:space="preserve">
+    <value>Marco Da Cunha Fernandez, Nesrine Brahmi, El Mehdi Fahim, Lisa Deloménie, Erwan Durandet</value>
   </data>
-  <data name="Credits_TraineeStaff2014.Text" xml:space="preserve">
+  <data name="Credits_Trainee2014Team.Text" xml:space="preserve">
     <value>David Intho, Valentin Jubert, Julien Gauttier, Corentin Colomier</value>
   </data>
   <data name="Exit.Text" xml:space="preserve">
@@ -261,13 +261,13 @@ Commentaires :</value>
   <data name="TTS_3.Text" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="TTS_choose.Text" xml:space="preserve">
+  <data name="TTS_Choose.Text" xml:space="preserve">
     <value>Choisir TTS Ivona</value>
   </data>
-  <data name="TTS_ivona.Text" xml:space="preserve">
+  <data name="TTS_Ivona.Text" xml:space="preserve">
     <value>Installer le TTS Ivona</value>
   </data>
-  <data name="TTS_lang.Text" xml:space="preserve">
+  <data name="TTS_LangPack.Text" xml:space="preserve">
     <value>Installer un pack de langue</value>
   </data>
   <data name="TeamAndroid2013.Text" xml:space="preserve">
@@ -309,11 +309,8 @@ Commentaires :</value>
   <data name="Server_Synchro_Void.Text" xml:space="preserve">
     <value>Cet écran ne fait rien pour l'instant.\nVous n'avez plus qu'à appuyer sur le bouton retour\nVous pouvez aussi attendre jusqu'à la fin des temps si vous le souhaitez !</value>
   </data>
-  <data name="Background_Color_backgroundColorInfo.Text" xml:space="preserve">
-    <value>Cliquez sur la zone pour changer la couleur</value>
-  </data>
-  <data name="Background_Color_backgroundColorSizeLabel.Text" xml:space="preserve">
-    <value>Taille de la zone sélectionnée :</value>
+  <data name="ApplicationLook_AreaSize.Text" xml:space="preserve">
+    <value>Taille de la zone du haut (sélection des indiagrams) : </value>
   </data>
   <data name="Dialogs_DragAndDrop.Text" xml:space="preserve">
     <value>Utiliser le glisser déposer ?</value>
@@ -333,7 +330,7 @@ Commentaires :</value>
   <data name="fontTitle.Text" xml:space="preserve">
     <value>Police</value>
   </data>
-  <data name="Credits_TeamAndroid2013.Text" xml:space="preserve">
+  <data name="Credits_Android2013.Text" xml:space="preserve">
     <value>Equipe Android - 2013</value>
   </data>
   <data name="DDDial_Text.Text" xml:space="preserve">
@@ -500,5 +497,17 @@ Commentaires :</value>
   </data>
   <data name="DelCategory_Confirm.Text" xml:space="preserve">
     <value>Cet indiagram est une catégorie et contient des indiagrams. Si vous la supprimez vous supprimez tous ses enfants.\nÊtes vous sûr de vouloir continuer ?</value>
+  </data>
+  <data name="ApplicationLook_ChangeBottomColor.Text" xml:space="preserve">
+    <value>Cliquez sur la partie basse pour changer sa couleur</value>
+  </data>
+  <data name="ApplicationLook_ChangeTopColor.Text" xml:space="preserve">
+    <value>Cliquez sur la partie haute pour changer sa couleur</value>
+  </data>
+  <data name="Credits_Trainee2012.Text" xml:space="preserve">
+    <value>Stagiaires 2012/2013</value>
+  </data>
+  <data name="Credits_Trainee2012Team.Text" xml:space="preserve">
+    <value>Florian Blain</value>
   </data>
 </root>

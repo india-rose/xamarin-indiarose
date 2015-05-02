@@ -71,11 +71,13 @@ namespace IndiaRose.Business.ViewModels.Admin
 			ContactCommand = new DelegateCommand(ContactAction);
 			ExitCommand = new DelegateCommand(ExitAction);
 			CreditsCommand = new DelegateCommand(CreditsAction);
-		    //if (LazyResolver<ICollectionStorageService>.Service.GetFullCollection().Count == 0)//Si pas zip
-		    //{
-		        //Initialiser
-                //LazyResolver<IXmlService>.Service.Initialize();
-		    //}
+		}
+
+		public override void OnNavigatedTo(NavigationArgs e, string parametersKey)
+		{
+			base.OnNavigatedTo(e, parametersKey);
+
+			// TODO: if collection is empty, navigate to dialog and uncompress zip file
 		}
 
 		#region First line command implementation

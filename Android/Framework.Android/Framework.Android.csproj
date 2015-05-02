@@ -43,12 +43,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
-    <Compile Include="Converters\ColorContainerToColor.cs" />
-    <Compile Include="Converters\ColorStringToColor.cs" />
+    <Compile Include="Converters\ColorContainerToColorConverter.cs" />
+    <Compile Include="Converters\ColorStringToColorConverter.cs" />
     <Compile Include="Converters\ColorStringToIntConverter.cs" />
-    <Compile Include="Converters\ColorStringToDrawableColor.cs" />
+    <Compile Include="Converters\ColorStringToDrawableColorConverter.cs" />
     <Compile Include="Converters\ColorContainerToIntConverter.cs" />
-    <Compile Include="Converters\ColorContainerToDrawableColor.cs" />
+    <Compile Include="Converters\ColorContainerToDrawableColorConverter.cs" />
     <Compile Include="Converters\ParentCategoryTextConverter.cs" />
     <Compile Include="Converters\DefaultLocalizedStringIfNullConverter.cs" />
     <Compile Include="Helper\FontHelper.cs" />

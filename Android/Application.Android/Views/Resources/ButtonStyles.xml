@@ -1,93 +1,104 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <Resources xmlns:android="http://schemas.android.com/apk/res/android">
 
+	<Style Key="TextButtonStyle"
+	       android:textColor="@android:color/white"
+	       android:textSize="20sp" />
+
+	<Style Key="BaseSimpleButtonStyle"
+	       XmlStyle="{Resource TextButtonStyle}"
+	       android:layout_width="match_parent"
+	       android:layout_height="wrap_content" />
+	
 	<Style Key="BaseButtonStyle"
-		   android:textColor="@android:color/white"
-		   android:textSize="20sp"
-		   android:layout_width="match_parent"
-		   android:layout_height="match_parent"
-		   android:layout_marginRight="4dip"
-		   />
+	       XmlStyle="{Resource TextButtonStyle}"
+	       android:layout_width="match_parent"
+	       android:layout_height="match_parent"
+	       android:layout_marginRight="4dip" />
 
 	<!-- Material design button size-->
 	<Style Key="SmallButtonStyle"
-		   XmlStyle="{Resource BaseButtonStyle}"
-		   android:layout_weight="1"
-		   />
+	       XmlStyle="{Resource BaseButtonStyle}"
+	       android:layout_weight="4" />
 	<Style Key="MediumButtonStyle"
-		   XmlStyle="{Resource BaseButtonStyle}"
-		   android:layout_weight="2"
-		   />
+	       XmlStyle="{Resource BaseButtonStyle}"
+	       android:layout_weight="2" />
 	<Style Key="LargeButtonStyle"
-		   XmlStyle="{Resource BaseButtonStyle}"
-		   android:layout_weight="4"
-		   />
+	       XmlStyle="{Resource BaseButtonStyle}"
+	       android:layout_weight="1" />
+
+	<!-- Material design button Ok/Cancel-->
+	<Style Key="ValidationButtonLinearLayoutStyle"
+	       android:layout_width="match_parent"
+	       android:layout_height="75dip"
+	       android:layout_alignParentBottom="true"
+	       android:gravity="center"
+	       android:layout_gravity="center"
+	       android:layout_centerInParent="true"
+	       android:orientation="horizontal"
+	       android:layout_marginTop="4dip" />
+
+	<Style Key="OkButtonStyle"
+	       XmlStyle="{Resource SmallButtonStyle}"
+	       android:background="@drawable/buttongreen" />
+	<Style Key="CancelButtonStyle"
+	       XmlStyle="{Resource SmallButtonStyle}"
+	       android:background="@drawable/buttonorange" />
 
 	<!-- Material design button colors -->
 	<Style Key="MediumBlueButtonStyle"
-		   XmlStyle="{Resource MediumButtonStyle}"
-		   android:background="@drawable/buttonblue"
-		   />
+	       XmlStyle="{Resource MediumButtonStyle}"
+	       android:background="@drawable/buttonblue" />
 	<Style Key="MediumGreenButtonStyle"
-		   XmlStyle="{Resource MediumButtonStyle}"
-		   android:background="@drawable/buttongreen"
-		   />
+	       XmlStyle="{Resource MediumButtonStyle}"
+	       android:background="@drawable/buttongreen" />
 	<Style Key="MediumOrangeButtonStyle"
-		   XmlStyle="{Resource MediumButtonStyle}"
-		   android:background="@drawable/buttonorange"
-		   />
-  <Style Key="MediumRedButtonStyle"
-		   XmlStyle="{Resource MediumButtonStyle}"
-		   android:background="@drawable/buttonred"
-		   />
-  <Style Key="MediumPurpleButtonStyle"
-		   XmlStyle="{Resource MediumButtonStyle}"
-		   android:background="@drawable/buttonpurple"
-		   />
-  <Style Key="MediumPinkButtonStyle"
-      XmlStyle="{Resource MediumButtonStyle}"
-      android:background="@drawable/buttonpink"
-		   />
-	
-	
-	<Style Key="SmallBlueButtonStyle"
-		   XmlStyle="{Resource SmallButtonStyle}"
-		   android:background="@drawable/buttonblue"
-		   />
-	<Style Key="SmallGreenButtonStyle"
-		   XmlStyle="{Resource SmallButtonStyle}"
-		   android:background="@drawable/buttongreen"
-		   />
-	<Style Key="SmallPinkButtonStyle"
-		   XmlStyle="{Resource SmallButtonStyle}"
-		   android:background="@drawable/buttonpink"
-		   />
-	<Style Key="SmallRedButtonStyle"
-		   XmlStyle="{Resource SmallButtonStyle}"
-		   android:background="@drawable/buttonred"
-		   />
-	<Style Key="SmallPurpleButtonStyle"
-		   XmlStyle="{Resource SmallButtonStyle}"
-		   android:background="@drawable/buttonpurple"
-		   />
+	       XmlStyle="{Resource MediumButtonStyle}"
+	       android:background="@drawable/buttonorange" />
+	<Style Key="MediumRedButtonStyle"
+	       XmlStyle="{Resource MediumButtonStyle}"
+	       android:background="@drawable/buttonred" />
+	<Style Key="MediumPurpleButtonStyle"
+	       XmlStyle="{Resource MediumButtonStyle}"
+	       android:background="@drawable/buttonpurple" />
+	<Style Key="MediumPinkButtonStyle"
+	       XmlStyle="{Resource MediumButtonStyle}"
+	       android:background="@drawable/buttonpink" />
 
+
+	<Style Key="SmallBlueButtonStyle"
+	       XmlStyle="{Resource SmallButtonStyle}"
+	       android:background="@drawable/buttonblue" />
+	<Style Key="SmallGreenButtonStyle"
+	       XmlStyle="{Resource SmallButtonStyle}"
+	       android:background="@drawable/buttongreen" />
+	<Style Key="SmallPinkButtonStyle"
+	       XmlStyle="{Resource SmallButtonStyle}"
+	       android:background="@drawable/buttonpink" />
+	<Style Key="SmallRedButtonStyle"
+	       XmlStyle="{Resource SmallButtonStyle}"
+	       android:background="@drawable/buttonred" />
+	<Style Key="SmallPurpleButtonStyle"
+	       XmlStyle="{Resource SmallButtonStyle}"
+	       android:background="@drawable/buttonpurple" />
 
 
 	<Style Key="OrangeButtonStyle"
-		   android:background="@drawable/buttonorange"
-		   />
+		   XmlStyle="{Resource BaseSimpleButtonStyle}"
+	       android:background="@drawable/buttonorange" />
 	<Style Key="PinkButtonStyle"
-		   android:background="@drawable/buttonpink"
-		   />
+		   XmlStyle="{Resource BaseSimpleButtonStyle}"
+	       android:background="@drawable/buttonpink" />
 	<Style Key="RedButtonStyle"
-		   android:background="@drawable/buttonred"
-		   />
-  <Style Key="PurpleButtonStyle"
-		   android:background="@drawable/buttonpurple"
-		   />
+		   XmlStyle="{Resource BaseSimpleButtonStyle}"
+	       android:background="@drawable/buttonred" />
+	<Style Key="PurpleButtonStyle"
+	       XmlStyle="{Resource BaseSimpleButtonStyle}"
+	       android:background="@drawable/buttonpurple" />
 	<Style Key="BlueButtonStyle"
-		   android:background="@drawable/buttonblue"
-		   />
+		   XmlStyle="{Resource BaseSimpleButtonStyle}"
+	       android:background="@drawable/buttonblue" />
 
 
 </Resources>

@@ -1,63 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/white"
-                android:paddingLeft="50dip"
-                android:paddingRight="50dip" >
-  <Resources>
-    <Style Key="ButtonLineStyle"
-			   android:layout_width="match_parent"
-			   android:layout_height="match_parent"
-			   android:layout_marginBottom="4dip"
-			   android:layout_weight="1"
-			   android:gravity="center_horizontal"
-			   android:orientation="horizontal"
-			   />
-    <Style Key="ButtonContainerStyle"
-			   android:layout_width="match_parent"
-			   android:layout_height="match_parent"
-			   android:gravity="center"
-			   android:orientation="vertical"
-			   android:paddingBottom="25dip"
-			   android:paddingTop="25dip"
-			   />
-  </Resources>
-  <ImageView XmlStyle="{Resource LogoStyle}"
-      android:id="Logo" />
+                XmlStyle="{Resource RootPaddingLayoutStyle}">
+	<LinearLayout XmlStyle="{Resource ButtonPageContainerStyle}"
+	              android:layout_below="@id/Logo">
 
-  <LinearLayout XmlStyle="{Resource ButtonContainerStyle}"
-      android:layout_below="@id/Logo">
+		<LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}">
+			<Button XmlStyle="{Resource MediumBlueButtonStyle}"
+			        Text="{Tr Text, Uid=App_Settings_Background_Properties}"
+			        Click="{Binding ApplicationLookCommand}" />
+			<Button XmlStyle="{Resource MediumPinkButtonStyle}"
+			        Text="{Tr Text, Uid=App_Settings_Indiagram_Properties}"
+			        Click="{Binding IndiagramPropertyCommand}" />
+			<Button XmlStyle="{Resource MediumGreenButtonStyle}"
+			        Text="{Tr Text, Uid=App_Settings_Drag_Drop}"
+			        Click="{Binding DragAndDropCommand}" />
+		</LinearLayout>
 
-    <LinearLayout XmlStyle="{Resource ButtonLineStyle}" >
-      <Button XmlStyle="{Resource MediumBlueButtonStyle}"
-          Text="{Tr Text, Uid=App_Settings_Background_Properties}"
-          Click="{Binding ApplicationLookCommand}"/>
+		<LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}">
+			<Button XmlStyle="{Resource MediumGreenButtonStyle}"
+			        Text="{Tr Text,Uid=App_Settings_Lecture_Category_Properties}"
+			        Click="{Binding CategoryReadingCommand}" />
+			<Button XmlStyle="{Resource MediumPurpleButtonStyle}"
+			        Text="{Tr Text,Uid=App_Settings_Ready_Delay}"
+			        Click="{Binding ReadingDelayCommand}" />
+			<Button XmlStyle="{Resource MediumRedButtonStyle}"
+			        Text="{Tr Text, Uid=App_Settings_Reinitialisation}"
+			        Click="{Binding ResetSettingsCommand}" />
+		</LinearLayout>
 
-      <Button XmlStyle="{Resource MediumPinkButtonStyle}"
-              Text="{Tr Text, Uid=App_Settings_Indiagram_Properties}"
-              Click="{Binding IndiagramPropertyCommand}" />
-      <Button XmlStyle="{Resource MediumGreenButtonStyle}"
-              Text="{Tr Text, Uid=App_Settings_Drag_Drop}"
-              Click="{Binding DragAndDropCommand}" />
-    </LinearLayout>
-
-    <LinearLayout XmlStyle="{Resource ButtonLineStyle}" >
-
-      <Button XmlStyle="{Resource MediumGreenButtonStyle}"
-              Text="{Tr Text,Uid=App_Settings_Lecture_Category_Properties}"
-              Click="{Binding CategoryReadingCommand}"/>
-
-      <Button XmlStyle="{Resource MediumPurpleButtonStyle}"
-              Text="{Tr Text,Uid=App_Settings_Ready_Delay}"
-               Click="{Binding ReadingDelayCommand}" />
-
-      <Button XmlStyle="{Resource MediumRedButtonStyle}"
-              Text="{Tr Text, Uid=App_Settings_Reinitialisation}"
-              Click="{Binding ResetSettingsCommand}" />
-    </LinearLayout>
-
-  </LinearLayout>
+	</LinearLayout>
 
 
 </RelativeLayout>

@@ -12,14 +12,14 @@ using Storm.Mvvm.Bindings;
 namespace IndiaRose.Application.Activities.Admin.Settings
 {
 	[Activity(ScreenOrientation = ScreenOrientation.Landscape, Theme = "@style/Theme.Sherlock.Light.NoActionBar")]
-	public partial class BackgroundColorActivity : ActivityBase
+	public partial class ApplicationLookActivity : ActivityBase
 	{
 	    protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
 
-			SetContentView(Resource.Layout.Admin_Settings_BackgroundColorPage);
-	        SetViewModel(Container.Locator.AdminSettingsBackgroundColorViewModel);
+			SetContentView(Resource.Layout.Admin_Settings_ApplicationLookPage);
+	        SetViewModel(Container.Locator.AdminSettingsApplicationLookViewModel);
 		}
 	}
 }

@@ -178,14 +178,6 @@ namespace IndiaRose.Framework.Views
             _pictureWidth = _pictureHeight = SettingsService.IndiagramDisplaySize;
         }
 
-        public void SetDimension(int width, int height)
-        {
-            _pictureWidth = width;
-            _pictureHeight = height;
-            RefreshDimension();
-
-            DispatcherService.InvokeOnUIThread(Invalidate);
-        }
         protected void RefreshDimension()
         {
             float textWidth = _textPainter.MeasureText(_indiagram.Text);

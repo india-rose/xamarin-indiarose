@@ -1,79 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:gravity="center"
-    android:orientation="vertical" >
+              XmlStyle="{Resource RootPaddingLayoutStyle}"
+              android:gravity="center"
+              android:orientation="vertical">
 
-  
-<Resources>
-		<Style Key="RelativeLayoutStyle"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="50dip"
-      android:layout_marginRight="50dip"
-      android:layout_marginTop="10dip"
-      android:gravity="center"  
-			   />
-  
-		<Style Key="ButtonContainerStyle"
-			   android:layout_width="match_parent"
-			   android:layout_height="match_parent"
-			   android:gravity="center"
-			   android:orientation="vertical"
-			   android:paddingBottom="25dip"
-			   android:paddingTop="25dip" 
-			   />
-    <Style Key="ITTSPButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:minWidth="70dip"
-        android:textColor="@android:color/white"
-        android:textSize="30sp" 
-        />
-	<Style Key= "ITTSPTextViewStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="10dip"
-        android:textColor="@android:color/black"
-         />
+
+	<Resources>
+		<Style Key="LineLayoutStyle"
+		       android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:layout_marginTop="20dip"
+		       android:gravity="center" />
+
+		<Style Key="ButtonStyle"
+		       android:layout_width="wrap_content"
+		       android:layout_height="wrap_content"
+		       android:layout_alignParentRight="true"
+		       android:layout_centerVertical="true"
+		       android:minWidth="70dip"
+		       android:textColor="@android:color/white"
+		       android:textSize="30sp" />
+		<Style Key="TextViewStyle"
+		       android:layout_width="wrap_content"
+		       android:layout_height="wrap_content"
+		       android:layout_alignParentLeft="true"
+		       android:layout_centerVertical="true"
+			   android:textSize="22sp"
+		       android:textColor="@android:color/black" />
 
 	</Resources>
-  
-  <RelativeLayout XmlStyle="{Resource RelativeLayoutStyle}">  
-    <TextView XmlStyle="{Resource ITTSPTextViewStyle}"
-        Text="{Tr Text, Uid=TTS_ivona}"/>
-    <Button XmlStyle="{Resource ITTSPButtonStyle}"
-        android:background="@drawable/buttonred"
-        Text="{Tr Text, Uid=TTS_1}"
-        click ="{Binding InstallVoiceSynthesisEngineCommand}"/> 
-  </RelativeLayout>
 
-  <RelativeLayout XmlStyle="{Resource RelativeLayoutStyle}">
-    <TextView XmlStyle="{Resource ITTSPTextViewStyle}"
-        Text="{Tr Text, Uid=TTS_lang}"/>
-    <Button XmlStyle="{Resource ITTSPButtonStyle}"
-        android:background="@drawable/buttonblue"
-        Text="{Tr Text, Uid=TTS_2}"
-        click="{Binding InstallLanguagePackCommand}"/> 
-  </RelativeLayout>
+	<RelativeLayout XmlStyle="{Resource LineLayoutStyle}">
+		<TextView XmlStyle="{Resource TextViewStyle}"
+		          Text="{Tr Text, Uid=TTS_Ivona}" />
+		<Button XmlStyle="{Resource ButtonStyle}"
+		        android:background="@drawable/buttonred"
+		        Text="{Tr Text, Uid=TTS_1}"
+		        Click="{Binding InstallVoiceSynthesisEngineCommand}" />
+	</RelativeLayout>
 
-  <RelativeLayout XmlStyle="{Resource RelativeLayoutStyle}">
-    <TextView XmlStyle="{Resource ITTSPTextViewStyle}"
-        Text="{Tr Text, Uid=TTS_choose}" />
-    <Button XmlStyle="{Resource ITTSPButtonStyle}"
-        android:background="@drawable/buttongreen"
-        Text="{Tr Text, Uid=TTS_3}"
-        click="{Binding EnableVoiceSynthesisEngineCommand}"/>
-  </RelativeLayout>
+	<RelativeLayout XmlStyle="{Resource LineLayoutStyle}">
+		<TextView XmlStyle="{Resource TextViewStyle}"
+		          Text="{Tr Text, Uid=TTS_LangPack}" />
+		<Button XmlStyle="{Resource ButtonStyle}"
+		        android:background="@drawable/buttonblue"
+		        Text="{Tr Text, Uid=TTS_2}"
+		        Click="{Binding InstallLanguagePackCommand}" />
+	</RelativeLayout>
 
+	<RelativeLayout XmlStyle="{Resource LineLayoutStyle}">
+		<TextView XmlStyle="{Resource TextViewStyle}"
+		          Text="{Tr Text, Uid=TTS_Choose}" />
+		<Button XmlStyle="{Resource ButtonStyle}"
+		        android:background="@drawable/buttongreen"
+		        Text="{Tr Text, Uid=TTS_3}"
+		        Click="{Binding EnableVoiceSynthesisEngineCommand}" />
+	</RelativeLayout>
 
 
 </LinearLayout>
