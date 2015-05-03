@@ -15,9 +15,9 @@ namespace IndiaRose.Data.Model
 			get { return true; }
 		}
 
-	    public override bool HasChildren()
+	    public override bool HasChildren
 	    {
-	        return Children.Count > 0;
+		    get { return Children.Count > 0; }
 	    }
 	    public Category()
 		{

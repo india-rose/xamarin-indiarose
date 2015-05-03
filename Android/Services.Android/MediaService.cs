@@ -89,7 +89,7 @@ namespace IndiaRose.Services.Android
                 intent.SetAction(Intent.ActionGetContent);
                 // Always show the chooser (if there are multiple options available)
                 var trad = DependencyService.Container.Resolve<ILocalizationService>();
-                ActivityService.StartActivityForResult(Intent.CreateChooser(intent, trad.GetString("PictureSelection","Text")),
+				ActivityService.StartActivityForResult(Intent.CreateChooser(intent, trad.GetString("ImageChoice_PickerTitle", "Text")),
                     (result, data) =>
                     {
                         string path = null;
@@ -115,7 +115,7 @@ namespace IndiaRose.Services.Android
                 intent.SetType("audio/*");
                 intent.SetAction(Intent.ActionGetContent); 
                 var trad = DependencyService.Container.Resolve<ILocalizationService>();
-                ActivityService.StartActivityForResult(Intent.CreateChooser(intent, trad.GetString("SoundSelection","Text")), (result, data) =>
+				ActivityService.StartActivityForResult(Intent.CreateChooser(intent, trad.GetString("SoundChoice_PickerTitle", "Text")), (result, data) =>
                 {
                     string path = null;
                     if (result == Result.Ok)

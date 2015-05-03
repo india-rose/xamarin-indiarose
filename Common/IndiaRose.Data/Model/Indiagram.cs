@@ -61,6 +61,11 @@ namespace IndiaRose.Data.Model
             get { return false; }
         }
 
+	    public virtual bool HasChildren
+	    {
+			get { return false; }
+	    }
+
         public Indiagram(int id)
         {
             _id = id;
@@ -113,11 +118,6 @@ namespace IndiaRose.Data.Model
             Text = text;
             ImagePath = imagePath;
             IsEnabled = true;
-        }
-
-        public virtual bool HasChildren()
-        {
-            return false;
         }
     }
 }

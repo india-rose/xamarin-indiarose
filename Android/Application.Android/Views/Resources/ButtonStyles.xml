@@ -15,7 +15,7 @@
 	       XmlStyle="{Resource TextButtonStyle}"
 	       android:layout_width="match_parent"
 	       android:layout_height="match_parent"
-	       android:layout_marginRight="4dip" />
+	       android:layout_margin="2dip" />
 
 	<!-- Material design button size-->
 	<Style Key="SmallButtonStyle"
@@ -34,7 +34,9 @@
 	       android:layout_height="75dip"
 	       android:layout_alignParentBottom="true"
 	       android:orientation="horizontal"
-	       android:layout_marginTop="4dip" />
+	       android:layout_margin="4dip" 
+		   android:background="@android:color/white"
+		   />
 
 	<Style Key="OkButtonStyle"
 	       XmlStyle="{Resource SmallButtonStyle}"

@@ -1,14 +1,12 @@
 ﻿#region Usings
 
-using System.IO;
-using System.IO.Compression;
 using System.Windows.Input;
 using IndiaRose.Interfaces;
 using Storm.Mvvm;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
-using IndiaRose.Storage;
+
 #endregion
 
 namespace IndiaRose.Business.ViewModels.Admin
@@ -89,7 +87,7 @@ namespace IndiaRose.Business.ViewModels.Admin
 
 		private void CollectionAction()
 		{
-			NavigationService.Navigate(Views.ADMIN_COLLECTION_MANAGEMENT);
+			NavigationService.Navigate(Views.ADMIN_COLLECTION_HOME);
 		}
 
 		#endregion

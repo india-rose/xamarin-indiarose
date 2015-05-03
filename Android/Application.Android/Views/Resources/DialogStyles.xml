@@ -29,4 +29,12 @@
 	       android:textSize="13sp"
 	       marginBottom="2dp" />
 
+	<Style Key="ButtonDialogStyle"
+	       android:layout_width="match_parent"
+	       android:layout_height="wrap_content"
+	       android:paddingLeft="10dip"
+	       android:textSize="20sp"
+	       android:background="@android:color/white"
+	       android:gravity="center|left" />
+
 </Resources>

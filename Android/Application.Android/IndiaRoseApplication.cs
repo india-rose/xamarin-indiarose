@@ -27,35 +27,44 @@ namespace IndiaRose.Application
 
             Dictionary<string, Type> views = new Dictionary<string, Type>
 			{
+				// Admin
 				{Views.ADMIN_HOME, typeof(HomeActivity)},
                 {Views.ADMIN_CREDITS, typeof(CreditsActivity)},
                 {Views.ADMIN_INSTALLVOICE_SYNTHESIS, typeof(InstallTextToSpeechActivity)},
                 {Views.ADMIN_SERVERSYNCHRONIZATION, typeof(ServerSynchronizationActivity)},
+				// Admin/Settings
                 {Views.ADMIN_SETTINGS_HOME, typeof(AppSettingsActivity)},
                 {Views.ADMIN_SETTINGS_APPLICATIONLOOK, typeof(ApplicationLookActivity)},
          		{Views.ADMIN_SETTINGS_INDIAGRAMPROPERTIES, typeof(IndiagramPropertyActivity)},
-                {Views.ADMIN_COLLECTION_MANAGEMENT, typeof(CollectionManagementActivity)},
-                {Views.ADMIN_COLLECTION_ADD, typeof(AddIndiagramActivity)},
-                {Views.ADMIN_COLLECTION_WATCH,typeof(WatchIndiagramActivity)},
-				{Views.ADMIN_COLLECTION_SELECTCATEGORY,typeof(SelectCategoryActivity)}
+				// Admin/Collection
+                {Views.ADMIN_COLLECTION_HOME, typeof(CollectionManagementActivity)},
+                {Views.ADMIN_COLLECTION_ADDINDIAGRAM, typeof(AddIndiagramActivity)},
+                {Views.ADMIN_COLLECTION_WATCHINDIAGRAM,typeof(WatchIndiagramActivity)},
+				{Views.ADMIN_COLLECTION_SELECTCATEGORY,typeof(SelectCategoryActivity)},
 			};
             Dictionary<string, Type> dialogs = new Dictionary<string, Type>
 			{
+				// Admin
+                {Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
+				// Admin/Settings/Dialogs
 				{Dialogs.ADMIN_SETTINGS_COLORPICKER, typeof(ColorPickerDialog)},
 				{Dialogs.ADMIN_SETTINGS_DRAGANDDROP, typeof(DragAndDropDialog)},
                 {Dialogs.ADMIN_SETTINGS_READINGDELAY , typeof(ReadingDelayDialog)},
 				{Dialogs.ADMIN_SETTINGS_CATEGORYREADING, typeof(CategoryReadingDialog)},
                 {Dialogs.ADMIN_SETTINGS_RESETSETTINGS, typeof(ResetSettingsDialog)},
-                {Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
-                {Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION,typeof(ExploreCollectionDialog)},
+				// Admin/Collection/Dialogs
+				// called from add indiagram
                 {Dialogs.ADMIN_COLLECTION_IMAGECHOICE,typeof(ImageChoiceDialog)},
                 {Dialogs.ADMIN_COLLECTION_SOUNDCHOICE,typeof(SoundChoiceDialog)},
                 {Dialogs.ADMIN_COLLECTION_RECORDSOUND,typeof(RecordSoundDialog)},
-				{Dialogs.ADMIN_COLLECTION_SELECT,typeof(SelectManagementDialog)},
-				{Dialogs.ADMIN_COLLECTION_DELETEWARNING,typeof(DeleteWarningDialog)},
-				{Dialogs.ADMIN_COLLECTION_DELETEINDIAGRAM,typeof(DeleteIndiagramDialog)},
-				{Dialogs.ADMIN_COLLECTION_CONFIRMATION,typeof(ConfirmationDeleteDialog)},
-                {Dialogs.ADMIN_COLLECTION_DELCATEGORYWARNING,typeof(DelCategoryWarningDialog)}
+				// called from collection browsing
+				{Dialogs.ADMIN_COLLECTION_SELECTCATEGORY,typeof(SelectCategoryActionDialog)},
+				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY,typeof(ExploreCollectionCategoryDialog)},
+                {Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM,typeof(ExploreCollectionIndiagramDialog)},
+				// deletion alert & confirmation
+				{Dialogs.ADMIN_COLLECTION_DELETEWARNING_INDIAGRAM,typeof(DeleteIndiagramWarningDialog)},
+                {Dialogs.ADMIN_COLLECTION_DELETEWARNING_CATEGORY,typeof(DeleteCategoryWarningDialog)},
+				{Dialogs.ADMIN_COLLECTION_DELETECONFIRMATION_CATEGORY,typeof(DeleteCategoryConfirmationDialog)},
 
 			};
 

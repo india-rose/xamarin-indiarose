@@ -11,9 +11,8 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
         public ImageChoiceDialog()
         {
             var trad = DependencyService.Container.Resolve<ILocalizationService>();
-            Title = trad.GetString("CI_Title", "Text");
-            Buttons.Add(DialogsButton.Positive, trad.GetString("Button_Ok", "Text"));
-            Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Back", "Text"));
+			Title = trad.GetString("ImageChoice_Title", "Text");
+            Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Cancel", "Text"));
         }
         protected override View CreateView(LayoutInflater inflater, ViewGroup container)
         {
@@ -22,7 +21,7 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 
         protected override ViewModelBase CreateViewModel()
         {
-            return Container.Locator.AdminCollectionDialogsImageChoiceDialog;
+            return Container.Locator.AdminCollectionDialogsImageChoiceViewModel;
         }
     }
 }

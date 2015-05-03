@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                XmlStyle="{Resource RootPaddingLinearLayoutStyle}">
+              XmlStyle="{Resource RootPaddingLinearLayoutStyle}">
 
 	<TextView XmlStyle="{Resource DialogText}"
-			  Text="{Tr Text, Uid=DragAndDrop_Explanation}" />
+	          Text="{Tr Text, Uid=DragAndDrop_Explanation}" />
 	<RadioGroup XmlStyle="{Resource DialogRadioGroupStyle}">
 
 		<RadioButton XmlStyle="{Resource DialogRadioButtonStyle}"

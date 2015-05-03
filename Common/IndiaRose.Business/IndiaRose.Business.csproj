@@ -50,16 +50,17 @@
     <Compile Include="ViewModelsLocator.cs" />
     <Compile Include="ViewModels\AbstractBrowserViewModel.cs" />
     <Compile Include="ViewModels\AbstractViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Collection\AbstractCollectionViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\AddIndiagramViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\CollectionManagementViewModel.cs" />
-    <Compile Include="ViewModels\Admin\Collection\Dialogs\ConfirmationDeleteViewModel.cs" />
-    <Compile Include="ViewModels\Admin\Collection\Dialogs\DelCategoryWarningViewModel.cs" />
-    <Compile Include="ViewModels\Admin\Collection\Dialogs\DeleteIndiagramViewModel.cs" />
-    <Compile Include="ViewModels\Admin\Collection\Dialogs\DeleteWarningViewModel.cs" />
-    <Compile Include="ViewModels\Admin\Collection\Dialogs\ExploreCollectionViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Collection\Dialogs\DeleteCategoryConfirmationViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Collection\Dialogs\DeleteCategoryWarningViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Collection\Dialogs\DeleteIndiagramWarningViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Collection\Dialogs\ExploreCollectionIndiagramViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Collection\Dialogs\ExploreCollectionCategoryViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\Dialogs\ImageChoiceViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\Dialogs\RecordSoundViewModel.cs" />
-    <Compile Include="ViewModels\Admin\Collection\Dialogs\SelectManagementViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Collection\Dialogs\SelectCategoryActionViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\Dialogs\SoundChoiceViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\SelectCategoryViewModel.cs" />
     <Compile Include="ViewModels\Admin\Collection\WatchIndiagramViewModel.cs" />
@@ -103,7 +104,8 @@
       <HintPath>..\..\packages\Funq.Portable.1.0.1\lib\Funq.Portable.dll</HintPath>
     </Reference>
     <Reference Include="Storm.Mvvm">
-      <HintPath>..\..\packages\Storm.Mvvm.1.2.3\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
+      <HintPath>..\..\packages\Storm.Mvvm.1.2.4\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>

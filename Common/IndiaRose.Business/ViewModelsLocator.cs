@@ -43,15 +43,15 @@ namespace IndiaRose.Business
 			container.RegisterFactory(x => new SelectCategoryViewModel());
 
             //Admin/Collection/Dialogs
-            container.RegisterFactory(x => new ExploreCollectionViewModel());
+            container.RegisterFactory(x => new ExploreCollectionCategoryViewModel());
+			container.RegisterFactory(x => new ExploreCollectionIndiagramViewModel());
             container.RegisterFactory(x => new ImageChoiceViewModel());
             container.RegisterFactory(x => new SoundChoiceViewModel());
             container.RegisterFactory(x => new RecordSoundViewModel());
-            container.RegisterFactory(x => new SelectManagementViewModel());
-            container.RegisterFactory(x => new DeleteWarningViewModel());
-            container.RegisterFactory(x => new DelCategoryWarningViewModel());
-			container.RegisterFactory(x => new DeleteIndiagramViewModel());
-			container.RegisterFactory(x => new ConfirmationDeleteViewModel());
+            container.RegisterFactory(x => new SelectCategoryActionViewModel());
+            container.RegisterFactory(x => new DeleteIndiagramWarningViewModel());
+            container.RegisterFactory(x => new DeleteCategoryWarningViewModel());
+			container.RegisterFactory(x => new DeleteCategoryConfirmationViewModel());
 
 			_container = container;
 		}
@@ -157,47 +157,47 @@ namespace IndiaRose.Business
 
         #region ViewModels : /Admin/Collection/Dialogs
 
-		public ExploreCollectionViewModel AdminCollectionDialogsExploreCollectionDialog
+		public ExploreCollectionCategoryViewModel AdminCollectionDialogsExploreCollectionCategoryViewModel
 	    {
-            get { return _container.Resolve<ExploreCollectionViewModel>(); }
+            get { return _container.Resolve<ExploreCollectionCategoryViewModel>(); }
 	    }
 
-	    public ImageChoiceViewModel AdminCollectionDialogsImageChoiceDialog
+		public ExploreCollectionIndiagramViewModel AdminCollectionDialogsExploreCollectionIndiagramViewModel
+		{
+			get { return _container.Resolve<ExploreCollectionIndiagramViewModel>(); }
+		}
+
+	    public ImageChoiceViewModel AdminCollectionDialogsImageChoiceViewModel
 	    {
             get { return _container.Resolve<ImageChoiceViewModel>(); }
 	    }
 
-        public SoundChoiceViewModel AdminCollectionDialogsSoundChoiceDialog
+        public SoundChoiceViewModel AdminCollectionDialogsSoundChoiceViewModel
         {
             get { return _container.Resolve<SoundChoiceViewModel>(); }
         }
 
-        public RecordSoundViewModel AdminCollectionDialogsRecordSoundDialog
+        public RecordSoundViewModel AdminCollectionDialogsRecordSoundViewModel
         {
             get { return _container.Resolve<RecordSoundViewModel>(); }
         }
 
-        public SelectManagementViewModel AdminCollectionDialogSelectManagementViewModel
+		public SelectCategoryActionViewModel AdminCollectionDialogsSelectCategoryActionViewModel
         {
-            get { return _container.Resolve<SelectManagementViewModel>(); }
+            get { return _container.Resolve<SelectCategoryActionViewModel>(); }
         }
-        public DeleteWarningViewModel AdminCollectionDialogDeleteWarningDialog
+		public DeleteIndiagramWarningViewModel AdminCollectionDialogsDeleteIndiagramWarningViewModel
         {
-            get { return _container.Resolve<DeleteWarningViewModel>(); }
+            get { return _container.Resolve<DeleteIndiagramWarningViewModel>(); }
         }
-        public DelCategoryWarningViewModel AdminCollectionDialogDelCategoryWarningDialog
+		public DeleteCategoryWarningViewModel AdminCollectionDialogsDeleteCategoryWarningViewModel
         {
-            get { return _container.Resolve<DelCategoryWarningViewModel>(); }
+            get { return _container.Resolve<DeleteCategoryWarningViewModel>(); }
         }
 
-		public DeleteIndiagramViewModel AdminCollectionDialogsDeleteIndiagramViewModel
+		public DeleteCategoryConfirmationViewModel AdminCollectionDialogsDeleteCategoryConfirmationViewModel
 		{
-			get { return _container.Resolve<DeleteIndiagramViewModel>(); }
-		}
-
-		public ConfirmationDeleteViewModel AdminCollectionDialogsConfirmationdeleteViewModel
-		{
-			get { return _container.Resolve<ConfirmationDeleteViewModel>(); }
+			get { return _container.Resolve<DeleteCategoryConfirmationViewModel>(); }
 		}
         #endregion
     }

@@ -20,7 +20,7 @@
 			          Text="{Tr Text, Uid=Collection_IndiagramText}" />
 
 			<TextView XmlStyle="{Resource DefaultTextStyle}"
-			          Text="{Binding CurrentIndiagram.Indiagram.Text}" />
+			          Text="{Binding Indiagram.Indiagram.Text}" />
 
 			<TextView XmlStyle="{Resource FormLabelStyle}"
 			          Text="{Tr Text, Uid=Collection_ParentCategory}" />
@@ -30,7 +30,7 @@
 				          Text="{Tr Text, Uid=Collection_ParentCategoryName}" />
 
 				<TextView XmlStyle="{Resource DefaultTextStyle}"
-				          Text="{Binding CurrentIndiagram.Indiagram.Parent, Converter={Resource ParentCategoryConverter}}" />
+				          Text="{Binding Indiagram.Indiagram.Parent, Converter={Resource ParentCategoryConverter}}" />
 			</LinearLayout>
 
 			<TextView XmlStyle="{Resource FormLabelStyle}"
@@ -41,7 +41,7 @@
 				          Text="{Tr Text, Uid=Collection_SoundPath}" />
 
 				<TextView XmlStyle="{Resource DefaultTextStyle}"
-				          Text="{Binding CurrentIndiagram.Indiagram.SoundPath, Converter={Resource SoundPathConverter}}" />
+				          Text="{Binding Indiagram.Indiagram.SoundPath, Converter={Resource SoundPathConverter}}" />
 			</LinearLayout>
 
 			<LinearLayout android:layout_width="200dip"
@@ -58,7 +58,7 @@
 			<BindableImageView android:scaleType="centerInside"
 			                   android:layout_width="wrap_content"
 			                   android:layout_height="wrap_content"
-			                   SourcePath="{Binding CurrentIndiagram.Indiagram.ImagePath}"
+			                   SourcePath="{Binding Indiagram.Indiagram.ImagePath}"
 			                   Size="{Binding SettingsService.IndiagramDisplaySize}" />
 
 		</LinearLayout>

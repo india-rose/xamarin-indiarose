@@ -4,7 +4,7 @@ using Storm.Mvvm.Dialogs;
 
 namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 {
-    public partial class RecordSoundDialog : AlertDialogFragmentBase
+    public partial class RecordSoundDialog : DialogFragmentBase
     {
         protected override View CreateView(LayoutInflater inflater, ViewGroup container)
         {
@@ -13,7 +13,7 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 
         protected override ViewModelBase CreateViewModel()
         {
-            return Container.Locator.AdminCollectionDialogsRecordSoundDialog;
+            return Container.Locator.AdminCollectionDialogsRecordSoundViewModel;
         }
     }
 }

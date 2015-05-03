@@ -101,18 +101,29 @@
 
 	<Style Key="BaseLabelStyle"
 	       android:textColor="#006FFF"
-	       android:textSize="18sp" />
+	       />
 
 	<Style Key="FormLabelStyle"
 	       XmlStyle="{Resource BaseLabelStyle}"
 	       android:layout_width="wrap_content"
 	       android:layout_height="wrap_content"
-	       android:textStyle="italic" />
+	       android:textStyle="italic" 
+		   android:textSize="18sp"
+		   />
 
+	<Style Key="SmallFormLabelStyle"
+		   XmlStyle="{Resource BaseLabelStyle}"
+		   android:layout_width="wrap_content"
+		   android:layout_height="wrap_content"
+		   android:textSize="15sp"
+		   />
+	
 	<Style Key="FormCheckBoxStyle"
 	       XmlStyle="{Resource BaseLabelStyle}"
 	       android:layout_width="wrap_content"
-	       android:layout_height="wrap_content" />
+	       android:layout_height="wrap_content" 
+		   android:textSize="18sp"
+		   />
 
 	<Style Key="DefaultTextStyle"
 	       android:layout_width="wrap_content"
@@ -125,9 +136,20 @@
 	       android:layout_height="wrap_content"
 	       android:orientation="horizontal" />
 
+	<Style Key="ButtonContainerStyle"
+		   android:layout_width="match_parent"
+		   android:layout_height="60dip"
+		   android:orientation="horizontal"
+		   />
+
+	<Style Key="LineSeparatorStyle"
+	       android:layout_width="match_parent"
+	       android:layout_height="1dip"
+	       android:background="#090909" />
+
 	<!-- tbd -->
 
-	<Style Key="Ok_Back_Container"
+	<!--<Style Key="Ok_Back_Container"
 	       android:layout_width="match_parent"
 	       android:layout_height="75dip"
 	       android:layout_alignParentBottom="true"
@@ -144,14 +166,11 @@
 	       android:textSize="19sp"
 	       android:background="@android:color/white"
 	       android:gravity="center|left" />
-	<Style Key="LineSeparator"
-	       android:layout_width="match_parent"
-	       android:layout_height="1px"
-	       android:background="#090909" />
+	
 
 	<Style Key="column"
 	       android:layout_weight="1"
 	       android:layout_width="match_parent"
-	       android:layout_height="match_parent" />
+	       android:layout_height="match_parent" />-->
 
 </Resources>

@@ -9,14 +9,14 @@
 		public const string ADMIN_SERVERSYNCHRONIZATION = "Admin_ServerSynchronizationView";
 
 		// Pages in /Admin/Settings
-		public const string ADMIN_SETTINGS_HOME = "Admin_Settings_SettingsListView";
+		public const string ADMIN_SETTINGS_HOME = "Admin_Settings_HomeView";
 		public const string ADMIN_SETTINGS_APPLICATIONLOOK = "Admin_Settings_ApplicationLookView";
-		public const string ADMIN_SETTINGS_INDIAGRAMPROPERTIES = "Admin_Settings_IndiagramPropertyView";
+		public const string ADMIN_SETTINGS_INDIAGRAMPROPERTIES = "Admin_Settings_IndiagramPropertiesView";
 
         //Pages in /Admin/Collection
-	    public const string ADMIN_COLLECTION_MANAGEMENT = "Admin_CollectionManagementView";
-	    public const string ADMIN_COLLECTION_ADD = "Admin_AddIndiagramView";
-	    public const string ADMIN_COLLECTION_WATCH = "Admin_WatchIndiaframe";
-		public const string ADMIN_COLLECTION_SELECTCATEGORY = "Admin_SelectCategory";
+	    public const string ADMIN_COLLECTION_HOME = "Admin_Collection_HomeView";
+	    public const string ADMIN_COLLECTION_ADDINDIAGRAM = "Admin_AddIndiagramView";
+	    public const string ADMIN_COLLECTION_WATCHINDIAGRAM = "Admin_WatchIndiagramView";
+		public const string ADMIN_COLLECTION_SELECTCATEGORY = "Admin_SelectCategoryView";
 	}
 }

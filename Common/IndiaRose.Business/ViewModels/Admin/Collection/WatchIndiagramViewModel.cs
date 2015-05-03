@@ -1,54 +1,71 @@
-﻿using System.Collections.Generic;
+﻿#region Usings 
+
+using System.Collections.Generic;
 using System.Windows.Input;
-using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using Storm.Mvvm.Commands;
-using Storm.Mvvm.Inject;
 using Storm.Mvvm.Navigation;
-using Storm.Mvvm.Services;
+
+#endregion
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
-    public class WatchIndiagramViewModel : AbstractSettingsViewModel
-    {
+	public class WatchIndiagramViewModel : AbstractCollectionViewModel
+	{
+		private IndiagramContainer _indiagramContainer;
+		public ICommand EditCommand { get; private set; }
+		public ICommand DeleteCommand { get; private set; }
 
-        public IMessageDialogService MessageDialogService
-        {
-            get { return LazyResolver<IMessageDialogService>.Service; }
-        }
-        public ICommand EditCommand { get; private set; }
-        public ICommand DeleteCommand { get; private set; }
+		[NavigationParameter]
+		public Indiagram Indiagram
+		{
+			set
+			{
+				if (value != null)
+				{
+					IndiagramContainer = new IndiagramContainer(value);
+				}
+			}
+		}
 
-        private IndiagramContainer _currentIndiagram;
+		public IndiagramContainer IndiagramContainer
+		{
+			get { return _indiagramContainer; }
+			set { SetProperty(ref _indiagramContainer, value); }
+		}
 
-        [NavigationParameter]
-        public IndiagramContainer CurrentIndiagram
-        {
-            get { return _currentIndiagram; }
-            set { SetProperty(ref _currentIndiagram, value); }
-        }
+		public WatchIndiagramViewModel()
+		{
+			EditCommand = new DelegateCommand(EditAction);
+			DeleteCommand = new DelegateCommand(DeleteAction);
+		}
 
-        public WatchIndiagramViewModel()
-        {
-            EditCommand = new DelegateCommand(EditAction);
-            DeleteCommand = new DelegateCommand(DeleteAction);
-        }
-        private void EditAction()
-        {
-            NavigationService.Navigate(Views.ADMIN_COLLECTION_ADD, new Dictionary<string, object>()
-             {
-                 {"InitialIndiagram",CurrentIndiagram},
-                 {"EditMode",true}
-             });
-        }
+		private void EditAction()
+		{
+			NavigationService.Navigate(Views.ADMIN_COLLECTION_ADDINDIAGRAM, new Dictionary<string, object>
+			{
+				{"Indiagram", IndiagramContainer}
+			});
+		}
 
-        protected void DeleteAction()
-        {
-            MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_DELETEWARNING, new Dictionary<string, object>()
-	        {
-	            {"IndiagramContainer",CurrentIndiagram}
-	        });
-        }
-    }
+		protected void DeleteAction()
+		{
+			//TODO: handle back when indiagram are deleted!
+			if (IndiagramContainer.Indiagram.IsCategory)
+			{
+				MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_DELETEWARNING_CATEGORY, new Dictionary<string, object>
+				{
+					{"Indiagram", IndiagramContainer.Indiagram}
+				});
+			}
+			else
+			{
+				MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_DELETEWARNING_INDIAGRAM, new Dictionary<string, object>
+				{
+					{"Indiagram", IndiagramContainer.Indiagram}
+				});
+			}
+		}
+	}
 }

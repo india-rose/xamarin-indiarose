@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              XmlStyle="{Resource RootPaddingLinearLayoutStyle}"
+              android:layout_gravity="center"
+              android:gravity="center">
+
+	<Button XmlStyle="{Resource ButtonDialogStyle}"
+	        Text="{Tr Text, Uid=ImageChoice_Camera}"
+	        Click="{Binding CameraCommand}" />
+
+	<View XmlStyle="{Resource LineSeparatorStyle}" />
+
+	<Button XmlStyle="{Resource ButtonDialogStyle}"
+	        Text="{Tr Text, Uid=ImageChoice_Gallery}"
+	        Click="{Binding GalleryCommand}" />
+</LinearLayout>

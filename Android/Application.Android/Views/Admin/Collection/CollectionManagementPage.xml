@@ -1,20 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              XmlStyle="{Resource BaseRootLayoutStyle}"
-              android:orientation="vertical">
-	<!-- Browser -->
-	<IndiagramBrowserView android:layout_width="match_parent"
-	                      android:layout_height="match_parent"
-	                      android:background="#2E8AEF"
-	                      Count="{Binding CollectionDisplayCount, Mode=TwoWay, UpdateEvent=CountChanged}"
-	                      Offset="{Binding CollectionOffset}"
-	                      Indiagrams="{Binding DisplayedIndiagrams}"
-	                      TextColor="{Binding TextColor, Converter={Resource ColorContainerToIntConverter}}"
-	                      IndiagramSelected="{Binding IndiagramSelectedCommand}" />
-
+                XmlStyle="{Resource BaseRootLayoutStyle}">
 	<!--Button add & next-->
-	<LinearLayout XmlStyle="{Resource ValidationButtonLinearLayoutStyle}">
+	<LinearLayout XmlStyle="{Resource ValidationButtonLinearLayoutStyle}"
+				  android:id="buttons"
+				  >
 
 		<Button XmlStyle="{Resource MediumGreenButtonStyle}"
 		        Text="{Tr Text, Uid=CollectionManagement_Add}"
@@ -24,4 +15,15 @@
 		        Text="{Tr Text, Uid=CollectionManagement_Next}"
 		        Click="{Binding NextCommand}" />
 	</LinearLayout>
+
+	<!-- Browser -->
+	<IndiagramBrowserView android:layout_width="match_parent"
+	                      android:layout_height="match_parent"
+						  android:layout_above="@id/buttons"
+	                      Background="{Binding BackgroundColor, Converter={Resource ColorStringToDrawableColorConverter}}"
+	                      Count="{Binding CollectionDisplayCount, Mode=TwoWay, UpdateEvent=CountChanged}"
+	                      Offset="{Binding CollectionOffset}"
+	                      Indiagrams="{Binding DisplayedIndiagrams}"
+	                      TextColor="{Binding TextColor, Converter={Resource ColorStringToIntConverter}}"
+	                      IndiagramSelected="{Binding IndiagramSelectedCommand}" />
 </RelativeLayout>

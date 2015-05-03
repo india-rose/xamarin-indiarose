@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
-using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
 using IndiaRose.Storage;
 using Storm.Mvvm.Commands;
@@ -16,7 +15,6 @@ namespace IndiaRose.Business.ViewModels
 		private int _collectionOffset;
 		private int _collectionDisplayCount;
 		private List<Indiagram> _displayedIndiagrams;
-		private ColorContainer _textColor;
 
 		private Category _rootCollection;
 		private readonly Stack<Category> _navigationStack = new Stack<Category>();
@@ -42,10 +40,14 @@ namespace IndiaRose.Business.ViewModels
 
 		#region Public properties
 
-		public ColorContainer TextColor
+		public string TextColor
 		{
-			get { return _textColor; }
-			set { SetProperty(ref _textColor, value); }
+			get { return SettingsService.TextColor; }
+		}
+
+		public string BackgroundColor
+		{
+			get { return SettingsService.TopBackgroundColor; }
 		}
 
 		public int CollectionOffset
@@ -63,7 +65,7 @@ namespace IndiaRose.Business.ViewModels
 		public List<Indiagram> DisplayedIndiagrams
 		{
 			get { return _displayedIndiagrams; }
-			set { SetProperty(ref _displayedIndiagrams, value); }
+			private set { SetProperty(ref _displayedIndiagrams, value); }
 		}
 
 		#endregion
@@ -78,10 +80,6 @@ namespace IndiaRose.Business.ViewModels
 
 		protected AbstractBrowserViewModel()
 		{
-			TextColor = new ColorContainer
-			{
-				Color = SettingsService.TextColor
-			};
 			NextCommand = new DelegateCommand(NextAction);
 			IndiagramSelectedCommand = new DelegateCommand<Indiagram>(IndiagramSelectedAction);
 
@@ -93,7 +91,14 @@ namespace IndiaRose.Business.ViewModels
 		{
 			base.OnNavigatedTo(e, parametersKey);
 
-			PushCategory(_rootCollection);
+			if (_navigationStack.Any())
+			{
+				RefreshDisplayList();
+			}
+			else
+			{
+				PushCategory(_rootCollection);
+			}
 		}
 
 		protected void LoadCollection()

@@ -1,52 +1,49 @@
-﻿using System.Collections.Generic;
+﻿#region Usings 
+
+using System.Collections.Generic;
+using System.Linq;
 using IndiaRose.Data.Model;
-using IndiaRose.Data.UIModel;
-using IndiaRose.Interfaces;
-using IndiaRose.Storage;
-using IndiaRose.Storage.Sqlite;
-using Storm.Mvvm.Inject;
+using Storm.Mvvm.Messaging;
 using Storm.Mvvm.Navigation;
+
+#endregion
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
 	public class SelectCategoryViewModel : AbstractBrowserViewModel
 	{
-
-		private IndiagramContainer _currentIndiagram;
-		private IndiagramContainer _addIndiagramContainer;
+		private Indiagram _indiagram;
 
 		[NavigationParameter]
-		public IndiagramContainer AddIndiagramContainer
+		public Indiagram Indiagram
 		{
-			get { return _addIndiagramContainer; }
-			set { SetProperty(ref _addIndiagramContainer, value); }
-		}
-		public IndiagramContainer CurrentIndiagram
-		{
-			get { return _currentIndiagram; }
-			set { SetProperty(ref _currentIndiagram, value); }
+			get { return _indiagram; }
+			set { SetProperty(ref _indiagram, value); }
 		}
 
 		protected override IEnumerable<Indiagram> FilterCollection(List<Indiagram> input)
 		{
-			List<Indiagram> send = new List<Indiagram>();
-			foreach (Indiagram indiagram in input)
-			{
-				if (indiagram.IsCategory)
-					send.Add(indiagram);
-				else
-					;
-			}
-			return send;
+			return input.Where(indiagram => indiagram.IsCategory);
 		}
 
 		protected override void IndiagramSelectedAction(Indiagram indiagram)
 		{
 			base.IndiagramSelectedAction(indiagram);
-			MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_SELECT, new Dictionary<string, object>()
-             {
-                 {"SelectedParent",new IndiagramContainer(indiagram)},{"CurrentIndiagram",AddIndiagramContainer}
-             });
+
+			Messenger.Register<Category>(Messages.SELECT_CATEGORY_GOINTO_CATEGORY, this, PushCategory);
+			Messenger.Register<Category>(Messages.SELECT_CATEGORY_SELECTED_CATEGORY, this, cat =>
+			{
+				Indiagram.Parent = cat;
+				NavigationService.GoBack();
+			});
+			MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_SELECTCATEGORY, new Dictionary<string, object>
+			{
+				{"Indiagram", indiagram}
+			}, () =>
+			{
+				Messenger.Unregister(this, Messages.SELECT_CATEGORY_GOINTO_CATEGORY);
+				Messenger.Unregister(this, Messages.SELECT_CATEGORY_SELECTED_CATEGORY);
+			});
 		}
 	}
 }

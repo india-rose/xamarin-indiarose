@@ -22,7 +22,7 @@
 		       android:textColor="@android:color/black"
 		       android:textSize="20sp" />
 
-		
+
 		<!-- Layout styles -->
 		<Style key="TextLayoutStyle"
 		       android:layout_width="match_parent"
@@ -32,12 +32,11 @@
 		       android:paddingRight="50dip"
 		       android:paddingBottom="20dip"
 		       android:paddingTop="20dip" />
-		
+
 		<Style Key="LogoLayoutStyle"
 		       android:layout_width="match_parent"
 		       android:layout_height="match_parent"
-		       android:layout_weight="3"
-			   />
+		       android:layout_weight="3" />
 
 		<Style Key="ScrollViewStyle"
 		       android:layout_width="match_parent"
@@ -48,8 +47,7 @@
 	<RelativeLayout XmlStyle="{Resource LogoLayoutStyle}">
 
 		<ImageView XmlStyle="{Resource BaseLogoStyle}"
-				   android:layout_centerInParent="true"
-				   />
+		           android:layout_centerInParent="true" />
 	</RelativeLayout>
 
 	<ScrollView XmlStyle="{Resource ScrollViewStyle}">
@@ -82,7 +80,7 @@
 
 			<TextView XmlStyle="{Resource PeopleTextStyle}"
 			          Text="{Tr Text, Uid=Credits_Trainee2014Team}" />
-			
+
 			<TextView XmlStyle="{Resource SectionTextStyle}"
 			          Text="{Tr Text, Uid=Credits_Xamarin2014}" />
 

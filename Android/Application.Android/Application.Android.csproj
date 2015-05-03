@@ -21,7 +21,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <NuGetPackageImportStamp>3e2c4989</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>f10e4efe</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
@@ -70,15 +70,15 @@
   <ItemGroup>
     <Compile Include="Activities\Admin\Collection\AddIndiagramActivity.cs" />
     <Compile Include="Activities\Admin\Collection\CollectionManagementActivity.cs" />
-    <Compile Include="Activities\Admin\Collection\Dialogs\ConfirmationDeleteDialog.cs" />
-    <Compile Include="Activities\Admin\Collection\Dialogs\DelCategoryWarningDialog.cs" />
-    <Compile Include="Activities\Admin\Collection\Dialogs\DeleteIndiagramDialog.cs" />
-    <Compile Include="Activities\Admin\Collection\Dialogs\ExploreCollectionDialog.cs" />
+    <Compile Include="Activities\Admin\Collection\Dialogs\DeleteCategoryConfirmationDialog.cs" />
+    <Compile Include="Activities\Admin\Collection\Dialogs\DeleteCategoryWarningDialog.cs" />
+    <Compile Include="Activities\Admin\Collection\Dialogs\ExploreCollectionCategoryDialog.cs" />
+    <Compile Include="Activities\Admin\Collection\Dialogs\ExploreCollectionIndiagramDialog.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\ImageChoiceDialog.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\RecordSoundDialog.cs" />
-    <Compile Include="Activities\Admin\Collection\Dialogs\SelectManagementDialog.cs" />
+    <Compile Include="Activities\Admin\Collection\Dialogs\SelectCategoryActionDialog.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\SoundChoiceDialog.cs" />
-    <Compile Include="Activities\Admin\Collection\Dialogs\DeleteWarningDialog.cs" />
+    <Compile Include="Activities\Admin\Collection\Dialogs\DeleteIndiagramWarningDialog.cs" />
     <Compile Include="Activities\Admin\Collection\SelectCategoryActivity.cs" />
     <Compile Include="Activities\Admin\Collection\WatchIndiagramActivity.cs" />
     <Compile Include="Activities\Admin\Settings\AppSettingsActivity.cs" />
@@ -97,12 +97,6 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Activities\Admin\HomeActivity.cs" />
-    <Content Include="Views\Admin\Collection\Dialogs\ConfirmationDeletePage.xml" />
-    <Content Include="Views\Admin\Collection\Dialogs\DelCategoryWarningPage.xml" />
-    <Content Include="Views\Admin\Collection\Dialogs\DeleteIndiagramPage.xml" />
-    <Content Include="Views\Admin\Collection\Dialogs\DeleteWarningPage.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Views\Admin\Collection\Dialogs\RecordSoundDialog.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -175,10 +169,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Admin\Collection\AddIndiagramPage.xml" />
-    <Content Include="Views\Admin\Collection\Dialogs\ExploreCollectionDialog.xml" />
-    <Content Include="Views\Admin\Collection\Dialogs\ImageChoicePage.xml" />
-    <Content Include="Views\Admin\Collection\Dialogs\SelectManagementPage.xml" />
-    <Content Include="Views\Admin\Collection\Dialogs\SoundChoicePage.xml" />
+    <Content Include="Views\Admin\Collection\Dialogs\IndiagramDisplayDialog.xml" />
+    <Content Include="Views\Admin\Collection\Dialogs\ImageChoiceDialog.xml" />
+    <Content Include="Views\Admin\Collection\Dialogs\SoundChoiceDialog.xml" />
     <Content Include="Views\Admin\Collection\SelectCategoryPage.xml" />
     <Content Include="Views\Admin\Collection\WatchIndiagramPage.xml">
       <SubType>Designer</SubType>
@@ -276,13 +269,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\SQLite.Net-PCL.3.0.5\lib\MonoAndroid\SQLite.Net.Platform.XamarinAndroid.dll</HintPath>
     </Reference>
-    <Reference Include="Storm.Mvvm, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Storm.Mvvm.1.2.3\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
+    <Reference Include="Storm.Mvvm">
+      <HintPath>..\..\packages\Storm.Mvvm.1.2.4\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
     </Reference>
-    <Reference Include="Storm.Mvvm.Android.Support, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Storm.Mvvm.Android.Support.1.2.9\lib\MonoAndroid22\Storm.Mvvm.Android.Support.dll</HintPath>
+    <Reference Include="Storm.Mvvm.Android.Support">
+      <HintPath>..\..\packages\Storm.Mvvm.Android.Support.1.2.10.1\lib\MonoAndroid22\Storm.Mvvm.Android.Support.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -310,8 +301,8 @@
       <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Activez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est le suivant : {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Storm.Mvvm.Android.Support.1.2.9\build\Storm.Mvvm.Android.Support.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Storm.Mvvm.Android.Support.1.2.9\build\Storm.Mvvm.Android.Support.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Storm.Mvvm.Android.Support.1.2.10.1\build\Storm.Mvvm.Android.Support.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Storm.Mvvm.Android.Support.1.2.10.1\build\Storm.Mvvm.Android.Support.targets'))" />
   </Target>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Import Project="..\..\packages\Storm.Mvvm.Android.Support.1.2.9\build\Storm.Mvvm.Android.Support.targets" Condition="Exists('..\..\packages\Storm.Mvvm.Android.Support.1.2.9\build\Storm.Mvvm.Android.Support.targets')" />
+  <Import Project="..\..\packages\Storm.Mvvm.Android.Support.1.2.10.1\build\Storm.Mvvm.Android.Support.targets" Condition="Exists('..\..\packages\Storm.Mvvm.Android.Support.1.2.10.1\build\Storm.Mvvm.Android.Support.targets')" />
 </Project>

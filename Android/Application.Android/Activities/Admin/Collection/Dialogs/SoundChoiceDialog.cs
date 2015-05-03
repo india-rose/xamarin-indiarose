@@ -12,9 +12,8 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
         public SoundChoiceDialog()
         {
             var trad = DependencyService.Container.Resolve<ILocalizationService>();
-            Title = trad.GetString("CS_Title", "Text");
-            Buttons.Add(DialogsButton.Positive, trad.GetString("Button_Ok", "Text"));
-            Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Back", "Text"));
+			Title = trad.GetString("SoundChoice_Title", "Text");
+            Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Cancel", "Text"));
         }
         protected override View CreateView(LayoutInflater inflater, ViewGroup container)
         {
@@ -23,7 +22,7 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 
         protected override ViewModelBase CreateViewModel()
         {
-            return Container.Locator.AdminCollectionDialogsSoundChoiceDialog;
+            return Container.Locator.AdminCollectionDialogsSoundChoiceViewModel;
         }
     }
 }
