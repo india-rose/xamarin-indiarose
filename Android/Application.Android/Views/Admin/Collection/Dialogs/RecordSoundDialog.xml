@@ -11,13 +11,15 @@
 		       android:layout_width="120dip"
 		       android:layout_height="120dip" />
 	</Resources>
+
 	<TextView android:layout_width="wrap_content"
 	          android:layout_height="wrap_content"
-	          android:layout_margin="10dip"
+	          android:layout_marginRight="10dip"
+	          android:layout_marginLeft="10dip"
+	          android:layout_marginBottom="10dip"
 	          android:textColor="@android:color/white"
-	          android:textSize="20sp" 
-	          Text="{Tr Text,Uid=RSD_Title}"
-			  />
+	          android:textSize="20sp"
+	          Text="{Tr Text,Uid=SoundChoice_Record}" />
 
 	<LinearLayout android:layout_width="match_parent"
 	              android:layout_height="wrap_content"

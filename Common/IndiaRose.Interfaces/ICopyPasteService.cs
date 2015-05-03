@@ -4,7 +4,10 @@ namespace IndiaRose.Interfaces
 {
     public interface ICopyPasteService
     {
-        void Copy(Indiagram indiagram, bool categ);
+		bool HasBuffer { get; }
+
+        void Copy(Indiagram indiagram, bool isCategory);
+
         Indiagram Paste();
     }
 }

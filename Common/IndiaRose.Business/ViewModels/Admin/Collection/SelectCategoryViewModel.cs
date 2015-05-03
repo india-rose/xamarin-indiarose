@@ -13,6 +13,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 	public class SelectCategoryViewModel : AbstractBrowserViewModel
 	{
 		private Indiagram _indiagram;
+		private Indiagram _excludedIndiagram;
 
 		[NavigationParameter]
 		public Indiagram Indiagram
@@ -20,10 +21,16 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			get { return _indiagram; }
 			set { SetProperty(ref _indiagram, value); }
 		}
+		[NavigationParameter]
+		public Indiagram ExcludedIndiagram
+		{
+			get { return _excludedIndiagram; }
+			set { SetProperty(ref _excludedIndiagram, value); }
+		}
 
 		protected override IEnumerable<Indiagram> FilterCollection(List<Indiagram> input)
 		{
-			return input.Where(indiagram => indiagram.IsCategory);
+			return input.Where(indiagram => indiagram.IsCategory && !Indiagram.AreSameIndiagram(indiagram, ExcludedIndiagram));
 		}
 
 		protected override void IndiagramSelectedAction(Indiagram indiagram)

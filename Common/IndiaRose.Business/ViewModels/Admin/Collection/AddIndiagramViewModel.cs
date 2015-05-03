@@ -16,11 +16,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
 	public class AddIndiagramViewModel : AbstractCollectionViewModel
 	{
-		private string _bro1;
-		private bool _categ;
-		private IndiagramContainer _currentIndiagram;
+		private bool _isCategory;
+		private Indiagram _currentIndiagram;
 		private bool _editMode;
-		private IndiagramContainer _initialIndiagram;
+		private IndiagramContainer _indiagram;
 
 		public IPopupService PopupService
 		{
@@ -50,58 +49,50 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 		public ICommand SaveCommand { get; private set; }
 
 		[NavigationParameter]
-		public bool EditMode
+		public IndiagramContainer Indiagram
 		{
-			get { return _editMode; }
-			set { SetProperty(ref _editMode, value); }
-		}
-
-		public string Bro1
-		{
-			get { return _bro1; }
-			set { SetProperty(ref _bro1, value); }
-		}
-
-		public List<Indiagram> Brothers { get; private set; }
-
-		public bool Categ
-		{
-			get { return _categ; }
+			get { return _indiagram; }
 			set
 			{
-				if (!CurrentIndiagram.Indiagram.HasChildren)
+				if (SetProperty(ref _indiagram, value) && value != null)
 				{
-					SetProperty(ref _categ, value);
-				}
-				else
-				{
-					RaisePropertyChanged();
-				}
-			}
-		}
-
-		[NavigationParameter]
-		protected IndiagramContainer InitialIndiagram
-		{
-			get { return _initialIndiagram; }
-			set
-			{
-				if (SetProperty(ref _initialIndiagram, value) && value != null)
-				{
-					if (InitialIndiagram.Indiagram.IsCategory)
+					if (Indiagram.Indiagram.IsCategory)
 					{
-						CurrentIndiagram.Indiagram = new Category(InitialIndiagram.Indiagram);
-						Categ = true;
+						CurrentIndiagram = new Category(Indiagram.Indiagram);
+						IsCategory = true;
 					}
 					else
 					{
-						CurrentIndiagram.Indiagram = new Indiagram(InitialIndiagram.Indiagram);
+						CurrentIndiagram = new Indiagram(Indiagram.Indiagram);
 					}
+					EditMode = true;
 				}
 			}
 		}
 
-		public IndiagramContainer CurrentIndiagram
+		public bool EditMode
+		{
+			get { return _editMode; }
+			private set { SetProperty(ref _editMode, value); }
+		}
+		
+		public bool IsCategory
+		{
+			get { return _isCategory; }
+			set
+			{
+				if (CurrentIndiagram.HasChildren)
+				{
+					RaisePropertyChanged();
+				}
+				else
+				{
+					SetProperty(ref _isCategory, value);
+				}
+			}
+		}
+		
+		public Indiagram CurrentIndiagram
 		{
 			get { return _currentIndiagram; }
 			set { SetProperty(ref _currentIndiagram, value); }
@@ -109,7 +100,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
 		public AddIndiagramViewModel()
 		{
-			SelectCategoryCommand = new DelegateCommand(SelectCategoryAction);
 			ImageChoiceCommand = new DelegateCommand(ImageChoiceAction);
 			SoundChoiceCommand = new DelegateCommand(SoundChoiceAction);
 			RootCommand = new DelegateCommand(RootAction);
@@ -119,75 +109,58 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			DesactivateCommand = new DelegateCommand(DesactivateAction);
 			CopyCommand = new DelegateCommand(CopyAction);
 			PasteCommand = new DelegateCommand(PasteAction);
+			SelectCategoryCommand = new DelegateCommand(SelectCategoryAction);
 			SaveCommand = new DelegateCommand(SaveAction);
 
-			CurrentIndiagram = new IndiagramContainer(new Indiagram());
-			/*try
-            {
-                Brothers = CurrentIndiagram.Indiagram.Parent.Children;
-                Brothers.Add(new Indiagram("Fin", null));
-                Bro1 = Brothers[CurrentIndiagram.Indiagram.Position].Text;
-            }
-            catch (NullReferenceException)
-            {
-                Brothers = CollectionStorageService.GetTopLevel();
-                Brothers.Add(new Indiagram("Fin",null));
-                Bro1 = Brothers[Brothers.Count-1].Text;
-            }*/
-			//pourquoi il veut pas avec les catégories ??
+			CurrentIndiagram = new Indiagram();
 		}
 
 		protected void SelectCategoryAction()
 		{
 			NavigationService.Navigate(Views.ADMIN_COLLECTION_SELECTCATEGORY, new Dictionary<string, object>
 			{
-				{"Indiagram", CurrentIndiagram}
+				{"Indiagram", CurrentIndiagram},
+				{"ExcludedIndiagram", Indiagram.Indiagram}
 			});
 		}
 
 		protected void ActivateAction()
 		{
-			CurrentIndiagram.Indiagram.IsEnabled = true;
+			CurrentIndiagram.IsEnabled = true;
 		}
 
 		protected void DesactivateAction()
 		{
-			CurrentIndiagram.Indiagram.IsEnabled = false;
+			CurrentIndiagram.IsEnabled = false;
 		}
 
 		protected void SaveAction()
 		{
-			if (CurrentIndiagram.Indiagram.Text == null)
+			if (string.IsNullOrWhiteSpace(CurrentIndiagram.Text))
 			{
 				PopupService.DisplayPopup(LocalizationService.GetString("Collection_MissingText", "Text"));
 				return;
 			}
-			if (InitialIndiagram == null)
+			if (EditMode)
 			{
-				//creation d'un indi
-				var toAddIndiagram = Categ ? new Category(CurrentIndiagram.Indiagram, true) : new Indiagram(CurrentIndiagram.Indiagram, true);
-				CollectionStorageService.Create(toAddIndiagram);
-			}
-			else
-			{
-				//edition d'un indi
-				if (InitialIndiagram.Indiagram.IsCategory && !Categ)
+				// edit indiagram in the storage
+				if (Indiagram.Indiagram.IsCategory != IsCategory)
 				{
-					CollectionStorageService.Delete(InitialIndiagram.Indiagram);
-					InitialIndiagram.Indiagram = new Indiagram(CurrentIndiagram.Indiagram, true);
-					CollectionStorageService.Create(InitialIndiagram.Indiagram);
-				}
-				else if (!InitialIndiagram.Indiagram.IsCategory && Categ)
-				{
-					CollectionStorageService.Delete(InitialIndiagram.Indiagram);
-					InitialIndiagram.Indiagram = new Category(CurrentIndiagram.Indiagram, true);
-					CollectionStorageService.Create(InitialIndiagram.Indiagram);
+					CollectionStorageService.Delete(Indiagram.Indiagram);
+					Indiagram.Indiagram = IsCategory ? new Category(CurrentIndiagram, true) : new Indiagram(CurrentIndiagram, true);
+					CollectionStorageService.Create(Indiagram.Indiagram);
 				}
 				else
 				{
-					InitialIndiagram.Indiagram.Edit(CurrentIndiagram.Indiagram, true);
-					CollectionStorageService.Update(InitialIndiagram.Indiagram);
+					Indiagram.Indiagram.Edit(CurrentIndiagram, true);
+					CollectionStorageService.Update(Indiagram.Indiagram);
 				}
+			}
+			else
+			{
+				//create a new indiagram in the storage
+				var toAddIndiagram = IsCategory ? new Category(CurrentIndiagram, true) : new Indiagram(CurrentIndiagram, true);
+				CollectionStorageService.Create(toAddIndiagram);
 			}
 
 			BackAction();
@@ -211,17 +184,17 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
 		protected void RootAction()
 		{
-			CurrentIndiagram.Indiagram.Parent = null;
+			CurrentIndiagram.Parent = null;
 		}
 
 		protected void ResetSoundAction()
 		{
-			CurrentIndiagram.Indiagram.SoundPath = null;
+			CurrentIndiagram.SoundPath = null;
 		}
 
 		protected void ListenAction()
 		{
-			if (CurrentIndiagram.Indiagram.Text == null)
+			if (string.IsNullOrWhiteSpace(CurrentIndiagram.Text) && !CurrentIndiagram.HasCustomSound)
 			{
 				PopupService.DisplayPopup(LocalizationService.GetString("Collection_MissingSound", "Text"));
 			}
@@ -229,13 +202,13 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
 		protected void CopyAction()
 		{
-			CopyPasteService.Copy(CurrentIndiagram.Indiagram, Categ);
+			CopyPasteService.Copy(CurrentIndiagram, IsCategory);
 		}
 
 		protected void PasteAction()
 		{
-			CurrentIndiagram.Indiagram = CopyPasteService.Paste();
-			Categ = CurrentIndiagram.Indiagram.IsCategory;
+			CurrentIndiagram = CopyPasteService.Paste();
+			IsCategory = CurrentIndiagram.IsCategory;
 		}
 	}
 }

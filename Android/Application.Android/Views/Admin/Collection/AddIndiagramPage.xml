@@ -1,14 +1,14 @@
-﻿<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              xmlns:converters="using:IndiaRose.Framework.Converters"
-              XmlStyle="{Resource RootLinearLayoutStyle}">
+﻿<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                xmlns:converters="using:IndiaRose.Framework.Converters"
+                XmlStyle="{Resource RootLinearLayoutStyle}">
 
 	<Resources>
 		<converters:ParentCategoryTextConverter Key="ParentCategoryConverter"
 		                                        Uid="Collection_RootCategoryName"
 		                                        Property="Text" />
 		<converters:DefaultLocalizedStringIfNullConverter Key="SoundPathConverter"
-		                                                  Uid="NoSound"
+		                                                  Uid="Collection_NoSound"
 		                                                  Property="Text" />
 
 		<DataTemplate Key="PositionTemplate">
@@ -20,19 +20,32 @@
 	</Resources>
 
 	<!-- Dummy item to prevent EditView from receiving focus -->
-	<LinearLayout android:layout_width="0px"
-	              android:layout_height="0px"
-	              android:focusable="true"
-	              android:focusableInTouchMode="true"
-	              android:id="focus" />
+	<LinearLayout
+        android:layout_width="0px"
+        android:layout_height="0px"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+	<!--Button ok & back-->
+	<LinearLayout XmlStyle="{Resource ValidationButtonLinearLayoutStyle}"
+	              android:id="buttons">
+		<Button XmlStyle="{Resource MediumGreenButtonStyle}"
+		        Text="{Tr Text, Uid=Button_Ok}"
+		        Click="{Binding SaveCommand}" />
+		<Button XmlStyle="{Resource MediumOrangeButtonStyle}"
+		        Text="{Tr Text, Uid=Button_Cancel}"
+		        Click="{Binding BackCommand}" />
+	</LinearLayout>
 
 	<!--Main Screen-->
-	<LinearLayout XmlStyle="{Resource ColumnContainerLinearLayoutStyle}">
+	<LinearLayout XmlStyle="{Resource ColumnContainerLinearLayoutStyle}"
+	              android:layout_above="@id/buttons">
 		<!--First column-->
 		<ScrollView XmlStyle="{Resource ColumnLayoutStyle}">
 
 			<LinearLayout android:layout_width="match_parent"
-			              android:layout_height="wrap_content">
+			              android:layout_height="wrap_content"
+						  android:orientation="vertical">
 
 				<!--Text-->
 				<TextView XmlStyle="{Resource FormLabelStyle}"
@@ -40,22 +53,20 @@
 				<EditText android:layout_width="match_parent"
 				          android:layout_height="wrap_content"
 				          android:layout_marginLeft="5dip"
-				          android:layout_marginRight="6dip"
+				          android:layout_marginRight="5dip"
 				          android:textSize="16sp"
-				          Text="{Binding CurrentIndiagram.Indiagram.Text, Mode=TwoWay, UpdateEvent=TextChanged}" />
+				          Text="{Binding CurrentIndiagram.Text, Mode=TwoWay, UpdateEvent=TextChanged}" />
 
 				<!--Category-->
 				<TextView XmlStyle="{Resource FormLabelStyle}"
-				          android:layout_marginTop="10dip"
 				          Text="{Tr Text, Uid=Collection_ParentCategory}" />
 
-				<LinearLayout XmlStyle="{Resource HorizontalLinearLayoutStyle}"
-				              android:layout_marginBottom="10dip">
+				<LinearLayout XmlStyle="{Resource HorizontalLinearLayoutStyle}">
 
 					<TextView XmlStyle="{Resource SmallFormLabelStyle}"
 					          Text="{Tr Text, Uid=Collection_ParentCategoryName}" />
 					<TextView XmlStyle="{Resource DefaultTextStyle}"
-					          Text="{Binding CurrentIndiagram.Indiagram.Parent, Converter={Resource ParentCategoryConverter}}" />
+					          Text="{Binding CurrentIndiagram.Parent, Converter={Resource ParentCategoryConverter}}" />
 				</LinearLayout>
 
 				<!-- Choose category -->
@@ -72,27 +83,25 @@
 
 				<!--Position-->
 				<TextView XmlStyle="{Resource FormLabelStyle}"
-				          android:layout_marginTop="10dip"
 				          Text="{Tr Text, Uid=Collection_Position}" />
 				<LinearLayout XmlStyle="{Resource HorizontalLinearLayoutStyle}"
 				              android:layout_marginRight="5dip">
 					<TextView XmlStyle="{Resource SmallFormLabelStyle}"
 					          Text="{Tr Text,Uid=Collection_PositionBefore}" />
-					<BindableSpinner XmlStyle="{Resource SpinnerStyle}"
+					<!--<BindableSpinner XmlStyle="{Resource SpinnerStyle}"
 					                 adapter="{Binding Brothers, Template={Resource PositionTemplate}}"
-					                 currentItem="{Binding Bro1, Mode=TwoWay, UpdateEvent=CurrentItemChanged}" />
+					                 currentItem="{Binding Bro1, Mode=TwoWay, UpdateEvent=CurrentItemChanged}" />-->
 				</LinearLayout>
 
 				<!--Sound-->
 				<TextView XmlStyle="{Resource FormLabelStyle}"
-				          android:layout_marginTop="10dip"
 				          Text="{Tr Text, Uid=Collection_Sound}" />
 				<LinearLayout XmlStyle="{Resource HorizontalLinearLayoutStyle}"
 				              android:layout_marginBottom="10dip">
 					<TextView XmlStyle="{Resource SmallFormLabelStyle}"
 					          Text="{Tr Text, Uid=Collection_SoundPath}" />
 					<TextView XmlStyle="{Resource DefaultTextStyle}"
-					          Text="{Binding CurrentIndiagram.Indiagram.SoundPath, Converter={Resource SoundPathConverter}}"
+					          Text="{Binding CurrentIndiagram.SoundPath, Converter={Resource SoundPathConverter}}"
 					          android:singleLine="true" />
 				</LinearLayout>
 
@@ -116,7 +125,7 @@
 				<!-- copy&paste -->
 				<TextView XmlStyle="{Resource FormLabelStyle}"
 				          android:layout_marginTop="10dip"
-				          Text="{Tr Text, Uid=Collection_CopyIndigram}" />
+				          Text="{Tr Text, Uid=Collection_CopyIndiagram}" />
 				<LinearLayout XmlStyle="{Resource ButtonContainerStyle}"
 				              android:layout_marginTop="10dip">
 
@@ -127,7 +136,7 @@
 					<Button XmlStyle="{Resource MediumOrangeButtonStyle}"
 					        Text="{Tr Text, Uid=Collection_Paste}"
 					        Click="{Binding PasteCommand}"
-					        android:enabled="{Binding CopyPasteService.IndiaPresent}" />
+					        android:enabled="{Binding CopyPasteService.HasBuffer}" />
 				</LinearLayout>
 
 				<!--Activate & Desactivate-->
@@ -142,12 +151,12 @@
 					<Button XmlStyle="{Resource MediumBlueButtonStyle}"
 					        Text="{Tr Text, Uid=Collection_EnableIndiagram}"
 					        Click="{Binding ActivateCommand}"
-					        android:visibility="{Binding CurrentIndiagram.Indiagram.IsEnabled, Converter={Resource BooleanToVisibilityConverter}, ConverterParameter=Negation}" />
+					        android:visibility="{Binding CurrentIndiagram.IsEnabled, Converter={Resource BooleanToVisibilityConverter}, ConverterParameter=Negation}" />
 					<Button XmlStyle="{Resource MediumOrangeButtonStyle}"
 					        android:id="desact"
 					        Text="{Tr Text, Uid=Collection_DisableIndiagram}"
 					        Click="{Binding DesactivateCommand}"
-					        android:visibility="{Binding CurrentIndiagram.Indiagram.IsEnabled, Converter={Resource BooleanToVisibilityConverter}}" />
+					        android:visibility="{Binding CurrentIndiagram.IsEnabled, Converter={Resource BooleanToVisibilityConverter}}" />
 				</LinearLayout>
 			</LinearLayout>
 		</ScrollView>
@@ -158,7 +167,7 @@
 			<BindableImageView android:layout_width="wrap_content"
 			                   android:layout_height="wrap_content"
 			                   android:id="Add_Img"
-			                   SourcePath="{Binding CurrentIndiagram.Indiagram.ImagePath}"
+			                   SourcePath="{Binding CurrentIndiagram.ImagePath}"
 			                   Size="{Binding SettingsService.IndiagramDisplaySize}" />
 
 			<LinearLayout XmlStyle="{Resource ButtonContainerStyle}">
@@ -170,17 +179,9 @@
 
 			<CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
 			          Text="{Tr Text, Uid=Collection_IsCategory}"
-			          android:checked="{Binding Categ, Mode=TwoWay, UpdateEvent=CheckedChange}" />
+			          android:checked="{Binding IsCategory, Mode=TwoWay, UpdateEvent=CheckedChange}" />
 		</LinearLayout>
 	</LinearLayout>
 
-	<!--Button ok & back-->
-	<LinearLayout XmlStyle="{Resource ValidationButtonLinearLayoutStyle}">
-		<Button XmlStyle="{Resource MediumGreenButtonStyle}"
-		        Text="{Tr Text, Uid=Button_Ok}"
-		        Click="{Binding SaveCommand}" />
-		<Button XmlStyle="{Resource MediumOrangeButtonStyle}"
-		        Text="{Tr Text, Uid=Button_Cancel}"
-		        Click="{Binding BackCommand}" />
-	</LinearLayout>
-</LinearLayout>
+
+</RelativeLayout>
