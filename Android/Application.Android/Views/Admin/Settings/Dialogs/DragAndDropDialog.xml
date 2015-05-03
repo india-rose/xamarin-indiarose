@@ -1,34 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!--
-/*
- * This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
- * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
- */
--->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:background="@android:color/white"
-  android:paddingLeft="50dip"
-  android:paddingRight="50dip" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                XmlStyle="{Resource RootPaddingLinearLayoutStyle}">
 
+	<TextView XmlStyle="{Resource DialogText}"
+			  Text="{Tr Text, Uid=DragAndDrop_Explanation}" />
+	<RadioGroup XmlStyle="{Resource DialogRadioGroupStyle}">
 
-  <RadioGroup XmlStyle="{Resource RadioGroupStyle}">
-    
-      <TextView XmlStyle="{Resource DialogText}"
-         Text="{Tr Text, Uid=DDDial_Text}"
-     />
+		<RadioButton XmlStyle="{Resource DialogRadioButtonStyle}"
+		             Text="{Tr Text, Uid=RadioButton_On}"
+		             checked="{Binding IsEnabled, Mode=TwoWay, UpdateEvent=CheckedChange}" />
 
-    <RadioButton XmlStyle="{Resource RadioButtonStyle}"
-        Text="{Tr Text, Uid=RD_buttonOn}"
-		    checked="{Binding IsEnabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
-    />
+		<RadioButton XmlStyle="{Resource DialogRadioButtonStyle}"
+		             Text="{Tr Text, Uid=RadioButton_Off}"
+		             checked="{Binding IsDisabled, Mode=TwoWay, UpdateEvent=CheckedChange}" />
+	</RadioGroup>
 
-    <RadioButton XmlStyle="{Resource RadioButtonStyle}"
-        Text="{Tr Text, Uid=RD_buttonOff}"
-        checked="{Binding IsDisabled, Mode=TwoWay, UpdateEvent=CheckedChange}"
-    />
-  </RadioGroup>
-
-
-</RelativeLayout>
+</LinearLayout>

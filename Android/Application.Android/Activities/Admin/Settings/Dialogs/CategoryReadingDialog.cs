@@ -16,11 +16,11 @@ namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
 	{
 		public CategoryReadingDialog()
 		{
-		    var trad = DependencyService.Container.Resolve<ILocalizationService>();
+		    var translation = DependencyService.Container.Resolve<ILocalizationService>();
 
-            Title = trad.GetString("Dialogs_ReadingDialog", "Text");
-            Buttons.Add(DialogsButton.Positive, trad.GetString("Button_Ok", "Text"));
-            Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Back", "Text"));
+			Title = translation.GetString("CategoryReading_Title", "Text");
+            Buttons.Add(DialogsButton.Positive, translation.GetString("Button_Ok", "Text"));
+            Buttons.Add(DialogsButton.Negative, translation.GetString("Button_Cancel", "Text"));
 		}
 
 	    protected override ViewModelBase CreateViewModel()

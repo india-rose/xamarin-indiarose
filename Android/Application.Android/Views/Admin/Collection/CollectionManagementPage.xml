@@ -1,56 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-				xmlns:converters="using:IndiaRose.Framework.Converters"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:background="@android:color/white" 
-				>
-	<Resources>
-		<Style Key="Relative"
-		   android:layout_width="match_parent"
-		   android:layout_height="wrap_content"
-		   android:layout_alignParentTop="true"
-           />
-		<Style Key="CMPRelative"
-		  android:layout_marginTop="5dip"
-		  android:layout_below="@id/relative"
-		  android:layout_above="@id/linear_button"
-		  android:layout_width="match_parent"
-		  android:layout_height="match_parent"
-		  android:background="#2E8AEF"
-           />
-		
-		<converters:ColorContainerToIntConverter Key="ColorContainerToIntConverter" />
-	</Resources>
-	<!--Logo-->
-	<ImageView XmlStyle="{Resource LogoStyle}"
-			   android:layout_alignParentRight="true"
-			   android:id="relative" 
-			   />
+              XmlStyle="{Resource BaseRootLayoutStyle}"
+              android:orientation="vertical">
+	<!-- Browser -->
+	<IndiagramBrowserView android:layout_width="match_parent"
+	                      android:layout_height="match_parent"
+	                      android:background="#2E8AEF"
+	                      Count="{Binding CollectionDisplayCount, Mode=TwoWay, UpdateEvent=CountChanged}"
+	                      Offset="{Binding CollectionOffset}"
+	                      Indiagrams="{Binding DisplayedIndiagrams}"
+	                      TextColor="{Binding TextColor, Converter={Resource ColorContainerToIntConverter}}"
+	                      IndiagramSelected="{Binding IndiagramSelectedCommand}" />
 
 	<!--Button add & next-->
-	<LinearLayout XmlStyle="{Resource Ok_Back_Container}"
-				  android:id="linear_button">
+	<LinearLayout XmlStyle="{Resource ValidationButtonLinearLayoutStyle}">
 
 		<Button XmlStyle="{Resource MediumGreenButtonStyle}"
-				Text="{Tr Text,Uid=SelectionIndiagramsAdd}"
-				Click="{Binding AddCommand}"
-				android:layout_marginLeft="4dip"
-				/>
-		
+		        Text="{Tr Text, Uid=CollectionManagement_Add}"
+		        Click="{Binding AddCommand}" />
+
 		<Button XmlStyle="{Resource MediumOrangeButtonStyle}"
-				Text ="{Tr Text,Uid=SelectionIndiagramsNext}"
-				Click="{Binding NextCommand}"
-				/>
+		        Text="{Tr Text, Uid=CollectionManagement_Next}"
+		        Click="{Binding NextCommand}" />
 	</LinearLayout>
-
-	<!-- Browser -->
-	<IndiagramBrowserView XmlStyle="{Resource CMPRelative}"
-						  Count="{Binding CollectionDisplayCount, Mode=TwoWay, UpdateEvent=CountChanged}"
-						  Offset="{Binding CollectionOffset}"
-						  Indiagrams="{Binding DisplayedIndiagrams}"
-						  TextColor="{Binding TextColor, Converter={Resource ColorContainerToIntConverter}}"
-						  IndiagramSelected="{Binding IndiagramSelectedCommand}"
-						  />
 </RelativeLayout>
-

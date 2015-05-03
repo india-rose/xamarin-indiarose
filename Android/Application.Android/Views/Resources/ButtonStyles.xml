@@ -33,9 +33,6 @@
 	       android:layout_width="match_parent"
 	       android:layout_height="75dip"
 	       android:layout_alignParentBottom="true"
-	       android:gravity="center"
-	       android:layout_gravity="center"
-	       android:layout_centerInParent="true"
 	       android:orientation="horizontal"
 	       android:layout_marginTop="4dip" />
 

@@ -21,8 +21,8 @@ namespace IndiaRose.Application.Activities.Admin
         public MailErrorDialog()
         {
             var trad = DependencyService.Container.Resolve<ILocalizationService>();
-            Title = trad.GetString("Error", "Text");
-            Buttons.Add(DialogsButton.Neutral,trad.GetString("Button_Back","Text"));
+            Title = trad.GetString("MailError_Title", "Text");
+            Buttons.Add(DialogsButton.Neutral,trad.GetString("Button_Cancel","Text"));
         }
     }
 }

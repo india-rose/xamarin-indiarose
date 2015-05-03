@@ -17,16 +17,28 @@
 	       android:layout_centerHorizontal="true"
 	       android:layout_alignParentTop="true" />
 
-	<Style Key="RootLayoutStyle"
-	       android:layout_width="match_parent"
+	<Style Key="BaseRootLayoutStyle"
+		   android:layout_width="match_parent"
 	       android:layout_height="match_parent"
 	       android:background="@android:color/white"
+			/>
+
+	<Style Key="RootLayoutStyle"
+		   XmlStyle="{Resource BaseRootLayoutStyle}"
 	       android:layout_margin="4dip" />
+
+	<Style Key="RootLinearLayoutStyle"
+	       XmlStyle="{Resource RootLayoutStyle}"
+	       android:orientation="vertical" />
 
 	<Style Key="RootPaddingLayoutStyle"
 	       XmlStyle="{Resource RootLayoutStyle}"
 	       android:paddingLeft="50dip"
 	       android:paddingRight="50dip" />
+
+	<Style Key="RootPaddingLinearLayoutStyle"
+	       XmlStyle="{Resource RootPaddingLayoutStyle}"
+	       android:orientation="vertical" />
 
 	<!-- Styles for pages full of buttons -->
 
@@ -58,9 +70,9 @@
 	<Style Key="ColumnLayoutStyle"
 	       android:layout_width="match_parent"
 	       android:layout_height="match_parent"
-	       android:layout_weight="1" 
-		   android:layout_marginLeft="4dip"
-		   android:layout_marginRight="4dip"/>
+	       android:layout_weight="1"
+	       android:layout_marginLeft="4dip"
+	       android:layout_marginRight="4dip" />
 
 	<Style Key="ColumnLinearLayoutStyle"
 	       XmlStyle="{Resource ColumnLayoutStyle}"
@@ -79,13 +91,13 @@
 
 	<Style Key="SpinnerItemLayoutStyle"
 	       android:layout_width="match_parent"
-	       android:layout_height="match_parent"/>
+	       android:layout_height="match_parent" />
 
 	<Style Key="SpinnerItemTextStyle"
 	       android:layout_width="wrap_content"
 	       android:layout_height="match_parent"
-	       android:textSize="20sp" 
-		   android:textColor="@android:color/black"/>
+	       android:textSize="20sp"
+	       android:textColor="@android:color/black" />
 
 	<Style Key="BaseLabelStyle"
 	       android:textColor="#006FFF"
@@ -101,30 +113,19 @@
 	       XmlStyle="{Resource BaseLabelStyle}"
 	       android:layout_width="wrap_content"
 	       android:layout_height="wrap_content" />
-	
+
 	<Style Key="DefaultTextStyle"
-		   android:layout_width="wrap_content"
-		   android:layout_height="wrap_content"
-		   android:textSize="16sp"
-		   android:textColor="@android:color/black"
-		   />
-
-	<!-- tbd -->
-
-	<Style Key="RadioButtonStyle"
 	       android:layout_width="wrap_content"
-	       android:layout_height="wrap_content" />
-	<Style Key="RadioGroupStyle"
+	       android:layout_height="wrap_content"
+	       android:textSize="16sp"
+	       android:textColor="@android:color/black" />
+
+	<Style Key="HorizontalLinearLayoutStyle"
 	       android:layout_width="match_parent"
 	       android:layout_height="wrap_content"
-	       android:orientation="vertical" />
+	       android:orientation="horizontal" />
 
-	<Style Key="DialogText"
-	       android:layout_width="wrap_content"
-	       android:layout_height="wrap_content"
-	       android:textColor="#444444"
-	       android:textSize="13sp"
-	       marginBottom="2dp" />
+	<!-- tbd -->
 
 	<Style Key="Ok_Back_Container"
 	       android:layout_width="match_parent"

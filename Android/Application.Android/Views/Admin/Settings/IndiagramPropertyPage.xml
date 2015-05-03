@@ -36,14 +36,14 @@
 
 				<!-- Indiagram size -->
 				<TextView XmlStyle="{Resource FormLabelStyle}"
-				          Text="{Tr Text, Uid=Indiagram_property_imageSizeTitle}" />
+				          Text="{Tr Text, Uid=IndiagramProperty_IndiagramSize}" />
 
 				<BindableSpinner XmlStyle="{Resource SpinnerStyle}"
 				                 adapter="{Binding IndiagramSizes, Template={Resource IndiagramSizeTemplate}}"
 				                 currentItem="{Binding IndiagramSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}" />
 				<!-- Font family -->
 				<TextView XmlStyle="{Resource FormLabelStyle}"
-				          Text="{Tr Text, Uid=fontTitle}" />
+				          Text="{Tr Text, Uid=IndiagramProperty_FontFamily}" />
 
 				<BindableSpinner XmlStyle="{Resource SpinnerStyle}"
 				                 adapter="{Binding FontNames, Template={Resource FontTemplate}}"
@@ -51,7 +51,7 @@
 
 				<!-- Font size -->
 				<TextView XmlStyle="{Resource FormLabelStyle}"
-				          Text="{Tr Text, Uid=fontSizeTitle}" />
+				          Text="{Tr Text, Uid=IndiagramProperty_FontSize}" />
 
 				<BindableSpinner XmlStyle="{Resource SpinnerStyle}"
 				                 android:layout_marginBottom="20dip"
@@ -60,14 +60,15 @@
 
 				<!-- Text color -->
 				<TextView XmlStyle="{Resource FormLabelStyle}"
-				          Text="{Tr Text, Uid=text_color_label}" />
+				          Text="{Tr Text, Uid=IndiagramProperty_TextColor}" />
+				
 				<LinearLayout android:layout_width="match_parent"
 				              android:layout_height="wrap_content"
 				              android:orientation="horizontal"
 				              android:layout_marginBottom="10dip">
 					<TextView XmlStyle="{Resource DefaultTextStyle}"
 					          android:layout_marginRight="10dip"
-					          Text="{Tr Text,Uid=text_color_test}" />
+					          Text="{Tr Text, Uid=IndiagramProperty_TextColorLabel}" />
 
 					<ViewWithBorder android:layout_width="match_parent"
 					                android:layout_height="match_parent"
@@ -76,11 +77,11 @@
 				</LinearLayout>
 
 				<Button XmlStyle="{Resource BlueButtonStyle}"
-				        Text="{Tr Text,Uid=text_color_button}"
+				        Text="{Tr Text, Uid=IndiagramProperty_ChangeTextColor}"
 				        Click="{Binding TextColorCommand}" />
 
 				<CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
-				          Text="{Tr Text,Uid=Indiagram_property_checkboxhomecategory}"
+				          Text="{Tr Text, Uid=IndiagramProperty_BackHomeAfterPicking}"
 				          checked="{Binding BackAfterSelection,Mode=TwoWay, UpdateEvent=CheckedChange}" />
 			</LinearLayout>
 		</ScrollView>
@@ -95,11 +96,11 @@
 			                      ReinforcerEnabled="{Binding ReinforcerEnabled}" />
 
 			<CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
-			          Text="{Tr Text,Uid=Indiagram_property_reinforcerReadingLabel}"
+			          Text="{Tr Text, Uid=IndiagramProperty_EnableReinforcer}"
 			          Checked="{Binding ReinforcerEnabled,Mode=TwoWay, UpdateEvent=CheckedChange}" />
 
 			<Button XmlStyle="{Resource PurpleButtonStyle}"
-			        Text="{Tr Text,Uid=Indiagram_Property_reinforcerColorButton}"
+			        Text="{Tr Text, Uid=IndiagramProperty_ChangeReinforcerColor}"
 			        Click="{Binding ReinforcerColorCommand}" />
 		</LinearLayout>
 	</LinearLayout>
@@ -111,7 +112,7 @@
 		        Text="{Tr Text, Uid=Button_Ok}"
 		        Click="{Binding SaveCommand}" />
 		<Button XmlStyle="{Resource CancelButtonStyle}"
-		        Text="{Tr Text, Uid=Button_Back}"
+		        Text="{Tr Text, Uid=Button_Cancel}"
 		        Click="{Binding BackCommand}" />
 	</LinearLayout>
 </RelativeLayout>

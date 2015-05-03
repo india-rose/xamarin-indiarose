@@ -7,25 +7,25 @@
 
 		<LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}">
 			<Button XmlStyle="{Resource MediumBlueButtonStyle}"
-			        Text="{Tr Text, Uid=App_Settings_Background_Properties}"
+			        Text="{Tr Text, Uid=AppSettings_Background}"
 			        Click="{Binding ApplicationLookCommand}" />
 			<Button XmlStyle="{Resource MediumPinkButtonStyle}"
-			        Text="{Tr Text, Uid=App_Settings_Indiagram_Properties}"
+			        Text="{Tr Text, Uid=AppSettings_Indiagram}"
 			        Click="{Binding IndiagramPropertyCommand}" />
 			<Button XmlStyle="{Resource MediumGreenButtonStyle}"
-			        Text="{Tr Text, Uid=App_Settings_Drag_Drop}"
+			        Text="{Tr Text, Uid=AppSettings_DragDrop}"
 			        Click="{Binding DragAndDropCommand}" />
 		</LinearLayout>
 
 		<LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}">
 			<Button XmlStyle="{Resource MediumGreenButtonStyle}"
-			        Text="{Tr Text,Uid=App_Settings_Lecture_Category_Properties}"
+			        Text="{Tr Text,Uid=AppSettings_ReadingCategory}"
 			        Click="{Binding CategoryReadingCommand}" />
 			<Button XmlStyle="{Resource MediumPurpleButtonStyle}"
-			        Text="{Tr Text,Uid=App_Settings_Ready_Delay}"
+			        Text="{Tr Text,Uid=AppSettings_ReadingDelay}"
 			        Click="{Binding ReadingDelayCommand}" />
 			<Button XmlStyle="{Resource MediumRedButtonStyle}"
-			        Text="{Tr Text, Uid=App_Settings_Reinitialisation}"
+			        Text="{Tr Text, Uid=AppSettings_Reset}"
 			        Click="{Binding ResetSettingsCommand}" />
 		</LinearLayout>
 

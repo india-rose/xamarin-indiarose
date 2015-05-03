@@ -28,7 +28,7 @@
 		<TextView XmlStyle="{Resource TextViewStyle}"
 		          android:id="Label_send_logs"
 		          android:layout_below="@id/Logo"
-		          Text="{Tr Text, Uid=Server_Synchro_Start}" />
+		          Text="{Tr Text, Uid=Server_SynchroStart}" />
 
 		<ProgressBar
 			android:layout_width="50dip"
@@ -38,7 +38,7 @@
 			android:layout_margin="10dip" />
 
 		<TextView XmlStyle="{Resource TextViewStyle}"
-		          Text="{Tr Text, Uid=Server_Synchro_Void}" />
+		          Text="{Tr Text, Uid=Server_SynchroVoid}" />
 
 
 	</LinearLayout>

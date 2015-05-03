@@ -26,8 +26,8 @@ namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
         {
             var trad = DependencyService.Container.Resolve<ILocalizationService>();
             Buttons[DialogsButton.Positive] = trad.GetString("Button_Ok", "Text");
-            Buttons[DialogsButton.Negative] = trad.GetString("Button_Back", "Text");
-            Title = trad.GetString("ColorPicker_title", "Text");
+            Buttons[DialogsButton.Negative] = trad.GetString("Button_Cancel", "Text");
+			Title = trad.GetString("ColorPicker_Title", "Text");
 	    }
 	}
 }

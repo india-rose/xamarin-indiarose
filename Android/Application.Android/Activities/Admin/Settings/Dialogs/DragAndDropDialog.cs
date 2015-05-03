@@ -18,9 +18,9 @@ namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
 		{
 		    var trad = DependencyService.Container.Resolve<ILocalizationService>();
 
-            Title = trad.GetString("Dialogs_DragAndDrop", "Text");
+			Title = trad.GetString("DragAndDrop_Title", "Text");
             Buttons.Add(DialogsButton.Positive, trad.GetString("Button_Ok", "Text"));
-            Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Back", "Text"));
+            Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Cancel", "Text"));
 		}
 
 		protected override ViewModelBase CreateViewModel()
