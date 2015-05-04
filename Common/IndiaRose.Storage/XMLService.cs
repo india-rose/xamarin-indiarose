@@ -7,10 +7,9 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Storage
 {
-    class XmlService : IXmlService
+    public class XmlService : IXmlService
     {
-
-        public void Initialize(Stream path)
+        public static void Initialize(Stream path)
         {
             var archive = ArchiveFactory.Open(path);
 
@@ -74,6 +73,11 @@ namespace IndiaRose.Storage
                     LazyResolver<ICollectionStorageService>.Service.Save(current);
                 }
             }
+        }
+
+        void IXmlService.Initialize(Stream path)
+        {
+            Initialize(path);
         }
     }
 }

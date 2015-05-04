@@ -4,6 +4,7 @@ using System.IO.Compression;
 using System.Linq.Expressions;
 using System.Windows.Input;
 using IndiaRose.Interfaces;
+using IndiaRose.Storage;
 using Storm.Mvvm;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
@@ -75,10 +76,10 @@ namespace IndiaRose.Business.ViewModels.Admin
 
 		public override void OnNavigatedTo(NavigationArgs e, string parametersKey)
 		{
-			base.OnNavigatedTo(e, parametersKey);
-
-			// TODO: if collection is empty, navigate to dialog and uncompress zip file
-		}
+            //if (LazyResolver<ICollectionStorageService>.Service.Collection.Count==0)
+		    //LazyResolver<IResourceService>.Service.OpenZip("indiagrams.zip");
+            base.OnNavigatedTo(e, parametersKey);
+        }
 
 		#region First line command implementation
 
