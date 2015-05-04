@@ -225,6 +225,11 @@ namespace IndiaRose.Framework.Views
                 canvas.DrawRect(_marginLeft, _marginTop, _pictureWidth + _marginLeft, _pictureHeight + _marginTop, _picturePainter);
             }
 
+	        if (!_indiagram.IsEnabled)
+	        {
+				canvas.DrawRect(_marginLeft, _marginTop, _pictureWidth + _marginLeft, _pictureHeight + _marginTop, new Paint(){Color = new Color(0, 0, 0, 128)});
+	        }
+
             if (!string.IsNullOrEmpty(_indiagram.Text))
             {
                 //write text

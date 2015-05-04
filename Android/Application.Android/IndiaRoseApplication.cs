@@ -10,6 +10,7 @@ using IndiaRose.Application.Activities.Admin.Settings.Dialogs;
 using IndiaRose.Business;
 using Storm.Mvvm;
 using Storm.Mvvm.Inject;
+using Xamarin;
 
 namespace IndiaRose.Application
 {
@@ -24,6 +25,15 @@ namespace IndiaRose.Application
 		public override void OnCreate()
 		{
 			base.OnCreate();
+
+			Insights.HasPendingCrashReport += (sender, isStartupCrash) =>
+			{
+				if (isStartupCrash)
+				{
+					Insights.PurgePendingCrashReports().Wait();
+				}
+			};
+			Insights.Initialize("794b025da8b9b50d4e4b6f8abf64cc051ec52f94", Context);
 
             Dictionary<string, Type> views = new Dictionary<string, Type>
 			{
