@@ -82,7 +82,7 @@ namespace IndiaRose.Data.Model
 			IsEnabled = other.IsEnabled;
 			Position = other.Position;
 			Parent = other.Parent;
-			if (excludeId)
+			if (!excludeId)
 			{
 				Id = other.Id;
 			}
