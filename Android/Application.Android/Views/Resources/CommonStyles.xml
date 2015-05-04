@@ -138,10 +138,18 @@
 	       android:textSize="16sp"
 	       android:textColor="@android:color/black" />
 
-	<Style Key="HorizontalLinearLayoutStyle"
+  <Style Key="MatchWrapLayoutStyle"
 	       android:layout_width="match_parent"
 	       android:layout_height="wrap_content"
+         />
+  
+  <Style Key="HorizontalLinearLayoutStyle"
+         XmlStyle="{Resource MatchWrapLayoutStyle}"
 	       android:orientation="horizontal" />
+  
+  <Style Key="VerticalLinearLayoutStyle"        
+         XmlStyle="{Resource MatchWrapLayoutStyle}"
+	       android:orientation="vertical" />
 
 	<Style Key="ButtonContainerStyle"
 		   android:layout_width="match_parent"

@@ -14,7 +14,7 @@
 		<DataTemplate Key="PositionTemplate">
 			<LinearLayout XmlStyle="{Resource SpinnerItemLayoutStyle}">
 				<TextView XmlStyle="{Resource SpinnerItemTextStyle}"
-				          text="{Binding Text}" />
+				          Text="{Binding Text}" />
 			</LinearLayout>
 		</DataTemplate>
 	</Resources>
@@ -162,26 +162,26 @@
 		</ScrollView>
 		<!--Second column-->
 		<LinearLayout XmlStyle="{Resource ColumnLinearLayoutStyle}"
-		              android:gravity="center">
-
-			<BindableImageView android:layout_width="wrap_content"
-			                   android:layout_height="wrap_content"
-			                   android:id="Add_Img"
-			                   SourcePath="{Binding CurrentIndiagram.ImagePath}"
-			                   Size="{Binding SettingsService.IndiagramDisplaySize}" />
-
-			<LinearLayout XmlStyle="{Resource ButtonContainerStyle}">
-
-				<Button XmlStyle="{Resource MediumPurpleButtonStyle}"
-				        Text="{Tr Text, Uid=Collection_ChooseImage}"
-				        Click="{Binding ImageChoiceCommand}" />
-			</LinearLayout>
-
-			<CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
-			          Text="{Tr Text, Uid=Collection_IsCategory}"
-			          android:checked="{Binding IsCategory, Mode=TwoWay, UpdateEvent=CheckedChange}" />
+                  android:gravity="center">
+      <ScrollView XmlStyle="{Resource MatchWrapLayoutStyle}">
+        <LinearLayout XmlStyle="{Resource VerticalLinearLayoutStyle}"
+                android:gravity="center">
+	        <BindableImageView android:layout_width="wrap_content"
+			                        android:layout_height="wrap_content"
+			                        android:id="Add_Img"
+			                        SourcePath="{Binding CurrentIndiagram.ImagePath}"
+			                        Size="{Binding SettingsService.IndiagramDisplaySize}" />
+	        <LinearLayout XmlStyle="{Resource ButtonContainerStyle}">
+		        <Button XmlStyle="{Resource MediumPurpleButtonStyle}"
+				            Text="{Tr Text, Uid=Collection_ChooseImage}"
+				            Click="{Binding ImageChoiceCommand}" />
+	        </LinearLayout>
+	        <CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
+			              Text="{Tr Text, Uid=Collection_IsCategory}"
+			              android:checked="{Binding IsCategory, Mode=TwoWay, UpdateEvent=CheckedChange}" />
+        </LinearLayout>
+      </ScrollView>
 		</LinearLayout>
 	</LinearLayout>
-
 
 </RelativeLayout>

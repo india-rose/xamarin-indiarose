@@ -1,5 +1,7 @@
 ﻿#region Usings
 
+using System.IO.Compression;
+using System.Linq.Expressions;
 using System.Windows.Input;
 using IndiaRose.Interfaces;
 using Storm.Mvvm;
