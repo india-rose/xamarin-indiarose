@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
+using IndiaRose.Storage;
 using Newtonsoft.Json;
 using PCLStorage;
 using Storm.Mvvm;
@@ -13,8 +14,6 @@ namespace IndiaRose.Services
 {
 	public class SettingsService : NotifierBase, ISettingsService
 	{
-		private const string SETTINGS_FILE = "settings.json";
-
 		private bool _hasChanged;
 
 		#region Services
@@ -22,6 +21,11 @@ namespace IndiaRose.Services
 		protected ILoggerService LoggerService
 		{
 			get { return LazyResolver<ILoggerService>.Service; }
+		}
+
+		protected IStorageService StorageService
+		{
+			get { return LazyResolver<IStorageService>.Service; }
 		}
 
 		#endregion
@@ -127,10 +131,7 @@ namespace IndiaRose.Services
 
 		public SettingsService()
 		{
-			PropertyChanged += OnAnyValueChanged;   
-#pragma warning disable 4014
-            LoadAsync();
-#pragma warning restore 4014
+			PropertyChanged += OnAnyValueChanged;
 		}
 
 		private void OnAnyValueChanged(object sender, PropertyChangedEventArgs e)
@@ -219,10 +220,11 @@ namespace IndiaRose.Services
 		{
 			try
 			{
-				ExistenceCheckResult result = await FileSystem.Current.LocalStorage.CheckExistsAsync(SETTINGS_FILE);
+				IFolder folder = await FileSystem.Current.GetFolderFromPathAsync(StorageService.SettingsFolderPath);
+				ExistenceCheckResult result = await folder.CheckExistsAsync(StorageService.SettingsFileName);
 				return result == ExistenceCheckResult.FileExists;
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
 				return false;
 			}
@@ -232,7 +234,7 @@ namespace IndiaRose.Services
 		{
 			try
 			{
-				IFile file = await FileSystem.Current.LocalStorage.GetFileAsync(SETTINGS_FILE);
+				IFile file = await FileSystem.Current.GetFileFromPathAsync(StorageService.SettingsFilePath);
 				string content = await file.ReadAllTextAsync();
 				SettingsModel result = JsonConvert.DeserializeObject<SettingsModel>(content);
 				return result;
@@ -249,8 +251,9 @@ namespace IndiaRose.Services
 		{
 			try
 			{
-				IFile file = await FileSystem.Current.LocalStorage.CreateFileAsync(SETTINGS_FILE,CreationCollisionOption.OpenIfExists);
-				string content = JsonConvert.SerializeObject(model, Formatting.None);
+				IFolder folder = await FileSystem.Current.GetFolderFromPathAsync(StorageService.SettingsFolderPath);
+				IFile file = await folder.CreateFileAsync(StorageService.SettingsFileName, CreationCollisionOption.ReplaceExisting);
+				string content = JsonConvert.SerializeObject(model, Formatting.Indented);
 				await file.WriteAllTextAsync(content);
 			}
 			catch (Exception e)

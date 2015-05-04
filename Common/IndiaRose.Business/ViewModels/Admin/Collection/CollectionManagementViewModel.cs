@@ -5,6 +5,9 @@ using System.Windows.Input;
 using IndiaRose.Data.Model;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Messaging;
+using IndiaRose.Interfaces;
+using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 
 #endregion
 
@@ -13,6 +16,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 	public class CollectionManagementViewModel : AbstractBrowserViewModel
 	{
 		public ICommand AddCommand { get; private set; }
+
+		public IPopupService PopupService
+		{
+			get { return LazyResolver<IPopupService>.Service; }
+		}
 
 		public CollectionManagementViewModel()
 		{
@@ -28,7 +36,13 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 		protected override void IndiagramSelectedAction(Indiagram indiagram)
 		{
 			base.IndiagramSelectedAction(indiagram);
-			if (indiagram.IsCategory)
+			if (indiagram.IsCategory && !indiagram.HasChildren)
+			{
+				var trad = DependencyService.Container.Resolve<ILocalizationService>();
+				var message = trad.GetString("Collection_CategoryEmpty", "Text");
+				PopupService.DisplayPopup(message);
+			}
+			else if (indiagram.IsCategory)
 			{
 				// register to message go into category from the explore collection dialog
 				// and unregister when the dialog is dismissed
@@ -38,6 +52,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 					{"Indiagram", indiagram}
 				}, () => Messenger.Unregister(this, Messages.EXPLORE_COLLECTION_GOINTO_CATEGORY));
 			}
+
 			else
 			{
 				MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM, new Dictionary<string, object>

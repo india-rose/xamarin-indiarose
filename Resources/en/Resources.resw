@@ -486,4 +486,7 @@ Comments : </value>
   <data name="Credits_Xamarin2014Team.Text" xml:space="preserve">
     <value>Vincent Fauveau, Nicolas Lacourte-Barbadaux, Lamia Meziani, Arthur Guillaume</value>
   </data>
+  <data name="Collection_CategoryEmpty.Text" xml:space="preserve">
+    <value>This category is empty.</value>
+  </data>
 </root>
