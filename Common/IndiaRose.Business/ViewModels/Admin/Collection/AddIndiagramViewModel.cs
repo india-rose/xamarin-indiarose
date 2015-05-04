@@ -93,6 +93,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 				}
 			}
 		}
+        //v0 (to test)
+	    public bool HasSound;
 		
 		public Indiagram CurrentIndiagram
 		{

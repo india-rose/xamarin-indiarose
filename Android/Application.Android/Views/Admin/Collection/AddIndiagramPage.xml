@@ -48,7 +48,7 @@
 						  android:orientation="vertical">
 
 				<!--Text-->
-				<TextView XmlStyle="{Resource HeaderItalicLabelStyle}"
+				<TextView XmlStyle="{Resource HeaderTopLabelStyle}"
 				          Text="{Tr Text, Uid=Collection_IndiagramText}" />
 				<EditText android:layout_width="match_parent"
 				          android:layout_height="wrap_content"
@@ -109,7 +109,8 @@
 					<Button XmlStyle="{Resource MediumOrangeButtonStyle}"
 					        Text="{Tr Text, Uid=Collection_DeleteSound}"
 					        Click="{Binding ResetSoundCommand}"
-					        android:visibility="gone" />
+                  android:visibility="{Binding HasSound, Converter={Resource BooleanToVisibilityConverter}}" 
+					        />
 				</LinearLayout>
 
 				<LinearLayout XmlStyle="{Resource ButtonContainerStyle}">
