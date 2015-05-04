@@ -22,10 +22,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 		private void AddAction()
 		{
 			// parameter can be removed when the framework has been updated
-			NavigationService.Navigate(Views.ADMIN_COLLECTION_ADDINDIAGRAM, new Dictionary<string, object>
-			{
-				{"Indiagram", null}
-			});
+			NavigationService.Navigate(Views.ADMIN_COLLECTION_ADDINDIAGRAM);
 		}
 
 		protected override void IndiagramSelectedAction(Indiagram indiagram)

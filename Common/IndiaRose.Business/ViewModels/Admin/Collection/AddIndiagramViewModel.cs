@@ -1,4 +1,4 @@
-﻿#region Usings 
+﻿#region Usings
 
 using System.Collections.Generic;
 using System.Windows.Input;
@@ -48,7 +48,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 		public ICommand SelectCategoryCommand { get; private set; }
 		public ICommand SaveCommand { get; private set; }
 
-		[NavigationParameter]
+		[NavigationParameter(Mode = NavigationParameterMode.Optional)]
 		public IndiagramContainer Indiagram
 		{
 			get { return _indiagram; }
@@ -75,7 +75,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			get { return _editMode; }
 			private set { SetProperty(ref _editMode, value); }
 		}
-		
+
 		public bool IsCategory
 		{
 			get { return _isCategory; }
@@ -91,7 +91,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 				}
 			}
 		}
-		
+
 		public Indiagram CurrentIndiagram
 		{
 			get { return _currentIndiagram; }
