@@ -19,7 +19,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <NuGetPackageImportStamp>4e00516b</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>16de150b</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
@@ -91,12 +91,12 @@
       <HintPath>..\..\packages\SQLite.Net-PCL.3.0.5\lib\MonoAndroid\SQLite.Net.Platform.XamarinAndroid.dll</HintPath>
     </Reference>
     <Reference Include="Storm.Mvvm, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Storm.Mvvm.1.2.6\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Storm.Mvvm.1.2.8\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
     </Reference>
     <Reference Include="Storm.Mvvm.Android.Support, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Storm.Mvvm.Android.Support.1.2.10.1\lib\MonoAndroid22\Storm.Mvvm.Android.Support.dll</HintPath>
+      <HintPath>..\..\packages\Storm.Mvvm.Android.Support.1.2.13\lib\MonoAndroid22\Storm.Mvvm.Android.Support.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -128,10 +128,10 @@
       <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Activez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est le suivant : {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Storm.Mvvm.Android.Support.1.2.10.1\build\Storm.Mvvm.Android.Support.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Storm.Mvvm.Android.Support.1.2.10.1\build\Storm.Mvvm.Android.Support.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Storm.Mvvm.Android.Support.1.2.13\build\Storm.Mvvm.Android.Support.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Storm.Mvvm.Android.Support.1.2.13\build\Storm.Mvvm.Android.Support.targets'))" />
   </Target>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Import Project="..\..\packages\Storm.Mvvm.Android.Support.1.2.10.1\build\Storm.Mvvm.Android.Support.targets" Condition="Exists('..\..\packages\Storm.Mvvm.Android.Support.1.2.10.1\build\Storm.Mvvm.Android.Support.targets')" />
+  <Import Project="..\..\packages\Storm.Mvvm.Android.Support.1.2.13\build\Storm.Mvvm.Android.Support.targets" Condition="Exists('..\..\packages\Storm.Mvvm.Android.Support.1.2.13\build\Storm.Mvvm.Android.Support.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
