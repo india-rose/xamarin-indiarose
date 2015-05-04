@@ -117,7 +117,6 @@ namespace IndiaRose.Framework.Views
 		{
 			base.OnSizeChanged(w, h, oldw, oldh);
 
-			LazyResolver<ILoggerService>.Service.Log(string.Format("XXXXXXXX ====> Layout width: {0} height: {1}", Width, Height), MessageSeverity.Critical);
 			if (Reset())
 			{
 				RefreshDisplay();
@@ -183,7 +182,6 @@ namespace IndiaRose.Framework.Views
 				return;
 			}
 
-			LazyResolver<ILoggerService>.Service.Log(string.Format("XXXXXXXX ====> Want to display column: {0} line: {1}", _columnCount, _lineCount), MessageSeverity.Critical); 
 			RemoveAllViews();
 			List<Indiagram> toDisplay = Indiagrams.Where((o, i) => i >= Offset).ToList();
 			int displayCount = 0;

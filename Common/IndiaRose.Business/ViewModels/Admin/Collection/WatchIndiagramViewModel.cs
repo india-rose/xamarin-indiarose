@@ -43,7 +43,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
 		private void EditAction()
 		{
-			LoggerService.Log("launch edition with object at adress " + IndiagramContainer.GetHashCode());
 			NavigationService.Navigate(Views.ADMIN_COLLECTION_ADDINDIAGRAM, new Dictionary<string, object>
 			{
 				{"Indiagram", IndiagramContainer}

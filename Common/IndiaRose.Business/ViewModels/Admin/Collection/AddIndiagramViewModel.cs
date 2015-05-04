@@ -83,7 +83,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			get { return _isCategory; }
 			set
 			{
-				if (CurrentIndiagram.HasChildren)
+				if (Indiagram.Indiagram.HasChildren)
 				{
 					RaisePropertyChanged();
 				}
@@ -122,9 +122,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 		protected void SelectCategoryAction()
 		{
             Indiagram excludedIndiagram = null;
-            if (Indiagram != null)
+			if (Indiagram != null)
             {
-                excludedIndiagram = Indiagram.Indiagram;
+				excludedIndiagram = Indiagram.Indiagram;
             }
 			NavigationService.Navigate(Views.ADMIN_COLLECTION_SELECTCATEGORY, new Dictionary<string, object>
 			{
@@ -184,7 +184,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			if (Indiagram != null)
 			{
 				Indiagram.Indiagram = savedIndiagram;
-				LoggerService.Log("saving into object at adress " + Indiagram.GetHashCode());
 			}
 
 			Category newParent = savedIndiagram.Parent as Category;
