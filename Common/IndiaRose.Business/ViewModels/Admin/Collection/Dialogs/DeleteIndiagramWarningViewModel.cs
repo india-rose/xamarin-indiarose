@@ -1,5 +1,6 @@
-﻿#region Usings 
+﻿#region Usings
 
+using System;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
 using Storm.Mvvm.Commands;
@@ -21,6 +22,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			set { SetProperty(ref _indiagram, value); }
 		}
 
+		[NavigationParameter(Mode = NavigationParameterMode.Optional)]
+		public Action DeleteCallback { get; set; }
+
 		public DeleteIndiagramWarningViewModel()
 		{
 			DeleteCommand = new DelegateCommand(DeleteAction);
@@ -29,6 +33,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 		protected void DeleteAction()
 		{
 			CollectionStorageService.Delete(Indiagram);
+
+			if (DeleteCallback != null)
+			{
+				DeleteCallback();
+			}
 		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿#region Usings 
 
+using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
@@ -22,6 +23,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			set { SetProperty(ref _indiagram, value); }
 		}
 
+		[NavigationParameter(Mode = NavigationParameterMode.Optional)]
+		public Action DeleteCallback { get; set; }
+
 		public DeleteCategoryWarningViewModel()
 		{
 			DeleteCommand = new DelegateCommand(DeleteAction);
@@ -33,12 +37,17 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			{
 				MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_DELETECONFIRMATION_CATEGORY, new Dictionary<string, object>
 				{
-					{"Indiagram", Indiagram}
+					{"Indiagram", Indiagram},
+					{"DeleteCallback", DeleteCallback}
 				});
 			}
 			else
 			{
 				CollectionStorageService.Delete(Indiagram);
+				if (DeleteCallback != null)
+				{
+					DeleteCallback();
+				}
 			}
 		}
 	}

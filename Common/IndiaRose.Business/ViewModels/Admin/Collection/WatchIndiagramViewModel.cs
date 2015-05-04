@@ -1,5 +1,6 @@
 ﻿#region Usings 
 
+using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
@@ -51,21 +52,27 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
 		protected void DeleteAction()
 		{
-			//TODO: handle back when indiagram is deleted!
 			if (IndiagramContainer.Indiagram.IsCategory)
 			{
 				MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_DELETEWARNING_CATEGORY, new Dictionary<string, object>
 				{
-					{"Indiagram", IndiagramContainer.Indiagram}
+					{"Indiagram", IndiagramContainer.Indiagram},
+					{"DeleteCallback", (Action)OnDeleted}
 				});
 			}
 			else
 			{
 				MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_DELETEWARNING_INDIAGRAM, new Dictionary<string, object>
 				{
-					{"Indiagram", IndiagramContainer.Indiagram}
+					{"Indiagram", IndiagramContainer.Indiagram},
+					{"DeleteCallback", (Action)OnDeleted}
 				});
 			}
+		}
+
+		private void OnDeleted()
+		{
+			NavigationService.GoBack();
 		}
 	}
 }
