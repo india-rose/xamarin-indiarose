@@ -84,7 +84,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			get { return _editMode; }
 			private set { SetProperty(ref _editMode, value); }
 		}
-
+		
 		public bool IsCategory
 		{
 			get { return _isCategory; }
@@ -179,11 +179,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
 		protected void SelectCategoryAction()
 		{
-			Indiagram excludedIndiagram = null;
+            Indiagram excludedIndiagram = null;
 			if (Indiagram != null)
-			{
+            {
 				excludedIndiagram = Indiagram.Indiagram;
-			}
+            }
 			NavigationService.Navigate(Views.ADMIN_COLLECTION_SELECTCATEGORY, new Dictionary<string, object>
 			{
 				{"ExcludedIndiagram", excludedIndiagram},
@@ -195,7 +195,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 		{
 			if (!Data.Model.Indiagram.AreSameIndiagram(CurrentIndiagram.Parent, category))
 			{
-				CurrentIndiagram.Parent = category;
+			CurrentIndiagram.Parent = category;
 				RefreshBrothers();
 			}
 		}
@@ -318,14 +318,18 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
 		protected void ListenAction()
 		{
-			if (string.IsNullOrWhiteSpace(CurrentIndiagram.Text) && !CurrentIndiagram.HasCustomSound)
+			if (string.IsNullOrWhiteSpace(CurrentIndiagram.Text))
 			{
 				PopupService.DisplayPopup(LocalizationService.GetString("Collection_MissingSound", "Text"));
 			}
-			else
-			{
-				LazyResolver<IMediaService>.Service.PlaySound(CurrentIndiagram.SoundPath);
-			}
+		    else if(CurrentIndiagram.HasCustomSound)
+            {
+                LazyResolver<IMediaService>.Service.PlaySound(CurrentIndiagram.SoundPath);
+		    } 
+		    else
+		    {
+                //todo : tts
+		    }
 		}
 
 		protected void CopyAction()

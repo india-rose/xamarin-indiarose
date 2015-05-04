@@ -110,6 +110,7 @@
   <ItemGroup>
     <None Include="ActivityDescription.json" />
     <None Include="packages.config" />
+    <Compile Include="TextToSpeechService.cs" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamandroidsupportv4-18">

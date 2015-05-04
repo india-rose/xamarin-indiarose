@@ -55,6 +55,7 @@
     <Compile Include="IPopupService.cs" />
     <Compile Include="IResourceService.cs" />
     <Compile Include="IScreenService.cs" />
+    <Compile Include="ITextToSpeechService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ISettingsService.cs" />
   </ItemGroup>

@@ -2,8 +2,11 @@ using System;
 using System.IO;
 using Android.Content;
 using IndiaRose.Interfaces;
+using IndiaRose.Storage;
+using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 using Uri = Android.Net.Uri;
+
 
 namespace IndiaRose.Services.Android
 {
@@ -47,6 +50,13 @@ namespace IndiaRose.Services.Android
                 }
             }
 
+        }
+
+        public void OpenZip(string zipFileName)
+        {
+            Stream input = CurrentActivity.Assets.Open(zipFileName);
+            IXmlService a = new XmlService();
+            a.Initialize(input);
         }
     }
 }
