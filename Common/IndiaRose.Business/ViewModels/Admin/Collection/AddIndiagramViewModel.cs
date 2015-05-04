@@ -94,9 +94,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 				}
 			}
 		}
-        //v0 (to test)
-		public bool HasSound { get; set; }
-		
 		public Indiagram CurrentIndiagram
 		{
 			get { return _currentIndiagram; }
