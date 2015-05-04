@@ -109,7 +109,7 @@
 					<Button XmlStyle="{Resource MediumOrangeButtonStyle}"
 					        Text="{Tr Text, Uid=Collection_DeleteSound}"
 					        Click="{Binding ResetSoundCommand}"
-							android:visibility="{Binding HasSound, Converter={Resource BooleanToVisibilityConverter}}" 
+							    android:visibility="{Binding CurrentIndiagram.HasCustomSound, Converter={Resource BooleanToVisibilityConverter}}" 
 					        />
 				</LinearLayout>
 

@@ -44,7 +44,11 @@ namespace IndiaRose.Data.Model
 		public string SoundPath
 		{
 			get { return _soundPath; }
-			set { SetProperty(ref _soundPath, value); }
+		    set
+		    {
+		        SetProperty(ref _soundPath, value);
+		        RaisePropertyChanged("HasCustomSound");
+		    }
 		}
 
 		public Indiagram Parent

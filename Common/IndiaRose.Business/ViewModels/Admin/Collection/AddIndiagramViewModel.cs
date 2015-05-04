@@ -84,7 +84,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			get { return _isCategory; }
 			set
 			{
-				if (Indiagram.Indiagram.HasChildren)
+				if (Indiagram!=null&&Indiagram.Indiagram.HasChildren)
 				{
 					RaisePropertyChanged();
 				}
