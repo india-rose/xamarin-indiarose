@@ -28,7 +28,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			set { SetProperty(ref _excludedIndiagram, value); }
 		}
 
-		protected override IEnumerable<Indiagram> FilterCollection(List<Indiagram> input)
+		protected override IEnumerable<Indiagram> FilterCollection(IEnumerable<Indiagram> input)
 		{
 			return input.Where(indiagram => indiagram.IsCategory && !Indiagram.AreSameIndiagram(indiagram, ExcludedIndiagram));
 		}

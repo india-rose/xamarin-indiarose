@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.IO;
-using IndiaRose.Data.Model;
-using PCLStorage;
-using System.Xml;
 using System.Xml.Linq;
+using IndiaRose.Data.Model;
 using SharpCompress.Archive;
 using Storm.Mvvm.Inject;
 
@@ -71,13 +64,14 @@ namespace IndiaRose.Storage
                 }
                 if (t.ToString().StartsWith("<indiagrams>"))
                 {
-                    Category currentL = new Category(current);
+                    Category currentL = new Category();
+	                currentL.CopyFrom(current);
                     listCategories.Add(currentL);
-                    LazyResolver<ICollectionStorageService>.Service.Create(currentL);
+                    LazyResolver<ICollectionStorageService>.Service.Save(currentL);
                 }
                 else
                 {
-                    LazyResolver<ICollectionStorageService>.Service.Create(current);
+                    LazyResolver<ICollectionStorageService>.Service.Save(current);
                 }
             }
         }
