@@ -179,6 +179,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			}
 			savedIndiagram.CopyFrom(CurrentIndiagram);
 			CollectionStorageService.Save(savedIndiagram);
+			Indiagram.Indiagram = savedIndiagram;
 
 			Category newParent = savedIndiagram.Parent as Category;
 			if (newParent == null)

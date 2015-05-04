@@ -36,13 +36,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 		protected override void IndiagramSelectedAction(Indiagram indiagram)
 		{
 			base.IndiagramSelectedAction(indiagram);
-			if (indiagram.IsCategory && !indiagram.HasChildren)
-			{
-				var trad = DependencyService.Container.Resolve<ILocalizationService>();
-				var message = trad.GetString("Collection_CategoryEmpty", "Text");
-				PopupService.DisplayPopup(message);
-			}
-			else if (indiagram.IsCategory)
+			
+			if (indiagram.IsCategory)
 			{
 				// register to message go into category from the explore collection dialog
 				// and unregister when the dialog is dismissed
@@ -52,7 +47,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 					{"Indiagram", indiagram}
 				}, () => Messenger.Unregister(this, Messages.EXPLORE_COLLECTION_GOINTO_CATEGORY));
 			}
-
 			else
 			{
 				MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM, new Dictionary<string, object>

@@ -51,7 +51,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
 		protected void DeleteAction()
 		{
-			//TODO: handle back when indiagram are deleted!
+			//TODO: handle back when indiagram is deleted!
 			if (IndiagramContainer.Indiagram.IsCategory)
 			{
 				MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_DELETEWARNING_CATEGORY, new Dictionary<string, object>
