@@ -106,9 +106,9 @@
 	       XmlStyle="{Resource BaseLabelStyle}"
 	       android:layout_width="wrap_content"
 	       android:layout_height="wrap_content"
-	       android:textStyle="italic" 
-		   android:textSize="18sp"
-		   />
+	       android:textStyle="italic"
+		     android:textSize="18sp"
+		     />
 
 
 	<Style Key="SmallFormLabelStyle"
@@ -132,7 +132,11 @@
   <Style Key="HeaderItalicLabelStyle"
 			   XmlStyle="{Resource LargeFormLabelStyle}"
 			   android:layout_marginTop="10dip"
-	       android:textStyle="italic" 
+	       android:textStyle="italic"
+			   />
+  <Style Key="HeaderTopLabelStyle"
+			   XmlStyle="{Resource LargeFormLabelStyle}"
+	       android:textStyle="italic"
 			   />
 	
 	<Style Key="FormCheckBoxStyle"
