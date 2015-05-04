@@ -26,6 +26,7 @@ namespace IndiaRose.Services.Android
             get { return LazyResolver<IStorageService>.Service; }
         }
         private MediaRecorder _recorder;
+        private MediaPlayer _player;
         private String _url;
 
         public void RecordSound()
@@ -44,6 +45,14 @@ namespace IndiaRose.Services.Android
         {
             _recorder.Stop();
             return _url;
+        }
+
+        public void PlaySound()
+        {
+            _player = new MediaPlayer();
+            _player.SetDataSource(_url);
+            _player.Prepare();
+            _player.Start();
         }
 
         public Task<string> GetPictureFromCameraAsync()
