@@ -94,9 +94,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			}
 		}
         //v0 (to test)
-	    public bool HasSound;
-		
-		public Indiagram CurrentIndiagram
+	    public bool HasSound { get; set; }
+
+	    public Indiagram CurrentIndiagram
 		{
 			get { return _currentIndiagram; }
 			set { SetProperty(ref _currentIndiagram, value); }
@@ -224,10 +224,14 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
 		protected void ListenAction()
 		{
-			if (string.IsNullOrWhiteSpace(CurrentIndiagram.Text) && !CurrentIndiagram.HasCustomSound)
-			{
-				PopupService.DisplayPopup(LocalizationService.GetString("Collection_MissingSound", "Text"));
-			}
+		    if (string.IsNullOrWhiteSpace(CurrentIndiagram.Text) && !CurrentIndiagram.HasCustomSound)
+		    {
+		        PopupService.DisplayPopup(LocalizationService.GetString("Collection_MissingSound", "Text"));
+		    }
+		    else
+		    {
+		        LazyResolver<IMediaService>.Service.PlaySound(CurrentIndiagram.SoundPath);
+		    }
 		}
 
 		protected void CopyAction()
