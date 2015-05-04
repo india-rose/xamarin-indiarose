@@ -231,13 +231,17 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
 		protected void ListenAction()
 		{
-			if (string.IsNullOrWhiteSpace(CurrentIndiagram.Text) && !CurrentIndiagram.HasCustomSound)
+			if (string.IsNullOrWhiteSpace(CurrentIndiagram.Text))
 			{
 				PopupService.DisplayPopup(LocalizationService.GetString("Collection_MissingSound", "Text"));
 			}
-		    else
-		    {
-		        LazyResolver<IMediaService>.Service.PlaySound(CurrentIndiagram.SoundPath);
+		    else if(CurrentIndiagram.HasCustomSound)
+            {
+                LazyResolver<IMediaService>.Service.PlaySound(CurrentIndiagram.SoundPath);
+		    } 
+            else
+            {
+                //todo : tts
 		    }
 		}
 

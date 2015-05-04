@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Android.Speech.Tts;
 using IndiaRose.Business;
 using IndiaRose.Interfaces;
 using IndiaRose.Services;
@@ -43,10 +44,11 @@ namespace IndiaRose.Application
             RegisterInstance<IMediaService>(new MediaService());
             RegisterInstance<IPopupService>(new PopupService());
             RegisterInstance<ICopyPasteService>(new CopyPasteService());
+            RegisterInstance<ITextToSpeechService>(new TextToSpeech);
 
 			RegisterInstance<IStorageService>(storageService);
 			RegisterInstance<ICollectionStorageService>(new SqliteCollectionStorageService(new SQLitePlatformAndroid()));
-			RegisterInstance<ISettingsService>(settingsService);
+            RegisterInstance<ISettingsService>(settingsService);
 			await settingsService.LoadAsync();
 
 		}
