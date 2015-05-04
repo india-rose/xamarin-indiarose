@@ -76,7 +76,7 @@
 					        Text="{Tr Text, Uid=Collection_ChooseCategory}"
 					        Click="{Binding SelectCategoryCommand}" />
 
-					<Button XmlStyle="{Resource MediumOrangeButtonStyle}"
+					<Button XmlStyle="{Resource MediumRedButtonStyle}"
 					        Text="{Tr Text, Uid=Collection_RootCategoryName}"
 					        Click="{Binding RootCommand}" />
 				</LinearLayout>
@@ -133,7 +133,7 @@
 					        Text="{Tr Text, Uid=Collection_Copy}"
 					        Click="{Binding CopyCommand}" />
 
-					<Button XmlStyle="{Resource MediumOrangeButtonStyle}"
+					<Button XmlStyle="{Resource MediumRedButtonStyle}"
 					        Text="{Tr Text, Uid=Collection_Paste}"
 					        Click="{Binding PasteCommand}"
 					        android:enabled="{Binding CopyPasteService.HasBuffer}" />
