@@ -1,5 +1,6 @@
 ﻿#region Usings 
 
+using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
@@ -25,6 +26,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			set { SetProperty(ref _indiagram, value); }
 		}
 
+		[NavigationParameter(Mode = NavigationParameterMode.Optional)]
+		public Action<Category> GoIntoCallback { get; set; } 
+
 		public ICommand GoIntoCommand { get; set; }
 		public ICommand SeeIndiagramCommand { get; private set; }
 
@@ -36,15 +40,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 
 		private void GoIntoAction()
 		{
-			if (!Indiagram.HasChildren)
+			if (GoIntoCallback != null)
 			{
-				var trad = DependencyService.Container.Resolve<ILocalizationService>();
-				var message = trad.GetString("Collection_CategoryEmpty", "Text");
-				LazyResolver<IPopupService>.Service.DisplayPopup(message);
-			}
-			else
-			{
-				Messenger.Send(Messages.EXPLORE_COLLECTION_GOINTO_CATEGORY, Indiagram);
+				GoIntoCallback(Indiagram as Category);
 			}
 		}
 

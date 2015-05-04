@@ -1,5 +1,6 @@
 ﻿#region Usings 
 
+using System;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
@@ -24,6 +25,12 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			set { SetProperty(ref _indiagram, value); }
 		}
 
+		[NavigationParameter(Mode = NavigationParameterMode.Optional)]
+		public Action<Category> GoIntoCallback { get; set; }
+
+		[NavigationParameter(Mode = NavigationParameterMode.Optional)]
+		public Action<Category> SelectedCallback { get; set; } 
+
 		public ICommand SelectCommand { get; private set; }
 		public ICommand GoIntoCommand { get; private set; }
 
@@ -35,21 +42,18 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 
 		private void GoIntoAction()
 		{
-			if (!Indiagram.HasChildren)
+			if (GoIntoCallback != null)
 			{
-				var trad = DependencyService.Container.Resolve<ILocalizationService>();
-				var message = trad.GetString("Collection_CategoryEmpty", "Text");
-				LazyResolver<IPopupService>.Service.DisplayPopup(message);
-			}
-			else
-			{
-				Messenger.Send<Indiagram>(Messages.SELECT_CATEGORY_GOINTO_CATEGORY, Indiagram);
+				GoIntoCallback(Indiagram as Category);
 			}
 		}
 
 		private void SendIndiagramAction()
 		{
-			Messenger.Send<Indiagram>(Messages.SELECT_CATEGORY_SELECTED_CATEGORY, Indiagram);
+			if (SelectedCallback != null)
+			{
+				SelectedCallback(Indiagram as Category);
+			}
 		}
 	}
 }

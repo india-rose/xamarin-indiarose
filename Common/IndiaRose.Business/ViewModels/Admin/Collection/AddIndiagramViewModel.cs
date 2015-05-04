@@ -1,5 +1,6 @@
 ﻿#region Usings 
 
+using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
@@ -128,9 +129,14 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             }
 			NavigationService.Navigate(Views.ADMIN_COLLECTION_SELECTCATEGORY, new Dictionary<string, object>
 			{
-				{"Indiagram", CurrentIndiagram},
-				{"ExcludedIndiagram", excludedIndiagram}
+				{"ExcludedIndiagram", excludedIndiagram},
+				{"SelectedCallback", (Action<Category>)OnCategorySelected}
 			});
+		}
+
+		private void OnCategorySelected(Category category)
+		{
+			CurrentIndiagram.Parent = category;
 		}
 
 		protected void ActivateAction()

@@ -1,5 +1,6 @@
 ﻿#region Usings 
 
+using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
@@ -39,13 +40,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			
 			if (indiagram.IsCategory)
 			{
-				// register to message go into category from the explore collection dialog
-				// and unregister when the dialog is dismissed
-				Messenger.Register<Category>(Messages.EXPLORE_COLLECTION_GOINTO_CATEGORY, this, PushCategory);
 				MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY, new Dictionary<string, object>
 				{
-					{"Indiagram", indiagram}
-				}, () => Messenger.Unregister(this, Messages.EXPLORE_COLLECTION_GOINTO_CATEGORY));
+					{"Indiagram", indiagram},
+					{"GoIntoCallback", (Action<Category>)GoIntoAction }
+				});
 			}
 			else
 			{
@@ -53,6 +52,20 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 				{
 					{"Indiagram", indiagram}
 				});
+			}
+		}
+
+		private void GoIntoAction(Category category)
+		{
+			if (!category.HasChildren)
+			{
+				var trad = DependencyService.Container.Resolve<ILocalizationService>();
+				var message = trad.GetString("Collection_CategoryEmpty", "Text");
+				LazyResolver<IPopupService>.Service.DisplayPopup(message);
+			}
+			else
+			{
+				PushCategory(category);
 			}
 		}
 	}
