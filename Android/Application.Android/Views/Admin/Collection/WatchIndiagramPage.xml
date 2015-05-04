@@ -10,11 +10,6 @@
 		<converters:DefaultLocalizedStringIfNullConverter Key="SoundPathConverter"
 		                                                  Uid="Collection_NoSound"
 		                                                  Property="Text" />
-		
-		<Style Key="HeaderLabelStyle"
-			   XmlStyle="{Resource LargeFormLabelStyle}"
-			   android:layout_marginTop="10dip"
-			   />
 	</Resources>
 
 	<!-- button edit and remove -->

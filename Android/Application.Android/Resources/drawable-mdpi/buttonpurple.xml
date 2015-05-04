@@ -15,6 +15,12 @@
                     android:bottom="10dp"/>
         </shape>
     </item>
+  <item android:state_enabled="false">
+    <shape>
+      <solid
+              android:color="#48474F"/>
+    </shape>
+  </item>
     <item>
         <shape>
             <gradient

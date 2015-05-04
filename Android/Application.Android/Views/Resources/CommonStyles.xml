@@ -57,7 +57,6 @@
 	       android:paddingBottom="25dip"
 	       android:paddingTop="25dip" />
 
-
 	<!-- Two column root layout -->
 	<Style Key="ColumnContainerLayoutStyle"
 	       XmlStyle="{Resource RootLayoutStyle}" />
@@ -111,6 +110,7 @@
 		   android:textSize="18sp"
 		   />
 
+
 	<Style Key="SmallFormLabelStyle"
 		   XmlStyle="{Resource BaseLabelStyle}"
 		   android:layout_width="wrap_content"
@@ -124,6 +124,16 @@
 		   android:layout_height="wrap_content"
 		   android:textSize="24sp"
 		   />
+
+  <Style Key="HeaderLabelStyle"
+			   XmlStyle="{Resource LargeFormLabelStyle}"
+			   android:layout_marginTop="10dip"
+			   />
+  <Style Key="HeaderItalicLabelStyle"
+			   XmlStyle="{Resource LargeFormLabelStyle}"
+			   android:layout_marginTop="10dip"
+	       android:textStyle="italic" 
+			   />
 	
 	<Style Key="FormCheckBoxStyle"
 	       XmlStyle="{Resource BaseLabelStyle}"

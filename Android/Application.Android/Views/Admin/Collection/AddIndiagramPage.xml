@@ -48,17 +48,15 @@
 						  android:orientation="vertical">
 
 				<!--Text-->
-				<TextView XmlStyle="{Resource FormLabelStyle}"
+				<TextView XmlStyle="{Resource HeaderItalicLabelStyle}"
 				          Text="{Tr Text, Uid=Collection_IndiagramText}" />
 				<EditText android:layout_width="match_parent"
 				          android:layout_height="wrap_content"
-				          android:layout_marginLeft="5dip"
-				          android:layout_marginRight="5dip"
 				          android:textSize="16sp"
 				          Text="{Binding CurrentIndiagram.Text, Mode=TwoWay, UpdateEvent=TextChanged}" />
 
 				<!--Category-->
-				<TextView XmlStyle="{Resource FormLabelStyle}"
+				<TextView XmlStyle="{Resource HeaderItalicLabelStyle}"
 				          Text="{Tr Text, Uid=Collection_ParentCategory}" />
 
 				<LinearLayout XmlStyle="{Resource HorizontalLinearLayoutStyle}">
@@ -76,16 +74,15 @@
 					        Text="{Tr Text, Uid=Collection_ChooseCategory}"
 					        Click="{Binding SelectCategoryCommand}" />
 
-					<Button XmlStyle="{Resource MediumRedButtonStyle}"
+					<Button XmlStyle="{Resource MediumPinkButtonStyle}"
 					        Text="{Tr Text, Uid=Collection_RootCategoryName}"
 					        Click="{Binding RootCommand}" />
 				</LinearLayout>
 
 				<!--Position-->
-				<TextView XmlStyle="{Resource FormLabelStyle}"
+				<TextView XmlStyle="{Resource HeaderItalicLabelStyle}"
 				          Text="{Tr Text, Uid=Collection_Position}" />
-				<LinearLayout XmlStyle="{Resource HorizontalLinearLayoutStyle}"
-				              android:layout_marginRight="5dip">
+				<LinearLayout XmlStyle="{Resource HorizontalLinearLayoutStyle}">
 					<TextView XmlStyle="{Resource SmallFormLabelStyle}"
 					          Text="{Tr Text,Uid=Collection_PositionBefore}" />
 					<!--<BindableSpinner XmlStyle="{Resource SpinnerStyle}"
@@ -94,10 +91,9 @@
 				</LinearLayout>
 
 				<!--Sound-->
-				<TextView XmlStyle="{Resource FormLabelStyle}"
+				<TextView XmlStyle="{Resource HeaderItalicLabelStyle}"
 				          Text="{Tr Text, Uid=Collection_Sound}" />
-				<LinearLayout XmlStyle="{Resource HorizontalLinearLayoutStyle}"
-				              android:layout_marginBottom="10dip">
+				<LinearLayout XmlStyle="{Resource HorizontalLinearLayoutStyle}">
 					<TextView XmlStyle="{Resource SmallFormLabelStyle}"
 					          Text="{Tr Text, Uid=Collection_SoundPath}" />
 					<TextView XmlStyle="{Resource DefaultTextStyle}"
@@ -123,25 +119,22 @@
 				</LinearLayout>
 
 				<!-- copy&paste -->
-				<TextView XmlStyle="{Resource FormLabelStyle}"
-				          android:layout_marginTop="10dip"
+				<TextView XmlStyle="{Resource HeaderItalicLabelStyle}"
 				          Text="{Tr Text, Uid=Collection_CopyIndiagram}" />
-				<LinearLayout XmlStyle="{Resource ButtonContainerStyle}"
-				              android:layout_marginTop="10dip">
+				<LinearLayout XmlStyle="{Resource ButtonContainerStyle}">
 
 					<Button XmlStyle="{Resource MediumBlueButtonStyle}"
 					        Text="{Tr Text, Uid=Collection_Copy}"
 					        Click="{Binding CopyCommand}" />
 
-					<Button XmlStyle="{Resource MediumRedButtonStyle}"
+					<Button XmlStyle="{Resource MediumPurpleButtonStyle}"
 					        Text="{Tr Text, Uid=Collection_Paste}"
 					        Click="{Binding PasteCommand}"
 					        android:enabled="{Binding CopyPasteService.HasBuffer}" />
 				</LinearLayout>
 
 				<!--Activate & Desactivate-->
-				<TextView XmlStyle="{Resource FormLabelStyle}"
-				          android:layout_marginTop="10dip"
+				<TextView XmlStyle="{Resource HeaderItalicLabelStyle}"
 				          Text="{Tr Text, Uid=Collection_EnableDisableIndiagram}"
 				          android:visibility="{Binding EditMode, Converter={Resource BooleanToVisibilityConverter}}" />
 
