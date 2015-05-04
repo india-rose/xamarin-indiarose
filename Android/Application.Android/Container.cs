@@ -32,12 +32,13 @@ namespace IndiaRose.Application
 
 			IStorageService storageService = new StorageService(Environment.ExternalStorageDirectory.Path);
 			await storageService.InitializeAsync();
-        
+
+			ISettingsService settingsService = new SettingsService();
+
             RegisterInstance<IResourceService>(new ResourceService());
 			RegisterInstance<IEmailService>(new EmailService());
 			RegisterInstance<IInstallVoiceSynthesisService>(new InstallVoiceSynthesisService());
 			RegisterInstance<IScreenService>(new ScreenService());
-			RegisterInstance<ISettingsService>(new SettingsService());
 			RegisterInstance<IFontService>(new FontService());
             RegisterInstance<IMediaService>(new MediaService());
             RegisterInstance<IPopupService>(new PopupService());
@@ -45,7 +46,9 @@ namespace IndiaRose.Application
 
 			RegisterInstance<IStorageService>(storageService);
 			RegisterInstance<ICollectionStorageService>(new SqliteCollectionStorageService(new SQLitePlatformAndroid()));
+			RegisterInstance<ISettingsService>(settingsService);
+			await settingsService.LoadAsync();
 
-	    }
+		}
 	}
 }
