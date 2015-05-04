@@ -94,7 +94,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			}
 		}
         //v0 (to test)
-	    public bool HasSound;
+		public bool HasSound { get; set; }
 		
 		public Indiagram CurrentIndiagram
 		{
@@ -181,7 +181,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			}
 			savedIndiagram.CopyFrom(CurrentIndiagram);
 			CollectionStorageService.Save(savedIndiagram);
-			Indiagram.Indiagram = savedIndiagram;
+			if (Indiagram != null)
+			{
+				Indiagram.Indiagram = savedIndiagram;
+				LoggerService.Log("saving into object at adress " + Indiagram.GetHashCode());
+			}
 
 			Category newParent = savedIndiagram.Parent as Category;
 			if (newParent == null)
