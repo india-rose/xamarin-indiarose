@@ -26,12 +26,11 @@ namespace IndiaRose.Services.Android
             get { return LazyResolver<IStorageService>.Service; }
         }
         private MediaRecorder _recorder;
-        private MediaPlayer _player;
-        private String _url;
+        private string _url;
 
         public void RecordSound()
         {
-            _url = StorageService.GenerationPath("sound","3gpp");
+            _url = StorageService.GenerationPath("sound", "3gpp");
             _recorder = new MediaRecorder();
             _recorder.SetAudioSource(AudioSource.Mic);
             _recorder.SetOutputFormat(OutputFormat.ThreeGpp);
@@ -47,12 +46,12 @@ namespace IndiaRose.Services.Android
             return _url;
         }
 
-        public void PlaySound()
+        public void PlaySound(string url)
         {
-            _player = new MediaPlayer();
-            _player.SetDataSource(_url);
-            _player.Prepare();
-            _player.Start();
+            var player = new MediaPlayer();
+            player.SetDataSource(url);
+            player.Prepare();
+            player.Start();
         }
 
         public Task<string> GetPictureFromCameraAsync()
@@ -98,7 +97,7 @@ namespace IndiaRose.Services.Android
                 intent.SetAction(Intent.ActionGetContent);
                 // Always show the chooser (if there are multiple options available)
                 var trad = DependencyService.Container.Resolve<ILocalizationService>();
-				ActivityService.StartActivityForResult(Intent.CreateChooser(intent, trad.GetString("ImageChoice_PickerTitle", "Text")),
+                ActivityService.StartActivityForResult(Intent.CreateChooser(intent, trad.GetString("ImageChoice_PickerTitle", "Text")),
                     (result, data) =>
                     {
                         string path = null;
@@ -122,9 +121,9 @@ namespace IndiaRose.Services.Android
             {
                 Intent intent = new Intent();
                 intent.SetType("audio/*");
-                intent.SetAction(Intent.ActionGetContent); 
+                intent.SetAction(Intent.ActionGetContent);
                 var trad = DependencyService.Container.Resolve<ILocalizationService>();
-				ActivityService.StartActivityForResult(Intent.CreateChooser(intent, trad.GetString("SoundChoice_PickerTitle", "Text")), (result, data) =>
+                ActivityService.StartActivityForResult(Intent.CreateChooser(intent, trad.GetString("SoundChoice_PickerTitle", "Text")), (result, data) =>
                 {
                     string path = null;
                     if (result == Result.Ok)

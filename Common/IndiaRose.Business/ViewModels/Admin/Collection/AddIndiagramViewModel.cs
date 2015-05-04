@@ -232,6 +232,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			{
 				PopupService.DisplayPopup(LocalizationService.GetString("Collection_MissingSound", "Text"));
 			}
+		    else
+		    {
+		        LazyResolver<IMediaService>.Service.PlaySound(CurrentIndiagram.SoundPath);
+		    }
 		}
 
 		protected void CopyAction()
