@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
@@ -16,7 +20,7 @@ namespace IndiaRose.Business.ViewModels
 		private int _collectionDisplayCount;
 		private List<Indiagram> _displayedIndiagrams;
 
-		private Category _rootCollection;
+		private readonly Category _rootCollection;
 		private readonly Stack<Category> _navigationStack = new Stack<Category>();
 
 		#region Services
@@ -84,58 +88,56 @@ namespace IndiaRose.Business.ViewModels
 			IndiagramSelectedCommand = new DelegateCommand<Indiagram>(IndiagramSelectedAction);
 
 			// Load collection
-			LoadCollection();
+			ObservableCollection<Indiagram> collection = CollectionStorageService.Collection;
+
+			// debug purpose only
+			if (collection.Count == 0)
+			{
+				Func<string, Indiagram> constructorLambda = text => new Indiagram
+				{
+					Text = text,
+					ImagePath = ""
+				};
+				collection.Add(CollectionStorageService.Save(constructorLambda("azerty")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("helloa")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("helloz")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("helloe")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("hellor")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("hellot")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("helloy")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("hellou")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("helloi")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("helloo")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("hellop")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("helloq")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("hellos")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("hellod")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("hellof")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("hellog")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("helloh")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("helloj")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("hellok")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("hellol")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("hellom")));
+				collection.Add(CollectionStorageService.Save(constructorLambda("hellow")));
+			}
+
+			//TODO: translate "home" and add an image
+			_rootCollection = new Category(collection)
+			{
+				Text = "Home",
+				ImagePath = "",
+			};
 		}
 
 		public override void OnNavigatedTo(NavigationArgs e, string parametersKey)
 		{
 			base.OnNavigatedTo(e, parametersKey);
 
-			if (_navigationStack.Any())
-			{
-				RefreshDisplayList();
-			}
-			else
+			if (!_navigationStack.Any())
 			{
 				PushCategory(_rootCollection);
 			}
-		}
-
-		protected void LoadCollection()
-		{
-			List<Indiagram> collection = CollectionStorageService.GetTopLevel();
-
-			// debug purpose only
-			if (collection.Count == 0)
-			{
-				CollectionStorageService.Create(new Indiagram("azerty", ""));
-				CollectionStorageService.Create(new Indiagram("helloa", ""));
-				CollectionStorageService.Create(new Indiagram("helloz", ""));
-				CollectionStorageService.Create(new Indiagram("helloe", ""));
-				CollectionStorageService.Create(new Indiagram("hellor", ""));
-				CollectionStorageService.Create(new Indiagram("hellot", ""));
-				CollectionStorageService.Create(new Indiagram("helloy", ""));
-				CollectionStorageService.Create(new Indiagram("hellou", ""));
-				CollectionStorageService.Create(new Indiagram("helloi", ""));
-				CollectionStorageService.Create(new Indiagram("helloo", ""));
-				CollectionStorageService.Create(new Indiagram("hellop", ""));
-				CollectionStorageService.Create(new Indiagram("helloq", ""));
-				CollectionStorageService.Create(new Indiagram("hellos", ""));
-				CollectionStorageService.Create(new Indiagram("hellod", ""));
-				CollectionStorageService.Create(new Indiagram("hellof", ""));
-				CollectionStorageService.Create(new Indiagram("hellog", ""));
-				CollectionStorageService.Create(new Indiagram("helloh", ""));
-				CollectionStorageService.Create(new Indiagram("helloj", ""));
-				CollectionStorageService.Create(new Indiagram("hellok", ""));
-				CollectionStorageService.Create(new Indiagram("hellol", ""));
-				CollectionStorageService.Create(new Indiagram("hellom", ""));
-				CollectionStorageService.Create(new Indiagram("hellow", ""));
-
-				collection = CollectionStorageService.GetTopLevel();
-			}
-
-			_rootCollection = new Category("Home", "");
-			_rootCollection.Children.AddRange(collection);
 		}
 
 		private void NextAction()
@@ -162,9 +164,21 @@ namespace IndiaRose.Business.ViewModels
 
 		protected void PushCategory(Category category)
 		{
+			if (_navigationStack.Any())
+			{
+				_navigationStack.Peek().Children.CollectionChanged -= OnCollectionChanged;
+			}
+
+			category.Children.CollectionChanged += OnCollectionChanged;
+
 			_navigationStack.Push(category);
-			CollectionOffset = 0;
-			DisplayedIndiagrams = FilterCollection(category.Children).ToList();
+			RewindCategory();
+			RefreshDisplayList();
+		}
+
+		private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
+		{
+			RefreshDisplayList();
 		}
 
 		protected void PopCategory()
@@ -174,8 +188,9 @@ namespace IndiaRose.Business.ViewModels
 				return;
 			}
 
-			_navigationStack.Pop();
-			CollectionOffset = 0;
+			_navigationStack.Pop().Children.CollectionChanged -= OnCollectionChanged;
+			_navigationStack.Peek().Children.CollectionChanged += OnCollectionChanged;
+			RewindCategory();
 			RefreshDisplayList();
 		}
 
@@ -191,7 +206,23 @@ namespace IndiaRose.Business.ViewModels
 				return;
 			}
 
+			int lastCollectionCount = CollectionDisplayCount;
+			if (lastCollectionCount <= 0)
+			{
+				// TODO: See to be able to adapt this value automatically
+				lastCollectionCount = 12;
+			}
 			DisplayedIndiagrams = FilterCollection(_navigationStack.Peek().Children).ToList();
+
+			if (DisplayedIndiagrams.Count == 0 && _navigationStack.Count > 1)
+			{
+				PopCategory();
+			}
+
+			if (CollectionOffset >= DisplayedIndiagrams.Count)
+			{
+				CollectionOffset = Math.Max(0, CollectionOffset - lastCollectionCount);
+			}
 		}
 
 		/// <summary>
@@ -199,7 +230,7 @@ namespace IndiaRose.Business.ViewModels
 		/// </summary>
 		/// <param name="input">The full indiagram list</param>
 		/// <returns>The part of the list you want to display (for instance, only category)</returns>
-		protected virtual IEnumerable<Indiagram> FilterCollection(List<Indiagram> input)
+		protected virtual IEnumerable<Indiagram> FilterCollection(IEnumerable<Indiagram> input)
 		{
 			return input;
 		}

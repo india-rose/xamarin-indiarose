@@ -1,23 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 using IndiaRose.Data.Model;
 
 namespace IndiaRose.Storage
 {
 	public interface ICollectionStorageService
 	{
-		void Create(Indiagram indiagram);
+		ObservableCollection<Indiagram> Collection { get; } 
 
-		void Update(Indiagram indiagram);
+		Indiagram Save(Indiagram indiagram);
 
 		void Delete(Indiagram indiagram);
-
-		List<Indiagram> GetTopLevel();
-
-		List<Indiagram> GetChildren(Indiagram parent);
-
-		List<Indiagram> GetFullCollection();
-
-        //TODO delete after test
-	    void DropTable();
 	}
 }

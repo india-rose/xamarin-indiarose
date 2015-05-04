@@ -9,10 +9,10 @@ namespace IndiaRose.Data.Model
 {
 	public class Indiagram : NotifierBase
 	{
-		private int _id;
+		private int _id = -1;
 		private string _imagePath;
-		private bool _isEnabled;
-		private Category _parent;
+		private bool _isEnabled = true;
+		private Indiagram _parent;
 		private int _position;
 		private string _soundPath;
 		private string _text;
@@ -47,7 +47,7 @@ namespace IndiaRose.Data.Model
 			set { SetProperty(ref _soundPath, value); }
 		}
 
-		public Category Parent
+		public Indiagram Parent
 		{
 			get { return _parent; }
 			set { SetProperty(ref _parent, value); }
@@ -74,60 +74,17 @@ namespace IndiaRose.Data.Model
 			get { return !string.IsNullOrWhiteSpace(SoundPath); }
 		}
 
-		public Indiagram()
+		public virtual void CopyFrom(Indiagram other, bool excludeId = false)
 		{
-			IsEnabled = true;
-		}
-
-		public Indiagram(int id)
-		{
-			_id = id;
-		}
-
-		public Indiagram(string text, string imagePath, string soundPath = null)
-		{
-			Text = text;
-			ImagePath = imagePath;
-			SoundPath = soundPath;
-			IsEnabled = true;
-		}
-
-		public Indiagram(Indiagram cloneIndiagram, bool updateparent = false)
-		{
-			Edit(cloneIndiagram, updateparent);
-		}
-
-		public Indiagram(string text, string imagePath, Category a)
-		{
-			Parent = a;
-			a.Children.Add(this);
-			Text = text;
-			ImagePath = imagePath;
-			IsEnabled = true;
-		}
-
-		public void Edit(Indiagram cloneIndiagram, bool updateparent = false)
-		{
-			Position = cloneIndiagram.Position;
-			Text = cloneIndiagram.Text;
-			ImagePath = cloneIndiagram.ImagePath;
-			SoundPath = cloneIndiagram.SoundPath;
-			IsEnabled = cloneIndiagram.IsEnabled;
-			if (updateparent)
+			Text = other.Text;
+			ImagePath = other.ImagePath;
+			SoundPath = other.SoundPath;
+			IsEnabled = other.IsEnabled;
+			Position = other.Position;
+			Parent = other.Parent;
+			if (excludeId)
 			{
-				if (!AreSameIndiagram(Parent, cloneIndiagram.Parent))
-				{
-					try
-					{
-						Parent.Children.Remove(this);
-					}
-					catch (NullReferenceException)
-					{
-						//Indiagram do not have parent, then don't remove it from its children's list
-					}
-					Parent = cloneIndiagram.Parent;
-					Parent.Children.Add(this);
-				}
+				Id = other.Id;
 			}
 		}
 
