@@ -14,7 +14,9 @@
 		<DataTemplate Key="PositionTemplate">
 			<LinearLayout XmlStyle="{Resource SpinnerItemLayoutStyle}">
 				<TextView XmlStyle="{Resource SpinnerItemTextStyle}"
-				          Text="{Binding Text}" />
+				          Text="{Binding Position}" />
+				<TextView XmlStyle="{Resource SpinnerItemTextStyle}"
+				          Text="{Binding Text, Converter={Resource StringFormatConverter}, ConverterParameter=' : {0}'}" />
 			</LinearLayout>
 		</DataTemplate>
 	</Resources>
@@ -84,10 +86,11 @@
 				          Text="{Tr Text, Uid=Collection_Position}" />
 				<LinearLayout XmlStyle="{Resource HorizontalLinearLayoutStyle}">
 					<TextView XmlStyle="{Resource SmallFormLabelStyle}"
-					          Text="{Tr Text,Uid=Collection_PositionBefore}" />
-					<!--<BindableSpinner XmlStyle="{Resource SpinnerStyle}"
+					          Text="{Tr Text,Uid=Collection_PositionBefore}"
+							  android:gravity="left|center"/>
+					<BindableSpinner XmlStyle="{Resource SpinnerStyle}"
 					                 adapter="{Binding Brothers, Template={Resource PositionTemplate}}"
-					                 currentItem="{Binding Bro1, Mode=TwoWay, UpdateEvent=CurrentItemChanged}" />-->
+					                 currentItem="{Binding BeforeIndiagram, Mode=TwoWay, UpdateEvent=CurrentItemChanged}" />
 				</LinearLayout>
 
 				<!--Sound-->

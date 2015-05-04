@@ -5,10 +5,6 @@ namespace IndiaRose.Data.UIModel
 {
     public class IndiagramContainer : NotifierBase
     {
-	    private static int _idCounter = 0;
-
-	    public int Id = ++_idCounter;
-
         private Indiagram _indiagram;
 
         public Indiagram Indiagram

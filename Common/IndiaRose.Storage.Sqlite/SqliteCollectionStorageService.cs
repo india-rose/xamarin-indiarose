@@ -96,7 +96,7 @@ namespace IndiaRose.Storage.Sqlite
 
 			Connection.Insert(sqlObject);
 			indiagram.Id = sqlObject.Id;
-
+			_databaseContent.Add(sqlObject);
 			return indiagram;
 		}
 

@@ -93,10 +93,12 @@ namespace IndiaRose.Business.ViewModels
 			// debug purpose only
 			if (collection.Count == 0)
 			{
+				int position = 1;
 				Func<string, Indiagram> constructorLambda = text => new Indiagram
 				{
 					Text = text,
-					ImagePath = ""
+					ImagePath = "",
+					Position = position++,
 				};
 				collection.Add(CollectionStorageService.Save(constructorLambda("azerty")));
 				collection.Add(CollectionStorageService.Save(constructorLambda("helloa")));

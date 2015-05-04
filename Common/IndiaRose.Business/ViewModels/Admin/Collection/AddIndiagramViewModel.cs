@@ -2,6 +2,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
@@ -21,6 +23,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 		private Indiagram _currentIndiagram;
 		private bool _editMode;
 		private IndiagramContainer _indiagram;
+
+		private List<Indiagram> _brothers;
+		private Indiagram _beforeIndiagram;
 
 		public IPopupService PopupService
 		{
@@ -68,6 +73,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 						CurrentIndiagram = new Indiagram();
 						CurrentIndiagram.CopyFrom(Indiagram.Indiagram);
 					}
+					RefreshBrothers();
 					EditMode = true;
 				}
 			}
@@ -78,13 +84,13 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			get { return _editMode; }
 			private set { SetProperty(ref _editMode, value); }
 		}
-		
+
 		public bool IsCategory
 		{
 			get { return _isCategory; }
 			set
 			{
-				if (Indiagram!=null&&Indiagram.Indiagram.HasChildren)
+				if (Indiagram != null && Indiagram.Indiagram.HasChildren)
 				{
 					RaisePropertyChanged();
 				}
@@ -94,10 +100,23 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 				}
 			}
 		}
+
 		public Indiagram CurrentIndiagram
 		{
 			get { return _currentIndiagram; }
 			set { SetProperty(ref _currentIndiagram, value); }
+		}
+
+		public List<Indiagram> Brothers
+		{
+			get { return _brothers; }
+			set { SetProperty(ref _brothers, value); }
+		}
+
+		public Indiagram BeforeIndiagram
+		{
+			get { return _beforeIndiagram; }
+			set { SetProperty(ref _beforeIndiagram, value); }
 		}
 
 		public AddIndiagramViewModel()
@@ -115,25 +134,70 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			SaveCommand = new DelegateCommand(SaveAction);
 
 			CurrentIndiagram = new Indiagram();
+			RefreshBrothers();
+		}
+
+		protected void RefreshBrothers()
+		{
+			Category parent = CurrentIndiagram.Parent as Category;
+			List<Indiagram> children;
+			Indiagram defaultLastOne = new Indiagram
+			{
+				Id = -73,
+				//TODO: translate this 
+				Text = "-- At the end --"
+			};
+			if (parent == null)
+			{
+				children = CollectionStorageService.Collection.OrderBy(x => x.Position).ToList();
+			}
+			else
+			{
+				children = parent.Children.OrderBy(x => x.Position).ToList();
+			}
+			defaultLastOne.Position = children.Any() ? children.Last().Position + 1 : 1;
+			children.Add(defaultLastOne);
+
+			Indiagram selectedIndiagram = defaultLastOne;
+
+			// remove current from the list and put the selected one at its place
+			Indiagram current = children.FirstOrDefault(x => x.Id == CurrentIndiagram.Id);
+			if (current != null)
+			{
+				int currentIndex = children.IndexOf(current);
+				if (currentIndex + 1 < children.Count)
+				{
+					selectedIndiagram = children[currentIndex + 1];
+				}
+
+				children.RemoveAt(currentIndex);
+			}
+
+			Brothers = children;
+			BeforeIndiagram = selectedIndiagram;
 		}
 
 		protected void SelectCategoryAction()
 		{
-            Indiagram excludedIndiagram = null;
+			Indiagram excludedIndiagram = null;
 			if (Indiagram != null)
-            {
+			{
 				excludedIndiagram = Indiagram.Indiagram;
-            }
+			}
 			NavigationService.Navigate(Views.ADMIN_COLLECTION_SELECTCATEGORY, new Dictionary<string, object>
 			{
 				{"ExcludedIndiagram", excludedIndiagram},
-				{"SelectedCallback", (Action<Category>)OnCategorySelected}
+				{"SelectedCallback", (Action<Category>) OnCategorySelected}
 			});
 		}
 
 		private void OnCategorySelected(Category category)
 		{
-			CurrentIndiagram.Parent = category;
+			if (!Data.Model.Indiagram.AreSameIndiagram(CurrentIndiagram.Parent, category))
+			{
+				CurrentIndiagram.Parent = category;
+				RefreshBrothers();
+			}
 		}
 
 		protected void ActivateAction()
@@ -190,14 +254,37 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			}
 
 			Category newParent = savedIndiagram.Parent as Category;
+			ObservableCollection<Indiagram> collection;
 			if (newParent == null)
 			{
-				CollectionStorageService.Collection.Add(savedIndiagram);
+				collection = CollectionStorageService.Collection;
 			}
 			else
 			{
-				//TODO: insert at correct position
-				newParent.Children.Add(savedIndiagram);
+				collection = newParent.Children;
+			}
+
+			if (BeforeIndiagram.Id < 0)
+			{
+				//put it at the end of the collection
+				collection.Add(savedIndiagram);
+			}
+			else
+			{
+				int index = collection.IndexOf(BeforeIndiagram);
+				collection.Insert(index, savedIndiagram);
+			}
+
+			//refresh collection position if needed
+			int position = 1;
+			foreach (Indiagram indiagram in collection)
+			{
+				if (indiagram.Position != position)
+				{
+					indiagram.Position = position;
+					CollectionStorageService.Save(indiagram);
+				}
+				position++;
 			}
 
 			BackAction();
@@ -235,10 +322,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			{
 				PopupService.DisplayPopup(LocalizationService.GetString("Collection_MissingSound", "Text"));
 			}
-		    else
-		    {
-		        LazyResolver<IMediaService>.Service.PlaySound(CurrentIndiagram.SoundPath);
-		    }
+			else
+			{
+				LazyResolver<IMediaService>.Service.PlaySound(CurrentIndiagram.SoundPath);
+			}
 		}
 
 		protected void CopyAction()
