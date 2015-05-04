@@ -11,6 +11,7 @@ using SQLite.Net.Platform.XamarinAndroid;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 using Environment = Android.OS.Environment;
+using TextToSpeechService = IndiaRose.Services.Android.TextToSpeechService;
 
 namespace IndiaRose.Application
 {
@@ -44,7 +45,7 @@ namespace IndiaRose.Application
             RegisterInstance<IMediaService>(new MediaService());
             RegisterInstance<IPopupService>(new PopupService());
             RegisterInstance<ICopyPasteService>(new CopyPasteService());
-            RegisterInstance<ITextToSpeechService>(new TextToSpeech);
+            RegisterInstance<ITextToSpeechService>(new TextToSpeechService());
 
 			RegisterInstance<IStorageService>(storageService);
 			RegisterInstance<ICollectionStorageService>(new SqliteCollectionStorageService(new SQLitePlatformAndroid()));
