@@ -1,15 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace IndiaRose.Data.Model
 {
 	public class Category : Indiagram
 	{
-		private readonly List<Indiagram> _children = new List<Indiagram>();
+		private readonly ObservableCollection<Indiagram> _children = new ObservableCollection<Indiagram>();
 
-		public List<Indiagram> Children
+		public ObservableCollection<Indiagram> Children
 		{
 			get { return _children; }
 		}
+
 		public override bool IsCategory
 		{
 			get { return true; }
@@ -19,17 +21,14 @@ namespace IndiaRose.Data.Model
 	    {
 		    get { return Children.Count > 0; }
 	    }
-	    public Category()
+
+		public Category()
 		{
 		}
-		public Category(string text, string imagePath, string soundPath = null) : base(text, imagePath, soundPath)
+
+		public Category(ObservableCollection<Indiagram> children)
 		{
+			_children = children;
 		}
-	    public Category(string text, string imagePath, Category a): base(text,imagePath,a)
-        {
-        }
-	    public Category(Indiagram cloneIndiagram,bool updateparent = false) : base(cloneIndiagram,updateparent)
-	    {
-	    }
 	}
 }

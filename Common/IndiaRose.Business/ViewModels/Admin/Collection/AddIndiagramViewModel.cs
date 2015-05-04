@@ -58,12 +58,14 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 				{
 					if (Indiagram.Indiagram.IsCategory)
 					{
-						CurrentIndiagram = new Category(Indiagram.Indiagram);
+						CurrentIndiagram = new Category();
+						CurrentIndiagram.CopyFrom(Indiagram.Indiagram);
 						IsCategory = true;
 					}
 					else
 					{
-						CurrentIndiagram = new Indiagram(Indiagram.Indiagram);
+						CurrentIndiagram = new Indiagram();
+						CurrentIndiagram.CopyFrom(Indiagram.Indiagram);
 					}
 					EditMode = true;
 				}
@@ -141,26 +143,47 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 				PopupService.DisplayPopup(LocalizationService.GetString("Collection_MissingText", "Text"));
 				return;
 			}
+			Indiagram savedIndiagram;
 			if (EditMode)
 			{
-				// edit indiagram in the storage
-				if (Indiagram.Indiagram.IsCategory != IsCategory)
+				Indiagram original = Indiagram.Indiagram;
+				Category parent = original.Parent as Category;
+				if (parent == null)
 				{
-					CollectionStorageService.Delete(Indiagram.Indiagram);
-					Indiagram.Indiagram = IsCategory ? new Category(CurrentIndiagram, true) : new Indiagram(CurrentIndiagram, true);
-					CollectionStorageService.Create(Indiagram.Indiagram);
+					CollectionStorageService.Collection.Remove(original);
 				}
 				else
 				{
-					Indiagram.Indiagram.Edit(CurrentIndiagram, true);
-					CollectionStorageService.Update(Indiagram.Indiagram);
+					parent.Children.Remove(original);
+				}
+
+				// edit indiagram in the storage
+				if (original.IsCategory != IsCategory)
+				{
+					savedIndiagram = IsCategory ? new Category() : new Indiagram();
+				}
+				else
+				{
+					savedIndiagram = original;
 				}
 			}
 			else
 			{
 				//create a new indiagram in the storage
-				var toAddIndiagram = IsCategory ? new Category(CurrentIndiagram, true) : new Indiagram(CurrentIndiagram, true);
-				CollectionStorageService.Create(toAddIndiagram);
+				savedIndiagram = IsCategory ? new Category() : new Indiagram();
+			}
+			savedIndiagram.CopyFrom(CurrentIndiagram);
+			CollectionStorageService.Save(savedIndiagram);
+
+			Category newParent = savedIndiagram.Parent as Category;
+			if (newParent == null)
+			{
+				CollectionStorageService.Collection.Add(savedIndiagram);
+			}
+			else
+			{
+				//TODO: insert at correct position
+				newParent.Children.Add(savedIndiagram);
 			}
 
 			BackAction();

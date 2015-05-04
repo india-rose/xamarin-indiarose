@@ -17,7 +17,8 @@ namespace IndiaRose.Services
 
         public void Copy(Indiagram indiagram, bool isCategory)
         {
-            _indiagram = isCategory ? new Category(indiagram) : new Indiagram(indiagram);
+            _indiagram = isCategory ? new Category() : new Indiagram();
+			_indiagram.CopyFrom(indiagram, true);
             HasBuffer = true;
         }
 
@@ -25,7 +26,9 @@ namespace IndiaRose.Services
         {
 	        if (HasBuffer)
 	        {
-				return _indiagram.IsCategory ? new Category(_indiagram) : new Indiagram(_indiagram);
+		        Indiagram result = _indiagram.IsCategory ? new Category() : new Indiagram();
+		        result.CopyFrom(_indiagram, true);
+		        return result;
 	        }
 	        return null;
         }
