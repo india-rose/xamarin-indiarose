@@ -493,6 +493,6 @@ Comments : </value>
     <value>-- At the end --</value>
   </data>
   <data name="Collection_HasChildren.Text" xml:space="preserve">
-    <value>This category has children, you have to delete children to do this</value>
+    <value>This category has children, it can't be a simple indiagram</value>
   </data>
 </root>

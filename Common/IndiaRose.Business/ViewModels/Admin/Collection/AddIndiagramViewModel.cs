@@ -105,7 +105,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 				{
 				    RaisePropertyChanged();
                     //todo : voir pour pas l'afficher à l'initialisation
-                    //PopupService.DisplayPopup(LocalizationService.GetString("Collection_HasChildren","Text"));
+                    PopupService.DisplayPopup(LocalizationService.GetString("Collection_HasChildren","Text"));
 				}
 				else
 				{
