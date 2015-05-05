@@ -84,7 +84,7 @@
 				<!--Position-->
 				<TextView XmlStyle="{Resource HeaderItalicLabelStyle}"
 				          Text="{Tr Text, Uid=Collection_Position}" />
-				<LinearLayout XmlStyle="{Resource HorizontalLinearLayoutStyle}">
+				<LinearLayout XmlStyle="{Resource VerticalLinearLayoutStyle}">
 					<TextView XmlStyle="{Resource SmallFormLabelStyle}"
 					          Text="{Tr Text,Uid=Collection_PositionBefore}"
 							  android:gravity="left|center"/>
@@ -141,7 +141,6 @@
 				<TextView XmlStyle="{Resource HeaderItalicLabelStyle}"
 				          Text="{Tr Text, Uid=Collection_EnableDisableIndiagram}"
 				          android:visibility="{Binding EditMode, Converter={Resource BooleanToVisibilityConverter}}" />
-
 				<LinearLayout XmlStyle="{Resource ButtonContainerStyle}"
 				              android:visibility="{Binding EditMode, Converter={Resource BooleanToVisibilityConverter}}">
 

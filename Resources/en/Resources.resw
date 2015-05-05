@@ -495,4 +495,7 @@ Comments : </value>
   <data name="Collection_EndPosition.Text" xml:space="preserve">
     <value>-- At the end --</value>
   </data>
+  <data name="Collection_HasChildren.Text" xml:space="preserve">
+    <value>This category has children, you have to delete children to do this</value>
+  </data>
 </root>

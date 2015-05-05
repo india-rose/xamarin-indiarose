@@ -47,10 +47,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             get { return LazyResolver<ITextToSpeechService>.Service; }
 	    }
 
-	    public IMediaService MediaService
-	    {
+        public IMediaService MediaService
+        {
             get { return LazyResolver<IMediaService>.Service; }
-	    }
+        }
 
 		public ICommand ImageChoiceCommand { get; private set; }
 		public ICommand SoundChoiceCommand { get; private set; }
@@ -103,8 +103,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			{
 				if (Indiagram != null && Indiagram.Indiagram.HasChildren)
 				{
-                    //todo : a voir avec julien peutêtre mettre un toast pour indiquer qu'il peut pas changer
 				    RaisePropertyChanged();
+                    //todo : voir pour pas l'afficher à l'initialisation
+                    //PopupService.DisplayPopup(LocalizationService.GetString("Collection_HasChildren","Text"));
 				}
 				else
 				{
