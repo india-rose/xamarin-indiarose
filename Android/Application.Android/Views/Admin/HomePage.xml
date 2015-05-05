@@ -43,5 +43,9 @@
 			        Text="{Tr Text, Uid=Home_Credits}"
 			        Click="{Binding CreditsCommand}" />
 		</LinearLayout>
+    
+    <TextView XmlStyle="{Resource LinkStyle}"
+              Text="{Tr Text, Uid=Home_WebSite}"
+      />
 	</LinearLayout>
 </RelativeLayout>

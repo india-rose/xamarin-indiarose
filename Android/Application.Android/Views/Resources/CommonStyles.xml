@@ -11,6 +11,12 @@
 	       android:layout_marginRight="4dip"
 	       android:scaleType="fitXY"
 	       android:src="@drawable/logo" />
+  
+  <Style Key="LinkStyle"
+         android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+         android:autoLink="web"
+         />
 
 	<Style Key="LogoStyle"
 	       XmlStyle="{Resource BaseLogoStyle}"

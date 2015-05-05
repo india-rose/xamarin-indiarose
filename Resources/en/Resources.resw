@@ -489,4 +489,7 @@ Comments : </value>
   <data name="Collection_CategoryEmpty.Text" xml:space="preserve">
     <value>This category is empty.</value>
   </data>
+  <data name="Home_WebSite.Text" xml:space="preserve">
+    <value>indiarose.org</value>
+  </data>
 </root>
