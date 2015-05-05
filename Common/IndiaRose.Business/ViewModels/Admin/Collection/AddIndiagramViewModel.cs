@@ -76,7 +76,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 					{
 						CurrentIndiagram = new Category();
 						CurrentIndiagram.CopyFrom(Indiagram.Indiagram);
-						IsCategory = true;
+						_isCategory = true;
+                        RaisePropertyChanged("IsCategory");
 					}
 					else
 					{
@@ -102,7 +103,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			{
 				if (Indiagram != null && Indiagram.Indiagram.HasChildren)
 				{
-					RaisePropertyChanged();
+                    //todo : a voir avec julien peutêtre mettre un toast pour indiquer qu'il peut pas changer
+				    RaisePropertyChanged();
 				}
 				else
 				{
