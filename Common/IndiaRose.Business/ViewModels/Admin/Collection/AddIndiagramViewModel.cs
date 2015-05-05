@@ -42,6 +42,16 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			get { return LazyResolver<ICopyPasteService>.Service; }
 		}
 
+        public ITextToSpeechService TtsService
+	    {
+            get { return LazyResolver<ITextToSpeechService>.Service; }
+	    }
+
+	    public IMediaService MediaService
+	    {
+            get { return LazyResolver<IMediaService>.Service; }
+	    }
+
 		public ICommand ImageChoiceCommand { get; private set; }
 		public ICommand SoundChoiceCommand { get; private set; }
 		public ICommand RootCommand { get; private set; }
@@ -324,11 +334,12 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			}
 		    else if(CurrentIndiagram.HasCustomSound)
             {
-                LazyResolver<IMediaService>.Service.PlaySound(CurrentIndiagram.SoundPath);
+                MediaService.PlaySound(CurrentIndiagram.SoundPath);
 		    } 
 		    else
 		    {
-                //todo : tts
+                TtsService.ReadText(CurrentIndiagram.Text);
+
 		    }
 		}
 

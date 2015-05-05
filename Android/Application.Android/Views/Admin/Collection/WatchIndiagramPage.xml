@@ -63,7 +63,8 @@
 			                android:layout_height="50dip"
 						    android:layout_marginTop="10dip">
 			    <Button XmlStyle="{Resource MediumBlueButtonStyle}"
-				          Text="{Tr Text, Uid=Collection_ListenSound}" />
+				          Text="{Tr Text, Uid=Collection_ListenSound}"
+                   Click="{Binding ListenCommand}"/>
 		    </LinearLayout>
 	    </LinearLayout>
     </ScrollView>

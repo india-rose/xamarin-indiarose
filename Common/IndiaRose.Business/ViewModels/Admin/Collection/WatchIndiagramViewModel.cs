@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
+using IndiaRose.Interfaces;
 using Storm.Mvvm.Commands;
+using Storm.Mvvm.Inject;
 using Storm.Mvvm.Navigation;
 
 #endregion
@@ -14,9 +16,14 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
 	public class WatchIndiagramViewModel : AbstractCollectionViewModel
 	{
+        private ITextToSpeechService TtsService
+        {
+            get { return LazyResolver<ITextToSpeechService>.Service; }
+        }
 		private IndiagramContainer _indiagramContainer;
 		public ICommand EditCommand { get; private set; }
 		public ICommand DeleteCommand { get; private set; }
+        public ICommand ListenCommand { get; private set; }
 
 		[NavigationParameter]
 		public Indiagram Indiagram
@@ -40,6 +47,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 		{
 			EditCommand = new DelegateCommand(EditAction);
 			DeleteCommand = new DelegateCommand(DeleteAction);
+            ListenCommand = new DelegateCommand(ListenAction);
 		}
 
 		private void EditAction()
@@ -74,5 +82,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 		{
 			NavigationService.GoBack();
 		}
+
+	    private void ListenAction()
+	    {
+            TtsService.ReadText(IndiagramContainer.Indiagram.Text);
+	    }
 	}
 }

@@ -8,5 +8,6 @@ namespace IndiaRose.Interfaces
 {
     public interface ITextToSpeechService
     {
+        void ReadText(string text);
     }
 }
