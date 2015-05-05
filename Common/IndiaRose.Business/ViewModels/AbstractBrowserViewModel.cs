@@ -15,7 +15,11 @@ using Storm.Mvvm.Services;
 namespace IndiaRose.Business.ViewModels
 {
 	public abstract class AbstractBrowserViewModel : AbstractViewModel
-	{
+    {
+        public ILocalizationService LocalizationService
+        {
+            get { return LazyResolver<ILocalizationService>.Service; }
+        }
 		private int _collectionOffset;
 		private int _collectionDisplayCount;
 		private List<Indiagram> _displayedIndiagrams;
@@ -124,10 +128,10 @@ namespace IndiaRose.Business.ViewModels
 				collection.Add(CollectionStorageService.Save(constructorLambda("hellow")));
 			}
 
-			//TODO: translate "home" and add an image
+			//TODO: add an image
 			_rootCollection = new Category(collection)
 			{
-				Text = "Home",
+                Text = LocalizationService.GetString("Collection_RootCategoryName", "Text"),
 				ImagePath = "",
 			};
 		}

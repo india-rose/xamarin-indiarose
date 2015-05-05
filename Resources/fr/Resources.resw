@@ -489,4 +489,7 @@ Comments : </value>
   <data name="Collection_CategoryEmpty.Text" xml:space="preserve">
     <value>This category is empty.</value>
   </data>
+  <data name="Collection_EndPosition.Text" xml:space="preserve">
+    <value>-- At the end --</value>
+  </data>
 </root>

@@ -492,4 +492,7 @@ Comments : </value>
   <data name="Home_WebSite.Text" xml:space="preserve">
     <value>indiarose.org</value>
   </data>
+  <data name="Collection_EndPosition.Text" xml:space="preserve">
+    <value>-- At the end --</value>
+  </data>
 </root>

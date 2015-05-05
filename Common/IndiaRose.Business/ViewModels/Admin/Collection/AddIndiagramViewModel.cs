@@ -154,8 +154,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			Indiagram defaultLastOne = new Indiagram
 			{
 				Id = -73,
-				//TODO: translate this 
-				Text = "-- At the end --"
+				Text = LocalizationService.GetString("Collection_EndPosition","Text")
 			};
 			if (parent == null)
 			{
