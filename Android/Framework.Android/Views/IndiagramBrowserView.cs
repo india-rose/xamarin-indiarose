@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Android.Content;
 using Android.Runtime;
@@ -8,6 +10,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using IndiaRose.Data.Model;
+using IndiaRose.Storage;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 
@@ -20,6 +23,7 @@ namespace IndiaRose.Framework.Views
 		private int _columnCount;
 		private int _lineCount;
 		private IndiagramView[][] _displayableViews;
+		private IndiagramView _nextButton;
 
 		#endregion
 
@@ -30,6 +34,7 @@ namespace IndiaRose.Framework.Views
 		private List<Indiagram> _indiagrams;
 		private uint _textColor;
 		private ICommand _indiagramSelected;
+		private ICommand _nextCommand;
 
 		#endregion
 
@@ -89,24 +94,51 @@ namespace IndiaRose.Framework.Views
 			set { SetProperty(ref _indiagramSelected, value); }
 		}
 
+		public ICommand NextCommand
+		{
+			get { return _nextCommand; }
+			set { SetProperty(ref _nextCommand, value); }
+		}
+
 		#endregion
 
 		#region Constructors
 
 		protected IndiagramBrowserView(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
 		{
+			Initialize();
 		}
 
 		public IndiagramBrowserView(Context context) : base(context)
 		{
+			Initialize();
 		}
 
 		public IndiagramBrowserView(Context context, IAttributeSet attrs) : base(context, attrs)
 		{
+			Initialize();
 		}
 
 		public IndiagramBrowserView(Context context, IAttributeSet attrs, int defStyleAttr) : base(context, attrs, defStyleAttr)
 		{
+			Initialize();
+		}
+
+		private void Initialize()
+		{
+			string path = Path.Combine(LazyResolver<IStorageService>.Service.RootPath, "app/nextarrow.png");
+			_nextButton = new IndiagramView(Context)
+			{
+				TextColor = 0,
+				Id = 0x20,
+				Indiagram = new Indiagram()
+				{
+					Text = "next",
+					ImagePath = path
+				}
+			};
+
+			_nextButton.Touch += OnNextTouch;
 		}
 
 		#endregion
@@ -160,8 +192,8 @@ namespace IndiaRose.Framework.Views
 			_displayableViews = new IndiagramView[_lineCount][];
 			for (int line = 0; line < _lineCount; ++line)
 			{
-				_displayableViews[line] = new IndiagramView[_columnCount];
-				for (int column = 0; column < _columnCount; ++column)
+				_displayableViews[line] = new IndiagramView[_columnCount - ((line == 0) ? 1 : 0)];
+				for (int column = 0; column < _displayableViews[line].Length; ++column)
 				{
 					IndiagramView view = new IndiagramView(Context)
 					{
@@ -172,6 +204,7 @@ namespace IndiaRose.Framework.Views
 					_displayableViews[line][column] = view;
 				}
 			}
+
 			return true;
 		}
 
@@ -183,6 +216,7 @@ namespace IndiaRose.Framework.Views
 			}
 
 			RemoveAllViews();
+
 			List<Indiagram> toDisplay = Indiagrams.Where((o, i) => i >= Offset).ToList();
 			int displayCount = 0;
 			int index = 0;
@@ -192,14 +226,14 @@ namespace IndiaRose.Framework.Views
 			{
 				int lineHeight = 0;
 				int lineCount = 0;
-				for (int column = 0; column < _columnCount; ++column)
+				for (int column = 0; column < _displayableViews[line].Length; ++column)
 				{
 					if (index >= toDisplay.Count)
 					{
 						stop = true;
 						break;
 					}
-
+					
 					IndiagramView view = _displayableViews[line][column];
 					view.Indiagram = toDisplay[index++];
 					LayoutParams param = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
@@ -222,7 +256,7 @@ namespace IndiaRose.Framework.Views
 					}
 
 					lineCount++;
-					AddView(view, param);
+					AddView(view, param);						
 
 					if (lineHeight < view.RealHeight)
 					{
@@ -249,6 +283,11 @@ namespace IndiaRose.Framework.Views
 					break;
 				}
 			}
+
+			LayoutParams forbutton = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
+			forbutton.AddRule(LayoutRules.AlignParentRight);
+			forbutton.AddRule(LayoutRules.AlignParentTop);
+			AddView(_nextButton, forbutton);
 
 			Count = displayCount;
 
@@ -286,6 +325,18 @@ namespace IndiaRose.Framework.Views
 				if (command != null && command.CanExecute(indiagram))
 				{
 					command.Execute(indiagram);
+				}
+			}
+		}
+
+		private void OnNextTouch(object sender, TouchEventArgs touchEventArgs)
+		{
+			if (touchEventArgs.Event.ActionMasked == MotionEventActions.Down)
+			{
+				ICommand command = NextCommand;
+				if (command != null && command.CanExecute(null))
+				{
+					command.Execute(null);
 				}
 			}
 		}

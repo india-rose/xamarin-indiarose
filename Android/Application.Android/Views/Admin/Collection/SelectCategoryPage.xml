@@ -4,8 +4,7 @@
                 XmlStyle="{Resource BaseRootLayoutStyle}">
 	<!--Button add & next-->
 	<LinearLayout XmlStyle="{Resource ValidationButtonLinearLayoutStyle}"
-				  android:id="buttons"
-				  >
+	              android:id="buttons">
 
 		<Button XmlStyle="{Resource MediumBlueButtonStyle}"
 		        Text="{Tr Text, Uid=CollectionManagement_Next}"
@@ -15,11 +14,12 @@
 	<!-- Browser -->
 	<IndiagramBrowserView android:layout_width="match_parent"
 	                      android:layout_height="match_parent"
-						  android:layout_above="@id/buttons"
+	                      android:layout_above="@id/buttons"
 	                      Background="{Binding BackgroundColor, Converter={Resource ColorStringToDrawableColorConverter}}"
 	                      Count="{Binding CollectionDisplayCount, Mode=TwoWay, UpdateEvent=CountChanged}"
 	                      Offset="{Binding CollectionOffset}"
 	                      Indiagrams="{Binding DisplayedIndiagrams}"
 	                      TextColor="{Binding TextColor, Converter={Resource ColorStringToIntConverter}}"
-	                      IndiagramSelected="{Binding IndiagramSelectedCommand}" />
+	                      IndiagramSelected="{Binding IndiagramSelectedCommand}"
+	                      NextCommand="{Binding NextCommand}" />
 </RelativeLayout>
