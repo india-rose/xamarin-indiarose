@@ -29,17 +29,7 @@ namespace IndiaRose.Services.Android
 
         public TextToSpeechService()
         {
-            var currentapiVersion = Build.VERSION.SdkInt;
-            if (currentapiVersion >= BuildVersionCodes.JellyBeanMr1)
-            {
-                _speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity, this);
-                //this.m_stateManager.start();
-                //si besoin voir code java
-            }
-            else
-            {
-                ActivityService.ActivityChanged+=InitTTS;
-            }
+            ActivityService.ActivityChanged += InitTTS;
         }
 
         public void ReadText(string text)
@@ -55,21 +45,32 @@ namespace IndiaRose.Services.Android
         //todo a tester sur faible api
         private void InitTTS(object sender, ValueChangedEventArgs<Activity> valueChangedEventArgs)
         {
-            ActivityService.StartActivityForResult(new Intent().SetAction(TextToSpeech.Engine.ActionCheckTtsData), (result, data) =>
-                {
-                    if (result == Result.Ok)
+            var currentapiVersion = Build.VERSION.SdkInt;
+            if (currentapiVersion >= BuildVersionCodes.JellyBeanMr1)
+            {
+                _speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity, this);
+                //this.m_stateManager.start();
+                //si besoin voir code java
+            }
+            else
+            {
+                ActivityService.StartActivityForResult(new Intent().SetAction(TextToSpeech.Engine.ActionCheckTtsData),
+                    (result, data) =>
                     {
-                        // success, create the TTS instance
-                        _speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity, this);
-                    }
-                    else
-                    {
-                        Intent installIntent = new Intent();
-                        installIntent.SetAction(TextToSpeech.Engine.ActionInstallTtsData);
-                        ActivityService.CurrentActivity.StartActivity(installIntent);
+                        if (result == Result.Ok)
+                        {
+                            // success, create the TTS instance
+                            _speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity, this);
+                        }
+                        else
+                        {
+                            Intent installIntent = new Intent();
+                            installIntent.SetAction(TextToSpeech.Engine.ActionInstallTtsData);
+                            ActivityService.CurrentActivity.StartActivity(installIntent);
 
-                    }
-                });
+                        }
+                    });
+            }
         }
     }
 }
