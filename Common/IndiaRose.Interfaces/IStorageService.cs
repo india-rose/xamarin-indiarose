@@ -1,7 +1,13 @@
 ﻿using System.Threading.Tasks;
 
-namespace IndiaRose.Storage
+namespace IndiaRose.Interfaces
 {
+	public enum StorageType
+	{
+		Sound,
+		Image,
+	}
+
 	public interface IStorageService
 	{
 		string DatabasePath { get; }
@@ -18,9 +24,9 @@ namespace IndiaRose.Storage
 
         string SoundPath { get; }
 
-	    string GenerationPath(string type, string extension);
+	    string GenerateFilename(StorageType type, string extension);
 
 		Task InitializeAsync();
-	    void Garbage();
+	    void GarbageCollector();
 	}
 }

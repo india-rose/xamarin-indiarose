@@ -3,7 +3,6 @@ using System.IO;
 using Android.Content;
 using Android.Content.Res;
 using IndiaRose.Interfaces;
-using IndiaRose.Storage;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 using Uri = Android.Net.Uri;

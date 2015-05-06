@@ -8,7 +8,6 @@ using Android.OS;
 using Android.Provider;
 using IndiaRose.Framework;
 using IndiaRose.Interfaces;
-using IndiaRose.Storage;
 using Java.IO;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
@@ -30,7 +29,7 @@ namespace IndiaRose.Services.Android
 
         public void RecordSound()
         {
-            _url = StorageService.GenerationPath("sound", "3gpp");
+            _url = StorageService.GenerateFilename(StorageType.Sound, "3gpp");
             _recorder = new MediaRecorder();
             _recorder.SetAudioSource(AudioSource.Mic);
             _recorder.SetOutputFormat(OutputFormat.ThreeGpp);
@@ -58,7 +57,7 @@ namespace IndiaRose.Services.Android
         {
             return AsyncHelper.CreateAsyncFromCallback<string>(callbackResult =>
             {
-                string path = StorageService.GenerationPath("image", "png");
+                string path = StorageService.GenerateFilename(StorageType.Image, "png");
                 File file = new File(path);
 
                 Intent intent = new Intent(MediaStore.ActionImageCapture);
@@ -78,7 +77,7 @@ namespace IndiaRose.Services.Android
         }
         private string SavePhoto(Bitmap bitmap)
         {
-            string filename = StorageService.GenerationPath("image", "png");
+            string filename = StorageService.GenerateFilename(StorageType.Image, "png");
             using (System.IO.Stream stream = System.IO.File.OpenWrite(filename))
             {
                 bitmap.Compress(Bitmap.CompressFormat.Png, 0, stream);
@@ -132,7 +131,7 @@ namespace IndiaRose.Services.Android
                         ParcelFileDescriptor parcelFileDescriptor = ActivityService.CurrentActivity.ContentResolver.OpenFileDescriptor(selectedSound, "r");
                         FileDescriptor fileDescriptor = parcelFileDescriptor.FileDescriptor;
                         FileInputStream inputStream = new FileInputStream(fileDescriptor);
-                        path = StorageService.GenerationPath("sound", "3gpp");
+                        path = StorageService.GenerateFilename(StorageType.Sound, "3gpp");
                         File outputFile = new File(path);
                         InputStream inStream = null;
                         OutputStream outStream = null;

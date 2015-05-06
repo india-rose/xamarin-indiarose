@@ -8,28 +8,29 @@ using Storm.Mvvm.Interfaces;
 
 namespace IndiaRose.Services.Android
 {
-	public abstract class AbstractAndroidService : AbstractService, IInitializable
+	public class ServiceInitializerWrapper : IInitializable
 	{
 		protected IActivityService ActivityService
 		{
 			get { return LazyResolver<IActivityService>.Service; }
 		}
 
-		protected Activity CurrentActivity
-		{
-			get { return ActivityService.CurrentActivity; }
-		}
-
 		private readonly Semaphore _semaphore = new Semaphore(0, 1);
+		private readonly IInitializable _service;
+
+		public ServiceInitializerWrapper(IInitializable service)
+		{
+			_service = service;
+		}
 
 		public async Task InitializeAsync()
 		{
 			await Task.Run(() =>
 			{
-				if (CurrentActivity == null)
+				if (ActivityService.CurrentActivity == null)
 				{
 					ActivityService.ActivityChanged += OnActivityChanged;
-					if (CurrentActivity == null)
+					if (ActivityService.CurrentActivity == null)
 					{
 						_semaphore.WaitOne();
 					}
@@ -37,12 +38,7 @@ namespace IndiaRose.Services.Android
 				}
 			});
 
-			await InitializeServiceAsync();
-		}
-
-		protected virtual async Task InitializeServiceAsync()
-		{
-			
+			await _service.InitializeAsync();
 		}
 
 		private void OnActivityChanged(object sender, ValueChangedEventArgs<Activity> valueChangedEventArgs)

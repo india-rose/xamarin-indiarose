@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using IndiaRose.Data.Model;
+using IndiaRose.Interfaces;
 using IndiaRose.Storage.Sqlite.Model;
 using SQLite.Net;
 using SQLite.Net.Interop;

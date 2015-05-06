@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Android.Content;
 using Android.Runtime;
@@ -10,9 +9,8 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using IndiaRose.Data.Model;
-using IndiaRose.Storage;
+using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
-using Storm.Mvvm.Services;
 
 namespace IndiaRose.Framework.Views
 {

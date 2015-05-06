@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace IndiaRose.Storage
+namespace IndiaRose.Interfaces
 {
     public interface IXmlService
     {

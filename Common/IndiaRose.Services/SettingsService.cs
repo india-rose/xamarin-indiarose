@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
-using IndiaRose.Storage;
 using Newtonsoft.Json;
 using PCLStorage;
 using Storm.Mvvm;

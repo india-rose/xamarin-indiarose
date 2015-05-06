@@ -19,7 +19,7 @@ namespace IndiaRose.Application
 	{
         public readonly static ViewModelsLocator Locator = new ViewModelsLocator();
 
-		private IStorageService storageService;
+		private StorageService storageService;
 		private ISettingsService settingsService;
 		private ICollectionStorageService collectionStorageService;
 
@@ -60,7 +60,7 @@ namespace IndiaRose.Application
 
 		protected async void InitializeAsync()
 		{
-			await storageService.InitializeAsync();
+			await new ServiceInitializerWrapper(storageService).InitializeAsync();
 			await settingsService.LoadAsync();
 			await collectionStorageService.InitializeAsync();
 		}

@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using IndiaRose.Data.Model;
 
-namespace IndiaRose.Storage
+namespace IndiaRose.Interfaces
 {
 	public interface ICollectionStorageService
 	{
