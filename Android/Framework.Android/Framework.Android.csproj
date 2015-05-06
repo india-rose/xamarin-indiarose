@@ -106,6 +106,10 @@
       <Project>{4A1F6C63-F97F-4E4B-A20C-8842CC486670}</Project>
       <Name>IndiaRose.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Common\IndiaRose.Storage\IndiaRose.Storage.csproj">
+      <Project>{E6229843-7567-4215-8AAA-AEB7D21D5DD1}</Project>
+      <Name>IndiaRose.Storage</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamandroidsupportv4-18">
