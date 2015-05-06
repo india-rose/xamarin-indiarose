@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using IndiaRose.Data.Model;
+using IndiaRose.Interfaces;
 using PCLStorage;
 using Storm.Mvvm.Extensions;
 using Storm.Mvvm.Inject;
@@ -18,6 +20,11 @@ namespace IndiaRose.Storage
 		private const string STORAGE_IMAGE_NAME = "image";
 		private const string STORAGE_SOUND_NAME = "sound";
 		private const string STORAGE_SETTINGS_NAME = "settings.json";
+	    private const string STORAGE_APP_NAME = "app";
+	    private const string STORAGE_CORRECTION_IMAGE = "correction.png";
+	    private const string STORAGE_NEXTARROW_IMAGE = "nextarrow.png";
+	    private const string STORAGE_PLAYBUTTON_IMAGE = "playbutton.png";
+	    private const string STORAGE_ROOT_IMAGE = "root.png";
 
 
 		private readonly string _storageDirectory;
@@ -57,6 +64,30 @@ namespace IndiaRose.Storage
 			get { return Path.Combine(RootPath, STORAGE_SOUND_NAME); }
 		}
 
+	    public string AppPath
+	    {
+            get { return Path.Combine(RootPath, STORAGE_APP_NAME); }
+	    }
+
+        public string ImageCorrectionPath
+        {
+            get { return Path.Combine(AppPath, STORAGE_CORRECTION_IMAGE); }
+        }
+
+        public string ImageRootPath
+        {
+            get { return Path.Combine(AppPath, STORAGE_ROOT_IMAGE); }
+        }
+
+	    public string ImagePlayButtonPath
+	    {
+            get { return Path.Combine(AppPath, STORAGE_PLAYBUTTON_IMAGE); }
+	    }
+
+        public string ImageNextArrowPath
+        {
+            get { return Path.Combine(AppPath, STORAGE_NEXTARROW_IMAGE); }
+        }
 		public StorageService(string rootStorageDirectory)
 		{
 			_storageDirectory = rootStorageDirectory;
@@ -75,11 +106,32 @@ namespace IndiaRose.Storage
 			if (await indiaRoseFolder.CheckExistsAsync(STORAGE_IMAGE_NAME) == ExistenceCheckResult.NotFound)
 			{
 				await indiaRoseFolder.CreateFolderAsync(STORAGE_IMAGE_NAME, CreationCollisionOption.FailIfExists);
-			}
-			if (await indiaRoseFolder.CheckExistsAsync(STORAGE_SOUND_NAME) == ExistenceCheckResult.NotFound)
-			{
-				await indiaRoseFolder.CreateFolderAsync(STORAGE_SOUND_NAME, CreationCollisionOption.FailIfExists);
-			}
+            }
+            if (await indiaRoseFolder.CheckExistsAsync(STORAGE_SOUND_NAME) == ExistenceCheckResult.NotFound)
+            {
+                await indiaRoseFolder.CreateFolderAsync(STORAGE_SOUND_NAME, CreationCollisionOption.FailIfExists);
+            }
+            if (await indiaRoseFolder.CheckExistsAsync(STORAGE_APP_NAME) == ExistenceCheckResult.NotFound)
+            {
+                await indiaRoseFolder.CreateFolderAsync(STORAGE_APP_NAME, CreationCollisionOption.FailIfExists);
+            }
+
+            IFolder appFolder = await FileSystem.Current.GetFolderFromPathAsync(AppPath);
+            var res = LazyResolver<IResourceService>.Service;
+            if (await appFolder.CheckExistsAsync(STORAGE_CORRECTION_IMAGE) == ExistenceCheckResult.NotFound)
+            {
+                res.Copy(STORAGE_CORRECTION_IMAGE,ImageCorrectionPath);
+            } if (await appFolder.CheckExistsAsync(STORAGE_PLAYBUTTON_IMAGE) == ExistenceCheckResult.NotFound)
+            {
+                res.Copy(STORAGE_PLAYBUTTON_IMAGE,ImagePlayButtonPath);
+            } if (await appFolder.CheckExistsAsync(STORAGE_NEXTARROW_IMAGE) == ExistenceCheckResult.NotFound)
+            {
+                res.Copy(STORAGE_NEXTARROW_IMAGE,ImageNextArrowPath);
+            } if (await appFolder.CheckExistsAsync(STORAGE_ROOT_IMAGE) == ExistenceCheckResult.NotFound)
+            {
+                res.Copy(STORAGE_ROOT_IMAGE,ImageRootPath);
+            }
+
 		}
 
 		public string GenerationPath(string type, string extension)

@@ -46,6 +46,7 @@
     <Compile Include="SettingsService.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StorageService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IndiaRose.Data\IndiaRose.Data.csproj">

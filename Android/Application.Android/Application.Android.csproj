@@ -157,10 +157,10 @@
     <AndroidResource Include="Resources\drawable-mdpi\sd.png" />
     <AndroidResource Include="Resources\drawable-mdpi\stop.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_launcher.png" />
-    <AndroidResource Include="Resources\raw\correction.png" />
-    <AndroidResource Include="Resources\raw\playbutton.png" />
-    <AndroidResource Include="Resources\raw\rightarrow.png" />
-    <AndroidResource Include="Resources\raw\root.png" />
+    <AndroidAsset Include="Assets\correction.png" />
+    <AndroidAsset Include="Assets\playbutton.png" />
+    <AndroidAsset Include="Assets\nextarrow.png" />
+    <AndroidAsset Include="Assets\root.png" />
     <AndroidResource Include="Resources\values\color.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values-v11\styles.xml" />
@@ -201,6 +201,7 @@
     <Folder Include="Activities\User\" />
     <Folder Include="Resources\drawable-ldpi\" />
     <Folder Include="Resources\layout\" />
+    <Folder Include="Resources\raw\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>

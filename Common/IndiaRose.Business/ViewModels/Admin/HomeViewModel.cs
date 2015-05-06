@@ -81,7 +81,7 @@ namespace IndiaRose.Business.ViewModels.Admin
 		{
             base.OnNavigatedTo(e, parametersKey);
 
-		    if (LazyResolver<ICollectionStorageService>.Service.Collection.Count == 0)
+		    /*if (LazyResolver<ICollectionStorageService>.Service.Collection.Count == 0)
 		    {
 		        Task.Run(() =>
 		        {
@@ -102,8 +102,8 @@ namespace IndiaRose.Business.ViewModels.Admin
 			var xmlService = LazyResolver<IXmlService>.Service;
 			xmlService.Initialize(zip);
 			 */
-		        });
-		    }
+		      /*  });
+		    }*/
 		}
 
 		#region First line command implementation
