@@ -52,11 +52,10 @@ namespace IndiaRose.Services.Android
 
         }
 
-        public void OpenZip(string zipFileName)
+        public Stream OpenZip(string zipFileName)
         {
             Stream input = CurrentActivity.Assets.Open(zipFileName);
-            IXmlService a = new XmlService();
-            a.Initialize(input);
+	        return input;
         }
     }
 }

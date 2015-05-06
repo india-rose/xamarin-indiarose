@@ -1,7 +1,9 @@
 ﻿#region Usings
 
+using System;
 using System.IO.Compression;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using IndiaRose.Interfaces;
 using IndiaRose.Storage;
@@ -76,10 +78,29 @@ namespace IndiaRose.Business.ViewModels.Admin
 
 		public override void OnNavigatedTo(NavigationArgs e, string parametersKey)
 		{
-            //if (LazyResolver<ICollectionStorageService>.Service.Collection.Count==0)
-		    //LazyResolver<IResourceService>.Service.OpenZip("indiagrams.zip");
             base.OnNavigatedTo(e, parametersKey);
-        }
+
+			Task.Run(() =>
+			{
+				try
+				{
+
+					var res = ResourceService;
+					var zip = res.OpenZip("indiagrams.zip");
+
+					var xmlService = LazyResolver<IXmlService>.Service;
+					xmlService.Initialize(zip);
+				}
+				catch (Exception ex)
+				{
+					throw;
+				}
+			/*
+			var xmlService = LazyResolver<IXmlService>.Service;
+			xmlService.Initialize(zip);
+			 */
+			});
+		}
 
 		#region First line command implementation
 

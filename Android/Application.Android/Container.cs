@@ -19,6 +19,9 @@ namespace IndiaRose.Application
 	{
         public readonly static ViewModelsLocator Locator = new ViewModelsLocator();
 
+		private IStorageService storageService;
+		private ISettingsService settingsService;
+
 		protected override void Initialize(Android.App.Application application, Dictionary<string, Type> views, Dictionary<string, Type> dialogs)
 		{
 			base.Initialize(application, views, dialogs);
@@ -27,15 +30,13 @@ namespace IndiaRose.Application
 			RegisterInstance(localizationService);
 		}
 
-		protected override async void Initialize()
+		protected override void Initialize()
 		{
 			base.Initialize();
 			ViewModelsLocator.Initialize(this);
 
-			IStorageService storageService = new StorageService(Environment.ExternalStorageDirectory.Path);
-			await storageService.InitializeAsync();
-
-			ISettingsService settingsService = new SettingsService();
+			storageService = new StorageService(Environment.ExternalStorageDirectory.Path);
+			settingsService = new SettingsService();
 
             RegisterInstance<IResourceService>(new ResourceService());
 			RegisterInstance<IEmailService>(new EmailService());
@@ -48,10 +49,18 @@ namespace IndiaRose.Application
             RegisterInstance<ITextToSpeechService>(new TextToSpeechService());
 
 			RegisterInstance<IStorageService>(storageService);
-			RegisterInstance<ICollectionStorageService>(new SqliteCollectionStorageService(new SQLitePlatformAndroid()));
             RegisterInstance<ISettingsService>(settingsService);
+			RegisterInstance<IXmlService>(new XmlService());
+
+			InitializeAsync();
+		}
+
+		protected async void InitializeAsync()
+		{
+			await storageService.InitializeAsync();
 			await settingsService.LoadAsync();
 
+			RegisterInstance<ICollectionStorageService>(new SqliteCollectionStorageService(new SQLitePlatformAndroid()));
 		}
 	}
 }
