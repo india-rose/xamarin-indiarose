@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using IndiaRose.Interfaces;
 using IndiaRose.Storage;
+using IndiaRose.Storage.Sqlite;
 using Storm.Mvvm;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
@@ -80,26 +81,29 @@ namespace IndiaRose.Business.ViewModels.Admin
 		{
             base.OnNavigatedTo(e, parametersKey);
 
-			Task.Run(() =>
-			{
-				try
-				{
+		    if (LazyResolver<ICollectionStorageService>.Service.Collection.Count == 0)
+		    {
+		        Task.Run(() =>
+		        {
+		            try
+		            {
 
-					var res = ResourceService;
-					var zip = res.OpenZip("indiagrams.zip");
+		                var res = ResourceService;
+		                var zip = res.OpenZip("indiagrams.zip");
 
-					var xmlService = LazyResolver<IXmlService>.Service;
-					xmlService.Initialize(zip);
-				}
-				catch (Exception ex)
-				{
-					throw;
-				}
-			/*
+		                var xmlService = LazyResolver<IXmlService>.Service;
+		                xmlService.Initialize(zip);
+		            }
+		            catch (Exception ex)
+		            {
+		                throw;
+		            }
+		            /*
 			var xmlService = LazyResolver<IXmlService>.Service;
 			xmlService.Initialize(zip);
 			 */
-			});
+		        });
+		    }
 		}
 
 		#region First line command implementation

@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Android.Content;
+using Android.Content.Res;
 using IndiaRose.Interfaces;
 using IndiaRose.Storage;
 using Storm.Mvvm.Inject;
@@ -54,8 +55,14 @@ namespace IndiaRose.Services.Android
 
         public Stream OpenZip(string zipFileName)
         {
-            Stream input = CurrentActivity.Assets.Open(zipFileName);
-	        return input;
+            using (Stream input = CurrentActivity.Assets.Open(zipFileName))
+            {
+                MemoryStream inputStream = new MemoryStream();
+                input.CopyTo(inputStream);
+                inputStream.Position = 0;
+	            return inputStream;
+            }
+            
         }
     }
 }
