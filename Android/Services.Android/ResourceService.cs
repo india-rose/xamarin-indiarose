@@ -64,5 +64,15 @@ namespace IndiaRose.Services.Android
             }
             
         }
+
+        public void Copy(string src,string dest)
+        {
+            FileStream output = File.OpenWrite(dest);
+            Stream input = CurrentActivity.Assets.Open(src);
+            input.CopyTo(output);
+            input.Close();
+            output.Flush();
+            output.Close();
+        }
     }
 }
