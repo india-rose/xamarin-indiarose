@@ -62,10 +62,10 @@ namespace IndiaRose.Storage
                 }
             }
         }
-
-        public void Initialize(Stream stream)
-        {
-			var archive = ArchiveFactory.Open(stream);
+		
+	    public void InitializeCollection(Stream zipStream)
+	    {
+			var archive = ArchiveFactory.Open(zipStream);
 
 			List<Category> listCategories = new List<Category>();
 			foreach (var t in archive.Entries.Where(x => x.Key.EndsWith(".xml")))
@@ -74,6 +74,6 @@ namespace IndiaRose.Storage
 
 				FillIndiagram(listCategories, xd, t.Key);
 			}
-        }
+	    }
     }
 }

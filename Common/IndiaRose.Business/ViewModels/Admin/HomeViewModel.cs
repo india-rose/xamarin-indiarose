@@ -22,6 +22,9 @@ namespace IndiaRose.Business.ViewModels.Admin
 		private const string HELP_DOCUMENT_UID = "Help";
 		private const string HELP_DOCUMENT_PROPERTY = "Document";
 
+		private readonly object _lockMutex = new object();
+		private bool _initialized = false;
+
 		#region Services
 
 		protected IEmailService EmailService
@@ -39,9 +42,19 @@ namespace IndiaRose.Business.ViewModels.Admin
 			get { return LazyResolver<ILocalizationService>.Service; }
 		}
 
-		public IMessageDialogService MessageDialogService
+		protected IMessageDialogService MessageDialogService
 		{
 			get { return LazyResolver<IMessageDialogService>.Service; }
+		}
+
+		protected ICollectionStorageService CollectionStorageService
+		{
+			get { return LazyResolver<ICollectionStorageService>.Service; }
+		}
+
+		protected IXmlService XmlService
+		{
+			get { return LazyResolver<IXmlService>.Service; }
 		}
 
 		#endregion
@@ -80,31 +93,35 @@ namespace IndiaRose.Business.ViewModels.Admin
 		public override void OnNavigatedTo(NavigationArgs e, string parametersKey)
 		{
             base.OnNavigatedTo(e, parametersKey);
-			/*
-		    if (LazyResolver<ICollectionStorageService>.Service.Collection.Count == 0)
-		    {
-		        Task.Run(() =>
-		        {
-		            try
-		            {
 
-		                var res = ResourceService;
-		                var zip = res.OpenZip("indiagrams.zip");
+			lock (_lockMutex)
+			{
+				CollectionStorageService.Initialized += (sender, args) =>
+				{
+					lock (_lockMutex)
+					{
+						OnCollectionInitialized();
+					}
+				};
+				if (CollectionStorageService.IsInitialized)
+				{
+					OnCollectionInitialized();
+				}
+			}
+		}
 
-		                var xmlService = LazyResolver<IXmlService>.Service;
-		                xmlService.Initialize(zip);
-		            }
-		            catch (Exception ex)
-		            {
-		                throw;
-		            }
-		            //*
-			var xmlService = LazyResolver<IXmlService>.Service;
-			xmlService.Initialize(zip);
-			 * /
-		        });
-		    }
-	*/
+		private void OnCollectionInitialized()
+		{
+			if (_initialized)
+			{
+				return;
+			}
+			_initialized = true;
+
+			if (CollectionStorageService.Collection.Count == 0)
+			{
+				XmlService.InitializeCollection(ResourceService.OpenZip("indiagrams.zip"));
+			}
 		}
 
 		#region First line command implementation

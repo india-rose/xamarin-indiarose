@@ -1,11 +1,19 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using IndiaRose.Data.Model;
 
 namespace IndiaRose.Storage
 {
 	public interface ICollectionStorageService
 	{
-		ObservableCollection<Indiagram> Collection { get; } 
+		ObservableCollection<Indiagram> Collection { get; }
+
+		bool IsInitialized { get; }
+
+		event EventHandler Initialized;
+
+		Task InitializeAsync();
 
 		Indiagram Save(Indiagram indiagram);
 

@@ -21,6 +21,7 @@ namespace IndiaRose.Application
 
 		private IStorageService storageService;
 		private ISettingsService settingsService;
+		private ICollectionStorageService collectionStorageService;
 
 		protected override void Initialize(Android.App.Application application, Dictionary<string, Type> views, Dictionary<string, Type> dialogs)
 		{
@@ -37,6 +38,7 @@ namespace IndiaRose.Application
 
 			storageService = new StorageService(Environment.ExternalStorageDirectory.Path);
 			settingsService = new SettingsService();
+			collectionStorageService = new SqliteCollectionStorageService(new SQLitePlatformAndroid());
 
             RegisterInstance<IResourceService>(new ResourceService());
 			RegisterInstance<IEmailService>(new EmailService());
@@ -51,6 +53,7 @@ namespace IndiaRose.Application
 			RegisterInstance<IStorageService>(storageService);
             RegisterInstance<ISettingsService>(settingsService);
 			RegisterInstance<IXmlService>(new XmlService());
+			RegisterInstance<ICollectionStorageService>(collectionStorageService);
 
 			InitializeAsync();
 		}
@@ -59,8 +62,7 @@ namespace IndiaRose.Application
 		{
 			await storageService.InitializeAsync();
 			await settingsService.LoadAsync();
-
-			RegisterInstance<ICollectionStorageService>(new SqliteCollectionStorageService(new SQLitePlatformAndroid()));
+			await collectionStorageService.InitializeAsync();
 		}
 	}
 }

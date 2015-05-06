@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using IndiaRose.Data.Model;
 using IndiaRose.Storage.Sqlite.Model;
 using SQLite.Net;
@@ -13,15 +14,38 @@ namespace IndiaRose.Storage.Sqlite
 {
 	public class SqliteCollectionStorageService : ICollectionStorageService
 	{
-		//Attributes 
-		private readonly SQLiteConnection _connection;
+		public event EventHandler Initialized;
 
-		private readonly List<IndiagramSql> _databaseContent;
-		private readonly ObservableCollection<Indiagram> _collection;
+		//Attributes 
+		private readonly ISQLitePlatform _platform;
+		private SQLiteConnection _connection;
+
+		private List<IndiagramSql> _databaseContent;
+		private ObservableCollection<Indiagram> _collection;
+
+		private bool _isInitialized = false;
 
 		public ObservableCollection<Indiagram> Collection
 		{
 			get { return _collection; }
+		}
+
+		public bool IsInitialized
+		{
+			get { return _isInitialized; }
+			private set
+			{
+				if (!_isInitialized && value)
+				{
+					_isInitialized = true;
+
+					var handler = Initialized;
+					if (handler != null)
+					{
+						handler(this, EventArgs.Empty);
+					}
+				}
+			}
 		}
 
 		protected SQLiteConnection Connection
@@ -31,17 +55,22 @@ namespace IndiaRose.Storage.Sqlite
 
 		public SqliteCollectionStorageService(ISQLitePlatform platform)
 		{
+			_platform = platform;
+		}
+
+		public async Task InitializeAsync()
+		{
 			string dbPath = LazyResolver<IStorageService>.Service.DatabasePath;
 
 			// Initialize connection
-			_connection = new SQLiteConnection(platform, dbPath);
+			_connection = new SQLiteConnection(_platform, dbPath);
 			_connection.CreateTable<IndiagramSql>();
 
 			// Load all the database
 			_databaseContent = Connection.Table<IndiagramSql>().OrderBy(x => x.Position).ToList();
-			
+
 			// Load the collection
-			Category collectionRoot = new Category {Id = IndiagramSql.ROOT_PARENT};
+			Category collectionRoot = new Category { Id = IndiagramSql.ROOT_PARENT };
 			List<Indiagram> categories = new List<Indiagram> { collectionRoot };
 
 			for (int i = 0; i < categories.Count; ++i)
@@ -56,6 +85,8 @@ namespace IndiaRose.Storage.Sqlite
 			}
 			_collection = new ObservableCollection<Indiagram>(collectionRoot.Children);
 			Collection.ForEach(x => x.Parent = null);
+
+			IsInitialized = true;
 		}
 
 		public Indiagram Save(Indiagram indiagram)

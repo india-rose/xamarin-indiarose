@@ -4,6 +4,6 @@ namespace IndiaRose.Storage
 {
     public interface IXmlService
     {
-        void Initialize(Stream path);
+	    void InitializeCollection(Stream zipStream);
     }
 }
