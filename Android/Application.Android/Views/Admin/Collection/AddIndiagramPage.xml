@@ -14,9 +14,7 @@
 		<DataTemplate Key="PositionTemplate">
 			<LinearLayout XmlStyle="{Resource SpinnerItemLayoutStyle}">
 				<TextView XmlStyle="{Resource SpinnerItemTextStyle}"
-				          Text="{Binding Position}" />
-				<TextView XmlStyle="{Resource SpinnerItemTextStyle}"
-				          Text="{Binding Text, Converter={Resource StringFormatConverter}, ConverterParameter=' : {0}'}" />
+				          Text="{Binding Text}" />
 			</LinearLayout>
 		</DataTemplate>
 	</Resources>
