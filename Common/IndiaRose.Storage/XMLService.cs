@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Linq;
 using IndiaRose.Data.Model;
 using SharpCompress.Archive;
@@ -67,7 +68,7 @@ namespace IndiaRose.Storage
 			var archive = ArchiveFactory.Open(stream);
 
 			List<Category> listCategories = new List<Category>();
-			foreach (var t in archive.Entries)
+			foreach (var t in archive.Entries.Where(x => x.Key.EndsWith(".xml")))
 			{
 				var xd = XDocument.Load(t.OpenEntryStream());
 
