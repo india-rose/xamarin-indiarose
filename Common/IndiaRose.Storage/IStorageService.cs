@@ -21,5 +21,6 @@ namespace IndiaRose.Storage
 	    string GenerationPath(string type, string extension);
 
 		Task InitializeAsync();
+	    void Garbage();
 	}
 }
