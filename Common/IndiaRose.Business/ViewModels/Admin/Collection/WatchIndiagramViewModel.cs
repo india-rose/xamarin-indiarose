@@ -16,6 +16,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
 	public class WatchIndiagramViewModel : AbstractCollectionViewModel
 	{
+        private IMediaService MediaService
+        {
+            get { return LazyResolver<IMediaService>.Service; }
+        }
         private ITextToSpeechService TtsService
         {
             get { return LazyResolver<ITextToSpeechService>.Service; }
@@ -36,7 +40,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 				}
 			}
 		}
-
 		public IndiagramContainer IndiagramContainer
 		{
 			get { return _indiagramContainer; }
@@ -85,7 +88,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
 	    private void ListenAction()
 	    {
-            TtsService.ReadText(IndiagramContainer.Indiagram.Text);
+            if(IndiagramContainer.Indiagram.HasCustomSound)
+                MediaService.PlaySound(IndiagramContainer.Indiagram.SoundPath);
+            else
+                TtsService.ReadText(IndiagramContainer.Indiagram.Text);
 	    }
 	}
 }

@@ -1,9 +1,12 @@
 ﻿#region Usings
 
+using System;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using IndiaRose.Interfaces;
 using Storm.Mvvm;
+using Storm.Mvvm.Inject;
 
 #endregion
 
@@ -18,5 +21,11 @@ namespace IndiaRose.Application.Activities.Admin
 			SetContentView(Resource.Layout.Admin_HomePage);
 			SetViewModel(Container.Locator.AdminHomeViewModel);
 		}
+
+	    protected override void OnStop()
+	    {
+            LazyResolver<ITextToSpeechService>.Service.Close();
+	        base.OnStop();
+	    }
 	}
 }

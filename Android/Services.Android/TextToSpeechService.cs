@@ -72,5 +72,11 @@ namespace IndiaRose.Services.Android
                     });
             }
         }
+
+        public void Close()
+        {
+            _speakerSpeech.Stop();
+            _speakerSpeech.Shutdown();
+        }
     }
 }
