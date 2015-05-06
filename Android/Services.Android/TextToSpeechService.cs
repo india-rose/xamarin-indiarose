@@ -22,19 +22,21 @@ namespace IndiaRose.Services.Android
             get { return LazyResolver<ILocalizationService>.Service; }
         }
 
-        private string Text;
-        private TextToSpeech speakerSpeech;
+        private readonly TextToSpeech _speakerSpeech;
+
+        public TextToSpeechService()
+        {
+            _speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity, this);
+        }
 
         public void ReadText(string text)
         {
-            Text = text;
-            speakerSpeech=new TextToSpeech(ActivityService.CurrentActivity,this);
-            speakerSpeech.SetLanguage(Locale.Default);
+            _speakerSpeech.Speak(text, QueueMode.Add, null);
         }
 
         public void OnInit(OperationResult status)
         {
-            speakerSpeech.Speak(Text, QueueMode.Add, null);
+            _speakerSpeech.SetLanguage(Locale.Default);
         }
     }
 }
