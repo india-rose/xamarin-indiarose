@@ -22,11 +22,14 @@ namespace IndiaRose.Services.Android
             get { return LazyResolver<ILocalizationService>.Service; }
         }
 
-        private readonly TextToSpeech _speakerSpeech;
+        private TextToSpeech _speakerSpeech;
 
         public TextToSpeechService()
         {
-            _speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity, this);
+			ActivityService.ActivityChanged += (o, e) =>
+			{
+				_speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity, this);
+			};
         }
 
         public void ReadText(string text)

@@ -9,20 +9,7 @@ namespace IndiaRose.Storage
 {
     public class XmlService : IXmlService
     {
-        public static void Initialize(Stream path)
-        {
-            var archive = ArchiveFactory.Open(path);
-
-            List<Category> listCategories = new List<Category>();
-            foreach (var t in archive.Entries)
-            {
-                var xd = XDocument.Load(t.OpenEntryStream());
-
-                FillIndiagram(listCategories, xd, t.Key);
-            }
-        }
-
-        private static void FillIndiagram(List<Category> listCategories, XDocument xd, string key)
+        private void FillIndiagram(List<Category> listCategories, XDocument xd, string key)
         {
 
             XElement xe = xd.Element("indiagram");
@@ -75,9 +62,17 @@ namespace IndiaRose.Storage
             }
         }
 
-        void IXmlService.Initialize(Stream path)
+        public void Initialize(Stream stream)
         {
-            Initialize(path);
+			var archive = ArchiveFactory.Open(stream);
+
+			List<Category> listCategories = new List<Category>();
+			foreach (var t in archive.Entries)
+			{
+				var xd = XDocument.Load(t.OpenEntryStream());
+
+				FillIndiagram(listCategories, xd, t.Key);
+			}
         }
     }
 }
