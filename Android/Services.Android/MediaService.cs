@@ -11,9 +11,7 @@ using IndiaRose.Interfaces;
 using Java.IO;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
-using Environment = Android.OS.Environment;
 using File = Java.IO.File;
-using Path = System.IO.Path;
 using Uri = Android.Net.Uri;
 
 namespace IndiaRose.Services.Android
@@ -66,6 +64,7 @@ namespace IndiaRose.Services.Android
                 {
                     if (result == Result.Ok)
                     {
+                        PerformCrop(Uri.FromFile(file));
                         callbackResult(path);
                     }
                     else
@@ -75,6 +74,23 @@ namespace IndiaRose.Services.Android
                 });
             });
         }
+
+        private void PerformCrop(Uri picUri)
+        {
+                Intent cropIntent = new Intent("com.android.camera.action.CROP");
+                // indicate image type and Uri
+                cropIntent.SetDataAndType(picUri, "image/*");
+                // set crop properties
+                cropIntent.PutExtra("crop", "true");
+                // indicate aspect of desired crop
+                cropIntent.PutExtra("aspectX", 1);
+                cropIntent.PutExtra("aspectY", 1);
+                // retrieve data on return
+                cropIntent.PutExtra(MediaStore.ExtraOutput, picUri);
+                // start the activity - we handle returning in onActivityResult
+                ActivityService.StartActivityForResult(cropIntent, (result, data) => {});
+        }
+
         private string SavePhoto(Bitmap bitmap)
         {
             string filename = StorageService.GenerateFilename(StorageType.Image, "png");
@@ -109,6 +125,8 @@ namespace IndiaRose.Services.Android
                             Bitmap photo = BitmapFactory.DecodeFileDescriptor(fileDescriptor);
                             parcelFileDescriptor.Close();
                             path = SavePhoto(photo);
+
+                            PerformCrop(Uri.FromFile(new File(path)));
                         }
                         resultCallback(path);
                     });
