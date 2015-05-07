@@ -23,12 +23,10 @@
 		       android:textColor="@android:color/black" />
 	</Resources>
 
-	<LinearLayout XmlStyle="{Resource ContainerStyle}"
-	              android:layout_below="@id/Logo">
+	<LinearLayout XmlStyle="{Resource ContainerStyle}">
 
 		<TextView XmlStyle="{Resource TextViewStyle}"
 		          android:id="Label_send_logs"
-		          android:layout_below="@id/Logo"
 		          Text="{Tr Text, Uid=Server_SynchroStart}" />
 
 		<ProgressBar
