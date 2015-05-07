@@ -1,360 +1,368 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using Android.Graphics;
-//using Android.Util;
-//using Android.Views;
-//using Android.Widget;
-//using IndiaRose.Data.Model;
-//using Java.Util;
-//using Exception = Java.Lang.Exception;
+﻿using System;
+using System.Collections.Generic;
+using Android.Content;
+using Android.Graphics;
+using Android.Util;
+using Android.Views;
+using Android.Widget;
+using IndiaRose.Data.Model;
+using IndiaRose.Interfaces;
+using Java.Util;
+using Storm.Mvvm.Inject;
 
-//namespace IndiaRose.Framework.Views
-//{
+namespace IndiaRose.Framework.Views
+{
 
-//    public class SentenceArea : View, View.IOnTouchListener
-//    {
-//        private readonly object _lock = new object();
+    public class SentenceArea : RelativeLayout, View.IOnTouchListener
+    {
+        private readonly object _lock = new object();
 
-//        protected RelativeLayout m_layout = null;
+        protected List<IndiagramView> ToPlayView = new List<IndiagramView>();
 
-//        protected List<IndiagramView> m_views = new List<IndiagramView>();
+        protected ITextToSpeechService TextToSpeechService
+        {
+            get { return LazyResolver<ITextToSpeechService>.Service; }
+        }
 
-//        protected int m_id = 0x2A;
+        protected ISettingsService SettingsService
+        {
+            get { return LazyResolver<ISettingsService>.Service; }
+        }
 
-//        protected int m_numberOfIndiagram = 0;
-
-
-//        // reading sentence relative variable
-
-//        protected VoiceReader m_voiceEngine;
-//        protected int m_readingIndex = 0;
-//        protected bool m_isReading = false;
-//        protected Timer m_delayReadingTimer = new Timer();
-
-//        public SentenceArea(RelativeLayout _layout, int _width, VoiceReader _voiceEngine)
-//        {
-//            m_layout = _layout;
+        protected int ActId;
+        protected int ReadingIndex;
+        protected int MaxNumberOfIndiagram;
+        protected bool IsReading { get; set; }
+        protected Timer MDelayReadingTimer = new Timer();
 
 
-//            m_numberOfIndiagram = _width / IndiagramView.DefaultWidth - 1;
-//            m_voiceEngine = _voiceEngine;
+        public SentenceArea(Context context)
+            : base(context)
+        {
+            Initialize();
+        }
 
-//            this.m_layout.SetOnTouchListener(this);
+        public SentenceArea(Context context, IAttributeSet attrs)
+            : base(context, attrs)
+        {
+            Initialize();
+        }
 
-//            // Init play button
-//            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
-//                RelativeLayout.LayoutParams.WrapContent,
-//                RelativeLayout.LayoutParams.WrapContent);
-//            lp.AddRule(LayoutRules.AlignParentRight);
-//            lp.AddRule(LayoutRules.CenterVertical);
+        public SentenceArea(Context context, IAttributeSet attrs, int defStyleAttr)
+            : base(context, attrs, defStyleAttr)
+        {
+            Initialize();
+        }
 
-//            /*try
-//            {
-//                IndiagramView view = AppData.playButtonIndiagram.getView();
-//                this.m_layout.AddView(view, lp);
+        public void Initialize()
+        {
+            Id = 0x2A;
+            ActId = Id;
+            MaxNumberOfIndiagram = Width / IndiagramView.DefaultWidth - 1;
 
-//                Mapper.connect(view, "touchEvent", this, "PlayButtonEvent");
-//            }
-//            catch (Mapper e)
-//            {
-//                Log.Wtf("IndiagramBrowser", e);
-//            }*/
-//        }
+            SetOnTouchListener(this);
 
-//        public bool CanAddIndiagram()
-//        {
-//            return (m_views.Count < m_numberOfIndiagram && !IsReading());
-//        }
+            // Init play button
+            LayoutParams lp = new LayoutParams(
+                ViewGroup.LayoutParams.WrapContent,
+                ViewGroup.LayoutParams.WrapContent);
+            lp.AddRule(LayoutRules.AlignParentRight);
+            lp.AddRule(LayoutRules.CenterVertical);
 
-//        public bool IsReading()
-//        {
-//            return m_isReading;
-//        }
+            /*try
+            {
+                IndiagramView view = AppData.playButtonIndiagram.getView();
+                this.m_layout.AddView(view, lp);
 
-//        public bool Add(IndiagramView _view)
-//        {
-//            if (CanAddIndiagram())
-//            {
-//                lock (_lock)
-//                {
-//                    _view.Id = m_id++;
-//                    m_views.Add(_view);
-//                    Post(RefreshLayout);
-//                }
-//                /*try
-//            {
-//                Mapper.emit(this, "indiagramAdded", _view);
-//                Mapper.connect(_view, "touchEvent", this, "indiagramEvent");
-//            }
-//            catch (MapperException e)
-//            {
-//                Log.Wtf("PhraseArea", e);
-//            }*/
-//                return true;
-//            }
-//            else
-//            {
-//                return false;
-//            }
-//        }
+                Mapper.connect(view, "touchEvent", this, "PlayButtonEvent");
+            }
+            catch (Mapper e)
+            {
+                Log.Wtf("IndiagramBrowser", e);
+            }*/
+        }
 
-//        public void Remove(IndiagramView _view)
-//        {
-//            if (!IsReading() && m_views.Count > 0)
-//            {
-//                RemoveIndiagram(_view);
-//            }
-//        }
+        public bool CanAddIndiagram()
+        {
+            return (ToPlayView.Count < MaxNumberOfIndiagram && !IsReading);
+        }
 
-//        public void RemoveAll()
-//        {
-//            if (!IsReading() && m_views.Count > 0)
-//            {
-//                Post(RemoveAllHandler);
-//            }
-//        }
+        public bool Add(IndiagramView view)
+        {
+            if (CanAddIndiagram())
+            {
+                lock (_lock)
+                {
+                    view.Id = ActId++;
+                    ToPlayView.Add(view);
+                    Post(RefreshLayout);
+                }
+                /*try
+            {
+                Mapper.emit(this, "indiagramAdded", _view);
+                Mapper.connect(_view, "touchEvent", this, "indiagramEvent");
+            }
+            catch (MapperException e)
+            {
+                Log.Wtf("PhraseArea", e);
+            }*/
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-//        protected void RemoveAllHandler()
-//        {
-//            IndiagramView[] views = m_views.ToArray();
-//            foreach (IndiagramView view in views)
-//            {
-//                RemoveIndiagram(view);
-//            }
+        public void Remove(IndiagramView view)
+        {
+            if (!IsReading && ToPlayView.Count > 0)
+            {
+                RemoveIndiagram(view);
+            }
+        }
 
-//            m_views.Clear();
-//            m_id = 0x2A;
-//        }
+        public void RemoveAll()
+        {
+            if (!IsReading && ToPlayView.Count > 0)
+            {
+                Post(RemoveAllHandler);
+            }
+        }
 
-//        protected void RemoveIndiagram(IndiagramView _view)
-//        {
-//            lock (_lock)
-//            {
-//                m_layout.RemoveView(_view);
-//                m_views.Remove(_view);
+        protected void RemoveAllHandler()
+        {
+            ToPlayView.ForEach(RemoveIndiagram);
+            IndiagramView[] views = ToPlayView.ToArray();
+            foreach (IndiagramView view in views)
+            {
+                RemoveIndiagram(view);
+            }
 
-//                Post(RefreshLayout);
-//            }
+            ToPlayView.Clear();
+            ActId = Id;
+        }
 
-//            /*try
-//            {
-//                Mapper.disconnect(_view);
-//                Mapper.emit(this, "indiagramRemoved", _view);
-//            }
-//            catch (MapperException e)
-//            {
-//                Log.Wtf("PhraseArea", e);
-//            }*/
-//        }
+        protected void RemoveIndiagram(IndiagramView view)
+        {
+            lock (_lock)
+            {
+                RemoveView(view);
+                ToPlayView.Remove(view);
 
-//        public bool HasIndiagram(Indiagram _item)
-//        {
-//            lock (_lock)
-//            {
-//                for (int i = 0; i < m_views.Count; ++i)
-//                {
-//                    if (m_views[i].Indiagram.Equals(_item))
-//                    {
-//                        return true;
-//                    }
-//                }
-//                return false;
-//            }
-//        }
+                Post(RefreshLayout);
+            }
 
-//        public List<Indiagram> GetIndiagramsList()
-//        {
-//            lock (_lock)
-//            {
-//                List<Indiagram> result = new List<Indiagram>();
-//                foreach (IndiagramView i in m_views)
-//                {
-//                    result.Add(i.Indiagram);
-//                }
+            /*try
+            {
+                Mapper.disconnect(_view);
+                Mapper.emit(this, "indiagramRemoved", _view);
+            }
+            catch (MapperException e)
+            {
+                Log.Wtf("PhraseArea", e);
+            }*/
+        }
 
-//                return result;
-//            }
-//        }
+        public bool HasIndiagram(Indiagram item)
+        {
+            lock (_lock)
+            {
+                for (int i = 0; i < ToPlayView.Count; ++i)
+                {
+                    if (ToPlayView[i].Indiagram.Equals(item))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
 
-//        protected void RefreshLayout()
-//        {
-//            Log.Error("Sentence Area", "Je raffraichi");
+        public List<Indiagram> GetIndiagramsList()
+        {
+            lock (_lock)
+            {
+                List<Indiagram> result = new List<Indiagram>();
+                ToPlayView.ForEach(x=>result.Add(x.Indiagram));
 
-//            // TODO Normalement Bon
-//            for (int i = 0; i < m_views.Count; ++i)
-//            {
-//                m_layout.RemoveView(m_views[i]);
-//            }
+                return result;
+            }
+        }
 
-//            for (int i = 0; i < m_views.Count; ++i)
-//            {
-//                RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
-//                    RelativeLayout.LayoutParams.WrapContent,
-//                    RelativeLayout.LayoutParams.WrapContent);
-//                lp.AddRule(LayoutRules.CenterVertical);
+        protected void RefreshLayout()
+        {
+            // TODO Normalement Bon
+            ToPlayView.ForEach(RemoveView);
 
-//                if (i > 0)
-//                {
-//                    lp.AddRule(LayoutRules.RightOf, m_views[i - 1].Id);
-//                }
-//                else
-//                {
-//                    lp.AddRule(LayoutRules.AlignParentLeft);
-//                }
+            for (int i = 0; i < ToPlayView.Count; ++i)
+            {
+                LayoutParams lp = new LayoutParams(
+                    ViewGroup.LayoutParams.WrapContent,
+                    ViewGroup.LayoutParams.WrapContent);
+                lp.AddRule(LayoutRules.CenterVertical);
 
-//                m_layout.AddView(m_views[i], lp);
-//            }
-//        }
+                if (i > 0)
+                {
+                    lp.AddRule(LayoutRules.RightOf, ToPlayView[i - 1].Id);
+                }
+                else
+                {
+                    lp.AddRule(LayoutRules.AlignParentLeft);
+                }
 
-//        private void PlayButtonEvent(IndiagramView _view, MotionEvent _event /*,EventResult _result*/)
-//        {
-//            throw new NotImplementedException();
-//            /*try
-//            {
-//                Mapper.emit(this, "PlayButtonEvent", _view, _event, _result);
-//            }
-//            catch (Exception e)
-//            {
-//                Log.Wtf("SentenceArea", e);
-//            }*/
-//        }
+                AddView(ToPlayView[i], lp);
+            }
+        }
 
-//        private void IndiagramEvent(IndiagramView _view, MotionEvent _event /*,EventResult _result*/)
-//        {
-//            throw new NotImplementedException();
-//            /*
-//            try
-//            {
-//                Mapper.emit(this, "IndiagramEvent", _view, _event, _result);
-//            }
-//            catch (MapperException e)
-//            {
-//                Log.Wtf("SentenceArea", e);
-//            }*/
-//        }
+        private void PlayButtonEvent(IndiagramView view, MotionEvent _event /*,EventResult _result*/)
+        {
+            throw new NotImplementedException();
+            /*try
+            {
+                Mapper.emit(this, "PlayButtonEvent", _view, _event, _result);
+            }
+            catch (Exception e)
+            {
+                Log.Wtf("SentenceArea", e);
+            }*/
+        }
 
-//        bool IOnTouchListener.OnTouch(View _view, MotionEvent _event)
-//        {
-//            throw new NotImplementedException();
-//            /*
-//            Log.Wtf("SentenceArea", "onTouch layout !!");
-//            try
-//            {
-//                EventResult result = new EventResult();
-//                Mapper.emit(this, "layoutEvent", _view, _event, result);
-//                return result.eventResult;
-//            }
-//            catch (MapperException e)
-//            {
-//                Log.Wtf("SentenceArea", e);
-//            }
-//            return false;*/
-//        }
+        private void IndiagramEvent(IndiagramView _view, MotionEvent _event /*,EventResult _result*/)
+        {
+            throw new NotImplementedException();
+            /*
+            try
+            {
+                Mapper.emit(this, "IndiagramEvent", _view, _event, _result);
+            }
+            catch (MapperException e)
+            {
+                Log.Wtf("SentenceArea", e);
+            }*/
+        }
 
-//        public void Read()
-//        {
-//            if (!m_isReading && m_views.Count > 0)
-//            {
-//                lock (_lock)
-//                {
-//                    // if the reading process is not already launch and there is at
-//                    // least one indiagram in the sentence.
-//                    if (!m_isReading && m_views.Count > 0)
-//                    {
-//                        m_readingIndex = 0;
-//                        m_isReading = true;
+        bool IOnTouchListener.OnTouch(View _view, MotionEvent _event)
+        {
+            throw new NotImplementedException();
+            /*
+            Log.Wtf("SentenceArea", "onTouch layout !!");
+            try
+            {
+                EventResult result = new EventResult();
+                Mapper.emit(this, "layoutEvent", _view, _event, result);
+                return result.eventResult;
+            }
+            catch (MapperException e)
+            {
+                Log.Wtf("SentenceArea", e);
+            }
+            return false;*/
+        }
 
-//                        /*try
-//                        {
-//                            Mapper.emit(this, "startReading");
-//                            Mapper.connect(m_voiceEngine, "readingComplete",
-//                                this, "endReading");
-//                        }
-//                        catch (MapperException e)
-//                        {
-//                            Log.Wtf("SentenceArea", e);
-//                        }*/
+        public void Read()
+        {
+            if (!IsReading && ToPlayView.Count > 0)
+            {
+                lock (_lock)
+                {
+                    // if the reading process is not already launch and there is at
+                    // least one indiagram in the sentence.
+                    if (!IsReading && ToPlayView.Count > 0)
+                    {
+                        ReadingIndex = 0;
+                        IsReading = true;
 
-//                        ReadSentence();
-//                    }
-//                }
-//            }
-//        }
+                        /*try
+                        {
+                            Mapper.emit(this, "startReading");
+                            Mapper.connect(m_voiceEngine, "readingComplete",
+                                this, "endReading");
+                        }
+                        catch (MapperException e)
+                        {
+                            Log.Wtf("SentenceArea", e);
+                        }*/
 
-//        protected void ReadSentence()
-//        {
-//            throw new NotImplementedException();
+                        ReadSentence();
+                    }
+                }
+            }
+        }
 
-//            //Log.Error("Read", "readSentence");
-//            //if (m_isReading)
-//            //{
-//            //    // if there is more view to read.
-//            //    if (m_readingIndex < m_views.Count)
-//            //    {
-//            //        if (m_readingIndex > 0
-//            //            && AppData.settings.enableReadingReinforcer)
-//            //        {
-//            //            // disable reinforcer background on the last read indiagram.
-//            //            m_views[m_readingIndex - 1].setIndiagramBackground(Color.Transparent);
-//            //        }
-//            //        IndiagramView v = m_views[m_readingIndex];
-//            //        if (AppData.settings.enableReadingReinforcer)
-//            //        {
-//            //            v.setIndiagramBackground(AppData.settings.backgroundReinforcerReading);
-//            //        }
-//            //        m_voiceEngine.read(v.Indiagram);
-//            //    }
-//            //    else
-//            //    {
-//            //        if (m_views.Count > 0)
-//            //        {
-//            //            m_views[m_views.Count - 1].setIndiagramBackground(Color.Transparent);
-//            //        }
-//            //        m_isReading = false;
-//            //        /*try
-//            //        {
-//            //            Mapper.disconnect(m_voiceEngine, "readingComplete",
-//            //                this, "endReading");
-//            //            Mapper.emit(this, "completeReading");
-//            //        }
-//            //        catch (MapperException e)
-//            //        {
-//            //            Log.Wtf("SentenceArea", e);
-//            //        }*/
-//            //    }
-//            //}
-//        }
+        protected void ReadSentence()
+        {
+            if (IsReading)
+            {
+                // if there is more view to read.
+                if (ReadingIndex < ToPlayView.Count)
+                {
+                    if (ReadingIndex > 0
+                        && SettingsService.IsReinforcerEnabled)
+                    {
+                        // disable reinforcer background on the last read indiagram.
+                        //todo a voir c'est quoi le indiagrambackground
+                        //ToPlayView[ReadingIndex - 1].setIndiagramBackground(Color.Transparent);
+                    }
+                    IndiagramView v = ToPlayView[ReadingIndex];
+                    if (SettingsService.IsReinforcerEnabled)
+                    {
+                        //todo pareil
+                        //v.setIndiagramBackground(SettingsService.ReinforcerColor);
+                    }
+                    TextToSpeechService.ReadText(v.Indiagram.Text);
+                }
+                else
+                {
+                    if (ToPlayView.Count > 0)
+                    {
+                        //idem
+                        //ToPlayView[ToPlayView.Count - 1].setIndiagramBackground(Color.Transparent);
+                    }
+                    IsReading = false;
+                    /*try
+                    {
+                        Mapper.disconnect(m_voiceEngine, "readingComplete",
+                            this, "endReading");
+                        Mapper.emit(this, "completeReading");
+                    }
+                    catch (MapperException e)
+                    {
+                        Log.Wtf("SentenceArea", e);
+                    }*/
+                }
+            }
+        }
 
-//        public void EndReading(Indiagram _indiagram)
-//        {
-//            throw new NotImplementedException();
-//            /*
-//        long _value;
-//        if ((long) AppData.settings.wordsReadingDelay < (long) 0.6)
-//        {
-//            _value = (long) (0.6*1000);
-//        }
-//        else
-//        {
-//            _value = (long) AppData.settings.wordsReadingDelay*1000;
-//        }
-//        if (m_isReading)
-//        {
-//            m_delayReadingTimer.Cancel();
-//            m_delayReadingTimer.Purge();
-//            m_delayReadingTimer = new Timer();
-//            m_delayReadingTimer.Schedule(new TimerTask()
-//            {
+        public void EndReading(Indiagram indiagram)
+        {
+            /*
+        long _value;
+        if ((long) AppData.settings.wordsReadingDelay < (long) 0.6)
+        {
+            _value = (long) (0.6*1000);
+        }
+        else
+        {
+            _value = (long) AppData.settings.wordsReadingDelay*1000;
+        }
+        if (m_isReading)
+        {
+            m_delayReadingTimer.Cancel();
+            m_delayReadingTimer.Purge();
+            m_delayReadingTimer = new Timer();
+            m_delayReadingTimer.Schedule(new TimerTask()
+            {
                 
-//            public void run() {
-//                m_readingIndex++;
-//                readSentence();
-//            }
-//        }
-//        ,
-//            _value)
-//            ;
-//        }*/
-//        }
-//    }
-//}
+            public void run() {
+                m_readingIndex++;
+                readSentence();
+            }
+        }
+        ,
+            _value)
+            ;
+        }*/
+        }
+    }
+}
