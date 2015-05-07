@@ -2,16 +2,7 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 XmlStyle="{Resource BaseRootLayoutStyle}">
-	<!--Button add & next-->
-	<LinearLayout XmlStyle="{Resource ValidationButtonLinearLayoutStyle}"
-	              android:id="buttons">
 
-		<Button XmlStyle="{Resource MediumBlueButtonStyle}"
-		        Text="{Tr Text, Uid=CollectionManagement_Next}"
-		        Click="{Binding NextCommand}" />
-	</LinearLayout>
-
-	<!-- Browser -->
 	<IndiagramBrowserView android:layout_width="match_parent"
 	                      android:layout_height="match_parent"
 	                      android:layout_above="@id/buttons"
