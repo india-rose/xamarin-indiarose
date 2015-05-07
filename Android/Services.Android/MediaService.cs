@@ -105,7 +105,6 @@ namespace IndiaRose.Services.Android
         {
             return AsyncHelper.CreateAsyncFromCallback<string>(resultCallback =>
             {
-
                 Intent intent = new Intent();
                 // Show only images, no videos or anything else
                 intent.SetType("image/*");
