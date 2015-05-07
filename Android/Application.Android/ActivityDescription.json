@@ -277,7 +277,20 @@
                 "outputFile": "Admin_Collection_Dialogs_ChooseCategoryPage.axml"
             }
         },
-
+        /* =================
+         * = / Views/User  =
+         * =================
+         */        
+        { // Home Activity
+            "activity": {
+                "className": "UserHomeActivity",
+                "namespaceName": "IndiaRose.Application.Activities.User"
+            },
+            "view": {
+                "inputFile": "Views/User/HomePage.xml",
+                "outputFile": "User_HomePage.axml"
+            }
+        },
         /* =================
          * = / description =
          * =================

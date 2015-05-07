@@ -6,6 +6,7 @@ using IndiaRose.Business.ViewModels.Admin.Collection;
 using IndiaRose.Business.ViewModels.Admin.Collection.Dialogs;
 using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Business.ViewModels.Admin.Settings.Dialogs;
+using IndiaRose.Business.ViewModels.User;
 using Storm.Mvvm.Inject;
 
 #endregion
@@ -52,7 +53,10 @@ namespace IndiaRose.Business
             container.RegisterFactory(x => new SelectCategoryActionViewModel());
             container.RegisterFactory(x => new DeleteIndiagramWarningViewModel());
             container.RegisterFactory(x => new DeleteCategoryWarningViewModel());
-			container.RegisterFactory(x => new DeleteCategoryConfirmationViewModel());
+            container.RegisterFactory(x => new DeleteCategoryConfirmationViewModel());
+
+            //User
+            container.RegisterFactory(x => new UserHomeViewModel());
 
 			// /
 			container.RegisterFactory(x => new ImportingCollectionViewModel());
@@ -213,6 +217,13 @@ namespace IndiaRose.Business
 		{
 			get { return _container.Resolve<DeleteCategoryConfirmationViewModel>(); }
 		}
+        #endregion
+
+        #region ViewModels : /User
+        public UserHomeViewModel UserHomeViewModel
+        {
+            get { return _container.Resolve<UserHomeViewModel>(); }
+        }
         #endregion
     }
 }

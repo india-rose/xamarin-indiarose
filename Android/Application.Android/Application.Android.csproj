@@ -93,6 +93,7 @@
     <Compile Include="Activities\Admin\ServerSynchronizationActivity.cs" />
     <Compile Include="Activities\Admin\MailErrorDialog.cs" />
     <Compile Include="Activities\ImportingCollectionDialog.cs" />
+    <Compile Include="Activities\User\UserHomeActivity.cs" />
     <Compile Include="Container.cs" />
     <Compile Include="IndiaRoseApplication.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -202,7 +203,6 @@
     <None Include="Views\Admin\InstallTextToSpeechPage.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Activities\User\" />
     <Folder Include="Resources\drawable-ldpi\" />
     <Folder Include="Resources\layout\" />
     <Folder Include="Resources\raw\" />

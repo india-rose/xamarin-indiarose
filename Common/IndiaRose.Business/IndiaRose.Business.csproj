@@ -41,7 +41,6 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <Folder Include="ViewModels\User\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dialogs.cs" />
@@ -79,6 +78,7 @@
     <Compile Include="ViewModels\Admin\HomeViewModel.cs" />
     <Compile Include="ViewModels\Admin\InstallVoiceSynthesisViewModel.cs" />
     <Compile Include="ViewModels\ImportingCollectionViewModel.cs" />
+    <Compile Include="ViewModels\User\UserHomeViewModel.cs" />
     <Compile Include="Views.cs" />
   </ItemGroup>
   <ItemGroup>
