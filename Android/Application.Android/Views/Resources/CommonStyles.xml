@@ -14,8 +14,9 @@
   
   <Style Key="LinkStyle"
          android:layout_width="wrap_content"
-	       android:layout_height="wrap_content"
+	     android:layout_height="wrap_content"
          android:autoLink="web"
+		 android:textSize="18dip"
          />
 
 	<Style Key="LogoStyle"

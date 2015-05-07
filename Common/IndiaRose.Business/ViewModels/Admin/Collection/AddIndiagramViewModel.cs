@@ -194,7 +194,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             {
                 excludedIndiagram = Indiagram.Indiagram;
             }
-            NavigationService.Navigate(Views.ADMIN_COLLECTION_SELECTCATEGORY, new Dictionary<string, object>
+			MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_CHOOSE, new Dictionary<string, object>
 			{
 				{"ExcludedIndiagram", excludedIndiagram},
 				{"SelectedCallback", (Action<Category>) OnCategorySelected}

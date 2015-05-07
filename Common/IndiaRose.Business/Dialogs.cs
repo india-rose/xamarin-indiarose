@@ -17,6 +17,8 @@
 	    public const string ADMIN_COLLECTION_SOUNDCHOICE = "Admin_Collection_SoundChoiceDialog";
 	    public const string ADMIN_COLLECTION_RECORDSOUND = "Admin_Collection_RecordSoundDialog";
 
+
+		public const string ADMIN_COLLECTION_CHOOSE = "Admin_Collection_ChooseCategoryDialog";
 		public const string ADMIN_COLLECTION_SELECTCATEGORY = "Admin_Collection_SelectCategoryDialog";
 		public const string ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY = "Admin_Collection_ExploreCollection_CategoryDialog";
 		public const string ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM = "Admin_Collection_ExploreCollection_IndiagramDialog";

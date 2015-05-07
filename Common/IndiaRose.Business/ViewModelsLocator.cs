@@ -40,9 +40,9 @@ namespace IndiaRose.Business
             container.RegisterFactory(x => new WatchIndiagramViewModel());
             container.RegisterFactory(x => new CollectionManagementViewModel());
             container.RegisterFactory(x => new AddIndiagramViewModel());
-			container.RegisterFactory(x => new SelectCategoryViewModel());
 
             //Admin/Collection/Dialogs
+			container.RegisterFactory(x => new ChooseCategoryViewModel());
             container.RegisterFactory(x => new ExploreCollectionCategoryViewModel());
 			container.RegisterFactory(x => new ExploreCollectionIndiagramViewModel());
             container.RegisterFactory(x => new ImageChoiceViewModel());
@@ -149,13 +149,14 @@ namespace IndiaRose.Business
             get { return _container.Resolve<WatchIndiagramViewModel>(); }
 	    }
 
-		public SelectCategoryViewModel AdminCollectionSelectCategoryViewModel
-		{
-			get { return _container.Resolve<SelectCategoryViewModel>(); }
-		}
         #endregion
 
         #region ViewModels : /Admin/Collection/Dialogs
+
+		public ChooseCategoryViewModel AdminCollectionDialogsChooseCategoryViewModel
+		{
+			get { return _container.Resolve<ChooseCategoryViewModel>(); }
+		}
 
 		public ExploreCollectionCategoryViewModel AdminCollectionDialogsExploreCollectionCategoryViewModel
 	    {
