@@ -1,4 +1,6 @@
-﻿/*using System.Collections.Generic;
+﻿/*
+ * 
+ * using System.Collections.Generic;
 using Android.Graphics;
 using Android.Util;
 using Android.Views;
@@ -11,6 +13,7 @@ namespace IndiaRose.Framework.Views
 
 public class SentenceArea : View.IOnTouchListener
 {
+    private readonly object _lock = new object();
 
     protected RelativeLayout m_layout = null;
 
@@ -22,19 +25,20 @@ public class SentenceArea : View.IOnTouchListener
 
     protected int m_numberOfIndiagram = 0;
 
+    
     // reading sentence relative variable
+
     protected VoiceReader m_voiceEngine;
     protected int m_readingIndex = 0;
     protected bool m_isReading = false;
     protected Timer m_delayReadingTimer = new Timer();
 
-    public SentenceArea(RelativeLayout _layout, int _width,
-        VoiceReader _voiceEngine)
+    public SentenceArea(RelativeLayout _layout, int _width, VoiceReader _voiceEngine)
     {
         m_layout = _layout;
         m_handler = new SentenceAreaHandler(this);
 
-        m_numberOfIndiagram = _width/IndiagramView.DefaultWidth() - 1;
+        m_numberOfIndiagram = _width/IndiagramView.DefaultWidth- 1;
         m_voiceEngine = _voiceEngine;
 
         this.m_layout.SetOnTouchListener(this);
@@ -43,8 +47,8 @@ public class SentenceArea : View.IOnTouchListener
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
             RelativeLayout.LayoutParams.WrapContent,
             RelativeLayout.LayoutParams.WrapContent);
-        lp.AddRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-        lp.AddRule(RelativeLayout.CENTER_VERTICAL);
+        lp.AddRule(LayoutRules.AlignParentRight);
+        lp.AddRule(LayoutRules.CenterVertical);
 
         try
         {
@@ -53,7 +57,7 @@ public class SentenceArea : View.IOnTouchListener
 
             Mapper.connect(view, "touchEvent", this, "PlayButtonEvent");
         }
-        catch (MapperException e)
+        catch (Mapper e)
         {
             Log.Wtf("IndiagramBrowser", e);
         }
@@ -73,7 +77,7 @@ public class SentenceArea : View.IOnTouchListener
     {
         if (CanAddIndiagram())
         {
-            synchronized(this)
+            lock(_lock)
             {
                 _view.Id = m_id++;
                 m_views.Add(_view);
@@ -126,7 +130,7 @@ public class SentenceArea : View.IOnTouchListener
 
     protected void RemoveIndiagram(IndiagramView _view)
     {
-        synchronized(this)
+        lock(_lock)
         {
             m_layout.RemoveView(_view);
             m_views.Remove(_view);
@@ -147,7 +151,7 @@ public class SentenceArea : View.IOnTouchListener
 
     public bool HasIndiagram(Indiagram _item)
     {
-        synchronized(this)
+        lock(_lock)
         {
             for (int i = 0; i < m_views.Count; ++i)
             {
@@ -162,7 +166,7 @@ public class SentenceArea : View.IOnTouchListener
 
     public List<Indiagram> GetIndiagramsList()
     {
-        synchronized(this)
+        lock(_lock)
         {
             List<Indiagram> result = new List<Indiagram>();
             foreach (IndiagramView i in m_views)
@@ -250,7 +254,7 @@ public class SentenceArea : View.IOnTouchListener
     {
         if (!m_isReading && m_views.Count > 0)
         {
-            synchronized(this)
+            lock(_lock)
             {
                 // if the reading process is not already launch and there is at
                 // least one indiagram in the sentence.
