@@ -192,16 +192,6 @@
         },
         {
             "activity": {
-                "className": "SelectCategoryActivity",
-                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection"
-            },
-            "view": {
-                "inputFile": "Views/Admin/Collection/SelectCategoryPage.xml",
-                "outputFile": "Admin_Collection_SelectCategoryPage.axml"
-            }
-        },
-        {
-            "activity": {
                 "className": "WatchIndiagramActivity",
                 "namespaceName": "IndiaRose.Application.Activities.Admin.Collection"
             },
@@ -275,6 +265,31 @@
             "view": {
                 "inputFile": "Views/Admin/Collection/Dialogs/SoundChoiceDialog.xml",
                 "outputFile": "Admin_Collection_Dialogs_SoundChoiceDialog.axml"
+            }
+        },
+        {
+            "fragment": {
+                "className": "ChooseCategoryDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/ChooseCategoryPage.xml",
+                "outputFile": "Admin_Collection_Dialogs_ChooseCategoryPage.axml"
+            }
+        },
+
+        /* =================
+         * = / description =
+         * =================
+         */
+        {
+            "fragment": {
+                "className": "ImportingCollectionDialog",
+                "namespaceName": "IndiaRose.Application.Activities"
+            },
+            "view": {
+                "inputFile": "Views/ImportingCollectionDialog.xml",
+                "outputFile": "ImportingCollectionDialog.axml"
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿#region Usings
 
+using IndiaRose.Business.ViewModels;
 using IndiaRose.Business.ViewModels.Admin;
 using IndiaRose.Business.ViewModels.Admin.Collection;
 using IndiaRose.Business.ViewModels.Admin.Collection.Dialogs;
@@ -40,9 +41,9 @@ namespace IndiaRose.Business
             container.RegisterFactory(x => new WatchIndiagramViewModel());
             container.RegisterFactory(x => new CollectionManagementViewModel());
             container.RegisterFactory(x => new AddIndiagramViewModel());
-			container.RegisterFactory(x => new SelectCategoryViewModel());
 
             //Admin/Collection/Dialogs
+			container.RegisterFactory(x => new ChooseCategoryViewModel());
             container.RegisterFactory(x => new ExploreCollectionCategoryViewModel());
 			container.RegisterFactory(x => new ExploreCollectionIndiagramViewModel());
             container.RegisterFactory(x => new ImageChoiceViewModel());
@@ -53,8 +54,20 @@ namespace IndiaRose.Business
             container.RegisterFactory(x => new DeleteCategoryWarningViewModel());
 			container.RegisterFactory(x => new DeleteCategoryConfirmationViewModel());
 
+			// /
+			container.RegisterFactory(x => new ImportingCollectionViewModel());
+
 			_container = container;
 		}
+
+		#region ViewModels : /
+
+		public ImportingCollectionViewModel ImportingCollectionViewModel
+		{
+			get { return _container.Resolve<ImportingCollectionViewModel>(); }
+		}
+
+		#endregion
 
 		#region ViewModels : /Admin
 
@@ -149,13 +162,14 @@ namespace IndiaRose.Business
             get { return _container.Resolve<WatchIndiagramViewModel>(); }
 	    }
 
-		public SelectCategoryViewModel AdminCollectionSelectCategoryViewModel
-		{
-			get { return _container.Resolve<SelectCategoryViewModel>(); }
-		}
         #endregion
 
         #region ViewModels : /Admin/Collection/Dialogs
+
+		public ChooseCategoryViewModel AdminCollectionDialogsChooseCategoryViewModel
+		{
+			get { return _container.Resolve<ChooseCategoryViewModel>(); }
+		}
 
 		public ExploreCollectionCategoryViewModel AdminCollectionDialogsExploreCollectionCategoryViewModel
 	    {

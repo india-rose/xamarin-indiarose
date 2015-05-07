@@ -1,9 +1,17 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace IndiaRose.Interfaces
 {
     public interface IXmlService
     {
-	    void InitializeCollection(Stream zipStream);
+	    event EventHandler CollectionImported;
+
+	    Task InitializeCollectionFromZipStreamAsync(Stream zipStream);
+
+	    Task<bool> HasOldCollectionFormatAsync();
+
+	    Task InitializeCollectionFromOldFormatAsync();
     }
 }

@@ -3,63 +3,65 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
 using IndiaRose.Services.Model;
 using PCLStorage;
 using SharpCompress.Archive;
+using Storm.Mvvm.Events;
 using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Services
 {
-    public class XmlService : IXmlService
-    {
-	    private int _position = 0;
+	public class XmlService : IXmlService
+	{
+		private int _position;
 
-	    protected IStorageService StorageService
-	    {
+		protected IStorageService StorageService
+		{
 			get { return LazyResolver<IStorageService>.Service; }
-	    }
+		}
 
-	    protected ICollectionStorageService CollectionStorageService
-	    {
+		protected ICollectionStorageService CollectionStorageService
+		{
 			get { return LazyResolver<ICollectionStorageService>.Service; }
-	    }
+		}
 
-	    public void InitializeCollection(Stream zipStream)
-	    {
+		#region Initialize collection from zip file
+
+		public event EventHandler CollectionImported;
+
+		public async Task InitializeCollectionFromZipStreamAsync(Stream zipStream)
+		{
 			IArchive archive = ArchiveFactory.Open(zipStream);
 
-		    string culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToLowerInvariant();
+			string culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToLowerInvariant();
 
-		    ZipDirectory zipRoot = ZipDirectory.FromArchive(archive);
+			ZipDirectory zipRoot = ZipDirectory.FromArchive(archive);
 
-		    Dictionary<string, IArchiveEntry> imageEntries = zipRoot.Files;
+			Dictionary<string, IArchiveEntry> resourceEntries = zipRoot.Files;
 
-		    ZipDirectory xmlDirectory = zipRoot.Directories.Single(x => x.Key == "xml").Value;
-		    if (xmlDirectory.Directories.All(x => x.Key != culture))
-		    {
+			ZipDirectory xmlDirectory = zipRoot.Directories.Single(x => x.Key == "xml").Value;
+			if (xmlDirectory.Directories.All(x => x.Key != culture))
+			{
 				// load default language
-			    culture = "en";
-		    }
+				culture = "en";
+			}
 
 			ZipDirectory languageDirectory = xmlDirectory.Directories.Single(x => x.Key == culture).Value;
 
-		    CreateCollection(languageDirectory, imageEntries);
-	    }
+			foreach (IArchiveEntry entry in languageDirectory.Files.Values)
+			{
+				await ReadCollectionFromZip(entry, languageDirectory, "", resourceEntries, null);
+			}
 
-	    private void CreateCollection(ZipDirectory rootXmlDirectory, Dictionary<string, IArchiveEntry> resourceEntries)
-	    {
-			foreach (IArchiveEntry entry in rootXmlDirectory.Files.Values)
-		    {
-			    ReadCollection(entry, rootXmlDirectory, "", resourceEntries, null);
-		    }
-	    }
+			this.RaiseEvent(CollectionImported);
+		}
 
-	    private void ReadCollection(IArchiveEntry entry, ZipDirectory currentDirectory, string currentPath, Dictionary<string, IArchiveEntry> resourceEntries, Indiagram parent)
-	    {
+		private async Task ReadCollectionFromZip(IArchiveEntry entry, ZipDirectory currentDirectory, string currentPath, Dictionary<string, IArchiveEntry> resourceEntries, Indiagram parent)
+		{
 			using (Stream entryStream = entry.OpenEntryStream())
 			{
 				XDocument xmlDocument = XDocument.Load(entryStream);
@@ -68,13 +70,31 @@ namespace IndiaRose.Services
 				if (rootElement != null)
 				{
 					// the current element is an indiagram, just read it
-					CreateIndiagram(rootElement, false, parent, resourceEntries);
+#pragma warning disable 1998
+					await CreateIndiagramFromXml(rootElement, false, parent, async (key, type) =>
+#pragma warning restore 1998
+					{
+						if (resourceEntries.ContainsKey(key))
+						{
+							return resourceEntries[key].OpenEntryStream();
+						}
+						throw new IndexOutOfRangeException(string.Format("Key {0} is not available in resources", key));
+					});
 				}
 				else
 				{
 					// the current element is a category, read it + process its children
 					rootElement = xmlDocument.Element("category");
-					Indiagram category = CreateIndiagram(rootElement, true, parent, resourceEntries);
+#pragma warning disable 1998
+					Indiagram category = await CreateIndiagramFromXml(rootElement, true, parent, async (key, type) =>
+#pragma warning restore 1998
+					{
+						if (resourceEntries.ContainsKey(key))
+						{
+							return resourceEntries[key].OpenEntryStream();
+						}
+						throw new IndexOutOfRangeException(string.Format("Key {0} is not available in resources", key));
+					});
 
 					foreach (XElement child in rootElement.Element("indiagrams").Elements("indiagram"))
 					{
@@ -82,11 +102,11 @@ namespace IndiaRose.Services
 						string directoryName = Path.GetDirectoryName(child.Value);
 						string fileName = Path.GetFileName(child.Value);
 
-						ZipDirectory directory = GetSubDirectory(currentDirectory, currentPath, directoryName);
+						ZipDirectory directory = GetSubZipDirectory(currentDirectory, currentPath, directoryName);
 
 						if (directory.Files.ContainsKey(fileName))
 						{
-							ReadCollection(directory.Files[fileName], directory, directoryName, resourceEntries, category);
+							await ReadCollectionFromZip(directory.Files[fileName], directory, directoryName, resourceEntries, category);
 						}
 						else
 						{
@@ -95,55 +115,185 @@ namespace IndiaRose.Services
 					}
 				}
 			}
-	    }
+		}
 
-	    private ZipDirectory GetSubDirectory(ZipDirectory current, string currentPath, string expectedPath)
-	    {
-		    if (string.Equals(currentPath, expectedPath, StringComparison.CurrentCultureIgnoreCase))
-		    {
-			    return current;
-		    }
+		private ZipDirectory GetSubZipDirectory(ZipDirectory current, string currentPath, string expectedPath)
+		{
+			if (string.Equals(currentPath, expectedPath, StringComparison.CurrentCultureIgnoreCase))
+			{
+				return current;
+			}
 
-		    ZipDirectory sub = GetSubDirectory(current, currentPath, Path.GetDirectoryName(expectedPath));
+			ZipDirectory sub = GetSubZipDirectory(current, currentPath, Path.GetDirectoryName(expectedPath));
 
-		    string dirName = Path.GetFileName(expectedPath);
+			string dirName = Path.GetFileName(expectedPath);
 
-		    if (sub.Directories.ContainsKey(dirName))
-		    {
-			    return sub.Directories[dirName];
-		    }
-		    throw new IndexOutOfRangeException("directory names mismatch");
-	    }
+			if (sub.Directories.ContainsKey(dirName))
+			{
+				return sub.Directories[dirName];
+			}
+			throw new IndexOutOfRangeException("directory names mismatch");
+		}
 
-		private Indiagram CreateIndiagram(XElement rootElement, bool isCategory, Indiagram parent, Dictionary<string, IArchiveEntry> resourceEntries)
-	    {
+		#endregion
+
+		#region Initialize collection from old format
+
+		public async Task<bool> HasOldCollectionFormatAsync()
+		{
+			// How to check ? just access the app directory and check for home.xml
+
+			IFolder appFolder = await FileSystem.Current.GetFolderFromPathAsync(StorageService.AppPath);
+			return (await appFolder.CheckExistsAsync("home.xml") == ExistenceCheckResult.FileExists);
+		}
+
+		public async Task InitializeCollectionFromOldFormatAsync()
+		{
+			if (!await HasOldCollectionFormatAsync())
+			{
+				return;
+			}
+
+			IFolder appFolder = await FileSystem.Current.GetFolderFromPathAsync(StorageService.AppPath);
+			IFolder xmlFolder = await FileSystem.Current.GetFolderFromPathAsync(Path.Combine(StorageService.RootPath, "xml"));
+
+			IFolder imageFolder = await FileSystem.Current.GetFolderFromPathAsync(StorageService.ImagePath);
+			IFolder soundFolder = await FileSystem.Current.GetFolderFromPathAsync(StorageService.SoundPath);
+
+			IFile homeFile = await appFolder.GetFileAsync("home.xml");
+
+			Stream homeStream = await homeFile.OpenAsync(FileAccess.Read);
+			using (homeStream)
+			{
+				XDocument xmlDocument = XDocument.Load(homeStream);
+
+				XElement rootElement = xmlDocument.Element("category");
+				foreach (XElement child in rootElement.Element("indiagrams").Elements("indiagram"))
+				{
+					// look for the entry
+					string directoryName = Path.GetDirectoryName(child.Value);
+					string fileName = Path.GetFileName(child.Value);
+
+					IFolder folder = await GetSubFolderAsync(xmlFolder, "", directoryName);
+
+					if (await folder.CheckExistsAsync(fileName) == ExistenceCheckResult.FileExists)
+					{
+						IFile file = await folder.GetFileAsync(fileName);
+						Stream fileStream = await file.OpenAsync(FileAccess.Read);
+
+						using (fileStream)
+						{
+							await ReadCollectionFromOldFormat(fileStream, folder, directoryName, imageFolder, soundFolder, null);
+						}
+					}
+				}
+			}
+
+			this.RaiseEvent(CollectionImported);
+		}
+
+		private async Task<IFolder> GetSubFolderAsync(IFolder directory, string currentPath, string expectedPath)
+		{
+			if (string.Equals(currentPath, expectedPath, StringComparison.CurrentCultureIgnoreCase))
+			{
+				return directory;
+			}
+
+			IFolder sub = await GetSubFolderAsync(directory, currentPath, Path.GetDirectoryName(expectedPath));
+			string dirName = Path.GetFileName(expectedPath);
+
+			if (await sub.CheckExistsAsync(dirName) == ExistenceCheckResult.FolderExists)
+			{
+				return await sub.GetFolderAsync(dirName);
+			}
+			throw new IndexOutOfRangeException("directory names mismatch");
+		}
+
+		private async Task<Stream> GetResourceStream(string resourcePath, IFolder resourceFolder)
+		{
+			IFolder folder = await GetSubFolderAsync(resourceFolder, "", Path.GetDirectoryName(resourcePath));
+			string fileName = Path.GetFileName(resourcePath);
+			if (await folder.CheckExistsAsync(fileName) == ExistenceCheckResult.FileExists)
+			{
+				IFile file = await folder.GetFileAsync(fileName);
+				return await file.OpenAsync(FileAccess.Read);
+			}
+			throw new Exception(string.Format("Can not found resource file {0}", resourcePath));
+		}
+
+		private async Task ReadCollectionFromOldFormat(Stream inputStream, IFolder currentFolder, string currentDirectoryPath, IFolder imageFolder, IFolder soundFolder, Indiagram parent)
+		{
+			XDocument xmlDocument = XDocument.Load(inputStream);
+
+			XElement rootElement = xmlDocument.Element("indiagram");
+			if (rootElement != null)
+			{
+				// the current element is an indiagram, just read it
+				await CreateIndiagramFromXml(rootElement, false, parent, ((key, type) => GetResourceStream(key, (type == StorageType.Image) ? imageFolder : soundFolder)));
+			}
+			else
+			{
+				// the current element is a category, read it + process its children
+				rootElement = xmlDocument.Element("category");
+				Indiagram category = await CreateIndiagramFromXml(rootElement, true, parent, ((key, type) => GetResourceStream(key, (type == StorageType.Image) ? imageFolder : soundFolder)));
+
+				foreach (XElement child in rootElement.Element("indiagrams").Elements("indiagram"))
+				{
+					// look for the entry
+					string directoryName = Path.GetDirectoryName(child.Value);
+					string fileName = Path.GetFileName(child.Value);
+
+					IFolder folder = await GetSubFolderAsync(currentFolder, currentDirectoryPath, directoryName);
+
+					if (await folder.CheckExistsAsync(fileName) == ExistenceCheckResult.FileExists)
+					{
+						IFile file = await folder.GetFileAsync(fileName);
+						Stream fileStream = await file.OpenAsync(FileAccess.Read);
+
+						using (fileStream)
+						{
+							await ReadCollectionFromOldFormat(fileStream, folder, directoryName, imageFolder, soundFolder, category);
+						}
+					}
+				}
+			}
+
+		}
+
+		#endregion
+
+
+		#region Helper methods
+
+		private async Task<Indiagram> CreateIndiagramFromXml(XElement rootElement, bool isCategory, Indiagram parent, Func<string, StorageType, Task<Stream>> resourceStreamOpener)
+		{
 			string text = rootElement.Element("text").Value;
 			string imagePath = rootElement.Element("picture").Value;
-		    string soundPath = rootElement.Element("sound").Value;
+			string soundPath = rootElement.Element("sound").Value;
 
-		    if (string.IsNullOrWhiteSpace(imagePath))
-		    {
-			    imagePath = null;
-		    }
+			if (string.IsNullOrWhiteSpace(imagePath))
+			{
+				imagePath = null;
+			}
 
-		    if (string.IsNullOrWhiteSpace(soundPath))
-		    {
-			    soundPath = null;
-		    }
+			if (string.IsNullOrWhiteSpace(soundPath))
+			{
+				soundPath = null;
+			}
 
 			//copy sound and imagePath if needed
-		    if (imagePath != null)
-		    {
-			    string localImagePath = StorageService.GenerateFilename(StorageType.Image, Path.GetExtension(imagePath));
-				CopyFileAsync(resourceEntries[imagePath], localImagePath);
+			if (imagePath != null)
+			{
+				string localImagePath = StorageService.GenerateFilename(StorageType.Image, Path.GetExtension(imagePath));
+				await CopyFileAsync(resourceStreamOpener(imagePath, StorageType.Image), localImagePath);
 
-			    imagePath = localImagePath;
-		    }
+				imagePath = localImagePath;
+			}
 
 			if (soundPath != null)
 			{
 				string localSoundPath = StorageService.GenerateFilename(StorageType.Sound, Path.GetExtension(soundPath));
-				CopyFileAsync(resourceEntries[soundPath], localSoundPath);
+				await CopyFileAsync(resourceStreamOpener(soundPath, StorageType.Sound), localSoundPath);
 
 				soundPath = localSoundPath;
 			}
@@ -160,9 +310,9 @@ namespace IndiaRose.Services
 
 			if (parent != null)
 			{
-				if (result is Category)
+				if (parent is Category)
 				{
-					(result as Category).Children.Add(parent);
+					(parent as Category).Children.Add(result);
 				}
 			}
 			else
@@ -170,22 +320,25 @@ namespace IndiaRose.Services
 				CollectionStorageService.Collection.Add(result);
 			}
 
-		    return result;
-	    }
+			return result;
+		}
 
-	    private async void CopyFileAsync(IArchiveEntry inputFile, string outputFilePath)
-	    {
-		    IFolder folder = await FileSystem.Current.GetFolderFromPathAsync(Path.GetDirectoryName(outputFilePath));
-		    IFile outputFile = await folder.CreateFileAsync(Path.GetFileName(outputFilePath), CreationCollisionOption.ReplaceExisting);
+		private async Task CopyFileAsync(Task<Stream> inputStreamTask, string outputFilePath)
+		{
+			IFolder folder = await FileSystem.Current.GetFolderFromPathAsync(Path.GetDirectoryName(outputFilePath));
+			IFile outputFile = await folder.CreateFileAsync(Path.GetFileName(outputFilePath), CreationCollisionOption.ReplaceExisting);
 
-		    Stream outputStream = await outputFile.OpenAsync(FileAccess.ReadAndWrite);
-		    using (outputStream)
-		    {
-			    using (Stream inputStream = inputFile.OpenEntryStream())
-			    {
+			Stream outputStream = await outputFile.OpenAsync(FileAccess.ReadAndWrite);
+			using (outputStream)
+			{
+				Stream inputStream = await inputStreamTask;
+				using (inputStream)
+				{
 					inputStream.CopyTo(outputStream);
-			    }
-		    }
-	    }
-    }
+				}
+			}
+		}
+
+		#endregion
+	}
 }

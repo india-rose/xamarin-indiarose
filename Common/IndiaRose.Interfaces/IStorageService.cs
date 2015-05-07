@@ -10,6 +10,8 @@ namespace IndiaRose.Interfaces
 
 	public interface IStorageService
 	{
+		string AppPath { get; }
+
 		string DatabasePath { get; }
 
 		string SettingsFolderPath { get; }

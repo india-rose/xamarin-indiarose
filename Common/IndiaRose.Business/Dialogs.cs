@@ -2,6 +2,9 @@
 {
 	public class Dialogs
 	{
+		//Dialogs in /
+		public const string IMPORTING_COLLECTION = "ImportingCollection";
+
 		//Dialogs in /Admin
 	    public const string ADMIN_MAILERROR = "Admin_MailErrorDialog";
 
@@ -17,6 +20,8 @@
 	    public const string ADMIN_COLLECTION_SOUNDCHOICE = "Admin_Collection_SoundChoiceDialog";
 	    public const string ADMIN_COLLECTION_RECORDSOUND = "Admin_Collection_RecordSoundDialog";
 
+
+		public const string ADMIN_COLLECTION_CHOOSE = "Admin_Collection_ChooseCategoryDialog";
 		public const string ADMIN_COLLECTION_SELECTCATEGORY = "Admin_Collection_SelectCategoryDialog";
 		public const string ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY = "Admin_Collection_ExploreCollection_CategoryDialog";
 		public const string ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM = "Admin_Collection_ExploreCollection_IndiagramDialog";

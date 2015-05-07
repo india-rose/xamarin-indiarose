@@ -12,9 +12,9 @@ using Storm.Mvvm.Services;
 
 #endregion
 
-namespace IndiaRose.Business.ViewModels.Admin.Collection
+namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
-	public class SelectCategoryViewModel : AbstractBrowserViewModel
+	public class ChooseCategoryViewModel : AbstractBrowserViewModel
 	{
 		private Indiagram _excludedIndiagram;
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Android.App;
 using Android.Runtime;
+using IndiaRose.Application.Activities;
 using IndiaRose.Application.Activities.Admin;
 using IndiaRose.Application.Activities.Admin.Collection;
 using IndiaRose.Application.Activities.Admin.Collection.Dialogs;
@@ -51,10 +52,11 @@ namespace IndiaRose.Application
                 {Views.ADMIN_COLLECTION_HOME, typeof(CollectionManagementActivity)},
                 {Views.ADMIN_COLLECTION_ADDINDIAGRAM, typeof(AddIndiagramActivity)},
                 {Views.ADMIN_COLLECTION_WATCHINDIAGRAM,typeof(WatchIndiagramActivity)},
-				{Views.ADMIN_COLLECTION_SELECTCATEGORY,typeof(SelectCategoryActivity)},
 			};
             Dictionary<string, Type> dialogs = new Dictionary<string, Type>
 			{
+				// /
+				{Dialogs.IMPORTING_COLLECTION, typeof(ImportingCollectionDialog)},
 				// Admin
                 {Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
 				// Admin/Settings/Dialogs
@@ -69,6 +71,7 @@ namespace IndiaRose.Application
                 {Dialogs.ADMIN_COLLECTION_SOUNDCHOICE,typeof(SoundChoiceDialog)},
                 {Dialogs.ADMIN_COLLECTION_RECORDSOUND,typeof(RecordSoundDialog)},
 				// called from collection browsing
+				{Dialogs.ADMIN_COLLECTION_CHOOSE,typeof(ChooseCategoryDialog)},
 				{Dialogs.ADMIN_COLLECTION_SELECTCATEGORY,typeof(SelectCategoryActionDialog)},
 				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY,typeof(ExploreCollectionCategoryDialog)},
                 {Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM,typeof(ExploreCollectionIndiagramDialog)},

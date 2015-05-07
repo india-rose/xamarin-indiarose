@@ -10,9 +10,6 @@
 		        Text="{Tr Text, Uid=CollectionManagement_Add}"
 		        Click="{Binding AddCommand}" />
 
-		<Button XmlStyle="{Resource MediumPurpleButtonStyle}"
-		        Text="{Tr Text, Uid=CollectionManagement_Next}"
-		        Click="{Binding NextCommand}" />
 	</LinearLayout>
 
 	<!-- Browser -->

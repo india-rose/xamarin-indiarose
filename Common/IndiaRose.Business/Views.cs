@@ -17,6 +17,5 @@
 	    public const string ADMIN_COLLECTION_HOME = "Admin_Collection_HomeView";
 	    public const string ADMIN_COLLECTION_ADDINDIAGRAM = "Admin_AddIndiagramView";
 	    public const string ADMIN_COLLECTION_WATCHINDIAGRAM = "Admin_WatchIndiagramView";
-		public const string ADMIN_COLLECTION_SELECTCATEGORY = "Admin_SelectCategoryView";
 	}
 }
