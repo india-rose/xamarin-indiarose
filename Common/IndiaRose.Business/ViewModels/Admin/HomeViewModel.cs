@@ -110,7 +110,7 @@ namespace IndiaRose.Business.ViewModels.Admin
 			}
 		}
 
-		private void OnCollectionInitialized()
+		private async void OnCollectionInitialized()
 		{
 			if (_initialized)
 			{
@@ -120,7 +120,18 @@ namespace IndiaRose.Business.ViewModels.Admin
 
 			if (CollectionStorageService.Collection.Count == 0)
 			{
-				XmlService.InitializeCollection(ResourceService.OpenZip("indiagrams.zip"));
+				if (await XmlService.HasOldCollectionFormatAsync())
+				{
+					LoggerService.Log("==> Importing collection from old format");
+					await XmlService.InitializeCollectionFromOldFormatAsync();
+					LoggerService.Log("# Import finished");
+				}
+				else
+				{
+					LoggerService.Log("==> Importing collection from zip file");
+					await XmlService.InitializeCollectionFromZipStreamAsync(ResourceService.OpenZip("indiagrams.zip"));
+					LoggerService.Log("# Import finished");
+				}
 			}
 		}
 
