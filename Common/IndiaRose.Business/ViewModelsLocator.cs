@@ -1,5 +1,6 @@
 ﻿#region Usings
 
+using IndiaRose.Business.ViewModels;
 using IndiaRose.Business.ViewModels.Admin;
 using IndiaRose.Business.ViewModels.Admin.Collection;
 using IndiaRose.Business.ViewModels.Admin.Collection.Dialogs;
@@ -53,8 +54,20 @@ namespace IndiaRose.Business
             container.RegisterFactory(x => new DeleteCategoryWarningViewModel());
 			container.RegisterFactory(x => new DeleteCategoryConfirmationViewModel());
 
+			// /
+			container.RegisterFactory(x => new ImportingCollectionViewModel());
+
 			_container = container;
 		}
+
+		#region ViewModels : /
+
+		public ImportingCollectionViewModel ImportingCollectionViewModel
+		{
+			get { return _container.Resolve<ImportingCollectionViewModel>(); }
+		}
+
+		#endregion
 
 		#region ViewModels : /Admin
 

@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using System.Collections.Generic;
 using System.IO.Compression;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -74,17 +75,17 @@ namespace IndiaRose.Business.ViewModels.Admin
 		public ICommand CreditsCommand { get; private set; }
 
 		#endregion
-		
+
 		public HomeViewModel()
 		{
 			SettingsCommand = new DelegateCommand(SettingsAction);
-            CollectionManagementCommand = new DelegateCommand(CollectionAction);
-			
+			CollectionManagementCommand = new DelegateCommand(CollectionAction);
+
 			InstallVoiceSynthesisCommand = new DelegateCommand(InstallVoiceSynthesisAction);
 			SendLogsCommand = new DelegateCommand(SendLogAction);
 			SyncCollectionCommand = new DelegateCommand(SyncCollectionAction);
 			HelpCommand = new DelegateCommand(HelpAction);
-			
+
 			ContactCommand = new DelegateCommand(ContactAction);
 			ExitCommand = new DelegateCommand(ExitAction);
 			CreditsCommand = new DelegateCommand(CreditsAction);
@@ -92,7 +93,7 @@ namespace IndiaRose.Business.ViewModels.Admin
 
 		public override void OnNavigatedTo(NavigationArgs e, string parametersKey)
 		{
-            base.OnNavigatedTo(e, parametersKey);
+			base.OnNavigatedTo(e, parametersKey);
 
 			lock (_lockMutex)
 			{
@@ -110,7 +111,7 @@ namespace IndiaRose.Business.ViewModels.Admin
 			}
 		}
 
-		private void OnCollectionInitialized()
+		private async void OnCollectionInitialized()
 		{
 			if (_initialized)
 			{
@@ -120,7 +121,31 @@ namespace IndiaRose.Business.ViewModels.Admin
 
 			if (CollectionStorageService.Collection.Count == 0)
 			{
-				XmlService.InitializeCollection(ResourceService.OpenZip("indiagrams.zip"));
+				if (await XmlService.HasOldCollectionFormatAsync())
+				{
+					DispatcherService.InvokeOnUIThread(() =>
+						MessageDialogService.Show(Dialogs.IMPORTING_COLLECTION, new Dictionary<string, object>
+						{
+							{"MessageUid", "ImportCollection_FromOldFormat"}
+						}));
+
+					LoggerService.Log("==> Importing collection from old format");
+					await XmlService.InitializeCollectionFromOldFormatAsync();
+					LoggerService.Log("# Import finished");
+				}
+				else
+				{
+					DispatcherService.InvokeOnUIThread(() =>
+						MessageDialogService.Show(Dialogs.IMPORTING_COLLECTION, new Dictionary<string, object>
+						{
+							{"MessageUid", "ImportCollection_FromZip"}
+						}));
+
+					LoggerService.Log("==> Importing collection from zip file");
+					await XmlService.InitializeCollectionFromZipStreamAsync(ResourceService.OpenZip("indiagrams.zip"));
+				}
+				LoggerService.Log("# Import finished");
+				MessageDialogService.DismissCurrentDialog();
 			}
 		}
 
@@ -162,7 +187,7 @@ namespace IndiaRose.Business.ViewModels.Admin
 			if (string.IsNullOrWhiteSpace(helpDocumentName))
 			{
 				//TODO : if no help in language show english help
-            }
+			}
 			else
 			{
 				ResourceService.ShowPdfFile(helpDocumentName);
@@ -177,7 +202,7 @@ namespace IndiaRose.Business.ViewModels.Admin
 		{
 			if (!EmailService.SendContactEmail())
 			{
-                MessageDialogService.Show(Dialogs.ADMIN_MAILERROR);
+				MessageDialogService.Show(Dialogs.ADMIN_MAILERROR);
 			}
 		}
 
