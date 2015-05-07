@@ -14,9 +14,18 @@ namespace IndiaRose.Framework.Views
 {
     public class TitleBarView : RelativeLayout
     {
-        protected ImageView ImageCategoryView;
-        protected TextView TextCategoryView;
-        protected Category Category;
+        private ImageView _imageCategoryView;
+        private TextView _textCategoryView;
+        private Category _category;
+
+        public Category Category
+        {
+            get { return _category; }
+            set
+            {
+                SetTitleInfo(value);
+            }
+        }
 
         private void Initialize()
         {
@@ -24,20 +33,20 @@ namespace IndiaRose.Framework.Views
             logo.SetImageResource(Resource.Drawable.logo);
             logo.SetAdjustViewBounds(true);
             logo.SetMinimumHeight(60);
-            logo.SetMaxHeight(120);
+            logo.SetMaxHeight(60);
 
-            ImageCategoryView = new ImageView(Context);
-            ImageCategoryView.SetAdjustViewBounds(true);
-            ImageCategoryView.SetMinimumHeight(60);
-            ImageCategoryView.SetMaxHeight(60);
-            ImageCategoryView.Id = 0x0fffff2b;
+            _imageCategoryView = new ImageView(Context);
+            _imageCategoryView.SetAdjustViewBounds(true);
+            _imageCategoryView.SetMinimumHeight(60);
+            _imageCategoryView.SetMaxHeight(60);
+            _imageCategoryView.Id = 0x0fffff2b;
 
-            TextCategoryView = new TextView(Context);
-            TextCategoryView.SetMaxHeight(60);
-            TextCategoryView.SetTextColor(Color.Black);
-            TextCategoryView.Id = 0x0fffff2c;
-            TextCategoryView.SetTextSize(ComplexUnitType.Sp, 15);
-            TextCategoryView.Gravity = GravityFlags.CenterVertical;
+            _textCategoryView = new TextView(Context);
+            _textCategoryView.SetMaxHeight(60);
+            _textCategoryView.SetTextColor(Color.Black);
+            _textCategoryView.Id = 0x0fffff2c;
+            _textCategoryView.SetTextSize(ComplexUnitType.Sp, 15);
+            _textCategoryView.Gravity = GravityFlags.CenterVertical;
 
             LayoutParams lp = new LayoutParams(
                     ViewGroup.LayoutParams.WrapContent,
@@ -49,32 +58,25 @@ namespace IndiaRose.Framework.Views
             lp = new LayoutParams(
                     ViewGroup.LayoutParams.WrapContent,
                     ViewGroup.LayoutParams.WrapContent);
-            lp.AddRule(LayoutRules.AlignParentRight);
+            lp.AddRule(LayoutRules.AlignParentLeft);
             lp.AddRule(LayoutRules.CenterVertical);
-            AddView(ImageCategoryView, lp);
+            AddView(_imageCategoryView, lp);
 
             lp = new LayoutParams(
                     ViewGroup.LayoutParams.WrapContent,
                     ViewGroup.LayoutParams.WrapContent);
-            lp.AddRule(LayoutRules.RightOf, ImageCategoryView.Id);
+            lp.AddRule(LayoutRules.RightOf, _imageCategoryView.Id);
             lp.AddRule(LayoutRules.CenterVertical);
             lp.SetMargins(60, 0, 60, 0);
-            AddView(TextCategoryView, lp);
-
-            SetTitleInfo(new Category()
-            {
-                ImagePath = LazyResolver<IStorageService>.Service.ImageRootPath,
-                Text = "Home"
-            });
-            Invalidate();
+            AddView(_textCategoryView, lp);
         }
 
         public void SetTitleInfo(Category category)
         {
-            if (!(Category == null || Category.Equals(category)))
+            if (category!=null && !category.Equals(Category))
             {
                 SetCategory(category);
-                Category = category;
+                _category = category;
             }
         }
 
@@ -84,13 +86,13 @@ namespace IndiaRose.Framework.Views
             {
                 if (category.ImagePath != null)
                 {
-                    ImageCategoryView.SetImageBitmap(BitmapFactory.DecodeFile(category.ImagePath));
+                    _imageCategoryView.SetImageBitmap(BitmapFactory.DecodeFile(category.ImagePath));
                 }
                 else
                 {
-                    ImageCategoryView.SetImageDrawable(new ColorDrawable(Color.Red));
+                    _imageCategoryView.SetImageDrawable(new ColorDrawable(Color.Red));
                 }
-                TextCategoryView.Text = Category.Text;
+                _textCategoryView.Text = category.Text;
             }
         }
         public TitleBarView(Context context)
