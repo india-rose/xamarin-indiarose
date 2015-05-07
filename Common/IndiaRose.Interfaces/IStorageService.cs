@@ -24,6 +24,16 @@ namespace IndiaRose.Interfaces
 
         string SoundPath { get; }
 
+        string AppPath { get; }
+
+        string ImageRootPath { get; }
+
+        string ImagePlayButtonPath { get; }
+
+        string ImageCorrectionPath { get; }
+
+        string ImageNextArrowPath { get; }
+
 	    string GenerateFilename(StorageType type, string extension);
 
 		Task InitializeAsync();

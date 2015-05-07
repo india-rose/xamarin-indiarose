@@ -2,8 +2,7 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 XmlStyle="{Resource RootPaddingLayoutStyle}">
-	<LinearLayout XmlStyle="{Resource ButtonPageContainerStyle}"
-	              android:layout_below="@id/Logo">
+	<LinearLayout XmlStyle="{Resource ButtonPageContainerStyle}">
 
 		<LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}">
 			<Button XmlStyle="{Resource MediumBlueButtonStyle}"
