@@ -26,8 +26,6 @@ namespace IndiaRose.Interfaces
 
         string SoundPath { get; }
 
-        string AppPath { get; }
-
         string ImageRootPath { get; }
 
         string ImagePlayButtonPath { get; }

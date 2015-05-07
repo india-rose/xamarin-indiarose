@@ -80,7 +80,7 @@ namespace IndiaRose.Framework.Views
 
         protected void SetCategory(Category category)
         {
-            if (Category != null)
+            if (category != null)
             {
                 if (category.ImagePath != null)
                 {
