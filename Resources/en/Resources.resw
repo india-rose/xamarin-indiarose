@@ -498,4 +498,13 @@ Comments : </value>
   <data name="Collection_HasChildren.Text" xml:space="preserve">
     <value>This category has children, it can't be a simple indiagram</value>
   </data>
+  <data name="ImportCollection_FromOldFormat.Text" xml:space="preserve">
+    <value>Converting your collection to new efficient storage format</value>
+  </data>
+  <data name="ImportCollection_FromZip.Text" xml:space="preserve">
+    <value>Importing collection from initial data</value>
+  </data>
+  <data name="ImportCollection_DialogTitle.Text" xml:space="preserve">
+    <value>Initializing</value>
+  </data>
 </root>

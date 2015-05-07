@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Android.App;
 using Android.Runtime;
+using IndiaRose.Application.Activities;
 using IndiaRose.Application.Activities.Admin;
 using IndiaRose.Application.Activities.Admin.Collection;
 using IndiaRose.Application.Activities.Admin.Collection.Dialogs;
@@ -54,6 +55,8 @@ namespace IndiaRose.Application
 			};
             Dictionary<string, Type> dialogs = new Dictionary<string, Type>
 			{
+				// /
+				{Dialogs.IMPORTING_COLLECTION, typeof(ImportingCollectionDialog)},
 				// Admin
                 {Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
 				// Admin/Settings/Dialogs

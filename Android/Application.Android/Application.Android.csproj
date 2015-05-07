@@ -92,6 +92,7 @@
     <Compile Include="Activities\Admin\Settings\Dialogs\ReadingDelayDialog.cs" />
     <Compile Include="Activities\Admin\ServerSynchronizationActivity.cs" />
     <Compile Include="Activities\Admin\MailErrorDialog.cs" />
+    <Compile Include="Activities\ImportingCollectionDialog.cs" />
     <Compile Include="Container.cs" />
     <Compile Include="IndiaRoseApplication.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -176,6 +177,7 @@
     <Content Include="Views\Admin\Collection\WatchIndiagramPage.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\Admin\ImageChoiceDialog.xml" />
     <Content Include="Views\Admin\Settings\Dialogs\CategoryReadingDialog.xml" />
     <Content Include="Views\Admin\Settings\Dialogs\DragAndDropDialog.xml" />
     <Content Include="Views\Admin\Settings\IndiagramPropertyPage.xml">
@@ -184,6 +186,7 @@
     <Content Include="Views\Admin\Settings\Dialogs\ReadingDelayDialog.xml" />
     <Content Include="Views\Admin\ServerSynchronizationPage.xml" />
     <Content Include="Views\Admin\MailErrorDialog.xml" />
+    <Content Include="Views\ImportingCollectionDialog.xml" />
     <Content Include="Views\Resources\DialogStyles.xml" />
     <Content Include="Views\Resources\CommonStyles.xml" />
     <Content Include="Views\Resources\Converters.xml">

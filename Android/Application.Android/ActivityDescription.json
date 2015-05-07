@@ -276,6 +276,21 @@
                 "inputFile": "Views/Admin/Collection/Dialogs/ChooseCategoryPage.xml",
                 "outputFile": "Admin_Collection_Dialogs_ChooseCategoryPage.axml"
             }
+        },
+
+        /* =================
+         * = / description =
+         * =================
+         */
+        {
+            "fragment": {
+                "className": "ImportingCollectionDialog",
+                "namespaceName": "IndiaRose.Application.Activities"
+            },
+            "view": {
+                "inputFile": "Views/ImportingCollectionDialog.xml",
+                "outputFile": "ImportingCollectionDialog.axml"
+            }
         }
 
     ]

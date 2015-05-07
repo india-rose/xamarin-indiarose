@@ -10,6 +10,7 @@ using IndiaRose.Interfaces;
 using IndiaRose.Services.Model;
 using PCLStorage;
 using SharpCompress.Archive;
+using Storm.Mvvm.Events;
 using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Services
@@ -29,6 +30,8 @@ namespace IndiaRose.Services
 		}
 
 		#region Initialize collection from zip file
+
+		public event EventHandler CollectionImported;
 
 		public async Task InitializeCollectionFromZipStreamAsync(Stream zipStream)
 		{
@@ -53,6 +56,8 @@ namespace IndiaRose.Services
 			{
 				await ReadCollectionFromZip(entry, languageDirectory, "", resourceEntries, null);
 			}
+
+			this.RaiseEvent(CollectionImported);
 		}
 
 		private async Task ReadCollectionFromZip(IArchiveEntry entry, ZipDirectory currentDirectory, string currentPath, Dictionary<string, IArchiveEntry> resourceEntries, Indiagram parent)
@@ -182,8 +187,9 @@ namespace IndiaRose.Services
 						}
 					}
 				}
-
 			}
+
+			this.RaiseEvent(CollectionImported);
 		}
 
 		private async Task<IFolder> GetSubFolderAsync(IFolder directory, string currentPath, string expectedPath)
