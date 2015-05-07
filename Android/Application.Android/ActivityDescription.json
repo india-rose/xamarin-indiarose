@@ -24,6 +24,10 @@
         {
             "alias": "TabletPreviewView",
             "fullclassname": "IndiaRose.Framework.Views.TabletPreviewView"
+        },
+        {
+            "alias": "TitleBarView",
+            "fullclassname": "IndiaRose.Framework.Views.TitleBarView"
         }
     ],
     "globalResourceFiles": [

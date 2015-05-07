@@ -60,6 +60,7 @@
     <Compile Include="Views\IndiagramPreviewView.cs" />
     <Compile Include="Views\IndiagramView.cs" />
     <Compile Include="Views\TabletPreviewView.cs" />
+    <Compile Include="Views\TitleBarView.cs" />
     <Compile Include="Views\ViewWithBorder.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +128,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\rightarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <PropertyGroup>

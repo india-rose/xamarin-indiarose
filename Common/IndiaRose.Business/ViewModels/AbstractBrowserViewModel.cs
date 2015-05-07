@@ -39,10 +39,15 @@ namespace IndiaRose.Business.ViewModels
 			get { return LazyResolver<ISettingsService>.Service; }
 		}
 
-		protected ICollectionStorageService CollectionStorageService
-		{
-			get { return LazyResolver<ICollectionStorageService>.Service; }
-		}
+        protected ICollectionStorageService CollectionStorageService
+        {
+            get { return LazyResolver<ICollectionStorageService>.Service; }
+        }
+
+        protected IStorageService StorageService
+        {
+            get { return LazyResolver<IStorageService>.Service; }
+        }
 
 		#endregion
 
@@ -128,11 +133,10 @@ namespace IndiaRose.Business.ViewModels
 				collection.Add(CollectionStorageService.Save(constructorLambda("hellow")));
 			}
 
-			//TODO: add an image
 			_rootCollection = new Category(collection)
 			{
                 Text = LocalizationService.GetString("Collection_RootCategoryName", "Text"),
-				ImagePath = "",
+				ImagePath = StorageService.RootPath,
 			};
 		}
 
