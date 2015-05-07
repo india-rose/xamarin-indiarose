@@ -5,14 +5,17 @@ using IndiaRose.Data.Model;
 using System;
 using Android.Content;
 using Android.Graphics;
+using Android.Graphics.Drawables;
+using Java.IO;
+using File = System.IO.File;
 
 namespace IndiaRose.Framework.Views
 {
 public class TitleBar : RelativeLayout
 {
-	protected ImageView ImageCategoryView = null;
-	protected TextView TextCategoryView = null;
-	protected Category Category = null;
+    protected ImageView ImageCategoryView;
+    protected TextView TextCategoryView;
+    protected Category Category;
 
 	public TitleBar(Context context) : base(context)
 	{
@@ -60,7 +63,7 @@ public class TitleBar : RelativeLayout
 
 	public void SetTitleInfo(Category category) 
     {
-		if (Category == null || Category.Equals(category)) {
+		if (!(Category == null || Category.Equals(category))) {
 				SetCategory(category);
 				Category = category;
 		}
@@ -69,7 +72,14 @@ public class TitleBar : RelativeLayout
 	protected void SetCategory(Category category)
     {
 		if (Category != null) {
-			//ImageCategoryView.SetImageBitmap(BitmapFactory.DecodeFileDescriptor());
+		    if (category.ImagePath != null)
+		    {
+		        ImageCategoryView.SetImageBitmap(BitmapFactory.DecodeFile(category.ImagePath));
+		    }
+		    else
+		    {
+		        ImageCategoryView.SetImageDrawable(new ColorDrawable(Color.Red));
+		    }
 			TextCategoryView.Text=Category.Text;
 		}
 	}
