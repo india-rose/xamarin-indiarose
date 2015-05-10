@@ -143,6 +143,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="CompositionRoot\Bootstrap.cs" />
+    <Compile Include="CompositionRoot\Container.cs" />
     <Compile Include="Views\CreditsPage.xaml.cs">
       <DependentUpon>CreditsPage.xaml</DependentUpon>
     </Compile>
@@ -211,11 +212,12 @@
       <HintPath>..\..\packages\PCLStorage.1.0.2\lib\portable-win8+wpa81\PCLStorage.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Storm.Mvvm, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Storm.Mvvm.1.2.2\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Storm.Mvvm.1.2.8\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
     </Reference>
-    <Reference Include="Storm.Mvvm.Tablet">
-      <HintPath>..\..\packages\Storm.Mvvm.Tablet.1.1\lib\win81\Storm.Mvvm.Tablet.dll</HintPath>
+    <Reference Include="Storm.Mvvm.Tablet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Storm.Mvvm.Tablet.1.2.1\lib\win81\Storm.Mvvm.Tablet.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">

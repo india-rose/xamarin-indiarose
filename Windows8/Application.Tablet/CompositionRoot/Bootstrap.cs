@@ -3,28 +3,29 @@ using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 using IndiaRose.Application.Views;
 using IndiaRose.Business;
-using IndiaRose.Interfaces;
-using IndiaRose.Services;
 using Storm.Mvvm.Inject;
 using ViewKey = IndiaRose.Business.Views;
 
 namespace IndiaRose.Application.CompositionRoot
 {
-    class Bootstrap
+    static class Bootstrap
     {
-        public void Initialize(Frame rootFrame)
+        public static void Initialize(Frame rootFrame)
         {
-            Container container = new Container(rootFrame);
-            container.Initialize(new Dictionary<string, Type>()
+            var views = new Dictionary<string, Type>
             {
                 {ViewKey.ADMIN_HOME, typeof(MainPage)},
                 {ViewKey.ADMIN_CREDITS, typeof(CreditsPage)},
-            });
+            };
 
+			var dialogs = new Dictionary<string, Type>
+            {
+
+            };
+
+
+			WindowsContainer container = WindowsContainer.CreateInstance<Container>(rootFrame, views, dialogs);
             ViewModelsLocator.Initialize(container);
-
-            EmailService emailService = new EmailService();
-            container.RegisterInstance<IEmailService>(emailService);
         }
     }
 }

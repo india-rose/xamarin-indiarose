@@ -7,7 +7,7 @@
     
     <!--
         Not a page, will not be displayed.
-        You can put resources to make accessible from the whole project.
+        You can put resources to make them available from the whole project.
     -->
     <Application.Resources>
         <ResourceDictionary>
