@@ -33,47 +33,33 @@
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
         <StackPanel Orientation="Vertical">
         
-            <TextBlock Margin="0, 0, 0, 25" TextWrapping="WrapWholeWords" FontSize="42" Foreground="#0AC808">Application India Rose</TextBlock>
-            <TextBlock TextWrapping="WrapWholeWords" FontSize="36" Foreground="#E3081C">Direction</TextBlock>
-            <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black">
-                Julien Mialon, José Martins, Anthony Froissant, Julien De Sousa
-            </TextBlock>
-            <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" >Graphisme et communication</TextBlock>
-            <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black">Aurélia Masquet, Michel Savariradjalou</TextBlock>
-            <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" > Encadrant</TextBlock>
-            <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black">
-                Frédéric Moal, Catherine Julié-Bonnet, Sylvain Jubertie, Wadoud Bousdira
-            </TextBlock>
-            <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" >Equipe Xamarin - 2014</TextBlock>
-            <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black">
-                Vincent Fauveau, Nicolas Lacourte-Barbadaux, Lamia Meziani, Arthur Guillaume
-            </TextBlock>
-            <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" >Stagiaire 2013/2014</TextBlock>
-            <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black">
-                Marco Da Cunha Fernandez, Nesrine Brahmi, El Mehdi Fahim, Lisa Deloménie, Erwan Durandet, Florian Blain
-            </TextBlock>
-            <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" >Equipe Android - 2013</TextBlock>
-            <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black">
-                Florent Champigny, Alexandre Masson, Tristan Monediere, Kevin De Jesus Ferreira
-            </TextBlock>
-            <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" >Equipe Android - 2012</TextBlock>
-            <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black">
-                Léa Muracciole, Arthur Guillaume, Jordan Fontorbe
-            </TextBlock>
-            <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" >Equipe Cloud - 2011</TextBlock>
-            <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black">
-                Mélanie Pothain, Fabienne Bruneau, Alexis Fleuriet, François Lecugy, Adrien Tremblay
-            </TextBlock>
-            <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" >Equipe Android - 2011</TextBlock>
-            <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black">
-                Cyprien Ruelle, Matthias David, Pauline Lopez, Heloise Suleiman, Quentin Malot, Quentin Duplaix
-            </TextBlock>
-            <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" >Equipe Windows 8 - 2011</TextBlock>
-            <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black">
-                Benjamin Rousseau, Florent Monin, Corentin Barruet, Benjamin Remy
-            </TextBlock>
-            <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" >Fournisseur Indiagramme</TextBlock>
-            <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black">www.sclera.tv</TextBlock>
+            <TextBlock Margin="0, 0, 0, 25" TextWrapping="WrapWholeWords" FontSize="42" Foreground="#0AC808" x:Uid="Credits_ApplicationName" Text="" />
+            <TextBlock TextWrapping="WrapWholeWords" FontSize="36" Foreground="#E3081C" x:Uid="Credits_Officer" Text="" />
+            <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_OfficerTeam" Text="" />
+            <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Graphics" Text="" />
+                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_GraphicsTeam" Text="" />
+                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_University" Text="" />
+                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_UniversityTeam" Text="" />
+                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Trainee2014" Text="" />
+                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Trainee2014Team" Text="" />
+                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Xamarin2014" Text="" />
+                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Xamarin2014Team" Text="" />
+                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Trainee2013" Text="" />
+                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Trainee2013Team" Text="" />
+                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Android2013" Text="" />
+                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Android2013Team" Text="" />
+                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Trainee2012" Text="" />
+                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Trainee2012Team" Text="" />
+                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Android2012" Text="" />
+                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Android2012Team" Text="" />
+                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Android2011" Text="" />
+                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Android2011Team" Text="" />
+                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Cloud2011" Text="" />
+                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Cloud2011Team" Text="" />
+                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Windows2011" Text="" />
+                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Windows2011Team" Text="" />
+                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_IndiagramProvider" Text="" />
+                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Sclera" Text="" />
         </StackPanel>
         </ScrollViewer>
     </Grid>
