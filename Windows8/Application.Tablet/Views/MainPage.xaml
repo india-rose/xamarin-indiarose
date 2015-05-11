@@ -16,7 +16,8 @@
         <Style x:Key="Button" TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="VerticalAlignment" Value="Stretch"/>
-            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="FontSize" Value="35"/>
+            <Setter Property="FontWeight" Value="ExtraLight"/>
             <Setter Property="Margin" Value="10, 10, 10, 10"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="Template">
@@ -90,6 +91,12 @@
             <Setter Property="Text" Value=""/>
         </Style>
         
+        <Style x:Key="LinkStyle" TargetType="HyperlinkButton">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="FontWeight" Value="ExtraLight"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
         
     </Page.Resources>
 
@@ -101,11 +108,11 @@
             <ColumnDefinition Width="50*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="15*"></RowDefinition>
+            <RowDefinition Height="20*"></RowDefinition>
             <RowDefinition Height="25*"></RowDefinition>
             <RowDefinition Height="25*"></RowDefinition>
             <RowDefinition Height="25*"></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Source="../Assets/logoIndiaRose.png" Stretch="Uniform" HorizontalAlignment="Stretch" Margin="0,20,50,10"/>
@@ -163,7 +170,10 @@
                 Background="Purple">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_Credits"/>
         </Button>
-        
+
+        <HyperlinkButton Style="{StaticResource LinkStyle}"
+            Grid.Row="4" Grid.Column="3"
+            NavigateUri="http://indiarose.org">indiarose.org</HyperlinkButton>
     </Grid>
 
 </Page>
