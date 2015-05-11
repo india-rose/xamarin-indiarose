@@ -62,7 +62,9 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <Image  Style="{StaticResource LogoStyle}" Source="../Assets/logoIndiaRose.png" />
-            <Button Style="{StaticResource ButtonStyle}" Command="{Binding BackCommand}">Retour</Button>
+            <Button Style="{StaticResource ButtonStyle}" Command="{Binding BackCommand}">
+                <TextBlock x:Uid="BackButton" Text="" />
+            </Button>
         </Grid>
 
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
