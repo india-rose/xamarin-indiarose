@@ -1,4 +1,6 @@
-﻿<Page
+﻿
+
+<Page
     x:Class="IndiaRose.Application.Views.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,9 +8,34 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:IndiaRose.Business"
+    xmlns:application="using:IndiaRose.Application"
     mc:Ignorable="d"
-    DataContext="{Binding Source={StaticResource Locator}, Path=AdminHomeViewModel}"   
+
     >
+    <Page.Resources>
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="Margin" Value="10, 10, 10, 10"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+
+        <Style x:Key="BigButton" BasedOn="{StaticResource Button}" TargetType="Button">
+            <Setter Property="Grid.ColumnSpan" Value="2"/>
+        </Style>
+        <Style x:Key="SmallButton" BasedOn="{StaticResource Button}" TargetType="Button">
+            <Setter Property="Grid.ColumnSpan" Value="1"/>
+        </Style>
+
+        <Style x:Key="TextButton" TargetType="TextBlock">
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Text" Value=""/>
+        </Style>
+        
+        
+    </Page.Resources>
 
     <Grid VerticalAlignment="Stretch" Background="White">
         <Grid.ColumnDefinitions>
@@ -27,43 +54,58 @@
 
         <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Source="../Assets/logoIndiaRose.png" Stretch="Uniform" HorizontalAlignment="Stretch" Margin="0,20,50,10"/>
 
-        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Foreground="White" Background="DodgerBlue" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch">
-            <TextBlock  TextAlignment="Center" TextWrapping="Wrap" Text="" x:Uid="Home_AppSettings"/>
+        <Button Style="{StaticResource BigButton}" 
+                Grid.Row="1" Grid.Column="0" 
+                Background="DodgerBlue">
+            <TextBlock  Style="{StaticResource TextButton}" x:Uid="Home_AppSettings"/>
         </Button>
         
-        <Button Grid.Row="1" Grid.Column="2" Foreground="White" Background="ForestGreen" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch" Grid.ColumnSpan="2">
-            <TextBlock  TextAlignment="Center" TextWrapping="Wrap" Text="" x:Uid="Home_CollectionManagement"/>
-        </Button>
-    
-        
-        
-        
-        <Button Grid.Row="2" Grid.Column="0" Foreground="White" Background="DodgerBlue" VerticalAlignment="Stretch" FontSize="40"  Margin="10, 10, 10, 10" HorizontalAlignment="Stretch">
-            <TextBlock  TextAlignment="Center" TextWrapping="Wrap" Text="" x:Uid="Home_VoiceSynthesisUpgrade"/>
-        </Button>
-        
-        <Button Grid.Row="2" Foreground="White" Background="DodgerBlue" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch" Grid.Column="1">
-            <TextBlock  TextAlignment="Center" TextWrapping="Wrap" Text="" x:Uid="Home_SendLogs"/>
+        <Button Style="{StaticResource BigButton}"
+                Grid.Row="1" Grid.Column="2"  
+                Background="ForestGreen">
+            <TextBlock  Style="{StaticResource TextButton}" x:Uid="Home_CollectionManagement"/>
         </Button>
 
-        <Button Grid.Row="2" Foreground="White" Background="ForestGreen" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch" Grid.Column="2">
-            <TextBlock  TextAlignment="Center" TextWrapping="Wrap" Text="" x:Uid="Home_SyncCollection"/>
-        </Button>
-        <Button Grid.Row="2" Foreground="White" Background="DeepPink" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch" Grid.Column="3">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="" x:Uid="Home_Help"/>
+
+
+        <Button Style="{StaticResource SmallButton}"
+                Grid.Row="2" Grid.Column="0" 
+                Background="DodgerBlue" >
+            <TextBlock  Style="{StaticResource TextButton}" x:Uid="Home_VoiceSynthesisUpgrade"/>
         </Button>
 
-        
-        
-        
-        
-        <Button Command="{Binding ContactCommand}" Grid.Row="3" Foreground="White" Background="Red" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch" RenderTransformOrigin="0.31,0.404" Grid.ColumnSpan="2"
-                Grid.Column="0">
-            <TextBlock Text="" x:Uid="Home_Contact"/>
+        <Button Style="{StaticResource SmallButton}"
+                Grid.Row="2" Grid.Column="1"
+                Background="DodgerBlue">
+            <TextBlock  Style="{StaticResource TextButton}" x:Uid="Home_SendLogs"/>
         </Button>
-        
-        <Button Command="{Binding CreditsCommand}" Grid.Row="3" Grid.ColumnSpan="2" Foreground="White" Background="Purple" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch" Grid.Column="2">
-            <TextBlock Text="" x:Uid="Home_Credits"/>
+
+        <Button Style="{StaticResource SmallButton}"
+                Grid.Row="2" Grid.Column="2" 
+                Background="ForestGreen">
+            <TextBlock  Style="{StaticResource TextButton}" x:Uid="Home_SyncCollection"/>
+        </Button>
+
+        <Button Style="{StaticResource SmallButton}"
+                Grid.Row="2" Grid.Column="3"
+                Background="DeepPink">
+            <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_Help"/>
+        </Button>
+
+
+
+        <Button Style="{StaticResource BigButton}" 
+                Command="{Binding ContactCommand}" 
+                Grid.Row="3" Grid.Column="0"
+                Background="Red">
+            <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_Contact"/>
+        </Button>
+
+        <Button Style="{StaticResource BigButton}"
+                Command="{Binding CreditsCommand}" 
+                Grid.Row="3" Grid.Column="2"
+                Background="Purple">
+            <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_Credits"/>
         </Button>
         
     </Grid>
