@@ -6,11 +6,17 @@
   <TitleBarView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:id="title_bar"
    />
-  <!--
+  <RelativeLayout
+      android:layout_width="match_parent"
+	    android:layout_height="fill_parent"
+      android:id="user_home_container">
+
   <IndiagramBrowserView
       android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
+      android:id="top_indiabrowser"
       Background="{Binding BackgroundColor, Converter={Resource ColorStringToDrawableColorConverter}}"
 	    Count="{Binding CollectionDisplayCount, Mode=TwoWay, UpdateEvent=CountChanged}"
 	    Offset="{Binding CollectionOffset}"
@@ -20,8 +26,9 @@
 	    NextCommand="{Binding NextCommand}"
     />
   <SentenceAreaView
+      android:id="bot_sentencearea"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
     />
-    -->
+  </RelativeLayout>
 </RelativeLayout>

@@ -45,6 +45,8 @@ namespace IndiaRose.Services
         private string _reinforcerColor;
         private string _textColor;
 
+	    private bool _isLoaded;
+
 		#endregion
 
 		#region Properties
@@ -126,6 +128,16 @@ namespace IndiaRose.Services
 			set { SetProperty(ref _topBackgroundColor, value); }
 		}
 
+
+        public bool IsLoaded
+        {
+            get { return _isLoaded; }
+            set
+            {
+                SetProperty(ref _isLoaded, value);
+                if (Loaded != null) Loaded(this,new EventArgs());
+            }
+        }
 		#endregion
 
 		public SettingsService()
@@ -195,6 +207,8 @@ namespace IndiaRose.Services
 			ReinforcerColor = model.ReinforcerColor;
 		    TextColor = model.TextColor;
 
+		    IsLoaded = true;
+
 			_hasChanged = false;
 		}
 
@@ -215,7 +229,9 @@ namespace IndiaRose.Services
 		    TextColor = "#FFFF0000";
 		}
 
-		protected async Task<bool> ExistsOnDiskAsync()
+	    public event EventHandler<EventArgs> Loaded;
+
+	    protected async Task<bool> ExistsOnDiskAsync()
 		{
 			try
 			{
