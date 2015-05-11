@@ -10,32 +10,62 @@
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminHomeViewModel}"   
     >
 
-        <Grid VerticalAlignment="Stretch" Background="White">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="25*"></ColumnDefinition>
-                <ColumnDefinition Width="25*"></ColumnDefinition>
-                <ColumnDefinition Width="25*"></ColumnDefinition>
-                <ColumnDefinition Width="25*"></ColumnDefinition>
-                <ColumnDefinition Width="25*"></ColumnDefinition>
-                <ColumnDefinition Width="25*"></ColumnDefinition>
+    <Grid VerticalAlignment="Stretch" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="15*"></RowDefinition>
-                <RowDefinition Height="25*"></RowDefinition>
-                <RowDefinition Height="25*"></RowDefinition>
-                <RowDefinition Height="25*"></RowDefinition>
-            </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"></RowDefinition>
+            <RowDefinition Height="25*"></RowDefinition>
+            <RowDefinition Height="25*"></RowDefinition>
+            <RowDefinition Height="25*"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
 
-            <Image Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"  Source="../Assets/logoIndiaRose.png" Stretch="Uniform" HorizontalAlignment="Stretch"/>
+        <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Source="../Assets/logoIndiaRose.png" Stretch="Uniform" HorizontalAlignment="Stretch" Margin="0,20,50,10"/>
 
-            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Foreground="White" Background="DodgerBlue" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch">Paramètres de l'application</Button>
-            <Button Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Foreground="White" Background="ForestGreen" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch">Gestion de la collection d'Indiagrams</Button>
+        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Foreground="White" Background="DodgerBlue" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch">
+            <TextBlock  TextAlignment="Center" TextWrapping="Wrap" Text="" x:Uid="Home_AppSettings"/>
+        </Button>
+        
+        <Button Grid.Row="1" Grid.Column="2" Foreground="White" Background="ForestGreen" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch" Grid.ColumnSpan="2">
+            <TextBlock  TextAlignment="Center" TextWrapping="Wrap" Text="" x:Uid="Home_CollectionManagement"/>
+        </Button>
+    
+        
+        
+        
+        <Button Grid.Row="2" Grid.Column="0" Foreground="White" Background="DodgerBlue" VerticalAlignment="Stretch" FontSize="40"  Margin="10, 10, 10, 10" HorizontalAlignment="Stretch">
+            <TextBlock  TextAlignment="Center" TextWrapping="Wrap" Text="" x:Uid="Home_VoiceSynthesisUpgrade"/>
+        </Button>
+        
+        <Button Grid.Row="2" Foreground="White" Background="DodgerBlue" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch" Grid.Column="1">
+            <TextBlock  TextAlignment="Center" TextWrapping="Wrap" Text="" x:Uid="Home_SendLogs"/>
+        </Button>
 
-            <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Foreground="White" Background="Purple" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch">Aide</Button>
-            <Button Command="{Binding ContactCommand}" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Foreground="White" Background="Red" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch">Nous contacter</Button>
-            <Button Command="{Binding CreditsCommand}" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Foreground="White" Background="DarkViolet" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch">Crédits</Button>
+        <Button Grid.Row="2" Foreground="White" Background="ForestGreen" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch" Grid.Column="2">
+            <TextBlock  TextAlignment="Center" TextWrapping="Wrap" Text="" x:Uid="Home_SyncCollection"/>
+        </Button>
+        <Button Grid.Row="2" Foreground="White" Background="DeepPink" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch" Grid.Column="3">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="" x:Uid="Home_Help"/>
+        </Button>
 
-            <Button Command="{Binding ExitCommand}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" Foreground="White" Background="OrangeRed" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch">Quitter</Button>
-        </Grid>
+        
+        
+        
+        
+        <Button Command="{Binding ContactCommand}" Grid.Row="3" Foreground="White" Background="Red" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch" RenderTransformOrigin="0.31,0.404" Grid.ColumnSpan="2"
+                Grid.Column="0">
+            <TextBlock Text="" x:Uid="Home_Contact"/>
+        </Button>
+        
+        <Button Command="{Binding CreditsCommand}" Grid.Row="3" Grid.ColumnSpan="2" Foreground="White" Background="Purple" VerticalAlignment="Stretch" FontSize="40" Margin="10, 10, 10, 10" HorizontalAlignment="Stretch" Grid.Column="2">
+            <TextBlock Text="" x:Uid="Home_Credits"/>
+        </Button>
+        
+    </Grid>
 
 </Page>
