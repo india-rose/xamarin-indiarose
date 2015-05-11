@@ -41,16 +41,8 @@
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="Home_CollectionManagement"/>
         </Button>
 
-
-
-        <Button Style="{StaticResource SmallButton}"
-                Grid.Row="2" Grid.Column="0" 
-                Background="DodgerBlue" >
-            <TextBlock  Style="{StaticResource TextButton}" x:Uid="Home_VoiceSynthesisUpgrade"/>
-        </Button>
-
-        <Button Style="{StaticResource SmallButton}"
-                Grid.Row="2" Grid.Column="1"
+        <Button Style="{StaticResource BigButton}"
+                Grid.Row="2" Grid.Column="0"
                 Background="DodgerBlue">
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="Home_SendLogs"/>
         </Button>
