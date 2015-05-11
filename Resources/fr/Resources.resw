@@ -504,6 +504,9 @@ Comments : </value>
   <data name="ImportCollection_DialogTitle.Text" xml:space="preserve">
     <value>Initializing</value>
   </data>
+  <data name="BackButton.Text" xml:space="preserve">
+    <value>Back</value>
+  </data>
   <data name="Home_WebSite.Text" xml:space="preserve">
     <value>indiarose.org</value>
   </data>
