@@ -10,6 +10,41 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminCreditsViewModel}">
 
+    <Page.Resources>
+        <Style x:Key="LogoStyle" TargetType="Image">
+            <Setter Property="Grid.Column" Value="0" />
+            <Setter Property="Grid.ColumnSpan" Value="3" />
+            <Setter Property="Grid.Row" Value="0" />
+            <Setter Property="Margin" Value="10, 10, 10, 10" />
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Grid.Column" Value="1" />
+            <Setter Property="Grid.Row" Value="1" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="Background" Value="OrangeRed" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="FontSize" Value="40" />
+        </Style>
+        
+        <Style x:Key="TextLayoutStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0, 0, 0, 25" />
+            <Setter Property="TextWrapping" Value="WrapWholeWords" />
+            <Setter Property="FontSize" Value="42" />
+            <Setter Property="Foreground" Value="#0AC808" />
+        </Style>
+        <Style x:Key="PeopleTextStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0, 0, 0, 15" />
+            <Setter Property="FontSize" Value="28" />
+            <Setter Property="TextWrapping" Value="WrapWholeWords" />
+            <Setter Property="Foreground" Value="Black" />
+        </Style>
+        <Style x:Key="SectionTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#E3081C" />
+            <Setter Property="TextWrapping" Value="WrapWholeWords" />
+            <Setter Property="FontSize" Value="36" />
+        </Style>
+    </Page.Resources>
+    
     <Grid Background="White" Margin="10, 10, 10, 10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50*" />
@@ -26,40 +61,40 @@
                 <RowDefinition Height="8*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
-            <Image Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Source="../Assets/logoIndiaRose.png" Margin="10, 10, 10, 10"/>
-            <Button Command="{Binding BackCommand}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Stretch" Background="OrangeRed" HorizontalAlignment="Stretch" FontSize="40">Retour</Button>
+            <Image  Style="{StaticResource LogoStyle}" Source="../Assets/logoIndiaRose.png" />
+            <Button Style="{StaticResource ButtonStyle}" Command="{Binding BackCommand}">Retour</Button>
         </Grid>
 
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
         <StackPanel Orientation="Vertical">
         
-            <TextBlock Margin="0, 0, 0, 25" TextWrapping="WrapWholeWords" FontSize="42" Foreground="#0AC808" x:Uid="Credits_ApplicationName" Text="" />
-            <TextBlock TextWrapping="WrapWholeWords" FontSize="36" Foreground="#E3081C" x:Uid="Credits_Officer" Text="" />
-            <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_OfficerTeam" Text="" />
-            <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Graphics" Text="" />
-                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_GraphicsTeam" Text="" />
-                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_University" Text="" />
-                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_UniversityTeam" Text="" />
-                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Trainee2014" Text="" />
-                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Trainee2014Team" Text="" />
-                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Xamarin2014" Text="" />
-                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Xamarin2014Team" Text="" />
-                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Trainee2013" Text="" />
-                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Trainee2013Team" Text="" />
-                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Android2013" Text="" />
-                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Android2013Team" Text="" />
-                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Trainee2012" Text="" />
-                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Trainee2012Team" Text="" />
-                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Android2012" Text="" />
-                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Android2012Team" Text="" />
-                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Android2011" Text="" />
-                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Android2011Team" Text="" />
-                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Cloud2011" Text="" />
-                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Cloud2011Team" Text="" />
-                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_Windows2011" Text="" />
-                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Windows2011Team" Text="" />
-                <TextBlock Foreground="#E3081C" TextWrapping="WrapWholeWords" FontSize="36" x:Uid="Credits_IndiagramProvider" Text="" />
-                <TextBlock Margin="0, 0, 0, 15" FontSize="28" TextWrapping="WrapWholeWords" Foreground="Black" x:Uid="Credits_Sclera" Text="" />
+            <TextBlock Style="{StaticResource TextLayoutStyle}" x:Uid="Credits_ApplicationName" Text="" />
+            <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Officer" Text="" />
+            <TextBlock Style="{StaticResource PeopleTextStyle}"  x:Uid="Credits_OfficerTeam" Text="" />
+            <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Graphics" Text="" />
+            <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_GraphicsTeam" Text="" />
+            <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_University" Text="" />
+            <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_UniversityTeam" Text="" />
+            <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Trainee2014" Text="" />
+            <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Trainee2014Team" Text="" />
+            <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Xamarin2014" Text="" />
+            <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Xamarin2014Team" Text="" />
+            <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Trainee2013" Text="" />
+            <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Trainee2013Team" Text="" />
+            <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Android2013" Text="" />
+            <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Android2013Team" Text="" />
+            <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Trainee2012" Text="" />
+            <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Trainee2012Team" Text="" />
+            <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Android2012" Text="" />
+            <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Android2012Team" Text="" />
+            <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Android2011" Text="" />
+            <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Android2011Team" Text="" />
+            <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Cloud2011" Text="" />
+            <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Cloud2011Team" Text="" />
+            <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Windows2011" Text="" />
+            <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Windows2011Team" Text="" />
+            <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_IndiagramProvider" Text="" />
+            <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Sclera" Text="" />
         </StackPanel>
         </ScrollViewer>
     </Grid>
