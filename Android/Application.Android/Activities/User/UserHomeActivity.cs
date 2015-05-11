@@ -13,11 +13,13 @@ namespace IndiaRose.Application.Activities.User
 		LaunchMode = LaunchMode.SingleTask)]
 	public partial class UserHomeActivity : ActivityBase
 	{
-		protected ISettingsService SettingsService
-		{
-			get { return LazyResolver<ISettingsService>.Service; }
-		}
-
+	    protected override void OnCreate(Bundle savedInstanceState)
+	    {
+            base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.User_HomePage);
+            SetViewModel(Container.Locator.UserHomeViewModel);
+	    }
+        /*
 		private bool _initialized;
 		private readonly object _mutex = new object();
 
@@ -75,7 +77,7 @@ namespace IndiaRose.Application.Activities.User
 			IndiagramBrowser.LayoutParameters = top;
 
 
-			var sentenceArea1 = FindViewById<Framework.Views.SentenceArea>(Resource.Id.SentenceArea);
+			var sentenceArea1 = FindViewById<Framework.Views.SentenceAreaView>(Resource.Id.SentenceArea);
 			var sentenceArea2 = FindViewById(Resource.Id.SentenceArea);
 
 			/*
@@ -83,6 +85,6 @@ namespace IndiaRose.Application.Activities.User
 			bottom.Height = (int)(availableHeight*(1 - SettingsService.SelectionAreaHeight / 100.0));
 			SentenceArea.LayoutParameters = bottom;
 			 */
-		}
+		//}
 	}
 }

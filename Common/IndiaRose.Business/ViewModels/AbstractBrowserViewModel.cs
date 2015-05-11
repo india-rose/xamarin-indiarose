@@ -95,46 +95,43 @@ namespace IndiaRose.Business.ViewModels
 		{
 			NextCommand = new DelegateCommand(NextAction);
 			IndiagramSelectedCommand = new DelegateCommand<Indiagram>(IndiagramSelectedAction);
-            CollectionStorageService.Initialized += CollectionStorageService_Initialized;
-		}
-
-        void CollectionStorageService_Initialized(object sender, EventArgs e)
-        {// Load collection
+            
+            // Load collection
             ObservableCollection<Indiagram> collection = CollectionStorageService.Collection;
 
-            // debug purpose only
-            if (collection.Count == 0)
-            {
-                int position = 1;
-                Func<string, Indiagram> constructorLambda = text => new Indiagram
-                {
-                    Text = text,
-                    ImagePath = "",
-                    Position = position++,
-                };
-                collection.Add(CollectionStorageService.Save(constructorLambda("azerty")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("helloa")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("helloz")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("helloe")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("hellor")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("hellot")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("helloy")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("hellou")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("helloi")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("helloo")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("hellop")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("helloq")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("hellos")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("hellod")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("hellof")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("hellog")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("helloh")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("helloj")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("hellok")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("hellol")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("hellom")));
-                collection.Add(CollectionStorageService.Save(constructorLambda("hellow")));
-            }
+            //// debug purpose only
+            //if (collection.Count == 0)
+            //{
+            //    int position = 1;
+            //    Func<string, Indiagram> constructorLambda = text => new Indiagram
+            //    {
+            //        Text = text,
+            //        ImagePath = "",
+            //        Position = position++,
+            //    };
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("azerty")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloa")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloz")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloe")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellor")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellot")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloy")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellou")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloi")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloo")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellop")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloq")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellos")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellod")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellof")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellog")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloh")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloj")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellok")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellol")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellom")));
+            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellow")));
+            //}
 
             _rootCollection = new Category(collection)
             {

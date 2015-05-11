@@ -22,7 +22,7 @@ namespace IndiaRose.Storage.Sqlite
 		private SQLiteConnection _connection;
 
 		private List<IndiagramSql> _databaseContent;
-		private ObservableCollection<Indiagram> _collection;
+		private readonly ObservableCollection<Indiagram> _collection = new ObservableCollection<Indiagram>();
 
 		private bool _isInitialized = false;
 
@@ -84,8 +84,11 @@ namespace IndiaRose.Storage.Sqlite
 					categories.AddRange(category.Children.Where(x => x.IsCategory));
 				}
 			}
-			_collection = new ObservableCollection<Indiagram>(collectionRoot.Children);
-			Collection.ForEach(x => x.Parent = null);
+            collectionRoot.Children.ForEach(x =>
+            {
+                x.Parent = null;
+                Collection.Add(x);
+            });
 
 			IsInitialized = true;
 		}

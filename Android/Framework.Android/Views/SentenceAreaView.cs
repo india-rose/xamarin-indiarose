@@ -6,6 +6,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using IndiaRose.Data.Model;
+using IndiaRose.Framework.Converters;
 using IndiaRose.Interfaces;
 using Java.Util;
 using Storm.Mvvm.Inject;
@@ -13,7 +14,7 @@ using Storm.Mvvm.Inject;
 namespace IndiaRose.Framework.Views
 {
 
-    public class SentenceArea : RelativeLayout, View.IOnTouchListener
+    public class SentenceAreaView : RelativeLayout, View.IOnTouchListener
     {
         private readonly object _lock = new object();
 
@@ -36,19 +37,19 @@ namespace IndiaRose.Framework.Views
         protected Timer MDelayReadingTimer = new Timer();
 
 
-        public SentenceArea(Context context)
+        public SentenceAreaView(Context context)
             : base(context)
         {
             Initialize();
         }
 
-        public SentenceArea(Context context, IAttributeSet attrs)
+        public SentenceAreaView(Context context, IAttributeSet attrs)
             : base(context, attrs)
         {
             Initialize();
         }
 
-        public SentenceArea(Context context, IAttributeSet attrs, int defStyleAttr)
+        public SentenceAreaView(Context context, IAttributeSet attrs, int defStyleAttr)
             : base(context, attrs, defStyleAttr)
         {
             Initialize();
@@ -300,15 +301,15 @@ namespace IndiaRose.Framework.Views
                     if (ReadingIndex > 0
                         && SettingsService.IsReinforcerEnabled)
                     {
+                        //0 = Color.Transparent
                         // disable reinforcer background on the last read indiagram.
-                        //todo a voir c'est quoi le indiagrambackground
-                        //ToPlayView[ReadingIndex - 1].setIndiagramBackground(Color.Transparent);
+                        ToPlayView[ReadingIndex - 1].BackgroundColor=0;
                     }
                     IndiagramView v = ToPlayView[ReadingIndex];
                     if (SettingsService.IsReinforcerEnabled)
                     {
-                        //todo pareil
-                        //v.setIndiagramBackground(SettingsService.ReinforcerColor);
+                        var colorconverter = new ColorStringToIntConverter();
+                        v.BackgroundColor=(uint) colorconverter.Convert(SettingsService.ReinforcerColor,null,null,null);
                     }
                     TextToSpeechService.ReadText(v.Indiagram.Text);
                 }
@@ -316,8 +317,8 @@ namespace IndiaRose.Framework.Views
                 {
                     if (ToPlayView.Count > 0)
                     {
-                        //idem
-                        //ToPlayView[ToPlayView.Count - 1].setIndiagramBackground(Color.Transparent);
+                        //0 = Color.Transparent
+                        ToPlayView[ToPlayView.Count - 1].BackgroundColor=0;
                     }
                     IsReading = false;
                     /*try

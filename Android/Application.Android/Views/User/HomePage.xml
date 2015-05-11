@@ -6,21 +6,10 @@
 	<TitleBarView android:layout_width="match_parent"
 	              android:layout_height="wrap_content"
 	              android:id="TitleBar" />
-
-	<IndiagramBrowserView android:layout_width="match_parent"
-	                      android:layout_height="match_parent"
-	                      android:id="IndiagramBrowser"
-						  android:layout_below="@id/TitleBar"
-	                      Background="{Binding BackgroundColor, Converter={Resource ColorStringToDrawableColorConverter}}"
-	                      Count="{Binding CollectionDisplayCount, Mode=TwoWay, UpdateEvent=CountChanged}"
-	                      Offset="{Binding CollectionOffset}"
-	                      Indiagrams="{Binding DisplayedIndiagrams}"
-	                      TextColor="{Binding TextColor, Converter={Resource ColorStringToIntConverter}}"
-	                      IndiagramSelected="{Binding IndiagramSelectedCommand}"
-	                      NextCommand="{Binding NextCommand}" />
-	
-	<SentenceAreaView android:id="SentenceArea"
-					  android:layout_below="@id/IndiagramBrowser"
-	                  android:layout_width="match_parent"
-	                  android:layout_height="match_parent" />
+  <UserView
+      android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+      android:layout_below="@id/TitleBar"
+      />
+  
 </RelativeLayout>

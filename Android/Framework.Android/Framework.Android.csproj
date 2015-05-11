@@ -62,6 +62,7 @@
     <Compile Include="Views\SentenceAreaView.cs" />
     <Compile Include="Views\TabletPreviewView.cs" />
     <Compile Include="Views\TitleBarView.cs" />
+    <Compile Include="Views\UserView.cs" />
     <Compile Include="Views\ViewWithBorder.cs" />
   </ItemGroup>
   <ItemGroup>

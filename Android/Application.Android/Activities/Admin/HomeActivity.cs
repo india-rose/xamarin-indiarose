@@ -12,7 +12,7 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Application.Activities.Admin
 {
-	[Activity(Label = "India Rose Dev", MainLauncher = true, Icon = "@drawable/ir_logo", ScreenOrientation = ScreenOrientation.Landscape, Theme = "@style/Theme.Sherlock.Light.NoActionBar", LaunchMode = LaunchMode.SingleTask)]
+	[Activity(Label = "India Rose Dev", MainLauncher = true, Icon = "@drawable/ir_logo_params", ScreenOrientation = ScreenOrientation.Landscape, Theme = "@style/Theme.Sherlock.Light.NoActionBar", LaunchMode = LaunchMode.SingleTask)]
 	public partial class HomeActivity : ActivityBase
 	{
 		protected override void OnCreate(Bundle bundle)
