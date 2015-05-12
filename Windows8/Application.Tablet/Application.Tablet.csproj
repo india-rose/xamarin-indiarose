@@ -144,7 +144,7 @@
     </Compile>
     <Compile Include="CompositionRoot\Bootstrap.cs" />
     <Compile Include="CompositionRoot\Container.cs" />
-    <Compile Include="Views\AppSettingsPage.xaml.cs">
+    <Compile Include="Views\Settings\AppSettingsPage.xaml.cs">
       <DependentUpon>AppSettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CreditsPage.xaml.cs">
@@ -178,7 +178,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\AppSettingsPage.xaml">
+    <Page Include="Views\Settings\AppSettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
