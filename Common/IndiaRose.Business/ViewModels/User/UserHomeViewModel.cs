@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IndiaRose.Business.ViewModels.User
 {
-    public class UserHomeViewModel : AbstractViewModel
+    public class UserHomeViewModel : AbstractBrowserViewModel
     {
     }
 }

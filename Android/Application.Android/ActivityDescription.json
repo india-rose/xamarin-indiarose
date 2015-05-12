@@ -30,8 +30,12 @@
             "fullclassname": "IndiaRose.Framework.Views.TitleBarView"
         },
         {
-            "alias": "SentenceArea",
-            "fullclassname": "IndiaRose.Framework.Views.SentenceArea"
+            "alias": "SentenceAreaView",
+            "fullclassname": "IndiaRose.Framework.Views.SentenceAreaView"
+        },
+        {
+            "alias": "UserView",
+            "fullclassname": "IndiaRose.Framework.Views.UserView"
         }
     ],
     "globalResourceFiles": [
