@@ -20,6 +20,7 @@ namespace IndiaRose.Application.CompositionRoot
                 {ViewKey.ADMIN_HOME, typeof(MainPage)},
                 {ViewKey.ADMIN_CREDITS, typeof(CreditsPage)},
                 {ViewKey.ADMIN_SETTINGS_HOME, typeof(AppSettingsPage)},
+                {ViewKey.ADMIN_SERVERSYNCHRONIZATION, typeof(ServerSynchronizationPage)},
             };
 
 			var dialogs = new Dictionary<string, Type>
