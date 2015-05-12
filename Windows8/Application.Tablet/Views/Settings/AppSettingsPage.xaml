@@ -1,0 +1,74 @@
+﻿<Page
+    x:Class="IndiaRose.Application.Views.AppSettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:IndiaRose.Application.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:IndiaRose.Business"
+    xmlns:application="using:IndiaRose.Application"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=AdminSettingsAppSettingsViewModel}">
+
+    <Grid VerticalAlignment="Stretch" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="10*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="25*"></RowDefinition>
+            <RowDefinition Height="25*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Button Style="{StaticResource SmallButton}"
+                Background="DodgerBlue"
+                Grid.Row="1" Grid.Column="1">
+            <TextBlock  Style="{StaticResource TextButton}" x:Uid="AppSettings_Background"/>
+        </Button>
+
+        <Button Style="{StaticResource SmallButton}"
+                Background="DeepPink"
+                Grid.Row="1" Grid.Column="2">
+            <TextBlock  Style="{StaticResource TextButton}" x:Uid="AppSettings_Indiagram"/>
+        </Button>
+
+        <Button Style="{StaticResource SmallButton}"
+                Background="ForestGreen"
+                Grid.Row="1" Grid.Column="3">
+            <TextBlock  Style="{StaticResource TextButton}" x:Uid="AppSettings_DragDrop"/>
+        </Button>
+
+
+
+        <Button Style="{StaticResource SmallButton}"
+                Background="ForestGreen"
+                Grid.Row="2" Grid.Column="1">
+            <TextBlock  Style="{StaticResource TextButton}" x:Uid="AppSettings_ReadingCategory"/>
+        </Button>
+
+        <Button Style="{StaticResource SmallButton}"
+                Background="Purple"
+                Grid.Row="2" Grid.Column="2">
+            <TextBlock  Style="{StaticResource TextButton}" x:Uid="AppSettings_ReadingDelay"/>
+        </Button>
+
+        <Button Style="{StaticResource SmallButton}"
+                Background="OrangeRed"
+                Grid.Row="2" Grid.Column="3">
+            <TextBlock  Style="{StaticResource TextButton}" x:Uid="AppSettings_Reset"/>
+        </Button>
+
+        <Button Style="{StaticResource BackButton}"
+                Command="{Binding BackCommand}"
+                Background="Red"
+                Grid.Row="3" Grid.Column="1">
+            <TextBlock  Style="{StaticResource TextButton}" x:Uid="BackButton"/>
+        </Button>
+    </Grid>
+</Page>
