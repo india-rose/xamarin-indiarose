@@ -189,16 +189,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Views\Collection\CollectionManagementPage.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\BlankPage1.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Settings\AppSettingsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CreditsPage.xaml">
       <SubType>Designer</SubType>
