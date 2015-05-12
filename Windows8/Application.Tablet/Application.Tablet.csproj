@@ -147,6 +147,9 @@
     <Compile Include="Views\ServerSynchronizationPage.xaml.cs">
       <DependentUpon>ServerSynchronizationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Settings\ApplicationLookPage.xaml.cs">
+      <DependentUpon>ApplicationLookPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Settings\AppSettingsPage.xaml.cs">
       <DependentUpon>AppSettingsPage.xaml</DependentUpon>
     </Compile>
@@ -185,6 +188,10 @@
     <Page Include="Views\ServerSynchronizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\ApplicationLookPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Settings\AppSettingsPage.xaml">
       <SubType>Designer</SubType>
