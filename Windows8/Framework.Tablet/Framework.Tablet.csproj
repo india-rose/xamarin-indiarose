@@ -108,6 +108,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\IndiagramBrowserView.cs" />
+    <Compile Include="Views\IndiagramView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Funq.Portable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
