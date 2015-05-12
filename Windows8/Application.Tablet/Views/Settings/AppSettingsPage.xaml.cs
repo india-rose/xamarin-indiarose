@@ -20,16 +20,11 @@ namespace IndiaRose.Application.Views
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
-    public sealed partial class BlankPage1 : Page
+    public sealed partial class AppSettingsPage 
     {
-        public BlankPage1()
+        public AppSettingsPage()
         {
             this.InitializeComponent();
-        }
-
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -5,6 +5,8 @@
     xmlns:local="using:IndiaRose.Application.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:IndiaRose.Business"
+    xmlns:application="using:IndiaRose.Application"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminSettingsAppSettingsViewModel}">
 
@@ -21,7 +23,7 @@
             <RowDefinition Height="25*"></RowDefinition>
             <RowDefinition Height="25*"></RowDefinition>
             <RowDefinition Height="10*"></RowDefinition>
-            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
         </Grid.RowDefinitions>
         
         <Button Style="{StaticResource SmallButton}"
@@ -63,6 +65,7 @@
         </Button>
 
         <Button Style="{StaticResource BackButton}"
+                Command="{Binding BackCommand}"
                 Background="Red"
                 Grid.Row="3" Grid.Column="1">
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="BackButton"/>

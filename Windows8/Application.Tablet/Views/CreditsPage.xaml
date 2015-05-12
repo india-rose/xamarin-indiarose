@@ -62,8 +62,9 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <Image  Style="{StaticResource LogoStyle}" Source="../Assets/logoIndiaRose.png" />
-            <Button Style="{StaticResource ButtonStyle}" Command="{Binding BackCommand}">
-                <TextBlock x:Uid="BackButton" Text="" />
+            <Button Background="Red" Grid.Row="1" Grid.Column="1"
+                Style="{StaticResource SmallButton}" Command="{Binding BackCommand}">
+                <TextBlock Style="{StaticResource TextButton}" x:Uid="BackButton" />
             </Button>
         </Grid>
 
