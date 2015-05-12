@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 using IndiaRose.Application.Views;
+using IndiaRose.Application.Views.Collection;
 using IndiaRose.Business;
+using IndiaRose.Business.ViewModels.Admin.Collection;
 using Storm.Mvvm.Inject;
 using ViewKey = IndiaRose.Business.Views;
 
@@ -14,6 +16,7 @@ namespace IndiaRose.Application.CompositionRoot
         {
             var views = new Dictionary<string, Type>
             {
+				{ViewKey.ADMIN_COLLECTION_HOME,typeof(CollectionManagementPage)},
                 {ViewKey.ADMIN_HOME, typeof(MainPage)},
                 {ViewKey.ADMIN_CREDITS, typeof(CreditsPage)},
                 {ViewKey.ADMIN_SETTINGS_HOME, typeof(AppSettingsPage)},
