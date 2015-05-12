@@ -5,13 +5,16 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using IndiaRose.Framework.Converters;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
+using Android.Graphics.Drawables;
 
 namespace IndiaRose.Framework.Views
 {
@@ -23,9 +26,14 @@ namespace IndiaRose.Framework.Views
         {
             get { return LazyResolver<ICollectionStorageService>.Service; }
         }
+
+        public ISettingsService SettingsService
+        {
+            get { return LazyResolver<ISettingsService>.Service; }
+        }
         public IndiagramBrowserView TopView
         {
-            get { return _topView; } 
+            get { return _topView; }
             set { SetProperty(ref _topView, value); }
         }
         private IndiagramBrowserView _topView;
@@ -38,38 +46,24 @@ namespace IndiaRose.Framework.Views
         private SentenceAreaView _botView;
 
 
-        protected UserView(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
+        protected UserView(IntPtr javaReference, JniHandleOwnership transfer)
+            : base(javaReference, transfer)
         {
-            Initialize();
         }
 
-        public UserView(Context context) : base(context)
+        public UserView(Context context)
+            : base(context)
         {
-            Initialize();
         }
 
-        public UserView(Context context, IAttributeSet attrs) : base(context, attrs)
+        public UserView(Context context, IAttributeSet attrs)
+            : base(context, attrs)
         {
-            Initialize();
         }
 
-        public UserView(Context context, IAttributeSet attrs, int defStyle) : base(context, attrs, defStyle)
+        public UserView(Context context, IAttributeSet attrs, int defStyle)
+            : base(context, attrs, defStyle)
         {
-            Initialize();
-        }
-
-        private void Initialize()
-        {
-            if (CollectionStorageService.IsInitialized) CollectionStorageService_Initialized(this, null);
-            else CollectionStorageService.Initialized += CollectionStorageService_Initialized;
-        }
-
-        private void CollectionStorageService_Initialized(object sender, EventArgs e)
-        {
-            TopView = new IndiagramBrowserView(Context);
-            BotView = new SentenceAreaView(Context);
-            AddView(TopView);
-            AddView(BotView);
         }
 
         #region Private tools methods
@@ -103,5 +97,19 @@ namespace IndiaRose.Framework.Views
         }
 
         #endregion
+
+        public void Init(int availableHeight, int width)
+        {
+            TopView = new IndiagramBrowserView(Context);
+            BotView = new SentenceAreaView(Context);
+
+            AddView(TopView, width, (int)Math.Round(availableHeight * (SettingsService.SelectionAreaHeight / 100.0)));
+            AddView(BotView, width, (int)Math.Round(availableHeight * (1 - (SettingsService.SelectionAreaHeight / 100.0))));
+
+            BotView.SetY(TopView.LayoutParameters.Height);
+
+            var colorconverter = new ColorStringToDrawableColorConverter();
+            TopView.Background = (Drawable)colorconverter.Convert(SettingsService.TopBackgroundColor, null, null, null);
+        }
     }
 }
