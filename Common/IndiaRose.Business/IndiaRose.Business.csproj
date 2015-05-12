@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
@@ -91,7 +91,7 @@
       <Name>IndiaRose.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\IndiaRose.Storage.Sqlite\IndiaRose.Storage.Sqlite.csproj">
-      <Project>{7264f4cf-e626-4069-b5a1-87d1d51eb3d9}</Project>
+      <Project>{7264F4CF-E626-4069-B5A1-87D1D51EB3D9}</Project>
       <Name>IndiaRose.Storage.Sqlite</Name>
     </ProjectReference>
   </ItemGroup>

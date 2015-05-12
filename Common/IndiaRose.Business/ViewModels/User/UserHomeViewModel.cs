@@ -8,5 +8,9 @@ namespace IndiaRose.Business.ViewModels.User
 {
     public class UserHomeViewModel : AbstractBrowserViewModel
     {
+        public string BotBackgroundColor
+        {
+            get { return SettingsService.BottomBackgroundColor; }
+        }
     }
 }

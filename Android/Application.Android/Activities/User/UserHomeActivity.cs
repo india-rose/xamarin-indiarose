@@ -7,6 +7,7 @@ using IndiaRose.Framework.Views;
 using IndiaRose.Interfaces;
 using Storm.Mvvm;
 using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application.Activities.User
 {
@@ -14,12 +15,6 @@ namespace IndiaRose.Application.Activities.User
 		LaunchMode = LaunchMode.SingleTask)]
 	public partial class UserHomeActivity : ActivityBase
 	{
-	    /*protected override void OnCreate(Bundle savedInstanceState)
-	    {
-            base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.User_HomePage);
-            SetViewModel(Container.Locator.UserHomeViewModel);
-	    }*/
         public ISettingsService SettingsService
         {
             get { return LazyResolver<ISettingsService>.Service; }
@@ -58,9 +53,10 @@ namespace IndiaRose.Application.Activities.User
 		private void SetUp()
 		{
 			SetContentView(Resource.Layout.User_HomePage);
-			SetViewModel(Container.Locator.UserHomeViewModel);
+		    SetViewModel(Container.Locator.UserHomeViewModel);
 
-			RootLayout.LayoutChange += OnLayoutChange;
+            //todo : enlever le layoutchange pour compatibilité avec ancienne version (cependant le layout n'est pas encore chargé à cet endroit donc que faire ?
+            RootLayout.LayoutChange += OnLayoutChange;
 		}
 
         private void OnLayoutChange(object sender, View.LayoutChangeEventArgs layoutChangeEventArgs)
@@ -77,19 +73,6 @@ namespace IndiaRose.Application.Activities.User
             int availableHeight = RootLayout.Height - TitleBar.Height;
             UserView mid = FindViewById<UserView>(Resource.Id.MiddleScreen);
             mid.Init(availableHeight,RootLayout.Width);
-            /*ViewGroup.LayoutParams top = IndiagramBrowser.LayoutParameters;
-            top.Height = (int)(availableHeight*(SettingsService.SelectionAreaHeight / 100.0));
-            IndiagramBrowser.LayoutParameters = top;
-
-
-            var sentenceArea1 = FindViewById<Framework.Views.SentenceAreaView>(Resource.Id.SentenceArea);
-            var sentenceArea2 = FindViewById(Resource.Id.SentenceArea);
-
-            /*
-            ViewGroup.LayoutParams bottom = SentenceArea.LayoutParameters;
-            bottom.Height = (int)(availableHeight*(1 - SettingsService.SelectionAreaHeight / 100.0));
-            SentenceArea.LayoutParameters = bottom;
-             */
         }
 	}
 }

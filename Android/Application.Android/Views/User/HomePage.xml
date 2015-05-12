@@ -1,16 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 XmlStyle="{Resource BaseRootLayoutStyle}"
                 android:id="RootLayout">
 	<TitleBarView android:layout_width="match_parent"
 	              android:layout_height="wrap_content"
-	              android:id="TitleBar" />
+	              android:id="TitleBar"
+                Category="{Binding CurrentCategory}"/>
   <UserView
       android:layout_width="match_parent"
 	    android:layout_height="match_parent"
       android:layout_below="@id/TitleBar"
       android:id="MiddleScreen"
+	    TopBackground="{Binding BackgroundColor, Converter={Resource ColorStringToDrawableColorConverter}}"
+	    TopCount="{Binding CollectionDisplayCount, Mode=TwoWay, UpdateEvent=CountChanged}"
+	    TopOffset="{Binding CollectionOffset}"
+	    TopIndiagrams="{Binding DisplayedIndiagrams}"
+	    TopTextColor="{Binding TextColor, Converter={Resource ColorStringToIntConverter}}"
+	    TopIndiagramSelected="{Binding IndiagramSelectedCommand}"
+	    TopNextCommand="{Binding NextCommand}"
+      BotBackground="{Binding BotBackgroundColor, Converter={Resource ColorStringToDrawableColorConverter}}"
       />
   
 </RelativeLayout>

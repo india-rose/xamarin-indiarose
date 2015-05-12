@@ -24,7 +24,7 @@ namespace IndiaRose.Business.ViewModels
 		private int _collectionDisplayCount;
 		private List<Indiagram> _displayedIndiagrams;
 
-		private Category _rootCollection;
+		private readonly Category _rootCollection;
 		private readonly Stack<Category> _navigationStack = new Stack<Category>();
 
 		#region Services
@@ -81,6 +81,10 @@ namespace IndiaRose.Business.ViewModels
 			private set { SetProperty(ref _displayedIndiagrams, value); }
 		}
 
+	    public Category CurrentCategory
+	    {
+            get { return _navigationStack != null && _navigationStack.Any() ? _navigationStack.Peek() : null; }
+	    }
 		#endregion
 
 		#region Commands
@@ -99,44 +103,10 @@ namespace IndiaRose.Business.ViewModels
             // Load collection
             ObservableCollection<Indiagram> collection = CollectionStorageService.Collection;
 
-            //// debug purpose only
-            //if (collection.Count == 0)
-            //{
-            //    int position = 1;
-            //    Func<string, Indiagram> constructorLambda = text => new Indiagram
-            //    {
-            //        Text = text,
-            //        ImagePath = "",
-            //        Position = position++,
-            //    };
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("azerty")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloa")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloz")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloe")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellor")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellot")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloy")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellou")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloi")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloo")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellop")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloq")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellos")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellod")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellof")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellog")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloh")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("helloj")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellok")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellol")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellom")));
-            //    collection.Add(CollectionStorageService.Save(constructorLambda("hellow")));
-            //}
-
             _rootCollection = new Category(collection)
             {
                 Text = LocalizationService.GetString("Collection_RootCategoryName", "Text"),
-                ImagePath = StorageService.RootPath,
+                ImagePath = StorageService.ImageRootPath,
             };
         }
 
@@ -182,6 +152,7 @@ namespace IndiaRose.Business.ViewModels
 			category.Children.CollectionChanged += OnCollectionChanged;
 
 			_navigationStack.Push(category);
+            RaisePropertyChanged("CurrentCategory");
 			RewindCategory();
 			RefreshDisplayList();
 		}
@@ -199,7 +170,8 @@ namespace IndiaRose.Business.ViewModels
 			}
 
 			_navigationStack.Pop().Children.CollectionChanged -= OnCollectionChanged;
-			_navigationStack.Peek().Children.CollectionChanged += OnCollectionChanged;
+            _navigationStack.Peek().Children.CollectionChanged += OnCollectionChanged;
+            RaisePropertyChanged("CurrentCategory");
 			RewindCategory();
 			RefreshDisplayList();
 		}

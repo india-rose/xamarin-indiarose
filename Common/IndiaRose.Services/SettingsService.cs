@@ -216,7 +216,7 @@ namespace IndiaRose.Services
 		{
 			TopBackgroundColor = "#FF3838FF";
 			BottomBackgroundColor = "#FF73739E";
-			SelectionAreaHeight = 70;
+			SelectionAreaHeight = 50;
 			IndiagramDisplaySize = 128;
 			FontName = "Consolas";
 			FontSize = 12;
