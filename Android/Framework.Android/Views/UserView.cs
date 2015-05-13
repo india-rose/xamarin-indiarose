@@ -35,6 +35,7 @@ namespace IndiaRose.Framework.Views
 
         #endregion
 
+        public event EventHandler ListChanged;
         public event EventHandler CountChanged;
         #region Properties
         public IndiagramBrowserView TopView
@@ -145,6 +146,7 @@ namespace IndiaRose.Framework.Views
             BotView = new SentenceAreaView(Context);
 
             TopView.CountChanged += (sender, args) => this.RaiseEvent(CountChanged);
+            BotView.ListChanged += (sender, args) => this.RaiseEvent(ListChanged);
         }
         #endregion
 

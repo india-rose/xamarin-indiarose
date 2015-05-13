@@ -28,8 +28,6 @@ namespace IndiaRose.Business.ViewModels.User
             set { SetProperty(ref _toplayList, value); }
         }
 
-        public event EventHandler ListChanged;
-
         public UserHomeViewModel()
         {
             ToPlayedList=new List<Indiagram>();
@@ -44,11 +42,15 @@ namespace IndiaRose.Business.ViewModels.User
             else
             {
                 ToPlayedList.Add(indiagram);
-                this.RaiseEvent(ListChanged);
+                RaisePropertyChanged("ToPlayedList");
                 if(SettingsService.IsBackHomeAfterSelectionEnabled)
                     while (PopCategory()){}
             }
         }
-        
+        protected override IEnumerable<Indiagram> FilterCollection(IEnumerable<Indiagram> input)
+        {
+
+            return input.Where(indiagram => ToPlayedList.All(india => !Indiagram.AreSameIndiagram(indiagram, india)));
+        }        
     }
 }
