@@ -17,25 +17,37 @@ namespace IndiaRose.Framework.Views
     {
         private readonly object _lock = new object();
 
+        private List<IndiagramView> _toPlayView;
         public List<IndiagramView> ToPlayView
         {
-           // get { return this; }
+            get { return _toPlayView; }
             set
             {
                 RemoveAllViews();
+                AddPlayButton();
+                var param = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
+                param.AddRule(LayoutRules.CenterHorizontal);
+                param.AddRule(LayoutRules.RightOf, ActId);
                 value.ForEach(x =>
                 {
                     x.Id = ActId++;
-                    AddView(x, new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent));
+                    AddView(x, param);
+                    x.Touch += Remove;
                 });
+                _toPlayView = value;
+                Post(Invalidate);
             }
+        }
+
+        private void Remove(object sender, TouchEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         protected ITextToSpeechService TextToSpeechService
         {
             get { return LazyResolver<ITextToSpeechService>.Service; }
         }
-
         protected ISettingsService SettingsService
         {
             get { return LazyResolver<ISettingsService>.Service; }
@@ -69,17 +81,12 @@ namespace IndiaRose.Framework.Views
 
         public void Initialize()
         {
+            _toPlayView=new List<IndiagramView>();
             Id = 0x2A;
             ActId = Id;
             MaxNumberOfIndiagram = Width / IndiagramView.DefaultWidth - 1;
 
-            // Init play button
-            LayoutParams lp = new LayoutParams(
-                ViewGroup.LayoutParams.WrapContent,
-                ViewGroup.LayoutParams.WrapContent);
-            lp.AddRule(LayoutRules.AlignParentRight);
-            lp.AddRule(LayoutRules.CenterVertical);
-
+            //Init play button
             _playButton = new IndiagramView(Context)
             {
                 TextColor = 0,
@@ -91,9 +98,21 @@ namespace IndiaRose.Framework.Views
                 }
             };
             _playButton.Touch += Read;
-            AddView(_playButton,lp);
+            AddPlayButton();
         }
 
+        protected void AddPlayButton()
+        {
+            LayoutParams lp = new LayoutParams(
+                   ViewGroup.LayoutParams.WrapContent,
+                   ViewGroup.LayoutParams.WrapContent);
+            lp.AddRule(LayoutRules.AlignParentRight);
+            lp.AddRule(LayoutRules.CenterVertical);
+
+            
+            AddView(_playButton, lp);
+            
+        }
         public bool CanAddIndiagram()
         {
             return (ToPlayView.Count < MaxNumberOfIndiagram && !IsReading);

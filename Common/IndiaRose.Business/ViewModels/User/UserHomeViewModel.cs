@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
+using Storm.Mvvm.Events;
 using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Business.ViewModels.User
@@ -27,6 +28,8 @@ namespace IndiaRose.Business.ViewModels.User
             set { SetProperty(ref _toplayList, value); }
         }
 
+        public event EventHandler ListChanged;
+
         public UserHomeViewModel()
         {
             ToPlayedList=new List<Indiagram>();
@@ -41,6 +44,7 @@ namespace IndiaRose.Business.ViewModels.User
             else
             {
                 ToPlayedList.Add(indiagram);
+                this.RaiseEvent(ListChanged);
                 if(SettingsService.IsBackHomeAfterSelectionEnabled)
                     while (PopCategory()){}
             }

@@ -19,6 +19,7 @@
 	    TopIndiagramSelected="{Binding IndiagramSelectedCommand}"
 	    TopNextCommand="{Binding NextCommand}"
       BotBackground="{Binding BotBackgroundColor, Converter={Resource ColorStringToDrawableColorConverter}}"
+      BotIndiagrams="{Binding ToPlayedList, Mode=TwoWay, UpdateEvent=ListChanged}"
       />
   
 </RelativeLayout>

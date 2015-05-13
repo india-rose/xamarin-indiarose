@@ -64,15 +64,7 @@ namespace IndiaRose.Framework.Views
         public int TopCount
         {
             get { return TopView.Count; }
-            set
-            {
-                TopView.Count = value; 
-                EventHandler handler = CountChanged;
-                if (handler != null)
-                {
-                    handler(this, EventArgs.Empty);
-                }
-            }
+            set { TopView.Count = value; }
         }
 
         public int TopOffset
@@ -96,8 +88,8 @@ namespace IndiaRose.Framework.Views
             get { return BotView.GetIndiagramsList(); }
             set
             {
-                List<IndiagramView> res=new List<IndiagramView>();
-                value.ForEach(x=>res.Add(new IndiagramView(BotView.Context)
+                List<IndiagramView> res = new List<IndiagramView>();
+                value.ForEach(x => res.Add(new IndiagramView(BotView.Context)
                 {
                     Indiagram = x,
                     TextColor = TopTextColor
