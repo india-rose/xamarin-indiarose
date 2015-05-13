@@ -28,7 +28,7 @@ namespace IndiaRose.Application.CompositionRoot
 			//RegisterInstance<IResourceService>(new ResourceService());
 			RegisterInstance<IEmailService>(new EmailService());
 			//RegisterInstance<IInstallVoiceSynthesisService>(new InstallVoiceSynthesisService());
-			//RegisterInstance<IScreenService>(new ScreenService());
+			RegisterInstance<IScreenService>(new ScreenService());
 			RegisterInstance<IFontService>(new FontService());
             //RegisterInstance<IMediaService>(new MediaService());
             //RegisterInstance<IPopupService>(new PopupService());
@@ -45,10 +45,11 @@ namespace IndiaRose.Application.CompositionRoot
 
 		protected async void InitializeAsync()
         {
-            
+            /*
 			await _storageService.InitializeAsync();
 			await _settingsService.LoadAsync();
 			await _collectionStorageService.InitializeAsync();
+             * */
 		}
 	}
 }

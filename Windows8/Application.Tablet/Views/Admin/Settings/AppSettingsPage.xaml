@@ -27,6 +27,7 @@
         </Grid.RowDefinitions>
         
         <Button Style="{StaticResource SmallButton}"
+                Command="{Binding ApplicationLookCommand}"
                 Background="DodgerBlue"
                 Grid.Row="1" Grid.Column="1">
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="AppSettings_Background"/>

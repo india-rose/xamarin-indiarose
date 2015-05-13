@@ -48,13 +48,12 @@
                 <TextBlock Style="{StaticResource TextButton}"
                       x:Uid="Button_Ok"/>
             </Button>
-        <Button Style="{StaticResource SmallButton}"
+        <Button Style="{StaticResource SmallBackButton}"
                 Command="{Binding BackCommand}"
                 Grid.Column="1"
-                Grid.Row="3"
-                Background="Orange">
+                Grid.Row="3">
             <TextBlock Style="{StaticResource TextButton}" 
-                     x:Uid="Button_Ok"/>
+                     x:Uid="Button_Cancel"/>
 
         </Button>
     </Grid>

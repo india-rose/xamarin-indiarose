@@ -24,6 +24,7 @@ namespace IndiaRose.Application.CompositionRoot
                 {ViewKey.ADMIN_SETTINGS_HOME, typeof(AppSettingsPage)},
                 {ViewKey.ADMIN_SERVERSYNCHRONIZATION, typeof(ServerSynchronizationPage)},
                 {ViewKey.ADMIN_SETTINGS_INDIAGRAMPROPERTIES, typeof(IndiagramPropertyPage)},
+                {ViewKey.ADMIN_SETTINGS_APPLICATIONLOOK,typeof(ApplicationLookPage)},
             };
 
 			var dialogs = new Dictionary<string, Type>

@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator},Path=AdminSettingsIndiagramPropertyViewModel}"
     >
 
     <Grid VerticalAlignment="Stretch" Background="White">
@@ -21,7 +22,7 @@
             <RowDefinition Height="10*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
-        
+        <TextBlock Style="{StaticResource TextStyle}"></TextBlock>
         <Button Style="{StaticResource SmallButton}"
                 Grid.Column="1"
                 Grid.Row="2"
@@ -31,13 +32,12 @@
                      x:Uid="Button_Ok"/>
         </Button>
 
-        <Button Style="{StaticResource SmallButton}"
-
+        <Button Style="{StaticResource SmallBackButton}"
+                Command="{Binding BackCommand}"
                 Grid.Column="2"
                 Grid.Row="2"
-                Background="OrangeRed"
                 >
-            <TextBlock Style="{StaticResource TextButton}" 
+            <TextBlock Style="{StaticResource TextButton}"
                      x:Uid="Button_Cancel"/>
         </Button>
     </Grid>
