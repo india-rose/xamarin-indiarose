@@ -33,9 +33,11 @@
         </Button>
 
         <Button Style="{StaticResource SmallButton}"
+                Command="{Binding IndiagramPropertyCommand}"
                 Background="DeepPink"
                 Grid.Row="1" Grid.Column="2">
-            <TextBlock  Style="{StaticResource TextButton}" x:Uid="AppSettings_Indiagram"/>
+            <TextBlock  Style="{StaticResource TextButton}" x:Uid="AppSettings_Indiagram"
+                        />
         </Button>
 
         <Button Style="{StaticResource SmallButton}"

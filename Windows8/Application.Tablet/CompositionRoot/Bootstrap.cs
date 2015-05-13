@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
+using IndiaRose.Application.Activities.Settings;
 using IndiaRose.Application.Views;
 using IndiaRose.Application.Views.Collection;
 using IndiaRose.Business;
 using IndiaRose.Business.ViewModels.Admin.Collection;
 using Storm.Mvvm.Inject;
+using IndiagramPropertyPage = IndiaRose.Application.Views.IndiagramPropertyPage;
 using ViewKey = IndiaRose.Business.Views;
 
 namespace IndiaRose.Application.CompositionRoot
@@ -21,6 +23,7 @@ namespace IndiaRose.Application.CompositionRoot
                 {ViewKey.ADMIN_CREDITS, typeof(CreditsPage)},
                 {ViewKey.ADMIN_SETTINGS_HOME, typeof(AppSettingsPage)},
                 {ViewKey.ADMIN_SERVERSYNCHRONIZATION, typeof(ServerSynchronizationPage)},
+                {ViewKey.ADMIN_SETTINGS_INDIAGRAMPROPERTIES, typeof(IndiagramPropertyPage)},
             };
 
 			var dialogs = new Dictionary<string, Type>

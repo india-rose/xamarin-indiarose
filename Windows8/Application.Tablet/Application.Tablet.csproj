@@ -143,28 +143,32 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\Settings\IndiagramPropertyPage.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="CompositionRoot\Bootstrap.cs" />
     <Compile Include="CompositionRoot\Container.cs" />
-    <Compile Include="Views\ServerSynchronizationPage.xaml.cs">
+    <Compile Include="Views\Admin\ServerSynchronizationPage.xaml.cs">
       <DependentUpon>ServerSynchronizationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Settings\ApplicationLookPage.xaml.cs">
+    <Compile Include="Views\Admin\Settings\ApplicationLookPage.xaml.cs">
       <DependentUpon>ApplicationLookPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Settings\AppSettingsPage.xaml.cs">
+    <Compile Include="Views\Admin\Settings\AppSettingsPage.xaml.cs">
       <DependentUpon>AppSettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CreditsPage.xaml.cs">
+    <Compile Include="Views\Admin\CreditsPage.xaml.cs">
       <DependentUpon>CreditsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainPage.xaml.cs">
+    <Compile Include="Views\Admin\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Activities\Settings\Dialogs\ReadingDelayDialog.cs" />
+    <Compile Include="Views\Admin\Settings\IndiagramPropertyPage.xaml.cs">
+      <DependentUpon>IndiagramPropertyPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -189,26 +193,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\ServerSynchronizationPage.xaml">
+    <Page Include="Views\Admin\ServerSynchronizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Settings\ApplicationLookPage.xaml">
+    <Page Include="Views\Admin\Settings\ApplicationLookPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Settings\AppSettingsPage.xaml" />
-    <Page Include="Views\Collection\CollectionManagementPage.xaml">
+    <Page Include="Views\Admin\Settings\AppSettingsPage.xaml" />
+    <Page Include="Views\Admin\Collection\CollectionManagementPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\CreditsPage.xaml">
+    <Page Include="Views\Admin\CreditsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainPage.xaml">
+    <Page Include="Views\Admin\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\Settings\IndiagramPropertyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -260,7 +268,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Settings\Dialogs\" />
+    <Folder Include="Views\Admin\Settings\Dialogs\" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.VCLibs, version=12.0">

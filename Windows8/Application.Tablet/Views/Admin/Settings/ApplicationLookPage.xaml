@@ -37,7 +37,7 @@
                    Grid.ColumnSpan="2" 
                    Grid.Row="0" 
                    x:Uid="ApplicationLook_AreaSize" />
-        <ComboBox Grid.ColumnSpan="2" 
+        <ComboBox Grid.ColumnSpan="2"
                   Grid.Row="1" />
         
         <Button Style="{StaticResource SmallButton}" 
@@ -54,7 +54,7 @@
                 Grid.Row="3"
                 Background="Orange">
             <TextBlock Style="{StaticResource TextButton}" 
-                     x:Uid="Button_Cancel"/>
+                     x:Uid="Button_Ok"/>
 
         </Button>
     </Grid>
