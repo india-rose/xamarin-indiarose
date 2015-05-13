@@ -17,6 +17,7 @@
             <Setter Property="FontSize" Value="40" />
             <Setter Property="VerticalAlignment" Value="Bottom" />
             <Setter Property="Text" Value="" />
+            <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
     </Page.Resources>
     
@@ -37,8 +38,10 @@
                    Grid.ColumnSpan="2" 
                    Grid.Row="0" 
                    x:Uid="ApplicationLook_AreaSize" />
-        <ComboBox Grid.ColumnSpan="2"
-                  Grid.Row="1" />
+        <ComboBox Grid.ColumnSpan="2" 
+                  Grid.Column="0"
+                  Grid.Row="1"
+                  ItemsSource="{Binding CurrentSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         
         <Button Style="{StaticResource SmallButton}" 
                 Command="{Binding SaveCommand}"
