@@ -22,7 +22,41 @@
             <RowDefinition Height="10*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Style="{StaticResource TextStyle}"></TextBlock>
+        <ListView IsItemClickEnabled="False" IsRightTapEnabled="False"
+            Grid.Column="1"
+            Grid.Row="1"
+            >
+            <TextBlock Style="{StaticResource NormalTextStyle}"
+                   x:Uid="IndiagramProperty_IndiagramSize"/>
+            <ComboBox
+                 ItemsSource ="{Binding IndiagramSizes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Style="{StaticResource NormalTextStyle}"
+                   x:Uid="IndiagramProperty_FontFamily"/>
+            <ComboBox
+                 ItemsSource ="{Binding FontNames, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Style="{StaticResource NormalTextStyle}"
+                   x:Uid="IndiagramProperty_FontSize"/>
+            <ComboBox
+                 ItemsSource ="{Binding FontSizes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Style="{StaticResource NormalTextStyle}"
+                   x:Uid="IndiagramProperty_TextColor"/>
+            <ListView Margin="30,0,0,0">
+            <TextBlock Style="{StaticResource SmallTextStyle}"
+                       x:Uid="IndiagramProperty_TextColorLabel"/>
+            
+            <Button Style="{StaticResource SmallButton}"
+                Background="DeepPink"
+				Command="{Binding TextColor}"
+				>
+                <TextBlock Style="{StaticResource SmallTextButton}"
+                   x:Uid="IndiagramProperty_ChangeTextColor"/>
+            </Button>
+            </ListView>
+        </ListView>
+
         <Button Style="{StaticResource SmallButton}"
                 Grid.Column="1"
                 Grid.Row="2"
