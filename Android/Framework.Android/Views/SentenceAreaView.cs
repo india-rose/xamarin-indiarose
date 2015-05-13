@@ -243,6 +243,7 @@ namespace IndiaRose.Framework.Views
 
         protected void ReadSentence()
         {
+            //if (IsReading)
             while (IsReading)
             {
                 // if there is more view to read.
