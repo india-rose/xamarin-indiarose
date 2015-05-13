@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Android.Content;
-using Android.Graphics;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
@@ -14,11 +13,23 @@ using Storm.Mvvm.Inject;
 namespace IndiaRose.Framework.Views
 {
 
-    public class SentenceAreaView : RelativeLayout, View.IOnTouchListener
+    public class SentenceAreaView : RelativeLayout
     {
         private readonly object _lock = new object();
 
-        protected List<IndiagramView> ToPlayView = new List<IndiagramView>();
+        public List<IndiagramView> ToPlayView
+        {
+           // get { return this; }
+            set
+            {
+                RemoveAllViews();
+                value.ForEach(x =>
+                {
+                    x.Id = ActId++;
+                    AddView(x, new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent));
+                });
+            }
+        }
 
         protected ITextToSpeechService TextToSpeechService
         {
@@ -35,6 +46,7 @@ namespace IndiaRose.Framework.Views
         protected int MaxNumberOfIndiagram;
         protected bool IsReading { get; set; }
         protected Timer MDelayReadingTimer = new Timer();
+        private IndiagramView _playButton;
 
 
         public SentenceAreaView(Context context)
@@ -61,8 +73,6 @@ namespace IndiaRose.Framework.Views
             ActId = Id;
             MaxNumberOfIndiagram = Width / IndiagramView.DefaultWidth - 1;
 
-            SetOnTouchListener(this);
-
             // Init play button
             LayoutParams lp = new LayoutParams(
                 ViewGroup.LayoutParams.WrapContent,
@@ -70,17 +80,18 @@ namespace IndiaRose.Framework.Views
             lp.AddRule(LayoutRules.AlignParentRight);
             lp.AddRule(LayoutRules.CenterVertical);
 
-            /*try
+            _playButton = new IndiagramView(Context)
             {
-                IndiagramView view = AppData.playButtonIndiagram.getView();
-                this.m_layout.AddView(view, lp);
-
-                Mapper.connect(view, "touchEvent", this, "PlayButtonEvent");
-            }
-            catch (Mapper e)
-            {
-                Log.Wtf("IndiagramBrowser", e);
-            }*/
+                TextColor = 0,
+                Id = 0x30,
+                Indiagram = new Indiagram()
+                {
+                    Text = "play",
+                    ImagePath = LazyResolver<IStorageService>.Service.ImagePlayButtonPath
+                }
+            };
+            _playButton.Touch += Read;
+            AddView(_playButton,lp);
         }
 
         public bool CanAddIndiagram()
@@ -243,25 +254,7 @@ namespace IndiaRose.Framework.Views
             }*/
         }
 
-        bool IOnTouchListener.OnTouch(View _view, MotionEvent _event)
-        {
-            throw new NotImplementedException();
-            /*
-            Log.Wtf("SentenceArea", "onTouch layout !!");
-            try
-            {
-                EventResult result = new EventResult();
-                Mapper.emit(this, "layoutEvent", _view, _event, result);
-                return result.eventResult;
-            }
-            catch (MapperException e)
-            {
-                Log.Wtf("SentenceArea", e);
-            }
-            return false;*/
-        }
-
-        public void Read()
+        public void Read(object sender, TouchEventArgs touchEventArgs)
         {
             if (!IsReading && ToPlayView.Count > 0)
             {

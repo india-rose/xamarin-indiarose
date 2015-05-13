@@ -162,11 +162,11 @@ namespace IndiaRose.Business.ViewModels
 			RefreshDisplayList();
 		}
 
-		protected void PopCategory()
+		protected bool PopCategory()
 		{
 			if (_navigationStack.Count <= 1)
 			{
-				return;
+			    return false;
 			}
 
 			_navigationStack.Pop().Children.CollectionChanged -= OnCollectionChanged;
@@ -174,6 +174,7 @@ namespace IndiaRose.Business.ViewModels
             RaisePropertyChanged("CurrentCategory");
 			RewindCategory();
 			RefreshDisplayList();
+		    return true;
 		}
 
 		protected void RewindCategory()
@@ -223,7 +224,7 @@ namespace IndiaRose.Business.ViewModels
 		/// <param name="indiagram"></param>
 		protected virtual void IndiagramSelectedAction(Indiagram indiagram)
 		{
-			// Do something with this indiagram
+		    // Do something with this indiagram
 		}
 	}
 }

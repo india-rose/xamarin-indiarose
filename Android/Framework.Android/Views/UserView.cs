@@ -91,6 +91,21 @@ namespace IndiaRose.Framework.Views
             }
         }
 
+        public List<Indiagram> BotIndiagrams
+        {
+            get { return BotView.GetIndiagramsList(); }
+            set
+            {
+                List<IndiagramView> res=new List<IndiagramView>();
+                value.ForEach(x=>res.Add(new IndiagramView(BotView.Context)
+                {
+                    Indiagram = x,
+                    TextColor = TopTextColor
+                }));
+                BotView.ToPlayView = res;
+            }
+        }
+
         public uint TopTextColor
         {
             get { return TopView.TextColor; }
