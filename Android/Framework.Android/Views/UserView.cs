@@ -9,6 +9,7 @@ using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
 using Android.Graphics.Drawables;
 using IndiaRose.Data.Model;
+using Storm.Mvvm.Events;
 
 namespace IndiaRose.Framework.Views
 {
@@ -135,6 +136,8 @@ namespace IndiaRose.Framework.Views
         {
             TopView = new IndiagramBrowserView(Context);
             BotView = new SentenceAreaView(Context);
+
+            TopView.CountChanged += (sender, args) => this.RaiseEvent(CountChanged);
         }
         #endregion
 

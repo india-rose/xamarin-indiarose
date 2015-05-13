@@ -11,8 +11,8 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application.Activities.User
 {
-	[Activity(Label = "India Rose User Dev", Icon = "@drawable/ir_logo", Theme = "@style/Theme.Sherlock.Light.NoActionBar", MainLauncher = true, ScreenOrientation = ScreenOrientation.Landscape,
-		LaunchMode = LaunchMode.SingleTask)]
+    [Activity(Label = "India Rose User Dev", Icon = "@drawable/ir_logo", Theme = "@style/Theme.Sherlock.Light.NoActionBar", MainLauncher = true, ScreenOrientation = ScreenOrientation.Landscape,
+        LaunchMode = LaunchMode.SingleInstance)]
 	public partial class UserHomeActivity : ActivityBase
 	{
         public ISettingsService SettingsService
