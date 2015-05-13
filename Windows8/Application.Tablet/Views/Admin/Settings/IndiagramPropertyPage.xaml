@@ -46,7 +46,7 @@
             <ListView Margin="30,0,0,0">
             <TextBlock Style="{StaticResource SmallTextStyle}"
                        x:Uid="IndiagramProperty_TextColorLabel"/>
-            
+                <Button  Width="100" Height="50" Background="{Binding TextColor.Color}"></Button>
             <Button Style="{StaticResource SmallButton}"
                 Background="DeepPink"
 				Command="{Binding TextColor}"
@@ -58,6 +58,7 @@
         </ListView>
 
         <Button Style="{StaticResource SmallButton}"
+                Command="{Binding SaveCommand}"
                 Grid.Column="1"
                 Grid.Row="2"
                 Background="ForestGreen"
