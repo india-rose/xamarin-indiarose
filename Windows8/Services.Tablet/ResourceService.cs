@@ -10,7 +10,7 @@ using IndiaRose.Interfaces;
 
 namespace IndiaRose.Services
 {
-	public class ResourceService : IResourceService
+	public class ResourceService
 	{
 
 		private async void UnZipFile(string zipFileName)
@@ -44,17 +44,11 @@ namespace IndiaRose.Services
 				}
 			}
 		}
-		/*
+
 		public void Copy(string src, string dest)
 		{
-			FileStream output = File.OpenWrite(dest);
-			Stream input = CurrentActivity.Assets.Open(src);
-			input.CopyTo(output);
-			input.Close();
-			output.Flush();
-			output.Close();
+			// var source =;
 		}
-		*/
 	}
-
 }
+
