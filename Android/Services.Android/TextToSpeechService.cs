@@ -29,7 +29,7 @@ namespace IndiaRose.Services.Android
 
         public TextToSpeechService()
         {
-            ActivityService.ActivityChanged += InitTTS;
+            ActivityService.ActivityChanged += InitTts;
         }
 
         public void ReadText(string text)
@@ -43,7 +43,7 @@ namespace IndiaRose.Services.Android
         }
 
         //todo a tester sur faible api
-        private void InitTTS(object sender, ValueChangedEventArgs<Activity> valueChangedEventArgs)
+        private void InitTts(object sender, ValueChangedEventArgs<Activity> valueChangedEventArgs)
         {
             var currentapiVersion = Build.VERSION.SdkInt;
             if (currentapiVersion >= BuildVersionCodes.JellyBeanMr1)
@@ -77,6 +77,17 @@ namespace IndiaRose.Services.Android
         {
             _speakerSpeech.Stop();
             _speakerSpeech.Shutdown();
+        }
+
+        public bool IsSpeaking
+        {
+            get { return _speakerSpeech.IsSpeaking; }
+        }
+
+        public void Silence(long duration)
+        {
+            _speakerSpeech.PlaySilence(duration, QueueMode.Add,null);
+
         }
     }
 }

@@ -10,5 +10,7 @@ namespace IndiaRose.Interfaces
     {
         void ReadText(string text);
         void Close();
+        bool IsSpeaking { get; }
+        void Silence(long duration);
     }
 }

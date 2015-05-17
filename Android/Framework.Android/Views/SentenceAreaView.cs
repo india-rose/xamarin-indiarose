@@ -112,12 +112,9 @@ namespace IndiaRose.Framework.Views
         {
             if (CanAddIndiagram())
             {
-                lock (_lock)
-                {
-                    view.Id = ActId++;
-                    ToPlayView.Add(view);
-                    Post(RefreshLayout);
-                }
+                view.Id = ActId++;
+                ToPlayView.Add(view);
+                Post(RefreshLayout);
                 /*try
             {
                 Mapper.emit(this, "indiagramAdded", _view);
@@ -134,14 +131,11 @@ namespace IndiaRose.Framework.Views
 
         public void Remove(object sender, TouchEventArgs e)
         {
-            lock(_lock)
+
+            if (sender != null && !IsReading && ToPlayView.Count > 0)
             {
-                
-            if (sender!=null && !IsReading && ToPlayView.Count > 0)
-            {
-                    RemoveIndiagram((IndiagramView)sender);
-                    this.RaiseEvent(ListChanged);
-            }
+                RemoveIndiagram((IndiagramView)sender);
+                this.RaiseEvent(ListChanged);
             }
         }
 
@@ -162,21 +156,15 @@ namespace IndiaRose.Framework.Views
 
         protected void RemoveIndiagram(IndiagramView view)
         {
-            lock (_lock)
-            {
-                RemoveView(view);
-                ToPlayView.Remove(view);
+            RemoveView(view);
+            ToPlayView.Remove(view);
 
-                Post(RefreshLayout);
-            }
+            Post(RefreshLayout);
         }
 
         public bool HasIndiagram(Indiagram item)
         {
-            lock (_lock)
-            {
-                return ToPlayView.Any(t => t.Indiagram.Equals(item));
-            }
+            return ToPlayView.Any(t => t.Indiagram.Equals(item));
         }
 
         public List<Indiagram> GetIndiagramsList()
@@ -189,58 +177,52 @@ namespace IndiaRose.Framework.Views
 
         protected void RefreshLayout()
         {
-            lock (_lock)
+            ToPlayView.ForEach(RemoveView);
+
+            for (int i = 0; i < ToPlayView.Count; ++i)
             {
-                ToPlayView.ForEach(RemoveView);
+                LayoutParams lp = new LayoutParams(
+                    ViewGroup.LayoutParams.WrapContent,
+                    ViewGroup.LayoutParams.WrapContent);
+                lp.AddRule(LayoutRules.CenterVertical);
 
-                for (int i = 0; i < ToPlayView.Count; ++i)
+                if (i > 0)
                 {
-                    LayoutParams lp = new LayoutParams(
-                        ViewGroup.LayoutParams.WrapContent,
-                        ViewGroup.LayoutParams.WrapContent);
-                    lp.AddRule(LayoutRules.CenterVertical);
-
-                    if (i > 0)
-                    {
-                        lp.AddRule(LayoutRules.RightOf, ToPlayView[i - 1].Id);
-                    }
-                    else
-                    {
-                        lp.AddRule(LayoutRules.AlignParentLeft);
-                    }
-
-                    AddView(ToPlayView[i], lp);
-                    Post(Invalidate);
+                    lp.AddRule(LayoutRules.RightOf, ToPlayView[i - 1].Id);
                 }
+                else
+                {
+                    lp.AddRule(LayoutRules.AlignParentLeft);
+                }
+
+                AddView(ToPlayView[i], lp);
+                Post(Invalidate);
             }
         }
         public void Read(object sender, TouchEventArgs touchEventArgs)
         {
             if (!IsReading && ToPlayView.Count > 0)
             {
-                lock (_lock)
+                // if the reading process is not already launch and there is at
+                // least one indiagram in the sentence.
+                if (!IsReading && ToPlayView.Count > 0)
                 {
-                    // if the reading process is not already launch and there is at
-                    // least one indiagram in the sentence.
-                    if (!IsReading && ToPlayView.Count > 0)
+                    ReadingIndex = 0;
+                    IsReading = true;
+
+                    /*try
                     {
-                        ReadingIndex = 0;
-                        IsReading = true;
-
-                        /*try
-                        {
-                            Mapper.emit(this, "startReading");
-                            Mapper.connect(m_voiceEngine, "readingComplete",
-                                this, "endReading");
-                        }
-                        catch (MapperException e)
-                        {
-                            Log.Wtf("SentenceArea", e);
-                        }*/
-
-                        ReadSentence();
-                        Post(RemoveAll);
+                        Mapper.emit(this, "startReading");
+                        Mapper.connect(m_voiceEngine, "readingComplete",
+                            this, "endReading");
                     }
+                    catch (MapperException e)
+                    {
+                        Log.Wtf("SentenceArea", e);
+                    }*/
+
+                    ReadSentence();
+                    Post(RemoveAll);
                 }
             }
         }
@@ -266,10 +248,11 @@ namespace IndiaRose.Framework.Views
                         var colorconverter = new ColorStringToIntConverter();
                         v.BackgroundColor = (uint)colorconverter.Convert(SettingsService.ReinforcerColor, null, null, null);
                     }
-                    if(v.Indiagram.HasCustomSound)
+                    if (v.Indiagram.HasCustomSound)
                         MediaService.PlaySound(v.Indiagram.SoundPath);
-                    else 
+                    else
                         TextToSpeechService.ReadText(v.Indiagram.Text);
+                    TextToSpeechService.Silence((long)(SettingsService.TimeOfSilenceBetweenWords*1000));
                     ReadingIndex++;
                 }
                 else
