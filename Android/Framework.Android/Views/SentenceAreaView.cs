@@ -45,6 +45,10 @@ namespace IndiaRose.Framework.Views
         {
             get { return LazyResolver<ISettingsService>.Service; }
         }
+        protected IMediaService MediaService
+        {
+            get { return LazyResolver<IMediaService>.Service; }
+        }
 
         protected int ActId;
         protected int ReadingIndex;
@@ -262,7 +266,10 @@ namespace IndiaRose.Framework.Views
                         var colorconverter = new ColorStringToIntConverter();
                         v.BackgroundColor = (uint)colorconverter.Convert(SettingsService.ReinforcerColor, null, null, null);
                     }
-                    TextToSpeechService.ReadText(v.Indiagram.Text);
+                    if(v.Indiagram.HasCustomSound)
+                        MediaService.PlaySound(v.Indiagram.SoundPath);
+                    else 
+                        TextToSpeechService.ReadText(v.Indiagram.Text);
                     ReadingIndex++;
                 }
                 else

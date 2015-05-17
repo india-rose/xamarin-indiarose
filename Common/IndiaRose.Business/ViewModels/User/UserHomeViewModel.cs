@@ -29,6 +29,10 @@ namespace IndiaRose.Business.ViewModels.User
         {
             get { return LazyResolver<ITextToSpeechService>.Service; }
         }
+        protected IMediaService MediaService
+        {
+            get { return LazyResolver<IMediaService>.Service; }
+        }
         private List<Indiagram> _toplayList; 
         public string BotBackgroundColor
         {
@@ -104,7 +108,11 @@ namespace IndiaRose.Business.ViewModels.User
         }
         protected override void IndiagramSelectedAction(Indiagram indiagram)
         {
-            TtsService.ReadText(indiagram.Text);
+
+            if (indiagram.HasCustomSound)
+                MediaService.PlaySound(indiagram.SoundPath);
+            else
+                TtsService.ReadText(indiagram.Text);
             if (indiagram.IsCategory)
             {
                 PushCategory((Category) indiagram);
