@@ -181,7 +181,8 @@ namespace IndiaRose.Services
 		{
 			if (!await ExistsOnDiskAsync())
 			{
-				Reset();
+                Reset();
+                IsLoaded = true;
 				return;
 			}
 
@@ -189,7 +190,8 @@ namespace IndiaRose.Services
 
 			if (model == null)
 			{
-				Reset();
+                Reset();
+                IsLoaded = true;
 				return;
 			}
 

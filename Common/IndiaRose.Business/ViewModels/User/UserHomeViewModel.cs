@@ -7,11 +7,24 @@ using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Events;
 using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.User
 {
     public class UserHomeViewModel : AbstractBrowserViewModel
     {
+
+        private readonly object _lockMutex = new object();
+        private bool _initialized = false;
+
+        protected IXmlService XmlService
+        {
+            get { return LazyResolver<IXmlService>.Service; }
+        }
+        protected IResourceService ResourceService
+        {
+            get { return LazyResolver<IResourceService>.Service; }
+        }
         protected ITextToSpeechService TtsService
         {
             get { return LazyResolver<ITextToSpeechService>.Service; }
@@ -31,6 +44,63 @@ namespace IndiaRose.Business.ViewModels.User
         public UserHomeViewModel()
         {
             ToPlayedList=new List<Indiagram>();
+        }
+        public override void OnNavigatedTo(NavigationArgs e, string parametersKey)
+        {
+            base.OnNavigatedTo(e, parametersKey);
+
+            lock (_lockMutex)
+            {
+                CollectionStorageService.Initialized += (sender, args) =>
+                {
+                    lock (_lockMutex)
+                    {
+                        OnCollectionInitialized();
+                    }
+                };
+                if (CollectionStorageService.IsInitialized)
+                {
+                    OnCollectionInitialized();
+                }
+            }
+        }
+
+        private async void OnCollectionInitialized()
+        {
+            if (_initialized)
+            {
+                return;
+            }
+            _initialized = true;
+
+            if (CollectionStorageService.Collection.Count == 0)
+            {
+                if (await XmlService.HasOldCollectionFormatAsync())
+                {
+                    DispatcherService.InvokeOnUIThread(() =>
+                        MessageDialogService.Show(Dialogs.IMPORTING_COLLECTION, new Dictionary<string, object>
+						{
+							{"MessageUid", "ImportCollection_FromOldFormat"}
+						}));
+
+                    LoggerService.Log("==> Importing collection from old format");
+                    await XmlService.InitializeCollectionFromOldFormatAsync();
+                    LoggerService.Log("# Import finished");
+                }
+                else
+                {
+                    DispatcherService.InvokeOnUIThread(() =>
+                        MessageDialogService.Show(Dialogs.IMPORTING_COLLECTION, new Dictionary<string, object>
+						{
+							{"MessageUid", "ImportCollection_FromZip"}
+						}));
+
+                    LoggerService.Log("==> Importing collection from zip file");
+                    await XmlService.InitializeCollectionFromZipStreamAsync(ResourceService.OpenZip("indiagrams.zip"));
+                }
+                LoggerService.Log("# Import finished");
+                MessageDialogService.DismissCurrentDialog();
+            }
         }
         protected override void IndiagramSelectedAction(Indiagram indiagram)
         {
