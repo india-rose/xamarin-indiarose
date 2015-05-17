@@ -196,40 +196,23 @@ namespace IndiaRose.Framework.Views
                 }
 
                 AddView(ToPlayView[i], lp);
-                Post(Invalidate);
             }
+            Post(Invalidate);
         }
         public void Read(object sender, TouchEventArgs touchEventArgs)
         {
+            // if the reading process is not already launch and there is at
+            // least one indiagram in the sentence.
             if (!IsReading && ToPlayView.Count > 0)
             {
-                // if the reading process is not already launch and there is at
-                // least one indiagram in the sentence.
-                if (!IsReading && ToPlayView.Count > 0)
-                {
-                    ReadingIndex = 0;
-                    IsReading = true;
-
-                    /*try
-                    {
-                        Mapper.emit(this, "startReading");
-                        Mapper.connect(m_voiceEngine, "readingComplete",
-                            this, "endReading");
-                    }
-                    catch (MapperException e)
-                    {
-                        Log.Wtf("SentenceArea", e);
-                    }*/
-
-                    ReadSentence();
-                    Post(RemoveAll);
-                }
+                ReadingIndex = 0;
+                IsReading = true;
+                ReadSentence();
             }
         }
 
         protected void ReadSentence()
         {
-            //if (IsReading)
             while (IsReading)
             {
                 // if there is more view to read.
@@ -252,7 +235,7 @@ namespace IndiaRose.Framework.Views
                         MediaService.PlaySound(v.Indiagram.SoundPath);
                     else
                         TextToSpeechService.ReadText(v.Indiagram.Text);
-                    TextToSpeechService.Silence((long)(SettingsService.TimeOfSilenceBetweenWords*1000));
+                    TextToSpeechService.Silence((long)(SettingsService.TimeOfSilenceBetweenWords * 1000));
                     ReadingIndex++;
                 }
                 else
@@ -263,16 +246,6 @@ namespace IndiaRose.Framework.Views
                         ToPlayView[ToPlayView.Count - 1].BackgroundColor = 0;
                     }
                     IsReading = false;
-                    /*try
-                    {
-                        Mapper.disconnect(m_voiceEngine, "readingComplete",
-                            this, "endReading");
-                        Mapper.emit(this, "completeReading");
-                    }
-                    catch (MapperException e)
-                    {
-                        Log.Wtf("SentenceArea", e);
-                    }*/
                 }
             }
         }
