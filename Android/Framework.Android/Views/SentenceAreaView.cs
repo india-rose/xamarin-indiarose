@@ -114,16 +114,7 @@ namespace IndiaRose.Framework.Views
             {
                 view.Id = ActId++;
                 ToPlayView.Add(view);
-                Post(RefreshLayout);
-                /*try
-            {
-                Mapper.emit(this, "indiagramAdded", _view);
-                Mapper.connect(_view, "touchEvent", this, "indiagramEvent");
-            }
-            catch (MapperException e)
-            {
-                Log.Wtf("PhraseArea", e);
-            }*/
+                RefreshLayout();
                 return true;
             }
             return false;
@@ -131,7 +122,6 @@ namespace IndiaRose.Framework.Views
 
         public void Remove(object sender, TouchEventArgs e)
         {
-
             if (sender != null && !IsReading && ToPlayView.Count > 0)
             {
                 RemoveIndiagram((IndiagramView)sender);
@@ -143,7 +133,7 @@ namespace IndiaRose.Framework.Views
         {
             if (!IsReading && ToPlayView.Count > 0)
             {
-                Post(RemoveAllHandler);
+                RemoveAllHandler();
             }
         }
 
@@ -159,7 +149,7 @@ namespace IndiaRose.Framework.Views
             RemoveView(view);
             ToPlayView.Remove(view);
 
-            Post(RefreshLayout);
+            RefreshLayout();
         }
 
         public bool HasIndiagram(Indiagram item)
@@ -197,17 +187,20 @@ namespace IndiaRose.Framework.Views
 
                 AddView(ToPlayView[i], lp);
             }
-            Post(Invalidate);
+            Invalidate();
         }
         public void Read(object sender, TouchEventArgs touchEventArgs)
         {
-            // if the reading process is not already launch and there is at
-            // least one indiagram in the sentence.
-            if (!IsReading && ToPlayView.Count > 0)
+            if (touchEventArgs.Event.ActionMasked == MotionEventActions.Down)
             {
-                ReadingIndex = 0;
-                IsReading = true;
-                ReadSentence();
+                // if the reading process is not already launch and there is at
+                // least one indiagram in the sentence.
+                if (!IsReading && ToPlayView.Count > 0)
+                {
+                    ReadingIndex = 0;
+                    IsReading = true;
+                    ReadSentence();
+                }
             }
         }
 
