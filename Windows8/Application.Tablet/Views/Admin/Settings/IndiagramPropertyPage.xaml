@@ -22,7 +22,7 @@
             <RowDefinition Height="10*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
-        <ListView IsItemClickEnabled="False" IsRightTapEnabled="False"
+        <ListView SelectionMode="None"
             Grid.Column="1"
             Grid.Row="1"
             >
@@ -43,7 +43,8 @@
 
             <TextBlock Style="{StaticResource NormalTextStyle}"
                    x:Uid="IndiagramProperty_TextColor"/>
-            <ListView Margin="30,0,0,0">
+            <ListView SelectionMode="None" 
+                      Margin="30,0,0,0">
             <TextBlock Style="{StaticResource SmallTextStyle}"
                        x:Uid="IndiagramProperty_TextColorLabel"/>
                 <Button  Width="100" Height="50" Background="{Binding TextColor.Color}"></Button>
@@ -55,6 +56,11 @@
                    x:Uid="IndiagramProperty_ChangeTextColor"/>
             </Button>
             </ListView>
+            
+            <CheckBox IsChecked="False" RequestedTheme="Light">
+                <TextBlock Style="{StaticResource SmallTextStyle}" 
+                           x:Uid="IndiagramProperty_BackHomeAfterPicking" />
+            </CheckBox>
         </ListView>
 
         <Button Style="{StaticResource SmallButton}"
