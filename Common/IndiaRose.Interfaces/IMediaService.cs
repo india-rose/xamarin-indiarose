@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Threading.Tasks;
 
 namespace IndiaRose.Interfaces
@@ -12,6 +13,6 @@ namespace IndiaRose.Interfaces
 
         void RecordSound();
         string StopRecord();
-        void PlaySound(string url);
+        void PlaySound(string url, Action callbackAction=null);
     }
 }

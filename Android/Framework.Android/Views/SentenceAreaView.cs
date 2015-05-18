@@ -122,10 +122,13 @@ namespace IndiaRose.Framework.Views
 
         public void Remove(object sender, TouchEventArgs e)
         {
-            if (sender != null && !IsReading && ToPlayView.Count > 0)
+            if (e.Event.ActionMasked == MotionEventActions.Down)
             {
-                RemoveIndiagram((IndiagramView)sender);
-                this.RaiseEvent(ListChanged);
+                if (sender != null && !IsReading && ToPlayView.Count > 0)
+                {
+                    RemoveIndiagram((IndiagramView) sender);
+                    this.RaiseEvent(ListChanged);
+                }
             }
         }
 
@@ -206,11 +209,15 @@ namespace IndiaRose.Framework.Views
 
         protected void ReadSentence()
         {
-            while (IsReading)
+            if (IsReading)
             {
                 // if there is more view to read.
                 if (ReadingIndex < ToPlayView.Count)
                 {
+                    if (ReadingIndex > 0)
+                    {
+                        TextToSpeechService.Silence((long)(SettingsService.TimeOfSilenceBetweenWords * 1000));
+                    }
                     if (ReadingIndex > 0
                         && SettingsService.IsReinforcerEnabled)
                     {
@@ -225,10 +232,9 @@ namespace IndiaRose.Framework.Views
                         v.BackgroundColor = (uint)colorconverter.Convert(SettingsService.ReinforcerColor, null, null, null);
                     }
                     if (v.Indiagram.HasCustomSound)
-                        MediaService.PlaySound(v.Indiagram.SoundPath);
+                        MediaService.PlaySound(v.Indiagram.SoundPath, ReadSentence);
                     else
-                        TextToSpeechService.ReadText(v.Indiagram.Text);
-                    TextToSpeechService.Silence((long)(SettingsService.TimeOfSilenceBetweenWords * 1000));
+                        TextToSpeechService.ReadText(v.Indiagram.Text,ReadSentence);
                     ReadingIndex++;
                 }
                 else

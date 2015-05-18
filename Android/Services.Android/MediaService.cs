@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
@@ -43,14 +44,18 @@ namespace IndiaRose.Services.Android
             return _url;
         }
 
-        public void PlaySound(string url)
+        public void PlaySound(string url, Action callbackAction)
         {
             var player = new MediaPlayer();
             player.SetDataSource(url);
+            player.Completion += delegate(object sender, EventArgs args)
+            {
+                if (callbackAction != null)
+                    callbackAction();
+            };
             player.Prepare();
             player.Start();
         }
-
         public Task<string> GetPictureFromCameraAsync()
         {
             return AsyncHelper.CreateAsyncFromCallback<string>(callbackResult =>
@@ -76,19 +81,19 @@ namespace IndiaRose.Services.Android
 
         private void PerformCrop(Uri picUri, Action<string> callbackResult, string path)
         {
-                Intent cropIntent = new Intent("com.android.camera.action.CROP");
-                // indicate image type and Uri
-                cropIntent.SetDataAndType(picUri, "image/*");
-                // set crop properties
-                cropIntent.PutExtra("crop", "true");
-                // indicate aspect of desired crop
-                cropIntent.PutExtra("aspectX", 1);
-                cropIntent.PutExtra("aspectY", 1);
-                // retrieve data on return
-                cropIntent.PutExtra(MediaStore.ExtraOutput, picUri);
-                // start the activity - we handle returning in onActivityResult
-                ActivityService.StartActivityForResult(cropIntent, (result, data) =>
-                { callbackResult(result == Result.Ok ? path : null); });
+            Intent cropIntent = new Intent("com.android.camera.action.CROP");
+            // indicate image type and Uri
+            cropIntent.SetDataAndType(picUri, "image/*");
+            // set crop properties
+            cropIntent.PutExtra("crop", "true");
+            // indicate aspect of desired crop
+            cropIntent.PutExtra("aspectX", 1);
+            cropIntent.PutExtra("aspectY", 1);
+            // retrieve data on return
+            cropIntent.PutExtra(MediaStore.ExtraOutput, picUri);
+            // start the activity - we handle returning in onActivityResult
+            ActivityService.StartActivityForResult(cropIntent, (result, data) =>
+            { callbackResult(result == Result.Ok ? path : null); });
         }
 
         private string SavePhoto(Bitmap bitmap)
