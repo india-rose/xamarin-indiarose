@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Media;
+using Windows.Media.Capture;
+using Windows.Media.MediaProperties;
+using Windows.Storage;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
 
@@ -10,12 +14,14 @@ namespace IndiaRose.Tablet
 {
     class MediaService : AbstractWindowsService, IMediaService
     {
+        private MediaCapture _recordMediaCapture;
+        private StorageFile _recordStorageFile;
+        private String _url;
+
         public IStorageService StorageService
         {
             get { return LazyResolver<IStorageService>.Service; }
         }
-        //private MediaRecorder _recorder;
-        private string _url;
 
         public Task<string> GetPictureFromCameraAsync()
         {
@@ -32,19 +38,39 @@ namespace IndiaRose.Tablet
             throw new NotImplementedException();
         }
 
-        public void RecordSound()
+        public async void RecordSound()
         {
-            throw new NotImplementedException();
+            _recordMediaCapture = new MediaCapture();
+            var settings = new MediaCaptureInitializationSettings
+            {
+                StreamingCaptureMode = StreamingCaptureMode.Audio,
+                MediaCategory = MediaCategory.Other,
+                AudioProcessing = AudioProcessing.Default
+            };
+            await _recordMediaCapture.InitializeAsync(settings);
+            _url = StorageService.GenerateFilename(StorageType.Sound, "aac");
+            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+            _recordStorageFile = await localFolder.CreateFileAsync(_url);
+            MediaEncodingProfile profil = MediaEncodingProfile.CreateM4a(AudioEncodingQuality.Auto);
+            await _recordMediaCapture.StartRecordToStorageFileAsync(profil, _recordStorageFile);
         }
 
         public string StopRecord()
         {
-            throw new NotImplementedException();
+            //TODO si ça plante, async
+            _recordMediaCapture.StopRecordAsync();
+            _recordMediaCapture.Dispose();
+            return _url;
         }
 
-        public void PlaySound(string url)
+        public async void PlaySound(string url)
         {
-            throw new NotImplementedException();
+            var stream = await _recordStorageFile.OpenAsync(FileAccessMode.Read);
+
+            //TODO Remplacer "play" par le nom du MediaElement pour la lecture
+            /*play.AutoPlay = true;
+            play.SetSource(stream, _recordStorageFile.FileType);
+            play.Play();*/
         }
     }
 }
