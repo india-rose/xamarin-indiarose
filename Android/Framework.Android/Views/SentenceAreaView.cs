@@ -33,7 +33,7 @@ namespace IndiaRose.Framework.Views
                     x.Touch += Remove;
                 });
                 _toPlayView = value;
-                Post(RefreshLayout);
+                RefreshLayout();
             }
         }
 
@@ -234,7 +234,12 @@ namespace IndiaRose.Framework.Views
                     if (v.Indiagram.HasCustomSound)
                         MediaService.PlaySound(v.Indiagram.SoundPath, ReadSentence);
                     else
-                        TextToSpeechService.ReadText(v.Indiagram.Text,ReadSentence);
+                    {
+                        TextToSpeechService.ReadText(v.Indiagram.Text);
+                        while (TextToSpeechService.IsSpeaking) { }
+                        ReadingIndex++;
+                        ReadSentence();
+                    }
                     ReadingIndex++;
                 }
                 else
@@ -245,6 +250,7 @@ namespace IndiaRose.Framework.Views
                         ToPlayView[ToPlayView.Count - 1].BackgroundColor = 0;
                     }
                     IsReading = false;
+                    //RemoveAll();
                 }
             }
         }
