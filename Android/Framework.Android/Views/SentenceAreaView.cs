@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Android.App;
 using Android.Content;
 using Android.Util;
 using Android.Views;
@@ -27,13 +28,16 @@ namespace IndiaRose.Framework.Views
             get { return _toPlayView; }
             set
             {
-                value.ForEach(x =>
+                if (!_changing)
                 {
-                    x.Id = ActId++;
-                    x.Touch += Remove;
-                });
-                _toPlayView = value;
-                RefreshLayout();
+                    value.ForEach(x =>
+                    {
+                        x.Id = ActId++;
+                        x.Touch += Remove;
+                    });
+                    _toPlayView = value;
+                    RefreshLayout();
+                }
             }
         }
 
@@ -51,6 +55,7 @@ namespace IndiaRose.Framework.Views
         }
 
         protected int ActId;
+        private bool _changing;
         protected int ReadingIndex;
         protected int MaxNumberOfIndiagram;
         protected bool IsReading { get; set; }
@@ -126,8 +131,10 @@ namespace IndiaRose.Framework.Views
             {
                 if (sender != null && !IsReading && ToPlayView.Count > 0)
                 {
+                    _changing = true;
                     RemoveIndiagram((IndiagramView) sender);
                     this.RaiseEvent(ListChanged);
+                    _changing = false;
                 }
             }
         }
@@ -189,8 +196,8 @@ namespace IndiaRose.Framework.Views
                 }
 
                 AddView(ToPlayView[i], lp);
+                Invalidate();
             }
-            Invalidate();
         }
         public void Read(object sender, TouchEventArgs touchEventArgs)
         {
@@ -250,40 +257,9 @@ namespace IndiaRose.Framework.Views
                         ToPlayView[ToPlayView.Count - 1].BackgroundColor = 0;
                     }
                     IsReading = false;
-                    //RemoveAll();
+                    RemoveAll();
                 }
             }
-        }
-
-        public void EndReading(Indiagram indiagram)
-        {
-            /*
-        long _value;
-        if ((long) AppData.settings.wordsReadingDelay < (long) 0.6)
-        {
-            _value = (long) (0.6*1000);
-        }
-        else
-        {
-            _value = (long) AppData.settings.wordsReadingDelay*1000;
-        }
-        if (m_isReading)
-        {
-            m_delayReadingTimer.Cancel();
-            m_delayReadingTimer.Purge();
-            m_delayReadingTimer = new Timer();
-            m_delayReadingTimer.Schedule(new TimerTask()
-            {
-                
-            public void run() {
-                m_readingIndex++;
-                readSentence();
-            }
-        }
-        ,
-            _value)
-            ;
-        }*/
         }
     }
 }

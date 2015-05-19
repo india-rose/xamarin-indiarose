@@ -128,7 +128,7 @@ namespace IndiaRose.Business.ViewModels.User
         protected override IEnumerable<Indiagram> FilterCollection(IEnumerable<Indiagram> input)
         {
 
-            return input.Where(indiagram => ToPlayedList.All(india => !Indiagram.AreSameIndiagram(indiagram, india)));
+            return input.Where(indiagram => indiagram.IsEnabled&&ToPlayedList.All(india => !Indiagram.AreSameIndiagram(indiagram, india)));
         }        
     }
 }
