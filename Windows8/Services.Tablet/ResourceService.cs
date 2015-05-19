@@ -5,13 +5,22 @@ using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using Windows.Data.Pdf;
 using Windows.Storage;
+using Windows.Storage.Pickers;
 using IndiaRose.Interfaces;
+using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 
 namespace IndiaRose.Services
 {
 	public class ResourceService
 	{
+		public async void ShowPdfFile(string pdfFileName)
+		{
+			// mupdf
+		}
 
 		private async void UnZipFile(string zipFileName)
 		{
@@ -19,7 +28,7 @@ namespace IndiaRose.Services
 
 			using (var zipStream = await folder.OpenStreamForReadAsync("zipFileName"))
 			{
-				using (MemoryStream zipMemoryStream = new MemoryStream((int) zipStream.Length))
+				using (MemoryStream zipMemoryStream = new MemoryStream((int)zipStream.Length))
 				{
 					await zipStream.CopyToAsync(zipMemoryStream);
 
@@ -45,9 +54,11 @@ namespace IndiaRose.Services
 			}
 		}
 
-		public void Copy(string src, string dest)
+		public async void Copy(string src, string dest)
 		{
-			// var source =;
+			var source = new Uri("ms-appx:///Assets/" + src);
+			StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(source);
+			FileIO.WriteTextAsync(file, dest);
 		}
 	}
 }

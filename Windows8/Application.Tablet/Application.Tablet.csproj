@@ -149,6 +149,9 @@
     </Compile>
     <Compile Include="CompositionRoot\Bootstrap.cs" />
     <Compile Include="CompositionRoot\Container.cs" />
+    <Compile Include="Views\Admin\Collection\WatchIndiagramPage.xaml.cs">
+      <DependentUpon>WatchIndiagramPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\ServerSynchronizationPage.xaml.cs">
       <DependentUpon>ServerSynchronizationPage.xaml</DependentUpon>
     </Compile>
@@ -193,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\Admin\Collection\WatchIndiagramPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Admin\ServerSynchronizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
