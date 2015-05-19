@@ -9,6 +9,7 @@ using Android.Widget;
 using IndiaRose.Data.Model;
 using IndiaRose.Framework.Converters;
 using IndiaRose.Interfaces;
+using Java.Lang;
 using Java.Util;
 using Storm.Mvvm.Events;
 using Storm.Mvvm.Inject;
@@ -237,13 +238,17 @@ namespace IndiaRose.Framework.Views
                     {
                         var colorconverter = new ColorStringToIntConverter();
                         v.BackgroundColor = (uint)colorconverter.Convert(SettingsService.ReinforcerColor, null, null, null);
+                        Post(Invalidate);
                     }
                     if (v.Indiagram.HasCustomSound)
                         MediaService.PlaySound(v.Indiagram.SoundPath, ReadSentence);
                     else
                     {
                         TextToSpeechService.ReadText(v.Indiagram.Text);
-                        while (TextToSpeechService.IsSpeaking) { }
+                        while (TextToSpeechService.IsSpeaking)
+                        {
+                            Thread.Yield();
+                        }
                         ReadingIndex++;
                         ReadSentence();
                     }
