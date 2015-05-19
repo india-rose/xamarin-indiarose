@@ -19,9 +19,9 @@ namespace IndiaRose.Framework.Views
 
     public class SentenceAreaView : RelativeLayout
     {
-        private readonly object _lock = new object();
 
         public event EventHandler ListChanged;
+        public event EventHandler MaxNumberChanged;
 
         private List<IndiagramView> _toPlayView;
         public List<IndiagramView> ToPlayView
@@ -38,6 +38,8 @@ namespace IndiaRose.Framework.Views
                     });
                     _toPlayView = value;
                     RefreshLayout();
+                    CanAdd = ToPlayView.Count < MaxNumberOfIndiagram;
+                    this.RaiseEvent(MaxNumberChanged);
                 }
             }
         }
@@ -58,11 +60,11 @@ namespace IndiaRose.Framework.Views
         protected int ActId;
         private bool _changing;
         protected int ReadingIndex;
-        protected int MaxNumberOfIndiagram;
+        public int MaxNumberOfIndiagram { get; set; }
         protected bool IsReading { get; set; }
-        protected Timer MDelayReadingTimer = new Timer();
         private IndiagramView _playButton;
 
+        public bool CanAdd { get; set; }
 
         public SentenceAreaView(Context context)
             : base(context)
@@ -88,6 +90,7 @@ namespace IndiaRose.Framework.Views
             Id = 0x2A;
             ActId = Id;
             MaxNumberOfIndiagram = Width / IndiagramView.DefaultWidth - 1;
+            CanAdd = true;
 
             //Init play button
             _playButton = new IndiagramView(Context)

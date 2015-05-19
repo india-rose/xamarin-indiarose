@@ -37,6 +37,7 @@ namespace IndiaRose.Framework.Views
 
         public event EventHandler ListChanged;
         public event EventHandler CountChanged;
+        public event EventHandler MaxNumberChanged;
         #region Properties
         public IndiagramBrowserView TopView
         {
@@ -99,6 +100,11 @@ namespace IndiaRose.Framework.Views
             }
         }
 
+        public bool CanAdd
+        {
+            get { return BotView.CanAdd; }
+        }
+
         public uint TopTextColor
         {
             get { return TopView.TextColor; }
@@ -147,6 +153,7 @@ namespace IndiaRose.Framework.Views
 
             TopView.CountChanged += (sender, args) => this.RaiseEvent(CountChanged);
             BotView.ListChanged += (sender, args) => this.RaiseEvent(ListChanged);
+            BotView.MaxNumberChanged += (sender, args) => this.RaiseEvent(MaxNumberChanged);
         }
         #endregion
 

@@ -20,6 +20,7 @@
 	    TopNextCommand="{Binding NextCommand}"
       BotBackground="{Binding BotBackgroundColor, Converter={Resource ColorStringToDrawableColorConverter}}"
       BotIndiagrams="{Binding ToPlayedList, Mode=TwoWay, UpdateEvent=ListChanged}"
+      CanAdd="{Binding MaxNumberofIndia, Mode=TwoWay, UpdateEvent=MaxNumberChanged}"
       />
   
 </RelativeLayout>

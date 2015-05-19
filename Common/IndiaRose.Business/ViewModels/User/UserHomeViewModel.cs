@@ -33,7 +33,8 @@ namespace IndiaRose.Business.ViewModels.User
         {
             get { return LazyResolver<IMediaService>.Service; }
         }
-        private List<Indiagram> _toplayList; 
+        private List<Indiagram> _toplayList;
+
         public string BotBackgroundColor
         {
             get { return SettingsService.BottomBackgroundColor; }
@@ -44,6 +45,8 @@ namespace IndiaRose.Business.ViewModels.User
             get { return _toplayList; }
             set { SetProperty(ref _toplayList, value); }
         }
+
+        public bool CanAdd { get; set; }
 
         public UserHomeViewModel()
         {
@@ -108,7 +111,6 @@ namespace IndiaRose.Business.ViewModels.User
         }
         protected override void IndiagramSelectedAction(Indiagram indiagram)
         {
-
             if (indiagram.HasCustomSound)
                 MediaService.PlaySound(indiagram.SoundPath);
             else
@@ -119,16 +121,20 @@ namespace IndiaRose.Business.ViewModels.User
             }
             else
             {
-                ToPlayedList.Add(indiagram);
-                RaisePropertyChanged("ToPlayedList");
-                if(SettingsService.IsBackHomeAfterSelectionEnabled)
-                    while (PopCategory()){}
+                if (CanAdd)
+                {
+                    ToPlayedList.Add(indiagram);
+                    RaisePropertyChanged("ToPlayedList");
+                    if (SettingsService.IsBackHomeAfterSelectionEnabled)
+                        while (PopCategory())
+                        {
+                        }
+                }
             }
         }
         protected override IEnumerable<Indiagram> FilterCollection(IEnumerable<Indiagram> input)
         {
-
             return input.Where(indiagram => indiagram.IsEnabled&&ToPlayedList.All(india => !Indiagram.AreSameIndiagram(indiagram, india)));
-        }        
+        }
     }
 }
