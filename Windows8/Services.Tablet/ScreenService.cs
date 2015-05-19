@@ -13,12 +13,12 @@ namespace IndiaRose.Services
         public int Width
         {
             
-            get { return 16; }
+            get { return 1300; }
         }
 
         public int Height
         {
-            get { return 16; }
+            get { return 760; }
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,6 +26,21 @@ namespace IndiaRose.Application.Views
         public IndiagramPropertyPage()
         {
             this.InitializeComponent();
+        }
+
+        private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            byte R, G, B, A;
+
+            A = Convert.ToByte(ASlider.Value);
+            R = Convert.ToByte(RSlider.Value);
+            G = Convert.ToByte(GSlider.Value);
+            B = Convert.ToByte(BSlider.Value);
+
+            Color myColor = new Color();
+            myColor = Color.FromArgb(A, R, G, B);
+
+            showColor.Fill = new SolidColorBrush(myColor);
         }
     }
 }

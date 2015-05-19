@@ -33,19 +33,20 @@
             <TextBlock Style="{StaticResource NormalTextStyle}"
                    x:Uid="IndiagramProperty_IndiagramSize"/>
             <ComboBox
-                 ItemsSource ="{Binding IndiagramSizes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                ItemsSource ="{Binding IndiagramSizes}"
+                SelectedItem="{Binding IndiagramSize,Mode=TwoWay}"/>
 
             <TextBlock Style="{StaticResource NormalTextStyle}"
                    x:Uid="IndiagramProperty_FontFamily"/>
             <ComboBox
-                PlaceholderText="{ Binding FontName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"
-                ItemsSource ="{Binding FontNames, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                ItemsSource ="{Binding FontNames}"
+                SelectedItem="{Binding FontName,Mode=TwoWay}"/>
 
             <TextBlock Style="{StaticResource NormalTextStyle}"
                    x:Uid="IndiagramProperty_FontSize"/>
             <ComboBox
-                 PlaceholderText="{ Binding FontSize,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"
-                 ItemsSource ="{Binding FontSizes}"/>
+                ItemsSource ="{Binding FontSizes}"
+                SelectedItem="{Binding FontSize,Mode=TwoWay}"/>
 
             <TextBlock Style="{StaticResource NormalTextStyle}"
                    x:Uid="IndiagramProperty_TextColor"/>
@@ -53,7 +54,8 @@
                       Margin="30,0,0,0">
             <TextBlock Style="{StaticResource SmallTextStyle}"
                        x:Uid="IndiagramProperty_TextColorLabel"/>
-                <Button  Width="100" Height="50" Background="{Binding TextColor.Color}"></Button>
+                <Canvas  Width="100" Height="50" Background="{Binding TextColor.Color}"> 
+                </Canvas>
             <Button Style="{StaticResource SmallButton}"
                 Background="DeepPink"
 				Command="{Binding TextColor}"
@@ -63,7 +65,7 @@
             </Button>
             </ListView>
             
-            <CheckBox IsChecked="False" RequestedTheme="Light">
+            <CheckBox IsChecked="{Binding BackAfterSelection, Mode=TwoWay}" RequestedTheme="Light">
                 <TextBlock Style="{StaticResource SmallTextStyle}" 
                            x:Uid="IndiagramProperty_BackHomeAfterPicking" />
             </CheckBox>
@@ -77,7 +79,7 @@
             >
 
             <CheckBox RequestedTheme="Light" 
-                      IsChecked="{Binding ReinforcerEnabled,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                      IsChecked="{Binding ReinforcerEnabled,Mode=TwoWay}">
                 <TextBlock Style="{StaticResource SmallTextStyle}" 
                 x:Uid="IndiagramProperty_EnableReinforcer"/>
             </CheckBox>
@@ -88,6 +90,7 @@
                 <TextBlock Style="{StaticResource SmallTextButton}" 
                            x:Uid="IndiagramProperty_ChangeReinforcerColor" />
             </Button>
+
         </ListView>
 
         <!--Button ok & back-->
