@@ -45,11 +45,11 @@ namespace IndiaRose.Application.CompositionRoot
 
 		protected async void InitializeAsync()
         {
-            /*
-			await _storageService.InitializeAsync();
+            
+			//await _storageService.InitializeAsync();
 			await _settingsService.LoadAsync();
-			await _collectionStorageService.InitializeAsync();
-             * */
+			//await _collectionStorageService.InitializeAsync();
+            
 		}
 	}
 }

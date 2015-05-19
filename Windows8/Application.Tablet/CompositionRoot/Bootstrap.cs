@@ -4,6 +4,7 @@ using Windows.UI.Xaml.Controls;
 using IndiaRose.Application.Activities.Settings;
 using IndiaRose.Application.Views;
 using IndiaRose.Application.Views.Collection;
+using IndiaRose.Application.Views.Dialogs;
 using IndiaRose.Business;
 using IndiaRose.Business.ViewModels.Admin.Collection;
 using Storm.Mvvm.Inject;
@@ -29,7 +30,7 @@ namespace IndiaRose.Application.CompositionRoot
 
 			var dialogs = new Dictionary<string, Type>
             {
-
+                {Dialogs.ADMIN_SETTINGS_RESETSETTINGS,typeof(ResetSettingsDialog)}
             };
 
 

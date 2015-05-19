@@ -62,6 +62,7 @@
         </Button>
 
         <Button Style="{StaticResource SmallButton}"
+                Command="{Binding ResetSettingsCommand}"
                 Background="OrangeRed"
                 Grid.Row="2" Grid.Column="3">
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="AppSettings_Reset"/>
