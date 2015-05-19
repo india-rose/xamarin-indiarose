@@ -15,11 +15,16 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Services
 {
-	public class ResourceService
+	public class ResourceService : IResourceService
 	{
 		public async void ShowPdfFile(string pdfFileName)
 		{
 			// mupdf
+		}
+
+		public Stream OpenZip(string zipFileName)
+		{
+			throw new NotImplementedException();
 		}
 
 		private async void UnZipFile(string zipFileName)
