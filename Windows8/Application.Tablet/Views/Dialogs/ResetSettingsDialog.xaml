@@ -21,9 +21,9 @@
 
 
             <StackPanel Orientation="Horizontal"
-					Margin="12">
+					Margin="12,1,1,1">
                 <Button Content="No"
-			        Command="{Binding BackCommand}"
+                    Command="{Binding CloseDialogCommand}"
 					FontSize="30" />
 
             <Button Content="Yes"
