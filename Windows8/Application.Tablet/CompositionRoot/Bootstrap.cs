@@ -30,7 +30,8 @@ namespace IndiaRose.Application.CompositionRoot
 
 			var dialogs = new Dictionary<string, Type>
             {
-                {Dialogs.ADMIN_SETTINGS_RESETSETTINGS,typeof(ResetSettingsDialog)}
+                {Dialogs.ADMIN_SETTINGS_RESETSETTINGS,typeof(ResetSettingsDialog)},
+                {Dialogs.ADMIN_SETTINGS_DRAGANDDROP, typeof(DragAndDropDialog)}
             };
 
 

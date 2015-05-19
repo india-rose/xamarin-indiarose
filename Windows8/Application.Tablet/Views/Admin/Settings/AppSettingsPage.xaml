@@ -42,6 +42,7 @@
         </Button>
 
         <Button Style="{StaticResource SmallButton}"
+                Command="{Binding DragAndDropCommand}"
                 Background="ForestGreen"
                 Grid.Row="1" Grid.Column="3">
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="AppSettings_DragDrop"/>
