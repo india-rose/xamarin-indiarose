@@ -58,6 +58,7 @@
         </Button>
 
         <Button Style="{StaticResource SmallButton}"
+                Command="{Binding ReadingDelayCommand}"
                 Background="Purple"
                 Grid.Row="2" Grid.Column="2">
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="AppSettings_ReadingDelay"/>

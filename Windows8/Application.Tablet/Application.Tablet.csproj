@@ -175,6 +175,9 @@
     <Compile Include="Views\Admin\Settings\Dialogs\DragAndDropDialog.xaml.cs">
       <DependentUpon>DragAndDropDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admin\Settings\Dialogs\ReadingDelayDialog.xaml.cs">
+      <DependentUpon>ReadingDelayDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\Settings\IndiagramPropertyPage.xaml.cs">
       <DependentUpon>IndiagramPropertyPage.xaml</DependentUpon>
     </Compile>
@@ -237,6 +240,10 @@
     <Page Include="Views\Admin\Settings\Dialogs\DragAndDropDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\Settings\Dialogs\ReadingDelayDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Admin\Settings\IndiagramPropertyPage.xaml">
       <SubType>Designer</SubType>
