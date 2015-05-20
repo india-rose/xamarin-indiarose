@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using Windows.Data.Pdf;
 using Windows.Storage;
 using Windows.Storage.Pickers;
+using Windows.Storage.Streams;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
@@ -19,45 +20,21 @@ namespace IndiaRose.Services
 	{
 		public async void ShowPdfFile(string pdfFileName)
 		{
-			// mupdf
+			var source = new Uri("ms-appx:///Assets/" + pdfFileName);
+			StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(source);
+			Windows.ApplicationModel.Package.Current.InstalledLocation.GetFileAsync(pdfFileName);
+			Windows.System.Launcher.LaunchFileAsync(file);
 		}
 
-		public Stream OpenZip(string zipFileName)
+		public async Task<Stream> OpenZip(string zipFileName)
 		{
-			throw new NotImplementedException();
+			var source = new Uri("ms-appx:///Assets/" + zipFileName);
+			StorageFolder installFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+			StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(source);
+			IRandomAccessStream tmp = await file.OpenAsync(FileAccessMode.Read);
+			return tmp.AsStream();
 		}
 
-		private async void UnZipFile(string zipFileName)
-		{
-			var folder = ApplicationData.Current.LocalFolder;
-
-			using (var zipStream = await folder.OpenStreamForReadAsync("zipFileName"))
-			{
-				using (MemoryStream zipMemoryStream = new MemoryStream((int)zipStream.Length))
-				{
-					await zipStream.CopyToAsync(zipMemoryStream);
-
-					using (var archive = new ZipArchive(zipMemoryStream, ZipArchiveMode.Read))
-					{
-						foreach (ZipArchiveEntry entry in archive.Entries)
-						{
-							if (entry.Name != "")
-							{
-								using (Stream fileData = entry.Open())
-								{
-									StorageFile outputFile = await folder.CreateFileAsync(entry.Name, CreationCollisionOption.ReplaceExisting);
-									using (Stream outputFileStream = await outputFile.OpenStreamForWriteAsync())
-									{
-										await fileData.CopyToAsync(outputFileStream);
-										await outputFileStream.FlushAsync();
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
 
 		public async void Copy(string src, string dest)
 		{
