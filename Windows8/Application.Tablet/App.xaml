@@ -122,6 +122,17 @@
             <Style x:Key="NormalTextStyle" TargetType="TextBlock" BasedOn="{StaticResource TextStyle}">
                 <Setter Property="HorizontalAlignment" Value="Left"/>
             </Style>
+            
+            <Style x:Key="TitleDialogStyle" TargetType="TextBlock">
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="FontSize" Value="30" />
+                <Setter Property="Text" Value="" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+            <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
+                <Setter Property="HorizontalAlignment" Value="Center" />
+            </Style>
+                
         </ResourceDictionary>        
     </Application.Resources>
 

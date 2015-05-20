@@ -22,11 +22,9 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" 
-                   FontWeight="Bold" 
-                   x:Uid="CategoryReading_Title"
-                   FontSize="30"
-                   Text="" VerticalAlignment="Center" />
+        <TextBlock Style="{StaticResource TitleDialogStyle}" 
+                   Grid.Row="0" 
+                   x:Uid="CategoryReading_Title" />
 
         <TextBlock Style="{StaticResource SmallTextStyle}" 
                    Grid.Row="1" 
@@ -38,16 +36,16 @@
 
         <!-- radio button -->
 
-        <RadioButton Grid.Row="2" 
+        <RadioButton Style="{StaticResource RadioButtonStyle}" 
+                     Grid.Row="2" 
                      Grid.Column="0" 
-                     HorizontalAlignment="Center" 
                      IsChecked="{Binding IsEnabled, Mode=TwoWay}">
             <TextBlock Style="{StaticResource SmallTextStyle}" 
                        x:Uid="RadioButton_On" />
         </RadioButton>
-        <RadioButton Grid.Row="3" 
+        <RadioButton Style="{StaticResource RadioButtonStyle}" 
+                     Grid.Row="3" 
                      Grid.Column="0" 
-                     HorizontalAlignment="Center" 
                      IsChecked="{Binding IsDisabled, Mode=TwoWay}">
             <TextBlock Style="{StaticResource SmallTextStyle}" 
                        x:Uid="RadioButton_Off" />
