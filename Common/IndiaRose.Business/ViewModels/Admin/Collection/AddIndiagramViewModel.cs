@@ -332,14 +332,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             {
                 PopupService.DisplayPopup(LocalizationService.GetString("Collection_MissingSound", "Text"));
             }
-            else if (CurrentIndiagram.HasCustomSound)
-            {
-                MediaService.PlaySound(CurrentIndiagram.SoundPath);
-            }
             else
             {
-                TtsService.ReadText(CurrentIndiagram.Text);
-
+                TtsService.PlayIndiagram(CurrentIndiagram);
             }
         }
 

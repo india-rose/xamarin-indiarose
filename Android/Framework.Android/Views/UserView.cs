@@ -1,15 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Android.Content;
+using Android.Graphics.Drawables;
 using Android.Runtime;
 using Android.Util;
 using Android.Widget;
-using IndiaRose.Interfaces;
-using Storm.Mvvm.Inject;
-using Android.Graphics.Drawables;
 using IndiaRose.Data.Model;
+using IndiaRose.Data.UIModel;
+using IndiaRose.Interfaces;
 using Storm.Mvvm.Events;
+using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Framework.Views
 {
@@ -18,16 +20,13 @@ namespace IndiaRose.Framework.Views
 #pragma warning restore 618
     {
         #region Services
-        public ICollectionStorageService CollectionStorageService
-        {
-            get { return LazyResolver<ICollectionStorageService>.Service; }
-        }
 
         public ISettingsService SettingsService
         {
             get { return LazyResolver<ISettingsService>.Service; }
         }
         #endregion
+
         #region Private field
 
         private IndiagramBrowserView _topView;
@@ -35,86 +34,87 @@ namespace IndiaRose.Framework.Views
 
         #endregion
 
-        public event EventHandler ListChanged;
-        public event EventHandler CountChanged;
+        public event EventHandler TopCountChanged;
+		public event EventHandler BotCanAddIndiagramsChanged;
+
         #region Properties
-        public IndiagramBrowserView TopView
-        {
-            get { return _topView; }
-            set { SetProperty(ref _topView, value); }
-        }
 
-        public SentenceAreaView BotView
-        {
-            get { return _botView; }
-            set { SetProperty(ref _botView, value); }
-        }
+		#region Top Properties
+		
+		public Drawable TopBackground
+		{
+			get { return _topView.Background; }
+			set { _topView.Background = value; }
+		}
 
-        public Drawable TopBackground
-        {
-            get { return TopView.Background; }
-            set { TopView.Background = value; }
-        }
+		public int TopCount
+		{
+			get { return _topView.Count; }
+			set { _topView.Count = value; }
+		}
 
+		public int TopOffset
+		{
+			get { return _topView.Offset; }
+			set { _topView.Offset = value; }
+		}
+
+		public List<Indiagram> TopIndiagrams
+		{
+			get { return _topView.Indiagrams; }
+			set { _topView.Indiagrams = value; }
+		}
+
+		public uint TopTextColor
+		{
+			get { return _topView.TextColor; }
+			set { _topView.TextColor = value; }
+		}
+		public ICommand TopIndiagramSelectedCommand
+		{
+			get { return _topView.IndiagramSelected; }
+			set { _topView.IndiagramSelected = value; }
+		}
+
+		public ICommand TopNextCommand
+		{
+			get { return _topView.NextCommand; }
+			set { _topView.NextCommand = value; }
+		}
+
+		#endregion
+
+		
         public Drawable BotBackground
         {
-            get { return BotView.Background; }
-            set { BotView.Background = value; }
+			get { return _botView.Background; }
+			set { _botView.Background = value; }
         }
 
-        public int TopCount
+        public ObservableCollection<IndiagramUIModel> BotIndiagrams
         {
-            get { return TopView.Count; }
-            set { TopView.Count = value; }
+			get { return _botView.Indiagrams; }
+            set { _botView.Indiagrams = value; }
         }
 
-        public int TopOffset
-        {
-            get { return TopView.Offset; }
-            set { TopView.Offset = value; }
-        }
+	    public bool BotCanAddIndiagrams
+	    {
+			get { return _botView.CanAddIndiagrams; }
+			set { _botView.CanAddIndiagrams = value; }
+	    }
 
-        public List<Indiagram> TopIndiagrams
-        {
-            get { return TopView.Indiagrams; }
-            set
-            {
-                TopView.Indiagrams = value;
-                Post(Invalidate);
-            }
-        }
+	    public ICommand BotReadCommand
+	    {
+			get { return _botView.ReadCommand; }
+			set { _botView.ReadCommand = value; }
+	    }
 
-        public List<Indiagram> BotIndiagrams
-        {
-            get { return BotView.GetIndiagramsList(); }
-            set
-            {
-                List<IndiagramView> res = new List<IndiagramView>();
-                value.ForEach(x => res.Add(new IndiagramView(BotView.Context)
-                {
-                    Indiagram = x,
-                    TextColor = TopTextColor
-                }));
-                BotView.ToPlayView = res;
-            }
-        }
+	    public ICommand BotIndiagramSelectedCommand
+	    {
+			get { return _botView.IndiagramSelectedCommand; }
+			set { _botView.IndiagramSelectedCommand = value; }
+	    }
 
-        public uint TopTextColor
-        {
-            get { return TopView.TextColor; }
-            set { TopView.TextColor = value; }
-        }
-        public ICommand TopIndiagramSelected
-        {
-            get { return TopView.IndiagramSelected; }
-            set { TopView.IndiagramSelected = value; }
-        }
-
-        public ICommand TopNextCommand
-        {
-            get { return TopView.NextCommand; }
-            set { TopView.NextCommand = value; }
-        }
         #endregion
         #region Constructor
         protected UserView(IntPtr javaReference, JniHandleOwnership transfer)
@@ -142,53 +142,24 @@ namespace IndiaRose.Framework.Views
         }
         private void Initialize()
         {
-            TopView = new IndiagramBrowserView(Context);
-            BotView = new SentenceAreaView(Context);
+            _topView = new IndiagramBrowserView(Context);
+            _botView = new SentenceAreaView(Context);
 
-            TopView.CountChanged += (sender, args) => this.RaiseEvent(CountChanged);
-            BotView.ListChanged += (sender, args) => this.RaiseEvent(ListChanged);
+			_topView.CountChanged += (sender, args) => this.RaiseEvent(TopCountChanged);
+	        _botView.CanAddIndiagramsChanged += (s, e) => this.RaiseEvent(BotCanAddIndiagramsChanged);
         }
+
         #endregion
 
         public void Init(int availableHeight, int width)
         {
+	        int topHeight = (int) Math.Round(availableHeight*(SettingsService.SelectionAreaHeight/100.0));
+	        int bottomHeight = availableHeight - topHeight;
 
-            AddView(TopView, width, (int)Math.Round(availableHeight * (SettingsService.SelectionAreaHeight / 100.0)));
-            AddView(BotView, width, (int)Math.Round(availableHeight * (1 - (SettingsService.SelectionAreaHeight / 100.0))));
+			AddView(_topView, width, topHeight);
+			AddView(_botView, width, bottomHeight);
 
-            BotView.SetY(TopView.LayoutParameters.Height);
+			_botView.SetY(_topView.LayoutParameters.Height);
         }
-
-        #region Private tools methods
-
-        private bool SetProperty<T>(ref T storage, T value)
-        {
-            if (Equals(storage, value))
-            {
-                return false;
-            }
-
-            storage = value;
-            return true;
-        }
-
-        private bool SetProperty<T>(ref T storage, T value, Func<EventHandler> eventGetter)
-        {
-            if (Equals(storage, value))
-            {
-                return false;
-            }
-
-            storage = value;
-
-            EventHandler handler = eventGetter();
-            if (handler != null)
-            {
-                handler(this, EventArgs.Empty);
-            }
-            return true;
-        }
-
-        #endregion
     }
 }

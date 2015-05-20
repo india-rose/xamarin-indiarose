@@ -1,270 +1,227 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
-using Android.App;
+using System.Windows.Input;
 using Android.Content;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
 using IndiaRose.Data.Model;
+using IndiaRose.Data.UIModel;
 using IndiaRose.Framework.Converters;
 using IndiaRose.Interfaces;
-using Java.Lang;
-using Java.Util;
 using Storm.Mvvm.Events;
 using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 
 namespace IndiaRose.Framework.Views
 {
+	public class SentenceAreaView : RelativeLayout
+	{
+		public event EventHandler CanAddIndiagramsChanged;
 
-    public class SentenceAreaView : RelativeLayout
-    {
-        private readonly object _lock = new object();
+		private bool _canAddIndiagrams = true;
+		private int _viewId = 0xFFFF2a;
+		private int _maxNumberOfIndiagrams;
+		private IndiagramView _playButton;
+		private ObservableCollection<IndiagramUIModel> _indiagrams;
+		private readonly List<IndiagramView> _indiagramViews = new List<IndiagramView>();
 
-        public event EventHandler ListChanged;
+		public ICommand IndiagramSelectedCommand { get; set; }
 
-        private List<IndiagramView> _toPlayView;
-        public List<IndiagramView> ToPlayView
-        {
-            get { return _toPlayView; }
-            set
-            {
-                if (!_changing)
-                {
-                    value.ForEach(x =>
-                    {
-                        x.Id = ActId++;
-                        x.Touch += Remove;
-                    });
-                    _toPlayView = value;
-                    RefreshLayout();
-                }
-            }
-        }
+		public ICommand ReadCommand { get; set; }
 
-        protected ITextToSpeechService TextToSpeechService
-        {
-            get { return LazyResolver<ITextToSpeechService>.Service; }
-        }
-        protected ISettingsService SettingsService
-        {
-            get { return LazyResolver<ISettingsService>.Service; }
-        }
-        protected IMediaService MediaService
-        {
-            get { return LazyResolver<IMediaService>.Service; }
-        }
+		public ObservableCollection<IndiagramUIModel> Indiagrams
+		{
+			get { return _indiagrams; }
+			set
+			{
+				if (!Equals(_indiagrams, value))
+				{
+					if (_indiagrams != null)
+					{
+						_indiagrams.CollectionChanged -= IndiagramsOnCollectionChanged;
+					}
+					_indiagrams = value;
+					if (_indiagrams != null)
+					{
+						_indiagrams.CollectionChanged += IndiagramsOnCollectionChanged;
+					}
+				}
+			}
+		}
 
-        protected int ActId;
-        private bool _changing;
-        protected int ReadingIndex;
-        protected int MaxNumberOfIndiagram;
-        protected bool IsReading { get; set; }
-        protected Timer MDelayReadingTimer = new Timer();
-        private IndiagramView _playButton;
+		public bool CanAddIndiagrams
+		{
+			get { return _canAddIndiagrams; }
+			set
+			{
+				if (_canAddIndiagrams != value)
+				{
+					_canAddIndiagrams = value;
+					this.RaiseEvent(CanAddIndiagramsChanged);
+				}
+			}
+		}
+
+		#region Constructors
+
+		public SentenceAreaView(Context context)
+			: base(context)
+		{
+			Initialize();
+		}
+
+		public SentenceAreaView(Context context, IAttributeSet attrs)
+			: base(context, attrs)
+		{
+			Initialize();
+		}
+
+		public SentenceAreaView(Context context, IAttributeSet attrs, int defStyleAttr)
+			: base(context, attrs, defStyleAttr)
+		{
+			Initialize();
+		}
+
+		#endregion
+
+		private void Initialize()
+		{
+			Id = _viewId;
+			_maxNumberOfIndiagrams = LazyResolver<IScreenService>.Service.Width / IndiagramView.DefaultWidth - 1;
+			ISettingsService settings = LazyResolver<ISettingsService>.Service;
+			ColorStringToIntConverter colorConverter = new ColorStringToIntConverter();
+
+			// Init views
+			for (int i = 0; i < _maxNumberOfIndiagrams; ++i)
+			{
+				IndiagramView view = new IndiagramView(Context)
+				{
+					TextColor = (uint) colorConverter.Convert(settings.TextColor, null, null, null),
+					Id = _viewId++,
+					DefaultColor = 0,
+				};
+				view.Touch += OnIndiagramTouched;
+
+				var layoutParams = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
+				layoutParams.AddRule(LayoutRules.CenterVertical);
+				if (i == 0)
+				{
+					layoutParams.AddRule(LayoutRules.AlignParentLeft);
+				}
+				else
+				{
+					layoutParams.AddRule(LayoutRules.RightOf, _viewId - 2);
+				}
+
+				AddView(view, layoutParams);
+				_indiagramViews.Add(view);
+			}
 
 
-        public SentenceAreaView(Context context)
-            : base(context)
-        {
-            Initialize();
-        }
+			// Init play button
+			_playButton = new IndiagramView(Context)
+			{
+				TextColor = 0,
+				Id = _viewId++,
+				Indiagram = new Indiagram()
+				{
+					Text = "play",
+					ImagePath = LazyResolver<IStorageService>.Service.ImagePlayButtonPath
+				}
+			};
 
-        public SentenceAreaView(Context context, IAttributeSet attrs)
-            : base(context, attrs)
-        {
-            Initialize();
-        }
+			_playButton.Touch += (sender, args) =>
+			{
+				if (args.Event.ActionMasked == MotionEventActions.Down)
+				{
+					if (ReadCommand != null && ReadCommand.CanExecute(null))
+					{
+						ReadCommand.Execute(null);
+					}
+				}
+			};
 
-        public SentenceAreaView(Context context, IAttributeSet attrs, int defStyleAttr)
-            : base(context, attrs, defStyleAttr)
-        {
-            Initialize();
-        }
+			var lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
+			lp.AddRule(LayoutRules.AlignParentRight);
+			lp.AddRule(LayoutRules.CenterVertical);
 
-        public void Initialize()
-        {
-            _toPlayView = new List<IndiagramView>();
-            Id = 0x2A;
-            ActId = Id;
-            MaxNumberOfIndiagram = Width / IndiagramView.DefaultWidth - 1;
+			AddView(_playButton, lp);
+		}
 
-            //Init play button
-            _playButton = new IndiagramView(Context)
-            {
-                TextColor = 0,
-                Id = 0x30,
-                Indiagram = new Indiagram()
-                {
-                    Text = "play",
-                    ImagePath = LazyResolver<IStorageService>.Service.ImagePlayButtonPath
-                }
-            };
-            _playButton.Touch += Read;
-            var lp = new LayoutParams(
-                    ViewGroup.LayoutParams.WrapContent,
-                    ViewGroup.LayoutParams.WrapContent);
-            lp.AddRule(LayoutRules.AlignParentRight);
-            lp.AddRule(LayoutRules.CenterVertical);
+		private void IndiagramsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+		{
+			if (e.OldItems != null)
+			{
+				foreach (IndiagramUIModel model in e.OldItems)
+				{
+					model.ReinforcerStateChanged -= IndiagramReinforcerChanged;
+				}
+			}
 
-            AddView(_playButton, lp);
-        }
-        public bool CanAddIndiagram()
-        {
-            return (ToPlayView.Count < MaxNumberOfIndiagram && !IsReading);
-        }
+			if (e.NewItems != null)
+			{
+				foreach (IndiagramUIModel model in e.NewItems)
+				{
+					model.ReinforcerStateChanged += IndiagramReinforcerChanged;
+				}
+			}
 
-        public bool Add(IndiagramView view)
-        {
-            if (CanAddIndiagram())
-            {
-                view.Id = ActId++;
-                ToPlayView.Add(view);
-                RefreshLayout();
-                return true;
-            }
-            return false;
-        }
+			//refresh everything
+			int i = 0;
+			for (; i < _indiagrams.Count; ++i)
+			{
+				_indiagramViews[i].Indiagram = _indiagrams[i].Model;
+			}
+			for (; i < _indiagramViews.Count; ++i)
+			{
+				_indiagramViews[i].Indiagram = null;
+			}
+			CanAddIndiagrams = (_indiagrams.Count < _indiagramViews.Count);
+		}
 
-        public void Remove(object sender, TouchEventArgs e)
-        {
-            if (e.Event.ActionMasked == MotionEventActions.Down)
-            {
-                if (sender != null && !IsReading && ToPlayView.Count > 0)
-                {
-                    _changing = true;
-                    RemoveIndiagram((IndiagramView) sender);
-                    this.RaiseEvent(ListChanged);
-                    _changing = false;
-                }
-            }
-        }
+		private void IndiagramReinforcerChanged(object sender, EventArgs eventArgs)
+		{
+			IndiagramUIModel uiModel = sender as IndiagramUIModel;
 
-        public void RemoveAll()
-        {
-            if (!IsReading && ToPlayView.Count > 0)
-            {
-                RemoveAllHandler();
-            }
-        }
+			if (uiModel != null)
+			{
+				// find the view associated with this model
+				IndiagramView view = _indiagramViews.FirstOrDefault(x => x.Indiagram != null && Indiagram.AreSameIndiagram(x.Indiagram, uiModel.Model));
 
-        protected void RemoveAllHandler()
-        {
-            ToPlayView.ForEach(RemoveIndiagram);
-            ActId = Id;
-            this.RaiseEvent(ListChanged);
-        }
+				if (view == null)
+				{
+					LazyResolver<ILoggerService>.Service.Log("SentenceAreaView : got a reinforcerChangedEvent from a non registered indiagram !", MessageSeverity.Critical);
+					return;
+				}
 
-        protected void RemoveIndiagram(IndiagramView view)
-        {
-            RemoveView(view);
-            ToPlayView.Remove(view);
+				if (uiModel.IsReinforcerEnabled)
+				{
+					view.BackgroundColor = (uint)(new ColorStringToIntConverter().Convert(
+						LazyResolver<ISettingsService>.Service.ReinforcerColor, null, null, null));	
+				}
+				else
+				{
+					// set it back to transparent
+					view.BackgroundColor = 0x0;
+				}
+			}
+		}
 
-            RefreshLayout();
-        }
-
-        public bool HasIndiagram(Indiagram item)
-        {
-            return ToPlayView.Any(t => t.Indiagram.Equals(item));
-        }
-
-        public List<Indiagram> GetIndiagramsList()
-        {
-            List<Indiagram> result = new List<Indiagram>();
-            ToPlayView.ForEach(x => result.Add(x.Indiagram));
-
-            return result;
-        }
-
-        protected void RefreshLayout()
-        {
-            ToPlayView.ForEach(RemoveView);
-
-            for (int i = 0; i < ToPlayView.Count; ++i)
-            {
-                LayoutParams lp = new LayoutParams(
-                    ViewGroup.LayoutParams.WrapContent,
-                    ViewGroup.LayoutParams.WrapContent);
-                lp.AddRule(LayoutRules.CenterVertical);
-
-                if (i > 0)
-                {
-                    lp.AddRule(LayoutRules.RightOf, ToPlayView[i - 1].Id);
-                }
-                else
-                {
-                    lp.AddRule(LayoutRules.AlignParentLeft);
-                }
-
-                AddView(ToPlayView[i], lp);
-                Invalidate();
-            }
-        }
-        public void Read(object sender, TouchEventArgs touchEventArgs)
-        {
-            if (touchEventArgs.Event.ActionMasked == MotionEventActions.Down)
-            {
-                // if the reading process is not already launch and there is at
-                // least one indiagram in the sentence.
-                if (!IsReading && ToPlayView.Count > 0)
-                {
-                    ReadingIndex = 0;
-                    IsReading = true;
-                    ReadSentence();
-                }
-            }
-        }
-
-        protected void ReadSentence()
-        {
-            if (IsReading)
-            {
-                // if there is more view to read.
-                if (ReadingIndex < ToPlayView.Count)
-                {
-                    if (ReadingIndex > 0)
-                    {
-                        TextToSpeechService.Silence((long)(SettingsService.TimeOfSilenceBetweenWords * 1000));
-                    }
-                    if (ReadingIndex > 0
-                        && SettingsService.IsReinforcerEnabled)
-                    {
-                        //0 = Color.Transparent
-                        // disable reinforcer background on the last read indiagram.
-                        ToPlayView[ReadingIndex - 1].BackgroundColor = 0;
-                    }
-                    IndiagramView v = ToPlayView[ReadingIndex];
-                    if (SettingsService.IsReinforcerEnabled)
-                    {
-                        var colorconverter = new ColorStringToIntConverter();
-                        v.BackgroundColor = (uint)colorconverter.Convert(SettingsService.ReinforcerColor, null, null, null);
-                        Post(Invalidate);
-                    }
-                    if (v.Indiagram.HasCustomSound)
-                        MediaService.PlaySound(v.Indiagram.SoundPath, ReadSentence);
-                    else
-                    {
-                        TextToSpeechService.ReadText(v.Indiagram.Text);
-                        while (TextToSpeechService.IsSpeaking)
-                        {
-                            Thread.Yield();
-                        }
-                        ReadingIndex++;
-                        ReadSentence();
-                    }
-                    ReadingIndex++;
-                }
-                else
-                {
-                    if (ToPlayView.Count > 0)
-                    {
-                        //0 = Color.Transparent
-                        ToPlayView[ToPlayView.Count - 1].BackgroundColor = 0;
-                    }
-                    IsReading = false;
-                    RemoveAll();
-                }
-            }
-        }
-    }
+		private void OnIndiagramTouched(object sender, TouchEventArgs e)
+		{
+			if (e.Event.ActionMasked == MotionEventActions.Down)
+			{
+				IndiagramView view = sender as IndiagramView;
+				if (view != null && view.Indiagram != null && IndiagramSelectedCommand != null && IndiagramSelectedCommand.CanExecute(view.Indiagram))
+				{
+					IndiagramSelectedCommand.Execute(view.Indiagram);
+				}
+			}
+		}
+	}
 }

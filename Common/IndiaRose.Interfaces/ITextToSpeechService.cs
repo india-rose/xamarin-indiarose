@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using IndiaRose.Data.Model;
 
 namespace IndiaRose.Interfaces
 {
     public interface ITextToSpeechService
     {
-        void ReadText(string text);
+	    event EventHandler SpeakingCompleted;
+
         void Close();
-        bool IsSpeaking { get; }
-        void Silence(long duration);
+	    void PlayIndiagram(Indiagram indiagram);
     }
 }

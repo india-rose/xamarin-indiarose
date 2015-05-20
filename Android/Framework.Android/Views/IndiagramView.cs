@@ -70,15 +70,11 @@ namespace IndiaRose.Framework.Views
         private bool _isOneLineText = true;
 
 		private uint _backgroundColor;
+	    private uint _defaultColor;
 
-        #endregion
+	    #endregion
 
         #region Services
-
-        protected IDispatcherService DispatcherService
-        {
-            get { return LazyResolver<IDispatcherService>.Service; }
-        }
 
         protected static ISettingsService SettingsService
         {
@@ -98,7 +94,7 @@ namespace IndiaRose.Framework.Views
                 {
                     _indiagram = value;
                     RefreshDimension();
-                    DispatcherService.InvokeOnUIThread(Invalidate);
+                    Post(Invalidate);
                 }
             }
         }
@@ -112,7 +108,7 @@ namespace IndiaRose.Framework.Views
                 {
                     _textColor = value;
                     _textPainter.Color = new Color((int)_textColor);
-                    DispatcherService.InvokeOnUIThread(Invalidate);
+                    Post(Invalidate);
                 }
             }
         }
@@ -126,10 +122,24 @@ namespace IndiaRose.Framework.Views
                 {
                     _backgroundColor = value;
                     _backgroundPainter.Color = new Color((int)value);
-                    DispatcherService.InvokeOnUIThread(Invalidate);
+                    Post(Invalidate);
                 }
             }
         }
+
+	    public uint DefaultColor
+	    {
+			get { return _defaultColor; }
+		    set
+		    {
+			    if (_defaultColor != value)
+			    {
+				    _defaultColor = value;
+				    _picturePainter.Color = new Color((int) _defaultColor);
+				    Post(Invalidate);
+			    }
+		    }
+	    }
 
         public int RealHeight
         {
@@ -176,10 +186,15 @@ namespace IndiaRose.Framework.Views
             _backgroundPainter.Color = Color.Transparent;
 
             _pictureWidth = _pictureHeight = SettingsService.IndiagramDisplaySize;
+	        _backgroundRect = _backgroundRect ?? new Rect(0, 0, 0, 0);
         }
 
         protected void RefreshDimension()
         {
+	        if (_indiagram == null)
+	        {
+		        return;
+	        }
             float textWidth = _textPainter.MeasureText(_indiagram.Text);
             int textHeight = SettingsService.FontSize;
 
@@ -212,6 +227,12 @@ namespace IndiaRose.Framework.Views
         protected override void OnDraw(Canvas canvas)
         {
             base.OnDraw(canvas);
+
+	        if (_indiagram == null)
+	        {
+		        return;
+	        }
+
             canvas.DrawRect(_backgroundRect, _backgroundPainter);
 
             //draw picture or a red rectangle if error with picture

@@ -44,18 +44,6 @@ namespace IndiaRose.Services.Android
             return _url;
         }
 
-        public void PlaySound(string url, Action callbackAction)
-        {
-            var player = new MediaPlayer();
-            player.SetDataSource(url);
-            player.Completion += delegate(object sender, EventArgs args)
-            {
-                if (callbackAction != null)
-                    callbackAction();
-            };
-            player.Prepare();
-            player.Start();
-        }
         public Task<string> GetPictureFromCameraAsync()
         {
             return AsyncHelper.CreateAsyncFromCallback<string>(callbackResult =>

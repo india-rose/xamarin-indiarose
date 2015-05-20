@@ -88,10 +88,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
 	    private void ListenAction()
 	    {
-            if(IndiagramContainer.Indiagram.HasCustomSound)
-                MediaService.PlaySound(IndiagramContainer.Indiagram.SoundPath);
-            else
-                TtsService.ReadText(IndiagramContainer.Indiagram.Text);
+			TtsService.PlayIndiagram(IndiagramContainer.Indiagram);
 	    }
 	}
 }
