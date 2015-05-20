@@ -164,6 +164,7 @@ namespace IndiaRose.Framework.Views
             AddView(BotView, width, (int)Math.Round(availableHeight * (1 - (SettingsService.SelectionAreaHeight / 100.0))));
 
             BotView.SetY(TopView.LayoutParameters.Height);
+			BotView.RefreshMaxNumberofIndia(width);
         }
 
         #region Private tools methods

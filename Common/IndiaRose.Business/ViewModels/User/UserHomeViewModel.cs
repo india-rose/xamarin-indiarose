@@ -51,6 +51,7 @@ namespace IndiaRose.Business.ViewModels.User
         public UserHomeViewModel()
         {
             ToPlayedList=new List<Indiagram>();
+			CanAdd = true;
         }
         public override void OnNavigatedTo(NavigationArgs e, string parametersKey)
         {

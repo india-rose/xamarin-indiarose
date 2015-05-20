@@ -39,7 +39,6 @@ namespace IndiaRose.Framework.Views
                     _toPlayView = value;
                     RefreshLayout();
                     CanAdd = ToPlayView.Count < MaxNumberOfIndiagram;
-                    this.RaiseEvent(MaxNumberChanged);
                 }
             }
         }
@@ -63,8 +62,16 @@ namespace IndiaRose.Framework.Views
         public int MaxNumberOfIndiagram { get; set; }
         protected bool IsReading { get; set; }
         private IndiagramView _playButton;
+		private bool _canAdd;
 
-        public bool CanAdd { get; set; }
+		public bool CanAdd { get
+			{ return _canAdd; }
+			set
+			{
+				_canAdd = value;
+				this.RaiseEvent (MaxNumberChanged); 
+			}
+		}
 
         public SentenceAreaView(Context context)
             : base(context)
@@ -83,7 +90,10 @@ namespace IndiaRose.Framework.Views
         {
             Initialize();
         }
-
+		public void RefreshMaxNumberofIndia(int width){
+			MaxNumberOfIndiagram = width / IndiagramView.DefaultWidth - 1;
+			CanAdd = ToPlayView.Count < MaxNumberOfIndiagram;
+		}
         public void Initialize()
         {
             _toPlayView = new List<IndiagramView>();
