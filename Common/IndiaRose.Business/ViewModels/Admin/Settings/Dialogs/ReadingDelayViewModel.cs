@@ -8,8 +8,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 
 		private int _currentValue = 10;
 		private float _currentDelay = 1.0f;
+	    private string _currentValueStr="1.0 secondes";
 
-		#endregion
+	    #endregion
 
 		#region Public properties
 
@@ -21,14 +22,28 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 				if (SetProperty(ref _currentValue, value))
 				{
 					CurrentDelay = value/10.0f;
+                    CurrentValueStr = CurrentDelay + "secondes";
 				}
 			}
 		}
 
+	    public String CurrentValueStr
+	    {
+            get { return _currentValueStr; }
+	        set
+	        {
+	            SetProperty(ref _currentValueStr, value);
+	        }
+	    }
+
 		public float CurrentDelay
 		{
 			get { return _currentDelay; }
-			set { SetProperty(ref _currentDelay, value); }
+		    set
+		    {
+		        SetProperty(ref _currentDelay, value);
+                CurrentValueStr = CurrentDelay + "secondes";
+		    }
 		}
 
 		#endregion
@@ -39,6 +54,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 		{
 			// Math.Round is needed because of float precision issue
 			CurrentValue = (int) Math.Round(SettingsService.TimeOfSilenceBetweenWords * 10.0);
+		    CurrentValueStr = _currentValueStr;
 		}
 
 		#endregion

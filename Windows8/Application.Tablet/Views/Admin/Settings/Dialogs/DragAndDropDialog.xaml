@@ -14,40 +14,39 @@
             <RowDefinition Height="2*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="5*" />
+             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" 
-                   FontWeight="Bold" 
-                   x:Uid="DragAndDrop_Title"
-                   FontSize="30"
-                   Text="" VerticalAlignment="Center" />
-        
-        <TextBlock Style="{StaticResource SmallTextStyle}" 
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
+                   Grid.Column="1"
+                   Style="{StaticResource PopupTitleStyle}"
+                   x:Uid="DragAndDrop_Title"/>
+
+        <TextBlock Style="{StaticResource PopupContentStyle}" 
                    Grid.Row="1" 
-                   Grid.Column="0" 
-                   Grid.ColumnSpan="2" 
-                   VerticalAlignment="Center"
-                   TextWrapping="Wrap" 
+                   Grid.Column="1" 
                    x:Uid="DragAndDrop_Explanation" />
 
         <!-- radio button -->
 
         <RadioButton Grid.Row="2" 
-                     Grid.Column="0" 
-                     HorizontalAlignment="Center" 
+                     Grid.Column="1"
+                     HorizontalAlignment="Right" 
+                     VerticalAlignment="Center"                     
                      IsChecked="{Binding IsEnabled, Mode=TwoWay}">
             <TextBlock Style="{StaticResource SmallTextStyle}" 
                        x:Uid="RadioButton_On" />
         </RadioButton>
-        <RadioButton Grid.Row="3" 
-                     Grid.Column="0" 
-                     HorizontalAlignment="Center" 
+        <RadioButton Grid.Row="2" 
+                     Grid.Column="2" 
+                     HorizontalAlignment="Left" 
+                     VerticalAlignment="Center"
                      IsChecked="{Binding IsDisabled, Mode=TwoWay}">
             <TextBlock Style="{StaticResource SmallTextStyle}" 
                        x:Uid="RadioButton_Off" />
@@ -55,17 +54,19 @@
 
         <!-- button ok and cancel -->
         <Button Style="{StaticResource SmallButton}" 
-                Grid.Row="4" 
+                Grid.Row="3" 
                 Grid.Column="0"
+                Grid.ColumnSpan="2"
                 Command="{Binding SaveCommand}">
             <TextBlock Style="{StaticResource TextButton}" 
                        x:Uid="Button_Ok" />
         </Button>
         
         <Button Style="{StaticResource SmallButton}" 
-                Grid.Row="4" 
-                Grid.Column="1"
-                Command="{Binding BackCommand}">
+                Grid.Row="3" 
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                Command="{Binding CloseDialogCommand}">
             <TextBlock Style="{StaticResource TextButton}" 
                        x:Uid="Button_Cancel" />
         </Button>

@@ -22,37 +22,32 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" 
-                   FontWeight="Bold" 
-                   x:Uid="ReadingDelay_Title"
-                   FontSize="30"
-                   Text="" VerticalAlignment="Center" />
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   Style="{StaticResource PopupTitleStyle}"
+                   x:Uid="ReadingDelay_Title"/>
 
-        <TextBlock Style="{StaticResource SmallTextStyle}" 
+        <TextBlock Style="{StaticResource PopupContentStyle}" 
                    Grid.Row="1" 
-                   Grid.Column="0" 
-                   Grid.ColumnSpan="2" 
-                   VerticalAlignment="Center"
-                   TextWrapping="Wrap" 
+                   Grid.Column="0"
                    x:Uid="ReadingDelay_Explanation" />
 
         <!-- Slider -->
 
-        <Slider Grid.Row="2" 
+        <Slider
+            Grid.Row="2" 
                 Grid.Column="0" 
                 Grid.ColumnSpan="2" 
-                
+                Margin="200,0"
                 Value="{Binding CurrentValue, Mode=TwoWay}" >
             
         </Slider>
         
-        <TextBlock Style="{StaticResource SmallTextStyle}" 
+        <TextBlock 
+            Style="{StaticResource PopupValueStyle}" 
                    Grid.Row="3" 
                    Grid.Column="0" 
-                   Grid.ColumnSpan="2" 
-                   VerticalAlignment="Center"
-                   TextWrapping="Wrap" 
-                   x:Uid="ReadingDelay_ValueFormat" />
+           Text="{Binding CurrentDelay}"
+                    />
 
         <!-- button ok and cancel -->
         <Button Style="{StaticResource SmallButton}" 
@@ -66,7 +61,7 @@
         <Button Style="{StaticResource SmallButton}" 
                 Grid.Row="4" 
                 Grid.Column="1"
-                Command="{Binding BackCommand}">
+                Command="{Binding CloseDialogCommand}">
             <TextBlock Style="{StaticResource TextButton}" 
                        x:Uid="Button_Cancel" />
         </Button>
