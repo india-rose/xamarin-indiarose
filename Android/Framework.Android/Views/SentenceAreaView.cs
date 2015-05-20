@@ -163,7 +163,9 @@ namespace IndiaRose.Framework.Views
 
         protected void RemoveAllHandler()
         {
-            ToPlayView.ForEach(RemoveIndiagram);
+			ToPlayView.ForEach(RemoveView);
+			ToPlayView.Clear ();
+			RefreshLayout ();
             ActId = Id;
             this.RaiseEvent(ListChanged);
         }
@@ -210,8 +212,8 @@ namespace IndiaRose.Framework.Views
                 }
 
                 AddView(ToPlayView[i], lp);
-                Invalidate();
             }
+			Post(Invalidate);
         }
         public void Read(object sender, TouchEventArgs touchEventArgs)
         {
