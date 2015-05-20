@@ -51,6 +51,7 @@
 
 
         <Button Style="{StaticResource SmallButton}"
+                Command="{Binding CategoryReadingCommand}"
                 Background="ForestGreen"
                 Grid.Row="2" Grid.Column="1">
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="AppSettings_ReadingCategory"/>

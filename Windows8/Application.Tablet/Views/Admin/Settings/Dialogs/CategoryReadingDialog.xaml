@@ -1,12 +1,12 @@
 ﻿<mvvm:DialogPage
-    x:Class="IndiaRose.Application.Views.Dialogs.DragAndDropDialog"
+    x:Class="IndiaRose.Application.Views.Dialogs.CategoryReadingDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvvm="using:Storm.Mvvm"
     mc:Ignorable="d"
-    DataContext="{Binding Source={StaticResource Locator}, Path=AdminSettingsDialogsDragAndDropViewModel}"
+    DataContext="{Binding Source={StaticResource Locator}, Path=AdminSettingsDialogsCategoryReadingViewModel}"
     PopupHeight="300">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -24,17 +24,17 @@
 
         <TextBlock Grid.Row="0" 
                    FontWeight="Bold" 
-                   x:Uid="DragAndDrop_Title"
+                   x:Uid="CategoryReading_Title"
                    FontSize="30"
                    Text="" VerticalAlignment="Center" />
-        
+
         <TextBlock Style="{StaticResource SmallTextStyle}" 
                    Grid.Row="1" 
                    Grid.Column="0" 
                    Grid.ColumnSpan="2" 
                    VerticalAlignment="Center"
                    TextWrapping="Wrap" 
-                   x:Uid="DragAndDrop_Explanation" />
+                   x:Uid="CategoryReading_Explanation" />
 
         <!-- radio button -->
 
@@ -61,7 +61,7 @@
             <TextBlock Style="{StaticResource TextButton}" 
                        x:Uid="Button_Ok" />
         </Button>
-        
+
         <Button Style="{StaticResource SmallButton}" 
                 Grid.Row="4" 
                 Grid.Column="1"
@@ -69,6 +69,6 @@
             <TextBlock Style="{StaticResource TextButton}" 
                        x:Uid="Button_Cancel" />
         </Button>
-        
+
     </Grid>
 </mvvm:DialogPage>
