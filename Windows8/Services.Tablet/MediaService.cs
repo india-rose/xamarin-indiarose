@@ -7,6 +7,7 @@ using Windows.Media;
 using Windows.Media.Capture;
 using Windows.Media.MediaProperties;
 using Windows.Storage;
+using Windows.UI.Xaml.Controls;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
 
@@ -63,14 +64,16 @@ namespace IndiaRose.Tablet
             return _url;
         }
 
-        public async void PlaySound(string url)
+        public void PlaySound(string url)
         {
-            var stream = await _recordStorageFile.OpenAsync(FileAccessMode.Read);
+            var path = new Uri(url, UriKind.Absolute);
+            var play = new MediaElement
+            {
+                AutoPlay = false,
+                Source = path
+            };
 
-            //TODO Remplacer "play" par le nom du MediaElement pour la lecture
-            /*play.AutoPlay = true;
-            play.SetSource(stream, _recordStorageFile.FileType);
-            play.Play();*/
+            play.Play();
         }
     }
 }
