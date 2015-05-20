@@ -32,7 +32,7 @@ namespace IndiaRose.Application.Views
         {
             byte R, G, B, A;
 
-            A = Convert.ToByte(ASlider.Value);
+            /*A = Convert.ToByte(ASlider.Value);
             R = Convert.ToByte(RSlider.Value);
             G = Convert.ToByte(GSlider.Value);
             B = Convert.ToByte(BSlider.Value);
@@ -40,7 +40,7 @@ namespace IndiaRose.Application.Views
             Color myColor = new Color();
             myColor = Color.FromArgb(A, R, G, B);
 
-            showColor.Fill = new SolidColorBrush(myColor);
+            showColor.Fill = new SolidColorBrush(myColor);*/
         }
     }
 }

@@ -15,16 +15,16 @@ using Windows.UI.Xaml.Navigation;
 
 // Pour en savoir plus sur le modèle d'élément Page vierge, consultez la page http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace IndiaRose.Application.Views.Admin.Collection
+namespace IndiaRose.Application.Views.Dialogs
 {
-	/// <summary>
-	/// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
-	/// </summary>
-	public sealed partial class WatchIndiagramPage
-	{
-		public WatchIndiagramPage()
-		{
-			this.InitializeComponent();
-		}
-	}
+    /// <summary>
+    /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
+    /// </summary>
+    public sealed partial class DragAndDropDialog
+    {
+        public DragAndDropDialog() : base(300)
+        {
+            this.InitializeComponent();
+        }
+    }
 }

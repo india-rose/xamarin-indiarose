@@ -7,6 +7,8 @@ using IndiaRose.Storage.Sqlite;
 using PCLStorage;
 using SQLite.Net.Platform.WinRT;
 using Storm.Mvvm.Inject;
+using Storm.Mvvm.Navigation;
+using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application.CompositionRoot
 {
@@ -24,6 +26,7 @@ namespace IndiaRose.Application.CompositionRoot
 			_settingsService = new SettingsService();
 			_collectionStorageService = new SqliteCollectionStorageService(new SQLitePlatformWinRT());
 
+            RegisterInstance<INavigationService>(new NavigationService(rootFrame,views));
 			RegisterInstance<IEmailService>(new EmailService());
 			//RegisterInstance<IResourceService>(new ResourceService());
 			RegisterInstance<IEmailService>(new EmailService());
@@ -45,11 +48,11 @@ namespace IndiaRose.Application.CompositionRoot
 
 		protected async void InitializeAsync()
         {
-            /*
-			await _storageService.InitializeAsync();
+            
+			//await _storageService.InitializeAsync();
 			await _settingsService.LoadAsync();
-			await _collectionStorageService.InitializeAsync();
-             * */
+			//await _collectionStorageService.InitializeAsync();
+            
 		}
 	}
 }
