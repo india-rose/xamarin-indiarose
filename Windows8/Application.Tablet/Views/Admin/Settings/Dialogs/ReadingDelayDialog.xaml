@@ -38,6 +38,7 @@
                 Grid.Column="0" 
                 Grid.ColumnSpan="2" 
                 Margin="200,0"
+                IsThumbToolTipEnabled="False"
                 Value="{Binding CurrentValue, Mode=TwoWay}" >
             
         </Slider>
