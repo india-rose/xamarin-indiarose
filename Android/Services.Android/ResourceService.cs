@@ -2,11 +2,8 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Android.Content;
-using Android.Content.Res;
-using Android.Test;
 using IndiaRose.Framework;
 using IndiaRose.Interfaces;
-using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 using Uri = Android.Net.Uri;
 
