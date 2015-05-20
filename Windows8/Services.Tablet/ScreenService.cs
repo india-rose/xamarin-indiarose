@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Store;
+using Windows.UI.Xaml;
 using IndiaRose.Interfaces;
 
 namespace IndiaRose.Services
@@ -12,13 +13,13 @@ namespace IndiaRose.Services
     {
         public int Width
         {
-            
-            get { return 1300; }
+
+			get { return (int)Window.Current.Bounds.Width; }
         }
 
         public int Height
         {
-            get { return 760; }
+			get { return (int)Window.Current.Bounds.Height; }
         }
     }
 }
