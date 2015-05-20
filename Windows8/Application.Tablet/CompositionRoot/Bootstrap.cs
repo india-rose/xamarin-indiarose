@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
-using IndiaRose.Application.Activities.Settings;
 using IndiaRose.Application.Views;
 using IndiaRose.Application.Views.Collection;
 using IndiaRose.Application.Views.Dialogs;
