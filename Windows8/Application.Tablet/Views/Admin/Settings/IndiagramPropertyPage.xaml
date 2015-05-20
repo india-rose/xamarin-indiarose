@@ -84,7 +84,7 @@
             Grid.Row="1"
             >
             <Canvas
-                                         Visibility="{Binding ReinforcerEnabled, Converter={ StaticResource Converter}}"
+                    Visibility="{Binding ReinforcerEnabled, Converter={ StaticResource Converter}}"
                     Background="{Binding ReinforcerColor.Color}" 
                     VerticalAlignment="Center" 
                     HorizontalAlignment="Center" 
@@ -96,7 +96,7 @@
             </Canvas>
 
             <CheckBox RequestedTheme="Light" 
-                      IsChecked="{Binding ReinforcerEnabled,Mode=TwoWay}">
+                      IsChecked="{Binding ReinforcerEnabled,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <TextBlock Style="{StaticResource SmallTextStyle}" 
                 x:Uid="IndiagramProperty_EnableReinforcer"/>
             </CheckBox>
