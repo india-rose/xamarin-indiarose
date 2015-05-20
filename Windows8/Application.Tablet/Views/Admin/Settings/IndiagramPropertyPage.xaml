@@ -7,11 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:framework="using:IndiaRose.Framework"
     xmlns:mvvm="using:Storm.Mvvm"
+    xmlns:converters="using:Storm.Mvvm.Converters"
     mc:Ignorable="d"
    
     DataContext="{Binding Source={StaticResource Locator},Path=AdminSettingsIndiagramPropertyViewModel}"
     >
-
+    <UserControl.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="Converter"/>
+    </UserControl.Resources>
+    
     <Grid VerticalAlignment="Stretch" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"></ColumnDefinition>
@@ -79,13 +83,17 @@
             Grid.Column="2"
             Grid.Row="1"
             >
-
             <Canvas
+                                         Visibility="{Binding ReinforcerEnabled, Converter={ StaticResource Converter}}"
                     Background="{Binding ReinforcerColor.Color}" 
                     VerticalAlignment="Center" 
                     HorizontalAlignment="Center" 
                     Height="{Binding IndiagramSize}" 
-                    Width="{Binding IndiagramSize}"></Canvas>
+                    Width="{Binding IndiagramSize}">
+                <Grid Canvas.Top="75" Width="106" HorizontalAlignment="Center">
+                    <Image MinWidth="100" MinHeight="100" Source="../../../Assets/root.png" Visibility="Visible"></Image>
+                </Grid>
+            </Canvas>
 
             <CheckBox RequestedTheme="Light" 
                       IsChecked="{Binding ReinforcerEnabled,Mode=TwoWay}">
