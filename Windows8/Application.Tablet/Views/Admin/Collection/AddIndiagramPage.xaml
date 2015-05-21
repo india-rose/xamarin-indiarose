@@ -1,0 +1,58 @@
+﻿<mvvm:MvvmPage
+    x:Class="IndiaRose.Application.Views.Admin.Collection.AddIndiagramPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:IndiaRose.Application.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:IndiaRose.Business"
+    xmlns:application="using:IndiaRose.Application"
+    xmlns:mvvm="using:Storm.Mvvm"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=AdminCollectionAddIndiagramViewModel}">
+    
+    <Grid VerticalAlignment="Stretch" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="60*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!-- first Column -->
+        <ScrollViewer Grid.Column="1"
+                        Grid.Row="1">
+            <StackPanel >
+                <TextBlock x:Uid="Collection_IndiagramText" Text="" />
+                <TextBox x:Name="IndiaTextBox"/>
+
+                <TextBlock x:Uid="Collection_ParentCategory" Text="" />
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Uid="Collection_ParentCategoryName" Text="" />
+                    <!-- TODO a bindie sur l'indiagrame -->
+                    <TextBlock Text="brique" />
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <Button Style="{StaticResource SmallButton}"
+            	Background="Blue">
+                    <TextBlock Style="{StaticResource SmallTextButton}"
+            		x:Uid="Collection_ChooseCategory"/>
+                    </Button>
+                    
+                    <Button Style="{StaticResource SmallButton}"
+            	    Background="Purple">
+                        <TextBlock Style="{StaticResource SmallTextButton}"
+            		x:Uid="Collection_RootCategoryName"/>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+        <!-- 2 Column -->
+     </Grid>
+</mvvm:MvvmPage>
