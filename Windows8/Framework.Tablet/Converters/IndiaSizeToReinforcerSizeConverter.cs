@@ -9,12 +9,12 @@ using Windows.UI.Xaml.Data;
 
 namespace IndiaRose.Framework.Converters
 {
-    class BooleanToVisibilityConverter : IValueConverter
+    class IndiaSizeToReinforcerSizeConverter : IValueConverter
     {
 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return (bool)value ? Visibility.Visible : Visibility.Collapsed;
+            return (int)value + 10;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

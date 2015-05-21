@@ -28,19 +28,5 @@ namespace IndiaRose.Application.Views
             this.InitializeComponent();
         }
 
-        private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
-        {
-            byte R, G, B, A;
-
-            /*A = Convert.ToByte(ASlider.Value);
-            R = Convert.ToByte(RSlider.Value);
-            G = Convert.ToByte(GSlider.Value);
-            B = Convert.ToByte(BSlider.Value);
-
-            Color myColor = new Color();
-            myColor = Color.FromArgb(A, R, G, B);
-
-            showColor.Fill = new SolidColorBrush(myColor);*/
-        }
     }
 }

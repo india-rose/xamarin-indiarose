@@ -13,7 +13,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="2*" />
@@ -29,7 +29,7 @@
                    Grid.Column="1"
                    Style="{StaticResource PopupTitleStyle}" 
                    x:Uid="ColorPicker_Title"
-                   Text=""/>
+                   />
 
         <TextBlock Style="{StaticResource PopupContentStyle}" 
                    Grid.Row="1" 
