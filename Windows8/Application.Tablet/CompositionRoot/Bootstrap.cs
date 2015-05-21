@@ -32,7 +32,8 @@ namespace IndiaRose.Application.CompositionRoot
                 {Dialogs.ADMIN_SETTINGS_RESETSETTINGS,typeof(ResetSettingsDialog)},
                 {Dialogs.ADMIN_SETTINGS_DRAGANDDROP, typeof(DragAndDropDialog)},
                 {Dialogs.ADMIN_SETTINGS_CATEGORYREADING, typeof(CategoryReadingDialog)},
-                {Dialogs.ADMIN_SETTINGS_READINGDELAY, typeof(ReadingDelayDialog)}
+                {Dialogs.ADMIN_SETTINGS_READINGDELAY, typeof(ReadingDelayDialog)},
+                {Dialogs.ADMIN_SETTINGS_COLORPICKER, typeof(ColorPickerDialog)}
             };
 
 

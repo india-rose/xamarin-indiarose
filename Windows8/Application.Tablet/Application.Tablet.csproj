@@ -170,6 +170,9 @@
     <Compile Include="Views\Dialogs\CategoryReadingDialog.xaml.cs">
       <DependentUpon>CategoryReadingDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dialogs\ColorPickerDialog.xaml.cs">
+      <DependentUpon>ColorPickerDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\DragAndDropDialog.xaml.cs">
       <DependentUpon>DragAndDropDialog.xaml</DependentUpon>
     </Compile>
@@ -233,6 +236,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Dialogs\CategoryReadingDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\ColorPickerDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

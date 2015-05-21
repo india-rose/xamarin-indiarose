@@ -4,7 +4,9 @@ using System.Windows.Input;
 using IndiaRose.Data.UIModel;
 using Storm.Mvvm;
 using Storm.Mvvm.Commands;
+using Storm.Mvvm.Inject;
 using Storm.Mvvm.Navigation;
+using Storm.Mvvm.Services;
 
 #endregion
 
@@ -53,11 +55,18 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 
 		#endregion
 		public ICommand SaveCommand { get; set; }
+        public ICommand CloseDialogCommand { get; set; }
 
 		public ColorPickerViewModel()
 		{
 			SaveCommand = new DelegateCommand(SaveAction);
+            CloseDialogCommand = new DelegateCommand(CloseDialogAction);
 		}
+
+	    private void CloseDialogAction()
+	    {
+	        LazyResolver<IMessageDialogService>.Service.DismissCurrentDialog();
+	    }
 
 		private void SaveAction()
 		{
