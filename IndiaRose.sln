@@ -26,6 +26,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Tablet", "Windows8\Application.Tablet\Application.Tablet.csproj", "{D8C9D71D-8A33-4D76-9CEB-B3458D8EEBC3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Tablet", "Windows8\Framework.Tablet\Framework.Tablet.csproj", "{A2448BAE-7138-442B-8959-9FC6FD2913F5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4C9DE63B-DA7F-4E65-8638-A4953F4A07E0} = {4C9DE63B-DA7F-4E65-8638-A4953F4A07E0}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Tablet", "Windows8\Services.Tablet\Services.Tablet.csproj", "{E00242D8-25FB-4A15-A20D-FD40B86E875F}"
 	ProjectSection(ProjectDependencies) = postProject
