@@ -179,6 +179,9 @@
     <Compile Include="Views\Dialogs\DragAndDropDialog.xaml.cs">
       <DependentUpon>DragAndDropDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dialogs\MailErrorDialog.xaml.cs">
+      <DependentUpon>MailErrorDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\ReadingDelayDialog.xaml.cs">
       <DependentUpon>ReadingDelayDialog.xaml</DependentUpon>
     </Compile>
@@ -253,6 +256,10 @@
     <Page Include="Views\Dialogs\DragAndDropDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\MailErrorDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dialogs\ReadingDelayDialog.xaml">
       <SubType>Designer</SubType>
