@@ -151,7 +151,7 @@
     <Compile Include="Views\Admin\Collection\AddIndiagramPage.xaml.cs">
       <DependentUpon>AddIndiagramPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\Collection\Dialogs\CollectionManagementPage.xaml.cs">
+    <Compile Include="Views\Admin\Collection\CollectionManagementPage.xaml.cs">
       <DependentUpon>CollectionManagementPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\Collection\WatchIndiagramPage.xaml.cs">
@@ -223,7 +223,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Admin\Collection\Dialogs\CollectionManagementPage.xaml">
+    <Page Include="Views\Admin\Collection\CollectionManagementPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -330,7 +330,9 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Admin\Collection\Dialogs\" />
+  </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.VCLibs, version=12.0">
       <Name>Microsoft Visual C++ 2013 Runtime Package for Windows</Name>
