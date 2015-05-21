@@ -98,11 +98,11 @@
         </Button>
         <!-- TODO a binder sur l'indiagrame -->
         <Image
-            Source="Assets/root.png"
+            Source="../../../Assets/root.png"
+            Grid.Column="2"
+            Grid.Row="1"
             VerticalAlignment="Center"
-            HorizontalAlignment="Center">
-            
-        </Image>
+            HorizontalAlignment="Center"/>
 
     </Grid>
     
