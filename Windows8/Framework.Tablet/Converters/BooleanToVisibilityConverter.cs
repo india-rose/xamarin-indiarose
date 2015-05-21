@@ -14,7 +14,13 @@ namespace IndiaRose.Framework.Converters
 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return (bool)value ? Visibility.Visible : Visibility.Collapsed;
+            string param = parameter as string ?? "";
+            bool res = (bool) value;
+            if (Equals(param, "Negation"))
+            {
+                res = !res;
+            }
+            return res ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

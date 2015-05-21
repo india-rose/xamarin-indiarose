@@ -29,7 +29,8 @@
                         Grid.Row="1">
             <StackPanel >
                 <TextBlock Style="{StaticResource ItalicTextStyle}" 
-                           x:Uid="Collection_IndiagramText" />
+                           x:Uid="Collection_IndiagramText"/>
+                <TextBox Text="{Binding Indiagram.Indiagram.Text}"/>
 
 
                 <TextBlock Style="{StaticResource ItalicTextStyle}"
@@ -37,7 +38,7 @@
                 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource SmallTextStyle}" x:Uid="Collection_ParentCategoryName"  />
-                    <TextBlock Style="{StaticResource BlackSmallTextStyle}" Text="brique" />
+                    <TextBlock Style="{StaticResource BlackSmallTextStyle}" Text="" />
                 </StackPanel>
 
                 <Grid>
@@ -66,13 +67,15 @@
                 <TextBlock Style="{StaticResource SmallTextStyle}"
                            x:Uid="Collection_PositionBefore" />
                 
-                <ComboBox/>
+                <ComboBox
+                    ItemsSource="{Binding Brothers}"
+                    SelectedItem="{Binding BeforeIndiagram}"/>
 
                 <TextBlock Style="{StaticResource ItalicTextStyle}"
                            x:Uid="Collection_Sound" />
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource SmallTextStyle}" x:Uid="Collection_SoundPath"  />
-                    <TextBlock Style="{StaticResource BlackSmallTextStyle}" Text="brique" />
+                    <TextBlock Style="{StaticResource BlackSmallTextStyle}" Text="" />
                 </StackPanel>
 
                 <Button
@@ -109,17 +112,23 @@
                     </Button>
                 </Grid>
                 
+                <!--Enable/Disable-->
                 <TextBlock Style="{StaticResource ItalicTextStyle}"
-                           x:Uid="Collection_EnableDisableIndiagram" />
+                           x:Uid="Collection_EnableDisableIndiagram"
+                           Visibility="{Binding EditMode, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                 <Button
                         Style="{StaticResource SmallButton}"
-            	            Background="Blue">
+            	        Background="Blue"
+                        Visibility="{Binding EditMode, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        >
                     <TextBlock Style="{StaticResource SmallTextButton}"
             		            x:Uid="Collection_EnableIndiagram"/>
                 </Button>
                 <Button 
                         Style="{StaticResource SmallButton}"
-            	            Background="Orange">
+            	        Background="Orange"
+                        Visibility="{Binding EditMode, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        >
                     <TextBlock Style="{StaticResource SmallTextButton}"
             		            x:Uid="Collection_DisableIndiagram"/>
                 </Button>
@@ -128,6 +137,7 @@
         </ScrollViewer>
         <!-- 2 Column -->
         
+        <!-- Button ok & back-->
         <Button Style="{StaticResource OkButton}"
                 Command="{Binding SaveCommand}"
                 Grid.Column="1"
