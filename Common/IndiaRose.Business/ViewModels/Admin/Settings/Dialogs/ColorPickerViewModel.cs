@@ -74,6 +74,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 			{
 				Color.Color = CurrentColor;
 			}
+            CloseDialogAction();
 		}
 
 	}
