@@ -12,10 +12,7 @@
    
     DataContext="{Binding Source={StaticResource Locator},Path=AdminSettingsIndiagramPropertyViewModel}"
     >
-    <UserControl.Resources>
-        <converters:BooleanToVisibilityConverter x:Key="Converter"/>
-    </UserControl.Resources>
-    
+
     <Grid VerticalAlignment="Stretch" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"></ColumnDefinition>
@@ -60,7 +57,7 @@
                       Margin="30,0,0,0">
             <TextBlock Style="{StaticResource SmallTextStyle}"
                        x:Uid="IndiagramProperty_TextColorLabel"/>
-                <Canvas  Width="100" Height="50" Background="{Binding TextColor.Color}"> 
+                <Canvas  Width="100" Height="10" Background="{Binding TextColor.Color}"> 
                 </Canvas>
             <Button Style="{StaticResource SmallButton}"
                 Background="DeepPink"
@@ -79,36 +76,48 @@
 
         <!--Second column-->
 
-        <ListView SelectionMode="None"
+        <Grid
             Grid.Column="2"
             Grid.Row="1"
+            HorizontalAlignment="Center"
             >
-            <Canvas Height="{Binding IndiagramSize}" 
+            <Grid  VerticalAlignment="Stretch" Background="White" Margin="-200,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60*"></RowDefinition>
+                    <RowDefinition Height="10*"></RowDefinition>
+                    <RowDefinition Height="10*"></RowDefinition>
+                    <RowDefinition Height="15*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                        <Canvas Grid.Row="0" Height="{Binding IndiagramSize}" 
                     Width="{Binding IndiagramSize}" >
-                <Rectangle
-                    Visibility="{Binding ReinforcerEnabled, Converter={ StaticResource Converter}}" 
+                    <Rectangle
+                    Visibility="{Binding ReinforcerEnabled, Converter={ StaticResource BooleanToVisibilityConverter}}" 
                     Fill="{Binding ReinforcerColor.Color}" 
                     Height="{Binding IndiagramSize}" 
                     Width="{Binding IndiagramSize}" />
-                <Image Height="{Binding IndiagramSize}"
-                    Width="{Binding IndiagramSize}" Source="../../../Assets/root.png" />
-            </Canvas>
+                    <Image Height="{Binding IndiagramSize}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Width="{Binding IndiagramSize}" Source="ms-appx:///Assets/root.png" />
+                </Canvas>
 
-            <CheckBox RequestedTheme="Light" 
+                <CheckBox Grid.Row="2" RequestedTheme="Light" HorizontalAlignment="Center"
                       IsChecked="{Binding ReinforcerEnabled,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                <TextBlock Style="{StaticResource SmallTextStyle}" 
+                    <TextBlock Style="{StaticResource SmallTextStyle}" 
                 x:Uid="IndiagramProperty_EnableReinforcer"/>
-            </CheckBox>
+                </CheckBox>
 
-            <Button Style="{StaticResource SmallButton}"
+                <Button Grid.Row="3" Style="{StaticResource SmallButton}"
                     Background="DeepPink"
 			        Command="{Binding ReinforcerColorCommand}">
-                <TextBlock Style="{StaticResource SmallTextButton}" 
+                    <TextBlock Style="{StaticResource SmallTextButton}" 
                            x:Uid="IndiagramProperty_ChangeReinforcerColor" />
-            </Button>
+                </Button>
+            </Grid>
 
-        </ListView>
-
+        </Grid>
+        
         <!--Button ok & back-->
 
         <Button Style="{StaticResource SmallButton}"
