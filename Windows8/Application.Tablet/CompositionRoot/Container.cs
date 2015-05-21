@@ -28,15 +28,15 @@ namespace IndiaRose.Application.CompositionRoot
 
             RegisterInstance<INavigationService>(new NavigationService(rootFrame,views));
 			RegisterInstance<IEmailService>(new EmailService());
-			//RegisterInstance<IResourceService>(new ResourceService());
+			RegisterInstance<IResourceService>(new ResourceService());
 			RegisterInstance<IEmailService>(new EmailService());
 			//RegisterInstance<IInstallVoiceSynthesisService>(new InstallVoiceSynthesisService());
 			RegisterInstance<IScreenService>(new ScreenService());
 			RegisterInstance<IFontService>(new FontService());
-            //RegisterInstance<IMediaService>(new MediaService());
-            //RegisterInstance<IPopupService>(new PopupService());
+           // RegisterInstance<IMediaService>(new MediaService());
+            RegisterInstance<IPopupService>(new PopupService());
             RegisterInstance<ICopyPasteService>(new CopyPasteService());
-            //RegisterInstance<ITextToSpeechService>(new TextToSpeechService());
+            RegisterInstance<ITextToSpeechService>(new TextToSpeechService());
 
 			RegisterInstance<IStorageService>(_storageService);
             RegisterInstance<ISettingsService>(_settingsService);

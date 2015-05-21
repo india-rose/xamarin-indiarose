@@ -194,6 +194,7 @@
       <Link>Resources\fr\Resources.resw</Link>
     </PRIResource>
     <None Include="Application.Tablet_TemporaryKey.pfx" />
+    <Content Include="Assets\manuel.pdf" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

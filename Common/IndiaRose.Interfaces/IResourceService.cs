@@ -8,6 +8,5 @@ namespace IndiaRose.Interfaces
         void ShowPdfFile(string pdfFileName);
         Task<Stream> OpenZip(string zipFileName);
         void Copy(string src,string dest);
-
     }
 }

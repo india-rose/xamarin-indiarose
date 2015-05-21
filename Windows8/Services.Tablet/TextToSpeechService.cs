@@ -7,16 +7,14 @@ using IndiaRose.Interfaces;
 
 namespace IndiaRose.Services
 {
-	class TextToSpeechService : ITextToSpeechService
+	public class TextToSpeechService : ITextToSpeechService
 	{
 		public void ReadText(string text)
 		{
-			throw new NotImplementedException();
 		}
 
 		public void Close()
 		{
-			throw new NotImplementedException();
 		}
 	}
 }

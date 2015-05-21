@@ -26,17 +26,17 @@ namespace IndiaRose.Tablet
 
         public Task<string> GetPictureFromCameraAsync()
         {
-            throw new NotImplementedException();
+	        return null;
         }
 
         public Task<string> GetPictureFromGalleryAsync()
-        {
-            throw new NotImplementedException();
+		{
+			return null;
         }
 
         public Task<string> GetSoundFromGalleryAsync()
-        {
-            throw new NotImplementedException();
+		{
+			return null;
         }
 
         public async void RecordSound()

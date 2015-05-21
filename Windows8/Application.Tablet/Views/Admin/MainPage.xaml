@@ -57,6 +57,7 @@
 
         <Button Style="{StaticResource SmallButton}"
                 Grid.Row="2" Grid.Column="3"
+                Command="{Binding HelpCommand}"
                 Background="DeepPink">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_Help"/>
         </Button>
