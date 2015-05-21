@@ -206,7 +206,9 @@
       <Link>Resources\fr\Resources.resw</Link>
     </PRIResource>
     <None Include="Application.Tablet_TemporaryKey.pfx" />
+    <Content Include="Assets\correction.png" />
     <Content Include="Assets\manuel.pdf" />
+    <AndroidAsset Include="Assets\indiagrams.zip" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -283,6 +285,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Assets\nextarrow.png" />
+    <Content Include="Assets\playbutton.png" />
     <Content Include="Assets\root.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />

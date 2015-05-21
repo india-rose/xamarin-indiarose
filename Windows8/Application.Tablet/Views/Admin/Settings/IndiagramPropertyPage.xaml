@@ -33,25 +33,25 @@
             Grid.Column="1"
             Grid.Row="1"
             >
-            <TextBlock Style="{StaticResource NormalTextStyle}"
+            <TextBlock Style="{StaticResource TextStyle}"
                    x:Uid="IndiagramProperty_IndiagramSize"/>
             <ComboBox
                 ItemsSource ="{Binding IndiagramSizes}"
                 SelectedItem="{Binding IndiagramSize,Mode=TwoWay}"/>
 
-            <TextBlock Style="{StaticResource NormalTextStyle}"
+            <TextBlock Style="{StaticResource TextStyle}"
                    x:Uid="IndiagramProperty_FontFamily"/>
             <ComboBox
                 ItemsSource ="{Binding FontNames}"
                 SelectedItem="{Binding FontName,Mode=TwoWay}"/>
 
-            <TextBlock Style="{StaticResource NormalTextStyle}"
+            <TextBlock Style="{StaticResource TextStyle}"
                    x:Uid="IndiagramProperty_FontSize"/>
             <ComboBox
                 ItemsSource ="{Binding FontSizes}"
                 SelectedItem="{Binding FontSize,Mode=TwoWay}"/>
 
-            <TextBlock Style="{StaticResource NormalTextStyle}"
+            <TextBlock Style="{StaticResource TextStyle}"
                    x:Uid="IndiagramProperty_TextColor"/>
             <ListView SelectionMode="None" 
                       Margin="30,0,0,0">
@@ -120,11 +120,10 @@
         
         <!--Button ok & back-->
 
-        <Button Style="{StaticResource SmallButton}"
+        <Button Style="{StaticResource OkButton}"
                 Command="{Binding SaveCommand}"
                 Grid.Column="1"
                 Grid.Row="2"
-                Background="ForestGreen"
                 >
             <TextBlock Style="{StaticResource TextButton}" 
                      x:Uid="Button_Ok"/>
