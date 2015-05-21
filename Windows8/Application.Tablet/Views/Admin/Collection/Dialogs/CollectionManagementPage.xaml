@@ -1,0 +1,17 @@
+﻿<mvvm:MvvmPage 
+    x:Class="IndiaRose.Application.Views.Collection.CollectionManagementPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:IndiaRose.Application.Views.Collection"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:IndiaRose.Business"
+    xmlns:interop="using:Windows.UI.Xaml.Interop"
+    xmlns:mvvm="using:Storm.Mvvm"
+    mc:Ignorable="d">
+
+    <StackPanel Background="White">
+        <Image x:Name="Logo" Source="/Assets/logoIndiaRose.png" Height="84"/>
+        <Button FontSize="20" HorizontalAlignment="Center"  Background="ForestGreen" Margin="666,0" />
+    </StackPanel>
+</mvvm:MvvmPage>
