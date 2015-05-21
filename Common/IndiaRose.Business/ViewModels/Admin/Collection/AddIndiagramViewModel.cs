@@ -145,7 +145,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             SaveCommand = new DelegateCommand(SaveAction);
 
             CurrentIndiagram = new Indiagram();
-            RefreshBrothers();
+            //RefreshBrothers();
         }
 
         protected void RefreshBrothers()

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 using IndiaRose.Application.Views;
+using IndiaRose.Application.Views.Admin.Collection;
 using IndiaRose.Application.Views.Collection;
 using IndiaRose.Application.Views.Dialogs;
 using IndiaRose.Business;
@@ -25,6 +26,7 @@ namespace IndiaRose.Application.CompositionRoot
                 {ViewKey.ADMIN_SERVERSYNCHRONIZATION, typeof(ServerSynchronizationPage)},
                 {ViewKey.ADMIN_SETTINGS_INDIAGRAMPROPERTIES, typeof(IndiagramPropertyPage)},
                 {ViewKey.ADMIN_SETTINGS_APPLICATIONLOOK,typeof(ApplicationLookPage)},
+                {ViewKey.ADMIN_COLLECTION_ADDINDIAGRAM,typeof(AddIndiagramPage)}
             };
 
 			var dialogs = new Dictionary<string, Type>

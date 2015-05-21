@@ -100,6 +100,14 @@ namespace IndiaRose.Business.ViewModels
 			ObservableCollection<Indiagram> collection = CollectionStorageService.Collection;
 
 			// debug purpose only
+            
+            //debug for windows
+            //TODO if a supprimer
+		    if (collection == null)
+		    {
+		        collection= new ObservableCollection<Indiagram>();
+		    }
+            //
 			if (collection.Count == 0)
 			{
 				int position = 1;
@@ -109,6 +117,8 @@ namespace IndiaRose.Business.ViewModels
 					ImagePath = "",
 					Position = position++,
 				};
+                //TODO section si dessous commentee pour pouvoir afficher CollectionManagementPage
+                /*
 				collection.Add(CollectionStorageService.Save(constructorLambda("azerty")));
 				collection.Add(CollectionStorageService.Save(constructorLambda("helloa")));
 				collection.Add(CollectionStorageService.Save(constructorLambda("helloz")));
@@ -131,6 +141,7 @@ namespace IndiaRose.Business.ViewModels
 				collection.Add(CollectionStorageService.Save(constructorLambda("hellol")));
 				collection.Add(CollectionStorageService.Save(constructorLambda("hellom")));
 				collection.Add(CollectionStorageService.Save(constructorLambda("hellow")));
+                 * */
 			}
 
 			_rootCollection = new Category(collection)
