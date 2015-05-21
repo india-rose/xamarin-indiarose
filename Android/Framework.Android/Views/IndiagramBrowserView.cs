@@ -21,7 +21,7 @@ namespace IndiaRose.Framework.Views
 		private int _columnCount;
 		private int _lineCount;
 		private IndiagramView[][] _displayableViews;
-		private IndiagramView _nextButton;
+		public IndiagramView NextButton{ get; set; }
 
 		#endregion
 
@@ -125,7 +125,7 @@ namespace IndiaRose.Framework.Views
 		private void Initialize()
 		{
             string path = Path.Combine(LazyResolver<IStorageService>.Service.ImageNextArrowPath);
-			_nextButton = new IndiagramView(Context)
+			NextButton = new IndiagramView(Context)
 			{
 				TextColor = 0,
 				Id = 0x20,
@@ -136,7 +136,7 @@ namespace IndiaRose.Framework.Views
 				}
 			};
 
-			_nextButton.Touch += OnNextTouch;
+			NextButton.Touch += OnNextTouch;
 		}
 
 		#endregion
@@ -285,7 +285,7 @@ namespace IndiaRose.Framework.Views
 			LayoutParams forbutton = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
 			forbutton.AddRule(LayoutRules.AlignParentRight);
 			forbutton.AddRule(LayoutRules.AlignParentTop);
-			AddView(_nextButton, forbutton);
+			AddView(NextButton, forbutton);
 
 			Count = displayCount;
 

@@ -6,6 +6,7 @@ using Android.Content;
 using Android.Graphics.Drawables;
 using Android.Runtime;
 using Android.Util;
+using Android.Views;
 using Android.Widget;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
@@ -82,9 +83,14 @@ namespace IndiaRose.Framework.Views
 			set { _topView.NextCommand = value; }
 		}
 
+		public ViewStates TopNextButtonVisibility {
+			get{ return _topView.NextButton.Visibility; }
+			set{ _topView.NextButton.Visibility = value; }
+		}
+
 		#endregion
 
-		
+        #region Bot Properties
         public Drawable BotBackground
         {
 			get { return _botView.Background; }
@@ -107,13 +113,20 @@ namespace IndiaRose.Framework.Views
 	    {
 			get { return _botView.ReadCommand; }
 			set { _botView.ReadCommand = value; }
-	    }
+		}
 
-	    public ICommand BotIndiagramSelectedCommand
-	    {
+		public ICommand BotIndiagramSelectedCommand
+		{
 			get { return _botView.IndiagramSelectedCommand; }
 			set { _botView.IndiagramSelectedCommand = value; }
-	    }
+		}
+
+		public ICommand BotCorrectionCommand
+		{
+			get { return _botView.CorrectionCommand; }
+			set { _botView.CorrectionCommand = value; }
+		}
+        #endregion
 
         #endregion
         #region Constructor

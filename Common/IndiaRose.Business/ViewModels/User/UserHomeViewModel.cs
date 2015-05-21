@@ -9,6 +9,7 @@ using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Commands;
+using Storm.Mvvm.Extensions;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 
@@ -63,14 +64,23 @@ namespace IndiaRose.Business.ViewModels.User
 
 		public ICommand ReadSentenceCommand { get; private set; }
 		public ICommand SentenceIndiagramSelectedCommand { get; private set; }
+		public ICommand CorrectionCommand { get; private set; }
+
+		protected Category CorrectionCategory{ get; set; }
 
 		public UserHomeViewModel()
 		{
 			SentenceIndiagrams = new ObservableCollection<IndiagramUIModel>();
 			ReadSentenceCommand = new DelegateCommand(ReadSentenceAction);
 			SentenceIndiagramSelectedCommand = new DelegateCommand<Indiagram>(SentenceIndiagramSelectedAction);
+			CorrectionCommand = new DelegateCommand (CorrectionAction);
 
 			TtsService.SpeakingCompleted += OnTtsSpeakingCompleted;
+
+			CorrectionCategory = new Category () {
+				Text = LocalizationService.GetString ("Collection_CorrectionCategoryName", "Text"),
+				ImagePath = StorageService.ImageCorrectionPath
+			};
 		}
 
 		private void OnTtsSpeakingCompleted(object sender, EventArgs eventArgs)
@@ -161,6 +171,10 @@ namespace IndiaRose.Business.ViewModels.User
 
 		private void ReadSentenceAction()
 		{
+			//if there is no indiagram to read do nothing
+			if (SentenceIndiagrams.Count == 0)
+				return;
+			
 			bool canRead = false;
 			lock (_lockMutex)
 			{
@@ -226,9 +240,9 @@ namespace IndiaRose.Business.ViewModels.User
 			{
 				_isReading = false;
 			}
-
 			DispatcherService.InvokeOnUIThread(() =>
 			{
+				CorrectionMode = false;
 				SentenceIndiagrams.Clear();
 				if (PopCategory())
 				{
@@ -241,6 +255,16 @@ namespace IndiaRose.Business.ViewModels.User
 					RefreshDisplayList();
 				}
 			});
+		}
+
+		private void CorrectionAction(){
+			if (SentenceIndiagrams.Count > 0) {
+				CorrectionMode = true;
+				CorrectionCategory.Children.Clear ();
+				SentenceIndiagrams.ForEach(x => CorrectionCategory.Children.Add (x.Model));
+				SentenceIndiagrams.Clear ();
+				PushCategory (CorrectionCategory);
+			}
 		}
 
 		#endregion

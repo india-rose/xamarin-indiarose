@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -33,6 +32,8 @@ namespace IndiaRose.Framework.Views
 		public ICommand IndiagramSelectedCommand { get; set; }
 
 		public ICommand ReadCommand { get; set; }
+
+		public ICommand CorrectionCommand{ get; set; }
 
 		public ObservableCollection<IndiagramUIModel> Indiagrams
 		{
@@ -137,9 +138,14 @@ namespace IndiaRose.Framework.Views
 
 			_playButton.Touch += (sender, args) =>
 			{
-				if (args.Event.ActionMasked == MotionEventActions.Down)
-				{
-					if (ReadCommand != null && ReadCommand.CanExecute(null))
+				if (args.Event.ActionMasked == MotionEventActions.Up){
+					if(args.Event.RawX<(LazyResolver<IScreenService>.Service.Width/4.0)){
+						if (CorrectionCommand != null && CorrectionCommand.CanExecute(null))
+						{
+							CorrectionCommand.Execute(null);
+						}
+					}
+					else if (ReadCommand != null && ReadCommand.CanExecute(null))
 					{
 						ReadCommand.Execute(null);
 					}
@@ -152,7 +158,6 @@ namespace IndiaRose.Framework.Views
 
 			AddView(_playButton, lp);
 		}
-
 		private void IndiagramsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
 		{
 			if (e.OldItems != null)

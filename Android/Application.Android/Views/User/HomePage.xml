@@ -19,13 +19,15 @@
 	          TopTextColor="{Binding TextColor, Converter={Resource ColorStringToIntConverter}}"
 	          TopIndiagramSelectedCommand="{Binding IndiagramSelectedCommand}"
 	          TopNextCommand="{Binding NextCommand}"
+	          TopNextButtonVisibility="{Binding CorrectionMode, Converter={Resource BooleanToVisibilityConverter}, ConverterParameter=Negation}"
 	          
 			  BotBackground="{Binding BotBackgroundColor, Converter={Resource ColorStringToDrawableColorConverter}}"
 	          BotIndiagrams="{Binding SentenceIndiagrams}" 
 			  BotCanAddIndiagrams="{Binding CanAddMoreIndiagrams, Mode=TwoWay, UpdateEvent=BotCanAddIndiagramsChanged}"
 			  BotReadCommand="{Binding ReadSentenceCommand}"
 			  BotIndiagramSelectedCommand="{Binding SentenceIndiagramSelectedCommand}"
-			  
+			  BotCorrectionCommand="{Binding CorrectionCommand}"
+
 			  />
 
 </RelativeLayout>

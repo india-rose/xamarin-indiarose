@@ -504,4 +504,7 @@ Comments : </value>
   <data name="ImportCollection_DialogTitle.Text" xml:space="preserve">
     <value>Initializing</value>
   </data>
+  <data name="Collection_CorrectionCategoryName.Text" xml:space="preserve">
+    <value>Correction of Category</value>
+  </data>
 </root>
