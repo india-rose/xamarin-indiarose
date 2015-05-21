@@ -27,8 +27,9 @@
 
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
                    Grid.Column="1"
-                   Style="{StaticResource PopupTitleStyle}"
-                   Text="Color Picker"/>
+                   Style="{StaticResource PopupTitleStyle}" 
+                   x:Uid="ColorPicker_Title"
+                   Text=""/>
 
         <TextBlock Style="{StaticResource PopupContentStyle}" 
                    Grid.Row="1" 

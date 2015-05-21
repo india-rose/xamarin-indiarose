@@ -83,16 +83,15 @@
             Grid.Column="2"
             Grid.Row="1"
             >
-            <Canvas
-                    Visibility="{Binding ReinforcerEnabled, Converter={ StaticResource Converter}}"
-                    Background="{Binding ReinforcerColor.Color}" 
-                    VerticalAlignment="Center" 
-                    HorizontalAlignment="Center" 
+            <Canvas Height="{Binding IndiagramSize}" 
+                    Width="{Binding IndiagramSize}" >
+                <Rectangle
+                    Visibility="{Binding ReinforcerEnabled, Converter={ StaticResource Converter}}" 
+                    Fill="{Binding ReinforcerColor.Color}" 
                     Height="{Binding IndiagramSize}" 
-                    Width="{Binding IndiagramSize}">
-                <Grid Canvas.Top="75" Width="106" HorizontalAlignment="Center">
-                    <Image MinWidth="100" MinHeight="100" Source="../../../Assets/root.png" Visibility="Visible"></Image>
-                </Grid>
+                    Width="{Binding IndiagramSize}" />
+                <Image Height="{Binding IndiagramSize}"
+                    Width="{Binding IndiagramSize}" Source="../../../Assets/root.png" />
             </Canvas>
 
             <CheckBox RequestedTheme="Light" 
