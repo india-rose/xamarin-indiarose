@@ -27,16 +27,14 @@
             <RowDefinition Height="5*"></RowDefinition>
         </Grid.RowDefinitions>
         
-        <Button Style="{StaticResource SmallButton}"
+        <Button Style="{StaticResource BlueButton}"
                 Command="{Binding ApplicationLookCommand}"
-                Background="DodgerBlue"
                 Grid.Row="1" Grid.Column="1">
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="AppSettings_Background"/>
         </Button>
 
-        <Button Style="{StaticResource SmallButton}"
+        <Button Style="{StaticResource PinkButton}"
                 Command="{Binding IndiagramPropertyCommand}"
-                Background="DeepPink"
                 Grid.Row="1" Grid.Column="2">
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="AppSettings_Indiagram"
                         />

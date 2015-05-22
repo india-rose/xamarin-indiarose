@@ -57,8 +57,7 @@
                        x:Uid="IndiagramProperty_TextColorLabel"/>
                 <Canvas  Width="100" Height="10" Background="{Binding TextColor.Color}"> 
                 </Canvas>
-            <Button Style="{StaticResource SmallButton}"
-                Background="DeepPink"
+            <Button Style="{StaticResource PinkButton}"
 				Command="{Binding TextColor}"
 				>
                 <TextBlock Style="{StaticResource SmallTextButton}"
@@ -106,8 +105,7 @@
                 x:Uid="IndiagramProperty_EnableReinforcer"/>
                 </CheckBox>
 
-                <Button Grid.Row="3" Style="{StaticResource SmallButton}"
-                    Background="DeepPink"
+                <Button Grid.Row="3" Style="{StaticResource PinkButton}"
 			        Command="{Binding ReinforcerColorCommand}">
                     <TextBlock Style="{StaticResource SmallTextButton}" 
                            x:Uid="IndiagramProperty_ChangeReinforcerColor" />
