@@ -32,18 +32,26 @@ namespace IndiaRose.Services
         public async Task<string> GetPictureFromCameraAsync()
         {
             var photo = new CameraCaptureUI();
-            var url = StorageService.GenerateFilename(StorageType.Image, "png");
 
             photo.PhotoSettings.AllowCropping = true;
             photo.PhotoSettings.CroppedAspectRatio = new Size(1, 1);
             photo.PhotoSettings.MaxResolution = CameraCaptureUIMaxPhotoResolution.HighestAvailable;
+            photo.PhotoSettings.Format = CameraCaptureUIPhotoFormat.Png;
 
             _recordStorageFile = await photo.CaptureFileAsync(CameraCaptureUIMode.Photo);
 
-            //TODO vérifier l'emplacement de la capture
-            _recordStorageFile.MoveAsync(ApplicationData.Current.LocalFolder, url);
+            if (_recordStorageFile != null)
+            {
+                var path = ApplicationData.Current.LocalFolder.Path + "\\IndiaRose\\image";
+                _url = string.Format("Image_{0}.{1}", Guid.NewGuid(), _recordStorageFile.FileType);
+                var folder = await StorageFolder.GetFolderFromPathAsync(path);
 
-            return url;
+                await _recordStorageFile.MoveAsync(folder, _url, NameCollisionOption.FailIfExists);
+
+                return string.Format(path, "\\", _url);
+            }
+
+            return "";
         }
 
         public async Task<string> GetPictureFromGalleryAsync()
