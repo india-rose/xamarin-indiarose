@@ -38,7 +38,8 @@ namespace IndiaRose.Application.CompositionRoot
                 {Dialogs.ADMIN_SETTINGS_COLORPICKER, typeof(ColorPickerDialog)},
                 {Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
                 {Dialogs.IMPORTING_COLLECTION, typeof(ImportingCollectionDialog)},
-                {Dialogs.ADMIN_COLLECTION_IMAGECHOICE, typeof(ImageChoiceDialog)}
+                {Dialogs.ADMIN_COLLECTION_IMAGECHOICE, typeof(ImageChoiceDialog)},
+                {Dialogs.ADMIN_COLLECTION_SOUNDCHOICE, typeof(SoundChoiceDialog)}
             };
 
 
