@@ -28,6 +28,8 @@
             />
             <conv:BooleanToColumnSpanConverter x:Key="BooleanToColumnSpanConverter"
                 />
+            <conv:IndiaSizeToMarginSize x:Key="IndiaSizeToMarginSize"
+                />
 
 
             <!--Button Style-->

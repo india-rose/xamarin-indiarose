@@ -110,6 +110,7 @@
     <Compile Include="Converters\BooleanToColumnSpanConverter.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\DefaultLocalizedStringIfNullConverter.cs" />
+    <Compile Include="Converters\IndiaSizeToMarginSize.cs" />
     <Compile Include="Converters\IndiaSizeToReinforcerSizeConverter.cs" />
     <Compile Include="Converters\ParentCategoryTextConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
