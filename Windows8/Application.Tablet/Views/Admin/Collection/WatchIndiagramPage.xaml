@@ -11,33 +11,6 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator},Path=AdminCollectionWatchIndiagramViewModel}">
     
-    <Page.Resources>
-        <Style x:Key="TextCategoryStyle" TargetType="TextBlock">
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="Foreground" Value="Blue"/>
-            <Setter Property="FontSize" Value="40"/>
-            <Setter Property="Text" Value="" />
-            <Setter Property="Margin" Value="10"/>
-        </Style>
-
-        <Style x:Key="TextFieldStyle" TargetType="TextBlock">
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="Foreground" Value="Blue"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Text" Value="" />
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="FontStyle" Value="Italic"/>
-        </Style>
-
-        <Style x:Key="TextValueStyle" TargetType="TextBlock">
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Text" Value="" />
-            <Setter Property="Margin" Value="10"/>
-        </Style>
-    </Page.Resources>
-
     <Grid VerticalAlignment="Stretch" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"></ColumnDefinition>
@@ -57,6 +30,7 @@
             VerticalAlignment="Center"
             >
         <ScrollViewer
+            VerticalAlignment="Stretch"
             VerticalScrollBarVisibility="Hidden">
             <StackPanel >
                 <TextBlock x:Uid="Collection_IndiagramText" Style="{StaticResource TextStyle}" />
