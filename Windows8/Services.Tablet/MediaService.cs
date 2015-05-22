@@ -11,6 +11,7 @@ using Windows.Media.MediaProperties;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
@@ -45,9 +46,27 @@ namespace IndiaRose.Services
             return url;
         }
 
-        public Task<string> GetPictureFromGalleryAsync()
+        public async Task<string> GetPictureFromGalleryAsync()
 		{
-			return null;
+            FileOpenPicker openPicker = new FileOpenPicker();
+            openPicker.ViewMode = PickerViewMode.List;
+            openPicker.SuggestedStartLocation = PickerLocationId.Desktop;
+            openPicker.FileTypeFilter.Add("*");
+
+            StorageFile file = await openPicker.PickSingleFileAsync();
+            if (file != null)
+            {
+                var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+                BitmapImage image = new BitmapImage();
+                image.SetSource(stream);
+                Image imageChangedProfilePic = new Image {Source = image, Stretch = Stretch.Fill};
+                return null;
+            }
+            else
+            {
+                //  OutputTextBlock.Text = "Operation cancelled.";
+                return null;
+            }
         }
 
         public Task<string> GetSoundFromGalleryAsync()
