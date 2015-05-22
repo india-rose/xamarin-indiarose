@@ -107,6 +107,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Converters\BooleanToColumnSpanConverter.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\DefaultLocalizedStringIfNullConverter.cs" />
     <Compile Include="Converters\IndiaSizeToReinforcerSizeConverter.cs" />

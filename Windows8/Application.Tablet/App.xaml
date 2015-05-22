@@ -26,6 +26,8 @@
                                                           Uid="Collection_NoSound"
 		                                                  Property="Text"
             />
+            <conv:BooleanToColumnSpanConverter x:Key="BooleanToColumnSpanConverter"
+                />
 
 
             <!--Button Style-->

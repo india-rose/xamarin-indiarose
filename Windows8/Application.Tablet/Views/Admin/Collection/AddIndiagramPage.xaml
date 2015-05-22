@@ -92,6 +92,7 @@
                     <Button
                         Grid.Column="0"
                         Style="{StaticResource PinkButton}"
+                        Grid.ColumnSpan="{Binding CurrentIndiagram.HasCustomSound, Converter={StaticResource BooleanToColumnSpanConverter}}"
                         Command="{Binding SoundChoiceCommand}">
                         <TextBlock Style="{StaticResource SmallTextButton}"
             		            x:Uid="Collection_ChooseSound"/>
