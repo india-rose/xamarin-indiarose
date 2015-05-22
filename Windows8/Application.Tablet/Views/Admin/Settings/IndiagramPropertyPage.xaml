@@ -89,7 +89,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                        <Canvas Grid.Row="0" Height="{Binding IndiagramSize}" 
+                <Canvas Grid.Row="0" Height="{Binding IndiagramSize}" 
                     Width="{Binding IndiagramSize}" >
                     <Rectangle
                     Visibility="{Binding ReinforcerEnabled, Converter={ StaticResource BooleanToVisibilityConverter}}" 

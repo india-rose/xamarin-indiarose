@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:IndiaRose.Application"
     xmlns:business="using:IndiaRose.Business"
-    xmlns:converters="using:Storm.Mvvm.Converters">    
+    xmlns:converters="using:Storm.Mvvm.Converters"
+    xmlns:conv="using:IndiaRose.Framework.Converters">    
     <!--
         Not a page, will not be displayed.
         You can put resources to make them available from the whole project.
@@ -12,7 +13,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <business:ViewModelsLocator x:Key="Locator"/>
-            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <conv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <conv:IndiaSizeToReinforcerSizeConverter x:Key="IndiaSizeToReinforcerSizeConverter"/>
 
             <Style x:Key="Button" TargetType="Button">
                 <Setter Property="Foreground" Value="White"/>
@@ -43,14 +45,8 @@
                                         </VisualState>
                                         <VisualState x:Name="Disabled">
                                             <Storyboard>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonDisabledBackgroundThemeBrush}"/>
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="Border">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonDisabledBorderThemeBrush}"/>
-                                                </ObjectAnimationUsingKeyFrames>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonDisabledForegroundThemeBrush}"/>
+                                                <ObjectAnimationUsingKeyFrames Duration="0:0:0.5" Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="#48474F"/>
                                                 </ObjectAnimationUsingKeyFrames>
                                             </Storyboard>
                                         </VisualState>

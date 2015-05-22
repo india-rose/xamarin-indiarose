@@ -9,7 +9,7 @@ using Windows.UI.Xaml.Data;
 
 namespace IndiaRose.Framework.Converters
 {
-    class IndiaSizeToReinforcerSizeConverter : IValueConverter
+    public class IndiaSizeToReinforcerSizeConverter : IValueConverter
     {
 
         public object Convert(object value, Type targetType, object parameter, string language)
