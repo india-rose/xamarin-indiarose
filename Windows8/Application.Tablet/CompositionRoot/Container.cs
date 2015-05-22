@@ -33,7 +33,7 @@ namespace IndiaRose.Application.CompositionRoot
 			//RegisterInstance<IInstallVoiceSynthesisService>(new InstallVoiceSynthesisService());
 			RegisterInstance<IScreenService>(new ScreenService());
 			RegisterInstance<IFontService>(new FontService());
-           // RegisterInstance<IMediaService>(new MediaService());
+            RegisterInstance<IMediaService>(new MediaService());
             RegisterInstance<IPopupService>(new PopupService());
             RegisterInstance<ICopyPasteService>(new CopyPasteService());
             RegisterInstance<ITextToSpeechService>(new TextToSpeechService());

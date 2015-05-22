@@ -28,7 +28,7 @@
                 <!--Text-->
                 <TextBlock Style="{StaticResource ItalicTextStyle}" 
                            x:Uid="Collection_IndiagramText"/>
-                <TextBox Text="{Binding Indiagram.Indiagram.Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Text="{Binding CurrentIndiagram.Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <!--Category-->
                 <TextBlock Style="{StaticResource ItalicTextStyle}"
@@ -38,7 +38,7 @@
                     <TextBlock Style="{StaticResource SmallTextStyle}" 
                                x:Uid="Collection_ParentCategoryName"  />
                     <TextBlock Style="{StaticResource BlackSmallTextStyle}" 
-                               Text="{Binding CurrentIndiagram.Parent}" />
+                               Text="{Binding CurrentIndiagram.Parent.Text}" />
                 </StackPanel>
 
                 <!-- Choose category -->
@@ -153,7 +153,7 @@
                     <Button
                         Style="{StaticResource SmallButton}"
             	        Background="Blue"
-                        Visibility="{Binding CurrentIndiagram.IsEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Visibility="{Binding CurrentIndiagram.IsEnabled, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Negation}"
                         Command="{Binding ActivateCommand}"
                         >
                         <TextBlock Style="{StaticResource SmallTextButton}"
@@ -162,7 +162,7 @@
                     <Button 
                         Style="{StaticResource SmallButton}"
             	        Background="OrangeRed"
-                        Visibility="{Binding CurrentIndiagram.IsEnabled, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Negation}"
+                        Visibility="{Binding CurrentIndiagram.IsEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
                         Command="{Binding DesactivateCommand}"
                         >
                         <TextBlock Style="{StaticResource SmallTextButton}"
@@ -174,10 +174,12 @@
             </StackPanel>
         </ScrollViewer>
         <!-- 2 Column -->
-        <ScrollViewer
+        <StackPanel
             Grid.Column="2"
             Grid.Row="1"
-            HorizontalScrollBarVisibility="Hidden">
+            VerticalAlignment="Center">
+        <ScrollViewer
+            VerticalScrollBarVisibility="Hidden">
             <StackPanel>
                 <Canvas
                     Height="{Binding SettingsService.IndiagramDisplaySize}">
@@ -195,13 +197,16 @@
                                    x:Uid="Collection_ChooseImage"
                             />
                 </Button>
-                <CheckBox RequestedTheme="Light" HorizontalAlignment="Center"
-                      IsChecked="{Binding IsCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <CheckBox 
+                    RequestedTheme="Light"
+                    HorizontalAlignment="Center"
+                    IsChecked="{Binding IsCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     <TextBlock Style="{StaticResource SmallTextStyle}" 
                                 x:Uid="Collection_IsCategory"/>
                 </CheckBox>
             </StackPanel>
         </ScrollViewer>
+        </StackPanel>
 
         <!-- Button ok & back-->
         <Button Style="{StaticResource OkButton}"

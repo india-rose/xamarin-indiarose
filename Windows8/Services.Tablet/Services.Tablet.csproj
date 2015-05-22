@@ -128,7 +128,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractWindowsService.cs" />
     <Compile Include="FontService.cs" />
     <Compile Include="MediaService.cs" />
     <Compile Include="PopupService.cs" />

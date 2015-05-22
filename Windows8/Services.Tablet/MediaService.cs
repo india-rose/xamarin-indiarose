@@ -11,9 +11,9 @@ using Windows.UI.Xaml.Controls;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
 
-namespace IndiaRose.Tablet
+namespace IndiaRose.Services
 {
-    class MediaService : AbstractWindowsService, IMediaService
+    public class MediaService : IMediaService
     {
         private MediaCapture _recordMediaCapture;
         private StorageFile _recordStorageFile;
