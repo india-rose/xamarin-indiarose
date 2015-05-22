@@ -8,7 +8,6 @@
     xmlns:vm="using:IndiaRose.Business"
     xmlns:application="using:IndiaRose.Application"
     xmlns:mvvm="using:Storm.Mvvm"
-    xmlns:converters="using:IndiaRose.Framework.Converters"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator},Path=AdminCollectionWatchIndiagramViewModel}">
     
@@ -37,14 +36,6 @@
             <Setter Property="Text" Value="" />
             <Setter Property="Margin" Value="10"/>
         </Style>
-
-        <converters:ParentCategoryTextConverter x:Key="ParentCategoryConverter"
-		                                        Uid="Collection_RootCategoryName"
-		                                        Property="Text" />
-        <converters:DefaultLocalizedStringIfNullConverter x:Key="DefaultLocalizedStringIfNullConverter"
-                                                          Uid="Collection_NoSound"
-		                                                  Property="Text"
-            />
     </Page.Resources>
 
     <Grid VerticalAlignment="Stretch" Background="White">
@@ -60,58 +51,79 @@
             <RowDefinition Height="10*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
-        <ScrollViewer Grid.Column="1"
-                      Grid.Row="1">
+        <StackPanel
+            Grid.Column="1"
+            Grid.Row="1"
+            VerticalAlignment="Center"
+            >
+        <ScrollViewer
+            VerticalScrollBarVisibility="Hidden">
             <StackPanel >
-                <TextBlock x:Uid="Collection_IndiagramText" Style="{StaticResource TextCategoryStyle}" />
-                <TextBlock Text="{Binding Indiagram.Text}" Style="{StaticResource TextValueStyle}" />
+                <TextBlock x:Uid="Collection_IndiagramText" Style="{StaticResource TextStyle}" />
+                <TextBlock Text="{Binding Indiagram.Text}" Style="{StaticResource SmallTextStyle}" />
 
-                <TextBlock x:Uid="Collection_ParentCategory"  Style="{StaticResource TextCategoryStyle}" />
+                <TextBlock x:Uid="Collection_ParentCategory"  Style="{StaticResource TextStyle}" />
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock x:Uid="Collection_ParentCategoryName" Style="{StaticResource TextFieldStyle}" />
-                    <!-- TODO a bindie sur l'indiagrame -->
-                    <TextBlock  Text="{Binding CurrentIndiagram.Parent, Converter={StaticResource ParentCategoryConverter}}" Style="{StaticResource TextValueStyle}" />
+                    <TextBlock x:Uid="Collection_ParentCategoryName" Style="{StaticResource SmallTextStyle}" />
+                    <TextBlock  Text="{Binding Indiagram.Parent, Converter={StaticResource ParentCategoryConverter}}" Style="{StaticResource BlackSmallTextStyle}" />
                 </StackPanel>
 
-                <TextBlock x:Uid="Collection_Sound"  Style="{StaticResource TextCategoryStyle}" />
+                <TextBlock x:Uid="Collection_Sound"  Style="{StaticResource TextStyle}" />
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock x:Uid="Collection_ParentCategoryName" Style="{StaticResource TextFieldStyle}" />
-                    <TextBlock Text="{Binding Indiagram.ImagePath}" Style="{StaticResource TextValueStyle}" />
+                    <TextBlock x:Uid="Collection_ParentCategoryName" Style="{StaticResource SmallTextStyle}" />
+                    <TextBlock Text="{Binding Indiagram.SoundPath, Converter={StaticResource DefaultLocalizedStringIfNullConverter}}" Style="{StaticResource BlackSmallTextStyle}" />
                 </StackPanel>
 
-                <Button Style="{StaticResource SmallButton}"
-            	Background="Blue">
-                    <TextBlock Style="{StaticResource SmallTextButton}"
+                <Button Style="{StaticResource BigBlueButton}"
+                        Command="{Binding ListenCommand}"
+                        Height="100"
+            	>
+                        <TextBlock Style="{StaticResource TextButton}"
             		x:Uid="Collection_ListenSound"/>
                 </Button>
             </StackPanel>
         </ScrollViewer>
-        
-        <Button Style="{StaticResource SmallButton}"
-            	Background="Green"
-                    Grid.Column="1"
-                    Grid.Row="2">
-                <TextBlock Style="{StaticResource SmallTextButton}"
+        </StackPanel>
+        <Grid
+            Grid.Column="1"
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+            >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource GreenButton}"
+                    Grid.Column="0"
+                Command="{Binding EditCommand}">
+                <TextBlock Style="{StaticResource TextButton}"
         		x:Uid="Button_Edit"/>
             </Button>
 
-        <Button Style="{StaticResource SmallButton}"
-            	Background="DarkOrange"
-                    Grid.Column="2"
-                    Grid.Row="2">
-            <TextBlock Style="{StaticResource SmallTextButton}"
+            <Button Style="{StaticResource OrangeButton}"
+                    Grid.Column="1"
+                Command="{Binding DeleteCommand}">
+                <TextBlock Style="{StaticResource TextButton}"
         		x:Uid="Button_Delete"/>
-        </Button>
-        <!-- TODO a binder sur l'indiagrame -->
+            </Button>
+
+            <Button Style="{StaticResource RedButton}"
+                    Grid.Column="2"
+                Command="{Binding BackCommand}">
+                <TextBlock Style="{StaticResource TextButton}"
+        		x:Uid="Button_Cancel"/>
+            </Button>
+        </Grid>
+
         <Image
-            Width="150"
-            Height="150"
-            Source="../../../Assets/root.png"
+            Width="{Binding SettingsService.IndiagramDisplaySize}"
+            Height="{Binding SettingsService.IndiagramDisplaySize}"
+            Source="{Binding Indiagram.ImagePath}"
             Grid.Column="2"
             Grid.Row="1"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"/>
-
     </Grid>
     
 </mvvm:MvvmPage>

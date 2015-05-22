@@ -40,7 +40,7 @@
                      HorizontalAlignment="Center" 
                      VerticalAlignment="Center"                     
                      IsChecked="{Binding IsEnabled, Mode=TwoWay}">
-            <TextBlock Style="{StaticResource SmallTextStyle}" 
+            <TextBlock Style="{StaticResource SmallTextButton}" 
                        x:Uid="RadioButton_On" />
         </RadioButton>
         <RadioButton Grid.Row="2" 
@@ -48,7 +48,7 @@
                      HorizontalAlignment="Center" 
                      VerticalAlignment="Center"
                      IsChecked="{Binding IsDisabled, Mode=TwoWay}">
-            <TextBlock Style="{StaticResource SmallTextStyle}" 
+            <TextBlock Style="{StaticResource SmallTextButton}" 
                        x:Uid="RadioButton_Off" />
         </RadioButton>
 

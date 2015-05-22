@@ -116,6 +116,9 @@
             <Style x:Key="PinkButton" BasedOn="{StaticResource SmallButton}" TargetType="Button">
                 <Setter Property="Background" Value="DeepPink"/>
             </Style>
+            <Style x:Key="RedButton" BasedOn="{StaticResource SmallButton}" TargetType="Button">
+                <Setter Property="Background" Value="Red"/>
+            </Style>
             <!--Big Color Button-->
             <Style x:Key="BigOrangeButton" BasedOn="{StaticResource BigButton}" TargetType="Button">
                 <Setter Property="Background" Value="OrangeRed"/>

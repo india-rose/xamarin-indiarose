@@ -22,8 +22,11 @@
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
         <!-- first Column -->
-        <ScrollViewer Grid.Column="1"
-                        Grid.Row="1">
+        <StackPanel 
+            VerticalAlignment="Center"
+            Grid.Column="1"
+            Grid.Row="1">
+        <ScrollViewer>
             <StackPanel >
                 <!--Text-->
                 <TextBlock Style="{StaticResource ItalicTextStyle}" 
@@ -49,15 +52,17 @@
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0"
                             Style="{StaticResource BlueButton}"
-                            Command="{Binding SelectCategoryCommand}">
-                        <TextBlock Style="{StaticResource SmallTextButton}"
+                            Command="{Binding SelectCategoryCommand}"
+                            Height="100">
+                            <TextBlock Style="{StaticResource TextButton}"
             	                x:Uid="Collection_ChooseCategory"/>
                     </Button>
 
                     <Button Grid.Column="1"
                         Style="{StaticResource PinkButton}"
-                            Command="{Binding RootCommand}">
-                        <TextBlock Style="{StaticResource SmallTextButton}"
+                            Command="{Binding RootCommand}"
+                            Height="100">
+                        <TextBlock Style="{StaticResource TextButton}"
             		            x:Uid="Collection_RootCategoryName"/>
                     </Button>
                 </Grid>
@@ -93,24 +98,27 @@
                         Grid.Column="0"
                         Style="{StaticResource PinkButton}"
                         Grid.ColumnSpan="{Binding CurrentIndiagram.HasCustomSound, Converter={StaticResource BooleanToColumnSpanConverter}}"
-                        Command="{Binding SoundChoiceCommand}">
-                        <TextBlock Style="{StaticResource SmallTextButton}"
+                        Command="{Binding SoundChoiceCommand}"
+                        Height="100">
+                            <TextBlock Style="{StaticResource TextButton}"
             		            x:Uid="Collection_ChooseSound"/>
                     </Button>
                     <Button
                             Grid.Column="1"
                             Style="{StaticResource OrangeButton}"
-                            Command="{Binding ResetSoundCommand}"  
+                            Command="{Binding ResetSoundCommand}" 
+                            Height="100" 
                             Visibility="{Binding CurrentIndiagram.HasCustomSound, Converter={StaticResource BooleanToVisibilityConverter}}">
-                        <TextBlock Style="{StaticResource SmallTextButton}"
+                            <TextBlock Style="{StaticResource TextButton}"
             		            x:Uid="Collection_ListenSound"/>
                     </Button>
                 </Grid>
                 <Button
                         Style="{StaticResource BlueButton}"
                         Command="{Binding ListenCommand}"
+                        Height="100"
                         >
-                    <TextBlock Style="{StaticResource SmallTextButton}"
+                        <TextBlock Style="{StaticResource TextButton}"
             		            x:Uid="Collection_ListenSound"/>
                 </Button>
 
@@ -125,15 +133,16 @@
                     <Button Grid.Column="0"
                             Style="{StaticResource BlueButton}"
                             Command="{Binding CopyCommand}">
-                        <TextBlock Style="{StaticResource SmallTextButton}"
+                            <TextBlock Style="{StaticResource TextButton}"
             	                x:Uid="Collection_Copy"/>
                     </Button>
 
                     <Button Grid.Column="1"
                         Style="{StaticResource OrangeButton}"
                             IsEnabled="{Binding CopyPasteService.HasBuffer}"
-                            Command="{Binding PasteCommand}">
-                        <TextBlock Style="{StaticResource SmallTextButton}"
+                            Command="{Binding PasteCommand}"
+                            Height="100">
+                            <TextBlock Style="{StaticResource TextButton}"
             		            x:Uid="Collection_Paste"/>
                     </Button>
                 </Grid>
@@ -148,23 +157,26 @@
                         Style="{StaticResource BlueButton}"
                         Visibility="{Binding CurrentIndiagram.IsEnabled, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Negation}"
                         Command="{Binding ActivateCommand}"
+                        Height="100"
                         >
-                        <TextBlock Style="{StaticResource SmallTextButton}"
+                            <TextBlock Style="{StaticResource TextButton}"
             		            x:Uid="Collection_EnableIndiagram"/>
                     </Button>
                     <Button 
                         Style="{StaticResource OrangeButton}"
                         Visibility="{Binding CurrentIndiagram.IsEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
                         Command="{Binding DesactivateCommand}"
+                        Height="100"
                         >
-                        <TextBlock Style="{StaticResource SmallTextButton}"
+                            <TextBlock Style="{StaticResource TextButton}"
             		            x:Uid="Collection_DisableIndiagram"/>
                     </Button>
                 </StackPanel>
                 
 
             </StackPanel>
-        </ScrollViewer>
+            </ScrollViewer>
+        </StackPanel>
         <!-- 2 Column -->
         <StackPanel
             Grid.Column="2"
@@ -183,8 +195,9 @@
                            />
                 </Canvas>
                 <Button Style="{StaticResource PurpleButton}"
-                        Command="{Binding ImageChoiceCommand}">
-                        <TextBlock Style="{StaticResource SmallTextButton}"
+                        Command="{Binding ImageChoiceCommand}"
+                        Height="100">
+                        <TextBlock Style="{StaticResource TextButton}"
                                    x:Uid="Collection_ChooseImage"
                             />
                 </Button>
