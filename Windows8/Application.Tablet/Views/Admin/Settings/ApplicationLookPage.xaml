@@ -43,15 +43,14 @@
                   Grid.Row="1"
                   ItemsSource="{Binding CurrentSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         
-        <Button Style="{StaticResource SmallButton}" 
+        <Button Style="{StaticResource GreenButton}" 
                 Command="{Binding SaveCommand}"
                 Grid.Column="0"
-                Grid.Row="3"
-                Background="Green">
+                Grid.Row="3">
                 <TextBlock Style="{StaticResource TextButton}"
                       x:Uid="Button_Ok"/>
             </Button>
-        <Button Style="{StaticResource SmallBackButton}"
+        <Button Style="{StaticResource OrangeButton}"
                 Command="{Binding BackCommand}"
                 Grid.Column="1"
                 Grid.Row="3">

@@ -28,17 +28,17 @@
 
 
         <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="4" Background="{Binding BackgroundColor}"></Grid>
-        <Button Style="{StaticResource SmallButton}"
+        <Button Style="{StaticResource GreenButton}"
                 Command="{Binding AddCommand}"
             Grid.Column="1"
-            Grid.Row="2" Background="ForestGreen">
+            Grid.Row="2">
             <TextBlock Style="{StaticResource TextButton}"
                 x:Uid="CollectionManagement_Add"></TextBlock>
             </Button>
         
         
         
-        <Button Style="{StaticResource SmallBackButton}"
+        <Button Style="{StaticResource OrangeButton}"
                 Command="{Binding BackCommand}"
             Grid.Column="2" Grid.Row="2">
             

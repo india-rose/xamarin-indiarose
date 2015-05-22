@@ -24,7 +24,7 @@
         <ProgressRing  IsActive="True" Height="50" Width="50" Grid.Column="1" Grid.Row="1" ></ProgressRing>
         <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource TextStyle}" x:Uid="Server_Synchro_Start"></TextBlock>
         <Button Grid.Column="1" Grid.Row="2"
-            Style="{StaticResource SmallBackButton}"
+            Style="{StaticResource OrangeButton}"
             Command="{Binding BackCommand}">
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="BackButton"/>
         </Button>

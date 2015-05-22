@@ -173,6 +173,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Admin\Settings\IndiagramPropertyPage.xaml.cs">
+      <DependentUpon>IndiagramPropertyPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\CategoryReadingDialog.xaml.cs">
       <DependentUpon>CategoryReadingDialog.xaml</DependentUpon>
     </Compile>

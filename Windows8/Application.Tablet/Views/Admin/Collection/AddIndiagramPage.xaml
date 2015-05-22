@@ -209,7 +209,7 @@
         </StackPanel>
 
         <!-- Button ok & back-->
-        <Button Style="{StaticResource OkButton}"
+        <Button Style="{StaticResource GreenButton}"
                 Command="{Binding SaveCommand}"
                 Grid.Column="1"
                 Grid.Row="2"
@@ -218,7 +218,7 @@
                      x:Uid="Button_Ok"/>
         </Button>
 
-        <Button Style="{StaticResource SmallBackButton}"
+        <Button Style="{StaticResource OrangeButton}"
                 Command="{Binding BackCommand}"
                 Grid.Column="2"
                 Grid.Row="2"
