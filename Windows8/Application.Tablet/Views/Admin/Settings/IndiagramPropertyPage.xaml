@@ -97,7 +97,7 @@
                     Fill="{Binding ReinforcerColor.Color}" 
                     Height="{Binding IndiagramSize, Converter={StaticResource IndiaSizeToReinforcerSizeConverter}}" 
                     Width="{Binding IndiagramSize, Converter={StaticResource IndiaSizeToReinforcerSizeConverter}}" />
-                    <Image Height="{Binding IndiagramSize}"
+                    <Image Height="{Binding IndiagramSize}" Margin="{Binding IndiagramSize, Converter={StaticResource IndiaSizeToMarginSize}}"
                     Width="{Binding IndiagramSize}" Source="ms-appx:///Assets/root.png" >
 
                     </Image>

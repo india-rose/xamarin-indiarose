@@ -13,7 +13,7 @@ namespace IndiaRose.Framework.Converters
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             int x =(int) value;
-            return (int) ((x*1.2) - x)/2;
+            return new Thickness(((x*1.2) - x)/2);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
