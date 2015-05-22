@@ -19,6 +19,13 @@
             
             <conv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
             <conv:IndiaSizeToReinforcerSizeConverter x:Key="IndiaSizeToReinforcerSizeConverter"/>
+            <conv:ParentCategoryTextConverter x:Key="ParentCategoryConverter"
+		                                        Uid="Collection_RootCategoryName"
+		                                        Property="Text" />
+            <conv:DefaultLocalizedStringIfNullConverter x:Key="DefaultLocalizedStringIfNullConverter"
+                                                          Uid="Collection_NoSound"
+		                                                  Property="Text"
+            />
 
 
             <!--Button Style-->
