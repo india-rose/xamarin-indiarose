@@ -37,7 +37,7 @@
 
         <RadioButton Grid.Row="2" 
                      Grid.Column="1"
-                     HorizontalAlignment="Right" 
+                     HorizontalAlignment="Center" 
                      VerticalAlignment="Center"                     
                      IsChecked="{Binding IsEnabled, Mode=TwoWay}">
             <TextBlock Style="{StaticResource SmallTextStyle}" 
@@ -45,7 +45,7 @@
         </RadioButton>
         <RadioButton Grid.Row="2" 
                      Grid.Column="2" 
-                     HorizontalAlignment="Left" 
+                     HorizontalAlignment="Center" 
                      VerticalAlignment="Center"
                      IsChecked="{Binding IsDisabled, Mode=TwoWay}">
             <TextBlock Style="{StaticResource SmallTextStyle}" 
