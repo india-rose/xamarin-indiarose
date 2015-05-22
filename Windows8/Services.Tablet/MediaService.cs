@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Enumeration;
+using Windows.Foundation;
 using Windows.Media;
 using Windows.Media.Capture;
 using Windows.Media.MediaProperties;
 using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Imaging;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
 
@@ -24,9 +28,21 @@ namespace IndiaRose.Services
             get { return LazyResolver<IStorageService>.Service; }
         }
 
-        public Task<string> GetPictureFromCameraAsync()
+        public async Task<string> GetPictureFromCameraAsync()
         {
-	        return null;
+            var photo = new CameraCaptureUI();
+            var url = StorageService.GenerateFilename(StorageType.Image, "png");
+
+            photo.PhotoSettings.AllowCropping = true;
+            photo.PhotoSettings.CroppedAspectRatio = new Size(1, 1);
+            photo.PhotoSettings.MaxResolution = CameraCaptureUIMaxPhotoResolution.HighestAvailable;
+
+            _recordStorageFile = await photo.CaptureFileAsync(CameraCaptureUIMode.Photo);
+
+            //TODO vérifier l'emplacement de la capture
+            _recordStorageFile.MoveAsync(ApplicationData.Current.LocalFolder, url);
+
+            return url;
         }
 
         public Task<string> GetPictureFromGalleryAsync()
