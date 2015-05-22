@@ -44,6 +44,10 @@
         <converters:DefaultLocalizedStringIfNullConverter x:Key="DefaultLocalizedStringIfNullConverter"
                                                           Uid="Collection_NoSound"
 		                                                  Property="Text"
+                                                          
+            />
+        <converters:IndiaSizeToReinforcerSizeConverter x:Key="IndiaSizeToReinforcerSizeConverter"
+                                                          
             />
     </Page.Resources>
 
