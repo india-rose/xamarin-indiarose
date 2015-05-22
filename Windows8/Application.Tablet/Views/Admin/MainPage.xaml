@@ -29,53 +29,46 @@
 
         <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Source="../../Assets/logoIndiaRose.png" Stretch="Uniform" HorizontalAlignment="Stretch" Margin="0,20,50,10"/>
 
-        <Button Style="{StaticResource BigButton}" 
+        <Button Style="{StaticResource BigBlueButton}" 
                 Command="{Binding SettingsCommand}"
-                Grid.Row="1" Grid.Column="0" 
-                Background="DodgerBlue">
+                Grid.Row="1" Grid.Column="0">
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="Home_AppSettings"/>
         </Button>
         
-        <Button Style="{StaticResource BigButton}"
+        <Button Style="{StaticResource BigGreenButton}"
                  Command="{Binding CollectionManagementCommand}"
-                Grid.Row="1" Grid.Column="2"  
-                Background="ForestGreen">
+                Grid.Row="1" Grid.Column="2">
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="Home_CollectionManagement"/>
         </Button>
 
-        <Button Style="{StaticResource BigButton}"
-                Grid.Row="2" Grid.Column="0"
-                Background="DodgerBlue">
+        <Button Style="{StaticResource BigBlueButton}"
+                Grid.Row="2" Grid.Column="0">
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="Home_SendLogs"/>
         </Button>
 
-        <Button Style="{StaticResource SmallButton}"
+        <Button Style="{StaticResource GreenButton}"
                 Command="{Binding SyncCollectionCommand}"
-                Grid.Row="2" Grid.Column="2" 
-                Background="ForestGreen">
+                Grid.Row="2" Grid.Column="2">
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="Home_SyncCollection"/>
         </Button>
 
-        <Button Style="{StaticResource SmallButton}"
+        <Button Style="{StaticResource PinkButton}"
                 Grid.Row="2" Grid.Column="3"
-                Command="{Binding HelpCommand}"
-                Background="DeepPink">
+                Command="{Binding HelpCommand}">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_Help"/>
         </Button>
 
 
 
-        <Button Style="{StaticResource BigButton}" 
+        <Button Style="{StaticResource BigRedButton}" 
                 Command="{Binding ContactCommand}" 
-                Grid.Row="3" Grid.Column="0"
-                Background="Red">
+                Grid.Row="3" Grid.Column="0">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_Contact"/>
         </Button>
 
-        <Button Style="{StaticResource BigButton}"
+        <Button Style="{StaticResource BigPurpleButton}"
                 Command="{Binding CreditsCommand}" 
-                Grid.Row="3" Grid.Column="2"
-                Background="Purple">
+                Grid.Row="3" Grid.Column="2">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_Credits"/>
         </Button>
 

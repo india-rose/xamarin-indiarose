@@ -6,19 +6,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvvm="using:Storm.Mvvm"
     mc:Ignorable="d"
-    xmlns:converters="using:IndiaRose.Framework.Converters"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminCollectionAddIndiagramViewModel}">
-
-    <Page.Resources>
-        <converters:ParentCategoryTextConverter x:Key="ParentCategoryConverter"
-		                                        Uid="Collection_RootCategoryName"
-		                                        Property="Text" />
-        <converters:DefaultLocalizedStringIfNullConverter x:Key="DefaultLocalizedStringIfNullConverter"
-                                                          Uid="Collection_NoSound"
-		                                                  Property="Text"
-            />
-
-    </Page.Resources>
+    
     <Grid VerticalAlignment="Stretch" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"></ColumnDefinition>
