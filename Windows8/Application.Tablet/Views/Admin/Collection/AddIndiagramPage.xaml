@@ -6,8 +6,19 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvvm="using:Storm.Mvvm"
     mc:Ignorable="d"
+    xmlns:converters="using:IndiaRose.Framework.Converters"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminCollectionAddIndiagramViewModel}">
 
+    <Page.Resources>
+        <converters:ParentCategoryTextConverter x:Key="ParentCategoryConverter"
+		                                        Uid="Collection_RootCategoryName"
+		                                        Property="Text" />
+        <converters:DefaultLocalizedStringIfNullConverter x:Key="DefaultLocalizedStringIfNullConverter"
+                                                          Uid="Collection_NoSound"
+		                                                  Property="Text"
+            />
+
+    </Page.Resources>
     <Grid VerticalAlignment="Stretch" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"></ColumnDefinition>
@@ -38,7 +49,7 @@
                     <TextBlock Style="{StaticResource SmallTextStyle}" 
                                x:Uid="Collection_ParentCategoryName"  />
                     <TextBlock Style="{StaticResource BlackSmallTextStyle}" 
-                               Text="{Binding CurrentIndiagram.Parent.Text}" />
+                               Text="{Binding CurrentIndiagram.Parent, Converter={StaticResource ParentCategoryConverter}}" />
                 </StackPanel>
 
                 <!-- Choose category -->
@@ -80,7 +91,7 @@
                     <TextBlock Style="{StaticResource SmallTextStyle}" 
                                x:Uid="Collection_SoundPath"  />
                     <TextBlock Style="{StaticResource BlackSmallTextStyle}" 
-                               Text="{Binding CurrentIndiagram.SoundPath}" />
+                               Text="{Binding CurrentIndiagram.SoundPath, Converter={StaticResource DefaultLocalizedStringIfNullConverter}}" />
                 </StackPanel>
 
                 
