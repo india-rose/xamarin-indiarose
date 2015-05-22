@@ -52,19 +52,26 @@
 
             <TextBlock Style="{StaticResource TextStyle}"
                    x:Uid="IndiagramProperty_TextColor"/>
-            <ListView SelectionMode="None" 
-                      Margin="30,0,0,0">
-            <TextBlock Style="{StaticResource SmallTextStyle}"
+            <StackPanel
+                      Margin="30">
+                    <Grid>
+                       <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                
+            <TextBlock Grid.Column="0" Style="{StaticResource SmallTextStyle}"
                        x:Uid="IndiagramProperty_TextColorLabel"/>
-                <Canvas  Width="100" Height="10" Background="{Binding TextColor.Color}"> 
-                </Canvas>
-            <Button Style="{StaticResource PinkButton}"
-				Command="{Binding TextColor}"
+                        <Rectangle Grid.Column="1"  Width="100"  Stroke="Black" Fill="{Binding TextColor.Color}">
+                        </Rectangle>
+                    </Grid>
+                    <Button Style="{StaticResource PinkButton}"
+				Command="{Binding TextColorCommand}"
 				>
                 <TextBlock Style="{StaticResource SmallTextButton}"
                    x:Uid="IndiagramProperty_ChangeTextColor"/>
             </Button>
-            </ListView>
+            </StackPanel>
             
             <CheckBox IsChecked="{Binding BackAfterSelection, Mode=TwoWay}" RequestedTheme="Light">
                 <TextBlock Style="{StaticResource SmallTextStyle}" 

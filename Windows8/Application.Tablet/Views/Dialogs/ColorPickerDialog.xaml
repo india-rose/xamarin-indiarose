@@ -40,8 +40,7 @@
             VerticalAlignment="Center"
             x:Name="CbBorderColor"
             Width="200" Height="40" 
-            ItemsSource="{Binding Colors}" 
-            SelectedItem="{Binding SelectedColorName, Mode=TwoWay}" 
+            SelectedItem="{Binding CurrentColor,Mode=TwoWay}" 
             SelectionChanged="cbBorderColor_SelectionChanged" 
             Padding="8,0" Margin="10,0,0,0">
             <ComboBox.ItemTemplate>
