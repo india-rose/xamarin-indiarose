@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="IndiaRose.Application.App">
-      <m2:VisualElements DisplayName="IndiaRose.Application" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="IndiaRose.Application" ForegroundText="light" BackgroundColor="#464646">
+      <m2:VisualElements DisplayName="IndiaRose.Application" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="IndiaRose.Application" ForegroundText="light" BackgroundColor="#F06292">
         <m2:DefaultTile ShortName="IndiaRose">
         </m2:DefaultTile>
         <m2:SplashScreen Image="Assets\SplashScreen.png" />

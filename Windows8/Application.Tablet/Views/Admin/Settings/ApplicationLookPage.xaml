@@ -74,22 +74,23 @@
             </Canvas>
            
             </Grid>
-            
-            <Button Style="{StaticResource SmallButton}" 
-                Background="ForestGreen"
+
+        <Button Style="{StaticResource GreenButton}"
                 Command="{Binding SaveCommand}"
-                Grid.Column="2"
-                Grid.Row="2">
-                <TextBlock Style="{StaticResource TextButton}"
-                      x:Uid="Button_Ok"/>
-            </Button>
+                Grid.Column="1"
+                Grid.Row="2"
+                >
+            <TextBlock Style="{StaticResource TextButton}" 
+                     x:Uid="Button_Ok"/>
+        </Button>
+
         <Button Style="{StaticResource OrangeButton}"
                 Command="{Binding BackCommand}"
-                Grid.Column="1"
-                Grid.Row="2">
-            <TextBlock Style="{StaticResource TextButton}" 
+                Grid.Column="2"
+                Grid.Row="2"
+                >
+            <TextBlock Style="{StaticResource TextButton}"
                      x:Uid="Button_Cancel"/>
-
         </Button>
     </Grid>
 </mvvm:MvvmPage>
