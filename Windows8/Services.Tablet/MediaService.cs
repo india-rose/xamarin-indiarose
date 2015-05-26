@@ -48,7 +48,7 @@ namespace IndiaRose.Services
 
                 await _recordStorageFile.MoveAsync(folder, _url, NameCollisionOption.FailIfExists);
 
-                return string.Format(path, "\\", _url);
+                return path + "\\" + _url;
             }
 
             return "";
