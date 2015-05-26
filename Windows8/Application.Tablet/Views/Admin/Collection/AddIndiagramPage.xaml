@@ -187,15 +187,12 @@
             Grid.Row="1"
             VerticalAlignment="Center">
             <StackPanel>
-                <Canvas
-                    Height="{Binding SettingsService.IndiagramDisplaySize}">
-                    <Image Height="{Binding SettingsService.IndiagramDisplaySize}"
+                <Image Height="{Binding SettingsService.IndiagramDisplaySize}"
                            Width="{Binding SettingsService.IndiagramDisplaySize}"
+                           Source="{Binding CurrentIndiagram.ImagePath}"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
-                           Source="{Binding CurrentIndiagram.ImagePath}"
                            />
-                </Canvas>
                 <Button Style="{StaticResource PurpleButton}"
                         Command="{Binding ImageChoiceCommand}">
                     <TextBlock Style="{StaticResource TextButton}"
