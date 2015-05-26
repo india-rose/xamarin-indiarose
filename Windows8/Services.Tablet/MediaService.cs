@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -110,17 +111,14 @@ namespace IndiaRose.Services
         public async Task<string> StopRecord()
         {
             await _recordMediaCapture.StopRecordAsync();
-            return _url;
+            return Path.Combine(StorageService.SoundPath,_url);
         }
 
-        public void PlaySound(string url)
+        public async void PlaySound(string url)
         {
-            var path = new Uri(url, UriKind.Absolute);
-            var play = new MediaElement
-            {
-                AutoPlay = false,
-                Source = path
-            };
+            var file = await StorageFile.GetFileFromPathAsync(url);
+            var play = new MediaElement();
+            play.SetSource((await file.OpenAsync(FileAccessMode.Read)), "aac");
 
             play.Play();
         }
