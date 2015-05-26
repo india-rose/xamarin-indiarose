@@ -41,7 +41,8 @@
         <ComboBox Grid.ColumnSpan="2" 
                   Grid.Column="0"
                   Grid.Row="1"
-                  ItemsSource="{Binding CurrentSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                  ItemsSource ="{Binding ZoneHeightCollection}"
+                  SelectedItem="{Binding CurrentSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         
         <Button Style="{StaticResource GreenButton}" 
                 Command="{Binding SaveCommand}"
