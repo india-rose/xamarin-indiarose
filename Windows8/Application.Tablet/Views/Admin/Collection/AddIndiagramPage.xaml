@@ -41,7 +41,7 @@
                            x:Uid="Collection_IndiagramText"
                                />
                 <TextBox Text="{Binding CurrentIndiagram.Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                             IsTabStop="False"/>
+                         PreventKeyboardDisplayOnProgrammaticFocus="False"/>
 
                 <!--Category-->
                 <TextBlock Style="{StaticResource ItalicTextStyle}"
