@@ -50,30 +50,38 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            
-            <Canvas
-                    Height="110" Grid.Row="1"
-                    Width="180"
-                 >
-                <Canvas.Background>
-                    <ImageBrush ImageSource="../../../Assets/tab.png" Stretch="Fill"/>
-                </Canvas.Background>
-                <Button Background="{Binding TopColor.Color}"
-                           Command="{Binding TopAreaColorCommand}"
-                           Height="{Binding CurrentSize, Converter={StaticResource TopAreaSizeToBottomAreaSizeConverter}}"
-                           Width="180">
-                    
-                    
-                </Button>
-                <Button Background="{Binding BottomColor.Color}"
+
+            <Grid  Grid.Row="1">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Style="{StaticResource TextStyle}" 
+                     x:Uid="ApplicationLook_ChangeTopColor"/>
+                    <Button Background="{Binding BottomColor.Color}"
                            Command="{Binding BottomAreaColorCommand}"
                            Height="{Binding CurrentSize}"
                            Width="180">
 
-                </Button>
-            </Canvas>
-           
+                    </Button>
+                    <Button Background="{Binding TopColor.Color}"
+                           Command="{Binding TopAreaColorCommand}"
+                           Height="{Binding CurrentSize, Converter={StaticResource TopAreaSizeToBottomAreaSizeConverter}}"
+                           Width="180">
+
+                    </Button>
+                    <TextBlock Style="{StaticResource TextStyle}" 
+                     x:Uid="ApplicationLook_ChangeBottomColor"/>
+                    <Canvas HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Height="110"
+                    Width="180"
+                 >
+                    <Canvas.Background>
+                        <ImageBrush ImageSource="../../../Assets/tab.png" Stretch="Fill"/>
+                    </Canvas.Background>
+
+
+                </Canvas>
+                </StackPanel>
             </Grid>
+        </Grid>
 
         <Button Style="{StaticResource GreenButton}"
                 Command="{Binding SaveCommand}"
