@@ -197,6 +197,9 @@
     <Compile Include="Views\Dialogs\ReadingDelayDialog.xaml.cs">
       <DependentUpon>ReadingDelayDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dialogs\RecordSoundDialog.xaml.cs">
+      <DependentUpon>RecordSoundDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\ResetSettingsDialog.xaml.cs">
       <DependentUpon>ResetSettingsDialog.xaml</DependentUpon>
     </Compile>
@@ -215,6 +218,7 @@
       <Link>Resources\fr\Resources.resw</Link>
     </PRIResource>
     <None Include="Application.Tablet_TemporaryKey.pfx" />
+    <Content Include="Assets\cancel.png" />
     <Content Include="Assets\correction.png" />
     <Content Include="Assets\manuel.pdf" />
     <Content Include="Assets\indiagrams.zip" />
@@ -291,6 +295,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Dialogs\RecordSoundDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Dialogs\ResetSettingsDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -302,11 +310,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Assets\microphone.png" />
     <Content Include="Assets\nextarrow.png" />
     <Content Include="Assets\playbutton.png" />
     <Content Include="Assets\root.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\stop.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
   </ItemGroup>
   <ItemGroup>
