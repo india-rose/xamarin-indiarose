@@ -8,6 +8,15 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminCollectionAddIndiagramViewModel}">
 
+    <Page.Resources>
+        <DataTemplate x:Key="PositionTemplate">
+            <StackPanel>
+                <TextBlock
+                    Text="{Binding Text}"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    
     <Grid VerticalAlignment="Stretch" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"></ColumnDefinition>
@@ -74,8 +83,11 @@
                            x:Uid="Collection_PositionBefore" />
 
                 <ComboBox
+                    ItemTemplate="{StaticResource PositionTemplate}"
                     ItemsSource="{Binding Brothers}"
-                    SelectedItem="{Binding BeforeIndiagram, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    SelectedItem="{Binding BeforeIndiagram, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    
+                </ComboBox>
 
                 <!--Sound-->
                 <TextBlock Style="{StaticResource ItalicTextStyle}"
