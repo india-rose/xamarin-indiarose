@@ -6,27 +6,31 @@
 //using Windows.Foundation;
 //using Windows.UI;
 //using Windows.UI.Xaml.Automation.Peers;
+//using Windows.UI.Xaml.Controls;
 //using Windows.UI.Xaml.Media;
 //using IndiaRose.Data.Model;
+//using IndiaRose.Interfaces;
+//using Storm.Mvvm.Inject;
+//using Storm.Mvvm.Services;
 
 //namespace IndiaRose.Framework.Views
 //{
 //	class IndiagramView
 //	{
+//		//fait avec les conseilles de julien
 //		#region Fields
-
 //		/**
 //		 * Paint object to draw the image.
 //		 */
-//		private readonly Paint _picturePainter = new Paint();
+//		private readonly Canvas _picturePainter = new Canvas();
 //		/**
 //		 * Paint object to write the text.
 //		 */
-//		private readonly Paint _textPainter = new Paint();
+//		private readonly Canvas _textPainter = new Canvas();
 //		/**
 //		 * Paint object to draw background.
 //		 */
-//		private readonly Paint _backgroundPainter = new Paint();
+//		private readonly Canvas _backgroundPainter = new Canvas();
 //		/**
 //		 * Rect of the view to draw background.
 //		 */
@@ -70,5 +74,202 @@
 
 //		private uint _backgroundColor;
 //		#endregion
+//		// fait
+//		#region Services
+
+//		protected IDispatcherService DispatcherService
+//		{
+//			get { return LazyResolver<IDispatcherService>.Service; }
+//		}
+
+//		protected static ISettingsService SettingsService
+//		{
+//			get { return LazyResolver<ISettingsService>.Service; }
+//		}
+
+//		#endregion
+
+//		#region Properties
+
+//		public Indiagram Indiagram
+//		{
+//			get { return _indiagram; }
+//			set
+//			{
+//				if (!Equals(_indiagram, value))
+//				{
+//					_indiagram = value;
+//					RefreshDimension();
+//					DispatcherService.InvokeOnUIThread(IInitializable);
+//				}
+//			}
+//		}
+
+//		public uint TextColor
+//		{
+//			get { return _textColor; }
+//			set
+//			{
+//				if (_textColor != value)
+//				{
+//					_textColor = value;
+//					_textPainter. = new Color((int)_textColor.);
+//					DispatcherService.InvokeOnUIThread(Invalidate);
+//				}
+//			}
+//		}
+
+//		public uint BackgroundColor
+//		{
+//			get { return _backgroundColor; }
+//			set
+//			{
+//				if (_backgroundColor != value)
+//				{
+//					_backgroundColor = value;
+//					_backgroundPainter.Color = new Color((int)value);
+//					DispatcherService.InvokeOnUIThread(Invalidate);
+//				}
+//			}
+//		}
+
+//		public int RealHeight
+//		{
+//			get { return _height; }
+//		}
+
+//		#endregion
+
+//		#region Constructors
+
+//		protected IndiagramView(IntPtr javaReference, JniHandleOwnership transfer)
+//			: base(javaReference, transfer)
+//		{
+//			Initialize();
+//		}
+
+//		public IndiagramView(Context context)
+//			: base(context)
+//		{
+//			Initialize();
+//		}
+
+//		public IndiagramView(Context context, IAttributeSet attrs)
+//			: base(context, attrs)
+//		{
+//			Initialize();
+//		}
+
+//		public IndiagramView(Context context, IAttributeSet attrs, int defStyleAttr)
+//			: base(context, attrs, defStyleAttr)
+//		{
+//			Initialize();
+//		}
+
+//		#endregion
+
+//		private void Initialize()
+//		{
+//			_picturePainter.Color = Color.Red;
+//			_textPainter.SetTypeface(FontHelper.LoadFont(SettingsService.FontName));
+//			_textPainter.Color = new Color((int)_textColor);
+//			_textPainter.TextSize = SettingsService.FontSize;
+//			_textPainter.TextAlign = Paint.Align.Center;
+//			_backgroundPainter.Color = Color.Transparent;
+
+//			_pictureWidth = _pictureHeight = SettingsService.IndiagramDisplaySize;
+//		}
+
+//		protected void RefreshDimension()
+//		{
+//			float textWidth = _textPainter.MeasureText(_indiagram.Text);
+//			int textHeight = SettingsService.FontSize;
+
+//			if (string.IsNullOrEmpty(_indiagram.Text))
+//			{
+//				textHeight = 0;
+//			}
+
+//			_marginLeft = _pictureWidth / 10;
+//			_marginTop = _pictureHeight / 10;
+
+//			_width = _marginLeft * 2 + _pictureWidth;
+//			//height take account the fact that some words will needs two or more lines to be displayed.
+//			_height = _marginTop * 2 + _pictureHeight + (textHeight * (int)(textWidth / (_pictureWidth + 1) + 1));
+
+//			SetMinimumWidth(_width);
+//			SetMinimumHeight(_height);
+//			Measure(_width, _height);
+
+//			_isOneLineText = (textWidth <= _pictureWidth);
+//			_backgroundRect = new Rect(0, 0, _width, _height);
+//		}
+
+//		protected void OnDraw(Canvas canvas)
+//		{
+//			base.OnDraw(canvas);
+//			canvas.DrawRect(_backgroundRect, _backgroundPainter);
+
+//			//draw picture or a red rectangle if error with picture
+//			try
+//			{
+//				Bitmap image = ImageHelper.LoadImage(_indiagram.ImagePath, _pictureWidth, _pictureHeight);
+//				canvas.DrawBitmap(image, _marginLeft, _marginTop, _picturePainter);
+//			}
+//			catch (Exception)
+//			{
+//				canvas.DrawRect(_marginLeft, _marginTop, _pictureWidth + _marginLeft, _pictureHeight + _marginTop, _picturePainter);
+//			}
+
+//			if (!_indiagram.IsEnabled)
+//			{
+//				canvas.DrawRect(_marginLeft, _marginTop, _pictureWidth + _marginLeft, _pictureHeight + _marginTop, new Paint() { Color = new Color(0, 0, 0, 128) });
+//			}
+
+//			if (!string.IsNullOrEmpty(_indiagram.Text))
+//			{
+//				//write text
+//				int yindex = _marginTop + _pictureHeight + SettingsService.FontSize;
+//				int xindex = _marginLeft + _pictureWidth / 2;
+//				String text = _indiagram.Text;
+
+//				if (_isOneLineText)
+//				{
+//					canvas.DrawText(text, xindex, yindex, _textPainter);
+//				}
+//				else
+//				{
+//					int txtOffset = 0;
+
+//					while (txtOffset < text.Length)
+//					{
+//						int textSize = _textPainter.BreakText(text, txtOffset, text.Length, true, _pictureWidth, null);
+//						string text2 = text.Substring(txtOffset, textSize);
+
+//						canvas.DrawText(text2, xindex, yindex, _textPainter);
+
+//						yindex += SettingsService.FontSize;
+//						txtOffset += textSize;
+//					}
+//				}
+//			}
+//		}
+//		// rien a faire
+//		public static int DefaultWidth
+//		{
+//			get
+//			{
+//				return (int)(SettingsService.IndiagramDisplaySize * 1.2);
+//			}
+//		}
+//		// rien a fair
+//		public static int DefaultHeight
+//		{
+//			get
+//			{
+//				return (int)(SettingsService.IndiagramDisplaySize * 1.2 + SettingsService.FontSize);
+//			}
+//		}
 //	}
 //}
+

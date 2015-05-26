@@ -11,6 +11,7 @@ using Windows.Media.MediaProperties;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
@@ -31,23 +32,49 @@ namespace IndiaRose.Services
         public async Task<string> GetPictureFromCameraAsync()
         {
             var photo = new CameraCaptureUI();
-            var url = StorageService.GenerateFilename(StorageType.Image, "png");
 
             photo.PhotoSettings.AllowCropping = true;
             photo.PhotoSettings.CroppedAspectRatio = new Size(1, 1);
             photo.PhotoSettings.MaxResolution = CameraCaptureUIMaxPhotoResolution.HighestAvailable;
+            photo.PhotoSettings.Format = CameraCaptureUIPhotoFormat.Png;
 
             _recordStorageFile = await photo.CaptureFileAsync(CameraCaptureUIMode.Photo);
 
-            //TODO vérifier l'emplacement de la capture
-            _recordStorageFile.MoveAsync(ApplicationData.Current.LocalFolder, url);
+            if (_recordStorageFile != null)
+            {
+                var path = ApplicationData.Current.LocalFolder.Path + "\\IndiaRose\\image";
+                _url = string.Format("Image_{0}.{1}", Guid.NewGuid(), _recordStorageFile.FileType);
+                var folder = await StorageFolder.GetFolderFromPathAsync(path);
 
-            return url;
+                await _recordStorageFile.MoveAsync(folder, _url, NameCollisionOption.FailIfExists);
+
+                return string.Format(path, "\\", _url);
+            }
+
+            return "";
         }
 
-        public Task<string> GetPictureFromGalleryAsync()
+        public async Task<string> GetPictureFromGalleryAsync()
 		{
-			return null;
+            FileOpenPicker openPicker = new FileOpenPicker();
+            openPicker.ViewMode = PickerViewMode.List;
+            openPicker.SuggestedStartLocation = PickerLocationId.Desktop;
+            openPicker.FileTypeFilter.Add("*");
+
+            StorageFile file = await openPicker.PickSingleFileAsync();
+            if (file != null)
+            {
+                var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+                BitmapImage image = new BitmapImage();
+                image.SetSource(stream);
+                Image imageChangedProfilePic = new Image {Source = image, Stretch = Stretch.Fill};
+                return null;
+            }
+            else
+            {
+                //  OutputTextBlock.Text = "Operation cancelled.";
+                return null;
+            }
         }
 
         public Task<string> GetSoundFromGalleryAsync()
