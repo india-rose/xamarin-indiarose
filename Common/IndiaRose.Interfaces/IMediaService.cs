@@ -11,7 +11,7 @@ namespace IndiaRose.Interfaces
         Task<string> GetSoundFromGalleryAsync();
 
         void RecordSound();
-        string StopRecord();
+        Task<string> StopRecord();
         void PlaySound(string url);
     }
 }
