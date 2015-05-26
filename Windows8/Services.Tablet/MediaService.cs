@@ -60,7 +60,7 @@ namespace IndiaRose.Services
             FileOpenPicker openPicker = new FileOpenPicker
             {
                 ViewMode = PickerViewMode.Thumbnail,
-                SuggestedStartLocation = PickerLocationId.PicturesLibrary
+                SuggestedStartLocation = PickerLocationId.VideosLibrary
             };
             openPicker.FileTypeFilter.Add("*");
 
@@ -83,9 +83,26 @@ namespace IndiaRose.Services
             return "";
 		}
 
-        public Task<string> GetSoundFromGalleryAsync()
+        public async Task<string> GetSoundFromGalleryAsync()
 		{
-			return null;
+            var openPicker = new FileOpenPicker
+            {
+                ViewMode = PickerViewMode.Thumbnail,
+                SuggestedStartLocation = PickerLocationId.MusicLibrary
+            };
+            openPicker.FileTypeFilter.Add("*");
+
+            var file = await openPicker.PickSingleFileAsync();
+            if (file != null)
+            {
+                var path = ApplicationData.Current.LocalFolder.Path + "\\IndiaRose\\sound";
+                var folder = await StorageFolder.GetFolderFromPathAsync(path);
+                file.CopyAsync(folder, file.Name);
+
+                return string.Format("{0}\\{1}", path, file.Name);
+            }
+
+            return "";
         }
 
         public async void RecordSound()
