@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -110,7 +111,7 @@ namespace IndiaRose.Services
         public async Task<string> StopRecord()
         {
             await _recordMediaCapture.StopRecordAsync();
-            return _url;
+            return Path.Combine(StorageService.SoundPath,_url);
         }
 
         public void PlaySound(string url)

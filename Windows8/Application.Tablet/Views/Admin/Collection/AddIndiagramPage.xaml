@@ -119,7 +119,7 @@
                             Command="{Binding ResetSoundCommand}" 
                             Visibility="{Binding CurrentIndiagram.HasCustomSound, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <TextBlock Style="{StaticResource TextButton}"
-            		            x:Uid="Collection_ListenSound"/>
+            		            x:Uid="Collection_DeleteSound"/>
                     </Button>
                 </Grid>
                 <Button

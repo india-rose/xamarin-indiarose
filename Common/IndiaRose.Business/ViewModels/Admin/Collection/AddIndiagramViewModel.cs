@@ -328,7 +328,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
         protected void ListenAction()
         {
-            if (string.IsNullOrWhiteSpace(CurrentIndiagram.Text))
+            if (string.IsNullOrWhiteSpace(CurrentIndiagram.Text)&&!CurrentIndiagram.HasCustomSound)
             {
                 PopupService.DisplayPopup(LocalizationService.GetString("Collection_MissingSound", "Text"));
             }
