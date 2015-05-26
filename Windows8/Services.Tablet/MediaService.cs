@@ -97,9 +97,12 @@ namespace IndiaRose.Services
                 AudioProcessing = AudioProcessing.Default
             };
             await _recordMediaCapture.InitializeAsync(settings);
-            _url = StorageService.GenerateFilename(StorageType.Sound, "aac");
-            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
-            _recordStorageFile = await localFolder.CreateFileAsync(_url);
+
+            _url = string.Format("Sound_{0}.{1}", Guid.NewGuid(), "aac");
+            var path = ApplicationData.Current.LocalFolder.Path + "\\IndiaRose\\sound";
+            var folder = await StorageFolder.GetFolderFromPathAsync(path);
+
+            _recordStorageFile = await folder.CreateFileAsync(_url);
             MediaEncodingProfile profil = MediaEncodingProfile.CreateM4a(AudioEncodingQuality.Auto);
             await _recordMediaCapture.StartRecordToStorageFileAsync(profil, _recordStorageFile);
         }
