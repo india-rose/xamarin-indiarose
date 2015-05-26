@@ -7,7 +7,7 @@
     xmlns:mvvm="using:Storm.Mvvm"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminCollectionAddIndiagramViewModel}">
-    
+
     <Grid VerticalAlignment="Stretch" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"></ColumnDefinition>
@@ -19,21 +19,20 @@
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="60*"></RowDefinition>
             <RowDefinition Height="10*"></RowDefinition>
-            <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
         <!-- first Column -->
-        <StackPanel
+        <ScrollViewer
             Grid.Column="1"
             Grid.Row="1"
-            VerticalAlignment="Center">
-        <ScrollViewer 
-            VerticalContentAlignment="Stretch"
+            VerticalAlignment="Center"
             >
             <StackPanel>
                 <!--Text-->
                 <TextBlock Style="{StaticResource ItalicTextStyle}" 
-                           x:Uid="Collection_IndiagramText"/>
-                <TextBox Text="{Binding CurrentIndiagram.Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                           x:Uid="Collection_IndiagramText"
+                               />
+                <TextBox Text="{Binding CurrentIndiagram.Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             IsTabStop="False"/>
 
                 <!--Category-->
                 <TextBlock Style="{StaticResource ItalicTextStyle}"
@@ -55,14 +54,14 @@
                     <Button Grid.Column="0"
                             Style="{StaticResource BlueButton}"
                             Command="{Binding SelectCategoryCommand}">
-                        <TextBlock Style="{StaticResource SmallTextButton}"
+                        <TextBlock Style="{StaticResource TextButton}"
             	                x:Uid="Collection_ChooseCategory"/>
                     </Button>
 
                     <Button Grid.Column="1"
                         Style="{StaticResource PinkButton}"
                             Command="{Binding RootCommand}">
-                        <TextBlock Style="{StaticResource SmallTextButton}"
+                        <TextBlock Style="{StaticResource TextButton}"
             		            x:Uid="Collection_RootCategoryName"/>
                     </Button>
                 </Grid>
@@ -99,7 +98,7 @@
                         Style="{StaticResource PinkButton}"
                         Grid.ColumnSpan="{Binding CurrentIndiagram.HasCustomSound, Converter={StaticResource BooleanToColumnSpanConverter}}"
                         Command="{Binding SoundChoiceCommand}">
-                        <TextBlock Style="{StaticResource SmallTextButton}"
+                        <TextBlock Style="{StaticResource TextButton}"
             		            x:Uid="Collection_ChooseSound"/>
                     </Button>
                     <Button
@@ -107,7 +106,7 @@
                             Style="{StaticResource OrangeButton}"
                             Command="{Binding ResetSoundCommand}" 
                             Visibility="{Binding CurrentIndiagram.HasCustomSound, Converter={StaticResource BooleanToVisibilityConverter}}">
-                        <TextBlock Style="{StaticResource SmallTextButton}"
+                        <TextBlock Style="{StaticResource TextButton}"
             		            x:Uid="Collection_ListenSound"/>
                     </Button>
                 </Grid>
@@ -115,7 +114,7 @@
                         Style="{StaticResource BlueButton}"
                         Command="{Binding ListenCommand}"
                         >
-                    <TextBlock Style="{StaticResource SmallTextButton}"
+                    <TextBlock Style="{StaticResource TextButton}"
             		            x:Uid="Collection_ListenSound"/>
                 </Button>
 
@@ -130,7 +129,7 @@
                     <Button Grid.Column="0"
                             Style="{StaticResource BlueButton}"
                             Command="{Binding CopyCommand}">
-                        <TextBlock Style="{StaticResource SmallTextButton}"
+                        <TextBlock Style="{StaticResource TextButton}"
             	                x:Uid="Collection_Copy"/>
                     </Button>
 
@@ -138,7 +137,7 @@
                         Style="{StaticResource OrangeButton}"
                             IsEnabled="{Binding CopyPasteService.HasBuffer}"
                             Command="{Binding PasteCommand}">
-                        <TextBlock Style="{StaticResource SmallTextButton}"
+                        <TextBlock Style="{StaticResource TextButton}"
             		            x:Uid="Collection_Paste"/>
                     </Button>
                 </Grid>
@@ -169,16 +168,12 @@
 
 
             </StackPanel>
-            </ScrollViewer>
-        </StackPanel>
+        </ScrollViewer>
         <!-- 2nd Column -->
-        <StackPanel
+        <ScrollViewer
             Grid.Column="2"
             Grid.Row="1"
             VerticalAlignment="Center">
-            <ScrollViewer
-            VerticalAlignment="Stretch"
-            VerticalScrollBarVisibility="Hidden">
             <StackPanel>
                 <Canvas
                     Height="{Binding SettingsService.IndiagramDisplaySize}">
@@ -191,7 +186,7 @@
                 </Canvas>
                 <Button Style="{StaticResource PurpleButton}"
                         Command="{Binding ImageChoiceCommand}">
-                    <TextBlock Style="{StaticResource SmallTextButton}"
+                    <TextBlock Style="{StaticResource TextButton}"
                                    x:Uid="Collection_ChooseImage"
                             />
                 </Button>
@@ -203,8 +198,7 @@
                                 x:Uid="Collection_IsCategory"/>
                 </CheckBox>
             </StackPanel>
-            </ScrollViewer>
-        </StackPanel>
+        </ScrollViewer>
 
         <!-- Button ok & back-->
         <Button Style="{StaticResource GreenButton}"

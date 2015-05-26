@@ -217,7 +217,7 @@
     <None Include="Application.Tablet_TemporaryKey.pfx" />
     <Content Include="Assets\correction.png" />
     <Content Include="Assets\manuel.pdf" />
-    <AndroidAsset Include="Assets\indiagrams.zip" />
+    <Content Include="Assets\indiagrams.zip" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

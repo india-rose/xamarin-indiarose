@@ -22,16 +22,11 @@
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="60*"></RowDefinition>
             <RowDefinition Height="10*"></RowDefinition>
-            <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel
+        <ScrollViewer
             Grid.Column="1"
             Grid.Row="1"
-            VerticalAlignment="Center"
-            >
-        <ScrollViewer
-            VerticalAlignment="Stretch"
-            VerticalScrollBarVisibility="Hidden">
+            VerticalAlignment="Center">
             <StackPanel >
                 <TextBlock x:Uid="Collection_IndiagramText" Style="{StaticResource TextStyle}" />
                 <TextBlock Text="{Binding Indiagram.Text}" Style="{StaticResource SmallTextStyle}" />
@@ -52,12 +47,11 @@
                         Command="{Binding ListenCommand}"
                         Height="100"
             	>
-                        <TextBlock Style="{StaticResource TextButton}"
+                    <TextBlock Style="{StaticResource TextButton}"
             		x:Uid="Collection_ListenSound"/>
                 </Button>
             </StackPanel>
         </ScrollViewer>
-        </StackPanel>
         <Grid
             Grid.Column="1"
             Grid.Row="2"
