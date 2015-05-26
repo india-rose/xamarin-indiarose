@@ -97,9 +97,10 @@ namespace IndiaRose.Services
             {
                 var path = ApplicationData.Current.LocalFolder.Path + "\\IndiaRose\\sound";
                 var folder = await StorageFolder.GetFolderFromPathAsync(path);
-                file.CopyAsync(folder, file.Name);
+                _url = string.Format("Sound_{0}.{1}", Guid.NewGuid(), file.FileType);
+                file.CopyAsync(folder, _url);
 
-                return string.Format("{0}\\{1}", path, file.Name);
+                return string.Format("{0}\\{1}", path, _url);
             }
 
             return "";
