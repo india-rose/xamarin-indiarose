@@ -11,50 +11,82 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminSettingsApplicationLookViewModel}">
     
-    <Page.Resources>
-        <Style x:Key="TestBlockStyle" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="FontSize" Value="40" />
-            <Setter Property="VerticalAlignment" Value="Bottom" />
-            <Setter Property="Text" Value="" />
-            <Setter Property="TextWrapping" Value="Wrap" />
-        </Style>
-    </Page.Resources>
     
     <Grid VerticalAlignment="Stretch" Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="2.5*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="60*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Style="{StaticResource TestBlockStyle}" 
-                   Grid.ColumnSpan="2" 
-                   Grid.Row="0" 
+        <!--First column-->
+        <ScrollViewer
+            Grid.Column="1"
+            Grid.Row="1"
+            >
+            <StackPanel>
+            <TextBlock Style="{StaticResource TextStyle}" 
                    x:Uid="ApplicationLook_AreaSize" />
-        <ComboBox Grid.ColumnSpan="2" 
-                  Grid.Column="0"
-                  Grid.Row="1"
-                  ItemsSource ="{Binding ZoneHeightCollection}"
+        <ComboBox ItemsSource ="{Binding ZoneHeightCollection}"
                   SelectedItem="{Binding CurrentSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        
-        <Button Style="{StaticResource GreenButton}" 
+                </StackPanel>
+        </ScrollViewer>
+
+        <!--Second column-->
+
+        <Grid Grid.Column="2" Grid.Row="1"  VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"></RowDefinition>
+                <RowDefinition Height="60*"></RowDefinition>
+                <RowDefinition Height="10*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Canvas
+                    Height="110" Grid.Row="1"
+                    Width="180"
+                 >
+                <Canvas.Background>
+                    <ImageBrush ImageSource="../../../Assets/tab.png" Stretch="Fill"/>
+                </Canvas.Background>
+                <Button Background="{Binding TopColor.Color}"
+                           Command="{Binding TopAreaColorCommand}"
+                           Height="{Binding CurrentSize, Converter={StaticResource TopAreaSizeToBottomAreaSizeConverter}}"
+                           Width="180">
+                    
+                    
+                </Button>
+                <Button Background="{Binding BottomColor.Color}"
+                           Command="{Binding BottomAreaColorCommand}"
+                           Height="{Binding CurrentSize}"
+                           Width="180">
+
+                </Button>
+            </Canvas>
+           
+            </Grid>
+            
+            <Button Style="{StaticResource SmallButton}" 
+                Background="ForestGreen"
                 Command="{Binding SaveCommand}"
-                Grid.Column="0"
-                Grid.Row="3">
+                Grid.Column="2"
+                Grid.Row="2">
                 <TextBlock Style="{StaticResource TextButton}"
                       x:Uid="Button_Ok"/>
             </Button>
         <Button Style="{StaticResource OrangeButton}"
                 Command="{Binding BackCommand}"
                 Grid.Column="1"
-                Grid.Row="3">
+                Grid.Row="2">
             <TextBlock Style="{StaticResource TextButton}" 
                      x:Uid="Button_Cancel"/>
 

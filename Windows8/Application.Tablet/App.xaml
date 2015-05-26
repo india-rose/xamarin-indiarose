@@ -16,7 +16,7 @@
             
             <!--Converter-->
             <converters:StringFormatConverter x:Key="StringFormatConverter"/>
-            
+            <conv:TopAreaSizeToBottomAreaSizeConverter x:Key="TopAreaSizeToBottomAreaSizeConverter"/>
             <conv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
             <conv:IndiaSizeToReinforcerSizeConverter x:Key="IndiaSizeToReinforcerSizeConverter"/>
             <conv:ParentCategoryTextConverter x:Key="ParentCategoryConverter"

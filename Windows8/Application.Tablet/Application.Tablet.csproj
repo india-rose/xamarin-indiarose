@@ -211,6 +211,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\tab.png" />
     <PRIResource Include="..\..\Resources\en\Resources.resw">
       <Link>Resources\en\Resources.resw</Link>
     </PRIResource>
