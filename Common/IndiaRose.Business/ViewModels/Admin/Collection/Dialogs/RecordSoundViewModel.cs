@@ -56,9 +56,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			MediaService.RecordSound();
 		}
 
-		protected void StopAction()
+		protected async void StopAction()
 		{
-			Indiagram.SoundPath = MediaService.StopRecord();
+			Indiagram.SoundPath = await MediaService.StopRecord();
 			IsRecording = false;
 			MessageDialogService.DismissCurrentDialog();
 		}

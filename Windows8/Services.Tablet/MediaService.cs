@@ -48,7 +48,7 @@ namespace IndiaRose.Services
 
                 await _recordStorageFile.MoveAsync(folder, _url, NameCollisionOption.FailIfExists);
 
-                return path + "\\" + _url;
+                return string.Format("{0}\\{1}",path, _url);
             }
 
             return "";
@@ -56,26 +56,31 @@ namespace IndiaRose.Services
 
         public async Task<string> GetPictureFromGalleryAsync()
 		{
-            FileOpenPicker openPicker = new FileOpenPicker();
-            openPicker.ViewMode = PickerViewMode.List;
-            openPicker.SuggestedStartLocation = PickerLocationId.Desktop;
+            FileOpenPicker openPicker = new FileOpenPicker
+            {
+                ViewMode = PickerViewMode.Thumbnail,
+                SuggestedStartLocation = PickerLocationId.PicturesLibrary
+            };
             openPicker.FileTypeFilter.Add("*");
 
             StorageFile file = await openPicker.PickSingleFileAsync();
             if (file != null)
             {
-                var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+                var stream = await file.OpenAsync(FileAccessMode.Read);
                 BitmapImage image = new BitmapImage();
                 image.SetSource(stream);
-                Image imageChangedProfilePic = new Image {Source = image, Stretch = Stretch.Fill};
+
+                var path = ApplicationData.Current.LocalFolder.Path + "\\IndiaRose\\image";
+                var folder = await StorageFolder.GetFolderFromPathAsync(path);
+
+                //file.CopyAsync(folder, "test.png");
+                //return string.Format("{0}\\{1}", path, _url);
+
                 return null;
             }
-            else
-            {
-                //  OutputTextBlock.Text = "Operation cancelled.";
-                return null;
-            }
-        }
+
+            return "";
+		}
 
         public Task<string> GetSoundFromGalleryAsync()
 		{
@@ -99,11 +104,9 @@ namespace IndiaRose.Services
             await _recordMediaCapture.StartRecordToStorageFileAsync(profil, _recordStorageFile);
         }
 
-        public string StopRecord()
+        public async Task<string> StopRecord()
         {
-            //TODO si ça plante, async
-            _recordMediaCapture.StopRecordAsync();
-            _recordMediaCapture.Dispose();
+            await _recordMediaCapture.StopRecordAsync();
             return _url;
         }
 
