@@ -143,6 +143,9 @@
                 <Setter Property="TextAlignment" Value="Center"/>
                 <Setter Property="TextWrapping" Value="Wrap"/>
             </Style>
+            <Style x:Key="PaddingTextButton" BasedOn="{StaticResource TextButton}" TargetType="TextBlock">
+                <Setter Property="Padding" Value="10"/>
+            </Style>
             <!--Normal Color Button-->
             <Style x:Key="OrangeButton" BasedOn="{StaticResource SmallButton}" TargetType="Button">
                 <Setter Property="Background" Value="OrangeRed"/>

@@ -26,12 +26,12 @@ namespace IndiaRose.Services
 			IRandomAccessStream tmp = await file.OpenAsync(FileAccessMode.Read);
 			return tmp.AsStream();
 		}
-
 		public async void Copy(string src, string dest)
 		{
 			var source = new Uri("ms-appx:///Assets/" + src);
 			StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(source);
-			FileIO.WriteTextAsync(file, dest);
+		    StorageFolder fold = await StorageFolder.GetFolderFromPathAsync(Path.GetDirectoryName(dest));
+		    await file.CopyAsync(fold, file.Name);
 		}
 	}
 }

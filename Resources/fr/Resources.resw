@@ -252,7 +252,7 @@
   <data name="ReadingDelay_Explanation.Text" xml:space="preserve">
     <value>Modify the delay between two words</value>
   </data>
-  <data name="ReadingDelay_ValueFormat.Text" xml:space="preserve">
+  <data name="ReadingDelay_ValueFormat.ConverterParameter" xml:space="preserve">
     <value>{0:0.0} seconds</value>
   </data>
   <data name="ReadingDelay_Title.Text" xml:space="preserve">
