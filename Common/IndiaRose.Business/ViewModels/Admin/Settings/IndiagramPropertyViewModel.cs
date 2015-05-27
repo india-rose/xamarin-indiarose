@@ -164,6 +164,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 			SettingsService.FontName = FontService.FontList[FontName];
 			SettingsService.ReinforcerColor = ReinforcerColor.Color;
 		    SettingsService.TextColor = TextColor.Color;
+		    SettingsService.IsBackHomeAfterSelectionEnabled = BackAfterSelection;
+		    SettingsService.IsReinforcerEnabled = ReinforcerEnabled;
 
 			base.SaveAction();
             BackAction();
