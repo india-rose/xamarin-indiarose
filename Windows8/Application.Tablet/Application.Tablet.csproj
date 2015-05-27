@@ -321,6 +321,10 @@
     <Content Include="Assets\StoreLogo.scale-100.png" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Color_Picker, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\RadialColorPickerCV.1.2.8\lib\Color_Picker.dll</HintPath>
+    </Reference>
     <Reference Include="Funq.Portable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Funq.Portable.1.0.1\lib\Funq.Portable.dll</HintPath>
