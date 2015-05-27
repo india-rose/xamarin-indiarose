@@ -24,22 +24,14 @@ namespace IndiaRose.Application.Views.Dialogs
     /// </summary>
     public sealed partial class ColorPickerDialog
     {
-        public ColorPickerDialog() : base (300)
+        public ColorPickerDialog() : base (700)
         {
             this.InitializeComponent();
-            var colors = typeof(Colors).GetTypeInfo().DeclaredProperties;
-            foreach (var item in colors)
+            Color.colorChanged += (object sender, EventArgs args) =>
             {
-                if (CbBorderColor.Items != null) CbBorderColor.Items.Add(item);
-            }
-        }
-        private void cbBorderColor_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (CbBorderColor.SelectedIndex != -1)
-            {
-                var pi = CbBorderColor.SelectedItem as PropertyInfo;
-                BorderColor = (Color)pi.GetValue(null);
-            }
+                // Main Grid 
+                MainGridLayout.Background = new SolidColorBrush(Color.SelectedColor);
+            };    
         }
 
         public Color BorderColor { get; set; }

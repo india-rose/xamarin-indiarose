@@ -24,12 +24,10 @@
 		                                        Property="Text" />
             <conv:DefaultLocalizedStringIfNullConverter x:Key="DefaultLocalizedStringIfNullConverter"
                                                           Uid="Collection_NoSound"
-		                                                  Property="Text"
-            />
-            <conv:BooleanToColumnSpanConverter x:Key="BooleanToColumnSpanConverter"
-                />
-            <conv:IndiaSizeToMarginSize x:Key="IndiaSizeToMarginSize"
-                />
+		                                                  Property="Text"/>
+            <conv:BooleanToColumnSpanConverter x:Key="BooleanToColumnSpanConverter"/>
+            <conv:IndiaSizeToMarginSize x:Key="IndiaSizeToMarginSize"/>
+            <conv:ColorStringToIntConverter x:Key="ColorStringToIntConverter"/>
 
 
             <!--Button Style-->

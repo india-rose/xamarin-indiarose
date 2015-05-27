@@ -7,16 +7,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvvm="using:Storm.Mvvm"
     mc:Ignorable="d"
+    xmlns:xc="using:Color_Picker"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminSettingsDialogsColorPickerViewModel}"
-    PopupHeight="300">
+    PopupHeight="700">
 
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="10*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -35,27 +36,10 @@
                    Grid.Row="1" 
                    Grid.Column="1" 
                    Text="Choose a color" />
-        <ComboBox
-            Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" 
-            VerticalAlignment="Center"
-            x:Name="CbBorderColor"
-            Width="200" Height="40" 
-            SelectedItem="{Binding CurrentColor,Mode=TwoWay}" 
-            SelectionChanged="cbBorderColor_SelectionChanged" 
-            Padding="8,0" Margin="10,0,0,0">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Rectangle Width="35" Height="20" Fill="{Binding Name}" Margin="5,0"/>
-                        <TextBlock Grid.Column="1" Margin="10,0,0,0" Text="{Binding Name}" Foreground="Black"/>
-                    </Grid>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+
+        <Grid HorizontalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1" Name="MainGridLayout" Background="{Binding Color.Color}">
+            <xc:Clr_Pckr Width="500" Height="300" x:Name="Color"  />
+            </Grid>
         
         <!-- button ok and cancel -->
         <Button Style="{StaticResource SmallButton}" 

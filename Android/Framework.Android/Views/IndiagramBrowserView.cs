@@ -124,7 +124,7 @@ namespace IndiaRose.Framework.Views
 
 		private void Initialize()
 		{
-			string path = Path.Combine(LazyResolver<IStorageService>.Service.RootPath, "app/nextarrow.png");
+		    string path = LazyResolver<IStorageService>.Service.ImageNextArrowPath;
 			_nextButton = new IndiagramView(Context)
 			{
 				TextColor = 0,
