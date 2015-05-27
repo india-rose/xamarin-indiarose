@@ -39,6 +39,7 @@
                      Grid.Column="1"
                      HorizontalAlignment="Center" 
                      VerticalAlignment="Center"  
+                     GroupName="1"
                      IsChecked="{Binding IsEnabled, Mode=TwoWay}">
             <TextBlock Style="{StaticResource SmallTextButton}" 
                        x:Uid="RadioButton_On" />
@@ -47,6 +48,7 @@
                      Grid.Column="2" 
                      HorizontalAlignment="Center" 
                      VerticalAlignment="Center"
+                     GroupName="1"
                      IsChecked="{Binding IsDisabled, Mode=TwoWay}">
             <TextBlock Style="{StaticResource SmallTextButton}" 
                        x:Uid="RadioButton_Off" />
