@@ -3,19 +3,25 @@
 //using System.Linq;
 //using System.Text;
 //using System.Threading.Tasks;
+//using Windows.ApplicationModel.Appointments.AppointmentsProvider;
 //using Windows.Foundation;
+//using Windows.Security.ExchangeActiveSyncProvisioning;
 //using Windows.UI;
+//using Windows.UI.StartScreen;
+//using Windows.UI.Xaml;
 //using Windows.UI.Xaml.Automation.Peers;
 //using Windows.UI.Xaml.Controls;
 //using Windows.UI.Xaml.Media;
+//using Windows.UI.Xaml.Shapes;
 //using IndiaRose.Data.Model;
+//using IndiaRose.Framework.Helper;
 //using IndiaRose.Interfaces;
 //using Storm.Mvvm.Inject;
 //using Storm.Mvvm.Services;
 
 //namespace IndiaRose.Framework.Views
 //{
-//	class IndiagramView
+//	public class IndiagramView : Control
 //	{
 //		//fait avec les conseilles de julien
 //		#region Fields
@@ -100,7 +106,6 @@
 //				{
 //					_indiagram = value;
 //					RefreshDimension();
-//					DispatcherService.InvokeOnUIThread(IInitializable);
 //				}
 //			}
 //		}
@@ -113,8 +118,7 @@
 //				if (_textColor != value)
 //				{
 //					_textColor = value;
-//					_textPainter. = new Color((int)_textColor.);
-//					DispatcherService.InvokeOnUIThread(Invalidate);
+//					_textPainter.SetValue(TextBlock.ForegroundProperty, value);
 //				}
 //			}
 //		}
@@ -127,8 +131,8 @@
 //				if (_backgroundColor != value)
 //				{
 //					_backgroundColor = value;
-//					_backgroundPainter.Color = new Color((int)value);
-//					DispatcherService.InvokeOnUIThread(Invalidate);
+//					SolidColorBrush colorBrush = new SolidColorBrush(_backgroundColor.ToColor());
+//					_backgroundPainter.Background = colorBrush;
 //				}
 //			}
 //		}
@@ -140,49 +144,21 @@
 
 //		#endregion
 
-//		#region Constructors
-
-//		protected IndiagramView(IntPtr javaReference, JniHandleOwnership transfer)
-//			: base(javaReference, transfer)
-//		{
-//			Initialize();
-//		}
-
-//		public IndiagramView(Context context)
-//			: base(context)
-//		{
-//			Initialize();
-//		}
-
-//		public IndiagramView(Context context, IAttributeSet attrs)
-//			: base(context, attrs)
-//		{
-//			Initialize();
-//		}
-
-//		public IndiagramView(Context context, IAttributeSet attrs, int defStyleAttr)
-//			: base(context, attrs, defStyleAttr)
-//		{
-//			Initialize();
-//		}
-
-//		#endregion
-
 //		private void Initialize()
 //		{
-//			_picturePainter.Color = Color.Red;
+//			_picturePainter.SetValue(Image.StyleProperty, Color.FromArgb(0xFF, 0xFF, 0x00, 0x00));
 //			_textPainter.SetTypeface(FontHelper.LoadFont(SettingsService.FontName));
-//			_textPainter.Color = new Color((int)_textColor);
+//			_textPainter.SetValue(TextBlock.ForegroundProperty,_textColor.ToColor());
 //			_textPainter.TextSize = SettingsService.FontSize;
 //			_textPainter.TextAlign = Paint.Align.Center;
-//			_backgroundPainter.Color = Color.Transparent;
+//			_backgroundPainter.SetValue( BackgroundColor,Colors.Transparent);
 
 //			_pictureWidth = _pictureHeight = SettingsService.IndiagramDisplaySize;
 //		}
 
 //		protected void RefreshDimension()
 //		{
-//			float textWidth = _textPainter.MeasureText(_indiagram.Text);
+//			float textWidth = _textPainter.Measure(new Size((double)_indiagram.Text.Length,));
 //			int textHeight = SettingsService.FontSize;
 
 //			if (string.IsNullOrEmpty(_indiagram.Text))
@@ -217,13 +193,18 @@
 //				canvas.DrawBitmap(image, _marginLeft, _marginTop, _picturePainter);
 //			}
 //			catch (Exception)
-//			{
+//			{/* 
+//			  * cree un rect 
+//			  * metre dans un rectgeo
+//			  * le metre en enfant du canvas
+//			  * afficher les enfant du canva
+//			  */
 //				canvas.DrawRect(_marginLeft, _marginTop, _pictureWidth + _marginLeft, _pictureHeight + _marginTop, _picturePainter);
 //			}
 
 //			if (!_indiagram.IsEnabled)
 //			{
-//				canvas.DrawRect(_marginLeft, _marginTop, _pictureWidth + _marginLeft, _pictureHeight + _marginTop, new Paint() { Color = new Color(0, 0, 0, 128) });
+//				canvas.DrawRect(_marginLeft, _marginTop, _pictureWidth + _marginLeft, _pictureHeight + _marginTop, new SolidColorBrush(Color.FromArgb(0,0,0,128)));
 //			}
 
 //			if (!string.IsNullOrEmpty(_indiagram.Text))
@@ -254,6 +235,7 @@
 //				}
 //			}
 //		}
+
 //		// rien a faire
 //		public static int DefaultWidth
 //		{
