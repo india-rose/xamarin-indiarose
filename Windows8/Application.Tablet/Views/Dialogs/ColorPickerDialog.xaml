@@ -9,15 +9,15 @@
     mc:Ignorable="d"
     xmlns:xc="using:Color_Picker"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminSettingsDialogsColorPickerViewModel}"
-    PopupHeight="700">
+    PopupHeight="400">
 
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Name="Grid" Background="{Binding CurrentColor,Mode=TwoWay}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*" />
-            <RowDefinition Height="5*" />
-            <RowDefinition Height="50*" />
             <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="40*" />
+            <RowDefinition Height="20*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -26,23 +26,26 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
+        <TextBlock Name="Title"
+            Grid.Row="0" Grid.ColumnSpan="2"
                    Grid.Column="1"
                    Style="{StaticResource PopupTitleStyle}" 
                    x:Uid="ColorPicker_Title"
                    />
 
-        <TextBlock Style="{StaticResource PopupContentStyle}" 
+        <TextBlock Name="Expl"
+            Style="{StaticResource PopupContentStyle}" 
                    Grid.Row="1" 
                    Grid.Column="1" 
                    Text="Choose a color" />
 
-        <Grid HorizontalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1" Name="MainGridLayout" Background="{Binding Color.Color}">
-            <xc:Clr_Pckr Width="500" Height="300" x:Name="Color"  />
+        <Grid Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="0" Name="MainGridLayout" Background="{Binding CurrentColor,Mode=TwoWay}">
+            <xc:Clr_Pckr SelectedColor="{Binding CurrentColor, Mode=TwoWay}" x:Name="Color"/>
             </Grid>
         
         <!-- button ok and cancel -->
-        <Button Style="{StaticResource SmallButton}" 
+        <Button Name="Ok"
+            Style="{StaticResource SmallButton}" 
                 Grid.Row="3" 
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
@@ -51,7 +54,8 @@
                        x:Uid="Button_Ok" />
         </Button>
 
-        <Button Style="{StaticResource SmallButton}" 
+        <Button Name="Cancel"
+            Style="{StaticResource SmallButton}" 
                 Grid.Row="3" 
                 Grid.Column="2"
                 Grid.ColumnSpan="2"
