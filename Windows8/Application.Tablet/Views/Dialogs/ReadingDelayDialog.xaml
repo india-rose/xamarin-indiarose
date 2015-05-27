@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvvm="using:Storm.Mvvm"
+    xmlns:localization="using:Storm.Mvvm.Localization"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminSettingsDialogsReadingDelayViewModel}"
     PopupHeight="300">
@@ -47,8 +48,15 @@
             Style="{StaticResource PopupValueStyle}" 
                    Grid.Row="3" 
                    Grid.Column="0" 
-           Text="{Binding CurrentDelay}"
-                    />
+           >
+            <TextBlock.Text>
+                <Binding Path="CurrentDelay"
+                         Converter="{StaticResource StringFormatConverter}"
+                         localization:LocalizationHelper.Properties="ConverterParameter"
+                         localization:LocalizationHelper.Uid="ReadingDelay_ValueFormat"
+                         />
+            </TextBlock.Text>
+        </TextBlock>
 
         <!-- button ok and cancel -->
         <Button Style="{StaticResource SmallButton}" 

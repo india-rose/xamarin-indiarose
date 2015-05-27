@@ -17,6 +17,6 @@
 	          android:layout_height="wrap_content"
 	          android:layout_marginBottom="25dp"
 	          android:layout_marginLeft="15dp"
-	          Text="{Binding CurrentDelay, Converter={Resource StringFormatConverter}, ConverterParameter={Tr Text, Uid=ReadingDelay_ValueFormat}}" />
+	          Text="{Binding CurrentDelay, Converter={Resource StringFormatConverter}, ConverterParameter={Tr ConverterParameter, Uid=ReadingDelay_ValueFormat}}" />
 
 </LinearLayout>

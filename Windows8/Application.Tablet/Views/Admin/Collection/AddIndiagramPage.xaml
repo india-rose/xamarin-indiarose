@@ -11,7 +11,7 @@
     <Page.Resources>
         <DataTemplate x:Key="PositionTemplate">
             <StackPanel>
-                <TextBlock
+                <TextBlock Style="{StaticResource BlackSmallTextStyle}"
                     Text="{Binding Text}"/>
             </StackPanel>
         </DataTemplate>
@@ -63,14 +63,14 @@
                     <Button Grid.Column="0"
                             Style="{StaticResource BlueButton}"
                             Command="{Binding SelectCategoryCommand}">
-                        <TextBlock Style="{StaticResource TextButton}"
+                        <TextBlock Style="{StaticResource PaddingTextButton}"
             	                x:Uid="Collection_ChooseCategory"/>
                     </Button>
 
                     <Button Grid.Column="1"
                         Style="{StaticResource PinkButton}"
                             Command="{Binding RootCommand}">
-                        <TextBlock Style="{StaticResource TextButton}"
+                        <TextBlock Style="{StaticResource PaddingTextButton}"
             		            x:Uid="Collection_RootCategoryName"/>
                     </Button>
                 </Grid>
@@ -110,7 +110,7 @@
                         Style="{StaticResource PinkButton}"
                         Grid.ColumnSpan="{Binding CurrentIndiagram.HasCustomSound, Converter={StaticResource BooleanToColumnSpanConverter}}"
                         Command="{Binding SoundChoiceCommand}">
-                        <TextBlock Style="{StaticResource TextButton}"
+                        <TextBlock Style="{StaticResource PaddingTextButton}"
             		            x:Uid="Collection_ChooseSound"/>
                     </Button>
                     <Button
@@ -118,7 +118,7 @@
                             Style="{StaticResource OrangeButton}"
                             Command="{Binding ResetSoundCommand}" 
                             Visibility="{Binding CurrentIndiagram.HasCustomSound, Converter={StaticResource BooleanToVisibilityConverter}}">
-                        <TextBlock Style="{StaticResource TextButton}"
+                        <TextBlock Style="{StaticResource PaddingTextButton}"
             		            x:Uid="Collection_DeleteSound"/>
                     </Button>
                 </Grid>
@@ -126,7 +126,7 @@
                         Style="{StaticResource BlueButton}"
                         Command="{Binding ListenCommand}"
                         >
-                    <TextBlock Style="{StaticResource TextButton}"
+                    <TextBlock Style="{StaticResource PaddingTextButton}"
             		            x:Uid="Collection_ListenSound"/>
                 </Button>
 
@@ -141,7 +141,7 @@
                     <Button Grid.Column="0"
                             Style="{StaticResource BlueButton}"
                             Command="{Binding CopyCommand}">
-                        <TextBlock Style="{StaticResource TextButton}"
+                        <TextBlock Style="{StaticResource PaddingTextButton}"
             	                x:Uid="Collection_Copy"/>
                     </Button>
 
@@ -149,7 +149,7 @@
                         Style="{StaticResource OrangeButton}"
                             IsEnabled="{Binding CopyPasteService.HasBuffer}"
                             Command="{Binding PasteCommand}">
-                        <TextBlock Style="{StaticResource TextButton}"
+                        <TextBlock Style="{StaticResource PaddingTextButton}"
             		            x:Uid="Collection_Paste"/>
                     </Button>
                 </Grid>
@@ -195,7 +195,7 @@
                            />
                 <Button Style="{StaticResource PurpleButton}"
                         Command="{Binding ImageChoiceCommand}">
-                    <TextBlock Style="{StaticResource TextButton}"
+                    <TextBlock Style="{StaticResource PaddingTextButton}"
                                    x:Uid="Collection_ChooseImage"
                             />
                 </Button>
