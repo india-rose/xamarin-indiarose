@@ -37,6 +37,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			if (DeleteCallback != null)
 			{
 				DeleteCallback();
+                CloseDialogAction();
 			}
 		}
 	}
