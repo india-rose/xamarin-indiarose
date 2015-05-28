@@ -7,6 +7,7 @@ using Windows.Graphics.Imaging;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using IndiaRose.Data.Model;
@@ -181,9 +182,18 @@ namespace IndiaRose.Framework.Views
             return true;
         }
 
-        void view_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        void view_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var senderView = sender as IndiagramView;
+            if (senderView == null)
+            {
+                return;
+            }
+            var indiagram = senderView.Indiagram;
+            if (IndiagramSelected != null && IndiagramSelected.CanExecute(indiagram))
+            {
+                IndiagramSelected.Execute(indiagram);
+            }
         }
 
         private void RefreshDisplay(object sender = null, RoutedEventArgs e = null)
