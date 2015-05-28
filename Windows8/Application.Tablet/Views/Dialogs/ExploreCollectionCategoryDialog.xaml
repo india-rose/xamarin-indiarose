@@ -11,9 +11,9 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="37*" />
-            <RowDefinition Height="128*" />
-            <RowDefinition Height="27*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="5*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -50,7 +50,7 @@
                 Grid.Column="1"
                 Command="{Binding GoIntoCommand}">
             <TextBlock Style="{StaticResource TextButton}" 
-                       x:Uid="Button_Delete" />
+                       x:Uid="ExploreCollection_GoIntoCategory" />
         </Button>
 
         <Button Style="{StaticResource SmallButton}" 
@@ -58,7 +58,7 @@
                 Grid.Column="2"
                 Command="{Binding SeeIndiagramCommand}">
             <TextBlock Style="{StaticResource TextButton}" 
-                       x:Uid="ExploreCollection_GoIntoCategory" />
+                       x:Uid="ExploreCollection_SeeIndiagram" />
         </Button>
     </Grid>
 </mvvm:DialogPage>

@@ -43,6 +43,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			if (GoIntoCallback != null)
 			{
 				GoIntoCallback(Indiagram as Category);
+				CloseDialogAction();
 			}
 		}
 
@@ -52,6 +53,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			{
 				{"Indiagram", Indiagram}
 			});
+			CloseDialogAction();
 		}
 	}
 }

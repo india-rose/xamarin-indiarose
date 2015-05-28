@@ -36,6 +36,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			{
 				{"Indiagram", Indiagram}
 			});
+			CloseDialogAction();
 		}
 
 		private void WatchIndiagram()
@@ -44,6 +45,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			{
 				{"Indiagram", Indiagram}
 			});
+			CloseDialogAction();
 		}
 	}
 }
