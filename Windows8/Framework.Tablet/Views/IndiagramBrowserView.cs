@@ -20,7 +20,7 @@ namespace IndiaRose.Framework.Views
         #region Private fields
         private int _columnCount;
         private int _lineCount;
-        private Image[][] _displayableViews;
+        private IndiagramView[][] _displayableViews;
         private readonly Image _nextButton;
         private readonly int _indiaSize;
         private readonly int _margin;
@@ -75,7 +75,6 @@ namespace IndiaRose.Framework.Views
             set
             {
                 SetValue(TextColorProperty, value);
-                RefreshTextColor();
             }
         }
 
@@ -97,7 +96,7 @@ namespace IndiaRose.Framework.Views
         {
             _indiaSize = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize;
             _margin = _indiaSize / 10;
-            _nextButton=new Image()
+            _nextButton = new Image()
             {
                 Height = _indiaSize,
                 Width = _indiaSize,
@@ -106,23 +105,13 @@ namespace IndiaRose.Framework.Views
                     new BitmapImage(new Uri(LazyResolver<IStorageService>.Service.ImageNextArrowPath, UriKind.Absolute))
             };
             _nextButton.Tapped += _nextButton_Tapped;
-            Loaded += IndiagramBrowserView_Loaded;
-            //SizeChanged += OnSizeChanged;
+            SizeChanged += OnSizeChanged;
 
-        }
-
-        void IndiagramBrowserView_Loaded(object sender, RoutedEventArgs e)
-        {
-            Children.Add(new IndiagramView()
-            {
-                Indiagram = Indiagrams[0],
-                TextColor = TextColor
-            });
         }
 
         void _nextButton_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            if(NextCommand!=null&&NextCommand.CanExecute(null))
+            if (NextCommand != null && NextCommand.CanExecute(null))
                 NextCommand.Execute(null);
         }
 
@@ -145,8 +134,8 @@ namespace IndiaRose.Framework.Views
                     Height = new GridLength(1, GridUnitType.Star)
                 });
             }
-            Grid.SetColumn(_nextButton,_columnCount-1);
-            Grid.SetRow(_nextButton,0);
+            Grid.SetColumn(_nextButton, _columnCount - 1);
+            Grid.SetRow(_nextButton, 0);
             g.Children.Add(_nextButton);
             Children.Add(g);
         }
@@ -159,8 +148,8 @@ namespace IndiaRose.Framework.Views
 
         private bool Reset()
         {
-            int newColumnCount = (int)(ActualWidth / (_indiaSize + _margin));
-            int newLineCount = (int)(ActualHeight / (_indiaSize + _margin));
+            int newColumnCount = (int)(ActualWidth / IndiagramView.DefaultWidth);
+            int newLineCount = (int)(ActualHeight / IndiagramView.DefaultHeight);
 
             if (newColumnCount != _columnCount || newLineCount != _lineCount)
             {
@@ -177,17 +166,13 @@ namespace IndiaRose.Framework.Views
                 Children.Clear();
                 _displayableViews = null;
             }
-            _displayableViews = new Image[_lineCount][];
+            _displayableViews = new IndiagramView[_lineCount][];
             for (int line = 0; line < _lineCount; ++line)
             {
-                _displayableViews[line] = new Image[_columnCount - ((line == 0) ? 1 : 0)];
+                _displayableViews[line] = new IndiagramView[_columnCount - ((line == 0) ? 1 : 0)];
                 for (int column = 0; column < _displayableViews[line].Length; ++column)
                 {
-                    var view = new Image()
-                    {
-                        Height = _indiaSize,
-                        Width = _indiaSize
-                    };
+                    var view = new IndiagramView { TextColor = TextColor };
                     view.Tapped += view_Tapped;
                     _displayableViews[line][column] = view;
                 }
@@ -199,10 +184,6 @@ namespace IndiaRose.Framework.Views
         void view_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             throw new NotImplementedException();
-        }
-        private void RefreshTextColor()
-        {
-            throw new System.NotImplementedException();
         }
 
         private void RefreshDisplay(object sender = null, RoutedEventArgs e = null)
@@ -227,12 +208,11 @@ namespace IndiaRose.Framework.Views
                         stop = true;
                         break;
                     }
-                    Image view = _displayableViews[line][column];
-                    view.Source = new BitmapImage(new Uri(toDisplay[index++].ImagePath, UriKind.Absolute));
-                    view.Margin = new Thickness(_margin, _margin, 0, 0);
+                    IndiagramView view = _displayableViews[line][column];
+                    view.Indiagram = toDisplay[index++];
                     lineCount++;
-                    Grid.SetColumn(view,column);
-                    Grid.SetRow(view,line);
+                    Grid.SetColumn(view, column);
+                    Grid.SetRow(view, line);
                     g.Children.Add(view);
                     if (lineHeight < view.Height)
                         lineHeight = (int)view.Height;

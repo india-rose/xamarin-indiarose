@@ -18,9 +18,9 @@ namespace IndiaRose.Framework.Views
         {
             get { return LazyResolver<ISettingsService>.Service; }
         }
-        private TextBlock _textBlock;
-        private Image _image;
-        private StackPanel _redRect;
+        private readonly TextBlock _textBlock;
+        private readonly Image _image;
+        private readonly StackPanel _redRect;
 
         public static readonly DependencyProperty TextColorProperty = DependencyProperty.Register(
             "TextColor", typeof(SolidColorBrush), typeof(IndiagramView), new PropertyMetadata(default(SolidColorBrush)));
@@ -91,7 +91,7 @@ namespace IndiaRose.Framework.Views
             {
                 _image.Opacity = 0.5;
             }
-            if (string.IsNullOrEmpty(Indiagram.Text))
+            if (!string.IsNullOrEmpty(Indiagram.Text))
                 _textBlock.Text = Indiagram.Text;
         }
 
