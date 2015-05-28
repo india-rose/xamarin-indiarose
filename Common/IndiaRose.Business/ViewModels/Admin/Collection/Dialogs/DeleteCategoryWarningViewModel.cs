@@ -35,6 +35,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 		{
 			if (Indiagram.HasChildren)
 			{
+                CloseDialogAction();
 				MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_DELETECONFIRMATION_CATEGORY, new Dictionary<string, object>
 				{
 					{"Indiagram", Indiagram},

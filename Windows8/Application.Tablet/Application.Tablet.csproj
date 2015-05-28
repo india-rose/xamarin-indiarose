@@ -182,6 +182,12 @@
     <Compile Include="Views\Dialogs\ColorPickerDialog.xaml.cs">
       <DependentUpon>ColorPickerDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dialogs\DeleteCategoryConfirmation.xaml.cs">
+      <DependentUpon>DeleteCategoryConfirmation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\DeleteCategoryWarning.xaml.cs">
+      <DependentUpon>DeleteCategoryWarning.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\DragAndDropDialog.xaml.cs">
       <DependentUpon>DragAndDropDialog.xaml</DependentUpon>
     </Compile>
@@ -279,6 +285,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dialogs\ColorPickerDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\DeleteCategoryConfirmation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\DeleteCategoryWarning.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
