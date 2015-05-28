@@ -8,6 +8,7 @@
     xmlns:vm="using:IndiaRose.Business"
     xmlns:interop="using:Windows.UI.Xaml.Interop"
     xmlns:mvvm="using:Storm.Mvvm"
+    xmlns:views="using:IndiaRose.Framework.Views"
     mc:Ignorable="d"
         DataContext="{Binding Source={StaticResource Locator}, Path=AdminCollectionManagementViewModel}">
 
@@ -20,13 +21,23 @@
             <ColumnDefinition Width="5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="60*"></RowDefinition>
             <RowDefinition Height="10*"></RowDefinition>
         </Grid.RowDefinitions>
 
 
-        <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="4" Background="{Binding BackgroundColor}"></Grid>
+        <views:IndiagramBrowserView Grid.Column="0" 
+                                    Grid.Row="0" 
+                                    Grid.RowSpan="2" 
+                                    Grid.ColumnSpan="4" 
+                                    Background="{Binding BackgroundColor}"
+                                    Count="{Binding CollectionDisplayCount, Mode=TwoWay}"
+	                                Offset="{Binding CollectionOffset}"
+	                                Indiagrams="{Binding DisplayedIndiagrams}"
+	                                TextColor="{Binding TextColor, Converter={StaticResource ColorStringToIntConverter}}"
+	                                IndiagramSelected="{Binding IndiagramSelectedCommand}"
+	                                NextCommand="{Binding NextCommand}"/>
         <Button Style="{StaticResource GreenButton}"
                 Command="{Binding AddCommand}"
             Grid.Column="1"

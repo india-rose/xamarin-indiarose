@@ -43,7 +43,7 @@ namespace IndiaRose.Services
 
             if (_recordStorageFile != null)
             {
-                var path = ApplicationData.Current.LocalFolder.Path + "\\IndiaRose\\image";
+                var path = Path.Combine(StorageService.ImagePath);
                 _url = string.Format("Image_{0}.{1}", Guid.NewGuid(), _recordStorageFile.FileType);
                 var folder = await StorageFolder.GetFolderFromPathAsync(path);
 
@@ -71,13 +71,16 @@ namespace IndiaRose.Services
                 BitmapImage image = new BitmapImage();
                 image.SetSource(stream);
 
-                var path = ApplicationData.Current.LocalFolder.Path + "\\IndiaRose\\image";
+                var path = Path.Combine(StorageService.ImagePath);
+                _url = String.Format("Image_{0}.{1}", Guid.NewGuid(), file.FileType);
                 var folder = await StorageFolder.GetFolderFromPathAsync(path);
 
                 //file.CopyAsync(folder, "test.png");
                 //return string.Format("{0}\\{1}", path, _url);
 
-                return null;
+                //TODO rajouter le code pour le redimensionnement de l'image
+
+                return "";
             }
 
             return "";
@@ -95,7 +98,7 @@ namespace IndiaRose.Services
             var file = await openPicker.PickSingleFileAsync();
             if (file != null)
             {
-                var path = ApplicationData.Current.LocalFolder.Path + "\\IndiaRose\\sound";
+                var path = Path.Combine(StorageService.SoundPath);
                 var folder = await StorageFolder.GetFolderFromPathAsync(path);
                 _url = string.Format("Sound_{0}.{1}", Guid.NewGuid(), file.FileType);
                 file.CopyAsync(folder, _url);
@@ -118,7 +121,7 @@ namespace IndiaRose.Services
             await _recordMediaCapture.InitializeAsync(settings);
 
             _url = string.Format("Sound_{0}.{1}", Guid.NewGuid(), "aac");
-            var path = ApplicationData.Current.LocalFolder.Path + "\\IndiaRose\\sound";
+            var path = Path.Combine(StorageService.SoundPath);
             var folder = await StorageFolder.GetFolderFromPathAsync(path);
 
             _recordStorageFile = await folder.CreateFileAsync(_url);
@@ -136,7 +139,7 @@ namespace IndiaRose.Services
         {
             var file = await StorageFile.GetFileFromPathAsync(url);
             var play = new MediaElement();
-            play.SetSource((await file.OpenAsync(FileAccessMode.Read)), "aac");
+            play.SetSource((await file.OpenAsync(FileAccessMode.Read)), "audio");
 
             play.Play();
         }
