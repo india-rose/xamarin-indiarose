@@ -35,7 +35,7 @@
                                     Count="{Binding CollectionDisplayCount, Mode=TwoWay}"
 	                                Offset="{Binding CollectionOffset}"
 	                                Indiagrams="{Binding DisplayedIndiagrams}"
-	                                TextColor="{Binding TextColor, Converter={StaticResource ColorStringToIntConverter}}"
+	                                TextColor="{Binding TextColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
 	                                IndiagramSelected="{Binding IndiagramSelectedCommand}"
 	                                NextCommand="{Binding NextCommand}"/>
         <Button Style="{StaticResource GreenButton}"

@@ -23,7 +23,7 @@ namespace IndiaRose.Framework.Views
         private Image[][] _displayableViews;
         private readonly Image _nextButton;
         private readonly int _indiaSize;
-        private int _margin;
+        private readonly int _margin;
         private Grid g;
         #endregion
 
@@ -36,7 +36,7 @@ namespace IndiaRose.Framework.Views
         public static readonly DependencyProperty IndiagramsProperty = DependencyProperty.Register(
                    "Indiagrams", typeof(List<Indiagram>), typeof(IndiagramBrowserView), new PropertyMetadata(default(List<Indiagram>)));
         public static readonly DependencyProperty TextColorProperty = DependencyProperty.Register(
-            "TextColor", typeof(uint), typeof(IndiagramBrowserView), new PropertyMetadata(default(uint)));
+            "TextColor", typeof(SolidColorBrush), typeof(IndiagramBrowserView), new PropertyMetadata(default(SolidColorBrush)));
         public static readonly DependencyProperty IndiagramSelectedProperty = DependencyProperty.Register(
                   "IndiagramSelected", typeof(ICommand), typeof(IndiagramBrowserView), new PropertyMetadata(default(ICommand)));
         public static readonly DependencyProperty NextCommandProperty = DependencyProperty.Register(
@@ -69,9 +69,9 @@ namespace IndiaRose.Framework.Views
             }
         }
 
-        public uint TextColor
+        public SolidColorBrush TextColor
         {
-            get { return (uint)GetValue(TextColorProperty); }
+            get { return (SolidColorBrush)GetValue(TextColorProperty); }
             set
             {
                 SetValue(TextColorProperty, value);
@@ -105,9 +105,27 @@ namespace IndiaRose.Framework.Views
                 Source =
                     new BitmapImage(new Uri(LazyResolver<IStorageService>.Service.ImageNextArrowPath, UriKind.Absolute))
             };
-            SizeChanged += OnSizeChanged;
+            _nextButton.Tapped += _nextButton_Tapped;
+            Loaded += IndiagramBrowserView_Loaded;
+            //SizeChanged += OnSizeChanged;
 
         }
+
+        void IndiagramBrowserView_Loaded(object sender, RoutedEventArgs e)
+        {
+            Children.Add(new IndiagramView()
+            {
+                Indiagram = Indiagrams[0],
+                TextColor = TextColor
+            });
+        }
+
+        void _nextButton_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            if(NextCommand!=null&&NextCommand.CanExecute(null))
+                NextCommand.Execute(null);
+        }
+
 
         private void ResetGrid()
         {
@@ -170,11 +188,17 @@ namespace IndiaRose.Framework.Views
                         Height = _indiaSize,
                         Width = _indiaSize
                     };
+                    view.Tapped += view_Tapped;
                     _displayableViews[line][column] = view;
                 }
             }
             ResetGrid();
             return true;
+        }
+
+        void view_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
         private void RefreshTextColor()
         {
