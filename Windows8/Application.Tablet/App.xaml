@@ -28,6 +28,7 @@
             <conv:BooleanToColumnSpanConverter x:Key="BooleanToColumnSpanConverter"/>
             <conv:IndiaSizeToMarginSize x:Key="IndiaSizeToMarginSize"/>
             <conv:ColorStringToIntConverter x:Key="ColorStringToIntConverter"/>
+            <conv:ColorStringToSolidColorBrushConverter x:Key="ColorStringToSolidColorBrushConverter"/>
 
 
             <!--Button Style-->
