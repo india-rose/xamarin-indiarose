@@ -39,7 +39,7 @@
                    Grid.Column="1" 
                    Text="Choose a color" />
 
-        <Grid Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="0" Name="MainGridLayout" Background="{Binding CurrentColor,Mode=TwoWay}">
+        <Grid Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="0" Name="MainGridLayout" Background="{Binding CurrentColor,Mode=TwoWay,Converter={StaticResource ColorStringToSolidColorBrushConverter}}">
             <xc:Clr_Pckr SelectedColor="{Binding CurrentColor, Mode=TwoWay}" x:Name="Color"/>
             </Grid>
         
