@@ -185,6 +185,12 @@
     <Compile Include="Views\Dialogs\DragAndDropDialog.xaml.cs">
       <DependentUpon>DragAndDropDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dialogs\ExploreCollectionCategoryDialog.xaml.cs">
+      <DependentUpon>ExploreCollectionCategoryDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\ExploreCollectionIndiagramDialog.xaml.cs">
+      <DependentUpon>ExploreCollectionIndiagramDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\ImageChoiceDialog.xaml.cs">
       <DependentUpon>ImageChoiceDialog.xaml</DependentUpon>
     </Compile>
@@ -279,6 +285,14 @@
     <Page Include="Views\Dialogs\DragAndDropDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\ExploreCollectionCategoryDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\ExploreCollectionIndiagramDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dialogs\ImageChoiceDialog.xaml">
       <SubType>Designer</SubType>
