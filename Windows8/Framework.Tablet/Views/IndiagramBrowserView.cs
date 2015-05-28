@@ -4,8 +4,10 @@ using System.Linq;
 using System.Windows.Input;
 using Windows.Foundation.Diagnostics;
 using Windows.Graphics.Imaging;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
@@ -13,7 +15,7 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Framework.Views
 {
-    public class IndiagramBrowserView : Panel
+    public class IndiagramBrowserView : StackPanel
     {
         #region Private fields
         private int _columnCount;
@@ -22,6 +24,7 @@ namespace IndiaRose.Framework.Views
         private readonly Image _nextButton;
         private readonly int _indiaSize;
         private int _margin;
+        private Grid g;
         #endregion
 
         #region DependencyProperty
@@ -93,49 +96,41 @@ namespace IndiaRose.Framework.Views
             : base()
         {
             _indiaSize = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize;
-            int margin = _indiaSize / 10;
-            _nextButton = new Image()
+            _margin = _indiaSize / 10;
+            _nextButton=new Image()
             {
                 Height = _indiaSize,
                 Width = _indiaSize,
-                Margin = new Thickness(margin, margin, margin, 0),
+                Margin = new Thickness(_margin, _margin, _margin, 0),
                 Source =
                     new BitmapImage(new Uri(LazyResolver<IStorageService>.Service.ImageNextArrowPath, UriKind.Absolute))
             };
-            Loaded += Init;
-            //SizeChanged += OnSizeChanged;
+            SizeChanged += OnSizeChanged;
 
         }
 
-        private void Init(object sender, RoutedEventArgs e)
+        private void ResetGrid()
         {
-            var g = new Grid();
-            for (int i = 0; i < 10; i++)
-            {
-                    g.ColumnDefinitions.Add(new ColumnDefinition()
-                    {
-                        Width = GridLength.Auto
-                    });
-                    g.RowDefinitions.Add(new RowDefinition()
-                    {
-                        Height = GridLength.Auto
-                    });
-            }
-            g.Children.Add(_nextButton);
-            Grid.SetColumn(_nextButton,2);
-            Grid.SetRow(_nextButton, 2);
-            var t = new Image()
-            {
-                Height = _indiaSize,
-                Width = _indiaSize,
-                Source =
-                    new BitmapImage(new Uri(LazyResolver<IStorageService>.Service.ImageCorrectionPath, UriKind.Absolute))
-            };
-            g.Children.Add(t);
+            g = new Grid();
 
-            Grid.SetColumn(t, 3);
-            Grid.SetRow(t, 3);
-            Children.Insert(0, g);
+            for (int i = 0; i < _columnCount; i++)
+            {
+                g.ColumnDefinitions.Add(new ColumnDefinition()
+                {
+                    Width = new GridLength(1, GridUnitType.Star)
+                });
+            }
+            for (int i = 0; i < _lineCount; i++)
+            {
+                g.RowDefinitions.Add(new RowDefinition()
+                {
+                    Height = new GridLength(1, GridUnitType.Star)
+                });
+            }
+            Grid.SetColumn(_nextButton,_columnCount-1);
+            Grid.SetRow(_nextButton,0);
+            g.Children.Add(_nextButton);
+            Children.Add(g);
         }
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
@@ -146,8 +141,8 @@ namespace IndiaRose.Framework.Views
 
         private bool Reset()
         {
-            int newColumnCount = (int)(ActualHeight / (_indiaSize + (_indiaSize / 10)));
-            int newLineCount = (int)(ActualWidth / (_indiaSize + (_indiaSize / 10)));
+            int newColumnCount = (int)(ActualWidth / (_indiaSize + _margin));
+            int newLineCount = (int)(ActualHeight / (_indiaSize + _margin));
 
             if (newColumnCount != _columnCount || newLineCount != _lineCount)
             {
@@ -178,6 +173,7 @@ namespace IndiaRose.Framework.Views
                     _displayableViews[line][column] = view;
                 }
             }
+            ResetGrid();
             return true;
         }
         private void RefreshTextColor()
@@ -191,7 +187,6 @@ namespace IndiaRose.Framework.Views
             {
                 return;
             }
-            Children.Clear();
             List<Indiagram> toDisplay = Indiagrams.Where((o, i) => i >= Offset).ToList();
             int displayCount = 0;
             int index = 0;
@@ -208,17 +203,16 @@ namespace IndiaRose.Framework.Views
                         stop = true;
                         break;
                     }
-                    int oldindex = index;
                     Image view = _displayableViews[line][column];
-                    view.Source = new BitmapImage(new Uri(toDisplay[(index++) - (line > 0 ? 1 : 0)].ImagePath, UriKind.Absolute));
+                    view.Source = new BitmapImage(new Uri(toDisplay[index++].ImagePath, UriKind.Absolute));
                     view.Margin = new Thickness(_margin, _margin, 0, 0);
                     lineCount++;
-                    Children.Insert(oldindex, view);
+                    Grid.SetColumn(view,column);
+                    Grid.SetRow(view,line);
+                    g.Children.Add(view);
                     if (lineHeight < view.Height)
                         lineHeight = (int)view.Height;
                 }
-                if (line == 0)
-                    Children.Insert(index + 1, _nextButton);
                 currentHeight += lineHeight;
                 if (currentHeight > Height)
                 {
