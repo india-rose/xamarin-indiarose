@@ -20,8 +20,7 @@ namespace IndiaRose.Framework.Views
         }
         private TextBlock _textBlock;
         private Image _image;
-        private readonly int _indiaSize;
-        private readonly int _margin;
+        private StackPanel _redRect;
 
         public static readonly DependencyProperty TextColorProperty = DependencyProperty.Register(
             "TextColor", typeof(SolidColorBrush), typeof(IndiagramView), new PropertyMetadata(default(SolidColorBrush)));
@@ -51,38 +50,48 @@ namespace IndiaRose.Framework.Views
         public IndiagramView()
         {
             Orientation = Orientation.Vertical;
-            _indiaSize = SettingsService.IndiagramDisplaySize;
-            _margin = _indiaSize / 10;
-            Width = _indiaSize + 2 * _margin;
+            var indiaSize = SettingsService.IndiagramDisplaySize;
+            var margin = indiaSize / 10;
+            Width = indiaSize + 2 * margin;
             Children.Clear();
             _image = new Image()
             {
-                Margin = new Thickness(0, _margin, 0, 0),
+                Margin = new Thickness(0, margin, 0, 0),
                 Height = SettingsService.IndiagramDisplaySize,
                 Width = SettingsService.IndiagramDisplaySize,
             };
             _textBlock = new TextBlock()
             {
-                Margin = new Thickness(_margin, 0, _margin, 0),
+                Margin = new Thickness(margin, 0, margin, 0),
                 FontSize = SettingsService.FontSize,
                 TextWrapping = TextWrapping.Wrap,
                 HorizontalAlignment = HorizontalAlignment.Center
             };
-            Children.Add(_image);
+            _redRect = new StackPanel()
+            {
+                Margin = new Thickness(0, margin, 0, 0),
+                Height = SettingsService.IndiagramDisplaySize,
+                Width = SettingsService.IndiagramDisplaySize,
+                Background = new SolidColorBrush(Colors.Red)
+            };
+            Children.Insert(0,_image);
             Children.Add(_textBlock);
         }
 
-        void RefreshDisplay()
+        protected virtual void RefreshDisplay()
         {
             if (!string.IsNullOrEmpty(Indiagram.ImagePath))
                 _image.Source = new BitmapImage(new Uri(Indiagram.ImagePath, UriKind.Absolute));
             else
             {
+                Children.RemoveAt(0);
+                Children.Insert(0,_redRect);
             }
-            if (Indiagram.IsEnabled)
+            if (!Indiagram.IsEnabled)
             {
+                _image.Opacity = 0.5;
             }
-            if (!string.IsNullOrEmpty(Indiagram.Text))
+            if (string.IsNullOrEmpty(Indiagram.Text))
                 _textBlock.Text = Indiagram.Text;
         }
 

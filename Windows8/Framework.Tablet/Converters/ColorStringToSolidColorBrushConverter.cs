@@ -23,13 +23,18 @@ namespace IndiaRose.Framework.Converters
                 string v = hexCode.Substring(4, 2);
                 string b = hexCode.Substring(6, 2);
                 return new SolidColorBrush(Color.FromArgb(byte.Parse(opacity, NumberStyles.HexNumber), byte.Parse(r, NumberStyles.HexNumber), byte.Parse(v, NumberStyles.HexNumber), byte.Parse(b, NumberStyles.HexNumber)));
-            }
+   }
             return 0;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            throw new NotImplementedException();
+            var t = value as SolidColorBrush;
+            if (t != null)
+            {
+                return t.Color.ToString();
+            }
+            return 0;
         }
     }
 }
