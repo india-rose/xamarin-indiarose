@@ -20,7 +20,7 @@ namespace IndiaRose.Application.Views.Dialogs
 	/// <summary>
 	/// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
 	/// </summary>
-	public sealed partial class ExploreCollectionCategoryDialog : Page
+	public sealed partial class ExploreCollectionCategoryDialog
 	{
 		public ExploreCollectionCategoryDialog() : base(300)
 		{
