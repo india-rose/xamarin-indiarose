@@ -23,8 +23,6 @@ namespace IndiaRose.Framework.Views
         private int _lineCount;
         private IndiagramView[][] _displayableViews;
         private readonly Image _nextButton;
-        private readonly int _indiaSize;
-        private readonly int _margin;
         private Grid g;
         #endregion
 
@@ -95,13 +93,13 @@ namespace IndiaRose.Framework.Views
         public IndiagramBrowserView()
             : base()
         {
-            _indiaSize = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize;
-            _margin = _indiaSize / 10;
+            var indiaSize = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize;
+            var margin = indiaSize / 10;
             _nextButton = new Image()
             {
-                Height = _indiaSize,
-                Width = _indiaSize,
-                Margin = new Thickness(_margin, _margin, _margin, 0),
+                Height = indiaSize,
+                Width = indiaSize,
+                Margin = new Thickness(margin, 0, margin, 0),
                 Source =
                     new BitmapImage(new Uri(LazyResolver<IStorageService>.Service.ImageNextArrowPath, UriKind.Absolute))
             };
@@ -110,7 +108,7 @@ namespace IndiaRose.Framework.Views
 
         }
 
-        void _nextButton_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        void _nextButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (NextCommand != null && NextCommand.CanExecute(null))
                 NextCommand.Execute(null);
@@ -137,7 +135,6 @@ namespace IndiaRose.Framework.Views
             }
             Grid.SetColumn(_nextButton, _columnCount - 1);
             Grid.SetRow(_nextButton, 0);
-            g.Children.Add(_nextButton);
             Children.Add(g);
         }
 
@@ -202,6 +199,8 @@ namespace IndiaRose.Framework.Views
             {
                 return;
             }
+            g.Children.Clear();
+            g.Children.Add(_nextButton);
             List<Indiagram> toDisplay = Indiagrams.Where((o, i) => i >= Offset).ToList();
             int displayCount = 0;
             int index = 0;

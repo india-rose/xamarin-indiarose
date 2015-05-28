@@ -90,6 +90,7 @@ namespace IndiaRose.Framework.Views
             if (!Indiagram.IsEnabled)
             {
                 _image.Opacity = 0.5;
+                _redRect.Opacity = 0.5;
             }
             if (!string.IsNullOrEmpty(Indiagram.Text))
                 _textBlock.Text = Indiagram.Text;
