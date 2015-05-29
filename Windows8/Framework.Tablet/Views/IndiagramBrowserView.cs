@@ -25,17 +25,19 @@ namespace IndiaRose.Framework.Views
         private readonly Image _nextButton;
         private Grid g;
         #endregion
-
         #region DependencyProperty
 
         public static readonly DependencyProperty CountProperty = DependencyProperty.Register(
                 "Count", typeof(int), typeof(IndiagramBrowserView), new PropertyMetadata(default(int)));
 
-        public  readonly DependencyProperty OffsetProperty;
+        public static readonly DependencyProperty OffsetProperty = DependencyProperty.Register(
+                "Offset", typeof(int), typeof(IndiagramBrowserView), new PropertyMetadata(default(int), Refresh));
 
-        public  readonly DependencyProperty IndiagramsProperty;
+        public static readonly DependencyProperty IndiagramsProperty = DependencyProperty.Register(
+                "Indiagrams", typeof(List<Indiagram>), typeof(IndiagramBrowserView), new PropertyMetadata(default(List<Indiagram>), Refresh));
 
-        public  readonly DependencyProperty TextColorProperty;
+        public static readonly DependencyProperty TextColorProperty = DependencyProperty.Register(
+                "TextColor", typeof(SolidColorBrush), typeof(IndiagramBrowserView), new PropertyMetadata(default(SolidColorBrush), RefreshTextColor));
 
         public static readonly DependencyProperty IndiagramSelectedProperty = DependencyProperty.Register(
                   "IndiagramSelected", typeof(ICommand), typeof(IndiagramBrowserView), new PropertyMetadata(default(ICommand)));
@@ -54,19 +56,19 @@ namespace IndiaRose.Framework.Views
         public int Offset
         {
             get { return (int)GetValue(OffsetProperty); }
-            set{SetValue(OffsetProperty, value);}
+            set { SetValue(OffsetProperty, value); }
         }
 
         public List<Indiagram> Indiagrams
         {
             get { return (List<Indiagram>)GetValue(IndiagramsProperty); }
-            set{SetValue(IndiagramsProperty, value);}
+            set { SetValue(IndiagramsProperty, value); }
         }
 
         public SolidColorBrush TextColor
         {
             get { return (SolidColorBrush)GetValue(TextColorProperty); }
-            set{SetValue(TextColorProperty, value);}
+            set { SetValue(TextColorProperty, value); }
         }
 
         public ICommand IndiagramSelected
@@ -84,13 +86,6 @@ namespace IndiaRose.Framework.Views
 
         public IndiagramBrowserView()
         {
-            TextColorProperty = DependencyProperty.Register(
-                "TextColor", typeof(SolidColorBrush), typeof(IndiagramBrowserView), new PropertyMetadata(default(SolidColorBrush), RefreshTextColor));
-            IndiagramsProperty = DependencyProperty.Register(
-                "Indiagrams", typeof(List<Indiagram>), typeof(IndiagramBrowserView), new PropertyMetadata(default(List<Indiagram>), RefreshDisplay));
-            OffsetProperty = DependencyProperty.Register(
-                "Offset", typeof(int), typeof(IndiagramBrowserView), new PropertyMetadata(default(int), RefreshDisplay));
-
             var indiaSize = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize;
             var margin = indiaSize / 10;
             _nextButton = new Image()
@@ -112,7 +107,19 @@ namespace IndiaRose.Framework.Views
                 NextCommand.Execute(null);
         }
 
-        private void RefreshTextColor(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        private static void Refresh(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var indiaBrowserView = d as IndiagramBrowserView;
+            if (indiaBrowserView != null) indiaBrowserView.RefreshDisplay();
+        }
+
+        private static void RefreshTextColor(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        {
+            var indiaBrowserView = dependencyObject as IndiagramBrowserView;
+            if (indiaBrowserView != null) indiaBrowserView.RefreshTextColor();
+        }
+
+        private void RefreshTextColor()
         {
             if (_displayableViews == null)
                 return;
@@ -121,7 +128,6 @@ namespace IndiaRose.Framework.Views
                 cell.TextColor = TextColor;
             }
         }
-
         private void ResetGrid()
         {
             g = new Grid();
@@ -200,7 +206,7 @@ namespace IndiaRose.Framework.Views
             }
         }
 
-        private void RefreshDisplay(DependencyObject dependencyObject=null, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs=null)
+        private void RefreshDisplay(DependencyObject dependencyObject = null, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs = null)
         {
             if (Indiagrams == null || _displayableViews == null || _lineCount == 0 || _columnCount == 0)
             {
