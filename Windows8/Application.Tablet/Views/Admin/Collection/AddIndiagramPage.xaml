@@ -165,7 +165,7 @@
                         Visibility="{Binding CurrentIndiagram.IsEnabled, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Negation}"
                         Command="{Binding ActivateCommand}"
                         >
-                        <TextBlock Style="{StaticResource SmallTextButton}"
+                        <TextBlock Style="{StaticResource PaddingTextButton}"
             		            x:Uid="Collection_EnableIndiagram"/>
                     </Button>
                     <Button 
@@ -173,7 +173,7 @@
                         Visibility="{Binding CurrentIndiagram.IsEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
                         Command="{Binding DesactivateCommand}"
                         >
-                        <TextBlock Style="{StaticResource SmallTextButton}"
+                        <TextBlock Style="{StaticResource PaddingTextButton}"
             		            x:Uid="Collection_DisableIndiagram"/>
                     </Button>
                 </StackPanel>

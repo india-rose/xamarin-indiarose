@@ -37,7 +37,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 		{
 			base.IndiagramSelectedAction(indiagram);
 
-			
 			MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_SELECTCATEGORY, new Dictionary<string, object>
 			{
 				{"Indiagram", indiagram},
@@ -52,7 +51,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			{
 				SelectedCallback(category);
 			}
-			NavigationService.GoBack();
+			CloseDialogAction();
 		}
 
 		private void GoIntoAction(Category category)
