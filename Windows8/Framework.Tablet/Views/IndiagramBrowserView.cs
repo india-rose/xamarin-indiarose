@@ -23,7 +23,7 @@ namespace IndiaRose.Framework.Views
         private int _lineCount;
         private IndiagramView[][] _displayableViews;
         private readonly Image _nextButton;
-        private Grid g;
+        private Grid _grid;
         #endregion
         #region DependencyProperty
 
@@ -96,6 +96,7 @@ namespace IndiaRose.Framework.Views
                 Source =
                     new BitmapImage(new Uri(LazyResolver<IStorageService>.Service.ImageNextArrowPath, UriKind.Absolute))
             };
+            _grid=new Grid();
             _nextButton.Tapped += _nextButton_Tapped;
             SizeChanged += OnSizeChanged;
 
@@ -130,25 +131,26 @@ namespace IndiaRose.Framework.Views
         }
         private void ResetGrid()
         {
-            g = new Grid();
+            _grid.ColumnDefinitions.Clear();
+            _grid.RowDefinitions.Clear();
 
             for (int i = 0; i < _columnCount; i++)
             {
-                g.ColumnDefinitions.Add(new ColumnDefinition()
+                _grid.ColumnDefinitions.Add(new ColumnDefinition()
                 {
                     Width = new GridLength(1, GridUnitType.Star)
                 });
             }
             for (int i = 0; i < _lineCount; i++)
             {
-                g.RowDefinitions.Add(new RowDefinition()
+                _grid.RowDefinitions.Add(new RowDefinition()
                 {
                     Height = new GridLength(1, GridUnitType.Star)
                 });
             }
             Grid.SetColumn(_nextButton, _columnCount - 1);
             Grid.SetRow(_nextButton, 0);
-            Children.Add(g);
+            Children.Add(_grid);
         }
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
@@ -212,8 +214,8 @@ namespace IndiaRose.Framework.Views
             {
                 return;
             }
-            g.Children.Clear();
-            g.Children.Add(_nextButton);
+            _grid.Children.Clear();
+            _grid.Children.Add(_nextButton);
             List<Indiagram> toDisplay = Indiagrams.Where((o, i) => i >= Offset).ToList();
             int displayCount = 0;
             int index = 0;
@@ -235,7 +237,7 @@ namespace IndiaRose.Framework.Views
                     lineCount++;
                     Grid.SetColumn(view, column);
                     Grid.SetRow(view, line);
-                    g.Children.Add(view);
+                    _grid.Children.Add(view);
                     if (lineHeight < view.Height)
                         lineHeight = (int)view.Height;
                 }
