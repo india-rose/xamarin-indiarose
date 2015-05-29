@@ -8,13 +8,28 @@
     xmlns:mvvm="using:Storm.Mvvm"
     xmlns:views="using:IndiaRose.Framework.Views"
     mc:Ignorable="d"
-    PopupHeight="900"
+    PopupHeight="900*"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminCollectionDialogsChooseCategoryViewModel}">
-    <views:IndiagramBrowserView     Background="{Binding BackgroundColor}"
-                                    Count="{Binding CollectionDisplayCount, Mode=TwoWay}"
-	                                Offset="{Binding CollectionOffset}"
-	                                Indiagrams="{Binding DisplayedIndiagrams}"
-	                                TextColor="{Binding TextColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
-	                                IndiagramSelected="{Binding IndiagramSelectedCommand}"
-	                                NextCommand="{Binding NextCommand}"/>
+    <Grid Background="{Binding BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <views:IndiagramBrowserView 
+            Grid.Row="0"
+            Count="{Binding CollectionDisplayCount, Mode=TwoWay}"
+	        Offset="{Binding CollectionOffset}"
+	        Indiagrams="{Binding DisplayedIndiagrams}"
+	        TextColor="{Binding TextColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
+	        IndiagramSelected="{Binding IndiagramSelectedCommand}"
+	        NextCommand="{Binding NextCommand}"/>
+
+
+        <Button Style="{StaticResource SmallButton}" 
+                Grid.Row="1"
+                Command="{Binding CloseDialogCommand}">
+            <TextBlock Style="{StaticResource TextButton}" 
+                       x:Uid="Button_Cancel" />
+        </Button>
+    </Grid>
 </mvvm:DialogPage>
