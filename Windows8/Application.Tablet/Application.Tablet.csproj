@@ -227,6 +227,9 @@
     <Compile Include="Views\Dialogs\SoundChoiceDialog.xaml.cs">
       <DependentUpon>SoundChoiceDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\User\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -356,6 +359,10 @@
     <Page Include="Views\Dialogs\SoundChoiceDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
