@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.Devices.Enumeration;
 using Windows.Foundation;
@@ -19,11 +20,13 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Services
 {
+
     public class MediaService : IMediaService
     {
         private MediaCapture _recordMediaCapture;
         private StorageFile _recordStorageFile;
         private String _url;
+        private MediaElement _sound;
 
         public IStorageService StorageService
         {
@@ -136,10 +139,16 @@ namespace IndiaRose.Services
         public async void PlaySound(string url)
         {
             var file = await StorageFile.GetFileFromPathAsync(url);
-            var play = new MediaElement();
-            play.SetSource((await file.OpenAsync(FileAccessMode.Read)), "audio");
-
-            play.Play();
+            
+            if (_sound == null)
+            {
+                _sound= new MediaElement();
+                _sound.SetSource((await file.OpenAsync(FileAccessMode.Read)), "audio");
+            }
+                _sound.Stop();
+                _sound = new MediaElement();
+                _sound.SetSource((await file.OpenAsync(FileAccessMode.Read)), "audio");
+                _sound.Play();
         }
     }
 }

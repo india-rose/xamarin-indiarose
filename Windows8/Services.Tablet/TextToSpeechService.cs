@@ -12,6 +12,7 @@ namespace IndiaRose.Services
 	public class TextToSpeechService : ITextToSpeechService
 	{
 	    private readonly SpeechSynthesizer _ttsSpeechSynthesizer=new SpeechSynthesizer();
+        private MediaElement _sound;
 		public async void ReadText(string text)
 		{
             // The media object for controlling and playing audio.
@@ -21,8 +22,15 @@ namespace IndiaRose.Services
             SpeechSynthesisStream stream = await _ttsSpeechSynthesizer.SynthesizeTextToStreamAsync(text);
 
             // Send the stream to the media object.
-            mediaElement.SetSource(stream, stream.ContentType);
-            mediaElement.Play();
+            if (_sound == null)
+            {
+                _sound= new MediaElement();
+                _sound.SetSource(stream, stream.ContentType);            
+            }
+                _sound.Stop();
+                _sound = new MediaElement();
+                _sound.SetSource(stream, stream.ContentType);            
+                _sound.Play();
 		}
 
 		public void Close()
