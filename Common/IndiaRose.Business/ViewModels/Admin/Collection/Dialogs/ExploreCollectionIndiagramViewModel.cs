@@ -32,11 +32,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 
 		private void DeleteAction()
 		{
+            CloseDialogAction();
 			MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_DELETEWARNING_INDIAGRAM, new Dictionary<string, object>
 			{
 				{"Indiagram", Indiagram}
 			});
-			CloseDialogAction();
 		}
 
 		private void WatchIndiagram()
