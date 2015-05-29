@@ -22,8 +22,7 @@ namespace IndiaRose.Framework.Views
         private readonly Image _image;
         private readonly StackPanel _redRect;
 
-        public static readonly DependencyProperty TextColorProperty = DependencyProperty.Register(
-            "TextColor", typeof(SolidColorBrush), typeof(IndiagramView), new PropertyMetadata(default(SolidColorBrush)));
+        public readonly DependencyProperty TextColorProperty;
 
         public SolidColorBrush TextColor
         {
@@ -31,10 +30,13 @@ namespace IndiaRose.Framework.Views
             set
             {
                 SetValue(TextColorProperty, value);
-                _textBlock.Foreground = TextColor;
             }
         }
 
+        private void RefreshColor(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        {
+            _textBlock.Foreground = TextColor;
+        }
         public static readonly DependencyProperty IndiagramProperty = DependencyProperty.Register(
             "Indiagram", typeof(Indiagram), typeof(IndiagramView), new PropertyMetadata(default(Indiagram)));
 
@@ -49,6 +51,9 @@ namespace IndiaRose.Framework.Views
         }
         public IndiagramView()
         {
+            TextColorProperty = DependencyProperty.Register(
+                "TextColor", typeof(SolidColorBrush), typeof(IndiagramView), new PropertyMetadata(default(SolidColorBrush), RefreshColor));
+
             Orientation = Orientation.Vertical;
             var indiaSize = SettingsService.IndiagramDisplaySize;
             var margin = indiaSize / 10;
