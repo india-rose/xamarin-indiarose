@@ -22,7 +22,8 @@ namespace IndiaRose.Framework.Views
         private readonly Image _image;
         private readonly StackPanel _redRect;
 
-        public readonly DependencyProperty TextColorProperty;
+        public static readonly DependencyProperty TextColorProperty=DependencyProperty.Register(
+                "TextColor", typeof(SolidColorBrush), typeof(IndiagramView), new PropertyMetadata(default(SolidColorBrush), RefreshColor));
 
         public SolidColorBrush TextColor
         {
@@ -33,11 +34,8 @@ namespace IndiaRose.Framework.Views
             }
         }
 
-        private void RefreshColor(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            _textBlock.Foreground = TextColor;
-        }
-        public  readonly DependencyProperty IndiagramProperty;
+        public static readonly DependencyProperty IndiagramProperty = DependencyProperty.Register(
+                "Indiagram", typeof(Indiagram), typeof(IndiagramView), new PropertyMetadata(default(Indiagram), RefreshDisplay));
 
         public Indiagram Indiagram
         {
@@ -49,12 +47,7 @@ namespace IndiaRose.Framework.Views
         }
         public IndiagramView()
         {
-            TextColorProperty = DependencyProperty.Register(
-                "TextColor", typeof(SolidColorBrush), typeof(IndiagramView), new PropertyMetadata(default(SolidColorBrush), RefreshColor));
-
             Orientation = Orientation.Vertical;
-            IndiagramProperty = DependencyProperty.Register(
-                "Indiagram", typeof(Indiagram), typeof(IndiagramView), new PropertyMetadata(default(Indiagram), RefreshDisplay));
             var indiaSize = SettingsService.IndiagramDisplaySize;
             var margin = indiaSize / 10;
             Width = indiaSize + 2 * margin;
@@ -83,7 +76,26 @@ namespace IndiaRose.Framework.Views
             Children.Add(_textBlock);
         }
 
-        protected virtual void RefreshDisplay(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+
+        private static void RefreshColor(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        {
+            var indiaView = dependencyObject as IndiagramView;
+            if (indiaView != null) indiaView.RefreshColor();
+        }
+
+        private void RefreshColor()
+        {
+            _textBlock.Foreground = TextColor;
+        }
+
+        protected static void RefreshDisplay(DependencyObject dependencyObject,
+            DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        {
+            var indiaView = dependencyObject as IndiagramView;
+            if (indiaView != null) indiaView.RefreshDisplay();
+        }
+        
+        protected virtual void RefreshDisplay()
         {
             if (!string.IsNullOrEmpty(Indiagram.ImagePath))
             {
