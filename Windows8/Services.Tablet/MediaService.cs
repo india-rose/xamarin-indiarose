@@ -75,12 +75,10 @@ namespace IndiaRose.Services
                 _url = String.Format("Image_{0}.{1}", Guid.NewGuid(), file.FileType);
                 var folder = await StorageFolder.GetFolderFromPathAsync(path);
 
-                //file.CopyAsync(folder, "test.png");
-                //return string.Format("{0}\\{1}", path, _url);
-
                 //TODO rajouter le code pour le redimensionnement de l'image
 
-                return "";
+                file.CopyAsync(folder, _url);
+                return string.Format("{0}\\{1}", path, _url);
             }
 
             return "";
