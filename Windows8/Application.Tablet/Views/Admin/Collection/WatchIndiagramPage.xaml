@@ -29,18 +29,18 @@
             VerticalAlignment="Center">
             <StackPanel >
                 <TextBlock x:Uid="Collection_IndiagramText" Style="{StaticResource TextStyle}" />
-                <TextBlock Text="{Binding Indiagram.Text}" Style="{StaticResource SmallTextStyle}" />
+                <TextBlock Text="{Binding IndiagramContainer.Indiagram.Text}" Style="{StaticResource BlackSmallTextStyle}" />
 
                 <TextBlock x:Uid="Collection_ParentCategory"  Style="{StaticResource TextStyle}" />
                 <StackPanel Orientation="Horizontal">
                     <TextBlock x:Uid="Collection_ParentCategoryName" Style="{StaticResource SmallTextStyle}" />
-                    <TextBlock  Text="{Binding Indiagram.Parent, Converter={StaticResource ParentCategoryConverter}}" Style="{StaticResource BlackSmallTextStyle}" />
+                    <TextBlock  Text="{Binding IndiagramContainer.Indiagram.Parent, Converter={StaticResource ParentCategoryConverter}}" Style="{StaticResource BlackSmallTextStyle}" />
                 </StackPanel>
 
                 <TextBlock x:Uid="Collection_Sound"  Style="{StaticResource TextStyle}" />
                 <StackPanel Orientation="Horizontal">
                     <TextBlock x:Uid="Collection_ParentCategoryName" Style="{StaticResource SmallTextStyle}" />
-                    <TextBlock Text="{Binding Indiagram.SoundPath, Converter={StaticResource DefaultLocalizedStringIfNullConverter}}" Style="{StaticResource BlackSmallTextStyle}" />
+                    <TextBlock Text="{Binding IndiagramContainer.Indiagram.SoundPath, Converter={StaticResource DefaultLocalizedStringIfNullConverter}}" Style="{StaticResource BlackSmallTextStyle}" />
                 </StackPanel>
 
                 <Button Style="{StaticResource BigBlueButton}"
@@ -87,7 +87,7 @@
         <Image
             Width="{Binding SettingsService.IndiagramDisplaySize}"
             Height="{Binding SettingsService.IndiagramDisplaySize}"
-            Source="{Binding Indiagram.ImagePath}"
+            Source="{Binding IndiagramContainer.Indiagram.ImagePath}"
             Grid.Column="2"
             Grid.Row="1"
             VerticalAlignment="Center"
