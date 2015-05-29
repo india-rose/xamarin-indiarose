@@ -1,0 +1,20 @@
+﻿<mvvm:DialogPage
+    x:Class="IndiaRose.Application.Views.Dialogs.ChooseCategoryDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:IndiaRose.Application.Views.Dialogs"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mvvm="using:Storm.Mvvm"
+    xmlns:views="using:IndiaRose.Framework.Views"
+    mc:Ignorable="d"
+    PopupHeight="900"
+    DataContext="{Binding Source={StaticResource Locator}, Path=AdminCollectionDialogsChooseCategoryViewModel}">
+    <views:IndiagramBrowserView     Background="{Binding BackgroundColor}"
+                                    Count="{Binding CollectionDisplayCount, Mode=TwoWay}"
+	                                Offset="{Binding CollectionOffset}"
+	                                Indiagrams="{Binding DisplayedIndiagrams}"
+	                                TextColor="{Binding TextColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
+	                                IndiagramSelected="{Binding IndiagramSelectedCommand}"
+	                                NextCommand="{Binding NextCommand}"/>
+</mvvm:DialogPage>
