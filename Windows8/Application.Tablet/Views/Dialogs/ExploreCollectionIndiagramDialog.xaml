@@ -24,15 +24,15 @@
                    Style="{StaticResource PopupTitleStyle}"
                    x:Uid="ExploreCollection_TitleDialog"/>
         <StackPanel
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
             Grid.Column="0"
             Grid.Row="1"
             Grid.ColumnSpan="3">
         <Image
             Width="100"
             Height="100"
-            Source="{Binding Indiagram.ImagePath}"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"/>
+            Source="{Binding Indiagram.ImagePath}"/>
 
             <TextBlock Style="{StaticResource TextButton}"  Text="{Binding Indiagram.Text}"/>
         </StackPanel>
