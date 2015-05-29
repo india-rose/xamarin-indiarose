@@ -22,7 +22,8 @@ namespace IndiaRose.Application.Views.Dialogs
 	/// </summary>
 	public sealed partial class SelectCategoryActionDialog
 	{
-		public SelectCategoryActionDialog() : base(300)
+		public SelectCategoryActionDialog()
+			: base(300)
 		{
 			this.InitializeComponent();
 		}
