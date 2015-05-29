@@ -7,6 +7,7 @@
     xmlns:mvvm="using:Storm.Mvvm"
     mc:Ignorable="d"
     PopupHeight="300"
+    xmlns:views="using:IndiaRose.Framework.Views"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminCollectionDialogsExploreCollectionIndiagramViewModel}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -29,10 +30,10 @@
             Grid.Column="0"
             Grid.Row="1"
             Grid.ColumnSpan="3">
-        <Image
-            Width="100"
-            Height="100"
-            Source="{Binding Indiagram.ImagePath}"/>
+            <views:BindableImageView
+            Size="100"
+            ImagePath="{Binding Indiagram.ImagePath}"
+            />
 
             <TextBlock Style="{StaticResource TextButton}"  Text="{Binding Indiagram.Text}"/>
         </StackPanel>

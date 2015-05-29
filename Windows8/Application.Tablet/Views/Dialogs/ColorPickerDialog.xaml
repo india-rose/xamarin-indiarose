@@ -12,10 +12,9 @@
     PopupHeight="400">
 
 
-    <Grid Name="Grid" Background="{Binding CurrentColor,Mode=TwoWay}">
+    <Grid Name="Grid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*" />
-            <RowDefinition Height="10*" />
+            <RowDefinition Height="20*" />
             <RowDefinition Height="40*" />
             <RowDefinition Height="20*" />
         </Grid.RowDefinitions>
@@ -26,27 +25,22 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Name="Title"
+        <TextBlock
             Grid.Row="0" Grid.ColumnSpan="2"
                    Grid.Column="1"
                    Style="{StaticResource PopupTitleStyle}" 
                    x:Uid="ColorPicker_Title"
                    />
 
-        <TextBlock Name="Expl"
-            Style="{StaticResource PopupContentStyle}" 
-                   Grid.Row="1" 
-                   Grid.Column="1" 
-                   Text="Choose a color" />
 
-        <Grid Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="0" Name="MainGridLayout" Background="{Binding CurrentColor,Mode=TwoWay,Converter={StaticResource ColorStringToSolidColorBrushConverter}}">
-            <xc:Clr_Pckr SelectedColor="{Binding CurrentColor, Mode=TwoWay}" x:Name="Color"/>
-            </Grid>
-        
+        <Grid Grid.Row="1" Grid.ColumnSpan="4" Grid.Column="0" Name="MainGridLayout" Background="{Binding CurrentColor,Mode=TwoWay,Converter={StaticResource ColorStringToSolidColorBrushConverter}}">
+            <xc:Clr_Pckr SelectedColor="{Binding CurrentColor}" x:Name="Color"/>
+        </Grid>
+
         <!-- button ok and cancel -->
-        <Button Name="Ok"
+        <Button
             Style="{StaticResource SmallButton}" 
-                Grid.Row="3" 
+                Grid.Row="2" 
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Command="{Binding SaveCommand}">
@@ -54,9 +48,9 @@
                        x:Uid="Button_Ok" />
         </Button>
 
-        <Button Name="Cancel"
+        <Button
             Style="{StaticResource SmallButton}" 
-                Grid.Row="3" 
+                Grid.Row="2" 
                 Grid.Column="2"
                 Grid.ColumnSpan="2"
                 Command="{Binding CloseDialogCommand}">
