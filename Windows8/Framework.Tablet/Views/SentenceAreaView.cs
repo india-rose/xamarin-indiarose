@@ -94,7 +94,7 @@ namespace IndiaRose.Framework.Views
             {
                 IndiagramView view = new IndiagramView()
                 {
-                    TextColor = (SolidColorBrush) colorConverter.Convert(settings.TextColor),
+                    TextColor = colorConverter.Convert(settings.TextColor,null,null,null) as SolidColorBrush,
                 };
                 /*
                 view.Tapped += OnIndiagramTouched;
@@ -201,7 +201,7 @@ namespace IndiaRose.Framework.Views
                 if (uiModel.IsReinforcerEnabled)
                 {
                     view.Background = (new ColorStringToIntConverter().Convert(
-                        LazyResolver<ISettingsService>.Service.ReinforcerColor));
+                        LazyResolver<ISettingsService>.Service.ReinforcerColor,null, null, null)) as Brush;
                 }
                 else
                 {
@@ -222,6 +222,5 @@ namespace IndiaRose.Framework.Views
             }
         }
     }
-}
 
 
