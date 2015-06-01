@@ -7,19 +7,24 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvvm="using:Storm.Mvvm"
     mc:Ignorable="d"
+    xmlns:view="using:IndiaRose.Framework.Views"
     DataContext="{Binding Source={StaticResource Locator}, Path=UserHomeViewModel}">
 
-    <Grid VerticalAlignment="Stretch" Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="5*"></RowDefinition>
-            <RowDefinition Height="60*"></RowDefinition>
-            <RowDefinition Height="30*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        
-        <Grid Row="1" Background="{Binding BackgroundColor}"></Grid>
-        <Grid Row="2"></Grid>
-    </Grid>
+    <view:UserView
+	          TopBackground="{Binding BackgroundColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
+	          TopCount="{Binding CollectionDisplayCount, Mode=TwoWay}"
+	          TopOffset="{Binding CollectionOffset}"
+	          TopIndiagrams="{Binding DisplayedIndiagrams}"
+	          TopTextColor="{Binding TextColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
+	          TopIndiagramSelectedCommand="{Binding IndiagramSelectedCommand}"
+	          TopNextCommand="{Binding NextCommand}"
+	          TopNextButtonVisibility="{Binding CorrectionMode, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Negation}"
+	          
+			  BotBackground="{Binding BotBackgroundColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
+	          BotIndiagrams="{Binding SentenceIndiagrams}" 
+			  BotCanAddIndiagrams="{Binding CanAddMoreIndiagrams, Mode=TwoWay}"
+			  BotReadCommand="{Binding ReadSentenceCommand}"
+			  BotIndiagramSelectedCommand="{Binding SentenceIndiagramSelectedCommand}"
+			  BotCorrectionCommand="{Binding CorrectionCommand}"
+/>
 </mvvm:MvvmPage>
