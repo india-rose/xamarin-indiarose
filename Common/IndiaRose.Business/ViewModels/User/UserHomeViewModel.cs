@@ -326,4 +326,5 @@ namespace IndiaRose.Business.ViewModels.User
 
 		#endregion
 	}
+
 }

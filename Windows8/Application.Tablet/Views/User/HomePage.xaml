@@ -9,7 +9,17 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=UserHomeViewModel}">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid VerticalAlignment="Stretch" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="60*"></RowDefinition>
+            <RowDefinition Height="30*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Row="1" Background="{Binding BackgroundColor}"></Grid>
+        <Grid Row="2"></Grid>
     </Grid>
 </mvvm:MvvmPage>
