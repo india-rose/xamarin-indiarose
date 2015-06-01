@@ -34,6 +34,10 @@ namespace IndiaRose.Interfaces
 
 		Task LoadAsync();
 
-		void Reset();
+        void Reset();
+
+        bool IsLoaded { get; set; }
+
+        event EventHandler<EventArgs> Loaded;
     }
 }

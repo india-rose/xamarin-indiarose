@@ -5,6 +5,7 @@ using IndiaRose.Application.Views;
 using IndiaRose.Application.Views.Admin.Collection;
 using IndiaRose.Application.Views.Collection;
 using IndiaRose.Application.Views.Dialogs;
+using IndiaRose.Application.Views.User;
 using IndiaRose.Business;
 using IndiaRose.Business.ViewModels.Admin.Collection.Dialogs;
 using Storm.Mvvm.Inject;
@@ -27,7 +28,8 @@ namespace IndiaRose.Application.CompositionRoot
                 {ViewKey.ADMIN_SETTINGS_INDIAGRAMPROPERTIES, typeof(IndiagramPropertyPage)},
                 {ViewKey.ADMIN_SETTINGS_APPLICATIONLOOK,typeof(ApplicationLookPage)},
                 {ViewKey.ADMIN_COLLECTION_ADDINDIAGRAM,typeof(AddIndiagramPage)},
-                {ViewKey.ADMIN_COLLECTION_WATCHINDIAGRAM, typeof(WatchIndiagramPage)}
+                {ViewKey.ADMIN_COLLECTION_WATCHINDIAGRAM, typeof(WatchIndiagramPage)},
+                {ViewKey.USER_HOME, typeof(HomePage)}
             };
 
 			var dialogs = new Dictionary<string, Type>

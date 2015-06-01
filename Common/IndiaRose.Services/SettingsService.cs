@@ -45,6 +45,8 @@ namespace IndiaRose.Services
         private string _reinforcerColor;
         private string _textColor;
 
+	    private bool _isLoaded;
+
 		#endregion
 
 		#region Properties
@@ -126,6 +128,16 @@ namespace IndiaRose.Services
 			set { SetProperty(ref _topBackgroundColor, value); }
 		}
 
+
+        public bool IsLoaded
+        {
+            get { return _isLoaded; }
+            set
+            {
+                SetProperty(ref _isLoaded, value);
+                if (Loaded != null) Loaded(this,new EventArgs());
+            }
+        }
 		#endregion
 
 		public SettingsService()
@@ -169,7 +181,8 @@ namespace IndiaRose.Services
 		{
 			if (!await ExistsOnDiskAsync())
 			{
-				Reset();
+                Reset();
+                IsLoaded = true;
 				return;
 			}
 
@@ -177,7 +190,8 @@ namespace IndiaRose.Services
 
 			if (model == null)
 			{
-				Reset();
+                Reset();
+                IsLoaded = true;
 				return;
 			}
 
@@ -195,6 +209,8 @@ namespace IndiaRose.Services
 			ReinforcerColor = model.ReinforcerColor;
 		    TextColor = model.TextColor;
 
+		    IsLoaded = true;
+
 			_hasChanged = false;
 		}
 
@@ -202,7 +218,7 @@ namespace IndiaRose.Services
 		{
 			TopBackgroundColor = "#FF3838FF";
 			BottomBackgroundColor = "#FF73739E";
-			SelectionAreaHeight = 70;
+			SelectionAreaHeight = 50;
 			IndiagramDisplaySize = 128;
 			FontName = "Consolas";
 			FontSize = 12;
@@ -215,7 +231,9 @@ namespace IndiaRose.Services
 		    TextColor = "#FFFF0000";
 		}
 
-		protected async Task<bool> ExistsOnDiskAsync()
+	    public event EventHandler<EventArgs> Loaded;
+
+	    protected async Task<bool> ExistsOnDiskAsync()
 		{
 			try
 			{
