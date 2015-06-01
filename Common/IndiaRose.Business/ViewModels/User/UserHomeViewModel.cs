@@ -81,6 +81,8 @@ namespace IndiaRose.Business.ViewModels.User
 				Text = LocalizationService.GetString ("Collection_CorrectionCategoryName", "Text"),
 				ImagePath = StorageService.ImageCorrectionPath
 			};
+            //todo : à supprimer (ligne de debug)
+            OnNavigatedTo(null,null);
 		}
 
 		private void OnTtsSpeakingCompleted(object sender, EventArgs eventArgs)

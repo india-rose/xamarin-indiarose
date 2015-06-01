@@ -33,6 +33,7 @@ namespace IndiaRose.Framework.Views
         private IndiagramView _playButton;
         private ObservableCollection<IndiagramUIModel> _indiagrams;
         private readonly List<IndiagramView> _indiagramViews = new List<IndiagramView>();
+        private readonly ColorStringToSolidColorBrushConverter colorConverter = new ColorStringToSolidColorBrushConverter();
 
         public ICommand IndiagramSelectedCommand { get; set; }
 
@@ -77,7 +78,6 @@ namespace IndiaRose.Framework.Views
         {
             _maxNumberOfIndiagrams = LazyResolver<IScreenService>.Service.Width/IndiagramView.DefaultWidth - 1;
             ISettingsService settings = LazyResolver<ISettingsService>.Service;
-            var colorConverter = new ColorStringToSolidColorBrushConverter();
 
             // Init views
             for (int i = 0; i < _maxNumberOfIndiagrams; ++i)
@@ -86,6 +86,7 @@ namespace IndiaRose.Framework.Views
                 {
                     TextColor = (SolidColorBrush) colorConverter.Convert(settings.TextColor,null,null,"")
                 };
+                view.Tapped += OnIndiagramTouched;
             }
 
 
@@ -164,8 +165,7 @@ namespace IndiaRose.Framework.Views
 
                 if (uiModel.IsReinforcerEnabled)
                 {
-                    view.Background = (new ColorStringToIntConverter().Convert(
-                        LazyResolver<ISettingsService>.Service.ReinforcerColor));
+                    view.Background = (SolidColorBrush) colorConverter.Convert(LazyResolver<ISettingsService>.Service.ReinforcerColor,null,null,"");
                 }
                 else
                 {

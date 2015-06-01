@@ -113,6 +113,7 @@ namespace IndiaRose.Business.ViewModels
 
 		public override void OnNavigatedTo(NavigationArgs e, string parametersKey)
 		{
+            if(e!=null) //todo : à supprimer (ligne de debug)
 			base.OnNavigatedTo(e, parametersKey);
 
 			if (!_navigationStack.Any())
