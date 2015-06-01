@@ -23,7 +23,7 @@ namespace IndiaRose.Framework.Views
         private int _lineCount;
         private IndiagramView[][] _displayableViews;
         private readonly Image _nextButton;
-        private Grid _grid;
+        private readonly Grid _grid;
         #endregion
         #region DependencyProperty
 
