@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Media;
 
 namespace IndiaRose.Framework.Converters
 {
@@ -27,6 +28,11 @@ namespace IndiaRose.Framework.Converters
         {
             uint input = (uint)value;
             return string.Format("#{0:X8}", input);
+        }
+
+        public SolidColorBrush Convert(string textColor)
+        {
+            return (SolidColorBrush) Convert(textColor, null, null, "");
         }
     }
 }
