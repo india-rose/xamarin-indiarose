@@ -163,6 +163,8 @@ namespace IndiaRose.Framework.Views
         {
             int newColumnCount = (int)(ActualWidth / IndiagramView.DefaultWidth);
             int newLineCount = (int)(ActualHeight / IndiagramView.DefaultHeight);
+            if(ActualHeight==0.0)
+                newLineCount = (int)(Height / IndiagramView.DefaultHeight);
 
             if (newColumnCount != _columnCount || newLineCount != _lineCount)
             {
@@ -208,7 +210,7 @@ namespace IndiaRose.Framework.Views
             }
         }
 
-        private void RefreshDisplay(DependencyObject dependencyObject = null, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs = null)
+        private void RefreshDisplay()
         {
             if (Indiagrams == null || _displayableViews == null || _lineCount == 0 || _columnCount == 0)
             {

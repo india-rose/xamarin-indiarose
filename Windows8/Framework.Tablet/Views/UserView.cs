@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -201,6 +197,7 @@ namespace IndiaRose.Framework.Views
 
         private void RefreshBotIndiagrams()
         {
+            _botScreen.Indiagrams = BotIndiagrams;
         }
 
         public ObservableCollection<IndiagramUIModel> BotIndiagrams
@@ -210,7 +207,18 @@ namespace IndiaRose.Framework.Views
         }
 
         public static readonly DependencyProperty BotCanAddIndiagramsProperty = DependencyProperty.Register(
-            "BotCanAddIndiagrams", typeof (bool), typeof (UserView), new PropertyMetadata(default(bool)));
+            "BotCanAddIndiagrams", typeof (bool), typeof (UserView), new PropertyMetadata(default(bool), RefreshCanAddIndiagram));
+
+        private static void RefreshCanAddIndiagram(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var view = d as UserView;
+            if (view != null) view.RefreshCanAddIndiagram();
+        }
+
+        private void RefreshCanAddIndiagram()
+        {
+            _botScreen.CanAddIndiagrams = BotCanAddIndiagrams;
+        }
 
         public bool BotCanAddIndiagrams
         {
@@ -219,7 +227,18 @@ namespace IndiaRose.Framework.Views
         }
 
         public static readonly DependencyProperty BotReadCommandProperty = DependencyProperty.Register(
-            "BotReadCommand", typeof (ICommand), typeof (UserView), new PropertyMetadata(default(ICommand)));
+            "BotReadCommand", typeof (ICommand), typeof (UserView), new PropertyMetadata(default(ICommand), RefreshBotReadCommand));
+
+        private static void RefreshBotReadCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var view = d as UserView;
+            if (view != null) view.RefreshBotReadCommand();
+        }
+
+        private void RefreshBotReadCommand()
+        {
+            _botScreen.ReadCommand = BotReadCommand;
+        }
 
         public ICommand BotReadCommand
         {
@@ -228,7 +247,18 @@ namespace IndiaRose.Framework.Views
         }
 
         public static readonly DependencyProperty BotIndiagramSelectedCommandProperty = DependencyProperty.Register(
-            "BotIndiagramSelectedCommand", typeof (ICommand), typeof (UserView), new PropertyMetadata(default(ICommand)));
+            "BotIndiagramSelectedCommand", typeof (ICommand), typeof (UserView), new PropertyMetadata(default(ICommand), RefreshBotIndiagramSelectedCommand));
+
+        private static void RefreshBotIndiagramSelectedCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var view = d as UserView;
+            if (view != null) view.RefreshBotIndiagramSelectedCommand();
+        }
+
+        private void RefreshBotIndiagramSelectedCommand()
+        {
+            _botScreen.IndiagramSelectedCommand = BotIndiagramSelectedCommand;
+        }
 
         public ICommand BotIndiagramSelectedCommand
         {
@@ -237,7 +267,18 @@ namespace IndiaRose.Framework.Views
         }
 
         public static readonly DependencyProperty BotCorrectionCommandProperty = DependencyProperty.Register(
-            "BotCorrectionCommand", typeof (ICommand), typeof (UserView), new PropertyMetadata(default(ICommand)));
+            "BotCorrectionCommand", typeof (ICommand), typeof (UserView), new PropertyMetadata(default(ICommand), RefreshBotCorrectionCommand));
+
+        private static void RefreshBotCorrectionCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var view = d as UserView;
+            if (view != null) view.RefreshBotCorrectionCommand();
+        }
+
+        private void RefreshBotCorrectionCommand()
+        {
+            _botScreen.CorrectionCommand = BotCorrectionCommand;
+        }
 
         public ICommand BotCorrectionCommand
         {

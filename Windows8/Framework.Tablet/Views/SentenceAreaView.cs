@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.UI;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Android.Support.V4.Widget;
 using IndiaRose.Data.Model;
@@ -28,7 +29,6 @@ namespace IndiaRose.Framework.Views
         public event EventHandler CanAddIndiagramsChanged;
 
         private bool _canAddIndiagrams = true;
-        private int _viewId = 0xFFFF2a;
         private int _maxNumberOfIndiagrams;
         private IndiagramView _playButton;
         private ObservableCollection<IndiagramUIModel> _indiagrams;
@@ -73,47 +73,19 @@ namespace IndiaRose.Framework.Views
             }
         }
 
-        #region Constructors
-
         public SentenceAreaView()
-            : base()
-        {
-            Initialize();
-        }
-
-        #endregion
-
-        private void Initialize()
         {
             _maxNumberOfIndiagrams = LazyResolver<IScreenService>.Service.Width/IndiagramView.DefaultWidth - 1;
             ISettingsService settings = LazyResolver<ISettingsService>.Service;
-            ColorStringToIntConverter colorConverter = new ColorStringToIntConverter();
+            var colorConverter = new ColorStringToSolidColorBrushConverter();
 
             // Init views
             for (int i = 0; i < _maxNumberOfIndiagrams; ++i)
             {
                 IndiagramView view = new IndiagramView()
                 {
-                    TextColor = (SolidColorBrush) colorConverter.Convert(settings.TextColor),
+                    TextColor = (SolidColorBrush) colorConverter.Convert(settings.TextColor,null,null,"")
                 };
-                /*
-                view.Tapped += OnIndiagramTouched;
-
-                var layoutParams = new LayoutParams(ViewGroup.LayoutParams.WrapContent,
-                    ViewGroup.LayoutParams.WrapContent);
-                layoutParams.AddRule(LayoutRules.CenterVertical);
-                if (i == 0)
-                {
-                    layoutParams.AddRule(LayoutRules.AlignParentLeft);
-                }
-                else
-                {
-                    layoutParams.AddRule(LayoutRules.RightOf, _viewId - 2);
-                }
-
-                AddView(view, layoutParams);
-                _indiagramViews.Add(view);
-                */
             }
 
 
@@ -138,14 +110,6 @@ namespace IndiaRose.Framework.Views
                         ReadCommand.Execute(null);
                     }
             };
-
-            /*
-            var lp = new LayoutParams();
-
-            lp.AddRule(LayoutRules.AlignParentRight);
-            lp.AddRule(LayoutRules.CenterVertical);
-
-            AddView(_playButton, lp);*/
         }
 
         private void IndiagramsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -211,7 +175,7 @@ namespace IndiaRose.Framework.Views
             }
         }
 
-        private void OnIndiagramTouched(object sender)
+        private void OnIndiagramTouched(object sender, TappedRoutedEventArgs tappedRoutedEventArgs)
         {
                 IndiagramView view = sender as IndiagramView;
                 if (view != null && view.Indiagram != null && IndiagramSelectedCommand != null &&
@@ -222,6 +186,5 @@ namespace IndiaRose.Framework.Views
             }
         }
     }
-}
 
 
