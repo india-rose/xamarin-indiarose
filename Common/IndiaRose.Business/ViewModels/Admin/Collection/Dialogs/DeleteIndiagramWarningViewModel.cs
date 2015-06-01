@@ -32,6 +32,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 
 		protected void DeleteAction()
 		{
+            CloseDialogAction();
 			CollectionStorageService.Delete(Indiagram);
 
 			if (DeleteCallback != null)

@@ -99,10 +99,8 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Activities\Admin\HomeActivity.cs" />
-    <Content Include="Views\Admin\Collection\Dialogs\RecordSoundDialog.xml" />
-    <Content Include="Views\User\HomePage.xml">
-      <SubType>Designer</SubType>
-    </Content>
+    <None Include="Views\Admin\Collection\Dialogs\RecordSoundDialog.xml" />
+    <None Include="Views\User\HomePage.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\manuel.pdf" />
@@ -114,13 +112,13 @@
     <ReswFile Include="..\..\Resources\fr\Resources.resw">
       <Link>Resources\values-fr\Resources.resw</Link>
     </ReswFile>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <AndroidAsset Include="Assets\indiagrams.zip" />
-    <None Include="Views\Admin\HomePage.xml">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Views\Admin\HomePage.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Icon.png" />
@@ -170,36 +168,26 @@
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values-v11\styles.xml" />
     <AndroidResource Include="Resources\values-v14\styles.xml" />
-    <Content Include="Views\Admin\Collection\CollectionManagementPage.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Views\Admin\Collection\AddIndiagramPage.xml" />
-    <Content Include="Views\Admin\Collection\Dialogs\IndiagramDisplayDialog.xml" />
-    <Content Include="Views\Admin\Collection\Dialogs\ImageChoiceDialog.xml" />
-    <Content Include="Views\Admin\Collection\Dialogs\SoundChoiceDialog.xml" />
-    <Content Include="Views\Admin\Collection\Dialogs\ChooseCategoryPage.xml" />
-    <Content Include="Views\Admin\Collection\WatchIndiagramPage.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Views\Admin\ImageChoiceDialog.xml" />
-    <Content Include="Views\Admin\Settings\Dialogs\CategoryReadingDialog.xml" />
-    <Content Include="Views\Admin\Settings\Dialogs\DragAndDropDialog.xml" />
-    <Content Include="Views\Admin\Settings\IndiagramPropertyPage.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Views\Admin\Settings\Dialogs\ReadingDelayDialog.xml" />
-    <Content Include="Views\Admin\ServerSynchronizationPage.xml" />
-    <Content Include="Views\Admin\MailErrorDialog.xml" />
-    <Content Include="Views\ImportingCollectionDialog.xml" />
-    <Content Include="Views\Resources\DialogStyles.xml" />
-    <Content Include="Views\Resources\CommonStyles.xml" />
-    <Content Include="Views\Resources\Converters.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Views\Resources\ButtonStyles.xml" />
-    <None Include="Views\Admin\Settings\ApplicationLookPage.xml">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Views\Admin\Collection\CollectionManagementPage.xml" />
+    <None Include="Views\Admin\Collection\AddIndiagramPage.xml" />
+    <None Include="Views\Admin\Collection\Dialogs\IndiagramDisplayDialog.xml" />
+    <None Include="Views\Admin\Collection\Dialogs\ImageChoiceDialog.xml" />
+    <None Include="Views\Admin\Collection\Dialogs\SoundChoiceDialog.xml" />
+    <None Include="Views\Admin\Collection\Dialogs\ChooseCategoryPage.xml" />
+    <None Include="Views\Admin\Collection\WatchIndiagramPage.xml" />
+    <None Include="Views\Admin\ImageChoiceDialog.xml" />
+    <None Include="Views\Admin\Settings\Dialogs\CategoryReadingDialog.xml" />
+    <None Include="Views\Admin\Settings\Dialogs\DragAndDropDialog.xml" />
+    <None Include="Views\Admin\Settings\IndiagramPropertyPage.xml" />
+    <None Include="Views\Admin\Settings\Dialogs\ReadingDelayDialog.xml" />
+    <None Include="Views\Admin\ServerSynchronizationPage.xml" />
+    <None Include="Views\Admin\MailErrorDialog.xml" />
+    <None Include="Views\ImportingCollectionDialog.xml" />
+    <None Include="Views\Resources\DialogStyles.xml" />
+    <None Include="Views\Resources\CommonStyles.xml" />
+    <None Include="Views\Resources\Converters.xml" />
+    <None Include="Views\Resources\ButtonStyles.xml" />
+    <None Include="Views\Admin\Settings\ApplicationLookPage.xml" />
     <None Include="Views\Admin\Settings\AppSettingsPage.xml" />
     <None Include="Views\Admin\CreditsPage.xml" />
     <None Include="Views\Admin\InstallTextToSpeechPage.xml" />

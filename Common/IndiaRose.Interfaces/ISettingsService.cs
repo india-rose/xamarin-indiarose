@@ -42,4 +42,3 @@ namespace IndiaRose.Interfaces
         event EventHandler<EventArgs> Loaded;
     }
 }
-

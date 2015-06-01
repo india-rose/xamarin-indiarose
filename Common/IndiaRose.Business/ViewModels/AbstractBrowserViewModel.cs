@@ -109,8 +109,8 @@ namespace IndiaRose.Business.ViewModels
             // Load collection
             ObservableCollection<Indiagram> collection = CollectionStorageService.Collection;
 
-            _rootCollection = new Category(collection)
-            {
+			_rootCollection = new Category(collection)
+			{
                 Text = LocalizationService.GetString("Collection_RootCategoryName", "Text"),
                 ImagePath = StorageService.ImageRootPath,
             };

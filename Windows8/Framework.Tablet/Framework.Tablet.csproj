@@ -105,7 +105,25 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Converters\BooleanToColumnSpanConverter.cs" />
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\ColorStringToIntConverter.cs" />
+    <Compile Include="Converters\ColorStringToSolidColorBrushConverter.cs" />
+    <Compile Include="Converters\DefaultLocalizedStringIfNullConverter.cs" />
+    <Compile Include="Converters\IndiaSizeToMarginSize.cs" />
+    <Compile Include="Converters\IndiaSizeToReinforcerSizeConverter.cs" />
+    <Compile Include="Converters\ParentCategoryTextConverter.cs" />
+    <Compile Include="Converters\TopAreaSizeToBottomAreaSizeConverter.cs" />
+    <Compile Include="Helper\ColorHelper.cs" />
+    <Compile Include="Helper\ImageHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\BindableImageView.cs" />
+    <Compile Include="Views\IndiagramBrowserView.cs" />
+    <Compile Include="Views\IndiagramPreviewView.cs" />
+    <Compile Include="Views\IndiagramView.cs" />
+    <Compile Include="Views\SentenceAreaView.cs" />
+    <Compile Include="Views\TitleBarView.cs" />
+    <Compile Include="Views\UserView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Funq.Portable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -113,16 +131,26 @@
       <HintPath>..\..\packages\Funq.Portable.1.0.1\lib\Funq.Portable.dll</HintPath>
     </Reference>
     <Reference Include="Storm.Mvvm, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Storm.Mvvm.1.2.2\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Storm.Mvvm.1.2.8\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
     </Reference>
     <Reference Include="Storm.Mvvm.Tablet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Storm.Mvvm.Tablet.1.1\lib\win81\Storm.Mvvm.Tablet.dll</HintPath>
+      <HintPath>..\..\packages\Storm.Mvvm.Tablet.1.2.1\lib\win81\Storm.Mvvm.Tablet.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\IndiaRose.Data\IndiaRose.Data.csproj">
+      <Project>{4c9de63b-da7f-4e65-8638-a4953f4a07e0}</Project>
+      <Name>IndiaRose.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\IndiaRose.Interfaces\IndiaRose.Interfaces.csproj">
+      <Project>{4a1f6c63-f97f-4e4b-a20c-8842cc486670}</Project>
+      <Name>IndiaRose.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

@@ -38,10 +38,13 @@ namespace IndiaRose.Services.Android
             _recorder.Start();
         }
 
-        public string StopRecord()
+        public Task<string> StopRecord()
         {
-            _recorder.Stop();
-            return _url;
+            return AsyncHelper.CreateAsyncFromCallback<string>(callbackResult =>
+            {
+                _recorder.Stop();
+                callbackResult(_url);
+            });
         }
 
         public Task<string> GetPictureFromCameraAsync()

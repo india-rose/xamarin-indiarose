@@ -1,9 +1,9 @@
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using Android.Content;
-using Android.Content.Res;
+using IndiaRose.Framework;
 using IndiaRose.Interfaces;
-using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 using Uri = Android.Net.Uri;
 
@@ -52,17 +52,19 @@ namespace IndiaRose.Services.Android
 
         }
 
-        public Stream OpenZip(string zipFileName)
-        {
-            using (Stream input = CurrentActivity.Assets.Open(zipFileName))
-            {
-                MemoryStream inputStream = new MemoryStream();
-                input.CopyTo(inputStream);
-                inputStream.Position = 0;
-	            return inputStream;
-            }
-            
-        }
+		public Task<Stream> OpenZip(string zipFileName)
+		{
+			return AsyncHelper.CreateAsyncFromCallback<Stream>(callbackResult =>
+			{
+				using (Stream input = CurrentActivity.Assets.Open(zipFileName))
+				{
+					MemoryStream inputStream = new MemoryStream();
+					input.CopyTo(inputStream);
+					inputStream.Position = 0;
+					callbackResult(inputStream);
+				}
+			});
+		}
 
         public void Copy(string src,string dest)
         {

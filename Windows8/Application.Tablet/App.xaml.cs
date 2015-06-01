@@ -8,6 +8,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using IndiaRose.Application.CompositionRoot;
 using IndiaRose.Application.Views;
+using IndiaRose.Framework.Converters;
 
 // Pour plus d'informations sur le modèle Application vide, consultez la page http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -42,8 +43,6 @@ namespace IndiaRose.Application
                 DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-            Bootstrap b = new Bootstrap();
-
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Ne répétez pas l'initialisation de l'application lorsque la fenêtre comporte déjà du contenu,
@@ -67,7 +66,7 @@ namespace IndiaRose.Application
                 // Placez le frame dans la fenêtre active
                 Window.Current.Content = rootFrame;
             }
-            b.Initialize(rootFrame);
+            Bootstrap.Initialize(rootFrame);
 
             if (rootFrame.Content == null)
             {

@@ -33,6 +33,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 
 		protected void DeleteAction()
 		{
+            CloseDialogAction();
 			if (Indiagram.HasChildren)
 			{
 				MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_DELETECONFIRMATION_CATEGORY, new Dictionary<string, object>

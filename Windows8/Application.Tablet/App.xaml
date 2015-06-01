@@ -3,15 +3,238 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:IndiaRose.Application"
-    xmlns:business="using:IndiaRose.Business">
-    
+    xmlns:business="using:IndiaRose.Business"
+    xmlns:converters="using:Storm.Mvvm.Converters"
+    xmlns:conv="using:IndiaRose.Framework.Converters">    
     <!--
         Not a page, will not be displayed.
-        You can put resources to make accessible from the whole project.
+        You can put resources to make them available from the whole project.
     -->
     <Application.Resources>
         <ResourceDictionary>
             <business:ViewModelsLocator x:Key="Locator"/>
+            
+            <!--Converter-->
+            <converters:StringFormatConverter x:Key="StringFormatConverter"/>
+            <conv:TopAreaSizeToBottomAreaSizeConverter x:Key="TopAreaSizeToBottomAreaSizeConverter"/>
+            <conv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <conv:IndiaSizeToReinforcerSizeConverter x:Key="IndiaSizeToReinforcerSizeConverter"/>
+            <conv:ParentCategoryTextConverter x:Key="ParentCategoryConverter"
+		                                        Uid="Collection_RootCategoryName"
+		                                        Property="Text" />
+            <conv:DefaultLocalizedStringIfNullConverter x:Key="DefaultLocalizedStringIfNullConverter"
+                                                          Uid="Collection_NoSound"
+		                                                  Property="Text"/>
+            <conv:BooleanToColumnSpanConverter x:Key="BooleanToColumnSpanConverter"/>
+            <conv:IndiaSizeToMarginSize x:Key="IndiaSizeToMarginSize"/>
+            <conv:ColorStringToIntConverter x:Key="ColorStringToIntConverter"/>
+            <conv:ColorStringToSolidColorBrushConverter x:Key="ColorStringToSolidColorBrushConverter"/>
+
+
+            <!--Button Style-->
+            <Style x:Key="ImageButtonStyle" TargetType="Button">
+                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                <Setter Property="FontSize" Value="35"/>
+                <Setter Property="FontWeight" Value="Light"/>
+                <Setter Property="Margin" Value="10, 10, 10, 10"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Normal" />
+                                            <VisualState x:Name="PointerOver">
+                                            </VisualState>
+                                            <VisualState x:Name="Pressed">
+                                                <Storyboard>
+                                                    <PointerDownThemeAnimation TargetName="Border"/>
+                                                </Storyboard>
+                                            </VisualState>
+                                            <VisualState x:Name="Disabled">
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                        <VisualStateGroup x:Name="FocusStates">
+                                            <VisualState x:Name="Focused">
+                                            </VisualState>
+                                            <VisualState x:Name="Unfocused" />
+                                            <VisualState x:Name="PointerFocused" />
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                    <Border x:Name="Border">
+                                        <ContentPresenter x:Name="ContentPresenter"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTransitions="{TemplateBinding ContentTransitions}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    </Border>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+            </Style>
+            <Style x:Key="Button" TargetType="Button">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                <Setter Property="FontSize" Value="35"/>
+                <Setter Property="FontWeight" Value="Light"/>
+                <Setter Property="Margin" Value="10, 10, 10, 10"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal"/>
+                                        <VisualState x:Name="PointerOver">
+                                            <Storyboard>
+                                                <DoubleAnimation Duration="0:0:0.4" To="0.85" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Border"/>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Pressed">
+                                            <Storyboard>
+                                                <DoubleAnimation Duration="0:0:0.4" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Border"/>
+                                                <ObjectAnimationUsingKeyFrames Duration="0:0:0.5" Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="#FF888888"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Disabled">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Duration="0:0:0.5" Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="#48474F"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                    <VisualStateGroup x:Name="FocusStates">
+                                        <VisualState x:Name="Focused">
+                                            <Storyboard>
+                                                <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisualWhite"/>
+                                                <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisualBlack"/>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Unfocused"/>
+                                        <VisualState x:Name="PointerFocused"/>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Margin="3">
+                                    <ContentPresenter x:Name="ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Border>
+                                <Rectangle x:Name="FocusVisualWhite" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="1.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}" StrokeDashArray="1,1"/>
+                                <Rectangle x:Name="FocusVisualBlack" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="0.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}" StrokeDashArray="1,1"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="BigButton" BasedOn="{StaticResource Button}" TargetType="Button">
+                <Setter Property="Grid.ColumnSpan" Value="2"/>
+            </Style>
+            <Style x:Key="SmallButton" BasedOn="{StaticResource Button}" TargetType="Button">
+                <Setter Property="Grid.ColumnSpan" Value="1"/>
+            </Style>
+
+            <Style x:Key="TextButton" TargetType="TextBlock">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="TextWrapping" Value="Wrap"/>
+            </Style>
+            <Style x:Key="PaddingTextButton" BasedOn="{StaticResource TextButton}" TargetType="TextBlock">
+                <Setter Property="Padding" Value="10"/>
+            </Style>
+            <!--Normal Color Button-->
+            <Style x:Key="OrangeButton" BasedOn="{StaticResource SmallButton}" TargetType="Button">
+                <Setter Property="Background" Value="OrangeRed"/>
+            </Style>
+            <Style x:Key="GreenButton" BasedOn="{StaticResource SmallButton}" TargetType="Button">
+                <Setter Property="Background" Value="ForestGreen"/>
+            </Style>
+            <Style x:Key="PurpleButton" BasedOn="{StaticResource SmallButton}" TargetType="Button">
+                <Setter Property="Background" Value="Purple"/>
+            </Style>
+            <Style x:Key="BlueButton" BasedOn="{StaticResource SmallButton}" TargetType="Button">
+                <Setter Property="Background" Value="DodgerBlue"/>
+            </Style>
+            <Style x:Key="PinkButton" BasedOn="{StaticResource SmallButton}" TargetType="Button">
+                <Setter Property="Background" Value="DeepPink"/>
+            </Style>
+            <Style x:Key="RedButton" BasedOn="{StaticResource SmallButton}" TargetType="Button">
+                <Setter Property="Background" Value="Red"/>
+            </Style>
+            <!--Big Color Button-->
+            <Style x:Key="BigOrangeButton" BasedOn="{StaticResource BigButton}" TargetType="Button">
+                <Setter Property="Background" Value="OrangeRed"/>
+            </Style>
+            <Style x:Key="BigGreenButton" BasedOn="{StaticResource BigButton}" TargetType="Button">
+                <Setter Property="Background" Value="ForestGreen"/>
+            </Style>
+            <Style x:Key="BigPurpleButton" BasedOn="{StaticResource BigButton}" TargetType="Button">
+                <Setter Property="Background" Value="Purple"/>
+            </Style>
+            <Style x:Key="BigBlueButton" BasedOn="{StaticResource BigButton}" TargetType="Button">
+                <Setter Property="Background" Value="DodgerBlue"/>
+            </Style>
+            <Style x:Key="BigPinkButton" BasedOn="{StaticResource BigButton}" TargetType="Button">
+                <Setter Property="Background" Value="DeepPink"/>
+            </Style>
+            <Style x:Key="BigRedButton" BasedOn="{StaticResource BigButton}" TargetType="Button">
+                <Setter Property="Background" Value="Red"/>
+            </Style>
+
+            <!--Text Style-->
+            <Style x:Key="LinkStyle" TargetType="HyperlinkButton">
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="FontWeight" Value="ExtraLight"/>
+                <Setter Property="Foreground" Value="Black"/>
+            </Style>
+            <Style x:Key="TextStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="RoyalBlue"/>
+                <Setter Property="FontSize" Value="35"/>
+                <Setter Property="FontWeight" Value="Light"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+            </Style>
+            <Style x:Key="SmallTextStyle" TargetType="TextBlock" BasedOn="{StaticResource TextStyle}">
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+            <Style x:Key="BlackSmallTextStyle" TargetType="TextBlock" BasedOn="{StaticResource SmallTextStyle}">
+                <Setter Property="Foreground" Value="Black"/>
+            </Style>
+            <Style x:Key="SmallTextButton" TargetType="TextBlock" BasedOn="{StaticResource TextButton}">
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+            <Style x:Key="ItalicTextStyle" TargetType="TextBlock" BasedOn="{StaticResource TextStyle}">
+                <Setter Property="FontStyle" Value="Italic"/>
+            </Style>
+            
+            <!--Popup Style-->
+            <Style x:Key="PopupTitleStyle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="30"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="PopupContentStyle" TargetType="TextBlock">
+                <Setter Property="FontWeight" Value="ExtraLight"></Setter>
+                <Setter Property="FontSize" Value="20"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                <Setter Property="Grid.ColumnSpan" Value="2"/>
+            </Style>
+            <Style x:Key="PopupValueStyle" TargetType="TextBlock" BasedOn="{StaticResource SmallTextStyle}">
+                <Setter Property="Grid.ColumnSpan" Value="2"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="TextWrapping" Value="Wrap"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
         </ResourceDictionary>        
     </Application.Resources>
 

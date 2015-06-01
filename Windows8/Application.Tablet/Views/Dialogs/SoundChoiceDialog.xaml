@@ -1,0 +1,64 @@
+﻿<mvvm:DialogPage
+    x:Class="IndiaRose.Application.Views.Dialogs.SoundChoiceDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:IndiaRose.Application.Views.Dialogs"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mvvm="using:Storm.Mvvm"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=AdminCollectionDialogsSoundChoiceViewModel}"
+    PopupHeight="300">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
+                   Grid.Column="1"
+                   Style="{StaticResource PopupTitleStyle}"
+                   x:Uid="SoundChoice_Title"/>
+
+        <!-- Button camera and Gallery -->
+
+        <Button Style="{StaticResource SmallButton}" 
+                Grid.Row="1" 
+                Grid.RowSpan="2"
+                Grid.Column="1" 
+                Command="{Binding RecordSoundCommand}">
+            <TextBlock Style="{StaticResource TextButton}" 
+                       x:Uid="SoundChoice_Record" />
+        </Button>
+
+        <Button Style="{StaticResource SmallButton}" 
+                Grid.Row="1" 
+                Grid.RowSpan="2"
+                Grid.Column="2" 
+                Command="{Binding GalleryCommand}">
+            <TextBlock Style="{StaticResource TextButton}" 
+                       x:Uid="SoundChoice_Browse" />
+        </Button>
+
+        <!-- Button cancel -->
+
+        <Button Style="{StaticResource SmallButton}" 
+                Grid.Row="3" 
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Command="{Binding CloseDialogCommand}">
+            <TextBlock Style="{StaticResource TextButton}" 
+                       x:Uid="Button_Cancel" />
+        </Button>
+
+    </Grid>
+</mvvm:DialogPage>
