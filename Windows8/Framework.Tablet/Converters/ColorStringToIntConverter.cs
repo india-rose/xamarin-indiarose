@@ -30,9 +30,5 @@ namespace IndiaRose.Framework.Converters
             return string.Format("#{0:X8}", input);
         }
 
-        public SolidColorBrush Convert(string textColor)
-        {
-            return (SolidColorBrush) Convert(textColor, null, null, "");
-        }
     }
 }
