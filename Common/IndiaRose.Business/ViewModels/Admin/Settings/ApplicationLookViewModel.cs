@@ -45,11 +45,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 
 		#region Services
 
-		public IMessageDialogService MessageDialogService
-		{
-			get { return LazyResolver<IMessageDialogService>.Service; }
-		}
-
 		public IScreenService ScreenService
 		{
 			get { return LazyResolver<IScreenService>.Service; }

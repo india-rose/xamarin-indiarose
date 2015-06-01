@@ -11,15 +11,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 {
 	public class SettingsListViewModel : AbstractViewModel
 	{
-		#region Services
-
-		public IMessageDialogService MessageDialogService
-		{
-			get { return LazyResolver<IMessageDialogService>.Service; }
-		}
-
-		#endregion
-
 		#region Commands
 
 		public ICommand ApplicationLookCommand { get; private set; }

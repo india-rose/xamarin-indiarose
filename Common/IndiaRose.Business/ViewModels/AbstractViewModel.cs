@@ -12,7 +12,7 @@ namespace IndiaRose.Business.ViewModels
 {
 	public abstract class AbstractViewModel : ViewModelBase
 	{
-        public IMessageDialogService MessageDialogService
+        protected IMessageDialogService MessageDialogService
         {
             get { return LazyResolver<IMessageDialogService>.Service; }
         }

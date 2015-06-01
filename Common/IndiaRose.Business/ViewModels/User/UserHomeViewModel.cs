@@ -147,7 +147,7 @@ namespace IndiaRose.Business.ViewModels.User
 						}));
 
 					LoggerService.Log("==> Importing collection from zip file");
-					await XmlService.InitializeCollectionFromZipStreamAsync(ResourceService.OpenZip("indiagrams.zip"));
+					await XmlService.InitializeCollectionFromZipStreamAsync(await ResourceService.OpenZip("indiagrams.zip"));
 				}
 				LoggerService.Log("# Import finished");
 				MessageDialogService.DismissCurrentDialog();

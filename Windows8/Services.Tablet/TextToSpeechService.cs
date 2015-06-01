@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Windows.Media.SpeechSynthesis;
 using Windows.UI.Xaml.Controls;
 using IndiaRose.Interfaces;
+using IndiaRose.Data.Model;
 
 namespace IndiaRose.Services
 {
@@ -36,6 +37,14 @@ namespace IndiaRose.Services
 		public void Close()
 		{
             _ttsSpeechSynthesizer.Dispose();
+		}
+
+		//TODO
+		public event EventHandler SpeakingCompleted;
+
+		public void PlayIndiagram(Indiagram indiagram)
+		{
+			//TODO : implement
 		}
 	}
 }

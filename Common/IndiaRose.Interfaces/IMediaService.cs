@@ -15,6 +15,6 @@ namespace IndiaRose.Interfaces
         //string StopRecord();
 
         Task<string> StopRecord();
-        void PlaySound(string url);
+        //void PlaySound(string url);
     }
 }

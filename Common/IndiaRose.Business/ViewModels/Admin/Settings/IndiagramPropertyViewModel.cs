@@ -25,11 +25,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 			get { return LazyResolver<IFontService>.Service; }
 		}
 
-		protected IMessageDialogService MessageDialogService
-		{
-			get { return LazyResolver<IMessageDialogService>.Service; }
-		}
-
 		#endregion
 
 		#region Properties

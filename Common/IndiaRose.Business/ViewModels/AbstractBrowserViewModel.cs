@@ -30,11 +30,6 @@ namespace IndiaRose.Business.ViewModels
 
 		#region Services
 
-		protected IMessageDialogService MessageDialogService
-		{
-			get { return LazyResolver<IMessageDialogService>.Service; }
-		}
-
 		protected ISettingsService SettingsService
 		{
 			get { return LazyResolver<ISettingsService>.Service; }

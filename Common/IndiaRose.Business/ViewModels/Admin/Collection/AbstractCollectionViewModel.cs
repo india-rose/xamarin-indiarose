@@ -12,11 +12,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			get { return LazyResolver<ISettingsService>.Service; }
 		}
 
-		protected IMessageDialogService MessageDialogService
-		{
-			get { return LazyResolver<IMessageDialogService>.Service; }
-		}
-
 		protected ICollectionStorageService CollectionStorageService
 		{
 			get { return LazyResolver<ICollectionStorageService>.Service; }
