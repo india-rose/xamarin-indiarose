@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Media.PlayTo;
 using Windows.Media.SpeechSynthesis;
 using Windows.UI.Xaml.Controls;
 using IndiaRose.Interfaces;
 using IndiaRose.Data.Model;
+using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Services
 {
 	public class TextToSpeechService : ITextToSpeechService
 	{
+        private readonly Dictionary<string, string> _registeredSounds = new Dictionary<string, string>();
 	    private readonly SpeechSynthesizer _ttsSpeechSynthesizer=new SpeechSynthesizer();
         private MediaElement _sound;
 		public async void ReadText(string text)
@@ -44,7 +47,14 @@ namespace IndiaRose.Services
 
 		public void PlayIndiagram(Indiagram indiagram)
 		{
-			//TODO : implement
+            if (indiagram.HasCustomSound)
+            {
+                LazyResolver<IMediaService>.Service.PlaySound(indiagram.SoundPath);
+            }
+            else
+            {
+                ReadText(indiagram.Text);
+            }
 		}
 	}
 }

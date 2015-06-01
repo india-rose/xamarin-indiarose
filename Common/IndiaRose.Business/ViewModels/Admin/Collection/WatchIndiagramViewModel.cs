@@ -87,7 +87,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 		}
 
 	    private void ListenAction()
-	    {
+        {
+            if (IndiagramContainer==null)return;
 			TtsService.PlayIndiagram(IndiagramContainer.Indiagram);
 	    }
 	}
