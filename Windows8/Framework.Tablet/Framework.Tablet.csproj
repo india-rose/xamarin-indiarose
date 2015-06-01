@@ -123,6 +123,9 @@
     <Compile Include="Views\IndiagramBrowserView.cs" />
     <Compile Include="Views\IndiagramPreviewView.cs" />
     <Compile Include="Views\IndiagramView.cs" />
+    <Compile Include="Views\SentenceAreaView.cs" />
+    <Compile Include="Views\TitleBarView.cs" />
+    <Compile Include="Views\UserView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Funq.Portable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
