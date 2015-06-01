@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IndiaRose.Interfaces;
+using Storm.Mvvm.Inject;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +24,21 @@ namespace IndiaRose.Application.Views.User
     /// </summary>
     public sealed partial class HomePage
     {
+        private ISettingsService SettingsService
+        {
+            get { return LazyResolver<ISettingsService>.Service; }
+        }
         public HomePage()
         {
-            this.InitializeComponent();
+            if (SettingsService.IsLoaded)
+                SettingsService_Loaded();
+            else
+                SettingsService.Loaded += SettingsService_Loaded;
+        }
+
+        void SettingsService_Loaded(object sender = null, EventArgs e = null)
+        {
+            InitializeComponent();
         }
     }
 }
