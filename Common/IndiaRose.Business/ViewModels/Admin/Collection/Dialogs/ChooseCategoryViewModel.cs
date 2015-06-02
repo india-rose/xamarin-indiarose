@@ -51,7 +51,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			{
 				SelectedCallback(category);
 			}
-			CloseDialogAction();
 		}
 
 		private void GoIntoAction(Category category)

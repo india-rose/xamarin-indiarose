@@ -21,9 +21,12 @@
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"
-                   Style="{StaticResource PopupTitleStyle}"
-                   x:Uid="ExploreCollection_TitleDialog"/>
+        
+        <TextBlock Grid.Column="0" 
+                   Grid.Row="0" 
+                   Grid.ColumnSpan="3" 
+                   Style="{StaticResource PopupTitleStyle}" 
+                   x:Uid="ExploreCollection_TitleDialog" />
         <StackPanel
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
@@ -35,7 +38,8 @@
             ImagePath="{Binding Indiagram.ImagePath}"
             />
 
-            <TextBlock Style="{StaticResource TextButton}"  Text="{Binding Indiagram.Text}"/>
+            <TextBlock Style="{StaticResource TextButton}" 
+                       Text="{Binding Indiagram.Text}"/>
         </StackPanel>
 
         <Button Style="{StaticResource SmallButton}" 
@@ -57,7 +61,7 @@
         <Button Style="{StaticResource SmallButton}" 
                 Grid.Row="2" 
                 Grid.Column="2"
-                Command="{Binding SelectedCallback}">
+                Command="{Binding SelectCommand}">
             <TextBlock Style="{StaticResource TextButton}" 
                        x:Uid="ExploreCollection_SelectCategory" />
         </Button>

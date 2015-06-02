@@ -42,6 +42,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 
 		private void GoIntoAction()
 		{
+            CloseDialogAction();
+
 			if (GoIntoCallback != null)
 			{
 				GoIntoCallback(Indiagram as Category);
@@ -50,6 +52,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 
 		private void SendIndiagramAction()
 		{
+            CloseDialogAction();
+
 			if (SelectedCallback != null)
 			{
 				SelectedCallback(Indiagram as Category);

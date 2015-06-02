@@ -135,20 +135,5 @@ namespace IndiaRose.Services
             await _recordMediaCapture.StopRecordAsync();
             return Path.Combine(StorageService.SoundPath,_url);
         }
-
-        public async void PlaySound(string url)
-        {
-            var file = await StorageFile.GetFileFromPathAsync(url);
-            
-            if (_sound == null)
-            {
-                _sound= new MediaElement();
-                _sound.SetSource((await file.OpenAsync(FileAccessMode.Read)), "audio");
-            }
-                _sound.Stop();
-                _sound = new MediaElement();
-                _sound.SetSource((await file.OpenAsync(FileAccessMode.Read)), "audio");
-                _sound.Play();
-        }
     }
 }
