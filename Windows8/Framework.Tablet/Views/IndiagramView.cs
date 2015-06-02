@@ -1,12 +1,10 @@
 ﻿using System;
-using Windows.Foundation;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using IndiaRose.Data.Model;
-using IndiaRose.Framework.Converters;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
 
@@ -22,7 +20,7 @@ namespace IndiaRose.Framework.Views
         private readonly Image _image;
         private readonly StackPanel _redRect;
 
-        public static readonly DependencyProperty TextColorProperty=DependencyProperty.Register(
+        public static readonly DependencyProperty TextColorProperty = DependencyProperty.Register(
                 "TextColor", typeof(SolidColorBrush), typeof(IndiagramView), new PropertyMetadata(default(SolidColorBrush), RefreshColor));
 
         public SolidColorBrush TextColor
@@ -72,7 +70,7 @@ namespace IndiaRose.Framework.Views
                 Width = SettingsService.IndiagramDisplaySize,
                 Background = new SolidColorBrush(Colors.Red)
             };
-            Children.Insert(0,_image);
+            Children.Insert(0, _image);
             Children.Add(_textBlock);
         }
 
@@ -94,21 +92,38 @@ namespace IndiaRose.Framework.Views
             var indiaView = dependencyObject as IndiagramView;
             if (indiaView != null) indiaView.RefreshDisplay();
         }
-        
+
         protected virtual void RefreshDisplay()
         {
+            if (Indiagram == null)
+            {
+                Children.Clear();
+                return;
+            }
             if (!string.IsNullOrEmpty(Indiagram.ImagePath))
             {
                 if (Children[0] != _image)
                 {
-                    Children.RemoveAt(0);
+                    try
+                    {
+                        Children.RemoveAt(0);
+                    }
+                    catch (ArgumentException)
+                    {
+                    }
                     Children.Insert(0, _image);
                 }
                 _image.Source = new BitmapImage(new Uri(Indiagram.ImagePath, UriKind.Absolute));
             }
             else
             {
-                Children.RemoveAt(0);
+                try
+                {
+                    Children.RemoveAt(0);
+                }
+                catch (ArgumentException)
+                {
+                }
                 Children.Insert(0, _redRect);
             }
             if (!Indiagram.IsEnabled)

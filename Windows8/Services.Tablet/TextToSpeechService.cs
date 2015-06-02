@@ -49,8 +49,8 @@ namespace IndiaRose.Services
             if (_sound==null||_sound.CurrentState != MediaElementState.Playing)
             {
                 _sound = new MediaElement();
-                _sound.MediaEnded += _sound_MediaEnded;
-                _sound.SetSource(stream,mimetype);
+                _sound.SetSource(stream, mimetype);
+                _sound.MediaEnded+=_sound_MediaEnded;
                 _sound.Play();
             }
 	    }

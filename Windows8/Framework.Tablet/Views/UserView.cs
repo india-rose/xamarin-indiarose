@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Windows.UI.Xaml;
@@ -293,6 +294,18 @@ namespace IndiaRose.Framework.Views
             Children.Add(_topScreen);
             Children.Add(_botScreen);
             SizeChanged += UserView_SizeChanged;
+            _topScreen.CountChanged += _topScreen_CountChanged;
+            _botScreen.CanAddIndiagramsChanged += _botScreen_CanAddIndiagramsChanged;
+        }
+
+        void _botScreen_CanAddIndiagramsChanged(object sender, EventArgs e)
+        {
+            BotCanAddIndiagrams = _botScreen.CanAddIndiagrams;
+        }
+
+        void _topScreen_CountChanged(object sender, EventArgs e)
+        {
+            TopCount = _topScreen.Count;
         }
 
         void UserView_SizeChanged(object sender, SizeChangedEventArgs e)

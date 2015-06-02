@@ -179,12 +179,12 @@ namespace IndiaRose.Business.ViewModels.User
 			
 			bool canRead = false;
 			lock (_lockMutex)
-			{
-				if (!_isReading)
-				{
-					canRead = true;
-					_isReading = true;
-				}
+            {
+                if (!_isReading)
+                {
+                    canRead = true;
+                    _isReading = true;
+                }
 			}
 			if (canRead)
 			{
@@ -278,8 +278,9 @@ namespace IndiaRose.Business.ViewModels.User
 			lock (_lockMutex)
 			{
 				if (_isReading)
-				{
-					return;
+                {
+                    //todo : debuguer le tts (event end) pour décommenter la ligne
+                    //return;
 				}
 			}
 			// Indiagram has been selected from top
@@ -297,25 +298,25 @@ namespace IndiaRose.Business.ViewModels.User
 			}
 			else
 			{
-				if (CanAddMoreIndiagrams)
-				{
-					lock (_lockMutex)
-					{
-						_isReading = true;
-					}
-					TtsService.PlayIndiagram(indiagram);
-					SentenceIndiagrams.Add(new IndiagramUIModel(indiagram));
-					if (SettingsService.IsBackHomeAfterSelectionEnabled && PopCategory())
-					{
-						while (PopCategory())
-						{
-						}
-					}
-					else
-					{
-						RefreshDisplayList();
-					}
-				}
+                if (CanAddMoreIndiagrams)
+                {
+                    lock (_lockMutex)
+                    {
+                        _isReading = true;
+                    }
+                    TtsService.PlayIndiagram(indiagram);
+                    SentenceIndiagrams.Add(new IndiagramUIModel(indiagram));
+                    if (SettingsService.IsBackHomeAfterSelectionEnabled && PopCategory())
+                    {
+                        while (PopCategory())
+                        {
+                        }
+                    }
+                    else
+                    {
+                        RefreshDisplayList();
+                    }
+                }
 			}
 		}
 

@@ -114,8 +114,6 @@
     <Compile Include="Converters\IndiaSizeToReinforcerSizeConverter.cs" />
     <Compile Include="Converters\ParentCategoryTextConverter.cs" />
     <Compile Include="Converters\TopAreaSizeToBottomAreaSizeConverter.cs" />
-    <Compile Include="Helper\ColorHelper.cs" />
-    <Compile Include="Helper\ImageHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\BindableImageView.cs" />
     <Compile Include="Views\IndiagramBrowserView.cs" />

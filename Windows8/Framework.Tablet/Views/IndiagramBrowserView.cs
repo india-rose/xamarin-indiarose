@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
-using Windows.Foundation.Diagnostics;
-using Windows.Graphics.Imaging;
-using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -25,10 +22,26 @@ namespace IndiaRose.Framework.Views
         private readonly Image _nextButton;
         private readonly Grid _grid;
         #endregion
+
+        public event EventHandler CountChanged;
         #region DependencyProperty
 
         public static readonly DependencyProperty CountProperty = DependencyProperty.Register(
-                "Count", typeof(int), typeof(IndiagramBrowserView), new PropertyMetadata(default(int)));
+                "Count", typeof(int), typeof(IndiagramBrowserView), new PropertyMetadata(default(int),CountChangedRaising));
+
+        private static void CountChangedRaising(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var view = d as IndiagramBrowserView;
+            if (view != null) view.RaiseCountChanged();
+        }
+
+        public void RaiseCountChanged()
+        {
+            if (CountChanged != null)
+            {
+                CountChanged(this,null);
+            }
+        }
 
         public static readonly DependencyProperty OffsetProperty = DependencyProperty.Register(
                 "Offset", typeof(int), typeof(IndiagramBrowserView), new PropertyMetadata(default(int), Refresh));
@@ -163,7 +176,7 @@ namespace IndiaRose.Framework.Views
         {
             int newColumnCount = (int)(ActualWidth / IndiagramView.DefaultWidth);
             int newLineCount = (int)(ActualHeight / IndiagramView.DefaultHeight);
-            if(ActualHeight==0.0)
+            if((int)ActualHeight==0)
                 newLineCount = (int)(Height / IndiagramView.DefaultHeight);
 
             if (newColumnCount != _columnCount || newLineCount != _lineCount)
