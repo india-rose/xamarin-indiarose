@@ -61,7 +61,8 @@ namespace IndiaRose.Framework.Views
                 Margin = new Thickness(margin, 0, margin, 0),
                 FontSize = SettingsService.FontSize,
                 TextWrapping = TextWrapping.Wrap,
-                HorizontalAlignment = HorizontalAlignment.Center
+                HorizontalAlignment = HorizontalAlignment.Center,
+                FontFamily = new FontFamily(SettingsService.FontName)
             };
             _redRect = new StackPanel()
             {
