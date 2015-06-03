@@ -39,11 +39,17 @@ namespace IndiaRose.Business.ViewModels.User
 		private readonly object _lockMutex = new object();
 		private bool _initialized;
 		private readonly Semaphore _readSemaphore = new Semaphore(0, 1);
+		private bool _correctionMode;
 
 		private bool _isReading;
 
 		private ObservableCollection<IndiagramUIModel> _sentenceIndiagrams;
 		private bool _canAddMoreIndiagrams = true;
+
+		public bool CorrectionMode {
+			get{ return _correctionMode; }
+			set{ SetProperty (ref _correctionMode, value); }
+		}
 
 		public string BotBackgroundColor
 		{
@@ -81,8 +87,6 @@ namespace IndiaRose.Business.ViewModels.User
 				Text = LocalizationService.GetString ("Collection_CorrectionCategoryName", "Text"),
 				ImagePath = StorageService.ImageCorrectionPath
 			};
-            //todo : à supprimer (ligne de debug)
-            OnNavigatedTo(null,null);
 		}
 
 		private void OnTtsSpeakingCompleted(object sender, EventArgs eventArgs)
@@ -179,12 +183,12 @@ namespace IndiaRose.Business.ViewModels.User
 			
 			bool canRead = false;
 			lock (_lockMutex)
-			{
-				if (!_isReading)
-				{
-					canRead = true;
-					_isReading = true;
-				}
+            {
+                if (!_isReading)
+                {
+                    canRead = true;
+                    _isReading = true;
+                }
 			}
 			if (canRead)
 			{
@@ -278,8 +282,8 @@ namespace IndiaRose.Business.ViewModels.User
 			lock (_lockMutex)
 			{
 				if (_isReading)
-				{
-					return;
+                {
+                    return;
 				}
 			}
 			// Indiagram has been selected from top
@@ -289,7 +293,7 @@ namespace IndiaRose.Business.ViewModels.User
 				{
 					lock (_lockMutex)
 					{
-						_isReading = true;
+                        _isReading = true;
 					}
 					TtsService.PlayIndiagram(indiagram);
 				}
@@ -297,25 +301,25 @@ namespace IndiaRose.Business.ViewModels.User
 			}
 			else
 			{
-				if (CanAddMoreIndiagrams)
-				{
-					lock (_lockMutex)
-					{
-						_isReading = true;
-					}
-					TtsService.PlayIndiagram(indiagram);
-					SentenceIndiagrams.Add(new IndiagramUIModel(indiagram));
-					if (SettingsService.IsBackHomeAfterSelectionEnabled && PopCategory())
-					{
-						while (PopCategory())
-						{
-						}
-					}
-					else
-					{
-						RefreshDisplayList();
-					}
-				}
+                if (CanAddMoreIndiagrams)
+                {
+                    lock (_lockMutex)
+                    {
+                        _isReading = true;
+                    }
+                    TtsService.PlayIndiagram(indiagram);
+                    SentenceIndiagrams.Add(new IndiagramUIModel(indiagram));
+					if (!CorrectionMode&&SettingsService.IsBackHomeAfterSelectionEnabled && PopCategory())
+                    {
+                        while (PopCategory())
+                        {
+                        }
+                    }
+                    else
+                    {
+                        RefreshDisplayList();
+                    }
+                }
 			}
 		}
 

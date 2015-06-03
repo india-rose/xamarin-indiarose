@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.UI;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Android.Support.V4.Widget;
+using Windows.UI.Xaml.Media.Imaging;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using IndiaRose.Framework.Converters;
@@ -19,8 +18,6 @@ using IndiaRose.Interfaces;
 using Storm.Mvvm.Events;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
-using Storm;
-
 
 namespace IndiaRose.Framework.Views
 {
@@ -30,10 +27,11 @@ namespace IndiaRose.Framework.Views
 
         private bool _canAddIndiagrams = true;
         private int _maxNumberOfIndiagrams;
-        private IndiagramView _playButton;
+        private readonly Image _playButton;
         private ObservableCollection<IndiagramUIModel> _indiagrams;
         private readonly List<IndiagramView> _indiagramViews = new List<IndiagramView>();
-        private readonly ColorStringToSolidColorBrushConverter colorConverter = new ColorStringToSolidColorBrushConverter();
+        private readonly ColorStringToSolidColorBrushConverter _colorConverter = new ColorStringToSolidColorBrushConverter();
+        private readonly Grid _grid=new Grid();
 
         public ICommand IndiagramSelectedCommand { get; set; }
 
@@ -76,41 +74,56 @@ namespace IndiaRose.Framework.Views
 
         public SentenceAreaView()
         {
-            _maxNumberOfIndiagrams = LazyResolver<IScreenService>.Service.Width/IndiagramView.DefaultWidth - 1;
-            ISettingsService settings = LazyResolver<ISettingsService>.Service;
-
-            // Init views
-            for (int i = 0; i < _maxNumberOfIndiagrams; ++i)
-            {
-                IndiagramView view = new IndiagramView()
-                {
-                    TextColor = (SolidColorBrush) colorConverter.Convert(settings.TextColor,null,null,"")
-                };
-                view.Tapped += OnIndiagramTouched;
-            }
-
+            SizeChanged += SentenceAreaView_SizeChanged;
 
             // Init play button
-            _playButton = new IndiagramView()
+            _playButton = new Image()
             {
-                Indiagram = new Indiagram()
-                {
-                    Text = "play",
-                    ImagePath = LazyResolver<IStorageService>.Service.ImagePlayButtonPath
-                }
+                Source = new BitmapImage(new Uri(LazyResolver<IStorageService>.Service.ImagePlayButtonPath, UriKind.Absolute)),
+                Width = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize,
+                Height = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize
             };
 
             _playButton.Tapped += (sender, args) =>
             {
-                        if (CorrectionCommand != null && CorrectionCommand.CanExecute(null))
-                        {
-                            CorrectionCommand.Execute(null);
-                        }
-                    else if (ReadCommand != null && ReadCommand.CanExecute(null))
-                    {
-                        ReadCommand.Execute(null);
-                    }
+                if (ReadCommand != null && ReadCommand.CanExecute(null))
+                {
+                    ReadCommand.Execute(null);
+                }
             };
+        }
+
+        void SentenceAreaView_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var oldmaxnumber = _maxNumberOfIndiagrams;
+            _maxNumberOfIndiagrams = ((int)ActualWidth / IndiagramView.DefaultWidth) - 1;
+            if (_maxNumberOfIndiagrams == oldmaxnumber)
+                return;
+            _grid.ColumnDefinitions.Clear();
+            for (var i = 0; i < _maxNumberOfIndiagrams + 1; i++)
+            {
+                _grid.ColumnDefinitions.Add(new ColumnDefinition()
+                {
+                    Width = new GridLength(1, GridUnitType.Star)
+                });
+            }
+            Grid.SetColumn(_playButton, _maxNumberOfIndiagrams);
+            Children.Add(_grid);
+            _grid.Children.Add(_playButton);
+            var settings = LazyResolver<ISettingsService>.Service;
+
+            // Init views
+            for (var i = 0; i < _maxNumberOfIndiagrams; ++i)
+            {
+                var view = new IndiagramView()
+                {
+                    TextColor = (SolidColorBrush)_colorConverter.Convert(settings.TextColor, null, null, "")
+                };
+                view.Tapped += OnIndiagramTouched;
+                Grid.SetColumn(view, i);
+                _grid.Children.Add(view);
+                _indiagramViews.Add(view);
+            }
         }
 
         private void IndiagramsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -132,7 +145,7 @@ namespace IndiaRose.Framework.Views
             }
 
             //refresh everything
-            int i = 0;
+            var i = 0;
             for (; i < _indiagrams.Count; ++i)
             {
                 _indiagramViews[i].Indiagram = _indiagrams[i].Model;
@@ -146,12 +159,12 @@ namespace IndiaRose.Framework.Views
 
         private void IndiagramReinforcerChanged(object sender, EventArgs eventArgs)
         {
-            IndiagramUIModel uiModel = sender as IndiagramUIModel;
+            var uiModel = sender as IndiagramUIModel;
 
             if (uiModel != null)
             {
                 // find the view associated with this model
-                IndiagramView view =
+                var view =
                     _indiagramViews.FirstOrDefault(
                         x => x.Indiagram != null && Indiagram.AreSameIndiagram(x.Indiagram, uiModel.Model));
 
@@ -165,7 +178,7 @@ namespace IndiaRose.Framework.Views
 
                 if (uiModel.IsReinforcerEnabled)
                 {
-                    view.Background = (SolidColorBrush) colorConverter.Convert(LazyResolver<ISettingsService>.Service.ReinforcerColor,null,null,"");
+                    view.Background = (SolidColorBrush)_colorConverter.Convert(LazyResolver<ISettingsService>.Service.ReinforcerColor, null, null, "");
                 }
                 else
                 {
@@ -177,14 +190,14 @@ namespace IndiaRose.Framework.Views
 
         private void OnIndiagramTouched(object sender, TappedRoutedEventArgs tappedRoutedEventArgs)
         {
-                IndiagramView view = sender as IndiagramView;
-                if (view != null && view.Indiagram != null && IndiagramSelectedCommand != null &&
-                    IndiagramSelectedCommand.CanExecute(view.Indiagram))
-                {
-                    IndiagramSelectedCommand.Execute(view.Indiagram);
-                }
+            var view = sender as IndiagramView;
+            if (view != null && view.Indiagram != null && IndiagramSelectedCommand != null &&
+                IndiagramSelectedCommand.CanExecute(view.Indiagram))
+            {
+                IndiagramSelectedCommand.Execute(view.Indiagram);
             }
         }
     }
+}
 
 

@@ -23,7 +23,6 @@ namespace IndiaRose.Business.ViewModels
 		private int _collectionOffset;
 		private int _collectionDisplayCount;
 		private List<Indiagram> _displayedIndiagrams;
-		private bool _correctionMode;
 
 		private readonly Category _rootCollection;
 		private readonly Stack<Category> _navigationStack = new Stack<Category>();
@@ -49,10 +48,6 @@ namespace IndiaRose.Business.ViewModels
 
 		#region Public properties
 
-		public bool CorrectionMode {
-			get{ return _correctionMode; }
-			set{ SetProperty (ref _correctionMode, value); }
-		}
 
 		public string TextColor
 		{
@@ -113,7 +108,6 @@ namespace IndiaRose.Business.ViewModels
 
 		public override void OnNavigatedTo(NavigationArgs e, string parametersKey)
 		{
-            if(e!=null) //todo : à supprimer (ligne de debug)
 			base.OnNavigatedTo(e, parametersKey);
 
 			if (!_navigationStack.Any())
@@ -199,7 +193,7 @@ namespace IndiaRose.Business.ViewModels
 			}
 			DisplayedIndiagrams = FilterCollection(_navigationStack.Peek().Children).ToList();
 
-			if (!CorrectionMode&&DisplayedIndiagrams.Count == 0 && _navigationStack.Count > 1)
+			if (DisplayedIndiagrams.Count == 0 && _navigationStack.Count > 1)
 			{
 				PopCategory();
 			}
