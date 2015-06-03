@@ -54,7 +54,6 @@ namespace IndiaRose.Framework.Views
                 _imagecategory.Source = new BitmapImage(new Uri(Category.ImagePath, UriKind.Absolute));
                 Children.Insert(0,_imagecategory);
             }
-            Children.Insert(1,_textblock);
         }
 
         public Category Category
@@ -65,7 +64,12 @@ namespace IndiaRose.Framework.Views
 
         public TitleBarView()
         {
-            _textblock = new TextBlock();
+            var settingsService = LazyResolver<ISettingsService>.Service;
+            _textblock = new TextBlock()
+            {
+                FontSize = settingsService.FontSize,
+                Foreground = new SolidColorBrush(Colors.Black)
+            };
             _redRect = new StackPanel()
             {
                 Height = 60,
@@ -81,6 +85,7 @@ namespace IndiaRose.Framework.Views
             Orientation = Orientation.Horizontal;
             const string sourcelogo = "ms-appx:///Assets/" + "logoIndiaRose.png";
             var logo = new Image { Source = new BitmapImage(new Uri(sourcelogo)) };
+            Children.Insert(1, _textblock);
             Children.Insert(2, logo);
 
         }
