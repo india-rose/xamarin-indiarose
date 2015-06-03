@@ -319,6 +319,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         protected void RootAction()
         {
             CurrentIndiagram.Parent = null;
+			RefreshBrothers ();
         }
 
         protected void ResetSoundAction()

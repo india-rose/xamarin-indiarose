@@ -47,6 +47,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 
 		private void OnCategorySelected(Category category)
 		{
+            //todo pourquoi ça ferme pas ?
+			CloseDialogAction ();
 			if (SelectedCallback != null)
 			{
 				SelectedCallback(category);
