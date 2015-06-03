@@ -10,8 +10,8 @@
     xmlns:view="using:IndiaRose.Framework.Views"
     DataContext="{Binding Source={StaticResource Locator}, Path=UserHomeViewModel}">
     <StackPanel>
-        <view:TitleBarView
-            />
+        <!--<view:TitleBarView 
+            Category="{Binding CurrentCategory}"/>-->
 
 
         <view:UserView
@@ -23,13 +23,12 @@
 	          TopIndiagramSelectedCommand="{Binding IndiagramSelectedCommand}"
 	          TopNextCommand="{Binding NextCommand}"
 	          TopNextButtonVisibility="{Binding CorrectionMode, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Negation}"
-	          
 			  BotBackground="{Binding BotBackgroundColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
 	          BotIndiagrams="{Binding SentenceIndiagrams}" 
 			  BotCanAddIndiagrams="{Binding CanAddMoreIndiagrams, Mode=TwoWay}"
 			  BotReadCommand="{Binding ReadSentenceCommand}"
 			  BotIndiagramSelectedCommand="{Binding SentenceIndiagramSelectedCommand}"
 			  BotCorrectionCommand="{Binding CorrectionCommand}"
-/>
+                />
     </StackPanel>
 </mvvm:MvvmPage>
