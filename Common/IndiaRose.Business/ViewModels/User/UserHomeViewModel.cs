@@ -279,8 +279,7 @@ namespace IndiaRose.Business.ViewModels.User
 			{
 				if (_isReading)
                 {
-                    //todo : debuguer le tts (event end) pour décommenter la ligne
-                    //return;
+                    return;
 				}
 			}
 			// Indiagram has been selected from top
@@ -290,7 +289,7 @@ namespace IndiaRose.Business.ViewModels.User
 				{
 					lock (_lockMutex)
 					{
-						_isReading = true;
+                        _isReading = true;
 					}
 					TtsService.PlayIndiagram(indiagram);
 				}
