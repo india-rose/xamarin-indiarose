@@ -9,7 +9,11 @@
     mc:Ignorable="d"
     xmlns:view="using:IndiaRose.Framework.Views"
     DataContext="{Binding Source={StaticResource Locator}, Path=UserHomeViewModel}">
-
+    <StackPanel>
+    <view:TitleBarView
+        Category="{Binding CurrentCategory}"
+        ></view:TitleBarView>
+    
         <view:UserView
 	          TopBackground="{Binding BackgroundColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
 	          TopCount="{Binding CollectionDisplayCount, Mode=TwoWay}"
@@ -27,4 +31,5 @@
 			  BotIndiagramSelectedCommand="{Binding SentenceIndiagramSelectedCommand}"
 			  BotCorrectionCommand="{Binding CorrectionCommand}"
 />
+    </StackPanel>
 </mvvm:MvvmPage>
