@@ -39,11 +39,17 @@ namespace IndiaRose.Business.ViewModels.User
 		private readonly object _lockMutex = new object();
 		private bool _initialized;
 		private readonly Semaphore _readSemaphore = new Semaphore(0, 1);
+		private bool _correctionMode;
 
 		private bool _isReading;
 
 		private ObservableCollection<IndiagramUIModel> _sentenceIndiagrams;
 		private bool _canAddMoreIndiagrams = true;
+
+		public bool CorrectionMode {
+			get{ return _correctionMode; }
+			set{ SetProperty (ref _correctionMode, value); }
+		}
 
 		public string BotBackgroundColor
 		{
@@ -81,8 +87,6 @@ namespace IndiaRose.Business.ViewModels.User
 				Text = LocalizationService.GetString ("Collection_CorrectionCategoryName", "Text"),
 				ImagePath = StorageService.ImageCorrectionPath
 			};
-            //todo : à supprimer (ligne de debug)
-            OnNavigatedTo(null,null);
 		}
 
 		private void OnTtsSpeakingCompleted(object sender, EventArgs eventArgs)
@@ -305,7 +309,7 @@ namespace IndiaRose.Business.ViewModels.User
                     }
                     TtsService.PlayIndiagram(indiagram);
                     SentenceIndiagrams.Add(new IndiagramUIModel(indiagram));
-                    if (SettingsService.IsBackHomeAfterSelectionEnabled && PopCategory())
+					if (!CorrectionMode&&SettingsService.IsBackHomeAfterSelectionEnabled && PopCategory())
                     {
                         while (PopCategory())
                         {
