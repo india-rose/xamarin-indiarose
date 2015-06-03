@@ -12,38 +12,49 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Shapes;
 using IndiaRose.Data.Model;
+using IndiaRose.Interfaces;
+using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Framework.Views
 {
     public class TitleBarView : StackPanel
     {
-        private Image _logo;
-        private Image _imagecategory;
-        private TextBlock _textblock;
+        private readonly Image _imagecategory;
+        private readonly TextBlock _textblock;
+        private readonly StackPanel _redRect;
 
         public static readonly DependencyProperty CategoryProperty = DependencyProperty.Register(
-            "Category", typeof(Category), typeof(TitleBarView), new PropertyMetadata(default(Category),refresh));
+            "Category", typeof(Category), typeof(TitleBarView), new PropertyMetadata(default(Category),Refresh));
 
-        private static void refresh(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void Refresh(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as TitleBarView;
-            if (view != null) view.refresh();
+            if (view != null) view.Refresh();
         }
 
-        private void refresh()
+        private void Refresh()
         {
-            _textblock = new TextBlock { Text = Category.Text };
+            _textblock.Text = Category.Text;
             if (Category.ImagePath == null)
             {
-
+                try
+                {
+                    Children.RemoveAt(0);
+                }
+                catch (ArgumentException) { }
+                Children.Insert(0,_redRect);
             }
             else
             {
-                _imagecategory = new Image { Source = new BitmapImage(new Uri(Category.ImagePath, UriKind.Absolute)) };
-                Children.Add(_imagecategory);
+                try
+                {
+                    Children.RemoveAt(0);
+                }
+                catch (ArgumentException) { }
+                _imagecategory.Source = new BitmapImage(new Uri(Category.ImagePath, UriKind.Absolute));
+                Children.Insert(0,_imagecategory);
             }
-            Children.Add(_textblock);
-            Children.Add(_logo);
+            Children.Insert(1,_textblock);
         }
 
         public Category Category
@@ -54,9 +65,23 @@ namespace IndiaRose.Framework.Views
 
         public TitleBarView()
         {
+            _textblock = new TextBlock();
+            _redRect = new StackPanel()
+            {
+                Height = 60,
+                Width = 60,
+                Background = new SolidColorBrush(Colors.Red)
+            };
+            _imagecategory = new Image()
+            {
+                Height = 60,
+                Width = 60,
+            };
+            Background=new SolidColorBrush(Colors.White);
             Orientation = Orientation.Horizontal;
-            var sourcelogo = "ms-appx:///Assets/" + "logoIndiaRose.png";
-            _logo = new Image {Source = new BitmapImage(new Uri(sourcelogo, UriKind.RelativeOrAbsolute))};
+            const string sourcelogo = "ms-appx:///Assets/" + "logoIndiaRose.png";
+            var logo = new Image { Source = new BitmapImage(new Uri(sourcelogo)) };
+            Children.Insert(2, logo);
 
         }
     }
