@@ -2,14 +2,9 @@
 using Android.Views;
 using Android.Widget;
 using IndiaRose.Data.Model;
-using System;
-using System.Runtime.Remoting.Contexts;
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
-using Android.Runtime;
-using IndiaRose.Interfaces;
-using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Framework.Views
 {

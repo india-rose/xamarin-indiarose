@@ -87,7 +87,7 @@ namespace IndiaRose.Business.ViewModels.User
 				Text = LocalizationService.GetString ("Collection_CorrectionCategoryName", "Text"),
 				ImagePath = StorageService.ImageCorrectionPath
 			};
-            //debug windows line
+            //todo debug windows line
             OnNavigatedTo(null,null);
 		}
 
@@ -173,6 +173,7 @@ namespace IndiaRose.Business.ViewModels.User
 				if (!_isReading)
 				{
 				    SentenceIndiagrams.Remove(SentenceIndiagrams.FirstOrDefault(x => Indiagram.AreSameIndiagram(indiagram, x.Model)));
+					RefreshDisplayList ();
 				}
 			}
 		}
