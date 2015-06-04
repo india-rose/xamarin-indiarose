@@ -27,7 +27,7 @@ namespace IndiaRose.Framework.Views
         #region DependencyProperty
 
         public static readonly DependencyProperty CountProperty = DependencyProperty.Register(
-                "Count", typeof(int), typeof(IndiagramBrowserView), new PropertyMetadata(default(int),CountChangedRaising));
+                "Count", typeof(int), typeof(IndiagramBrowserView), new PropertyMetadata(default(int), CountChangedRaising));
 
         private static void CountChangedRaising(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -39,7 +39,7 @@ namespace IndiaRose.Framework.Views
         {
             if (CountChanged != null)
             {
-                CountChanged(this,null);
+                CountChanged(this, null);
             }
         }
 
@@ -109,7 +109,7 @@ namespace IndiaRose.Framework.Views
                 Source =
                     new BitmapImage(new Uri(LazyResolver<IStorageService>.Service.ImageNextArrowPath, UriKind.Absolute))
             };
-            _grid=new Grid();
+            _grid = new Grid();
             _nextButton.Tapped += _nextButton_Tapped;
             SizeChanged += OnSizeChanged;
 
@@ -176,7 +176,7 @@ namespace IndiaRose.Framework.Views
         {
             int newColumnCount = (int)(ActualWidth / IndiagramView.DefaultWidth);
             int newLineCount = (int)(ActualHeight / IndiagramView.DefaultHeight);
-            if((int)ActualHeight==0)
+            if ((int)ActualHeight == 0)
                 newLineCount = (int)(Height / IndiagramView.DefaultHeight);
 
             if (newColumnCount != _columnCount || newLineCount != _lineCount)
@@ -231,14 +231,13 @@ namespace IndiaRose.Framework.Views
             }
             _grid.Children.Clear();
             _grid.Children.Add(_nextButton);
+            IndiagramView oldview = null;
             List<Indiagram> toDisplay = Indiagrams.Where((o, i) => i >= Offset).ToList();
             int displayCount = 0;
             int index = 0;
-            int currentHeight = 0;
             bool stop = false;
             for (int line = 0; line < _lineCount; ++line)
             {
-                int lineHeight = 0;
                 int lineCount = 0;
                 for (int column = 0; column < _displayableViews[line].Length; ++column)
                 {
@@ -253,26 +252,48 @@ namespace IndiaRose.Framework.Views
                     Grid.SetColumn(view, column);
                     Grid.SetRow(view, line);
                     _grid.Children.Add(view);
-                    if (lineHeight < view.Height)
-                        lineHeight = (int)view.Height;
+                    if (oldview != null) oldview.SizeChanged -= LastLineVerification;
+                    view.SizeChanged += LastLineVerification;
+                    oldview = view;
                 }
-                currentHeight += lineHeight;
-                if (currentHeight > Height)
-                {
-                    stop = true;
-                    for (int column = 0; column < lineCount; ++column)
-                    {
-                        Children.Remove(_displayableViews[line][column]);
-                    }
-                }
-                else
-                {
                     displayCount += lineCount;
-                }
                 if (stop)
                     break;
             }
             Count = displayCount;
+        }
+
+        private void LastLineVerification(object sender, SizeChangedEventArgs sizeChangedEventArgs)
+        {
+            var view = sender as IndiagramView;
+            if (view != null) view.SizeChanged -= LastLineVerification;
+            var totalHeight = 0.0;
+            foreach (var line in _displayableViews)
+            {
+                var lineHeight = 0.0;
+                foreach (var cell in line)
+                {
+                    if (cell.Indiagram != null)
+                        if (cell.ActualHeight > lineHeight)
+                            lineHeight = cell.ActualHeight;
+                }
+                totalHeight += lineHeight;
+            }
+            if (totalHeight > DesiredSize.Height)
+            {
+                var displayCount = 0;
+                {
+                    foreach (var cell in _displayableViews[_lineCount-1])
+                    {
+                        _grid.Children.Remove(cell);
+                        if (cell.Indiagram != null)
+                        {
+                            displayCount++;
+                        }
+                    }
+                    Count -= displayCount;
+                }
+            }
         }
     }
 }

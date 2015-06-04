@@ -43,6 +43,7 @@ namespace IndiaRose.Framework.Views
                 SetValue(IndiagramProperty, value);
             }
         }
+
         public IndiagramView()
         {
             Orientation = Orientation.Vertical;
