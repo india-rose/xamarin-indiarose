@@ -52,7 +52,7 @@ namespace IndiaRose.Framework.Views
                 }
                 catch (ArgumentException) { }
                 _imagecategory.Source = new BitmapImage(new Uri(Category.ImagePath, UriKind.Absolute));
-                Children.Insert(0,_imagecategory);
+                Children.Insert(0, _imagecategory);
             }
         }
 
@@ -68,7 +68,9 @@ namespace IndiaRose.Framework.Views
             _textblock = new TextBlock()
             {
                 FontSize = settingsService.FontSize,
-                Foreground = new SolidColorBrush(Colors.Black)
+                Foreground = new SolidColorBrush(Colors.Black),
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(10)
             };
             _redRect = new StackPanel()
             {
@@ -83,8 +85,9 @@ namespace IndiaRose.Framework.Views
             };
             Background=new SolidColorBrush(Colors.White);
             Orientation = Orientation.Horizontal;
-            const string sourcelogo = "ms-appx:///Assets/" + "logoIndiaRose.png";
+            const string sourcelogo = "ms-appx:///Assets/logoIndiaRose.png";
             var logo = new Image { Source = new BitmapImage(new Uri(sourcelogo)) };
+            Children.Insert(0, _imagecategory);
             Children.Insert(1, _textblock);
             Children.Insert(2, logo);
 
