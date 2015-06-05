@@ -222,6 +222,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
         protected void SaveAction()
         {
+            //todo : mettre un max char sinon utilisateur
             if (string.IsNullOrWhiteSpace(CurrentIndiagram.Text))
             {
                 PopupService.DisplayPopup(LocalizationService.GetString("Collection_MissingText", "Text"));
@@ -347,6 +348,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         protected void PasteAction()
         {
             CurrentIndiagram = CopyPasteService.Paste();
+            RefreshBrothers();
             IsCategory = CurrentIndiagram.IsCategory;
         }
     }
