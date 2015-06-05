@@ -513,4 +513,7 @@ Comments : </value>
   <data name="BackButton.Text" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="Collection_ChildrensNotCategory.Text" xml:space="preserve">
+    <value>This category does not have children who is a category</value>
+  </data>
 </root>

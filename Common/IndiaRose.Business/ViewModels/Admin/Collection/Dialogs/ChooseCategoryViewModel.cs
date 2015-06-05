@@ -48,7 +48,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 		private void OnCategorySelected(Category category)
 		{
             //todo pourquoi ça ferme pas ?
-			CloseDialogAction ();
+			//CloseDialogAction ();
 			if (SelectedCallback != null)
 			{
 				SelectedCallback(category);
@@ -56,16 +56,24 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 		}
 
 		private void GoIntoAction(Category category)
-		{
+        {
+            var trad = DependencyService.Container.Resolve<ILocalizationService>();
 			if (!category.HasChildren)
 			{
-				var trad = DependencyService.Container.Resolve<ILocalizationService>();
 				var message = trad.GetString("Collection_CategoryEmpty", "Text");
 				LazyResolver<IPopupService>.Service.DisplayPopup(message);
 			}
 			else
-			{
-				PushCategory(category);
+            {
+                if (category.Children.All(x => !x.IsCategory))
+                {
+                    var message = trad.GetString("Collection_ChildrensNotCategory", "Text");
+                    LazyResolver<IPopupService>.Service.DisplayPopup(message);
+                }
+                else
+                {
+                    PushCategory(category);
+                }
 			}
 		}
 	}
