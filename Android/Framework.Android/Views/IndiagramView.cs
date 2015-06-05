@@ -235,6 +235,12 @@ namespace IndiaRose.Framework.Views
 
             canvas.DrawRect(_backgroundRect, _backgroundPainter);
 
+
+			if (!_indiagram.IsEnabled) {
+				_picturePainter.Alpha = 128;
+			} else {
+				_picturePainter.Alpha = 255;
+			}
             //draw picture or a red rectangle if error with picture
             try
             {
@@ -245,11 +251,6 @@ namespace IndiaRose.Framework.Views
             {
                 canvas.DrawRect(_marginLeft, _marginTop, _pictureWidth + _marginLeft, _pictureHeight + _marginTop, _picturePainter);
             }
-
-	        if (!_indiagram.IsEnabled)
-	        {
-				canvas.DrawRect(_marginLeft, _marginTop, _pictureWidth + _marginLeft, _pictureHeight + _marginTop, new Paint(){Color = new Color(0, 0, 0, 128)});
-	        }
 
             if (!string.IsNullOrEmpty(_indiagram.Text))
             {

@@ -311,7 +311,6 @@ namespace IndiaRose.Framework.Views
         void UserView_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             var ratio = LazyResolver<ISettingsService>.Service.SelectionAreaHeight;
-            //todo : à voir pour retirer intelligemment la taille de la title bar
             var screenHeight = LazyResolver<IScreenService>.Service.Height;
             _topScreen.Height = screenHeight * ratio / 100;
             _botScreen.Height = screenHeight - _topScreen.Height;
