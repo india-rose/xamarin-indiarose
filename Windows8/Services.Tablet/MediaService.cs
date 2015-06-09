@@ -80,7 +80,7 @@ namespace IndiaRose.Services
 
                 //TODO rajouter le code pour le redimensionnement de l'image
 
-                file.CopyAsync(folder, _url);
+                await file.CopyAsync(folder, _url);
                 return string.Format("{0}\\{1}", path, _url);
             }
 
