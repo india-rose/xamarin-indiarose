@@ -65,7 +65,10 @@ namespace IndiaRose.Services
                 ViewMode = PickerViewMode.Thumbnail,
                 SuggestedStartLocation = PickerLocationId.PicturesLibrary
             };
-            openPicker.FileTypeFilter.Add("*");
+            openPicker.FileTypeFilter.Add(".jpg");
+            openPicker.FileTypeFilter.Add(".jpeg");
+            openPicker.FileTypeFilter.Add(".bmp");
+            openPicker.FileTypeFilter.Add(".png");
 
             StorageFile file = await openPicker.PickSingleFileAsync();
             if (file != null)
@@ -94,7 +97,18 @@ namespace IndiaRose.Services
                 ViewMode = PickerViewMode.Thumbnail,
                 SuggestedStartLocation = PickerLocationId.MusicLibrary
             };
-            openPicker.FileTypeFilter.Add("*");
+            openPicker.FileTypeFilter.Add(".mp3");
+            openPicker.FileTypeFilter.Add(".aac");
+            openPicker.FileTypeFilter.Add(".m4a");
+            openPicker.FileTypeFilter.Add(".m4p");
+            openPicker.FileTypeFilter.Add(".m4b");
+            openPicker.FileTypeFilter.Add(".mp4");
+            openPicker.FileTypeFilter.Add(".3gp");
+            openPicker.FileTypeFilter.Add(".wma");
+            openPicker.FileTypeFilter.Add(".flac");
+            openPicker.FileTypeFilter.Add(".ogg");
+            openPicker.FileTypeFilter.Add(".oga");
+            openPicker.FileTypeFilter.Add(".alac");
 
             var file = await openPicker.PickSingleFileAsync();
             if (file != null)
