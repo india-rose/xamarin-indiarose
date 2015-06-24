@@ -235,6 +235,11 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\150winAdmin.png" />
+    <Content Include="Assets\30winAdmin.png" />
+    <Content Include="Assets\50winAdmin.png" />
+    <Content Include="Assets\70winAdmin.png" />
+    <Content Include="Assets\Square70x70Logo.scale-100.png" />
     <Content Include="Assets\tab.png" />
     <PRIResource Include="..\..\Resources\en\Resources.resw">
       <Link>Resources\en\Resources.resw</Link>

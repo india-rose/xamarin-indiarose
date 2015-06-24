@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.UI;
 using Windows.UI.Xaml.Navigation;
 using IndiaRose.Interfaces;
 using Storm.Mvvm;
@@ -36,7 +37,8 @@ namespace IndiaRose.Application.Views.User
             var secondaryTileId = "AdminPage";
             if (!SecondaryTile.Exists(secondaryTileId))
             {
-                Uri square150x150Logo = new Uri("ms-appx:///Assets/logoIndiaRose.png");
+                Uri square150x150Logo = new Uri("ms-appx:///Assets/150winAdmin.png");
+                Uri square30x30Logo = new Uri("ms-appx:///Assets/30winAdmin.png");
                 string tileActivationArguments = secondaryTileId + " was pinned at = " + DateTime.Now.ToLocalTime().ToString();
                 string displayName = "IndiaRose.Admin";
 
@@ -48,10 +50,11 @@ namespace IndiaRose.Application.Views.User
                                                                 square150x150Logo,
                                                                 newTileDesiredSize);
 
-                Uri square30x30Logo = new Uri("ms-appx:///images/logoIndiaRose.png");
-                secondaryTile.VisualElements.Square30x30Logo = new Uri("ms-appx:///images/square30x30Tile-sdk.png");
+               
+                
+                secondaryTile.VisualElements.Square30x30Logo = square30x30Logo;
                 secondaryTile.VisualElements.ForegroundText = ForegroundText.Dark;
-
+                secondaryTile.BackgroundColor = Colors.CornflowerBlue;
                 await secondaryTile.RequestCreateAsync();
             }
         }
