@@ -133,11 +133,11 @@
     </Reference>
     <Reference Include="Storm.Mvvm, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Storm.Mvvm.1.2.8\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
+      <HintPath>..\..\packages\Storm.Mvvm.1.2.9\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
     </Reference>
     <Reference Include="Storm.Mvvm.Tablet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Storm.Mvvm.Tablet.1.2.1\lib\win81\Storm.Mvvm.Tablet.dll</HintPath>
+      <HintPath>..\..\packages\Storm.Mvvm.Tablet.1.2.2\lib\win81\Storm.Mvvm.Tablet.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.v4">
       <HintPath>..\..\Components\XamarinActionBarSherlock-4.4.0.6\lib\android\Xamarin.Android.Support.v4.dll</HintPath>

@@ -412,11 +412,12 @@
     </Reference>
     <Reference Include="Storm.Mvvm, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Storm.Mvvm.1.2.8\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
+      <HintPath>..\..\packages\Storm.Mvvm.1.2.9\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Storm.Mvvm.Tablet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Storm.Mvvm.Tablet.1.2.1\lib\win81\Storm.Mvvm.Tablet.dll</HintPath>
+    <Reference Include="Storm.Mvvm.Tablet">
+      <HintPath>..\..\packages\Storm.Mvvm.Tablet.1.2.2\lib\win81\Storm.Mvvm.Tablet.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>

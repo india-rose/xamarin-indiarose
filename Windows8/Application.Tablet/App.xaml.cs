@@ -38,12 +38,12 @@ namespace IndiaRose.Application
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 
-#if DEBUG
-            if (Debugger.IsAttached)
-            {
-                DebugSettings.EnableFrameRateCounter = true;
-            }
-#endif
+//#if DEBUG
+//            if (Debugger.IsAttached)
+//            {
+//                DebugSettings.EnableFrameRateCounter = true;
+//            }
+//#endif
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Ne répétez pas l'initialisation de l'application lorsque la fenêtre comporte déjà du contenu,
