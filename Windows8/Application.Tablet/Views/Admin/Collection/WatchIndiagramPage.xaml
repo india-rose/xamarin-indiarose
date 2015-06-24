@@ -8,6 +8,7 @@
     xmlns:vm="using:IndiaRose.Business"
     xmlns:application="using:IndiaRose.Application"
     xmlns:mvvm="using:Storm.Mvvm"
+    xmlns:views="using:IndiaRose.Framework.Views"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator},Path=AdminCollectionWatchIndiagramViewModel}">
     
@@ -84,14 +85,15 @@
             </Button>
         </Grid>
 
-        <Image
-            Width="{Binding SettingsService.IndiagramDisplaySize}"
-            Height="{Binding SettingsService.IndiagramDisplaySize}"
-            Source="{Binding IndiagramContainer.Indiagram.ImagePath}"
+        <views:BindableImageView
+            Size="{Binding SettingsService.IndiagramDisplaySize}"
+            ImagePath="{Binding IndiagramContainer.Indiagram.ImagePath}"
             Grid.Column="2"
             Grid.Row="1"
             VerticalAlignment="Center"
-            HorizontalAlignment="Center"/>
+            HorizontalAlignment="Center"
+            />
+
     </Grid>
     
 </mvvm:MvvmPage>
