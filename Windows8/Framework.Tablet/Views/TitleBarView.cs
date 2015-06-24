@@ -61,7 +61,7 @@ namespace IndiaRose.Framework.Views
             var settingsService = LazyResolver<ISettingsService>.Service;
             _textblock = new TextBlock
             {
-                FontSize = settingsService.FontSize,
+                FontSize = 20,
                 Foreground = new SolidColorBrush(Colors.Black),
                 VerticalAlignment = VerticalAlignment.Center,
                 HorizontalAlignment = HorizontalAlignment.Center,

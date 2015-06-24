@@ -221,14 +221,14 @@ namespace IndiaRose.Services
 			SelectionAreaHeight = 50;
 			IndiagramDisplaySize = 128;
 			FontName = "Consolas";
-			FontSize = 12;
+			FontSize = 20;
 			IsReinforcerEnabled = true;
 			IsDragAndDropEnabled = false;
 			IsCategoryNameReadingEnabled = true;
 			IsBackHomeAfterSelectionEnabled = true;
 			TimeOfSilenceBetweenWords = 1.0f;
 			ReinforcerColor = "#FFFF00FF";
-		    TextColor = "#FFFF0000";
+		    TextColor = "#FFFFFFFF";
 		}
 
 	    public event EventHandler<EventArgs> Loaded;
