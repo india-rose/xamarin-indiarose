@@ -103,9 +103,10 @@ namespace IndiaRose.Framework.Views
             var margin = indiaSize / 10;
             _nextButton = new Image()
             {
+                VerticalAlignment=VerticalAlignment.Top,
                 Height = indiaSize,
                 Width = indiaSize,
-                Margin = new Thickness(margin, 0, margin, 0),
+                Margin = new Thickness(margin, margin, margin, 0),
                 Source =
                     new BitmapImage(new Uri(LazyResolver<IStorageService>.Service.ImageNextArrowPath, UriKind.Absolute))
             };
