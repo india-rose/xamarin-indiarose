@@ -133,9 +133,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\ic_action_search.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ir_logo.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ir_logo_new.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ir_logo_params.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ir_logo_params_new.png" />
     <AndroidResource Include="Resources\drawable-hdpi\question.png" />
     <AndroidResource Include="Resources\drawable-hdpi\questionblue.png" />
     <AndroidResource Include="Resources\drawable-hdpi\questiongreen.png" />
