@@ -58,6 +58,47 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "en", "en", "{F9CFB966-0740-
 		Resources\en\Resources.resw = Resources\en\Resources.resw
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "icon", "icon", "{52AAEEFD-171D-4C7A-A1B8-27E23F3A4D47}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Desktop\icon indiarose\icon\logo india rose.psd = ..\..\..\..\Desktop\icon indiarose\icon\logo india rose.psd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Android", "Android", "{1933AA40-BE2F-4454-84B8-53CE6787A050}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows", "Windows", "{61803A4B-2645-41F9-9738-37D52F522B65}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin", "Admin", "{EE2900D4-B8F2-4C84-AD3C-CFF3B9737A2A}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Desktop\icon indiarose\icon\Windows\Admin\150.png = ..\..\..\..\Desktop\icon indiarose\icon\Windows\Admin\150.png
+		..\..\..\..\Desktop\icon indiarose\icon\Windows\Admin\30.png = ..\..\..\..\Desktop\icon indiarose\icon\Windows\Admin\30.png
+		..\..\..\..\Desktop\icon indiarose\icon\Windows\Admin\50.png = ..\..\..\..\Desktop\icon indiarose\icon\Windows\Admin\50.png
+		..\..\..\..\Desktop\icon indiarose\icon\Windows\Admin\70.png = ..\..\..\..\Desktop\icon indiarose\icon\Windows\Admin\70.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{556A1BAD-0953-4FE8-8554-65B391DDF456}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Desktop\icon indiarose\icon\Windows\User\150.png = ..\..\..\..\Desktop\icon indiarose\icon\Windows\User\150.png
+		..\..\..\..\Desktop\icon indiarose\icon\Windows\User\30.png = ..\..\..\..\Desktop\icon indiarose\icon\Windows\User\30.png
+		..\..\..\..\Desktop\icon indiarose\icon\Windows\User\50.png = ..\..\..\..\Desktop\icon indiarose\icon\Windows\User\50.png
+		..\..\..\..\Desktop\icon indiarose\icon\Windows\User\70.png = ..\..\..\..\Desktop\icon indiarose\icon\Windows\User\70.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin", "Admin", "{BE01E981-91DD-49E8-9B7B-3B3C493F29A7}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Desktop\icon indiarose\icon\Android\Admin\150.png = ..\..\..\..\Desktop\icon indiarose\icon\Android\Admin\150.png
+		..\..\..\..\Desktop\icon indiarose\icon\Android\Admin\30.png = ..\..\..\..\Desktop\icon indiarose\icon\Android\Admin\30.png
+		..\..\..\..\Desktop\icon indiarose\icon\Android\Admin\50.png = ..\..\..\..\Desktop\icon indiarose\icon\Android\Admin\50.png
+		..\..\..\..\Desktop\icon indiarose\icon\Android\Admin\70.png = ..\..\..\..\Desktop\icon indiarose\icon\Android\Admin\70.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{77B10E7C-AA0D-4727-B645-375DB330ACA2}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Desktop\icon indiarose\icon\Android\User\150.png = ..\..\..\..\Desktop\icon indiarose\icon\Android\User\150.png
+		..\..\..\..\Desktop\icon indiarose\icon\Android\User\30.png = ..\..\..\..\Desktop\icon indiarose\icon\Android\User\30.png
+		..\..\..\..\Desktop\icon indiarose\icon\Android\User\50.png = ..\..\..\..\Desktop\icon indiarose\icon\Android\User\50.png
+		..\..\..\..\Desktop\icon indiarose\icon\Android\User\70.png = ..\..\..\..\Desktop\icon indiarose\icon\Android\User\70.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -264,5 +305,12 @@ Global
 		{E00242D8-25FB-4A15-A20D-FD40B86E875F} = {414A1D59-AB9F-43E7-A04C-0296181F0299}
 		{8139E752-9297-4EAD-A7F9-4C1617BA8012} = {FE0561B4-CBBA-40BB-A29F-004F66219127}
 		{F9CFB966-0740-4611-B4C8-EE3C12B44C18} = {FE0561B4-CBBA-40BB-A29F-004F66219127}
+		{52AAEEFD-171D-4C7A-A1B8-27E23F3A4D47} = {FE0561B4-CBBA-40BB-A29F-004F66219127}
+		{1933AA40-BE2F-4454-84B8-53CE6787A050} = {52AAEEFD-171D-4C7A-A1B8-27E23F3A4D47}
+		{61803A4B-2645-41F9-9738-37D52F522B65} = {52AAEEFD-171D-4C7A-A1B8-27E23F3A4D47}
+		{EE2900D4-B8F2-4C84-AD3C-CFF3B9737A2A} = {61803A4B-2645-41F9-9738-37D52F522B65}
+		{556A1BAD-0953-4FE8-8554-65B391DDF456} = {61803A4B-2645-41F9-9738-37D52F522B65}
+		{BE01E981-91DD-49E8-9B7B-3B3C493F29A7} = {1933AA40-BE2F-4454-84B8-53CE6787A050}
+		{77B10E7C-AA0D-4727-B645-375DB330ACA2} = {1933AA40-BE2F-4454-84B8-53CE6787A050}
 	EndGlobalSection
 EndGlobal
