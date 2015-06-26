@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Input;
-using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
-using Android.Support.V4.View;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
 
@@ -128,15 +125,15 @@ namespace IndiaRose.Framework.Views
         private readonly Grid _topGrid = new Grid();
         private readonly Grid _botGrid = new Grid();
         private readonly Image _nextImage = new Image();
-        private readonly Image _chatImage = new Image();
-        private readonly Image _lapinImage = new Image();
+        private readonly Image _catImage = new Image();
+        private readonly Image _rabbidImage = new Image();
         private readonly Image _playImage = new Image();
 
         public TabletPreviewView()
         {
-            _chatImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/chat.png"));
+            _catImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/chat.png"));
             _playImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/playbutton.png"));
-            _lapinImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/lapin.png"));
+            _rabbidImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/lapin.png"));
             _nextImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/nextarrow.png"));
             _tabletImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/tab.png"));
             _tabletImage.Stretch = Stretch.Uniform;
@@ -229,13 +226,13 @@ namespace IndiaRose.Framework.Views
         {
             _playImage.Height = indiasize;
             _nextImage.Height = indiasize;
-            _lapinImage.Height = indiasize;
-            _chatImage.Height = indiasize;
+            _rabbidImage.Height = indiasize;
+            _catImage.Height = indiasize;
 
             _playImage.Width = indiasize;
             _nextImage.Width = indiasize;
-            _lapinImage.Width = indiasize;
-            _chatImage.Width = indiasize;
+            _rabbidImage.Width = indiasize;
+            _catImage.Width = indiasize;
 
         }
 
@@ -246,10 +243,10 @@ namespace IndiaRose.Framework.Views
             SetColumnSpan(_topButton, nbIndia);
             //if we can, add cat image
             if (nbIndia > 1)
-                SetColumn(_chatImage, 0);
+                SetColumn(_catImage, 0);
             //if we can, add rabbid image
             if (nbIndia > 2)
-                SetColumn(_lapinImage, 1);
+                SetColumn(_rabbidImage, 1);
             //if we can, add play and next image
             if (nbIndia > 0)
             {
@@ -261,8 +258,8 @@ namespace IndiaRose.Framework.Views
             _botGrid.Children.Clear();
 
             _topGrid.Children.Add(_topButton);
-            _topGrid.Children.Add(_lapinImage);
-            _topGrid.Children.Add(_chatImage);
+            _topGrid.Children.Add(_rabbidImage);
+            _topGrid.Children.Add(_catImage);
             _topGrid.Children.Add(_nextImage);
 
             _botGrid.Children.Add(_bottomButton);

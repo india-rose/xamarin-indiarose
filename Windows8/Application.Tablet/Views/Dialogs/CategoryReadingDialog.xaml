@@ -27,12 +27,16 @@
                    Grid.Column="1"
                    Style="{StaticResource PopupTitleStyle}"
                    x:Uid="CategoryReading_Title"/>
-
-        <TextBlock Style="{StaticResource PopupContentStyle}" 
-                   Grid.Row="1" 
-                   Grid.Column="1"
-                   x:Uid="DragAndDrop_Explanation" />
-
+        <ScrollViewer
+            Grid.Row="1" 
+            Grid.Column="1" 
+            HorizontalAlignment="Center"
+            Grid.ColumnSpan="2"
+            >
+            <TextBlock 
+                Style="{StaticResource PopupContentStyle}"
+                   x:Uid="CategoryReading_Explanation" />
+            </ScrollViewer>
         <!-- radio button -->
 
         <RadioButton Grid.Row="2" 

@@ -24,43 +24,44 @@
             <RowDefinition Height="10*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
-        
+
         <!--First column-->
-        
+
         <ScrollViewer
             Grid.Column="1"
             Grid.Row="1"
             >
             <StackPanel>
-            <TextBlock Style="{StaticResource TextStyle}"
+                <!--IndiagramSize-->
+                <TextBlock Style="{StaticResource TextStyle}"
                    x:Uid="IndiagramProperty_IndiagramSize"/>
-            <ComboBox
+                <ComboBox
                 ItemsSource ="{Binding IndiagramSizes}"
                 SelectedItem="{Binding IndiagramSize,Mode=TwoWay}"/>
-
-            <TextBlock Style="{StaticResource TextStyle}"
+                <!--Text Font-->
+                <TextBlock Style="{StaticResource TextStyle}"
                    x:Uid="IndiagramProperty_FontFamily"/>
-            <ComboBox
+                <ComboBox
                 ItemsSource ="{Binding FontNames}"
                 SelectedItem="{Binding FontName,Mode=TwoWay}"/>
-
-            <TextBlock Style="{StaticResource TextStyle}"
+                <!--Text Size-->
+                <TextBlock Style="{StaticResource TextStyle}"
                    x:Uid="IndiagramProperty_FontSize"/>
-            <ComboBox
+                <ComboBox
                 ItemsSource ="{Binding FontSizes}"
                 SelectedItem="{Binding FontSize,Mode=TwoWay}"/>
-
-            <TextBlock Style="{StaticResource TextStyle}"
+                <!--TextColor-->
+                <TextBlock Style="{StaticResource TextStyle}"
                    x:Uid="IndiagramProperty_TextColor"/>
-            <StackPanel
+                <StackPanel
                       Margin="30">
                     <Grid>
-                       <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                
-            <TextBlock Grid.Column="0" Style="{StaticResource SmallTextStyle}"
+
+                        <TextBlock Grid.Column="0" Style="{StaticResource SmallTextStyle}"
                        x:Uid="IndiagramProperty_TextColorLabel"/>
                         <Rectangle Grid.Column="1"  Width="100"  Stroke="Black" Fill="{Binding TextColor.Color}">
                         </Rectangle>
@@ -68,15 +69,15 @@
                     <Button Style="{StaticResource PinkButton}"
 				Command="{Binding TextColorCommand}"
 				>
-                <TextBlock Style="{StaticResource SmallTextButton}"
+                        <TextBlock Style="{StaticResource SmallTextButton}"
                    x:Uid="IndiagramProperty_ChangeTextColor"/>
-            </Button>
-            </StackPanel>
-            
-            <CheckBox IsChecked="{Binding BackAfterSelection, Mode=TwoWay}" RequestedTheme="Light">
-                <TextBlock Style="{StaticResource SmallTextStyle}" 
+                    </Button>
+                </StackPanel>
+                <!--BackHomeAfterPicking-->
+                <CheckBox IsChecked="{Binding BackAfterSelection, Mode=TwoWay}" RequestedTheme="Light">
+                    <TextBlock Style="{StaticResource SmallTextStyle}" 
                            x:Uid="IndiagramProperty_BackHomeAfterPicking" />
-            </CheckBox>
+                </CheckBox>
             </StackPanel>
         </ScrollViewer>
 
@@ -124,7 +125,7 @@
             </Grid>
 
         </Grid>
-        
+
         <!--Button ok & back-->
 
         <Button Style="{StaticResource GreenButton}"

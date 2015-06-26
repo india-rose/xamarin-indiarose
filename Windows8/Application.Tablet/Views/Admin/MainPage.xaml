@@ -73,7 +73,7 @@
         </Button>
 
         <HyperlinkButton Style="{StaticResource LinkStyle}"
-            Grid.Row="4" Grid.Column="3"
+            Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4"
             NavigateUri="http://indiarose.org">indiarose.org</HyperlinkButton>
     </Grid>
 

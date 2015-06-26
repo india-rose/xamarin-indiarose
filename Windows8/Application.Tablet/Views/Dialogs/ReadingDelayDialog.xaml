@@ -26,11 +26,15 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                    Style="{StaticResource PopupTitleStyle}"
                    x:Uid="ReadingDelay_Title"/>
-
-        <TextBlock Style="{StaticResource PopupContentStyle}" 
-                   Grid.Row="1" 
-                   Grid.Column="0"
+        <ScrollViewer
+            Grid.Row="1" 
+            Grid.Column="0"
+                Grid.ColumnSpan="2" 
+            HorizontalAlignment="Center"
+            >
+            <TextBlock Style="{StaticResource PopupContentStyle}"
                    x:Uid="ReadingDelay_Explanation" />
+            </ScrollViewer>
 
         <!-- Slider -->
 

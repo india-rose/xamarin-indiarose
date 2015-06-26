@@ -107,6 +107,7 @@ namespace IndiaRose.Framework.Views
                 });
             }
             SetColumn(_playButton, _maxNumberOfIndiagrams);
+            Children.Clear();
             Children.Add(_playButton);
             var settings = LazyResolver<ISettingsService>.Service;
 

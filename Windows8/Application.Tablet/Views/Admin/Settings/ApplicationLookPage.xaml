@@ -34,7 +34,7 @@
             >
             <StackPanel>
                 <TextBlock Style="{StaticResource TextStyle}" 
-                   x:Uid="ApplicationLook_AreaSize" />
+                   x:Uid="ApplicationLook_AreaSize"/>
                 <ComboBox ItemsSource ="{Binding ZoneHeightCollection}"
                   SelectedItem="{Binding CurrentSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
