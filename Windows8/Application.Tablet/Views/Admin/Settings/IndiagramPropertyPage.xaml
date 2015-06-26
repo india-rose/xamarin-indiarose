@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvvm="using:Storm.Mvvm"
+    xmlns:localization="using:Storm.Mvvm.Localization"
     mc:Ignorable="d"
    
     DataContext="{Binding Source={StaticResource Locator},Path=AdminSettingsIndiagramPropertyViewModel}"
@@ -37,7 +38,22 @@
                    x:Uid="IndiagramProperty_IndiagramSize"/>
                 <ComboBox
                 ItemsSource ="{Binding IndiagramSizes}"
-                SelectedItem="{Binding IndiagramSize,Mode=TwoWay}"/>
+                SelectedItem="{Binding IndiagramSize,Mode=TwoWay}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <Binding 
+                                        Converter="{StaticResource StringFormatConverter}"
+                                        localization:LocalizationHelper.Properties="ConverterParameter"
+                                        localization:LocalizationHelper.Uid="IndiagramSize"
+                                        />
+                                </TextBlock.Text>
+
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
                 <!--Text Font-->
                 <TextBlock Style="{StaticResource TextStyle}"
                    x:Uid="IndiagramProperty_FontFamily"/>

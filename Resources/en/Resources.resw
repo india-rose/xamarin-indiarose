@@ -516,4 +516,7 @@ Comments : </value>
   <data name="Collection_ChildrensNotCategory.Text" xml:space="preserve">
     <value>This category does not have children who is a category</value>
   </data>
+  <data name="IndiagramSize.ConverterParameter" xml:space="preserve">
+    <value>{0} x {0}</value>
+  </data>
 </root>
