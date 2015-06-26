@@ -21,7 +21,7 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Framework.Views
 {
-    public class SentenceAreaView : StackPanel
+    public class SentenceAreaView : Grid
     {
         public event EventHandler CanAddIndiagramsChanged;
 
@@ -31,7 +31,6 @@ namespace IndiaRose.Framework.Views
         private ObservableCollection<IndiagramUIModel> _indiagrams;
         private readonly List<IndiagramView> _indiagramViews = new List<IndiagramView>();
         private readonly ColorStringToSolidColorBrushConverter _colorConverter = new ColorStringToSolidColorBrushConverter();
-        private readonly Grid _grid=new Grid();
 
         public ICommand IndiagramSelectedCommand { get; set; }
 
@@ -99,17 +98,16 @@ namespace IndiaRose.Framework.Views
             _maxNumberOfIndiagrams = ((int)ActualWidth / IndiagramView.DefaultWidth) - 1;
             if (_maxNumberOfIndiagrams == oldmaxnumber)
                 return;
-            _grid.ColumnDefinitions.Clear();
+            ColumnDefinitions.Clear();
             for (var i = 0; i < _maxNumberOfIndiagrams + 1; i++)
             {
-                _grid.ColumnDefinitions.Add(new ColumnDefinition()
+                ColumnDefinitions.Add(new ColumnDefinition()
                 {
                     Width = new GridLength(1, GridUnitType.Star)
                 });
             }
-            Grid.SetColumn(_playButton, _maxNumberOfIndiagrams);
-            Children.Add(_grid);
-            _grid.Children.Add(_playButton);
+            SetColumn(_playButton, _maxNumberOfIndiagrams);
+            Children.Add(_playButton);
             var settings = LazyResolver<ISettingsService>.Service;
 
             // Init views
@@ -120,8 +118,8 @@ namespace IndiaRose.Framework.Views
                     TextColor = (SolidColorBrush)_colorConverter.Convert(settings.TextColor, null, null, "")
                 };
                 view.Tapped += OnIndiagramTouched;
-                Grid.SetColumn(view, i);
-                _grid.Children.Add(view);
+                SetColumn(view, i);
+                Children.Add(view);
                 _indiagramViews.Add(view);
             }
         }

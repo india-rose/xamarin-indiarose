@@ -140,7 +140,6 @@ namespace IndiaRose.Framework.Views
             _nextImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/nextarrow.png"));
             _tabletImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/tab.png"));
             _tabletImage.Stretch = Stretch.Uniform;
-            _tabletImage.IsTapEnabled = false;
             _bottomButton.HorizontalAlignment = HorizontalAlignment.Center;
             _bottomButton.Tapped += _bottomButton_Tapped;
             _topButton.HorizontalAlignment = HorizontalAlignment.Center;
@@ -181,19 +180,26 @@ namespace IndiaRose.Framework.Views
         {
             var height = _tabletImage.ActualHeight;
             var width = _tabletImage.ActualWidth;
+
+            //ratio from initial image without border
             height *= 0.81;
             width *= 0.79;
+            
+            //empty area
             _stackPanel.Height = height;
             _stackPanel.Width = width;
 
+            //ratio to reduce indiagram for the preview
             var ratiorealscreen = height / LazyResolver<IScreenService>.Service.Height;
             var indiasize = IndiagramSize * ratiorealscreen;
+            //add a small border
             indiasize *= 1.2;
             RefreshIndiaSize(indiasize);
             var nbIndia = (int)(width/indiasize);
 
             _botGrid.ColumnDefinitions.Clear();
             _topGrid.ColumnDefinitions.Clear();
+            //create cells to place preview of indiagram
             for (int i = 0; i < nbIndia; i++)
             {
                 _botGrid.ColumnDefinitions.Add(new ColumnDefinition()
@@ -212,7 +218,7 @@ namespace IndiaRose.Framework.Views
             catch (ArgumentException e)
             {
             }
-
+            //define height and width of button
             _topButton.Height = height * (Percentage / 100.0);
             _topButton.Width = width;
             _bottomButton.Width = width;
@@ -235,12 +241,16 @@ namespace IndiaRose.Framework.Views
 
         private void AddGrid(int nbIndia)
         {
+            //give to the large button the entire span of table
             SetColumnSpan(_bottomButton, nbIndia);
             SetColumnSpan(_topButton, nbIndia);
+            //if we can, add cat image
             if (nbIndia > 1)
                 SetColumn(_chatImage, 0);
+            //if we can, add rabbid image
             if (nbIndia > 2)
                 SetColumn(_lapinImage, 1);
+            //if we can, add play and next image
             if (nbIndia > 0)
             {
                 SetColumn(_nextImage, nbIndia - 1);
