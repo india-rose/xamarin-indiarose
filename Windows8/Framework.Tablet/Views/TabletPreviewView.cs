@@ -132,9 +132,12 @@ namespace IndiaRose.Framework.Views
         public TabletPreviewView()
         {
             _catImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/chat.png"));
+            _catImage.VerticalAlignment=VerticalAlignment.Top;
             _playImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/playbutton.png"));
             _rabbidImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/lapin.png"));
+            _rabbidImage.VerticalAlignment=VerticalAlignment.Top;
             _nextImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/nextarrow.png"));
+            _nextImage.VerticalAlignment = VerticalAlignment.Top;
             _tabletImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/tab.png"));
             _tabletImage.Stretch = Stretch.Uniform;
             _bottomButton.HorizontalAlignment = HorizontalAlignment.Center;
@@ -233,6 +236,11 @@ namespace IndiaRose.Framework.Views
             _nextImage.Width = indiasize;
             _rabbidImage.Width = indiasize;
             _catImage.Width = indiasize;
+
+
+            _nextImage.Margin = new Thickness(0,10,0,0);
+            _rabbidImage.Margin = new Thickness(0,10,0,0);
+            _catImage.Margin = new Thickness(0,10,0,0);
 
         }
 
