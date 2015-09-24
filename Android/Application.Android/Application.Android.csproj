@@ -96,11 +96,13 @@
     <Compile Include="Activities\Admin\MailErrorDialog.cs" />
     <Compile Include="Activities\ImportingCollectionDialog.cs" />
     <Compile Include="Activities\User\UserHomeActivity.cs" />
+    <Compile Include="Activities\User\UserSplashscreenActivity.cs" />
     <Compile Include="Container.cs" />
     <Compile Include="IndiaRoseApplication.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Activities\Admin\HomeActivity.cs" />
+    <AndroidResource Include="Resources\layout\SplashScreen.axml" />
     <None Include="Views\Admin\Collection\Dialogs\RecordSoundDialog.xml" />
     <None Include="Views\User\HomePage.xml" />
   </ItemGroup>
@@ -194,7 +196,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-ldpi\" />
-    <Folder Include="Resources\layout\" />
     <Folder Include="Resources\raw\" />
   </ItemGroup>
   <ItemGroup>

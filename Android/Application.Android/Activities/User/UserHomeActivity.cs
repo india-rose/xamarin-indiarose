@@ -7,12 +7,10 @@ using IndiaRose.Framework.Views;
 using IndiaRose.Interfaces;
 using Storm.Mvvm;
 using Storm.Mvvm.Inject;
-using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application.Activities.User
 {
-    [Activity(Label = "India Rose User Dev", Icon = "@drawable/ir_logo", Theme = "@style/Theme.Sherlock.Light.NoActionBar", MainLauncher = true, ScreenOrientation = ScreenOrientation.Landscape,
-        LaunchMode = LaunchMode.SingleInstance)]
+    [Activity(Label = "India Rose User Dev", Icon = "@drawable/ir_logo", Theme = "@style/Theme.Sherlock.Light.NoActionBar", ScreenOrientation = ScreenOrientation.Landscape, LaunchMode = LaunchMode.SingleInstance)]
 	public partial class UserHomeActivity : ActivityBase
 	{
         public ISettingsService SettingsService
@@ -25,6 +23,13 @@ namespace IndiaRose.Application.Activities.User
 		protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
+			SetContentView(Resource.Layout.User_HomePage);
+			SetViewModel(Container.Locator.UserHomeViewModel);
+
+			//todo : enlever le layoutchange pour compatibilité avec ancienne version (cependant le layout n'est pas encore chargé à cet endroit donc que faire ?
+			RootLayout.LayoutChange += OnLayoutChange;
+
+			/*
 			SettingsService.Loaded += SettingsService_Loaded;
 			lock (_mutex)
 			{
@@ -35,6 +40,7 @@ namespace IndiaRose.Application.Activities.User
 					SetUp();
 				}
 			}
+			 */
 		}
 
 	    protected override void OnStop()
@@ -42,7 +48,7 @@ namespace IndiaRose.Application.Activities.User
 			LazyResolver<ITextToSpeechService>.Service.Close();
 		    base.OnStop();
 	    }
-
+		/*
 	    private void SettingsService_Loaded(object sender, EventArgs e)
 		{
 			lock (_mutex)
@@ -64,7 +70,7 @@ namespace IndiaRose.Application.Activities.User
             //todo : enlever le layoutchange pour compatibilité avec ancienne version (cependant le layout n'est pas encore chargé à cet endroit donc que faire ?
             RootLayout.LayoutChange += OnLayoutChange;
 		}
-
+		*/
         private void OnLayoutChange(object sender, View.LayoutChangeEventArgs layoutChangeEventArgs)
         {
             if (RootLayout.Height > 0)

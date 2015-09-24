@@ -22,6 +22,7 @@ namespace IndiaRose.Services.Android
 	{
 		private const string INITIALIZE_UTTERANCE_ID = "Storm0x2a";
 		public event EventHandler SpeakingCompleted;
+		public event EventHandler Initialized;
 
 		protected IActivityService ActivityService
 		{
@@ -143,6 +144,7 @@ namespace IndiaRose.Services.Android
 			if (INITIALIZE_UTTERANCE_ID.Equals(utteranceId))
 			{
 				Log.Error("TTS", "Initialize Utterance received !");
+				this.RaiseEvent(Initialized);
 				return;
 			}
 
