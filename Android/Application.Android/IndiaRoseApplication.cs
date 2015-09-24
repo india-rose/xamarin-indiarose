@@ -73,6 +73,7 @@ namespace IndiaRose.Application
 				// called from collection browsing
 				{Dialogs.ADMIN_COLLECTION_CHOOSE,typeof(ChooseCategoryDialog)},
 				{Dialogs.ADMIN_COLLECTION_SELECTCATEGORY,typeof(SelectCategoryActionDialog)},
+				{Dialogs.ADMIN_COLLECTION_SELECTCATEGORY_WITHOUTCHILDREN,typeof(SelectCategoryWithoutChildrenActionDialog)},
 				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY,typeof(ExploreCollectionCategoryDialog)},
                 {Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM,typeof(ExploreCollectionIndiagramDialog)},
 				// deletion alert & confirmation

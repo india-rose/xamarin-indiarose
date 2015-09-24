@@ -23,6 +23,7 @@
 
 		public const string ADMIN_COLLECTION_CHOOSE = "Admin_Collection_ChooseCategoryDialog";
 		public const string ADMIN_COLLECTION_SELECTCATEGORY = "Admin_Collection_SelectCategoryDialog";
+		public const string ADMIN_COLLECTION_SELECTCATEGORY_WITHOUTCHILDREN = "Admin_Collection_SelectCategoryWithoutChildrenDialog";
 		public const string ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY = "Admin_Collection_ExploreCollection_CategoryDialog";
 		public const string ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM = "Admin_Collection_ExploreCollection_IndiagramDialog";
 

@@ -255,14 +255,24 @@
                 "outputFile": "Views_Admin_Collection_Dialogs_RecordSoundDialog.axml"
             }
         },
-        {
+		{
+			"fragment": {
+				"className": "SelectCategoryActionDialog",
+				"namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+			},
+			"view": {
+				"inputFile": "Views/Admin/Collection/Dialogs/IndiagramDisplayDialog.xml",
+				"outputFile": "Admin_Collection_Dialogs_SelectCategoryActionDialog.axml"
+			}
+		},
+		{
             "fragment": {
-                "className": "SelectCategoryActionDialog",
+                "className": "SelectCategoryWithoutChildrenActionDialog",
                 "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
             },
             "view": {
                 "inputFile": "Views/Admin/Collection/Dialogs/IndiagramDisplayDialog.xml",
-                "outputFile": "Admin_Collection_Dialogs_SelectCategoryActionDialog.axml"
+                "outputFile": "Admin_Collection_Dialogs_SelectCategoryWithoutChildrenActionDialog.axml"
             }
         },
         {

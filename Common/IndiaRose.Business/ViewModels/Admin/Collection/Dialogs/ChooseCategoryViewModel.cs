@@ -26,7 +26,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 		}
 
 		[NavigationParameter(Mode = NavigationParameterMode.Optional)]
-		public Action<Category> SelectedCallback { get; set; } 
+		public Action<Category> SelectedCallback { get; set; }
+
+		[NavigationParameter]
+		public int DialogId { get; set; }
 
 		protected override IEnumerable<Indiagram> FilterCollection(IEnumerable<Indiagram> input)
 		{
@@ -37,18 +40,28 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 		{
 			base.IndiagramSelectedAction(indiagram);
 
-			MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_SELECTCATEGORY, new Dictionary<string, object>
+			Category category = indiagram as Category;
+			if (category == null)
+			{
+				return;
+			}
+
+			string dialogKey = Business.Dialogs.ADMIN_COLLECTION_SELECTCATEGORY_WITHOUTCHILDREN;
+			if (category.Children.Any(x => x.IsCategory))
+			{
+				dialogKey = Business.Dialogs.ADMIN_COLLECTION_SELECTCATEGORY;
+			}
+			MessageDialogService.Show(dialogKey, new Dictionary<string, object>
 			{
 				{"Indiagram", indiagram},
 				{"GoIntoCallback", (Action<Category>)GoIntoAction},
 				{"SelectedCallback", (Action<Category>)OnCategorySelected}
-			});
+			});	
 		}
 
 		private void OnCategorySelected(Category category)
 		{
-            //todo pourquoi ça ferme pas ?
-			//CloseDialogAction ();
+			MessageDialogService.DismissDialog(DialogId);
 			if (SelectedCallback != null)
 			{
 				SelectedCallback(category);
