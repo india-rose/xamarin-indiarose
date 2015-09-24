@@ -40,7 +40,7 @@ namespace IndiaRose.Storage.Sqlite
 				{
 					_isInitialized = true;
 
-					var handler = Initialized;
+					EventHandler handler = Initialized;
 					if (handler != null)
 					{
 						handler(this, EventArgs.Empty);
@@ -68,27 +68,34 @@ namespace IndiaRose.Storage.Sqlite
 			_connection.CreateTable<IndiagramSql>();
 
 			// Load all the database
-			_databaseContent = Connection.Table<IndiagramSql>().OrderBy(x => x.Position).ToList();
+			_databaseContent = Connection.Table<IndiagramSql>().OrderBy(x => x.ParentId).ThenBy(x => x.Position).ToList();
 
 			// Load the collection
 			Category collectionRoot = new Category { Id = IndiagramSql.ROOT_PARENT };
-			List<Indiagram> categories = new List<Indiagram> { collectionRoot };
+			List<Category> categories = new List<Category> { collectionRoot };
 
 			for (int i = 0; i < categories.Count; ++i)
 			{
-				Category category = categories[i] as Category;
-				if (category != null)
+				Category category = categories[i];
+
+				_databaseContent.SkipWhile(x => x.ParentId != category.Id).TakeWhile(x => x.ParentId == category.Id).ForEach(x =>
 				{
-					_databaseContent.FindAll(x => x.ParentId == category.Id).Select(x => x.ToModel()).ForEach(x => category.Children.Add(x));
-					category.Children.ForEach(x => x.Parent = category);
-					categories.AddRange(category.Children.Where(x => x.IsCategory));
-				}
+					Indiagram indiagram = x.ToModel();
+					indiagram.Parent = category;
+					category.Children.Add(indiagram);
+					if (indiagram.IsCategory)
+					{
+						categories.Add(indiagram as Category);
+					}
+				});
 			}
             collectionRoot.Children.ForEach(x =>
             {
                 x.Parent = null;
                 Collection.Add(x);
             });
+
+			_databaseContent = _databaseContent.OrderBy(x => x.Id).ToList();
 
 			IsInitialized = true;
 		}
@@ -104,10 +111,7 @@ namespace IndiaRose.Storage.Sqlite
 			{
 				return Update(indiagram);
 			}
-			else
-			{
-				return Create(indiagram);
-			}
+			return Create(indiagram);
 		}
 
 		private Indiagram Update(Indiagram indiagram)
@@ -137,6 +141,7 @@ namespace IndiaRose.Storage.Sqlite
 
 		public void Delete(Indiagram indiagram)
 		{
+			// remove from parent tree or from home root category
 			Category parent = indiagram.Parent as Category;
 			if (parent != null)
 			{
@@ -148,12 +153,40 @@ namespace IndiaRose.Storage.Sqlite
 				_collection.Remove(indiagram);
 			}
 
+			// Delete children if have any
+			if (indiagram.IsCategory)
+			{
+				DeleteTree(indiagram as Category);
+			}
+
+			// Delete this object
 			IndiagramSql sqlObject = SearchById(indiagram.Id);
 			_databaseContent.Remove(sqlObject);
 			Connection.Delete<IndiagramSql>(indiagram.Id);
 		}
 
 		#region Private helpers methods
+
+		private void DeleteTree(Category category)
+		{
+			if (category == null)
+			{
+				return;
+			}
+
+			category.Children.ForEach(x =>
+			{
+				IndiagramSql indiagram = SearchById(x.Id);
+
+				if (x.IsCategory)
+				{
+					DeleteTree(x as Category);
+				}
+
+				_databaseContent.Remove(indiagram);
+				Connection.Delete<IndiagramSql>(indiagram.Id);
+			});
+		}
 
 		/// <summary>
 		/// Look into the database by id to find an indiagram
@@ -162,7 +195,32 @@ namespace IndiaRose.Storage.Sqlite
 		/// <returns>The indiagram which is in the database</returns>
 		private IndiagramSql SearchById(int id)
 		{
-			return _databaseContent.SingleOrDefault(x => x.Id == id);
+			int start = 0;
+			int end = _databaseContent.Count;
+
+			while (true)
+			{
+				int currentMidIndex = (end + start)/2;
+				IndiagramSql currentMidValue = _databaseContent[currentMidIndex];
+
+				if (currentMidValue.Id == id)
+				{
+					return currentMidValue;
+				}
+				if (id > currentMidValue.Id)
+				{
+					start = currentMidIndex + 1;
+				}
+				else
+				{
+					end = currentMidIndex - 1;
+				}
+
+				if (start > end)
+				{
+					return null;
+				}
+			}
 		}
 
 		#endregion
