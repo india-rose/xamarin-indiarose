@@ -519,4 +519,7 @@ Comments : </value>
   <data name="IndiagramSize.ConverterParameter" xml:space="preserve">
     <value>{0} x {0}</value>
   </data>
+  <data name="IndiagramProperty_MultipleIndiagramSelection.Text" xml:space="preserve">
+    <value>Can select the same indiagram multiple times</value>
+  </data>
 </root>

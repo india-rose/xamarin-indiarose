@@ -83,6 +83,10 @@
 				<CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
 				          Text="{Tr Text, Uid=IndiagramProperty_BackHomeAfterPicking}"
 				          checked="{Binding BackAfterSelection,Mode=TwoWay, UpdateEvent=CheckedChange}" />
+				
+				<CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
+						  Text="{Tr Text, Uid=IndiagramProperty_MultipleIndiagramSelection}"
+						  checked="{Binding MultipleIndiagramSelection, Mode=TwoWay, UpdateEvent=CheckedChange}" />
 			</LinearLayout>
 		</ScrollView>
 		<!--Second column-->

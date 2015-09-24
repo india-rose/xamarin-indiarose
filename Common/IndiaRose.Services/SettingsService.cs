@@ -41,6 +41,7 @@ namespace IndiaRose.Services
 		private bool _isDragAndDropEnabled;
 		private bool _isCategoryNameReadingEnabled;
 		private bool _isBackHomeAfterSelectionEnabled;
+		private bool _isMultipleIndiagramSelectionEnabled;
         private float _timeOfSilenceBetweenWords;
         private string _reinforcerColor;
         private string _textColor;
@@ -66,6 +67,12 @@ namespace IndiaRose.Services
 		{
 			get { return _timeOfSilenceBetweenWords; }
 			set { SetProperty(ref _timeOfSilenceBetweenWords, value); }
+		}
+
+		public bool IsMultipleIndiagramSelectionEnabled
+		{
+			get { return _isMultipleIndiagramSelectionEnabled; }
+			set { SetProperty(ref _isMultipleIndiagramSelectionEnabled, value); }
 		}
 
 		public bool IsBackHomeAfterSelectionEnabled
@@ -169,6 +176,7 @@ namespace IndiaRose.Services
 				IsDragAndDropEnabled = IsDragAndDropEnabled,
 				IsCategoryNameReadingEnabled = IsCategoryNameReadingEnabled,
 				IsBackHomeAfterSelectionEnabled = IsBackHomeAfterSelectionEnabled,
+				IsMultipleIndiagramSelectionEnabled = IsMultipleIndiagramSelectionEnabled,
 				TimeOfSilenceBetweenWords = TimeOfSilenceBetweenWords,
 				ReinforcerColor = ReinforcerColor,
                 TextColor = TextColor
@@ -205,6 +213,7 @@ namespace IndiaRose.Services
 			IsDragAndDropEnabled = model.IsDragAndDropEnabled;
 			IsCategoryNameReadingEnabled = model.IsCategoryNameReadingEnabled;
 			IsBackHomeAfterSelectionEnabled = model.IsBackHomeAfterSelectionEnabled;
+			IsMultipleIndiagramSelectionEnabled = model.IsMultipleIndiagramSelectionEnabled;
 			TimeOfSilenceBetweenWords = model.TimeOfSilenceBetweenWords;
 			ReinforcerColor = model.ReinforcerColor;
 		    TextColor = model.TextColor;
@@ -226,6 +235,7 @@ namespace IndiaRose.Services
 			IsDragAndDropEnabled = false;
 			IsCategoryNameReadingEnabled = true;
 			IsBackHomeAfterSelectionEnabled = true;
+			IsMultipleIndiagramSelectionEnabled = false;
 			TimeOfSilenceBetweenWords = 1.0f;
 			ReinforcerColor = "#FFFF00FF";
 		    TextColor = "#FFFFFFFF";

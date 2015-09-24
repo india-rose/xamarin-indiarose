@@ -29,6 +29,8 @@ namespace IndiaRose.Interfaces
 
         bool IsBackHomeAfterSelectionEnabled { get; set; }
 
+		bool IsMultipleIndiagramSelectionEnabled { get; set; }
+
         float TimeOfSilenceBetweenWords { get; set; }
 
         Task SaveAsync();

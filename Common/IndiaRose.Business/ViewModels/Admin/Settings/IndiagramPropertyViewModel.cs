@@ -36,6 +36,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 	    private ColorContainer _textColor;
 		private bool _backAfterSelection;
 		private bool _reinforcerEnabled;
+		private bool _multipleIndiagramSelection;
 
 	    public bool BackAfterSelection
 	    {
@@ -47,6 +48,12 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
             get { return _reinforcerEnabled; }
 			set { SetProperty(ref _reinforcerEnabled, value); }
         }
+
+		public bool MultipleIndiagramSelection
+		{
+			get { return _multipleIndiagramSelection; }
+			set { SetProperty(ref _multipleIndiagramSelection, value); }
+		}
 
 		public ColorContainer ReinforcerColor
 		{
@@ -102,6 +109,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
             };
 		    ReinforcerEnabled = SettingsService.IsReinforcerEnabled;
 		    BackAfterSelection = SettingsService.IsBackHomeAfterSelectionEnabled;
+		    MultipleIndiagramSelection = SettingsService.IsMultipleIndiagramSelectionEnabled;
 
 	        IndiagramSizes = new ObservableCollection<int>();
 		    int maxIndiagramSize = (int)(LazyResolver<IScreenService>.Service.Height*0.4);
@@ -161,6 +169,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 		    SettingsService.TextColor = TextColor.Color;
 		    SettingsService.IsBackHomeAfterSelectionEnabled = BackAfterSelection;
 		    SettingsService.IsReinforcerEnabled = ReinforcerEnabled;
+			SettingsService.IsMultipleIndiagramSelectionEnabled = MultipleIndiagramSelection;
 
 			base.SaveAction();
             BackAction();

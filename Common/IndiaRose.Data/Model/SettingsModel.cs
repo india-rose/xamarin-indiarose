@@ -28,6 +28,8 @@ namespace IndiaRose.Data.Model
 
 		public bool IsBackHomeAfterSelectionEnabled { get; set; }
 
+		public bool IsMultipleIndiagramSelectionEnabled { get; set; }
+
 		public float TimeOfSilenceBetweenWords { get; set; }
 	}
 }
