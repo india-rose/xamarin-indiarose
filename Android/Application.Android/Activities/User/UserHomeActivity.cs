@@ -37,7 +37,13 @@ namespace IndiaRose.Application.Activities.User
 			}
 		}
 
-		private void SettingsService_Loaded(object sender, EventArgs e)
+	    protected override void OnStop()
+	    {
+			LazyResolver<ITextToSpeechService>.Service.Close();
+		    base.OnStop();
+	    }
+
+	    private void SettingsService_Loaded(object sender, EventArgs e)
 		{
 			lock (_mutex)
 			{
