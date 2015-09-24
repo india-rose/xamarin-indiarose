@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.indiarose.dev" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="10" android:targetSdkVersion="10" />
+	<uses-sdk android:minSdkVersion="10" android:targetSdkVersion="21" />
 	<application android:label="IndiaRose" android:icon="@drawable/Icon"></application>
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

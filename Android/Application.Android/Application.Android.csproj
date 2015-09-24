@@ -15,7 +15,7 @@
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -24,7 +24,7 @@
     <NuGetPackageImportStamp>9c9375de</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -282,7 +282,7 @@
   <ItemGroup>
     <XamarinComponentReference Include="xamandroidsupportv4-18">
       <Visible>False</Visible>
-      <Version>22.2.0.0</Version>
+      <Version>21.0.3.0</Version>
     </XamarinComponentReference>
     <XamarinComponentReference Include="XamarinActionBarSherlock">
       <Visible>False</Visible>
