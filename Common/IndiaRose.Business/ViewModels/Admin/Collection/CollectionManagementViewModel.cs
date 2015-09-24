@@ -40,7 +40,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			
 			if (indiagram.IsCategory)
 			{
-				MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY, new Dictionary<string, object>
+				string dialogKey = indiagram.HasChildren ? Business.Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY : Business.Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY_WITHOUTCHILDREN;
+				MessageDialogService.Show(dialogKey, new Dictionary<string, object>
 				{
 					{"Indiagram", indiagram},
 					{"GoIntoCallback", (Action<Category>)GoIntoAction }

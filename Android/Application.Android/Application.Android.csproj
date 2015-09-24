@@ -72,6 +72,7 @@
     <Compile Include="Activities\Admin\Collection\CollectionManagementActivity.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\DeleteCategoryConfirmationDialog.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\DeleteCategoryWarningDialog.cs" />
+    <Compile Include="Activities\Admin\Collection\Dialogs\ExploreCollectionCategoryWithoutChildrenDialog.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\ExploreCollectionCategoryDialog.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\ExploreCollectionIndiagramDialog.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\ImageChoiceDialog.cs" />

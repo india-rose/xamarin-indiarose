@@ -75,6 +75,7 @@ namespace IndiaRose.Application
 				{Dialogs.ADMIN_COLLECTION_SELECTCATEGORY,typeof(SelectCategoryActionDialog)},
 				{Dialogs.ADMIN_COLLECTION_SELECTCATEGORY_WITHOUTCHILDREN,typeof(SelectCategoryWithoutChildrenActionDialog)},
 				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY,typeof(ExploreCollectionCategoryDialog)},
+				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY_WITHOUTCHILDREN,typeof(ExploreCollectionCategoryWithoutChildrenDialog)},
                 {Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM,typeof(ExploreCollectionIndiagramDialog)},
 				// deletion alert & confirmation
 				{Dialogs.ADMIN_COLLECTION_DELETEWARNING_INDIAGRAM,typeof(DeleteIndiagramWarningDialog)},

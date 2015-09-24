@@ -215,14 +215,24 @@
          */
 
 
-        {
+		{
+			"fragment": {
+				"className": "ExploreCollectionCategoryDialog",
+				"namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+			},
+			"view": {
+				"inputFile": "Views/Admin/Collection/Dialogs/IndiagramDisplayDialog.xml",
+				"outputFile": "Admin_Collection_Dialogs_ExploreCollectionCategoryDialog.axml"
+			}
+		},
+		{
             "fragment": {
-                "className": "ExploreCollectionCategoryDialog",
+                "className": "ExploreCollectionCategoryWithoutChildrenDialog",
                 "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
             },
             "view": {
                 "inputFile": "Views/Admin/Collection/Dialogs/IndiagramDisplayDialog.xml",
-                "outputFile": "Admin_Collection_Dialogs_ExploreCollectionCategoryDialog.axml"
+                "outputFile": "Admin_Collection_Dialogs_ExploreCollectionCategoryWithoutChildrenDialog.axml"
             }
         },
         {
