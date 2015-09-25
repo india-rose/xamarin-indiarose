@@ -24,7 +24,7 @@ namespace IndiaRose.Storage.Sqlite
 		private List<IndiagramSql> _databaseContent;
 		private readonly ObservableCollection<Indiagram> _collection = new ObservableCollection<Indiagram>();
 
-		private bool _isInitialized = false;
+		private bool _isInitialized;
 
 		public ObservableCollection<Indiagram> Collection
 		{
@@ -59,7 +59,9 @@ namespace IndiaRose.Storage.Sqlite
 			_platform = platform;
 		}
 
+		#pragma warning disable 1998
 		public async Task InitializeAsync()
+		#pragma warning restore 1998
 		{
 			string dbPath = LazyResolver<IStorageService>.Service.DatabasePath;
 
@@ -78,7 +80,7 @@ namespace IndiaRose.Storage.Sqlite
 			{
 				Category category = categories[i];
 
-				_databaseContent.SkipWhile(x => x.ParentId != category.Id).TakeWhile(x => x.ParentId == category.Id).ForEach(x =>
+				GetInterval(_databaseContent, category.Id).ForEach(x =>
 				{
 					Indiagram indiagram = x.ToModel();
 					indiagram.Parent = category;
@@ -196,7 +198,7 @@ namespace IndiaRose.Storage.Sqlite
 		private IndiagramSql SearchById(int id)
 		{
 			int start = 0;
-			int end = _databaseContent.Count;
+			int end = _databaseContent.Count - 1;
 
 			while (true)
 			{
@@ -220,6 +222,178 @@ namespace IndiaRose.Storage.Sqlite
 				{
 					return null;
 				}
+			}
+		}
+
+		private Tuple<int, int> SearchInterval(List<IndiagramSql> items, int parentId)
+		{
+			int intervalStart;
+			int intervalEnd;
+
+			int start = 0;
+			int end = items.Count - 1;
+
+			while (true)
+			{
+				int currentMidIndex = (end + start) / 2;
+				IndiagramSql currentMidValue = items[currentMidIndex];
+
+				if (currentMidValue.ParentId == parentId)
+				{
+					intervalStart = currentMidIndex;
+					intervalEnd = currentMidIndex;
+					break;
+				}
+
+				if (parentId > currentMidValue.ParentId)
+				{
+					start = currentMidIndex + 1;
+				}
+				else
+				{
+					end = currentMidIndex - 1;
+				}
+
+				if (start > end)
+				{
+					return new Tuple<int, int>(-1, -1);
+				}
+			}
+
+			end++;
+			bool foundStart = false;
+			bool foundEnd = false;
+			//search start interval between [start ; intervalStart]
+			while (true)
+			{
+				int startMidIndex = (intervalStart + start) / 2;
+				IndiagramSql startValue = items[startMidIndex];
+
+				if (startValue.ParentId == parentId)
+				{
+					if (startMidIndex == intervalStart)
+					{
+						foundStart = true;
+						//found
+						break;
+					}
+					//go lower
+					intervalStart = startMidIndex;
+				}
+				else
+				{
+					if (startMidIndex + 1 == intervalStart)
+					{
+						foundStart = true;
+						break;
+					}
+
+					//go upper
+					start = startMidIndex;
+				}
+
+				int endMidIndex = (end + intervalEnd) / 2;
+				IndiagramSql endValue = items[endMidIndex];
+
+				if (endValue.ParentId == parentId)
+				{
+					if (endMidIndex == intervalEnd)
+					{
+						foundEnd = true;
+						//found
+						break;
+					}
+					//go upper
+					intervalEnd = endMidIndex;
+				}
+				else
+				{
+					if (intervalEnd == endMidIndex || intervalEnd + 1 == endMidIndex)
+					{
+						foundEnd = true;
+						break;
+					}
+
+					//go lower
+					end = endMidIndex;
+				}
+			}
+
+			if (!foundStart)
+			{
+				while (true)
+				{
+					int startMidIndex = (intervalStart + start) / 2;
+					IndiagramSql startValue = items[startMidIndex];
+
+					if (startValue.ParentId == parentId)
+					{
+						if (startMidIndex == intervalStart)
+						{
+							//found
+							break;
+						}
+						//go lower
+						intervalStart = startMidIndex;
+					}
+					else
+					{
+						if (startMidIndex + 1 == intervalStart)
+						{
+							break;
+						}
+
+						//go upper
+						start = startMidIndex;
+					}
+				}
+			}
+
+			if (!foundEnd)
+			{
+				//search end interval between [intervalEnd ; end]
+				while (true)
+				{
+					int endMidIndex = (end + intervalEnd) / 2;
+					IndiagramSql endValue = items[endMidIndex];
+
+					if (endValue.ParentId == parentId)
+					{
+						if (endMidIndex == intervalEnd)
+						{
+							//found
+							break;
+						}
+						//go upper
+						intervalEnd = endMidIndex;
+					}
+					else
+					{
+						if (intervalEnd == endMidIndex || intervalEnd + 1 == endMidIndex)
+						{
+							break;
+						}
+
+						//go lower
+						end = endMidIndex;
+					}
+				}
+			}
+			return new Tuple<int, int>(intervalStart, intervalEnd);
+		}
+
+		private IEnumerable<IndiagramSql> GetInterval(List<IndiagramSql> items, int parentId)
+		{
+			var result = SearchInterval(items, parentId);
+
+			if (result.Item1 < 0)
+			{
+				yield break;
+			}
+
+			for (int i = result.Item1; i <= result.Item2; ++i)
+			{
+				yield return items[i];
 			}
 		}
 

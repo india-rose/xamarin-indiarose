@@ -43,7 +43,7 @@ namespace IndiaRose.Services.Android
 			_speakerSpeech.SetLanguage(Locale.Default);
 			_speakerSpeech.SetOnUtteranceCompletedListener(this);
 
-			_speakerSpeech.Speak("india rose", QueueMode.Add, new Dictionary<string, string>
+			_speakerSpeech.Speak("a", QueueMode.Add, new Dictionary<string, string>
 			{
 				{TextToSpeech.Engine.KeyParamUtteranceId, INITIALIZE_UTTERANCE_ID},
 				{TextToSpeech.Engine.KeyParamVolume, "0"}
