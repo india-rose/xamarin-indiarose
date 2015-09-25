@@ -27,7 +27,7 @@ namespace IndiaRose.Application
 		{
 			base.OnCreate();
 
-			/*
+#if !DEBUG
 			Insights.HasPendingCrashReport += (sender, isStartupCrash) =>
 			{
 				if (isStartupCrash)
@@ -37,7 +37,7 @@ namespace IndiaRose.Application
 			};
 			Insights.Initialize("794b025da8b9b50d4e4b6f8abf64cc051ec52f94", Context);
 			Insights.Track("IndiaRoseLaunched", "Email", "dev@indiarose.org");
-			*/
+#endif
             Dictionary<string, Type> views = new Dictionary<string, Type>
 			{
 				// Admin
