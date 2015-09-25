@@ -10,7 +10,7 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Application.Activities.User
 {
-    [Activity(Label = "India Rose User Dev", Icon = "@drawable/ir_logo", Theme = "@style/Theme.Sherlock.Light.NoActionBar", ScreenOrientation = ScreenOrientation.Landscape, LaunchMode = LaunchMode.SingleInstance)]
+    [Activity(Theme = "@style/Theme.Sherlock.Light.NoActionBar", ScreenOrientation = ScreenOrientation.Landscape)]
 	public partial class UserHomeActivity : ActivityBase
 	{
         public ISettingsService SettingsService

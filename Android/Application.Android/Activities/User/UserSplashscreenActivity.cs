@@ -14,7 +14,7 @@ namespace IndiaRose.Application.Activities.User
 		{
 			base.OnCreate(savedInstanceState);
 
-			SetContentView(Resource.Layout.SplashScreen);
+			SetContentView(Resource.Layout.UserSplashScreen);
 
 			LazyResolver<IInitializationStateService>.Service.AddInitializedCallback(() =>
 			{
