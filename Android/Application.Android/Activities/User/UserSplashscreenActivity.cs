@@ -4,6 +4,7 @@ using Android.OS;
 using IndiaRose.Services.Android.Interfaces;
 using Storm.Mvvm;
 using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application.Activities.User
 {
@@ -18,6 +19,7 @@ namespace IndiaRose.Application.Activities.User
 
 			LazyResolver<IInitializationStateService>.Service.AddInitializedCallback(() =>
 			{
+				LazyResolver<ILoggerService>.Service.Log("UserSplashScreen initialization finished", MessageSeverity.Error); 
 				StartActivity(typeof(UserHomeActivity));
 			});
 		}

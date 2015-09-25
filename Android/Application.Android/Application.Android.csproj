@@ -37,15 +37,15 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidLinkSkip />
-    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <BundleAssemblies>False</BundleAssemblies>
     <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
-    <JavaMaximumHeapSize />
-    <JavaOptions />
-    <MonoDroidExtraArgs />
+    <Debugger>Xamarin</Debugger>
+    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+    <DevInstrumentationEnabled>True</DevInstrumentationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -288,7 +288,7 @@
   <ItemGroup>
     <XamarinComponentReference Include="xamandroidsupportv4-18">
       <Visible>False</Visible>
-      <Version>22.2.0.0</Version>
+      <Version>21.0.3.0</Version>
     </XamarinComponentReference>
     <XamarinComponentReference Include="XamarinActionBarSherlock">
       <Visible>False</Visible>

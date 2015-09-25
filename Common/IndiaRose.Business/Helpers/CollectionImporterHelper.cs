@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
@@ -20,6 +17,7 @@ namespace IndiaRose.Business.Helpers
 			IDispatcherService dispatcherService = LazyResolver<IDispatcherService>.Service;
 			IXmlService xmlService = LazyResolver<IXmlService>.Service;
 			IMessageDialogService messageDialogService = LazyResolver<IMessageDialogService>.Service;
+			IResourceService resourceService = LazyResolver<IResourceService>.Service;
 
 			if (_initialized)
 			{
@@ -50,7 +48,7 @@ namespace IndiaRose.Business.Helpers
 						}));
 
 					loggerService.Log("==> Importing collection from zip file");
-					await xmlService.InitializeCollectionFromZipStreamAsync(await ResourceService.OpenZip("indiagrams.zip"));
+					await xmlService.InitializeCollectionFromZipStreamAsync(await resourceService.OpenZip("indiagrams.zip"));
 				}
 				loggerService.Log("# Import finished");
 				messageDialogService.DismissCurrentDialog();

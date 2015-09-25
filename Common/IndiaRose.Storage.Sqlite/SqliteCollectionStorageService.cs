@@ -200,6 +200,11 @@ namespace IndiaRose.Storage.Sqlite
 			int start = 0;
 			int end = _databaseContent.Count - 1;
 
+			if (start > end)
+			{
+				return null;
+			}
+
 			while (true)
 			{
 				int currentMidIndex = (end + start)/2;
@@ -384,9 +389,14 @@ namespace IndiaRose.Storage.Sqlite
 
 		private IEnumerable<IndiagramSql> GetInterval(List<IndiagramSql> items, int parentId)
 		{
+			if (items.Count == 0)
+			{
+				yield break;
+			}
+
 			var result = SearchInterval(items, parentId);
 
-			if (result.Item1 < 0)
+			if (result.Item1 < 0 || result.Item2 < 0)
 			{
 				yield break;
 			}

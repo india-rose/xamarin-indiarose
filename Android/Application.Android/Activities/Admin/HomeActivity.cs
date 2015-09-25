@@ -7,6 +7,7 @@ using Android.OS;
 using IndiaRose.Interfaces;
 using Storm.Mvvm;
 using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 
 #endregion
 
@@ -17,6 +18,7 @@ namespace IndiaRose.Application.Activities.Admin
 	{
 		protected override void OnCreate(Bundle bundle)
 		{
+			LazyResolver<ILoggerService>.Service.Log("OnCreate HomeActivity", MessageSeverity.Error); 
 			base.OnCreate(bundle);
 			SetContentView(Resource.Layout.Admin_HomePage);
 			SetViewModel(Container.Locator.AdminHomeViewModel);

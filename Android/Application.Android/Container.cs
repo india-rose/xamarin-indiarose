@@ -70,6 +70,8 @@ namespace IndiaRose.Application
 
 		private void OnTtsInitialized(object sender, EventArgs eventArgs)
 		{
+			LazyResolver<ILoggerService>.Service.Log("TTS initialize finished", MessageSeverity.Critical);
+
 			lock (_mutex)
 			{
 				if (_initializationFinished)
@@ -85,6 +87,8 @@ namespace IndiaRose.Application
 			await new ServiceInitializerWrapper(_storageService).InitializeAsync();
 			await _settingsService.LoadAsync();
 			await _collectionStorageService.InitializeAsync();
+
+			LazyResolver<ILoggerService>.Service.Log("InitializeAsync finished", MessageSeverity.Critical);
 
 			lock (_mutex)
 			{

@@ -7,6 +7,7 @@ using IndiaRose.Framework.Views;
 using IndiaRose.Interfaces;
 using Storm.Mvvm;
 using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application.Activities.User
 {
@@ -22,6 +23,7 @@ namespace IndiaRose.Application.Activities.User
 
 		protected override void OnCreate(Bundle bundle)
 		{
+			LazyResolver<ILoggerService>.Service.Log("OnCreate UserHomeActivity", MessageSeverity.Error);
 			base.OnCreate(bundle);
 			SetContentView(Resource.Layout.User_HomePage);
 			SetViewModel(Container.Locator.UserHomeViewModel);
