@@ -281,9 +281,11 @@ namespace IndiaRose.Business.ViewModels.User
 
 		protected override IEnumerable<Indiagram> FilterCollection(IEnumerable<Indiagram> input)
 		{
-			return input.Where(indiagram =>
-				indiagram.IsEnabled &&
-				SentenceIndiagrams.FirstOrDefault(x => Indiagram.AreSameIndiagram(x.Model, indiagram)) == null);
+			if (SettingsService.IsMultipleIndiagramSelectionEnabled && !CorrectionMode)
+			{
+				return input.Where(indiagram => indiagram.IsEnabled);
+			}
+			return input.Where(indiagram => indiagram.IsEnabled && SentenceIndiagrams.FirstOrDefault(x => Indiagram.AreSameIndiagram(x.Model, indiagram)) == null);
 		}
 
 		#endregion
