@@ -1,14 +1,9 @@
 ﻿#region Usings
 
-using System;
 using System.Collections.Generic;
-using System.IO.Compression;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 using System.Windows.Input;
+using IndiaRose.Business.Helpers;
 using IndiaRose.Interfaces;
-using IndiaRose.Storage;
-using IndiaRose.Storage.Sqlite;
 using Storm.Mvvm;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
@@ -23,8 +18,7 @@ namespace IndiaRose.Business.ViewModels.Admin
 		private const string HELP_DOCUMENT_UID = "Help";
 		private const string HELP_DOCUMENT_PROPERTY = "Document";
 
-		private readonly object _lockMutex = new object();
-		private bool _initialized = false;
+		private bool _initialized;
 
 		#region Services
 
@@ -91,62 +85,11 @@ namespace IndiaRose.Business.ViewModels.Admin
 			CreditsCommand = new DelegateCommand(CreditsAction);
 		}
 
-		public override void OnNavigatedTo(NavigationArgs e, string parametersKey)
+		public override async void OnNavigatedTo(NavigationArgs e, string parametersKey)
 		{
 			base.OnNavigatedTo(e, parametersKey);
 
-			lock (_lockMutex)
-			{
-				CollectionStorageService.Initialized += (sender, args) =>
-				{
-					lock (_lockMutex)
-					{
-						OnCollectionInitialized();
-					}
-				};
-				if (CollectionStorageService.IsInitialized)
-				{
-					OnCollectionInitialized();
-				}
-			}
-		}
-
-		private async void OnCollectionInitialized()
-		{
-			if (_initialized)
-			{
-				return;
-			}
-			_initialized = true;
-
-			if (CollectionStorageService.Collection.Count == 0)
-			{
-				if (await XmlService.HasOldCollectionFormatAsync())
-				{
-					DispatcherService.InvokeOnUIThread(() =>
-						MessageDialogService.Show(Dialogs.IMPORTING_COLLECTION, new Dictionary<string, object>
-						{
-							{"MessageUid", "ImportCollection_FromOldFormat"}
-						}));
-
-					LoggerService.Log("==> Importing collection from old format");
-					await XmlService.InitializeCollectionFromOldFormatAsync();
-					LoggerService.Log("# Import finished");
-				}
-				else
-				{
-					DispatcherService.InvokeOnUIThread(() =>
-						MessageDialogService.Show(Dialogs.IMPORTING_COLLECTION, new Dictionary<string, object>
-						{
-							{"MessageUid", "ImportCollection_FromZip"}
-						}));
-
-					LoggerService.Log("==> Importing collection from zip file");
-					await XmlService.InitializeCollectionFromZipStreamAsync(await ResourceService.OpenZip("indiagrams.zip"));
-				}
-				LoggerService.Log("# Import finished");
-				MessageDialogService.DismissCurrentDialog();
-			}
+			await CollectionImporterHelper.ImportCollectionAsync();
 		}
 
 		#region First line command implementation

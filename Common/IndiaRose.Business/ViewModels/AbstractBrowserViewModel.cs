@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
-using IndiaRose.Storage;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
@@ -23,6 +21,8 @@ namespace IndiaRose.Business.ViewModels
 		private int _collectionOffset;
 		private int _collectionDisplayCount;
 		private List<Indiagram> _displayedIndiagrams;
+		// only used when correction mode enabled
+		private bool _canCategoryBePopped = true;
 
 		private readonly Category _rootCollection;
 		private readonly Stack<Category> _navigationStack = new Stack<Category>();
@@ -140,13 +140,14 @@ namespace IndiaRose.Business.ViewModels
 			}
 		}
 
-		protected void PushCategory(Category category)
+		protected void PushCategory(Category category, bool canBePopped = true)
 		{
 			if (_navigationStack.Any())
 			{
 				_navigationStack.Peek().Children.CollectionChanged -= OnCollectionChanged;
 			}
 
+			_canCategoryBePopped = canBePopped;
 			category.Children.CollectionChanged += OnCollectionChanged;
 
 			_navigationStack.Push(category);
@@ -160,11 +161,23 @@ namespace IndiaRose.Business.ViewModels
 			RefreshDisplayList();
 		}
 
-		protected bool PopCategory()
+		protected bool PopCategory(bool force = false)
 		{
 			if (_navigationStack.Count <= 1)
 			{
 			    return false;
+			}
+
+			if (!_canCategoryBePopped)
+			{
+				if (force)
+				{
+					_canCategoryBePopped = true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 
 			_navigationStack.Pop().Children.CollectionChanged -= OnCollectionChanged;

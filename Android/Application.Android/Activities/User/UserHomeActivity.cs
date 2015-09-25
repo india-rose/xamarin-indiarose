@@ -28,19 +28,6 @@ namespace IndiaRose.Application.Activities.User
 
 			//todo : enlever le layoutchange pour compatibilité avec ancienne version (cependant le layout n'est pas encore chargé à cet endroit donc que faire ?
 			RootLayout.LayoutChange += OnLayoutChange;
-
-			/*
-			SettingsService.Loaded += SettingsService_Loaded;
-			lock (_mutex)
-			{
-				if (SettingsService.IsLoaded && !_initialized)
-				{
-					SettingsService.Loaded -= SettingsService_Loaded;
-					_initialized = true;
-					SetUp();
-				}
-			}
-			 */
 		}
 
 	    protected override void OnStop()
@@ -48,29 +35,6 @@ namespace IndiaRose.Application.Activities.User
 			LazyResolver<ITextToSpeechService>.Service.Close();
 		    base.OnStop();
 	    }
-		/*
-	    private void SettingsService_Loaded(object sender, EventArgs e)
-		{
-			lock (_mutex)
-			{
-				if (!_initialized)
-				{
-					SettingsService.Loaded -= SettingsService_Loaded;
-					_initialized = true;
-					SetUp();
-				}
-			}
-		}
-
-		private void SetUp()
-		{
-			SetContentView(Resource.Layout.User_HomePage);
-		    SetViewModel(Container.Locator.UserHomeViewModel);
-
-            //todo : enlever le layoutchange pour compatibilité avec ancienne version (cependant le layout n'est pas encore chargé à cet endroit donc que faire ?
-            RootLayout.LayoutChange += OnLayoutChange;
-		}
-		*/
         private void OnLayoutChange(object sender, View.LayoutChangeEventArgs layoutChangeEventArgs)
         {
             if (RootLayout.Height > 0)

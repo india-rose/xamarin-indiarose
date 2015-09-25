@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using IndiaRose.Business.Helpers;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
@@ -46,9 +47,10 @@ namespace IndiaRose.Business.ViewModels.User
 		private ObservableCollection<IndiagramUIModel> _sentenceIndiagrams;
 		private bool _canAddMoreIndiagrams = true;
 
-		public bool CorrectionMode {
-			get{ return _correctionMode; }
-			set{ SetProperty (ref _correctionMode, value); }
+		public bool CorrectionMode
+		{
+			get { return _correctionMode; }
+			set { SetProperty(ref _correctionMode, value); }
 		}
 
 		public string BotBackgroundColor
@@ -72,19 +74,21 @@ namespace IndiaRose.Business.ViewModels.User
 		public ICommand SentenceIndiagramSelectedCommand { get; private set; }
 		public ICommand CorrectionCommand { get; private set; }
 
-		protected Category CorrectionCategory{ get; set; }
+		protected Category CorrectionCategory { get; set; }
 
 		public UserHomeViewModel()
 		{
 			SentenceIndiagrams = new ObservableCollection<IndiagramUIModel>();
 			ReadSentenceCommand = new DelegateCommand(ReadSentenceAction);
 			SentenceIndiagramSelectedCommand = new DelegateCommand<Indiagram>(SentenceIndiagramSelectedAction);
-			CorrectionCommand = new DelegateCommand (CorrectionAction);
+			CorrectionCommand = new DelegateCommand(CorrectionAction);
 
 			TtsService.SpeakingCompleted += OnTtsSpeakingCompleted;
 
-			CorrectionCategory = new Category () {
-				Text = LocalizationService.GetString ("Collection_CorrectionCategoryName", "Text"),
+			CorrectionCategory = new Category
+			{
+				Id = -0x73,
+				Text = LocalizationService.GetString("Collection_CorrectionCategoryName", "Text"),
 				ImagePath = StorageService.ImageCorrectionPath
 			};
 		}
@@ -102,62 +106,11 @@ namespace IndiaRose.Business.ViewModels.User
 
 		#region Collection import in case of first launch
 
-		public override void OnNavigatedTo(NavigationArgs e, string parametersKey)
+		public override async void OnNavigatedTo(NavigationArgs e, string parametersKey)
 		{
 			base.OnNavigatedTo(e, parametersKey);
 
-			lock (_lockMutex)
-			{
-				CollectionStorageService.Initialized += (sender, args) =>
-				{
-					lock (_lockMutex)
-					{
-						OnCollectionInitialized();
-					}
-				};
-				if (CollectionStorageService.IsInitialized)
-				{
-					OnCollectionInitialized();
-				}
-			}
-		}
-
-		private async void OnCollectionInitialized()
-		{
-			if (_initialized)
-			{
-				return;
-			}
-			_initialized = true;
-
-			if (CollectionStorageService.Collection.Count == 0)
-			{
-				if (await XmlService.HasOldCollectionFormatAsync())
-				{
-					DispatcherService.InvokeOnUIThread(() =>
-						MessageDialogService.Show(Dialogs.IMPORTING_COLLECTION, new Dictionary<string, object>
-						{
-							{"MessageUid", "ImportCollection_FromOldFormat"}
-						}));
-
-					LoggerService.Log("==> Importing collection from old format");
-					await XmlService.InitializeCollectionFromOldFormatAsync();
-					LoggerService.Log("# Import finished");
-				}
-				else
-				{
-					DispatcherService.InvokeOnUIThread(() =>
-						MessageDialogService.Show(Dialogs.IMPORTING_COLLECTION, new Dictionary<string, object>
-						{
-							{"MessageUid", "ImportCollection_FromZip"}
-						}));
-
-					LoggerService.Log("==> Importing collection from zip file");
-					await XmlService.InitializeCollectionFromZipStreamAsync(await ResourceService.OpenZip("indiagrams.zip"));
-				}
-				LoggerService.Log("# Import finished");
-				MessageDialogService.DismissCurrentDialog();
-			}
+			await CollectionImporterHelper.ImportCollectionAsync();
 		}
 
 		#endregion
@@ -170,8 +123,8 @@ namespace IndiaRose.Business.ViewModels.User
 			{
 				if (!_isReading)
 				{
-				    SentenceIndiagrams.Remove(SentenceIndiagrams.FirstOrDefault(x => Indiagram.AreSameIndiagram(indiagram, x.Model)));
-					RefreshDisplayList ();
+					SentenceIndiagrams.Remove(SentenceIndiagrams.FirstOrDefault(x => Indiagram.AreSameIndiagram(indiagram, x.Model)));
+					RefreshDisplayList();
 				}
 			}
 		}
@@ -181,15 +134,15 @@ namespace IndiaRose.Business.ViewModels.User
 			//if there is no indiagram to read do nothing
 			if (SentenceIndiagrams.Count == 0)
 				return;
-			
+
 			bool canRead = false;
 			lock (_lockMutex)
-            {
-                if (!_isReading)
-                {
-                    canRead = true;
-                    _isReading = true;
-                }
+			{
+				if (!_isReading)
+				{
+					canRead = true;
+					_isReading = true;
+				}
 			}
 			if (canRead)
 			{
@@ -222,7 +175,7 @@ namespace IndiaRose.Business.ViewModels.User
 				_readSemaphore.WaitOne();
 
 				// wait for some seconds (settings reading delay)
-				int millisecondsToWait = (int)(SettingsService.TimeOfSilenceBetweenWords*1000);
+				int millisecondsToWait = (int)(SettingsService.TimeOfSilenceBetweenWords * 1000);
 				if (millisecondsToWait > 10)
 				{
 					await Task.Delay(millisecondsToWait);
@@ -251,7 +204,7 @@ namespace IndiaRose.Business.ViewModels.User
 			{
 				CorrectionMode = false;
 				SentenceIndiagrams.Clear();
-				if (PopCategory())
+				if (PopCategory(true))
 				{
 					while (PopCategory())
 					{
@@ -264,13 +217,15 @@ namespace IndiaRose.Business.ViewModels.User
 			});
 		}
 
-		private void CorrectionAction(){
-			if (SentenceIndiagrams.Count > 0) {
+		private void CorrectionAction()
+		{
+			if (SentenceIndiagrams.Count > 0)
+			{
 				CorrectionMode = true;
-				CorrectionCategory.Children.Clear ();
-				SentenceIndiagrams.ForEach(x => CorrectionCategory.Children.Add (x.Model));
-				SentenceIndiagrams.Clear ();
-				PushCategory (CorrectionCategory);
+				CorrectionCategory.Children.Clear();
+				SentenceIndiagrams.ForEach(x => CorrectionCategory.Children.Add(x.Model));
+				SentenceIndiagrams.Clear();
+				PushCategory(CorrectionCategory, false);
 			}
 		}
 
@@ -283,8 +238,8 @@ namespace IndiaRose.Business.ViewModels.User
 			lock (_lockMutex)
 			{
 				if (_isReading)
-                {
-                    return;
+				{
+					return;
 				}
 			}
 			// Indiagram has been selected from top
@@ -294,33 +249,33 @@ namespace IndiaRose.Business.ViewModels.User
 				{
 					lock (_lockMutex)
 					{
-                        _isReading = true;
+						_isReading = true;
 					}
 					TtsService.PlayIndiagram(indiagram);
 				}
-				PushCategory((Category) indiagram);
+				PushCategory((Category)indiagram);
 			}
 			else
 			{
-                if (CanAddMoreIndiagrams)
-                {
-                    lock (_lockMutex)
-                    {
-                        _isReading = true;
-                    }
-                    TtsService.PlayIndiagram(indiagram);
-                    SentenceIndiagrams.Add(new IndiagramUIModel(indiagram));
-					if (!CorrectionMode&&SettingsService.IsBackHomeAfterSelectionEnabled && PopCategory())
-                    {
-                        while (PopCategory())
-                        {
-                        }
-                    }
-                    else
-                    {
-                        RefreshDisplayList();
-                    }
-                }
+				if (CanAddMoreIndiagrams)
+				{
+					lock (_lockMutex)
+					{
+						_isReading = true;
+					}
+					TtsService.PlayIndiagram(indiagram);
+					SentenceIndiagrams.Add(new IndiagramUIModel(indiagram));
+					if (!CorrectionMode && SettingsService.IsBackHomeAfterSelectionEnabled && PopCategory())
+					{
+						while (PopCategory())
+						{
+						}
+					}
+					else
+					{
+						RefreshDisplayList();
+					}
+				}
 			}
 		}
 
