@@ -46,6 +46,28 @@
     ],
     "fileDescriptions": [
 
+        // Splashscreen
+        { // User splashscreen
+            "activity": {
+                "className": "UserSplashscreenActivity",
+                "namespaceName": "IndiaRose.Application.Activities.User"
+            },
+            "view": {
+                "inputFile": "Views/SplashScreen.xml",
+                "outputFile": "UserSplashScreen.axml"
+            }
+        },
+        { // Admin splashscreen
+            "activity": {
+                "className": "AdminSplashscreenActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin"
+            },
+            "view": {
+                "inputFile": "Views/SplashScreen.xml",
+                "outputFile": "AdminSplashScreen.axml"
+            }
+        },
+
         /* ====================== 
          * = /Admin description =
          * ======================

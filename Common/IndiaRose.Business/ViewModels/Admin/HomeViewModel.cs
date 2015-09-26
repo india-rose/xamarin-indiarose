@@ -1,8 +1,6 @@
 ﻿#region Usings
 
-using System.Collections.Generic;
 using System.Windows.Input;
-using IndiaRose.Business.Helpers;
 using IndiaRose.Interfaces;
 using Storm.Mvvm;
 using Storm.Mvvm.Commands;
@@ -17,8 +15,6 @@ namespace IndiaRose.Business.ViewModels.Admin
 	{
 		private const string HELP_DOCUMENT_UID = "Help";
 		private const string HELP_DOCUMENT_PROPERTY = "Document";
-
-		private bool _initialized;
 
 		#region Services
 
@@ -83,13 +79,6 @@ namespace IndiaRose.Business.ViewModels.Admin
 			ContactCommand = new DelegateCommand(ContactAction);
 			ExitCommand = new DelegateCommand(ExitAction);
 			CreditsCommand = new DelegateCommand(CreditsAction);
-		}
-
-		public override async void OnNavigatedTo(NavigationArgs e, string parametersKey)
-		{
-			base.OnNavigatedTo(e, parametersKey);
-
-			await CollectionImporterHelper.ImportCollectionAsync();
 		}
 
 		#region First line command implementation

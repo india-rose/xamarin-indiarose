@@ -8,6 +8,12 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo_admin"
+		android:id="SplashScreenLogo"
         android:gravity="center_horizontal" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="{Binding Status}"
+        android:textColor="@android:color/black" />
 </LinearLayout>

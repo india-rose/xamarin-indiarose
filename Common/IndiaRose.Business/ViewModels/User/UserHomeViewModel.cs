@@ -5,14 +5,12 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using IndiaRose.Business.Helpers;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Extensions;
 using Storm.Mvvm.Inject;
-using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.User
 {
@@ -38,7 +36,6 @@ namespace IndiaRose.Business.ViewModels.User
 		#endregion
 
 		private readonly object _lockMutex = new object();
-		private bool _initialized;
 		private readonly Semaphore _readSemaphore = new Semaphore(0, 1);
 		private bool _correctionMode;
 
@@ -103,17 +100,6 @@ namespace IndiaRose.Business.ViewModels.User
 				}
 			}
 		}
-
-		#region Collection import in case of first launch
-
-		public override async void OnNavigatedTo(NavigationArgs e, string parametersKey)
-		{
-			base.OnNavigatedTo(e, parametersKey);
-
-			await CollectionImporterHelper.ImportCollectionAsync();
-		}
-
-		#endregion
 
 		#region Bottom parts action
 

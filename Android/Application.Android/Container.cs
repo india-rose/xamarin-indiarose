@@ -4,7 +4,6 @@ using IndiaRose.Business;
 using IndiaRose.Interfaces;
 using IndiaRose.Services;
 using IndiaRose.Services.Android;
-using IndiaRose.Services.Android.Interfaces;
 using IndiaRose.Storage.Sqlite;
 using SQLite.Net.Platform.XamarinAndroid;
 using Storm.Mvvm.Inject;
@@ -39,7 +38,7 @@ namespace IndiaRose.Application
 			_storageService = new StorageService(Environment.ExternalStorageDirectory.Path);
 			_settingsService = new SettingsService();
 			_collectionStorageService = new SqliteCollectionStorageService(new SQLitePlatformAndroid());
-			_initializationStateService = new InitializationStateService();
+			_initializationStateService = new InitializationStateService(2);
 
 			RegisterInstance<IInitializationStateService>(_initializationStateService);
 
@@ -65,21 +64,9 @@ namespace IndiaRose.Application
 			InitializeAsync();
 		}
 
-		private readonly object _mutex = new object();
-		private bool _initializationFinished;
-
 		private void OnTtsInitialized(object sender, EventArgs eventArgs)
 		{
-			LazyResolver<ILoggerService>.Service.Log("TTS initialize finished", MessageSeverity.Critical);
-
-			lock (_mutex)
-			{
-				if (_initializationFinished)
-				{
-					_initializationStateService.InitializationFinished();
-				}
-				_initializationFinished = true;
-			}
+			_initializationStateService.InitializationFinished();
 		}
 
 		protected async void InitializeAsync()
@@ -88,16 +75,7 @@ namespace IndiaRose.Application
 			await _settingsService.LoadAsync();
 			await _collectionStorageService.InitializeAsync();
 
-			LazyResolver<ILoggerService>.Service.Log("InitializeAsync finished", MessageSeverity.Critical);
-
-			lock (_mutex)
-			{
-				if (_initializationFinished)
-				{
-					_initializationStateService.InitializationFinished();
-				}
-				_initializationFinished = true;
-			}
+			_initializationStateService.InitializationFinished();
 		}
 	}
 }

@@ -1,24 +1,36 @@
 using System;
 using System.Collections.Generic;
-using IndiaRose.Services.Android.Interfaces;
+using IndiaRose.Interfaces;
 
-namespace IndiaRose.Services.Android
+namespace IndiaRose.Services
 {
 	public class InitializationStateService : IInitializationStateService
 	{
 		private readonly object _mutex = new object();
 		private readonly List<Action> _callbacks = new List<Action>();
+		private readonly int _initializationCount;
+		private int _currentCount;
 		private bool _initialized;
+
+		public InitializationStateService(int initializationCount)
+		{
+			_initializationCount = initializationCount;
+		}
 
 		public void InitializationFinished()
 		{
 			lock (_mutex)
 			{
-				_initialized = true;
+				_currentCount++;
 
-				foreach (Action callback in _callbacks)
+				if (_currentCount == _initializationCount)
 				{
-					callback();
+					_initialized = true;
+
+					foreach (Action callback in _callbacks)
+					{
+						callback();
+					}
 				}
 			}
 		}

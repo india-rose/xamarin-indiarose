@@ -44,9 +44,7 @@
   <ItemGroup>
     <Compile Include="AbstractAndroidService.cs" />
     <Compile Include="FontService.cs" />
-    <Compile Include="InitializationStateService.cs" />
     <Compile Include="InstallVoiceSynthesisService.cs" />
-    <Compile Include="Interfaces\IInitializationStateService.cs" />
     <Compile Include="MediaService.cs" />
     <Compile Include="PopupService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -17,6 +17,11 @@ namespace IndiaRose.Business.ViewModels
             get { return LazyResolver<IMessageDialogService>.Service; }
         }
 
+		protected ILocalizationService LocalizationService
+		{
+			get { return LazyResolver<ILocalizationService>.Service; }
+		}
+
         public ICommand CloseDialogCommand { get; private set; }
 		public ICommand BackCommand { get; private set; }
 

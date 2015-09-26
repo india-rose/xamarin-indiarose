@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AbstractService.cs" />
     <Compile Include="CopyPasteService.cs" />
+    <Compile Include="InitializationStateService.cs" />
     <Compile Include="SettingsService.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

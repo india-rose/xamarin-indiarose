@@ -1,6 +1,6 @@
 using System;
 
-namespace IndiaRose.Services.Android.Interfaces
+namespace IndiaRose.Interfaces
 {
 	public interface IInitializationStateService
 	{

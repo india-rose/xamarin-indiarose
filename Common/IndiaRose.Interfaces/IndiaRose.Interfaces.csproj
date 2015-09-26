@@ -52,6 +52,7 @@
     <Compile Include="IEmailService.cs" />
     <Compile Include="IFontService.cs" />
     <Compile Include="IInitializable.cs" />
+    <Compile Include="IInitializationStateService.cs" />
     <Compile Include="IInstallVoiceSynthesisService.cs" />
     <Compile Include="IMediaService.cs" />
     <Compile Include="IPopupService.cs" />

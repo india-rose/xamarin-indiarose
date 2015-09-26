@@ -8,6 +8,7 @@ using IndiaRose.Application.Activities.Admin.Collection;
 using IndiaRose.Application.Activities.Admin.Collection.Dialogs;
 using IndiaRose.Application.Activities.Admin.Settings;
 using IndiaRose.Application.Activities.Admin.Settings.Dialogs;
+using IndiaRose.Application.Activities.User;
 using IndiaRose.Business;
 using Storm.Mvvm;
 using Storm.Mvvm.Inject;
@@ -53,6 +54,9 @@ namespace IndiaRose.Application
                 {Views.ADMIN_COLLECTION_HOME, typeof(CollectionManagementActivity)},
                 {Views.ADMIN_COLLECTION_ADDINDIAGRAM, typeof(AddIndiagramActivity)},
                 {Views.ADMIN_COLLECTION_WATCHINDIAGRAM,typeof(WatchIndiagramActivity)},
+
+				// User
+				{Views.USER_HOME, typeof(UserHomeActivity)}
 			};
             Dictionary<string, Type> dialogs = new Dictionary<string, Type>
 			{

@@ -522,4 +522,13 @@ Comments : </value>
   <data name="IndiagramProperty_MultipleIndiagramSelection.Text" xml:space="preserve">
     <value>Can select the same indiagram multiple times</value>
   </data>
+  <data name="SplashScreen_FromOldFormat.Text" xml:space="preserve">
+    <value>Updating your collection....</value>
+  </data>
+  <data name="SplashScreen_FromZipFormat.Text" xml:space="preserve">
+    <value>Creating collection...</value>
+  </data>
+  <data name="SplashScreen_Loading.Text" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
 </root>
