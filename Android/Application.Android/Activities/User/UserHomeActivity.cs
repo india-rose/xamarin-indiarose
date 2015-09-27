@@ -32,10 +32,10 @@ namespace IndiaRose.Application.Activities.User
 			RootLayout.LayoutChange += OnLayoutChange;
 		}
 
-	    protected override void OnStop()
+	    protected override void OnDestroy()
 	    {
 			LazyResolver<ITextToSpeechService>.Service.Close();
-		    base.OnStop();
+		    base.OnDestroy();
 	    }
         private void OnLayoutChange(object sender, View.LayoutChangeEventArgs layoutChangeEventArgs)
         {
