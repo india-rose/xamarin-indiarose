@@ -32,13 +32,20 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 
 		public async void CameraAction()
 		{
-			Indiagram.ImagePath = await MediaService.GetPictureFromCameraAsync();
-			MessageDialogService.DismissCurrentDialog();
+			SaveImageAction(await MediaService.GetPictureFromCameraAsync());
 		}
 
 		public async void GalleryAction()
 		{
-			Indiagram.ImagePath = await MediaService.GetPictureFromGalleryAsync();
+			SaveImageAction(await MediaService.GetPictureFromGalleryAsync());
+		}
+
+		private void SaveImageAction(string path)
+		{
+			if (!string.IsNullOrWhiteSpace(path))
+			{
+				Indiagram.ImagePath = path;
+			}
 			MessageDialogService.DismissCurrentDialog();
 		}
 	}

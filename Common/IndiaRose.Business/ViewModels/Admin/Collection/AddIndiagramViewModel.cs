@@ -32,11 +32,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             get { return LazyResolver<IPopupService>.Service; }
         }
 
-        public ILocalizationService LocalizationService
-        {
-            get { return LazyResolver<ILocalizationService>.Service; }
-        }
-
         public ICopyPasteService CopyPasteService
         {
             get { return LazyResolver<ICopyPasteService>.Service; }
