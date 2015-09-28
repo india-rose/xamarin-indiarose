@@ -18,16 +18,6 @@ namespace IndiaRose.Business.ViewModels.User
 	{
 		#region Services
 
-		protected IXmlService XmlService
-		{
-			get { return LazyResolver<IXmlService>.Service; }
-		}
-
-		protected IResourceService ResourceService
-		{
-			get { return LazyResolver<IResourceService>.Service; }
-		}
-
 		protected ITextToSpeechService TtsService
 		{
 			get { return LazyResolver<ITextToSpeechService>.Service; }

@@ -6,14 +6,15 @@ using System.Linq;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
+using Storm.Mvvm;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 
-namespace IndiaRose.Business.ViewModels
+namespace IndiaRose.Business.ViewModels.User
 {
-	public abstract class AbstractBrowserViewModel : AbstractViewModel
-    {
+	public class TopNavigationSubViewModel : ViewModelBase
+	{
 		private int _collectionOffset;
 		private int _collectionDisplayCount;
 		private List<Indiagram> _displayedIndiagrams;

@@ -79,7 +79,9 @@
     <Compile Include="ViewModels\Admin\InstallVoiceSynthesisViewModel.cs" />
     <Compile Include="ViewModels\ImportingCollectionViewModel.cs" />
     <Compile Include="ViewModels\SplashScreenViewModel.cs" />
+    <Compile Include="ViewModels\User\TopNavigationSubViewModel.cs" />
     <Compile Include="ViewModels\User\UserHomeViewModel.cs" />
+    <Compile Include="ViewModels\User\UserViewModel.cs" />
     <Compile Include="Views.cs" />
   </ItemGroup>
   <ItemGroup>
