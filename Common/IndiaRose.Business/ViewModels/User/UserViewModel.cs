@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
@@ -17,6 +16,7 @@ namespace IndiaRose.Business.ViewModels.User
 	public class UserViewModel : AbstractViewModel
 	{
 		private readonly object _readingMutex = new object();
+		private readonly ManualResetEvent _sentenceReadingSemaphore = new ManualResetEvent(false);
 		private readonly Category _correctionCategory;
 		private readonly Stack<Category> _navigationStack = new Stack<Category>();
 		private readonly ObservableCollection<IndiagramUIModel> _sentenceIndiagrams = new ObservableCollection<IndiagramUIModel>(); 
@@ -26,7 +26,9 @@ namespace IndiaRose.Business.ViewModels.User
 		private List<Indiagram> _collectionIndiagrams;
 		private Category _currentCategory;
 		private bool _isReading;
+		private bool _isCorrectionModeEnabled;
 		private bool _sentenceCanAddMoreIndiagrams;
+		private int _sentenceIndiagramId = -242;
 
 		#region Services
 
@@ -43,6 +45,11 @@ namespace IndiaRose.Business.ViewModels.User
 		protected IStorageService StorageService
 		{
 			get { return LazyResolver<IStorageService>.Service; }
+		}
+
+		protected ITextToSpeechService TextToSpeechService
+		{
+			get { return LazyResolver<ITextToSpeechService>.Service; }
 		}
 
 		#endregion
@@ -84,6 +91,12 @@ namespace IndiaRose.Business.ViewModels.User
 			set { SetProperty(ref _sentenceCanAddMoreIndiagrams, value); }
 		}
 
+		public bool IsCorrectionModeEnabled
+		{
+			get { return _isCorrectionModeEnabled; }
+			set { SetProperty(ref _isCorrectionModeEnabled, value); }
+		}
+
 		#endregion
 
 		#region ICommand
@@ -119,6 +132,8 @@ namespace IndiaRose.Business.ViewModels.User
 			ReadSentenceCommand = new DelegateCommand(ReadSentenceAction);
 
 			PushCategory(rootCategory);
+
+			TextToSpeechService.SpeakingCompleted += OnIndiagramReadCompleted;
 		}
 
 		#region Collection navigation
@@ -162,6 +177,8 @@ namespace IndiaRose.Business.ViewModels.User
 			_navigationStack.Pop();
 			CurrentCategory = _navigationStack.Peek();
 			RewindCategory();
+
+			return true;
 		}
 
 		private void RewindCategory()
@@ -192,12 +209,9 @@ namespace IndiaRose.Business.ViewModels.User
 				return;
 			}
 
-			lock (_readingMutex)
+			if (CheckIsReading())
 			{
-				if (_isReading)
-				{
-					return;
-				}
+				return;
 			}
 
 			_correctionCategory.Children.Clear();
@@ -207,6 +221,7 @@ namespace IndiaRose.Business.ViewModels.User
 			}
 			
 			PushCategory(_correctionCategory);
+			IsCorrectionModeEnabled = true;
 		}
 
 		private void SentenceIndiagramSelectedAction(IndiagramUIModel indiagram)
@@ -228,41 +243,180 @@ namespace IndiaRose.Business.ViewModels.User
 
 		private void CollectionIndiagramSelectedAction(Indiagram indiagram)
 		{
-			lock (_readingMutex)
+			if (CheckIsReading())
 			{
-				if (_isReading)
-				{
-					return;
-				}
-			}
-
-			Read(indiagram);
-			Category category = indiagram as Category;
-			if (category != null)
-			{
-				PushCategory(category);
 				return;
 			}
 
-
+			Category category = indiagram as Category;
+			if (category != null)
+			{
+				Read(indiagram);
+				PushCategory(category);
+			}
+			else
+			{
+				if (SentenceCanAddMoreIndiagrams)
+				{
+					Read(indiagram);
+					AddIndiagramToSentence(indiagram);
+				}
+			}
 		}
 
 		private void Read(Indiagram indiagram)
 		{
+			bool canRead = true;
 			if (indiagram.IsCategory)
 			{
-				if (SettingsService.IsCategoryNameReadingEnabled)
+				canRead = SettingsService.IsCategoryNameReadingEnabled;
+			}
+
+			if (canRead)
+			{
+				lock (_readingMutex)
 				{
-					
+					if (_isReading)
+					{
+						canRead = false;
+					}
+					else
+					{
+						_isReading = true;
+					}
 				}
+			}
+
+			if (canRead)
+			{
+				TextToSpeechService.PlayIndiagram(indiagram);
 			}
 		}
 
+		private void OnIndiagramReadCompleted(object sender, EventArgs eventArgs)
+		{
+			lock (_readingMutex)
+			{
+				_isReading = false;
+			}
+		}
+
+
 		#region Read sentence handling part
+
+		private void AddIndiagramToSentence(Indiagram indiagram)
+		{
+			if (SettingsService.IsMultipleIndiagramSelectionEnabled)
+			{
+				// need to create a copy of the indiagram
+				Indiagram copy = new Indiagram();
+				copy.CopyFrom(indiagram);
+				indiagram = copy;
+				indiagram.Id = _sentenceIndiagramId--;
+			}
+
+			SentenceIndiagrams.Add(new IndiagramUIModel(indiagram));
+		}
 
 		private void ReadSentenceAction()
 		{
-			throw new NotImplementedException();
+			//if there is no indiagram to read do nothing
+			if (SentenceIndiagrams.Count == 0)
+			{
+				return;
+			}
+
+			bool canRead = false;
+			lock (_readingMutex)
+			{
+				if (!_isReading)
+				{
+					canRead = true;
+					_isReading = true;
+				}
+			}
+			if (!canRead)
+			{
+				return;
+			}
+			TextToSpeechService.SpeakingCompleted -= OnIndiagramReadCompleted;
+			TextToSpeechService.SpeakingCompleted += OnSentenceIndiagramReadCompleted;
+
+			Task.Run((Action)ReadSentence);
+		}
+
+		private async void ReadSentence()
+		{
+			bool isReinforcerEnabled = SettingsService.IsReinforcerEnabled;
+			foreach (IndiagramUIModel sentenceIndiagram in SentenceIndiagrams)
+			{
+				IndiagramUIModel currentIndiagram = sentenceIndiagram;
+				//enable reinforcer
+				if (isReinforcerEnabled)
+				{
+					DispatcherService.InvokeOnUIThread(() => currentIndiagram.IsReinforcerEnabled = true);
+				}
+
+				// read indiagram and wait for reading to finished
+				TextToSpeechService.PlayIndiagram(sentenceIndiagram.Model);
+				_sentenceReadingSemaphore.WaitOne();
+
+				// wait delay specified in settings before going to next one
+				int millisecondsToWait = (int)(SettingsService.TimeOfSilenceBetweenWords * 1000);
+				if (millisecondsToWait > 10)
+				{
+					await Task.Delay(millisecondsToWait);
+				}
+
+				// disable reinforcer
+				if (isReinforcerEnabled)
+				{
+					DispatcherService.InvokeOnUIThread(() =>currentIndiagram.IsReinforcerEnabled = false);
+				}
+			}
+
+			_sentenceIndiagramId = -242;
+			// rewire events correctly
+			TextToSpeechService.SpeakingCompleted -= OnSentenceIndiagramReadCompleted;
+			TextToSpeechService.SpeakingCompleted += OnIndiagramReadCompleted;
+
+			lock (_readingMutex)
+			{
+				_isReading = true;
+			}
+
+			DispatcherService.InvokeOnUIThread(() =>
+			{
+				IsCorrectionModeEnabled = false;
+				SentenceIndiagrams.Clear();
+				if (PopCategory())
+				{
+					while (PopCategory())
+					{
+					}
+				}
+				else
+				{
+					RefreshDisplayList();
+				}
+			});
+		}
+
+		private void OnSentenceIndiagramReadCompleted(object sender, EventArgs eventArgs)
+		{
+			_sentenceReadingSemaphore.Set();
+		}
+
+		#endregion
+
+		#region Reading freezing input part
+
+		private bool CheckIsReading()
+		{
+			lock (_readingMutex)
+			{
+				return _isReading;
+			}
 		}
 
 		#endregion
