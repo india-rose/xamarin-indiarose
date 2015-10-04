@@ -1,3 +1,4 @@
+#pragma warning disable 618
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,17 +12,15 @@ using Android.Widget;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
+using Storm.Mvvm.Commands;
 using Storm.Mvvm.Events;
 using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Framework.Views
 {
-#pragma warning disable 618
     public class UserView : AbsoluteLayout
-#pragma warning restore 618
     {
         #region Services
-
         public ISettingsService SettingsService
         {
             get { return LazyResolver<ISettingsService>.Service; }
@@ -71,11 +70,7 @@ namespace IndiaRose.Framework.Views
 			get { return _topView.TextColor; }
 			set { _topView.TextColor = value; }
 		}
-		public ICommand TopIndiagramSelectedCommand
-		{
-			get { return _topView.IndiagramSelected; }
-			set { _topView.IndiagramSelected = value; }
-		}
+		public ICommand TopIndiagramSelectedCommand { get; set; }
 
 		public ICommand TopNextCommand
 		{
@@ -129,6 +124,7 @@ namespace IndiaRose.Framework.Views
         #endregion
 
         #endregion
+
         #region Constructor
         protected UserView(IntPtr javaReference, JniHandleOwnership transfer)
             : base(javaReference, transfer)
@@ -155,14 +151,18 @@ namespace IndiaRose.Framework.Views
         }
         private void Initialize()
         {
-            _topView = new IndiagramBrowserView(Context);
-            _botView = new SentenceAreaView(Context);
+	        _topView = new IndiagramBrowserView(Context)
+	        {
+		        IndiagramSelected = new DelegateCommand<Indiagram>(OnTopIndiagramSelected),
+				IndiagramViewSelectedCommand = new DelegateCommand<IndiagramView>(OnTopIndiagramViewTouched),
+	        };
+	        _botView = new SentenceAreaView(Context);
 
 			_topView.CountChanged += (sender, args) => this.RaiseEvent(TopCountChanged);
 	        _botView.CanAddIndiagramsChanged += (s, e) => this.RaiseEvent(BotCanAddIndiagramsChanged);
         }
 
-        #endregion
+	    #endregion
 
         public void Init(int availableHeight, int width)
         {
@@ -174,5 +174,82 @@ namespace IndiaRose.Framework.Views
 
 			_botView.SetY(_topView.LayoutParameters.Height);
         }
+
+		private void OnTopIndiagramSelected(Indiagram indiagram)
+		{
+			if (!SettingsService.IsDragAndDropEnabled)
+			{
+				var command = TopIndiagramSelectedCommand;
+				if (command != null && command.CanExecute(indiagram))
+				{
+					command.Execute(indiagram);
+				}
+			}
+		}
+
+	    private IndiagramView _currentView;
+		private void OnTopIndiagramViewTouched(IndiagramView view)
+		{
+			if (SettingsService.IsDragAndDropEnabled)
+			{
+				Indiagram indiagram = view.Indiagram;
+				// command should only be executed when the indiagram is "dropped" in sentence view
+				if (!SettingsService.IsMultipleIndiagramSelectionEnabled)
+				{
+					_topView.HideIndiagram(indiagram);
+				}
+
+				// get existing view
+				view.Touch += OnIndiagramTouched;
+				_currentView = view;
+				float left = view.GetX();
+				float top = view.GetY();
+				_topView.SwitchViewForDragAndDrop(view);
+
+				// attach to new layout
+				AddView(view);
+				view.SetX(left);
+				view.SetY(top);
+				_topView.RefreshView();
+			}
+		}
+
+	    private void OnIndiagramTouched(object sender, TouchEventArgs touchEventArgs)
+	    {
+		    IndiagramView view = sender as IndiagramView;
+
+		    if (view == null || view != _currentView)
+		    {
+			    return;
+		    }
+
+		    if (touchEventArgs.Event.ActionMasked == MotionEventActions.Move)
+		    {
+			    view.SetX(touchEventArgs.Event.RawX);
+				view.SetY(touchEventArgs.Event.RawY);
+		    }
+			else if (touchEventArgs.Event.ActionMasked == MotionEventActions.Up)
+			{
+				if (view.GetY() + view.Height / 2.0 >= _botView.GetY())
+				{
+					var command = TopIndiagramSelectedCommand;
+					if (command != null && command.CanExecute(view.Indiagram))
+					{
+						command.Execute(view.Indiagram);
+					}
+				}
+
+				_currentView = null;
+				//in any case, remove from the current view
+				view.Touch -= OnIndiagramTouched;
+				RemoveView(view);
+
+				if (!SettingsService.IsMultipleIndiagramSelectionEnabled)
+				{
+					_topView.ShowAllIndiagrams();
+					_topView.RefreshView();
+				}
+			}
+	    }
     }
 }

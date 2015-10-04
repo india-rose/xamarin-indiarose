@@ -20,6 +20,8 @@ namespace IndiaRose.Framework.Views
 
 		private int _columnCount;
 		private int _lineCount;
+		private Indiagram _hiddenIndiagram;
+		private IndiagramView _backupView;
 		private IndiagramView[][] _displayableViews;
 		public IndiagramView NextButton{ get; set; }
 
@@ -97,6 +99,8 @@ namespace IndiaRose.Framework.Views
 			get { return _nextCommand; }
 			set { SetProperty(ref _nextCommand, value); }
 		}
+
+		public ICommand IndiagramViewSelectedCommand { get; set; }
 
 		#endregion
 
@@ -202,6 +206,11 @@ namespace IndiaRose.Framework.Views
 					_displayableViews[line][column] = view;
 				}
 			}
+			_backupView = new IndiagramView(Context)
+			{
+				TextColor = TextColor,
+				Id = ++viewId,
+			};
 
 			return true;
 		}
@@ -215,7 +224,7 @@ namespace IndiaRose.Framework.Views
 
 			RemoveAllViews();
 
-			List<Indiagram> toDisplay = Indiagrams.Where((o, i) => i >= Offset).ToList();
+			List<Indiagram> toDisplay = Indiagrams.Where((o, i) => i >= Offset && !Indiagram.AreSameIndiagram(_hiddenIndiagram, o)).ToList();
 			int displayCount = 0;
 			int index = 0;
 			int currentHeight = 0;
@@ -319,7 +328,13 @@ namespace IndiaRose.Framework.Views
 			{
 				Indiagram indiagram = senderView.Indiagram;
 
-				ICommand command = IndiagramSelected;
+				ICommand command = IndiagramViewSelectedCommand;
+				if (command != null && command.CanExecute(senderView))
+				{
+					command.Execute(senderView);
+				}
+
+				command = IndiagramSelected;
 				if (command != null && command.CanExecute(indiagram))
 				{
 					command.Execute(indiagram);
@@ -369,6 +384,45 @@ namespace IndiaRose.Framework.Views
 				handler(this, EventArgs.Empty);
 			}
 			return true;
+		}
+
+		#endregion
+
+		#region drag and drop methods
+
+		public void SwitchViewForDragAndDrop(IndiagramView view)
+		{
+			for (int i = 0; i < _lineCount; ++i)
+			{
+				for (int j = 0; j < _columnCount; ++j)
+				{
+					if (_displayableViews[i][j] == view)
+					{
+						_backupView.Touch += OnIndiagramTouch;
+						view.Touch -= OnIndiagramTouch;
+
+						_displayableViews[i][j] = _backupView;
+						_backupView = view;
+						RemoveView(view);
+						return;
+					}
+				}
+			}
+		}
+
+		public void HideIndiagram(Indiagram indiagram)
+		{
+			_hiddenIndiagram = indiagram;
+		}
+
+		public void ShowAllIndiagrams()
+		{
+			_hiddenIndiagram = null;
+		}
+
+		public void RefreshView()
+		{
+			RefreshDisplay();
 		}
 
 		#endregion

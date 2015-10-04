@@ -3,6 +3,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
+using Android.Widget;
 using IndiaRose.Framework.Views;
 using IndiaRose.Interfaces;
 using Storm.Mvvm;
@@ -14,21 +15,20 @@ namespace IndiaRose.Application.Activities.User
     [Activity(Theme = "@style/Theme.Sherlock.Light.NoActionBar", ScreenOrientation = ScreenOrientation.Landscape)]
 	public partial class UserHomeActivity : ActivityBase
 	{
-        public ISettingsService SettingsService
-        {
-            get { return LazyResolver<ISettingsService>.Service; }
-        }
-		private bool _initialized;
-		private readonly object _mutex = new object();
-
-		protected override void OnCreate(Bundle bundle)
+	    protected override void OnCreate(Bundle bundle)
 		{
 			LazyResolver<ILoggerService>.Service.Log("OnCreate UserHomeActivity", MessageSeverity.Error);
 			base.OnCreate(bundle);
 			SetContentView(Resource.Layout.User_HomePage);
 			SetViewModel(Container.Locator.UserHomeViewModel);
 
-			//todo : enlever le layoutchange pour compatibilité avec ancienne version (cependant le layout n'est pas encore chargé à cet endroit donc que faire ?
+			//TODO : regarder du cote de ViewTreeObserver
+
+			//todo : enlever le layoutchange pour compatibilité avec ancienne version 
+			//(cependant le layout n'est pas encore chargé à cet endroit donc que faire ?
+		    //RelativeLayout RootLayout = FindViewById<RelativeLayout>(Resource.Id.RootLayout);
+			//RootLayout.ViewTreeObserver.
+
 			RootLayout.LayoutChange += OnLayoutChange;
 		}
 
@@ -49,8 +49,10 @@ namespace IndiaRose.Application.Activities.User
         private void Initialize()
         {
             int availableHeight = RootLayout.Height - TitleBar.Height;
-            UserView mid = FindViewById<UserView>(Resource.Id.MiddleScreen);
-            mid.Init(availableHeight,RootLayout.Width);
+	        MiddleScreen.Init(availableHeight, RootLayout.Width);
+
+			//UserView mid = FindViewById<UserView>(Resource.Id.MiddleScreen);
+			//mid.Init(availableHeight,RootLayout.Width);
         }
 	}
 }
