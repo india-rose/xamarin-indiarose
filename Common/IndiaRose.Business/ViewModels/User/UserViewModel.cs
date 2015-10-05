@@ -246,7 +246,7 @@ namespace IndiaRose.Business.ViewModels.User
 
 		private void CollectionIndiagramSelectedAction(Indiagram indiagram)
 		{
-			if (CheckIsReading())
+			if (CheckIsReading() && (indiagram.IsCategory || !SettingsService.IsDragAndDropEnabled))
 			{
 				return;
 			}

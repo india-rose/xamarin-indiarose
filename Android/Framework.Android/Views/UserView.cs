@@ -246,7 +246,8 @@ namespace IndiaRose.Framework.Views
 			}
 			else if (touchEventArgs.Event.ActionMasked == MotionEventActions.Up)
 			{
-				bool selected = view.GetY() + view.Height/2.0 >= _botView.GetY();
+				Log.Wtf("D&D Dropping", "Up action with Y : {0}", touchEventArgs.Event.RawY);
+				bool selected = touchEventArgs.Event.RawY >= _botView.GetY();
 				
 				//in any case, remove from the current view
 				_currentView.Touch -= OnIndiagramTouched;
