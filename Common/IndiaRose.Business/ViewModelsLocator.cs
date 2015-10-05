@@ -56,7 +56,7 @@ namespace IndiaRose.Business
             container.RegisterFactory(x => new DeleteCategoryConfirmationViewModel());
 
             //User
-            container.RegisterFactory(x => new UserHomeViewModel());
+			container.RegisterFactory(x => new UserViewModel());
 
 			// /
 			container.RegisterFactory(x => new ImportingCollectionViewModel());
@@ -220,9 +220,9 @@ namespace IndiaRose.Business
         #endregion
 
         #region ViewModels : /User
-        public UserHomeViewModel UserHomeViewModel
+        public UserViewModel UserHomeViewModel
         {
-            get { return _container.Resolve<UserHomeViewModel>(); }
+			get { return _container.Resolve<UserViewModel>(); }
         }
         #endregion
     }

@@ -32,7 +32,7 @@ namespace IndiaRose.Business.ViewModels.User
 
 		#region Services
 
-		protected ISettingsService SettingsService
+		public ISettingsService SettingsService
 		{
 			get { return LazyResolver<ISettingsService>.Service; }
 		}

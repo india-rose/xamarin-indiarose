@@ -522,4 +522,13 @@ Comments : </value>
   <data name="SplashScreen_Loading.Text" xml:space="preserve">
     <value>Loading...</value>
   </data>
+  <data name="ImportCollection_DialogTitle.Text" xml:space="preserve">
+    <value>Initializing</value>
+  </data>
+  <data name="ImportCollection_FromOldFormat.Text" xml:space="preserve">
+    <value>Converting your collection to new efficient storage format</value>
+  </data>
+  <data name="ImportCollection_FromZip.Text" xml:space="preserve">
+    <value>Importing collection from initial data</value>
+  </data>
 </root>

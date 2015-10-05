@@ -177,7 +177,7 @@ namespace IndiaRose.Framework.Views
 
 		private void OnTopIndiagramSelected(Indiagram indiagram)
 		{
-			if (!SettingsService.IsDragAndDropEnabled)
+			if (!SettingsService.IsDragAndDropEnabled || indiagram.IsCategory)
 			{
 				var command = TopIndiagramSelectedCommand;
 				if (command != null && command.CanExecute(indiagram))
@@ -190,7 +190,7 @@ namespace IndiaRose.Framework.Views
 	    private IndiagramView _currentView;
 		private void OnTopIndiagramViewTouched(IndiagramView view)
 		{
-			if (SettingsService.IsDragAndDropEnabled)
+			if (SettingsService.IsDragAndDropEnabled && !view.Indiagram.IsCategory)
 			{
 				Indiagram indiagram = view.Indiagram;
 				// command should only be executed when the indiagram is "dropped" in sentence view
@@ -208,8 +208,8 @@ namespace IndiaRose.Framework.Views
 
 				// attach to new layout
 				AddView(view);
-				view.SetX(left);
-				view.SetY(top);
+				view.SetX(left + view.Width / 2f);
+				view.SetY(top + view.Height / 2f);
 				_topView.RefreshView();
 			}
 		}
@@ -225,8 +225,8 @@ namespace IndiaRose.Framework.Views
 
 		    if (touchEventArgs.Event.ActionMasked == MotionEventActions.Move)
 		    {
-			    view.SetX(touchEventArgs.Event.RawX);
-				view.SetY(touchEventArgs.Event.RawY);
+			    view.SetX(touchEventArgs.Event.RawX + view.Width / 2f);
+				view.SetY(touchEventArgs.Event.RawY + view.Height / 2f);
 		    }
 			else if (touchEventArgs.Event.ActionMasked == MotionEventActions.Up)
 			{
