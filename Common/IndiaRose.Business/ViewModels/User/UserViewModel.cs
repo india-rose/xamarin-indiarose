@@ -59,7 +59,13 @@ namespace IndiaRose.Business.ViewModels.User
 		public Category CurrentCategory
 		{
 			get { return _currentCategory; }
-			set { SetProperty(ref _currentCategory, value); }
+			set
+			{
+				if (SetProperty(ref _currentCategory, value) && value != null)
+				{
+					RefreshDisplayList();
+				}
+			}
 		}
 
 		public List<Indiagram> CollectionIndiagrams
@@ -151,7 +157,7 @@ namespace IndiaRose.Business.ViewModels.User
 				}
 				else
 				{
-					RewindCategory();
+					CollectionOffset = 0;
 				}
 			}
 			else
@@ -163,8 +169,8 @@ namespace IndiaRose.Business.ViewModels.User
 		private void PushCategory(Category category)
 		{
 			_navigationStack.Push(category);
+			CollectionOffset = 0;
 			CurrentCategory = category;
-			RewindCategory();
 		}
 		
 		private bool PopCategory()
@@ -175,16 +181,10 @@ namespace IndiaRose.Business.ViewModels.User
 			}
 
 			_navigationStack.Pop();
+			CollectionOffset = 0;
 			CurrentCategory = _navigationStack.Peek();
-			RewindCategory();
 
 			return true;
-		}
-
-		private void RewindCategory()
-		{
-			_collectionOffset = 0;
-			RefreshDisplayList();
 		}
 
 		private void RefreshDisplayList()

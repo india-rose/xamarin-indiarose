@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
@@ -9,7 +7,6 @@ using IndiaRose.Interfaces;
 using Storm.Mvvm;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
-using IndiaRose.Framework.Extensions;
 
 namespace IndiaRose.Application.Activities.User
 {
