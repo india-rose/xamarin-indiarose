@@ -15,10 +15,6 @@ namespace IndiaRose.Services
 		public InitializationStateService(int initializationCount)
 		{
 			_initializationCount = initializationCount;
-#if DEBUG
-			//TODO :remove
-			_initializationCount = 1;
-#endif
 		}
 
 		public void InitializationFinished()
