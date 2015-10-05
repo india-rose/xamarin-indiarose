@@ -145,6 +145,8 @@ namespace IndiaRose.Framework.Views
             get { return _height; }
         }
 
+	    public TouchEventArgs LastTouchArgs { get; set; }
+
         #endregion
 
         #region Constructors

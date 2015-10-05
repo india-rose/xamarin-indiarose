@@ -222,9 +222,13 @@ namespace IndiaRose.Framework.Views
 			if (e.Event.ActionMasked == MotionEventActions.Down)
 			{
 				IndiagramView view = sender as IndiagramView;
-				if (view != null && view.Indiagram != null && IndiagramSelectedCommand != null && IndiagramSelectedCommand.CanExecute(view.Indiagram))
+				if (view != null && view.Indiagram != null && IndiagramSelectedCommand != null)
 				{
-					IndiagramSelectedCommand.Execute(view.Indiagram);
+					IndiagramUIModel param = _indiagrams.FirstOrDefault(x => Indiagram.AreSameIndiagram(x.Model, view.Indiagram));
+					if (param != null && IndiagramSelectedCommand.CanExecute(param))
+					{
+						IndiagramSelectedCommand.Execute(param);
+					}
 				}
 			}
 		}

@@ -330,6 +330,7 @@ namespace IndiaRose.Framework.Views
 				ICommand command = IndiagramViewSelectedCommand;
 				if (command != null && command.CanExecute(senderView))
 				{
+					senderView.LastTouchArgs = touchEventArgs;
 					command.Execute(senderView);
 				}
 
@@ -388,21 +389,23 @@ namespace IndiaRose.Framework.Views
 		#endregion
 
 		#region drag and drop methods
-
+		
 		public void SwitchViewForDragAndDrop(IndiagramView view)
 		{
-			for (int i = 0; i < _lineCount; ++i)
+			int lineCount = _displayableViews.Length;
+			for (int i = 0; i < lineCount; ++i)
 			{
-				for (int j = 0; j < _columnCount; ++j)
+				int columnCount = _displayableViews[i].Length;
+				for (int j = 0; j < columnCount; ++j)
 				{
 					if (_displayableViews[i][j] == view)
 					{
-						_backupView.Touch += OnIndiagramTouch;
 						view.Touch -= OnIndiagramTouch;
-
+						_backupView.Touch += OnIndiagramTouch;
 						_displayableViews[i][j] = _backupView;
-						_backupView = view;
 						RemoveView(view);
+
+						_backupView = view;
 						return;
 					}
 				}

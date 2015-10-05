@@ -29,6 +29,9 @@ namespace IndiaRose.Services.Android
 			get { return LazyResolver<IActivityService>.Service; }
 		}
 
+		private int _readingCountStack = 0;
+		public bool IsReading { get { return _readingCountStack > 0; } }
+
 		private TextToSpeech _speakerSpeech;
 		private readonly Dictionary<string, string> _registeredSounds = new Dictionary<string, string>();
 
@@ -87,11 +90,6 @@ namespace IndiaRose.Services.Android
 					});
 			}
 		}
-
-		private void ReleaseTts(object sender, ValueChangingEventArgs<Activity> valueChangingEventArgs)
-		{
-			Close();
-		}
 		
 		public void Close()
 		{
@@ -132,6 +130,7 @@ namespace IndiaRose.Services.Android
 		protected void PlayText(string text)
 		{
 			Log.Error("TTS", "Playing indiagram {0}", text);
+			_readingCountStack++;
 			_speakerSpeech.Speak(text, QueueMode.Add, new Dictionary<string, string>
 			{
 				{TextToSpeech.Engine.KeyParamUtteranceId, Guid.NewGuid().ToString()},
@@ -147,7 +146,7 @@ namespace IndiaRose.Services.Android
 				this.RaiseEvent(Initialized);
 				return;
 			}
-
+			_readingCountStack--;
 			this.RaiseEvent(SpeakingCompleted);
 		}
 	}

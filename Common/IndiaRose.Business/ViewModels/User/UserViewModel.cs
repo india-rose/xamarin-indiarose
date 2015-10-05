@@ -112,6 +112,8 @@ namespace IndiaRose.Business.ViewModels.User
 		public ICommand EnterCorrectionModeCommand { get; private set; }
 		public ICommand CollectionNextCommand { get; private set; }
 		public ICommand ReadSentenceCommand { get; private set; }
+		public ICommand CollectionIndiagramDragStartCommand { get; private set; }
+
 
 		#endregion
 
@@ -132,6 +134,7 @@ namespace IndiaRose.Business.ViewModels.User
 			};
 
 			CollectionIndiagramSelectedCommand = new DelegateCommand<Indiagram>(CollectionIndiagramSelectedAction);
+			CollectionIndiagramDragStartCommand = new DelegateCommand<Indiagram>(CollectionIndiagramDragStartAction);
 			SentenceIndiagramSelectedCommand = new DelegateCommand<IndiagramUIModel>(SentenceIndiagramSelectedAction);
 			EnterCorrectionModeCommand = new DelegateCommand(EnterCorrectionModeAction);
 			CollectionNextCommand = new DelegateCommand(CollectionNextAction);
@@ -258,7 +261,10 @@ namespace IndiaRose.Business.ViewModels.User
 			{
 				if (SentenceCanAddMoreIndiagrams)
 				{
-					Read(indiagram);
+					if (!SettingsService.IsDragAndDropEnabled)
+					{
+						Read(indiagram);
+					}
 					AddIndiagramToSentence(indiagram);
 
 					if (SettingsService.IsBackHomeAfterSelectionEnabled && PopCategory())
@@ -274,6 +280,17 @@ namespace IndiaRose.Business.ViewModels.User
 				}
 			}
 		}
+
+		private void CollectionIndiagramDragStartAction(Indiagram indiagram)
+		{
+			if (CheckIsReading())
+			{
+				return;
+			}
+
+			Read(indiagram);
+		}
+
 
 		private void Read(Indiagram indiagram)
 		{
@@ -393,7 +410,7 @@ namespace IndiaRose.Business.ViewModels.User
 
 			lock (_readingMutex)
 			{
-				_isReading = true;
+				_isReading = false;
 			}
 
 			DispatcherService.InvokeOnUIThread(() =>

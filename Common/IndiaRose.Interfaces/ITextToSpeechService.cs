@@ -6,8 +6,8 @@ namespace IndiaRose.Interfaces
     public interface ITextToSpeechService
     {
 	    event EventHandler SpeakingCompleted;
-
-        void Close();
+	    bool IsReading { get; }
+	    void Close();
 	    void PlayIndiagram(Indiagram indiagram);
     }
 }
