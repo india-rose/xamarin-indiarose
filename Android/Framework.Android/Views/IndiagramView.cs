@@ -8,7 +8,6 @@ using IndiaRose.Data.Model;
 using IndiaRose.Framework.Helper;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
-using Storm.Mvvm.Services;
 
 namespace IndiaRose.Framework.Views
 {

@@ -1,6 +1,7 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Views;
 using IndiaRose.Interfaces;
 using Storm.Mvvm;
 using Storm.Mvvm.Inject;
@@ -19,7 +20,8 @@ namespace IndiaRose.Application.Activities.User
 			SetContentView(Resource.Layout.User_HomePage);
 			SetViewModel(Container.Locator.UserHomeViewModel);
 
-			RootLayout.AttachOnLayoutChanged(Initialize);
+		    View rootLayout = RootLayout;
+			rootLayout.AttachOnLayoutChanged(Initialize);
 		}
 
 	    protected override void OnDestroy()
