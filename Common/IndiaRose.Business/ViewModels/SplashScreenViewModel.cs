@@ -1,4 +1,5 @@
-﻿using IndiaRose.Interfaces;
+﻿using System.Threading.Tasks;
+using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 
@@ -34,27 +35,30 @@ namespace IndiaRose.Business.ViewModels
 			LazyResolver<IInitializationStateService>.Service.AddInitializedCallback(OnInitialized);
 		}
 
-		private async void OnInitialized()
+		private void OnInitialized()
 		{
-			ICollectionStorageService collectionStorageService = LazyResolver<ICollectionStorageService>.Service;
-			IXmlService xmlService = LazyResolver<IXmlService>.Service;
-			IResourceService resourceService = LazyResolver<IResourceService>.Service;
-			
-			if (collectionStorageService.Collection.Count == 0)
+			Task.Run(async () =>
 			{
-				if (await xmlService.HasOldCollectionFormatAsync())
-				{
-					DispatcherService.InvokeOnUIThread(() => Status = LocalizationService.GetString(FROM_OLD_FORMAT_UID, PROPERTY));
-					await xmlService.InitializeCollectionFromOldFormatAsync();
-				}
-				else
-				{
-					DispatcherService.InvokeOnUIThread(() => Status = LocalizationService.GetString(FROM_ZIP_UID, PROPERTY));
-					await xmlService.InitializeCollectionFromZipStreamAsync(await resourceService.OpenZip("indiagrams.zip"));
-				}
-			}
+				ICollectionStorageService collectionStorageService = LazyResolver<ICollectionStorageService>.Service;
+				IXmlService xmlService = LazyResolver<IXmlService>.Service;
+				IResourceService resourceService = LazyResolver<IResourceService>.Service;
 
-			NavigationService.Navigate(_launchingType == LaunchingType.User ? Views.USER_HOME : Views.ADMIN_HOME);
+				if (collectionStorageService.Collection.Count == 0)
+				{
+					if (await xmlService.HasOldCollectionFormatAsync())
+					{
+						DispatcherService.InvokeOnUIThread(() => Status = LocalizationService.GetString(FROM_OLD_FORMAT_UID, PROPERTY));
+						await xmlService.InitializeCollectionFromOldFormatAsync();
+					}
+					else
+					{
+						DispatcherService.InvokeOnUIThread(() => Status = LocalizationService.GetString(FROM_ZIP_UID, PROPERTY));
+						await xmlService.InitializeCollectionFromZipStreamAsync(await resourceService.OpenZip("indiagrams.zip"));
+					}
+				}
+
+				DispatcherService.InvokeOnUIThread(() => NavigationService.Navigate(_launchingType == LaunchingType.User ? Views.USER_HOME : Views.ADMIN_HOME));
+			});
 		}
 	}
 }

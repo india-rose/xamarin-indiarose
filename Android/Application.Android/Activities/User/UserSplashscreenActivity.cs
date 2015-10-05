@@ -7,7 +7,7 @@ using Storm.Mvvm;
 
 namespace IndiaRose.Application.Activities.User
 {
-	[Activity(Label = "India Rose User Dev", Icon = "@drawable/ir_logo", Theme = "@style/Theme.Sherlock.Light.NoActionBar", MainLauncher = true, ScreenOrientation = ScreenOrientation.Landscape, LaunchMode = LaunchMode.SingleInstance, NoHistory = true)]
+	[Activity(Label = "India Rose User Dev", MainLauncher = true, Icon = "@drawable/ir_logo", Theme = "@style/Theme.Sherlock.Light.NoActionBar", ScreenOrientation = ScreenOrientation.Landscape, LaunchMode = LaunchMode.SingleInstance, NoHistory = true)]
 	public partial class UserSplashscreenActivity : ActivityBase
 	{
 		protected override void OnCreate(Bundle savedInstanceState)

@@ -21,9 +21,11 @@ namespace IndiaRose.Framework.Converters
         {
             string param = parameter as string ?? "";
             bool res = (bool) value;
-            if (Equals(param, "Negation"))
-                res = !res;
-            return res ? ViewStates.Visible : ViewStates.Gone;
+	        if (Equals(param, "Negation"))
+	        {
+		        res = !res;
+	        }
+	        return res ? ViewStates.Visible : ViewStates.Gone;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

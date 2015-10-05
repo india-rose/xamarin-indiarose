@@ -78,7 +78,8 @@ namespace IndiaRose.Framework.Views
 			set { _topView.NextCommand = value; }
 		}
 
-		public ViewStates TopNextButtonVisibility {
+		public ViewStates TopNextButtonVisibility 
+		{
 			get{ return _topView.NextButton.Visibility; }
 			set{ _topView.NextButton.Visibility = value; }
 		}
@@ -160,11 +161,12 @@ namespace IndiaRose.Framework.Views
 
 			_topView.CountChanged += (sender, args) => this.RaiseEvent(TopCountChanged);
 	        _botView.CanAddIndiagramsChanged += (s, e) => this.RaiseEvent(BotCanAddIndiagramsChanged);
+
         }
 
 	    #endregion
 
-        public void Init(int availableHeight, int width)
+	    public void Init(int availableHeight, int width)
         {
 	        int topHeight = (int) Math.Round(availableHeight*(SettingsService.SelectionAreaHeight/100.0));
 	        int bottomHeight = availableHeight - topHeight;

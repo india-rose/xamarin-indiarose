@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using IndiaRose.Business;
 using IndiaRose.Interfaces;
 using IndiaRose.Services;
@@ -61,7 +62,7 @@ namespace IndiaRose.Application
 			RegisterInstance<IXmlService>(new XmlService());
 			RegisterInstance<ICollectionStorageService>(_collectionStorageService);
 
-			InitializeAsync();
+			Task.Run((Action)InitializeAsync);
 		}
 
 		private void OnTtsInitialized(object sender, EventArgs eventArgs)
