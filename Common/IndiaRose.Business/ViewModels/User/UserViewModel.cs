@@ -27,7 +27,7 @@ namespace IndiaRose.Business.ViewModels.User
 		private Category _currentCategory;
 		private bool _isReading;
 		private bool _isCorrectionModeEnabled;
-		private bool _sentenceCanAddMoreIndiagrams;
+		private bool _sentenceCanAddMoreIndiagrams = true;
 		private int _sentenceIndiagramId = -242;
 
 		#region Services
@@ -260,6 +260,17 @@ namespace IndiaRose.Business.ViewModels.User
 				{
 					Read(indiagram);
 					AddIndiagramToSentence(indiagram);
+
+					if (SettingsService.IsBackHomeAfterSelectionEnabled && PopCategory())
+					{
+						while (PopCategory())
+						{
+						}
+					}
+					else
+					{
+						RefreshDisplayList();
+					}
 				}
 			}
 		}
