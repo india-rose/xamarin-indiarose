@@ -37,6 +37,7 @@ namespace IndiaRose.Framework.Views
 
 		private IndiagramBrowserView _topView;
 		private SentenceAreaView _botView;
+		private bool _isCorrectionModeEnabled;
 
 		#endregion
 
@@ -90,6 +91,12 @@ namespace IndiaRose.Framework.Views
 		{
 			get { return _topView.NextButton.Visibility; }
 			set { _topView.NextButton.Visibility = value; }
+		}
+
+		public bool IsCorrectionModeEnabled
+		{
+			get { return _isCorrectionModeEnabled; }
+			set { _isCorrectionModeEnabled = value; }
 		}
 
 		#endregion
@@ -204,7 +211,7 @@ namespace IndiaRose.Framework.Views
 			{
 				Indiagram indiagram = view.Indiagram;
 				// command should only be executed when the indiagram is "dropped" in sentence view
-				if (!SettingsService.IsMultipleIndiagramSelectionEnabled)
+				if (!SettingsService.IsMultipleIndiagramSelectionEnabled || IsCorrectionModeEnabled)
 				{
 					_topView.HideIndiagram(indiagram);
 				}
@@ -246,7 +253,6 @@ namespace IndiaRose.Framework.Views
 			}
 			else if (touchEventArgs.Event.ActionMasked == MotionEventActions.Up)
 			{
-				Log.Wtf("D&D Dropping", "Up action with Y : {0}", touchEventArgs.Event.RawY);
 				bool selected = touchEventArgs.Event.RawY >= _botView.GetY();
 				
 				//in any case, remove from the current view
