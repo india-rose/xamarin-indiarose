@@ -60,8 +60,6 @@ namespace IndiaRose.Application
 			};
             Dictionary<string, Type> dialogs = new Dictionary<string, Type>
 			{
-				// /
-				{Dialogs.IMPORTING_COLLECTION, typeof(ImportingCollectionDialog)},
 				// Admin
                 {Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
 				// Admin/Settings/Dialogs
