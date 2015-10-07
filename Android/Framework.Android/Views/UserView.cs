@@ -37,6 +37,7 @@ namespace IndiaRose.Framework.Views
 
 		private IndiagramBrowserView _topView;
 		private SentenceAreaView _botView;
+		private double _botViewYOffset;
 
 		#endregion
 
@@ -50,7 +51,17 @@ namespace IndiaRose.Framework.Views
 		public Drawable TopBackground
 		{
 			get { return _topView.Background; }
-			set { _topView.Background = value; }
+			set
+			{
+#if __ANDROID_16__
+				if (Build.VERSION.SdkInt >= BuildVersionCodes.JellyBean)
+				{
+					_topView.Background = value;
+					return;
+				}
+#endif
+				_topView.SetBackgroundDrawable(value);
+			}
 		}
 
 		public int TopCount
@@ -98,7 +109,17 @@ namespace IndiaRose.Framework.Views
 		public Drawable BotBackground
 		{
 			get { return _botView.Background; }
-			set { _botView.Background = value; }
+			set
+			{
+#if __ANDROID_16__
+				if (Build.VERSION.SdkInt >= BuildVersionCodes.JellyBean)
+				{
+					_botView.Background = value;
+					return;
+				}
+#endif
+				_botView.SetBackgroundDrawable(value);
+			}
 		}
 
 		public ObservableCollection<IndiagramUIModel> BotIndiagrams
@@ -179,10 +200,10 @@ namespace IndiaRose.Framework.Views
 			int topHeight = (int)Math.Round(availableHeight * (SettingsService.SelectionAreaHeight / 100.0));
 			int bottomHeight = availableHeight - topHeight;
 
-			AddView(_topView, width, topHeight);
-			AddView(_botView, width, bottomHeight);
+			AddView(_topView, new LayoutParams(width, topHeight, 0, 0));
+			AddView(_botView, new LayoutParams(width, bottomHeight, 0, topHeight));
 
-			_botView.SetY(_topView.LayoutParameters.Height);
+			_botViewYOffset = topHeight;
 		}
 
 		private void OnTopIndiagramSelected(Indiagram indiagram)
@@ -246,8 +267,7 @@ namespace IndiaRose.Framework.Views
 			}
 			else if (touchEventArgs.Event.ActionMasked == MotionEventActions.Up)
 			{
-				Log.Wtf("D&D Dropping", "Up action with Y : {0}", touchEventArgs.Event.RawY);
-				bool selected = touchEventArgs.Event.RawY >= _botView.GetY();
+				bool selected = touchEventArgs.Event.RawY >= _botViewYOffset;
 				
 				//in any case, remove from the current view
 				_currentView.Touch -= OnIndiagramTouched;

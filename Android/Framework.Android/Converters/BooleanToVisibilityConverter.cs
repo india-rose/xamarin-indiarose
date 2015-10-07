@@ -1,17 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Windows.Data;
-using Android.App;
-using Android.Content;
-using Android.Opengl;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
-using Android.Widget;
-using Visibility = Android.Transitions.Visibility;
 
 namespace IndiaRose.Framework.Converters
 {

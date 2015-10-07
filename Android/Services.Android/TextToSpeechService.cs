@@ -46,11 +46,19 @@ namespace IndiaRose.Services.Android
 			_speakerSpeech.SetLanguage(Locale.Default);
 			_speakerSpeech.SetOnUtteranceCompletedListener(this);
 
-			_speakerSpeech.Speak("a", QueueMode.Add, new Dictionary<string, string>
+			Dictionary<string, string> speakParameters = new Dictionary<string, string>
 			{
-				{TextToSpeech.Engine.KeyParamUtteranceId, INITIALIZE_UTTERANCE_ID},
-				{TextToSpeech.Engine.KeyParamVolume, "0"}
-			});
+				{TextToSpeech.Engine.KeyParamUtteranceId, INITIALIZE_UTTERANCE_ID}
+			};
+			string word = "india rose";
+#if __ANDROID_11__
+			if (Build.VERSION.SdkInt >= BuildVersionCodes.Honeycomb)
+			{
+				word = "a";
+				speakParameters.Add(TextToSpeech.Engine.KeyParamVolume, "0");
+			}
+#endif
+			_speakerSpeech.Speak(word, QueueMode.Add, speakParameters);
 			Log.Error("TTS", "Engine initialized");
 		}
 
@@ -66,29 +74,28 @@ namespace IndiaRose.Services.Android
 		private void Initialize()
 		{
 			Log.Error("TTS", "Initialize TTS engine");
-			BuildVersionCodes currentapiVersion = Build.VERSION.SdkInt;
-			if (currentapiVersion >= BuildVersionCodes.JellyBeanMr1)
+#if __ANDROID_17__
+			if (Build.VERSION.SdkInt >= BuildVersionCodes.JellyBeanMr1)
 			{
 				_speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity.ApplicationContext, this);
+				return;
 			}
-			else
-			{
-				ActivityService.StartActivityForResult(new Intent().SetAction(TextToSpeech.Engine.ActionCheckTtsData),
-					(result, data) =>
+#endif
+			ActivityService.StartActivityForResult(new Intent().SetAction(TextToSpeech.Engine.ActionCheckTtsData),
+				(result, data) =>
+				{
+					if (result == Result.Ok)
 					{
-						if (result == Result.Ok)
-						{
-							// success, create the TTS instance
-							_speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity, this);
-						}
-						else
-						{
-							Intent installIntent = new Intent();
-							installIntent.SetAction(TextToSpeech.Engine.ActionInstallTtsData);
-							ActivityService.CurrentActivity.StartActivity(installIntent);
-						}
-					});
-			}
+						// success, create the TTS instance
+						_speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity, this);
+					}
+					else
+					{
+						Intent installIntent = new Intent();
+						installIntent.SetAction(TextToSpeech.Engine.ActionInstallTtsData);
+						ActivityService.CurrentActivity.StartActivity(installIntent);
+					}
+				});
 		}
 		
 		public void Close()
