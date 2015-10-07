@@ -57,21 +57,9 @@ namespace IndiaRose.Business
 
             //User
 			container.RegisterFactory(x => new UserViewModel());
-
-			// /
-			container.RegisterFactory(x => new ImportingCollectionViewModel());
-
+			
 			_container = container;
 		}
-
-		#region ViewModels : /
-
-		public ImportingCollectionViewModel ImportingCollectionViewModel
-		{
-			get { return _container.Resolve<ImportingCollectionViewModel>(); }
-		}
-
-		#endregion
 
 		#region ViewModels : /Admin
 

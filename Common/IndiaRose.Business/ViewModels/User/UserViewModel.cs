@@ -198,7 +198,7 @@ namespace IndiaRose.Business.ViewModels.User
 			}
 
 			CollectionIndiagrams = CurrentCategory.Children.Where(
-				SettingsService.IsMultipleIndiagramSelectionEnabled ? 
+				SettingsService.IsMultipleIndiagramSelectionEnabled && !IsCorrectionModeEnabled ? 
 					(Func<Indiagram, bool>)(x => x.IsEnabled) : 
 					(x => x.IsEnabled && SentenceIndiagrams.All(y => y.Model.Id != x.Id))).ToList();
 		}
@@ -223,8 +223,9 @@ namespace IndiaRose.Business.ViewModels.User
 				_correctionCategory.Children.Add(indiagramUI.Model);
 			}
 			
-			PushCategory(_correctionCategory);
+			SentenceIndiagrams.Clear();
 			IsCorrectionModeEnabled = true;
+			PushCategory(_correctionCategory);
 		}
 
 		private void SentenceIndiagramSelectedAction(IndiagramUIModel indiagram)
@@ -238,7 +239,7 @@ namespace IndiaRose.Business.ViewModels.User
 			}
 
 			SentenceIndiagrams.Remove(indiagram);
-			if (!SettingsService.IsMultipleIndiagramSelectionEnabled)
+			if (!SettingsService.IsMultipleIndiagramSelectionEnabled || IsCorrectionModeEnabled)
 			{
 				RefreshDisplayList();
 			}

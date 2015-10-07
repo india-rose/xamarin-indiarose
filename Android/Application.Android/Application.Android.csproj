@@ -98,7 +98,6 @@
     <Compile Include="Activities\Admin\Settings\Dialogs\ReadingDelayDialog.cs" />
     <Compile Include="Activities\Admin\ServerSynchronizationActivity.cs" />
     <Compile Include="Activities\Admin\MailErrorDialog.cs" />
-    <Compile Include="Activities\ImportingCollectionDialog.cs" />
     <Compile Include="Activities\User\UserHomeActivity.cs" />
     <Compile Include="Activities\User\UserSplashscreenActivity.cs" />
     <Compile Include="Container.cs" />
@@ -193,7 +192,6 @@
     <None Include="Views\Admin\Settings\Dialogs\ReadingDelayDialog.xml" />
     <None Include="Views\Admin\ServerSynchronizationPage.xml" />
     <None Include="Views\Admin\MailErrorDialog.xml" />
-    <None Include="Views\ImportingCollectionDialog.xml" />
     <None Include="Views\Resources\DialogStyles.xml" />
     <None Include="Views\Resources\CommonStyles.xml" />
     <None Include="Views\Resources\Converters.xml" />

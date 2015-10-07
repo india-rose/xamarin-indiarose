@@ -178,7 +178,7 @@ namespace IndiaRose.Framework.Views
 
 			//refresh everything
 			int i = 0;
-			for (; i < _indiagrams.Count; ++i)
+			for (; i < _indiagrams.Count && i < _indiagramViews.Count; ++i)
 			{
 				_indiagramViews[i].Indiagram = _indiagrams[i].Model;
 			}

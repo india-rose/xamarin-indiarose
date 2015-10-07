@@ -340,21 +340,6 @@
                 "inputFile": "Views/User/HomePage.xml",
                 "outputFile": "User_HomePage.axml"
             }
-        },
-        /* =================
-         * = / description =
-         * =================
-         */
-        {
-            "fragment": {
-                "className": "ImportingCollectionDialog",
-                "namespaceName": "IndiaRose.Application.Activities"
-            },
-            "view": {
-                "inputFile": "Views/ImportingCollectionDialog.xml",
-                "outputFile": "ImportingCollectionDialog.axml"
-            }
         }
-
     ]
 }

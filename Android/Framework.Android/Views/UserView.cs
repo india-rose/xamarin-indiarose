@@ -37,6 +37,7 @@ namespace IndiaRose.Framework.Views
 
 		private IndiagramBrowserView _topView;
 		private SentenceAreaView _botView;
+		private bool _isCorrectionModeEnabled;
 		private double _botViewYOffset;
 
 		#endregion
@@ -58,7 +59,7 @@ namespace IndiaRose.Framework.Views
 				{
 					_topView.Background = value;
 					return;
-				}
+			}
 #endif
 				_topView.SetBackgroundDrawable(value);
 			}
@@ -101,6 +102,12 @@ namespace IndiaRose.Framework.Views
 		{
 			get { return _topView.NextButton.Visibility; }
 			set { _topView.NextButton.Visibility = value; }
+		}
+
+		public bool IsCorrectionModeEnabled
+		{
+			get { return _isCorrectionModeEnabled; }
+			set { _isCorrectionModeEnabled = value; }
 		}
 
 		#endregion
@@ -225,7 +232,7 @@ namespace IndiaRose.Framework.Views
 			{
 				Indiagram indiagram = view.Indiagram;
 				// command should only be executed when the indiagram is "dropped" in sentence view
-				if (!SettingsService.IsMultipleIndiagramSelectionEnabled)
+				if (!SettingsService.IsMultipleIndiagramSelectionEnabled || IsCorrectionModeEnabled)
 				{
 					_topView.HideIndiagram(indiagram);
 				}

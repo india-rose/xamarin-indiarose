@@ -2,9 +2,6 @@
 {
 	public class Dialogs
 	{
-		//Dialogs in /
-		public const string IMPORTING_COLLECTION = "ImportingCollection";
-
 		//Dialogs in /Admin
 	    public const string ADMIN_MAILERROR = "Admin_MailErrorDialog";
 
