@@ -15,6 +15,9 @@ using IndiaRose.Interfaces;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Events;
 using Storm.Mvvm.Inject;
+#if __ANDROID_16__
+using Android.OS;
+#endif
 
 namespace IndiaRose.Framework.Views
 {
@@ -37,7 +40,6 @@ namespace IndiaRose.Framework.Views
 
 		private IndiagramBrowserView _topView;
 		private SentenceAreaView _botView;
-		private bool _isCorrectionModeEnabled;
 		private double _botViewYOffset;
 
 		#endregion
@@ -104,11 +106,7 @@ namespace IndiaRose.Framework.Views
 			set { _topView.NextButton.Visibility = value; }
 		}
 
-		public bool IsCorrectionModeEnabled
-		{
-			get { return _isCorrectionModeEnabled; }
-			set { _isCorrectionModeEnabled = value; }
-		}
+		public bool IsCorrectionModeEnabled { get; set; }
 
 		#endregion
 
