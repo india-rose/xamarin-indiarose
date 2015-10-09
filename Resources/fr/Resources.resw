@@ -532,16 +532,16 @@ Commentaires : </value>
   <data name="ImportCollection_FromZip.Text" xml:space="preserve">
     <value>Création de la collection de base</value>
   </data>
-  <data name="Credits_Original" xml:space="preserve">
+  <data name="Credits_Original.Text" xml:space="preserve">
     <value>Equipe originelle</value>
   </data>
-  <data name="Credits_OriginalTeam" xml:space="preserve">
+  <data name="Credits_OriginalTeam.Text" xml:space="preserve">
     <value>José Martins, Anthony Froissant</value>
   </data>
-  <data name="Credits_Support" xml:space="preserve">
+  <data name="Credits_Support.Text" xml:space="preserve">
     <value>Support</value>
   </data>
-  <data name="Credits_SupportTeam" xml:space="preserve">
+  <data name="Credits_SupportTeam.Text" xml:space="preserve">
     <value>Marian Gappa, Joris Rubagotti, Cassandre Nunes, Joris Falip, Nicolas Serrette</value>
   </data>
 </root>

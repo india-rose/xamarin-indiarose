@@ -73,7 +73,7 @@
 					  Text="{Tr Text, Uid=Credits_Support}" />
 			
 			<TextView XmlStyle="{Resource PeopleTextStyle}"
-					  Text="{Tr Text, Uid=Credits_SupportTeam" />
+					  Text="{Tr Text, Uid=Credits_SupportTeam}" />
 			
 			<TextView XmlStyle="{Resource SectionTextStyle}"
 			          Text="{Tr Text, Uid=Credits_University}" />
