@@ -118,208 +118,209 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ExploreCollection_TitleDialog.Text" xml:space="preserve">
-    <value>What do you want to do?</value>
+    <value>Que souhaitez vous faire ?</value>
   </data>
   <data name="ExploreCollection_SeeIndiagram.Text" xml:space="preserve">
-    <value>See</value>
+    <value>Voir</value>
   </data>
   <data name="ExploreCollection_GoIntoCategory.Text" xml:space="preserve">
-    <value>Navigate into</value>
+    <value>Aller dedans</value>
   </data>
   <data name="ExploreCollection_SelectCategory.Text" xml:space="preserve">
-    <value>Select</value>
+    <value>Sélectionner</value>
   </data>
   <data name="DeleteCategoryConfirmation_Title.Text" xml:space="preserve">
-    <value>This category has children, if you delete it, it will also delete all of its children, are you sure you want it?</value>
+    <value>Cette catégorie a des enfants, si vous la supprimez, ses enfants seront également supprimé. Êtes vous sur de vouloir la supprimer ?</value>
   </data>
   <data name="DeleteCategoryWarning_Title.Text" xml:space="preserve">
-    <value>Do you really want to delete this category?</value>
+    <value>Êtes vous sur de vouloir supprimer cette catégorie ?</value>
   </data>
   <data name="DeleteIndiagramWarning_Title.Text" xml:space="preserve">
-    <value>Do you really want to delete this indiagram?</value>
+    <value>Êtes vous sur de vouloir supprimer cet indiagram ?</value>
   </data>
   <data name="ImageChoice_Camera.Text" xml:space="preserve">
-    <value>Camera</value>
+    <value>Appareil photo</value>
   </data>
   <data name="ImageChoice_Gallery.Text" xml:space="preserve">
-    <value>Photo gallery</value>
+    <value>Gallerie photo</value>
   </data>
   <data name="ImageChoice_PickerTitle.Text" xml:space="preserve">
-    <value>Choose a picture</value>
+    <value>Choisissez une photo</value>
   </data>
   <data name="ImageChoice_Title.Text" xml:space="preserve">
-    <value>Choose how to pick a picture</value>
+    <value>Choisissez comment prendre une photo</value>
   </data>
   <data name="SoundChoice_Browse.Text" xml:space="preserve">
-    <value>Files already on the device</value>
+    <value>Fichier sur l'appareil</value>
   </data>
   <data name="SoundChoice_PickerTitle.Text" xml:space="preserve">
-    <value>Choose a sound</value>
+    <value>Choisissez un son</value>
   </data>
   <data name="SoundChoice_Record.Text" xml:space="preserve">
-    <value>Record a sound</value>
+    <value>Enregistrer un son</value>
   </data>
   <data name="SoundChoice_Title.Text" xml:space="preserve">
-    <value>Choose how to pick a sound</value>
+    <value>Choisissez comment choisir un son</value>
   </data>
   <data name="Collection_ChooseCategory.Text" xml:space="preserve">
     <value>Choisir catégorie</value>
   </data>
   <data name="Collection_Position.Text" xml:space="preserve">
-    <value>Position: </value>
+    <value>Position : </value>
   </data>
   <data name="Collection_PositionBefore.Text" xml:space="preserve">
-    <value>Before: </value>
+    <value>Avant :</value>
   </data>
   <data name="Collection_ChooseSound.Text" xml:space="preserve">
-    <value>Choose sound</value>
+    <value>Choisir son</value>
   </data>
   <data name="Collection_DeleteSound.Text" xml:space="preserve">
-    <value>Delete sound</value>
+    <value>Supprimer le son</value>
   </data>
   <data name="Collection_CopyIndiagram.Text" xml:space="preserve">
-    <value>Copy indiagram</value>
+    <value>Copier l'indiagram</value>
   </data>
   <data name="Collection_Copy.Text" xml:space="preserve">
-    <value>Copy</value>
+    <value>Copier</value>
   </data>
   <data name="Collection_Paste.Text" xml:space="preserve">
-    <value>Paste</value>
+    <value>Coller</value>
   </data>
   <data name="Collection_EnableDisableIndiagram.Text" xml:space="preserve">
-    <value>Enable/Disable indiagrams</value>
+    <value>Activer/Désactiver l'indiagram</value>
   </data>
   <data name="Collection_EnableIndiagram.Text" xml:space="preserve">
-    <value>Enable</value>
+    <value>Activer</value>
   </data>
   <data name="Collection_DisableIndiagram.Text" xml:space="preserve">
-    <value>Disable</value>
+    <value>Désactiver</value>
   </data>
   <data name="Collection_ChooseImage.Text" xml:space="preserve">
-    <value>Choose image</value>
+    <value>Choisir image</value>
   </data>
   <data name="Collection_IsCategory.Text" xml:space="preserve">
-    <value>Is a category</value>
+    <value>Est une catégorie</value>
   </data>
   <data name="Collection_MissingText.Text" xml:space="preserve">
-    <value>You must give a text to this indiagram</value>
+    <value>Vous devez associer un texte à l'indiagram</value>
   </data>
   <data name="Collection_MissingSound.Text" xml:space="preserve">
-    <value>You need to record/choose a sound or give a text to the indiagram before listening</value>
+    <value>Vous devez choisir/enregistrer un son ou associer un texte à l'indiagram avant de pouvoir le lire</value>
   </data>
   <data name="Collection_IndiagramText.Text" xml:space="preserve">
-    <value>Indiagram text: </value>
+    <value>Texte de l'indiagram :</value>
   </data>
   <data name="Collection_ParentCategory.Text" xml:space="preserve">
-    <value>Parent category: </value>
+    <value>Catégorie parente</value>
   </data>
   <data name="Collection_ParentCategoryName.Text" xml:space="preserve">
-    <value>Name: </value>
+    <value>Nom : </value>
   </data>
   <data name="Collection_Sound.Text" xml:space="preserve">
-    <value>Sound: </value>
+    <value>Son :</value>
   </data>
   <data name="Collection_SoundPath.Text" xml:space="preserve">
-    <value>Path: </value>
+    <value>Chemin :</value>
   </data>
   <data name="Collection_ListenSound.Text" xml:space="preserve">
-    <value>Listen</value>
+    <value>Ecouter</value>
   </data>
   <data name="Collection_RootCategoryName.Text" xml:space="preserve">
-    <value>Home</value>
+    <value>Accueil</value>
   </data>
   <data name="Collection_NoSound.Text" xml:space="preserve">
-    <value>None</value>
+    <value>Aucun</value>
   </data>
   <data name="CollectionManagement_Add.Text" xml:space="preserve">
-    <value>Add</value>
+    <value>Ajouter</value>
   </data>
   <data name="CollectionManagement_Next.Text" xml:space="preserve">
-    <value>Next</value>
+    <value>Suivant</value>
   </data>
   <data name="ColorPicker_Title.Text" xml:space="preserve">
-    <value>Pick a color</value>
+    <value>Choisissez la couleur</value>
   </data>
   <data name="ResetSettings_Title.Text" xml:space="preserve">
-    <value>Do you want to reset the settings (not the collection)?</value>
+    <value>Voulez vous réinitialiser les paramètres (votre collection sera conservé) ?</value>
   </data>
   <data name="DragAndDrop_Explanation.Text" xml:space="preserve">
-    <value>You have two modes, Click (just touch the indiagram and it will be added to the sentence) or Drag and drop (you need to drag indiagram from the browsing area and drop it in the sentence area)</value>
+    <value>Deux modes de sélection sont disponible, Touch (vous touchez juste un indiagram et il sera ajouté à la phrase) ou Glissez-Déposer (vous devez glissez l'indiagram depuis la zone du haut dans la bande phrase pour l'ajouter)</value>
   </data>
   <data name="DragAndDrop_Title.Text" xml:space="preserve">
-    <value>Do you want to use the drag and drop ?</value>
+    <value>Voulez vous utilisez le Glissez-Déposer ?</value>
   </data>
   <data name="ReadingDelay_Explanation.Text" xml:space="preserve">
-    <value>Modify the delay between two words</value>
+    <value>Modifier le délai entre la lecture de deux mots d'une phrase</value>
   </data>
   <data name="ReadingDelay_ValueFormat.ConverterParameter" xml:space="preserve">
-    <value>{0:0.0} seconds</value>
+    <value>{0:0.0} secondes</value>
   </data>
   <data name="ReadingDelay_Title.Text" xml:space="preserve">
-    <value>Delay between two words</value>
+    <value>Délai entre deux mots</value>
   </data>
   <data name="CategoryReading_Explanation.Text" xml:space="preserve">
-    <value>If you activate this option, the categories will be read by the application when selected.</value>
+    <value>Si vous activez cette option, les catégories seront lu lors de leur sélection</value>
   </data>
   <data name="CategoryReading_Title.Text" xml:space="preserve">
-    <value>Play sound associated with the category when selected?</value>
+    <value>Lire le son associé à la catégorie quand elle est sélectionnée</value>
   </data>
   <data name="RadioButton_Off.Text" xml:space="preserve">
-    <value>Disabled</value>
+    <value>Désactiver</value>
   </data>
   <data name="RadioButton_On.Text" xml:space="preserve">
-    <value>Enabled</value>
+    <value>Activer</value>
   </data>
   <data name="Button_Ok.Text" xml:space="preserve">
     <value>Ok</value>
   </data>
   <data name="Button_Cancel.Text" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Annuler</value>
   </data>
   <data name="Button_Edit.Text" xml:space="preserve">
-    <value>Edit</value>
+    <value>Editer</value>
   </data>
   <data name="Button_Delete.Text" xml:space="preserve">
-    <value>Delete</value>
+    <value>Supprimer</value>
   </data>
   <data name="AppSettings_Background.Text" xml:space="preserve">
-    <value>Background color properties</value>
+    <value>Propriétés couleur de fond</value>
   </data>
   <data name="AppSettings_DragDrop.Text" xml:space="preserve">
-    <value>Drag and drop</value>
+    <value>Glissez-déposer</value>
   </data>
   <data name="AppSettings_Indiagram.Text" xml:space="preserve">
-    <value>Indiagram properties</value>
+    <value>Propriétés des indiagrams</value>
   </data>
   <data name="AppSettings_ReadingCategory.Text" xml:space="preserve">
-    <value>Category reading</value>
+    <value>Lecture des catégories</value>
   </data>
   <data name="AppSettings_ReadingDelay.Text" xml:space="preserve">
-    <value>Reading delay between words</value>
+    <value>Délai de lecture entre les mots</value>
   </data>
   <data name="AppSettings_Reset.Text" xml:space="preserve">
-    <value>Reset settings</value>
+    <value>Réinitialiser les paramètres</value>
   </data>
   <data name="Server_Synchro_Start.Text" xml:space="preserve">
-    <value>Synchronization of properties with server ...\n Please wait !</value>
+    <value>Synchronisation de l'application</value>
   </data>
   <data name="Server_Synchro_Void.Text" xml:space="preserve">
-    <value>This screen do nothing for the time\nYou must to click on the back button\nYou can wait until the world's end if you want</value>
+    <value>Fonctionnalité en attente</value>
   </data>
   <data name="MailError_Explanation.Text" xml:space="preserve">
-    <value>Unable to send email</value>
+    <value>Impossible d'envoyer un email</value>
   </data>
   <data name="MailError_Title.Text" xml:space="preserve">
-    <value>Error</value>
+    <value>Erreur</value>
   </data>
   <data name="Help.Document" xml:space="preserve">
     <value>manuel.pdf</value>
   </data>
   <data name="Contact.Body" xml:space="preserve">
-    <value>User of the application (age / disease) : \n
-Did you know the PECS method or picture exchange communication before using this application : \n
-Did you easily understand how this application work : \n
-Comments : </value>
+    <value>
+Utilisateur de l'application (âge / maladie) : \n
+Connaissiez vous la méthode PECS (méthode de communication par échange de pictogramme) avant d'utiliser cette application : \n
+Avez vous facilement compris comment fonctionnait cette application : \n
+Commentaires : </value>
   </data>
   <data name="Contact.EmailAddress" xml:space="preserve">
     <value>equipe.indiarose@gmail.com</value>
@@ -337,73 +338,73 @@ Comments : </value>
     <value>3</value>
   </data>
   <data name="TTS_Choose.Text" xml:space="preserve">
-    <value>Choose TTS Ivona</value>
+    <value>Choisissez TTS Ivona</value>
   </data>
   <data name="TTS_Ivona.Text" xml:space="preserve">
-    <value>Install the TTS Ivona</value>
+    <value>Installer TTS Ivona</value>
   </data>
   <data name="TTS_LangPack.Text" xml:space="preserve">
-    <value>Install a language pack</value>
+    <value>Installer la langue pour la synthèse vocale</value>
   </data>
   <data name="Home_AppSettings.Text" xml:space="preserve">
-    <value>Application settings</value>
+    <value>Paramètres de l'application</value>
   </data>
   <data name="Home_CollectionManagement.Text" xml:space="preserve">
-    <value>Collection management</value>
+    <value>Gestion de la collection</value>
   </data>
   <data name="Home_Contact.Text" xml:space="preserve">
-    <value>Contact us</value>
+    <value>Contactez nous</value>
   </data>
   <data name="Home_Credits.Text" xml:space="preserve">
-    <value>Credits</value>
+    <value>Crédits</value>
   </data>
   <data name="Home_Help.Text" xml:space="preserve">
-    <value>Help</value>
+    <value>Aide</value>
   </data>
   <data name="Home_SendLogs.Text" xml:space="preserve">
-    <value>Send application logs</value>
+    <value>Envoyer les logs de l'application</value>
   </data>
   <data name="Home_SyncCollection.Text" xml:space="preserve">
-    <value>Synchronize collection and settings</value>
+    <value>Synchroniser la collection et les paramètres</value>
   </data>
   <data name="Home_VoiceSynthesisUpgrade.Text" xml:space="preserve">
-    <value>Upgrade the voice synthesis engine</value>
+    <value>Améliorer le moteur de synthèse vocale</value>
   </data>
   <data name="IndiagramProperty_ChangeTextColor.Text" xml:space="preserve">
-    <value>Change text's color</value>
+    <value>Changer la couleur du texte</value>
   </data>
   <data name="IndiagramProperty_TextColor.Text" xml:space="preserve">
-    <value>Text's color</value>
+    <value>Couleur du texte</value>
   </data>
   <data name="IndiagramProperty_TextColorLabel.Text" xml:space="preserve">
-    <value>Text has this color :</value>
+    <value>Couleur du texte : </value>
   </data>
   <data name="IndiagramProperty_FontSize.Text" xml:space="preserve">
-    <value>Font size :</value>
+    <value>Taille de la police :</value>
   </data>
   <data name="IndiagramProperty_FontFamily.Text" xml:space="preserve">
-    <value>Font :</value>
+    <value>Police :</value>
   </data>
   <data name="IndiagramProperty_BackHomeAfterPicking.Text" xml:space="preserve">
-    <value>Back to home after picking indiagram</value>
+    <value>Revenir à l'accueil après la sélection d'un indiagram</value>
   </data>
   <data name="IndiagramProperty_IndiagramSize.Text" xml:space="preserve">
-    <value>Size of indiagram :</value>
+    <value>Taille des indiagrams :</value>
   </data>
   <data name="IndiagramProperty_ChangeReinforcerColor.Text" xml:space="preserve">
-    <value>Change reinforcer color</value>
+    <value>Changer la couleur du renforcateur</value>
   </data>
   <data name="IndiagramProperty_EnableReinforcer.Text" xml:space="preserve">
-    <value>Reading reinforcer enabled</value>
+    <value>Activé le renforcateur de lecture</value>
   </data>
   <data name="ApplicationLook_AreaSize.Text" xml:space="preserve">
-    <value>Size of the top area (indiagram selection):</value>
+    <value>Hauteur de la zone du haut (sélection des indiagrams)</value>
   </data>
   <data name="ApplicationLook_ChangeTopColor.Text" xml:space="preserve">
-    <value>Touch top area to change its color</value>
+    <value>Toucher la zone en haut pour changer sa couleur</value>
   </data>
   <data name="ApplicationLook_ChangeBottomColor.Text" xml:space="preserve">
-    <value>Touch bottom area to change its color</value>
+    <value>Toucher la zone en bas pour changer sa couleur</value>
   </data>
   <data name="Credits_Android2011.Text" xml:space="preserve">
     <value>Team Android - 2011</value>
@@ -430,46 +431,46 @@ Comments : </value>
     <value>Team Cloud - 2011</value>
   </data>
   <data name="Credits_Cloud2011Team.Text" xml:space="preserve">
-    <value>Mélanie Pothain, Fabienne Bruneau, Alexis Fleuriet, François Lecugy, Adrien Tremblay</value>
+    <value>Mélanie Pothain, Fabienne Bruneau, Alexis Fleuriet, François Lecugy, Adrien Tremblay, Julien De Sousa</value>
   </data>
   <data name="Credits_Graphics.Text" xml:space="preserve">
-    <value>Design and communication</value>
+    <value>Design et communication</value>
   </data>
   <data name="Credits_GraphicsTeam.Text" xml:space="preserve">
     <value>Aurélia Masquet, Michel Savariradjalou</value>
   </data>
   <data name="Credits_IndiagramProvider.Text" xml:space="preserve">
-    <value>Indiagram provider</value>
+    <value>Fournisseur d'indiagram</value>
   </data>
   <data name="Credits_Officer.Text" xml:space="preserve">
     <value>Management</value>
   </data>
   <data name="Credits_OfficerTeam.Text" xml:space="preserve">
-    <value>Julien Mialon, José Martins, Anthony Froissant, Julien De Sousa</value>
+    <value>Julien Mialon, José Martins, Anthony Froissant</value>
   </data>
   <data name="Credits_Sclera.Text" xml:space="preserve">
     <value>www.sclera.tv</value>
   </data>
   <data name="Credits_Trainee2012.Text" xml:space="preserve">
-    <value>Trainee 2012/2013</value>
+    <value>Stagiaire 2012/2013</value>
   </data>
   <data name="Credits_Trainee2012Team.Text" xml:space="preserve">
     <value>Florian Blain</value>
   </data>
   <data name="Credits_Trainee2013.Text" xml:space="preserve">
-    <value>Trainee 2013/2014</value>
+    <value>Stagiaire 2013/2014</value>
   </data>
   <data name="Credits_Trainee2013Team.Text" xml:space="preserve">
     <value>Marco Da Cunha Fernandez, Nesrine Brahmi, El Mehdi Fahim, Lisa Deloménie, Erwan Durandet</value>
   </data>
   <data name="Credits_Trainee2014.Text" xml:space="preserve">
-    <value>Trainee 2014/2015</value>
+    <value>Stagiaire 2014/2015</value>
   </data>
   <data name="Credits_Trainee2014Team.Text" xml:space="preserve">
     <value>David Intho, Valentin Jubert, Julien Gauttier, Corentin Colomier</value>
   </data>
   <data name="Credits_University.Text" xml:space="preserve">
-    <value>Orléans University</value>
+    <value>Université d'Orléans</value>
   </data>
   <data name="Credits_UniversityTeam.Text" xml:space="preserve">
     <value>Frédéric Moal, Catherine Julié-Bonnet, Sylvain Jubertie, Wadoud Bousdira</value>
@@ -487,48 +488,48 @@ Comments : </value>
     <value>Vincent Fauveau, Nicolas Lacourte-Barbadaux, Lamia Meziani, Arthur Guillaume</value>
   </data>
   <data name="Collection_CategoryEmpty.Text" xml:space="preserve">
-    <value>This category is empty.</value>
-  </data>
-  <data name="Collection_EndPosition.Text" xml:space="preserve">
-    <value>-- At the end --</value>
-  </data>
-  <data name="Collection_HasChildren.Text" xml:space="preserve">
-    <value>This category has children, it can't be a simple indiagram</value>
-  </data>
-  <data name="ImportCollection_FromOldFormat.Text" xml:space="preserve">
-    <value>Converting your collection to new efficient storage format</value>
-  </data>
-  <data name="ImportCollection_FromZip.Text" xml:space="preserve">
-    <value>Importing collection from initial data</value>
-  </data>
-  <data name="ImportCollection_DialogTitle.Text" xml:space="preserve">
-    <value>Initializing</value>
-  </data>
-  <data name="Collection_CorrectionCategoryName.Text" xml:space="preserve">
-    <value>Correction of Category</value>
-  </data>
-  <data name="BackButton.Text" xml:space="preserve">
-    <value>Back</value>
+    <value>Cette catégorie est vide.</value>
   </data>
   <data name="Home_WebSite.Text" xml:space="preserve">
     <value>indiarose.org</value>
   </data>
+  <data name="Collection_EndPosition.Text" xml:space="preserve">
+    <value>-- À la fin --</value>
+  </data>
+  <data name="Collection_HasChildren.Text" xml:space="preserve">
+    <value>Cette catégorie a des enfants, vous ne pouvez pas la transformer en simple indiagram</value>
+  </data>
+  <data name="Collection_CorrectionCategoryName.Text" xml:space="preserve">
+    <value>Correction</value>
+  </data>
+  <data name="BackButton.Text" xml:space="preserve">
+    <value>Retour</value>
+  </data>
   <data name="Collection_ChildrensNotCategory.Text" xml:space="preserve">
-    <value>This category does not have children who is a category</value>
+    <value>Cette catégorie n'a pas d'enfant étant une catégorie</value>
   </data>
   <data name="IndiagramSize.ConverterParameter" xml:space="preserve">
     <value>{0} x {0}</value>
   </data>
   <data name="IndiagramProperty_MultipleIndiagramSelection.Text" xml:space="preserve">
-    <value>Can select the same indiagram multiple times</value>
+    <value>Possibilité de sélectionner plusieurs fois le même indiagram</value>
   </data>
   <data name="SplashScreen_FromOldFormat.Text" xml:space="preserve">
-    <value>Updating your collection....</value>
+    <value>Mise à jour de votre collection...</value>
   </data>
   <data name="SplashScreen_FromZipFormat.Text" xml:space="preserve">
-    <value>Creating collection...</value>
+    <value>Création de la collection...</value>
   </data>
   <data name="SplashScreen_Loading.Text" xml:space="preserve">
-    <value>Loading...</value>
+    <value>Chargement...</value>
+  </data>
+  <data name="ImportCollection_DialogTitle.Text" xml:space="preserve">
+    <value>Initialisation</value>
+  </data>
+  <data name="ImportCollection_FromOldFormat.Text" xml:space="preserve">
+    <value>Mise à jour de votre collection d'indiagrams</value>
+  </data>
+  <data name="ImportCollection_FromZip.Text" xml:space="preserve">
+    <value>Création de la collection de base</value>
   </data>
 </root>

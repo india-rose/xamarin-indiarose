@@ -163,7 +163,7 @@
     <value>Choose how to pick a sound</value>
   </data>
   <data name="Collection_ChooseCategory.Text" xml:space="preserve">
-    <value>Choisir catégorie</value>
+    <value>Choose category</value>
   </data>
   <data name="Collection_Position.Text" xml:space="preserve">
     <value>Position: </value>
@@ -244,7 +244,7 @@
     <value>Do you want to reset the settings (not the collection)?</value>
   </data>
   <data name="DragAndDrop_Explanation.Text" xml:space="preserve">
-    <value>You have two modes, Click (just touch the indiagram and it will be added to the sentence) or Drag and drop (you need to drag indiagram from the browsing area and drop it in the sentence area)</value>
+    <value>Two modes are available to select indiagrams, Point and Click (just touch the indiagram and it will be added to the sentence) or Drag and drop (you need to drag indiagram from the browsing area and drop it in the sentence area)</value>
   </data>
   <data name="DragAndDrop_Title.Text" xml:space="preserve">
     <value>Do you want to use the drag and drop ?</value>
@@ -496,10 +496,10 @@ Comments : </value>
     <value>-- At the end --</value>
   </data>
   <data name="Collection_HasChildren.Text" xml:space="preserve">
-    <value>This category has children, it can't be a simple indiagram</value>
+    <value>This category has children, it can't be turned into a simple indiagram</value>
   </data>
   <data name="Collection_CorrectionCategoryName.Text" xml:space="preserve">
-    <value>Correction of Category</value>
+    <value>Correction</value>
   </data>
   <data name="BackButton.Text" xml:space="preserve">
     <value>Back</value>
