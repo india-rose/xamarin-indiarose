@@ -531,4 +531,16 @@ Comments : </value>
   <data name="ImportCollection_FromZip.Text" xml:space="preserve">
     <value>Importing collection from initial data</value>
   </data>
+  <data name="Credits_Original" xml:space="preserve">
+    <value>Founders</value>
+  </data>
+  <data name="Credits_OriginalTeam" xml:space="preserve">
+    <value>José Martins, Anthony Froissant</value>
+  </data>
+  <data name="Credits_Support" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="Credits_SupportTeam" xml:space="preserve">
+    <value>Marian Gappa, Joris Rubagotti, Cassandre Nunes, Joris Falip, Nicolas Serrette</value>
+  </data>
 </root>

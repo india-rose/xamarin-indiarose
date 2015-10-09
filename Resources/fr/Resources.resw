@@ -446,7 +446,7 @@ Commentaires : </value>
     <value>Management</value>
   </data>
   <data name="Credits_OfficerTeam.Text" xml:space="preserve">
-    <value>Julien Mialon, José Martins, Anthony Froissant</value>
+    <value>Julien Mialon, José Martins</value>
   </data>
   <data name="Credits_Sclera.Text" xml:space="preserve">
     <value>www.sclera.tv</value>
@@ -531,5 +531,17 @@ Commentaires : </value>
   </data>
   <data name="ImportCollection_FromZip.Text" xml:space="preserve">
     <value>Création de la collection de base</value>
+  </data>
+  <data name="Credits_Original" xml:space="preserve">
+    <value>Equipe originelle</value>
+  </data>
+  <data name="Credits_OriginalTeam" xml:space="preserve">
+    <value>José Martins, Anthony Froissant</value>
+  </data>
+  <data name="Credits_Support" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="Credits_SupportTeam" xml:space="preserve">
+    <value>Marian Gappa, Joris Rubagotti, Cassandre Nunes, Joris Falip, Nicolas Serrette</value>
   </data>
 </root>

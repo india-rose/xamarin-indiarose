@@ -70,6 +70,12 @@
 			          Text="{Tr Text, Uid=Credits_GraphicsTeam}" />
 
 			<TextView XmlStyle="{Resource SectionTextStyle}"
+					  Text="{Tr Text, Uid=Credits_Support}" />
+			
+			<TextView XmlStyle="{Resource PeopleTextStyle}"
+					  Text="{Tr Text, Uid=Credits_SupportTeam" />
+			
+			<TextView XmlStyle="{Resource SectionTextStyle}"
 			          Text="{Tr Text, Uid=Credits_University}" />
 
 			<TextView XmlStyle="{Resource PeopleTextStyle}"
@@ -129,6 +135,12 @@
 			<TextView XmlStyle="{Resource PeopleTextStyle}"
 			          Text="{Tr Text, Uid=Credits_Windows2011Team}" />
 
+			<TextView XmlStyle="{Resource SectionTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Original}" />
+
+			<TextView XmlStyle="{Resource PeopleTextStyle}"
+			          Text="{Tr Text, Uid=Credits_OriginalTeam}" />
+			
 			<TextView XmlStyle="{Resource SectionTextStyle}"
 			          Text="{Tr Text, Uid=Credits_IndiagramProvider}" />
 
