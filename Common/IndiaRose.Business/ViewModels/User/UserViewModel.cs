@@ -207,12 +207,7 @@ namespace IndiaRose.Business.ViewModels.User
 
 		private void EnterCorrectionModeAction()
 		{
-			if (SentenceIndiagrams.Count == 0)
-			{
-				return;
-			}
-
-			if (CheckIsReading())
+			if (SentenceIndiagrams.Count == 0 || CheckIsReading() || IsCorrectionModeEnabled)
 			{
 				return;
 			}
@@ -335,7 +330,7 @@ namespace IndiaRose.Business.ViewModels.User
 
 		private void AddIndiagramToSentence(Indiagram indiagram)
 		{
-			if (SettingsService.IsMultipleIndiagramSelectionEnabled)
+			if (SettingsService.IsMultipleIndiagramSelectionEnabled && !IsCorrectionModeEnabled)
 			{
 				// need to create a copy of the indiagram
 				Indiagram copy = new Indiagram();

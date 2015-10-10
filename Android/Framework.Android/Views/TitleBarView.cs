@@ -36,6 +36,9 @@ namespace IndiaRose.Framework.Views
 			_imageCategoryView.SetMinimumHeight(60);
 			_imageCategoryView.SetMaxHeight(60);
 			_imageCategoryView.Id = 0x0fffff2b;
+			_imageCategoryView.SetMinimumWidth(60);
+			_imageCategoryView.SetMaxWidth(60);
+			_imageCategoryView.Measure(60, 60);
 
 			_textCategoryView = new TextView(Context);
 			_textCategoryView.SetMaxHeight(60);
@@ -68,9 +71,16 @@ namespace IndiaRose.Framework.Views
 				if (category.ImagePath != null)
 				{
 					_imageCategoryView.SetImageBitmap(BitmapFactory.DecodeFile(category.ImagePath));
+
+					LayoutParams param = (LayoutParams)_textCategoryView.LayoutParameters;
+					param.SetMargins(60,0,60,0);
+					_textCategoryView.LayoutParameters = param;
 				}
 				else
 				{
+					LayoutParams param = (LayoutParams)_textCategoryView.LayoutParameters;
+					param.SetMargins(120,0,60,0);
+					_textCategoryView.LayoutParameters = param;
 					_imageCategoryView.SetImageDrawable(new ColorDrawable(Color.Red));
 				}
 				_textCategoryView.Text = category.Text;
