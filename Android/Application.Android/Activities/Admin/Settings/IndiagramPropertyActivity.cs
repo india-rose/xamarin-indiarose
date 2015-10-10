@@ -9,7 +9,7 @@ using Storm.Mvvm;
 
 namespace IndiaRose.Application.Activities.Admin.Settings
 {
-	[Activity(ScreenOrientation = ScreenOrientation.Landscape, Theme = "@style/Theme.Sherlock.Light.NoActionBar")]
+	[Activity(ScreenOrientation = ScreenOrientation.Landscape, Theme = "@style/Theme.Sherlock.Light.NoActionBar", Icon = "@drawable/ir_logo_params")]
 	public partial class IndiagramPropertyActivity : ActivityBase
 	{
 		protected override void OnCreate(Bundle bundle)

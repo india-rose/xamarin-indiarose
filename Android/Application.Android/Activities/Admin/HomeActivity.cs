@@ -13,7 +13,7 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application.Activities.Admin
 {
-    [Activity(ScreenOrientation = ScreenOrientation.Landscape, Theme = "@style/Theme.Sherlock.Light.NoActionBar")]
+	[Activity(ScreenOrientation = ScreenOrientation.Landscape, Theme = "@style/Theme.Sherlock.Light.NoActionBar", Icon = "@drawable/ir_logo_params")]
 	public partial class HomeActivity : ActivityBase
 	{
 		protected override void OnCreate(Bundle bundle)

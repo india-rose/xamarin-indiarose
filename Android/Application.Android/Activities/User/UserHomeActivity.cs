@@ -10,7 +10,7 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Application.Activities.User
 {
-	[Activity(Theme = "@style/Theme.Sherlock.Light.NoActionBar", ScreenOrientation = ScreenOrientation.Landscape)]
+	[Activity(Theme = "@style/Theme.Sherlock.Light.NoActionBar", ScreenOrientation = ScreenOrientation.Landscape, Icon = "@drawable/ir_logo")]
 	public partial class UserHomeActivity : ActivityBase
 	{
 		protected override void OnCreate(Bundle bundle)

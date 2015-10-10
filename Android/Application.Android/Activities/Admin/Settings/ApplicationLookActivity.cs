@@ -11,7 +11,7 @@ using Storm.Mvvm.Bindings;
 
 namespace IndiaRose.Application.Activities.Admin.Settings
 {
-	[Activity(ScreenOrientation = ScreenOrientation.Landscape, Theme = "@style/Theme.Sherlock.Light.NoActionBar")]
+	[Activity(ScreenOrientation = ScreenOrientation.Landscape, Theme = "@style/Theme.Sherlock.Light.NoActionBar", Icon = "@drawable/ir_logo_params")]
 	public partial class ApplicationLookActivity : ActivityBase
 	{
 	    protected override void OnCreate(Bundle savedInstanceState)
