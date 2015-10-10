@@ -244,7 +244,7 @@
     <value>Voulez vous réinitialiser les paramètres (votre collection sera conservée) ?</value>
   </data>
   <data name="DragAndDrop_Explanation.Text" xml:space="preserve">
-    <value>Deux modes de sélection sont disponibles, Touch (vous touchez juste un indiagram et il sera ajouté à la phrase) ou Glisser-Déposer (vous devez glissez l'indiagram depuis la zone du haut dans la bande phrase pour l'ajouter)</value>
+    <value>Deux modes de sélection sont disponibles, Touch (vous touchez juste un indiagram et il sera ajouté à la phrase) ou Glisser-Déposer (vous devez glisser l'indiagram depuis la zone du haut dans la bande phrase pour l'ajouter)</value>
   </data>
   <data name="DragAndDrop_Title.Text" xml:space="preserve">
     <value>Voulez vous utilisez le Glisser-Déposer ?</value>
