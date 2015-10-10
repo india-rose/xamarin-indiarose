@@ -268,7 +268,7 @@ namespace IndiaRose.Business.ViewModels.User
 					}
 					AddIndiagramToSentence(indiagram);
 
-					if (SettingsService.IsBackHomeAfterSelectionEnabled && PopCategory())
+					if (SettingsService.IsBackHomeAfterSelectionEnabled && !IsCorrectionModeEnabled && PopCategory())
 					{
 						while (PopCategory())
 						{
