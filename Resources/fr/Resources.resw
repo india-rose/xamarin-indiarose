@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ExploreCollection_TitleDialog.Text" xml:space="preserve">
-    <value>Que souhaitez vous faire ?</value>
+    <value>Que souhaitez-vous faire ?</value>
   </data>
   <data name="ExploreCollection_SeeIndiagram.Text" xml:space="preserve">
     <value>Voir</value>
@@ -130,13 +130,13 @@
     <value>Sélectionner</value>
   </data>
   <data name="DeleteCategoryConfirmation_Title.Text" xml:space="preserve">
-    <value>Cette catégorie a des enfants, si vous la supprimez, ses enfants seront également supprimé. Êtes vous sur de vouloir la supprimer ?</value>
+    <value>Cette catégorie a des enfants, si vous la supprimez, ses enfants seront également supprimés. Êtes-vous sûr de vouloir la supprimer ?</value>
   </data>
   <data name="DeleteCategoryWarning_Title.Text" xml:space="preserve">
-    <value>Êtes vous sur de vouloir supprimer cette catégorie ?</value>
+    <value>Êtes-vous sûr de vouloir supprimer cette catégorie ?</value>
   </data>
   <data name="DeleteIndiagramWarning_Title.Text" xml:space="preserve">
-    <value>Êtes vous sur de vouloir supprimer cet indiagram ?</value>
+    <value>Êtes-vous sûr de vouloir supprimer cet indiagram ?</value>
   </data>
   <data name="ImageChoice_Camera.Text" xml:space="preserve">
     <value>Appareil photo</value>
@@ -163,7 +163,7 @@
     <value>Choisissez comment choisir un son</value>
   </data>
   <data name="Collection_ChooseCategory.Text" xml:space="preserve">
-    <value>Choisir catégorie</value>
+    <value>Choisir une catégorie</value>
   </data>
   <data name="Collection_Position.Text" xml:space="preserve">
     <value>Position : </value>
@@ -172,7 +172,7 @@
     <value>Avant :</value>
   </data>
   <data name="Collection_ChooseSound.Text" xml:space="preserve">
-    <value>Choisir son</value>
+    <value>Choisir un son</value>
   </data>
   <data name="Collection_DeleteSound.Text" xml:space="preserve">
     <value>Supprimer le son</value>
@@ -196,7 +196,7 @@
     <value>Désactiver</value>
   </data>
   <data name="Collection_ChooseImage.Text" xml:space="preserve">
-    <value>Choisir image</value>
+    <value>Choisir une image</value>
   </data>
   <data name="Collection_IsCategory.Text" xml:space="preserve">
     <value>Est une catégorie</value>
@@ -241,13 +241,13 @@
     <value>Choisissez la couleur</value>
   </data>
   <data name="ResetSettings_Title.Text" xml:space="preserve">
-    <value>Voulez vous réinitialiser les paramètres (votre collection sera conservé) ?</value>
+    <value>Voulez vous réinitialiser les paramètres (votre collection sera conservée) ?</value>
   </data>
   <data name="DragAndDrop_Explanation.Text" xml:space="preserve">
-    <value>Deux modes de sélection sont disponible, Touch (vous touchez juste un indiagram et il sera ajouté à la phrase) ou Glissez-Déposer (vous devez glissez l'indiagram depuis la zone du haut dans la bande phrase pour l'ajouter)</value>
+    <value>Deux modes de sélection sont disponibles, Touch (vous touchez juste un indiagram et il sera ajouté à la phrase) ou Glisser-Déposer (vous devez glissez l'indiagram depuis la zone du haut dans la bande phrase pour l'ajouter)</value>
   </data>
   <data name="DragAndDrop_Title.Text" xml:space="preserve">
-    <value>Voulez vous utilisez le Glissez-Déposer ?</value>
+    <value>Voulez vous utilisez le Glisser-Déposer ?</value>
   </data>
   <data name="ReadingDelay_Explanation.Text" xml:space="preserve">
     <value>Modifier le délai entre la lecture de deux mots d'une phrase</value>
@@ -259,7 +259,7 @@
     <value>Délai entre deux mots</value>
   </data>
   <data name="CategoryReading_Explanation.Text" xml:space="preserve">
-    <value>Si vous activez cette option, les catégories seront lu lors de leur sélection</value>
+    <value>Si vous activez cette option, les catégories seront lues lors de leur sélection</value>
   </data>
   <data name="CategoryReading_Title.Text" xml:space="preserve">
     <value>Lire le son associé à la catégorie quand elle est sélectionnée</value>
@@ -286,7 +286,7 @@
     <value>Propriétés couleur de fond</value>
   </data>
   <data name="AppSettings_DragDrop.Text" xml:space="preserve">
-    <value>Glissez-déposer</value>
+    <value>Glisser-déposer</value>
   </data>
   <data name="AppSettings_Indiagram.Text" xml:space="preserve">
     <value>Propriétés des indiagrams</value>
@@ -353,7 +353,7 @@ Commentaires : </value>
     <value>Gestion de la collection</value>
   </data>
   <data name="Home_Contact.Text" xml:space="preserve">
-    <value>Contactez nous</value>
+    <value>Contactez-nous</value>
   </data>
   <data name="Home_Credits.Text" xml:space="preserve">
     <value>Crédits</value>
@@ -392,10 +392,10 @@ Commentaires : </value>
     <value>Taille des indiagrams :</value>
   </data>
   <data name="IndiagramProperty_ChangeReinforcerColor.Text" xml:space="preserve">
-    <value>Changer la couleur du renforcateur</value>
+    <value>Changer la couleur du renforçateur</value>
   </data>
   <data name="IndiagramProperty_EnableReinforcer.Text" xml:space="preserve">
-    <value>Activé le renforcateur de lecture</value>
+    <value>Activer le renforcateur de lecture</value>
   </data>
   <data name="ApplicationLook_AreaSize.Text" xml:space="preserve">
     <value>Hauteur de la zone du haut (sélection des indiagrams)</value>
@@ -506,7 +506,7 @@ Commentaires : </value>
     <value>Retour</value>
   </data>
   <data name="Collection_ChildrensNotCategory.Text" xml:space="preserve">
-    <value>Cette catégorie n'a pas d'enfant étant une catégorie</value>
+    <value>Cette catégorie n'a pas d'enfant qui soit une catégorie</value>
   </data>
   <data name="IndiagramSize.ConverterParameter" xml:space="preserve">
     <value>{0} x {0}</value>
