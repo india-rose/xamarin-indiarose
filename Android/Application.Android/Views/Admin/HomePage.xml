@@ -19,7 +19,14 @@
 		</LinearLayout>
 
 		<LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}">
+			<Button XmlStyle="{Resource MediumGreenButtonStyle}"
+			        Text="{Tr Text, Uid=Home_VoiceSynthesisUpgrade}"
+			        Click="{Binding InstallVoiceSynthesisCommand}" />
+			<Button XmlStyle="{Resource MediumPinkButtonStyle}"
+			        Text="{Tr Text, Uid=Home_Help}"
+			        Click="{Binding HelpCommand}" />
 
+			<!--
 			<Button XmlStyle="{Resource SmallBlueButtonStyle}"
 			        Text="{Tr Text, Uid=Home_VoiceSynthesisUpgrade}"
 			        Click="{Binding InstallVoiceSynthesisCommand}" />
@@ -32,6 +39,7 @@
 			<Button XmlStyle="{Resource SmallPinkButtonStyle}"
 			        Text="{Tr Text, Uid=Home_Help}"
 			        Click="{Binding HelpCommand}" />
+			-->
 		</LinearLayout>
 
 		<LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}">
