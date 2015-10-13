@@ -68,9 +68,8 @@
     <Reference Include="Funq.Portable">
       <HintPath>..\..\packages\Funq.Portable.1.0.1\lib\Funq.Portable.dll</HintPath>
     </Reference>
-    <Reference Include="Storm.Mvvm, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Storm.Mvvm, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\packages\Storm.Mvvm.1.2.10\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
