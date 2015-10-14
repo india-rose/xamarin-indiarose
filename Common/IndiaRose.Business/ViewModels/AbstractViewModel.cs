@@ -39,7 +39,5 @@ namespace IndiaRose.Business.ViewModels
 		{
 			NavigationService.GoBack();
 		}
-
-
 	}
 }
