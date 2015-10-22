@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using IndiaRose.Data.Model;
+﻿using IndiaRose.Data.Model;
 using SQLite.Net.Attributes;
 
 namespace IndiaRose.Storage.Sqlite.Model

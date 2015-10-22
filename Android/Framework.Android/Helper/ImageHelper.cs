@@ -6,11 +6,11 @@ namespace IndiaRose.Framework.Helper
 {
     public static class ImageHelper
     {
-        private static readonly Dictionary<String, Bitmap> _images = new Dictionary<String, Bitmap>();
+        private static readonly Dictionary<string, Bitmap> _images = new Dictionary<string, Bitmap>();
 
-        public static Bitmap LoadImage(String imagePath, int width, int height)
+        public static Bitmap LoadImage(string imagePath, int width, int height)
         {
-            String key = imagePath + "?" + width + "?" + height;
+            string key = imagePath + "?" + width + "?" + height;
             if (!_images.ContainsKey(key))
             {
                 Bitmap image;
@@ -29,9 +29,9 @@ namespace IndiaRose.Framework.Helper
             return _images[key];
         }
 
-        public static Bitmap LoadImage(String imagePath)
+        public static Bitmap LoadImage(string imagePath)
         {
-            String key = imagePath;
+            string key = imagePath;
             if (!_images.ContainsKey(key))
             {
                 Bitmap image;

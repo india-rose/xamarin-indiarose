@@ -1,7 +1,5 @@
 ﻿using IndiaRose.Interfaces;
-using IndiaRose.Storage;
 using Storm.Mvvm.Inject;
-using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {

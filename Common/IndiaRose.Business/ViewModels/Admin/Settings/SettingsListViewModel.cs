@@ -2,8 +2,6 @@
 
 using System.Windows.Input;
 using Storm.Mvvm.Commands;
-using Storm.Mvvm.Inject;
-using Storm.Mvvm.Services;
 
 #endregion
 

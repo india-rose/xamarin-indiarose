@@ -4,12 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
-using IndiaRose.Interfaces;
 using Storm.Mvvm.Commands;
-using Storm.Mvvm.Inject;
-using Storm.Mvvm.Messaging;
 using Storm.Mvvm.Navigation;
-using Storm.Mvvm.Services;
 
 #endregion
 

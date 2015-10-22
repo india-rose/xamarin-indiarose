@@ -27,7 +27,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 			}
 		}
 
-	    public String CurrentValueStr
+	    public string CurrentValueStr
 	    {
             get { return _currentValueStr; }
 	        set

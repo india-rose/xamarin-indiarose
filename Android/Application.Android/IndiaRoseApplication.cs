@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Android.App;
 using Android.Runtime;
-using IndiaRose.Application.Activities;
 using IndiaRose.Application.Activities.Admin;
 using IndiaRose.Application.Activities.Admin.Collection;
 using IndiaRose.Application.Activities.Admin.Collection.Dialogs;

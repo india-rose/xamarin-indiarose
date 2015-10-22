@@ -11,7 +11,6 @@ using IndiaRose.Interfaces;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Navigation;
-using Storm.Mvvm.Services;
 
 #endregion
 

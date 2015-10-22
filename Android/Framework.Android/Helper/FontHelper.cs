@@ -1,15 +1,14 @@
 using System.Collections.Generic;
 using Android.Graphics;
 using Java.Lang;
-using String = System.String;
 
 namespace IndiaRose.Framework.Helper
 {
     public static class FontHelper
     {
-        private static readonly Dictionary<String, Typeface> _fonts = new Dictionary<String, Typeface>();
+        private static readonly Dictionary<string, Typeface> _fonts = new Dictionary<string, Typeface>();
 
-        public static Typeface LoadFont(String fontPath)
+        public static Typeface LoadFont(string fontPath)
         {
             if (!_fonts.ContainsKey(fontPath))
             {

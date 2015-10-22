@@ -1,6 +1,5 @@
 ﻿#region Usings
 
-using IndiaRose.Business.ViewModels;
 using IndiaRose.Business.ViewModels.Admin;
 using IndiaRose.Business.ViewModels.Admin.Collection;
 using IndiaRose.Business.ViewModels.Admin.Collection.Dialogs;

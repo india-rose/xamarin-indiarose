@@ -258,7 +258,7 @@ namespace IndiaRose.Framework.Views
                 //write text
                 int yindex = _marginTop + _pictureHeight + SettingsService.FontSize;
                 int xindex = _marginLeft + _pictureWidth / 2;
-                String text = _indiagram.Text;
+                string text = _indiagram.Text;
 
                 if (_isOneLineText)
                 {

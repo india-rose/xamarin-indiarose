@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Windows.Input;
 using IndiaRose.Data.Model;
 using Storm.Mvvm.Commands;
-using Storm.Mvvm.Messaging;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;

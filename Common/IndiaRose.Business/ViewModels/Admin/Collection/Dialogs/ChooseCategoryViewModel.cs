@@ -6,7 +6,6 @@ using System.Linq;
 using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Inject;
-using Storm.Mvvm.Messaging;
 using Storm.Mvvm.Navigation;
 using Storm.Mvvm.Services;
 

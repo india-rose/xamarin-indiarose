@@ -1,8 +1,6 @@
 using Android.App;
 using Android.Content.PM;
-using Android.OS;
 using Android.Views;
-using IndiaRose.Business.ViewModels.Admin.Collection;
 using Storm.Mvvm;
 using Storm.Mvvm.Dialogs;
 
