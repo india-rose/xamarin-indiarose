@@ -83,18 +83,27 @@ namespace IndiaRose.Services.Android
             cropIntent.PutExtra(MediaStore.ExtraOutput, picUri);
             // start the activity - we handle returning in onActivityResult
             ActivityService.StartActivityForResult(cropIntent, (result, data) =>
-            { callbackResult(result == Result.Ok ? path : null); });
+            {
+				callbackResult(result == Result.Ok ? path : null);
+            });
         }
 
         private string SavePhoto(Bitmap bitmap)
         {
             string filename = StorageService.GenerateFilename(StorageType.Image, "png");
-            using (System.IO.Stream stream = System.IO.File.OpenWrite(filename))
-            {
-                bitmap.Compress(Bitmap.CompressFormat.Png, 0, stream);
-            }
-
-            return filename;
+	        try
+	        {
+		        using (System.IO.Stream stream = System.IO.File.OpenWrite(filename))
+		        {
+			        bitmap.Compress(Bitmap.CompressFormat.Png, 0, stream);
+		        }
+	        }
+	        catch (Exception)
+	        {
+		        //TODO : log error
+		        return null;
+	        }
+	        return filename;
         }
         public Task<string> GetPictureFromGalleryAsync()
         {
@@ -113,14 +122,36 @@ namespace IndiaRose.Services.Android
                         {
                             Uri selectedImage = data.Data;
 
-                            ParcelFileDescriptor parcelFileDescriptor =
-                                ActivityService.CurrentActivity.ContentResolver.OpenFileDescriptor(selectedImage, "r");
+                            ParcelFileDescriptor parcelFileDescriptor = ActivityService.CurrentActivity.ContentResolver.OpenFileDescriptor(selectedImage, "r");
                             FileDescriptor fileDescriptor = parcelFileDescriptor.FileDescriptor;
-                            Bitmap photo = BitmapFactory.DecodeFileDescriptor(fileDescriptor);
-                            parcelFileDescriptor.Close();
-                            var path = SavePhoto(photo);
+	                        try
+	                        {
+		                        Bitmap photo = BitmapFactory.DecodeFileDescriptor(fileDescriptor);
+		                        parcelFileDescriptor.Close();
 
-                            PerformCrop(Uri.FromFile(new File(path)), resultCallback, path);
+		                        if (photo == null)
+		                        {
+			                        //TODO : log error
+			                        resultCallback(null);
+			                        return;
+		                        }
+
+		                        string path = SavePhoto(photo);
+
+		                        if (path == null)
+		                        {
+									//TODO : log error
+			                        resultCallback(null);
+			                        return;
+		                        }
+
+		                        PerformCrop(Uri.FromFile(new File(path)), resultCallback, path);
+	                        }
+	                        catch (Exception)
+	                        {
+		                        //TODO : log error
+								resultCallback(null);
+	                        }
                         }
                         else
                         {
@@ -148,10 +179,8 @@ namespace IndiaRose.Services.Android
                         FileInputStream inputStream = new FileInputStream(fileDescriptor);
                         path = StorageService.GenerateFilename(StorageType.Sound, "3gpp");
                         File outputFile = new File(path);
-                        InputStream inStream = null;
-                        OutputStream outStream = null;
-                        inStream = inputStream;
-                        outStream = new FileOutputStream(outputFile);
+	                    InputStream inStream = inputStream;
+                        OutputStream outStream = new FileOutputStream(outputFile);
 
                         byte[] buffer = new byte[1024];
 
