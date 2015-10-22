@@ -16,11 +16,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
 	public class WatchIndiagramViewModel : AbstractCollectionViewModel
 	{
-        private IMediaService MediaService
-        {
-            get { return LazyResolver<IMediaService>.Service; }
-        }
-        private ITextToSpeechService TtsService
+		private ITextToSpeechService TtsService
         {
             get { return LazyResolver<ITextToSpeechService>.Service; }
         }
@@ -63,6 +59,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
 		protected void DeleteAction()
 		{
+			if (IndiagramContainer == null || IndiagramContainer.Indiagram == null)
+			{
+				return;
+			}
+
 			if (IndiagramContainer.Indiagram.IsCategory)
 			{
 				MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_DELETEWARNING_CATEGORY, new Dictionary<string, object>
