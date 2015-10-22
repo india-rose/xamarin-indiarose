@@ -10,6 +10,8 @@ namespace IndiaRose.Framework.Helper
 
         public static Typeface LoadFont(string fontPath)
         {
+	        fontPath = fontPath ?? string.Empty;
+
             if (!_fonts.ContainsKey(fontPath))
             {
                 Typeface font;
