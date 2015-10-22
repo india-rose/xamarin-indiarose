@@ -21,6 +21,7 @@ namespace IndiaRose.Framework.Helper
                 }
                 catch (Exception)
                 {
+					//TODO : log error
                     throw new Exception("ImageManager : Unable to load image " + imagePath);
                 }
                 _images.Add(key, image);
@@ -41,6 +42,7 @@ namespace IndiaRose.Framework.Helper
                 }
                 catch (Exception)
                 {
+					//TODO : log error
                     throw new Exception("ImageManager : Unable to load image " + imagePath);
                 }
 

@@ -1,4 +1,5 @@
-﻿using Android.Util;
+﻿using System;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
 using IndiaRose.Data.Model;
@@ -70,7 +71,14 @@ namespace IndiaRose.Framework.Views
 			{
 				if (category.ImagePath != null)
 				{
-					_imageCategoryView.SetImageBitmap(BitmapFactory.DecodeFile(category.ImagePath));
+					try
+					{
+						_imageCategoryView.SetImageBitmap(BitmapFactory.DecodeFile(category.ImagePath));
+					}
+					catch (Exception)
+					{
+						//TODO : log error
+					}
 
 					LayoutParams param = (LayoutParams)_textCategoryView.LayoutParameters;
 					param.SetMargins(60,0,60,0);
