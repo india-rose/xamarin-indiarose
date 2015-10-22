@@ -272,20 +272,27 @@ namespace IndiaRose.Services
 				foreach (XElement child in indiagramsElement.Elements("indiagram"))
 				{
 					// look for the entry
-					string directoryName = Path.GetDirectoryName(child.Value);
-					string fileName = Path.GetFileName(child.Value);
-
-					IFolder folder = await GetSubFolderAsync(currentFolder, currentDirectoryPath, directoryName);
-
-					if (await folder.CheckExistsAsync(fileName) == ExistenceCheckResult.FileExists)
+					try
 					{
-						IFile file = await folder.GetFileAsync(fileName);
-						Stream fileStream = await file.OpenAsync(FileAccess.Read);
+						string directoryName = Path.GetDirectoryName(child.Value);
+						string fileName = Path.GetFileName(child.Value);
 
-						using (fileStream)
+						IFolder folder = await GetSubFolderAsync(currentFolder, currentDirectoryPath, directoryName);
+
+						if (await folder.CheckExistsAsync(fileName) == ExistenceCheckResult.FileExists)
 						{
-							await ReadCollectionFromOldFormat(fileStream, folder, directoryName, imageFolder, soundFolder, category);
+							IFile file = await folder.GetFileAsync(fileName);
+							Stream fileStream = await file.OpenAsync(FileAccess.Read);
+
+							using (fileStream)
+							{
+								await ReadCollectionFromOldFormat(fileStream, folder, directoryName, imageFolder, soundFolder, category);
+							}
 						}
+					}
+					catch (Exception)
+					{
+						//TODO : log error
 					}
 				}
 			}
