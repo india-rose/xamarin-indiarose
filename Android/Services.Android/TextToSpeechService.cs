@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
-using Android.OS;
 using Android.Speech.Tts;
 using Android.Util;
 using IndiaRose.Data.Model;
@@ -11,6 +12,7 @@ using Java.Util;
 using Storm.Mvvm.Events;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Interfaces;
+using Storm.Mvvm.Services;
 using Object = Java.Lang.Object;
 
 // disable deprecated use because of supporting older api versions
@@ -29,11 +31,12 @@ namespace IndiaRose.Services.Android
 			get { return LazyResolver<IActivityService>.Service; }
 		}
 
-		private int _readingCountStack = 0;
+		private int _readingCountStack;
 		public bool IsReading { get { return _readingCountStack > 0; } }
 
 		private TextToSpeech _speakerSpeech;
 		private readonly Dictionary<string, string> _registeredSounds = new Dictionary<string, string>();
+		private readonly ManualResetEvent _initMutex = new ManualResetEvent(false);
 
 		public TextToSpeechService()
 		{
@@ -43,6 +46,16 @@ namespace IndiaRose.Services.Android
 
 		public void OnInit(OperationResult status)
 		{
+			if (_speakerSpeech == null)
+			{
+				Task.Run(() =>
+				{
+					_initMutex.WaitOne();
+					LazyResolver<IDispatcherService>.Service.InvokeOnUIThread(() => OnInit(status));
+				});
+
+				return;
+			}
 			_speakerSpeech.SetLanguage(Locale.Default);
 			_speakerSpeech.SetOnUtteranceCompletedListener(this);
 
@@ -50,6 +63,7 @@ namespace IndiaRose.Services.Android
 			{
 				{TextToSpeech.Engine.KeyParamUtteranceId, INITIALIZE_UTTERANCE_ID}
 			};
+
 			string word = "india rose";
 #if __ANDROID_11__
 			if (Build.VERSION.SdkInt >= BuildVersionCodes.Honeycomb)
@@ -78,6 +92,7 @@ namespace IndiaRose.Services.Android
 			if (Build.VERSION.SdkInt >= BuildVersionCodes.JellyBeanMr1)
 			{
 				_speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity.ApplicationContext, this);
+				_initMutex.Set();
 				return;
 			}
 #endif
@@ -88,6 +103,7 @@ namespace IndiaRose.Services.Android
 					{
 						// success, create the TTS instance
 						_speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity, this);
+						_initMutex.Set();
 					}
 					else
 					{

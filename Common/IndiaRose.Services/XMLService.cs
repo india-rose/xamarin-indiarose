@@ -70,33 +70,45 @@ namespace IndiaRose.Services
 				if (rootElement != null)
 				{
 					// the current element is an indiagram, just read it
-#pragma warning disable 1998
 					await CreateIndiagramFromXml(rootElement, false, parent, async (key, type) =>
-#pragma warning restore 1998
 					{
-						if (resourceEntries.ContainsKey(key))
+						return await Task.Run(() =>
 						{
-							return resourceEntries[key].OpenEntryStream();
-						}
-						throw new IndexOutOfRangeException(string.Format("Key {0} is not available in resources", key));
+							if (resourceEntries.ContainsKey(key))
+							{
+								return resourceEntries[key].OpenEntryStream();
+							}
+							throw new IndexOutOfRangeException(string.Format("Key {0} is not available in resources", key));
+						});
 					});
 				}
 				else
 				{
 					// the current element is a category, read it + process its children
 					rootElement = xmlDocument.Element("category");
-#pragma warning disable 1998
-					Indiagram category = await CreateIndiagramFromXml(rootElement, true, parent, async (key, type) =>
-#pragma warning restore 1998
+					if (rootElement == null)
 					{
-						if (resourceEntries.ContainsKey(key))
+						return;
+					}
+
+					Indiagram category = await CreateIndiagramFromXml(rootElement, true, parent, async (key, type) =>
+					{
+						return await Task.Run(() =>
 						{
-							return resourceEntries[key].OpenEntryStream();
-						}
-						throw new IndexOutOfRangeException(string.Format("Key {0} is not available in resources", key));
+							if (resourceEntries.ContainsKey(key))
+							{
+								return resourceEntries[key].OpenEntryStream();
+							}
+							throw new IndexOutOfRangeException(string.Format("Key {0} is not available in resources", key));
+						});
 					});
 
-					foreach (XElement child in rootElement.Element("indiagrams").Elements("indiagram"))
+					XElement indiagramsElement = rootElement.Element("indiagrams");
+					if (indiagramsElement == null)
+					{
+						return;
+					}
+					foreach (XElement child in indiagramsElement.Elements("indiagram"))
 					{
 						// look for the entry
 						string directoryName = Path.GetDirectoryName(child.Value);
@@ -168,7 +180,16 @@ namespace IndiaRose.Services
 				XDocument xmlDocument = XDocument.Load(homeStream);
 
 				XElement rootElement = xmlDocument.Element("category");
-				foreach (XElement child in rootElement.Element("indiagrams").Elements("indiagram"))
+				if (rootElement == null)
+				{
+					return;
+				}
+				XElement indiagramsElement = rootElement.Element("indiagrams");
+				if (indiagramsElement == null)
+				{
+					return;
+				}
+				foreach (XElement child in indiagramsElement.Elements("indiagram"))
 				{
 					// look for the entry
 					string directoryName = Path.GetDirectoryName(child.Value);
@@ -235,9 +256,20 @@ namespace IndiaRose.Services
 			{
 				// the current element is a category, read it + process its children
 				rootElement = xmlDocument.Element("category");
+				if (rootElement == null)
+				{
+					return;
+				}
+
 				Indiagram category = await CreateIndiagramFromXml(rootElement, true, parent, ((key, type) => GetResourceStream(key, (type == StorageType.Image) ? imageFolder : soundFolder)));
 
-				foreach (XElement child in rootElement.Element("indiagrams").Elements("indiagram"))
+				XElement indiagramsElement = rootElement.Element("indiagrams");
+				if (indiagramsElement == null)
+				{
+					return;
+				}
+				
+				foreach (XElement child in indiagramsElement.Elements("indiagram"))
 				{
 					// look for the entry
 					string directoryName = Path.GetDirectoryName(child.Value);
@@ -267,9 +299,18 @@ namespace IndiaRose.Services
 
 		private async Task<Indiagram> CreateIndiagramFromXml(XElement rootElement, bool isCategory, Indiagram parent, Func<string, StorageType, Task<Stream>> resourceStreamOpener)
 		{
-			string text = rootElement.Element("text").Value;
-			string imagePath = rootElement.Element("picture").Value;
-			string soundPath = rootElement.Element("sound").Value;
+			XElement textElement = rootElement.Element("text");
+			XElement imagePathElement = rootElement.Element("picture");
+			XElement soundPathElement = rootElement.Element("sound");
+
+			if (textElement == null || imagePathElement == null || soundPathElement == null)
+			{
+				return null;
+			}
+
+			string text = textElement.Value;
+			string imagePath = imagePathElement.Value;
+			string soundPath = soundPathElement.Value;
 
 			if (string.IsNullOrWhiteSpace(imagePath))
 			{
@@ -310,9 +351,10 @@ namespace IndiaRose.Services
 
 			if (parent != null)
 			{
-				if (parent is Category)
+				Category category = parent as Category;
+				if (category != null)
 				{
-					(parent as Category).Children.Add(result);
+					category.Children.Add(result);
 				}
 			}
 			else

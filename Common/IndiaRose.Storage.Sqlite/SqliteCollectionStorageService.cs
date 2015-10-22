@@ -125,7 +125,15 @@ namespace IndiaRose.Storage.Sqlite
 			}
 
 			sqlObject.FromModel(indiagram);
-			Connection.Update(sqlObject);
+
+			try
+			{
+				Connection.Update(sqlObject);
+			}
+			catch (Exception)
+			{
+				//TODO : log error
+			}
 
 			return indiagram;
 		}
@@ -135,7 +143,14 @@ namespace IndiaRose.Storage.Sqlite
 			IndiagramSql sqlObject = new IndiagramSql();
 			sqlObject.FromModel(indiagram);
 
-			Connection.Insert(sqlObject);
+			try
+			{
+				Connection.Insert(sqlObject);
+			}
+			catch (Exception)
+			{
+				//TODO : log error
+			}
 			indiagram.Id = sqlObject.Id;
 			_databaseContent.Add(sqlObject);
 			return indiagram;
@@ -164,7 +179,14 @@ namespace IndiaRose.Storage.Sqlite
 			// Delete this object
 			IndiagramSql sqlObject = SearchById(indiagram.Id);
 			_databaseContent.Remove(sqlObject);
-			Connection.Delete<IndiagramSql>(indiagram.Id);
+			try
+			{
+				Connection.Delete<IndiagramSql>(indiagram.Id);
+			}
+			catch (Exception)
+			{
+				//TODO : log error
+			}
 		}
 
 		#region Private helpers methods
@@ -186,7 +208,14 @@ namespace IndiaRose.Storage.Sqlite
 				}
 
 				_databaseContent.Remove(indiagram);
-				Connection.Delete<IndiagramSql>(indiagram.Id);
+				try
+				{
+					Connection.Delete<IndiagramSql>(indiagram.Id);
+				}
+				catch (Exception)
+				{
+					//TODO : log error
+				}
 			});
 		}
 
