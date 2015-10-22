@@ -72,17 +72,24 @@ namespace IndiaRose.Framework.Views
 
             if (SourcePath != null)
             {
-                Bitmap originalImage = BitmapFactory.DecodeFile(SourcePath);
-                if (originalImage != null)
-                {
-                    Bitmap image = Bitmap.CreateScaledBitmap(originalImage, Size, Size, true);
-                    Post(() =>
-                    {
-                        SetImageBitmap(image);
-                        Invalidate();
-                    });
-	                return; //to not put default color
-                }
+	            try
+	            {
+		            Bitmap originalImage = BitmapFactory.DecodeFile(SourcePath);
+		            if (originalImage != null)
+		            {
+			            Bitmap image = Bitmap.CreateScaledBitmap(originalImage, Size, Size, true);
+			            Post(() =>
+			            {
+							SetImageBitmap(image);
+							Invalidate();
+			            });
+			            return; //do not put default color
+		            }
+	            }
+	            catch (Exception)
+	            {
+		            //TODO : log error
+	            }
             }
 
 			Post(() =>
