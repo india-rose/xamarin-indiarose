@@ -138,9 +138,17 @@ namespace IndiaRose.Services.Android
 				}
 				else
 				{
-					word = Guid.NewGuid().ToString();
-					_registeredSounds.Add(indiagram.SoundPath, word);
-					_speakerSpeech.AddSpeech(word, indiagram.SoundPath);
+					if (_speakerSpeech != null)
+					{
+						word = Guid.NewGuid().ToString();
+						_registeredSounds.Add(indiagram.SoundPath, word);
+						_speakerSpeech.AddSpeech(word, indiagram.SoundPath);
+					}
+					else
+					{
+						//TODO : log issue
+						word = "e";
+					}
 				}
 				PlayText(word);
 			}
@@ -152,6 +160,13 @@ namespace IndiaRose.Services.Android
 
 		protected void PlayText(string text)
 		{
+			if (_speakerSpeech == null)
+			{
+				//TODO : log issue
+				this.RaiseEvent(SpeakingCompleted);
+				return;
+			}
+
 			Log.Error("TTS", "Playing indiagram {0}", text);
 			_readingCountStack++;
 			_speakerSpeech.Speak(text, QueueMode.Add, new Dictionary<string, string>
