@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:converters="using:IndiaRose.Framework.Converters"
+              XmlStyle="{Resource RootLayoutStyle}">
+	<Resources>
+		<converters:ParentCategoryTextConverter Key="ParentCategoryConverter"
+		                                        Uid="Collection_RootCategoryName"
+		                                        Property="Text" />
+		<converters:DefaultLocalizedStringIfNullConverter Key="SoundPathConverter"
+		                                                  Uid="Collection_NoSound"
+		                                                  Property="Text" />
+	</Resources>
+
+	<!-- button edit and remove -->
+	<LinearLayout XmlStyle="{Resource ValidationButtonLinearLayoutStyle}"
+				  android:id="buttons">
+		<Button XmlStyle="{Resource MediumGreenButtonStyle}"
+		        Text="{Tr Text, Uid=*Button_Edit}"
+		        Click="{Binding EditCommand}" />
+		<Button XmlStyle="{Resource MediumOrangeButtonStyle}"
+		        Text="{Tr Text, Uid=Button_Delete}"
+		        Click="{Binding DeleteCommand}" />
+	</LinearLayout>
+
+	<LinearLayout XmlStyle="{Resource ColumnContainerLinearLayoutStyle}"
+				  android:layout_above="@id/buttons"
+          android:layout_gravity="center">
+    <!--First Column-->
+    <ScrollView XmlStyle="{Resource ColumnLayoutStyle}">
+	    <LinearLayout XmlStyle="{Resource ColumnLinearLayoutStyle}"
+					    android:layout_gravity="left|center">
+
+		    <TextView XmlStyle="{Resource HeaderLabelStyle}"
+			            Text="{Tr Text, Uid=Collection_IndiagramText}" />
+
+		    <TextView XmlStyle="{Resource DefaultTextStyle}"
+			            Text="{Binding IndiagramContainer.Indiagram.Text}" />
+
+		    <TextView XmlStyle="{Resource HeaderLabelStyle}"
+			            Text="{Tr Text, Uid=Collection_ParentCategory}" />
+
+		    <LinearLayout XmlStyle="{Resource HorizontalLinearLayoutStyle}">
+			    <TextView XmlStyle="{Resource FormLabelStyle}"
+				            Text="{Tr Text, Uid=Collection_ParentCategoryName}" />
+
+			    <TextView XmlStyle="{Resource DefaultTextStyle}"
+				            Text="{Binding IndiagramContainer.Indiagram.Parent, Converter={Resource ParentCategoryConverter}}" />
+		    </LinearLayout>
+
+		    <TextView XmlStyle="{Resource HeaderLabelStyle}"
+			            Text="{Tr Text, Uid=Collection_Sound}" />
+
+		    <LinearLayout XmlStyle="{Resource HorizontalLinearLayoutStyle}">
+			    <TextView XmlStyle="{Resource FormLabelStyle}"
+				            Text="{Tr Text, Uid=Collection_SoundPath}" />
+
+			    <TextView XmlStyle="{Resource DefaultTextStyle}"
+				            Text="{Binding IndiagramContainer.Indiagram.SoundPath, Converter={Resource SoundPathConverter}}" />
+		    </LinearLayout>
+
+		    <LinearLayout android:layout_width="200dip"
+			                android:layout_height="50dip"
+						    android:layout_marginTop="10dip">
+			    <Button XmlStyle="{Resource MediumBlueButtonStyle}"
+				          Text="{Tr Text, Uid=Collection_ListenSound}"
+                   Click="{Binding ListenCommand}"/>
+		    </LinearLayout>
+	    </LinearLayout>
+    </ScrollView>
+		<!-- middle of the screen -->
+		<LinearLayout XmlStyle="{Resource ColumnLinearLayoutStyle}"
+		              android:gravity="center">
+
+			<BindableImageView android:scaleType="centerInside"
+			                   android:layout_width="wrap_content"
+			                   android:layout_height="wrap_content"
+			                   SourcePath="{Binding IndiagramContainer.Indiagram.ImagePath}"
+			                   Size="{Binding SettingsService.IndiagramDisplaySize}" />
+
+		</LinearLayout>
+	</LinearLayout>
+</RelativeLayout>

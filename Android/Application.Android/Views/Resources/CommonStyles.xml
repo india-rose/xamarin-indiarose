@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<!-- Top logo style -->
+	<Style Key="BaseLogoStyle"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:layout_marginTop="10dip"
+	       android:layout_marginLeft="4dip"
+	       android:layout_marginRight="4dip"
+	       android:scaleType="fitXY"
+	       android:src="@drawable/logo" />
+  
+  <Style Key="LinkStyle"
+         android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+         android:autoLink="web"
+		 android:textSize="18dip"
+         />
+
+	<Style Key="LogoStyle"
+	       XmlStyle="{Resource BaseLogoStyle}"
+	       android:layout_centerHorizontal="true"
+	       android:layout_alignParentTop="true" />
+
+	<Style Key="BaseRootLayoutStyle"
+		   android:layout_width="match_parent"
+	       android:layout_height="match_parent"
+	       android:background="@android:color/white"
+			/>
+
+	<Style Key="RootLayoutStyle"
+		   XmlStyle="{Resource BaseRootLayoutStyle}"
+	       android:layout_margin="4dip" />
+
+	<Style Key="RootLinearLayoutStyle"
+	       XmlStyle="{Resource RootLayoutStyle}"
+	       android:orientation="vertical" />
+
+	<Style Key="RootPaddingLayoutStyle"
+	       XmlStyle="{Resource RootLayoutStyle}"
+	       android:paddingLeft="50dip"
+	       android:paddingRight="50dip" />
+
+	<Style Key="RootPaddingLinearLayoutStyle"
+	       XmlStyle="{Resource RootPaddingLayoutStyle}"
+	       android:orientation="vertical" />
+
+	<!-- Styles for pages full of buttons -->
+
+	<Style Key="ButtonLineContainerStyle"
+	       android:layout_width="match_parent"
+	       android:layout_height="match_parent"
+	       android:layout_marginBottom="4dip"
+	       android:layout_weight="1"
+	       android:gravity="center_horizontal"
+	       android:orientation="horizontal" />
+	<Style Key="ButtonPageContainerStyle"
+	       android:layout_width="match_parent"
+	       android:layout_height="match_parent"
+	       android:gravity="center"
+	       android:orientation="vertical"
+	       android:paddingBottom="25dip"
+	       android:paddingTop="25dip" />
+
+	<!-- Two column root layout -->
+	<Style Key="ColumnContainerLayoutStyle"
+	       XmlStyle="{Resource RootLayoutStyle}" />
+
+	<Style Key="ColumnContainerLinearLayoutStyle"
+	       XmlStyle="{Resource ColumnContainerLayoutStyle}"
+	       android:orientation="horizontal" />
+
+	<!-- column layout -->
+	<Style Key="ColumnLayoutStyle"
+	       android:layout_width="match_parent"
+	       android:layout_height="match_parent"
+	       android:layout_weight="1"
+	       android:layout_marginLeft="4dip"
+	       android:layout_marginRight="4dip" />
+
+	<Style Key="ColumnLinearLayoutStyle"
+	       XmlStyle="{Resource ColumnLayoutStyle}"
+	       android:orientation="vertical" />
+
+	<!-- Forms styles -->
+	<Style Key="LabelLeftTextStyle"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:textColor="@android:color/black"
+	       android:textSize="15sp" />
+
+	<Style Key="SpinnerStyle"
+	       android:layout_width="match_parent"
+	       android:layout_height="40dip" />
+
+	<Style Key="SpinnerItemLayoutStyle"
+	       android:layout_width="match_parent"
+	       android:layout_height="match_parent" />
+
+	<Style Key="SpinnerItemTextStyle"
+	       android:layout_width="wrap_content"
+	       android:layout_height="match_parent"
+	       android:textSize="20sp"
+	       android:textColor="@android:color/black" />
+
+	<Style Key="BaseLabelStyle"
+	       android:textColor="#006FFF"
+	       />
+
+	<Style Key="FormLabelStyle"
+	       XmlStyle="{Resource BaseLabelStyle}"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:textStyle="italic"
+		     android:textSize="18sp"
+		     />
+
+
+	<Style Key="SmallFormLabelStyle"
+		   XmlStyle="{Resource BaseLabelStyle}"
+		   android:layout_width="wrap_content"
+		   android:layout_height="wrap_content"
+		   android:textSize="15sp"
+		   />
+
+	<Style Key="LargeFormLabelStyle"
+		   XmlStyle="{Resource BaseLabelStyle}"
+		   android:layout_width="wrap_content"
+		   android:layout_height="wrap_content"
+		   android:textSize="24sp"
+		   />
+
+  <Style Key="HeaderLabelStyle"
+			   XmlStyle="{Resource LargeFormLabelStyle}"
+			   android:layout_marginTop="10dip"
+			   />
+  <Style Key="HeaderItalicLabelStyle"
+			   XmlStyle="{Resource LargeFormLabelStyle}"
+			   android:layout_marginTop="10dip"
+	       android:textStyle="italic"
+			   />
+  <Style Key="HeaderTopLabelStyle"
+			   XmlStyle="{Resource LargeFormLabelStyle}"
+	       android:textStyle="italic"
+			   />
+	
+	<Style Key="FormCheckBoxStyle"
+	       XmlStyle="{Resource BaseLabelStyle}"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content" 
+		   android:textSize="18sp"
+		   />
+
+	<Style Key="DefaultTextStyle"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:textSize="16sp"
+	       android:textColor="@android:color/black" />
+
+  <Style Key="MatchWrapLayoutStyle"
+	       android:layout_width="match_parent"
+	       android:layout_height="wrap_content"
+         />
+  
+  <Style Key="HorizontalLinearLayoutStyle"
+         XmlStyle="{Resource MatchWrapLayoutStyle}"
+	       android:orientation="horizontal" />
+  
+  <Style Key="VerticalLinearLayoutStyle"        
+         XmlStyle="{Resource MatchWrapLayoutStyle}"
+	       android:orientation="vertical" />
+
+	<Style Key="ButtonContainerStyle"
+		   android:layout_width="match_parent"
+		   android:layout_height="60dip"
+		   android:orientation="horizontal"
+		   />
+
+	<Style Key="LineSeparatorStyle"
+	       android:layout_width="match_parent"
+	       android:layout_height="1dip"
+	       android:background="#090909" />
+
+	<!-- tbd -->
+
+	<!--<Style Key="Ok_Back_Container"
+	       android:layout_width="match_parent"
+	       android:layout_height="75dip"
+	       android:layout_alignParentBottom="true"
+	       android:gravity="center"
+	       android:layout_gravity="center"
+	       android:layout_centerInParent="true"
+	       android:orientation="horizontal"
+	       android:layout_marginBottom="4dip"
+	       android:layout_marginTop="4dip" />
+	<Style Key="ButtonDialogStyle"
+	       android:layout_width="match_parent"
+	       android:paddingLeft="10dip"
+	       android:layout_height="wrap_content"
+	       android:textSize="19sp"
+	       android:background="@android:color/white"
+	       android:gravity="center|left" />
+	
+
+	<Style Key="column"
+	       android:layout_weight="1"
+	       android:layout_width="match_parent"
+	       android:layout_height="match_parent" />-->
+
+</Resources>

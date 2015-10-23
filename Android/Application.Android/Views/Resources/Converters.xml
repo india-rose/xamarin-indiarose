@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Resources xmlns:android="http://schemas.android.com/apk/res/android"
+		   xmlns:defaultConverters="using:Storm.Mvvm.Converters"
+		   xmlns:converters="using:IndiaRose.Framework.Converters">
+
+	<defaultConverters:StringFormatConverter Key="StringFormatConverter" />
+
+	<converters:BooleanToVisibilityConverter Key="BooleanToVisibilityConverter" />
+	<converters:ColorContainerToColorConverter Key="ColorContainerToColorConverter" />
+	<converters:ColorContainerToDrawableColorConverter Key="ColorContainerToDrawableColorConverter" />
+	<converters:ColorContainerToIntConverter Key="ColorContainerToIntConverter" />
+	<converters:ColorStringToColorConverter Key="ColorStringToColorConverter" />
+	<converters:ColorStringToDrawableColorConverter Key="ColorStringToDrawableColorConverter" />
+	<converters:ColorStringToIntConverter Key="ColorStringToIntConverter" />
+	
+	
+</Resources>

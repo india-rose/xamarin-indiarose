@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:paddingLeft="50dip"
+                android:paddingRight="50dip">
+	<Resources>
+		<Style Key="ContainerStyle"
+		       android:layout_width="match_parent"
+		       android:layout_height="match_parent"
+		       android:gravity="center"
+		       android:orientation="vertical"
+		       android:paddingBottom="25dip"
+		       android:paddingTop="25dip" />
+		<Style Key="TextViewStyle"
+		       android:layout_width="wrap_content"
+		       android:layout_height="wrap_content"
+		       android:layout_alignParentLeft="true"
+		       android:layout_centerVertical="true"
+		       android:layout_marginTop="10dip"
+		       android:textColor="@android:color/black" />
+	</Resources>
+
+	<LinearLayout XmlStyle="{Resource ContainerStyle}">
+
+		<TextView XmlStyle="{Resource TextViewStyle}"
+		          android:id="Label_send_logs"
+		          Text="{Tr Text, Uid=Server_SynchroStart}" />
+
+		<ProgressBar
+			android:layout_width="50dip"
+			android:layout_height="50dip"
+			android:gravity="center"
+			android:layout_below="@id/Label_send_logs"
+			android:layout_margin="10dip" />
+
+		<TextView XmlStyle="{Resource TextViewStyle}"
+		          Text="{Tr Text, Uid=Server_SynchroVoid}" />
+
+
+	</LinearLayout>
+
+</RelativeLayout>

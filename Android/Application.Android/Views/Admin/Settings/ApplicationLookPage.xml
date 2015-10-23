@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              XmlStyle="{Resource ColumnContainerLinearLayoutStyle}">
+	<Resources>
+		<DataTemplate Key="SpinnerDataTemplate">
+			<LinearLayout XmlStyle="{Resource SpinnerItemLayoutStyle}">
+				<TextView XmlStyle="{Resource SpinnerItemTextStyle}"
+				          text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}%'}" />
+			</LinearLayout>
+		</DataTemplate>
+
+		<Style Key="HelpColorTextStyle"
+		       android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:textColor="@android:color/black"
+		       android:gravity="center"
+		       android:textSize="16sp" />
+	</Resources>
+
+	<RelativeLayout XmlStyle="{Resource ColumnLayoutStyle}">
+
+		<!-- Taille des deux zones -->
+		<LinearLayout android:layout_width="match_parent"
+		              android:layout_height="wrap_content"
+		              android:layout_centerInParent="true"
+		              android:orientation="vertical">
+
+			<TextView XmlStyle="{Resource FormLabelStyle}"
+			          Text="{Tr Text, Uid=ApplicationLook_AreaSize}" />
+
+			<BindableSpinner XmlStyle="{Resource SpinnerStyle}"
+			                 adapter="{Binding ZoneHeightCollection, Template={Resource SpinnerDataTemplate}}"
+			                 currentItem="{Binding CurrentSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}" />
+		</LinearLayout>
+
+		<!-- navigation buttons -->
+		<LinearLayout XmlStyle="{Resource ValidationButtonLinearLayoutStyle}">
+			<Button XmlStyle="{Resource OkButtonStyle}"
+			        Text="{Tr Text, Uid=Button_Ok}"
+			        Click="{Binding SaveCommand}" />
+			<Button XmlStyle="{Resource CancelButtonStyle}"
+			        Text="{Tr Text, Uid=Button_Cancel}"
+			        Click="{Binding BackCommand}" />
+		</LinearLayout>
+	</RelativeLayout>
+
+	<RelativeLayout XmlStyle="{Resource ColumnLayoutStyle}">
+
+		<TabletPreviewView android:layout_width="match_parent"
+		                   android:layout_height="match_parent"
+		                   android:layout_centerInParent="true"
+		                   android:id="TabletPreview"
+		                   IndiagramSize="{Binding SettingsService.IndiagramDisplaySize}"
+		                   Percentage="{Binding CurrentSize}"
+		                   TopAreaColor="{Binding TopColor.Color, Converter={Resource ColorStringToColorConverter}}"
+		                   BottomAreaColor="{Binding BottomColor.Color, Converter={Resource ColorStringToColorConverter}}"
+		                   TopAreaCommand="{Binding TopAreaColorCommand}"
+		                   BottomAreaCommand="{Binding BottomAreaColorCommand}" />
+
+		<TextView XmlStyle="{Resource HelpColorTextStyle}"
+		          Text="{Tr Text, Uid=ApplicationLook_ChangeTopColor}"
+		          android:layout_above="@id/TabletPreview" />
+		<TextView XmlStyle="{Resource HelpColorTextStyle}"
+		          Text="{Tr Text, Uid=ApplicationLook_ChangeBottomColor}"
+		          android:layout_below="@id/TabletPreview" />
+	</RelativeLayout>
+</LinearLayout>

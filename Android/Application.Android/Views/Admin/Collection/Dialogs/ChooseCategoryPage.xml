@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                XmlStyle="{Resource BaseRootLayoutStyle}">
+
+	<IndiagramBrowserView android:layout_width="match_parent"
+	                      android:layout_height="match_parent"
+	                      android:layout_above="@id/buttons"
+	                      Background="{Binding BackgroundColor, Converter={Resource ColorStringToDrawableColorConverter}}"
+	                      Count="{Binding CollectionDisplayCount, Mode=TwoWay, UpdateEvent=CountChanged}"
+	                      Offset="{Binding CollectionOffset}"
+	                      Indiagrams="{Binding DisplayedIndiagrams}"
+	                      TextColor="{Binding TextColor, Converter={Resource ColorStringToIntConverter}}"
+	                      IndiagramSelected="{Binding IndiagramSelectedCommand}"
+	                      NextCommand="{Binding NextCommand}" />
+</RelativeLayout>

@@ -1,0 +1,83 @@
+﻿<mvvm:DialogPage
+    x:Class="IndiaRose.Application.Views.Dialogs.ReadingDelayDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mvvm="using:Storm.Mvvm"
+    xmlns:localization="using:Storm.Mvvm.Localization"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=AdminSettingsDialogsReadingDelayViewModel}"
+    PopupHeight="300">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   Style="{StaticResource PopupTitleStyle}"
+                   x:Uid="ReadingDelay_Title"/>
+        <ScrollViewer
+            Grid.Row="1" 
+            Grid.Column="0"
+                Grid.ColumnSpan="2" 
+            HorizontalAlignment="Center"
+            >
+            <TextBlock Style="{StaticResource PopupContentStyle}"
+                   x:Uid="ReadingDelay_Explanation" />
+            </ScrollViewer>
+
+        <!-- Slider -->
+
+        <Slider
+            Grid.Row="2" 
+                Grid.Column="0" 
+                Grid.ColumnSpan="2" 
+                Margin="200,0"
+                IsThumbToolTipEnabled="False"
+                Value="{Binding CurrentValue, Mode=TwoWay}" >
+            
+        </Slider>
+        
+        <TextBlock 
+            Style="{StaticResource PopupValueStyle}" 
+                   Grid.Row="3" 
+                   Grid.Column="0" 
+           >
+            <TextBlock.Text>
+                <Binding Path="CurrentDelay"
+                         Converter="{StaticResource StringFormatConverter}"
+                         localization:LocalizationHelper.Properties="ConverterParameter"
+                         localization:LocalizationHelper.Uid="ReadingDelay_ValueFormat"
+                         />
+            </TextBlock.Text>
+        </TextBlock>
+
+        <!-- button ok and cancel -->
+        <Button Style="{StaticResource SmallButton}" 
+                Grid.Row="4" 
+                Grid.Column="0"
+                Command="{Binding SaveCommand}">
+            <TextBlock Style="{StaticResource TextButton}" 
+                       x:Uid="Button_Ok" />
+        </Button>
+
+        <Button Style="{StaticResource SmallButton}" 
+                Grid.Row="4" 
+                Grid.Column="1"
+                Command="{Binding CloseDialogCommand}">
+            <TextBlock Style="{StaticResource TextButton}" 
+                       x:Uid="Button_Cancel" />
+        </Button>
+
+    </Grid>
+</mvvm:DialogPage>

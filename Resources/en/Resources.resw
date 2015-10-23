@@ -1,0 +1,546 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ExploreCollection_TitleDialog.Text" xml:space="preserve">
+    <value>What do you want to do?</value>
+  </data>
+  <data name="ExploreCollection_SeeIndiagram.Text" xml:space="preserve">
+    <value>See</value>
+  </data>
+  <data name="ExploreCollection_GoIntoCategory.Text" xml:space="preserve">
+    <value>Navigate into</value>
+  </data>
+  <data name="ExploreCollection_SelectCategory.Text" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="DeleteCategoryConfirmation_Title.Text" xml:space="preserve">
+    <value>This category has children, if you delete it, it will also delete all of its children, are you sure you want it?</value>
+  </data>
+  <data name="DeleteCategoryWarning_Title.Text" xml:space="preserve">
+    <value>Do you really want to delete this category?</value>
+  </data>
+  <data name="DeleteIndiagramWarning_Title.Text" xml:space="preserve">
+    <value>Do you really want to delete this indiagram?</value>
+  </data>
+  <data name="ImageChoice_Camera.Text" xml:space="preserve">
+    <value>Camera</value>
+  </data>
+  <data name="ImageChoice_Gallery.Text" xml:space="preserve">
+    <value>Photo gallery</value>
+  </data>
+  <data name="ImageChoice_PickerTitle.Text" xml:space="preserve">
+    <value>Choose a picture</value>
+  </data>
+  <data name="ImageChoice_Title.Text" xml:space="preserve">
+    <value>Choose how to pick a picture</value>
+  </data>
+  <data name="SoundChoice_Browse.Text" xml:space="preserve">
+    <value>Files already on the device</value>
+  </data>
+  <data name="SoundChoice_PickerTitle.Text" xml:space="preserve">
+    <value>Choose a sound</value>
+  </data>
+  <data name="SoundChoice_Record.Text" xml:space="preserve">
+    <value>Record a sound</value>
+  </data>
+  <data name="SoundChoice_Title.Text" xml:space="preserve">
+    <value>Choose how to pick a sound</value>
+  </data>
+  <data name="Collection_ChooseCategory.Text" xml:space="preserve">
+    <value>Choose category</value>
+  </data>
+  <data name="Collection_Position.Text" xml:space="preserve">
+    <value>Position: </value>
+  </data>
+  <data name="Collection_PositionBefore.Text" xml:space="preserve">
+    <value>Before: </value>
+  </data>
+  <data name="Collection_ChooseSound.Text" xml:space="preserve">
+    <value>Choose sound</value>
+  </data>
+  <data name="Collection_DeleteSound.Text" xml:space="preserve">
+    <value>Delete sound</value>
+  </data>
+  <data name="Collection_CopyIndiagram.Text" xml:space="preserve">
+    <value>Copy indiagram</value>
+  </data>
+  <data name="Collection_Copy.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="Collection_Paste.Text" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="Collection_EnableDisableIndiagram.Text" xml:space="preserve">
+    <value>Enable/Disable indiagrams</value>
+  </data>
+  <data name="Collection_EnableIndiagram.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="Collection_DisableIndiagram.Text" xml:space="preserve">
+    <value>Disable</value>
+  </data>
+  <data name="Collection_ChooseImage.Text" xml:space="preserve">
+    <value>Choose image</value>
+  </data>
+  <data name="Collection_IsCategory.Text" xml:space="preserve">
+    <value>Is a category</value>
+  </data>
+  <data name="Collection_MissingText.Text" xml:space="preserve">
+    <value>You must give a text to this indiagram</value>
+  </data>
+  <data name="Collection_MissingSound.Text" xml:space="preserve">
+    <value>You need to record/choose a sound or give a text to the indiagram before listening</value>
+  </data>
+  <data name="Collection_IndiagramText.Text" xml:space="preserve">
+    <value>Indiagram text: </value>
+  </data>
+  <data name="Collection_ParentCategory.Text" xml:space="preserve">
+    <value>Parent category: </value>
+  </data>
+  <data name="Collection_ParentCategoryName.Text" xml:space="preserve">
+    <value>Name: </value>
+  </data>
+  <data name="Collection_Sound.Text" xml:space="preserve">
+    <value>Sound: </value>
+  </data>
+  <data name="Collection_SoundPath.Text" xml:space="preserve">
+    <value>Path: </value>
+  </data>
+  <data name="Collection_ListenSound.Text" xml:space="preserve">
+    <value>Listen</value>
+  </data>
+  <data name="Collection_RootCategoryName.Text" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Collection_NoSound.Text" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="CollectionManagement_Add.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="CollectionManagement_Next.Text" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="ColorPicker_Title.Text" xml:space="preserve">
+    <value>Pick a color</value>
+  </data>
+  <data name="ResetSettings_Title.Text" xml:space="preserve">
+    <value>Do you want to reset the settings (not the collection)?</value>
+  </data>
+  <data name="DragAndDrop_Explanation.Text" xml:space="preserve">
+    <value>Two modes are available to select indiagrams, Point and Click (just touch the indiagram and it will be added to the sentence) or Drag and drop (you need to drag indiagram from the browsing area and drop it in the sentence area)</value>
+  </data>
+  <data name="DragAndDrop_Title.Text" xml:space="preserve">
+    <value>Do you want to use the drag and drop ?</value>
+  </data>
+  <data name="ReadingDelay_Explanation.Text" xml:space="preserve">
+    <value>Modify the delay between two words</value>
+  </data>
+  <data name="ReadingDelay_ValueFormat.ConverterParameter" xml:space="preserve">
+    <value>{0:0.0} seconds</value>
+  </data>
+  <data name="ReadingDelay_Title.Text" xml:space="preserve">
+    <value>Delay between two words</value>
+  </data>
+  <data name="CategoryReading_Explanation.Text" xml:space="preserve">
+    <value>If you activate this option, the categories will be read by the application when selected.</value>
+  </data>
+  <data name="CategoryReading_Title.Text" xml:space="preserve">
+    <value>Play sound associated with the category when selected?</value>
+  </data>
+  <data name="RadioButton_Off.Text" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="RadioButton_On.Text" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="Button_Ok.Text" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="Button_Cancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Button_Edit.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Button_Delete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="AppSettings_Background.Text" xml:space="preserve">
+    <value>Background color properties</value>
+  </data>
+  <data name="AppSettings_DragDrop.Text" xml:space="preserve">
+    <value>Drag and drop</value>
+  </data>
+  <data name="AppSettings_Indiagram.Text" xml:space="preserve">
+    <value>Indiagram properties</value>
+  </data>
+  <data name="AppSettings_ReadingCategory.Text" xml:space="preserve">
+    <value>Category reading</value>
+  </data>
+  <data name="AppSettings_ReadingDelay.Text" xml:space="preserve">
+    <value>Reading delay between words</value>
+  </data>
+  <data name="AppSettings_Reset.Text" xml:space="preserve">
+    <value>Reset settings</value>
+  </data>
+  <data name="Server_Synchro_Start.Text" xml:space="preserve">
+    <value>Synchronization of properties with server ...\n Please wait !</value>
+  </data>
+  <data name="Server_Synchro_Void.Text" xml:space="preserve">
+    <value>This screen do nothing for the time\nYou must to click on the back button\nYou can wait until the world's end if you want</value>
+  </data>
+  <data name="MailError_Explanation.Text" xml:space="preserve">
+    <value>Unable to send email</value>
+  </data>
+  <data name="MailError_Title.Text" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Help.Document" xml:space="preserve">
+    <value>manuel.pdf</value>
+  </data>
+  <data name="Contact.Body" xml:space="preserve">
+    <value>User of the application (age / disease) : \n
+Did you know the PECS method or picture exchange communication before using this application : \n
+Did you easily understand how this application work : \n
+Comments : </value>
+  </data>
+  <data name="Contact.EmailAddress" xml:space="preserve">
+    <value>equipe.indiarose@gmail.com</value>
+  </data>
+  <data name="Contact.Title" xml:space="preserve">
+    <value>[Contact : India Rose]</value>
+  </data>
+  <data name="TTS_1.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TTS_2.Text" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="TTS_3.Text" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="TTS_Choose.Text" xml:space="preserve">
+    <value>Choose TTS Ivona</value>
+  </data>
+  <data name="TTS_Ivona.Text" xml:space="preserve">
+    <value>Install the TTS Ivona</value>
+  </data>
+  <data name="TTS_LangPack.Text" xml:space="preserve">
+    <value>Install a language pack</value>
+  </data>
+  <data name="Home_AppSettings.Text" xml:space="preserve">
+    <value>Application settings</value>
+  </data>
+  <data name="Home_CollectionManagement.Text" xml:space="preserve">
+    <value>Collection management</value>
+  </data>
+  <data name="Home_Contact.Text" xml:space="preserve">
+    <value>Contact us</value>
+  </data>
+  <data name="Home_Credits.Text" xml:space="preserve">
+    <value>Credits</value>
+  </data>
+  <data name="Home_Help.Text" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Home_SendLogs.Text" xml:space="preserve">
+    <value>Send application logs</value>
+  </data>
+  <data name="Home_SyncCollection.Text" xml:space="preserve">
+    <value>Synchronize collection and settings</value>
+  </data>
+  <data name="Home_VoiceSynthesisUpgrade.Text" xml:space="preserve">
+    <value>Upgrade the voice synthesis engine</value>
+  </data>
+  <data name="IndiagramProperty_ChangeTextColor.Text" xml:space="preserve">
+    <value>Change text's color</value>
+  </data>
+  <data name="IndiagramProperty_TextColor.Text" xml:space="preserve">
+    <value>Text's color</value>
+  </data>
+  <data name="IndiagramProperty_TextColorLabel.Text" xml:space="preserve">
+    <value>Text has this color :</value>
+  </data>
+  <data name="IndiagramProperty_FontSize.Text" xml:space="preserve">
+    <value>Font size :</value>
+  </data>
+  <data name="IndiagramProperty_FontFamily.Text" xml:space="preserve">
+    <value>Font :</value>
+  </data>
+  <data name="IndiagramProperty_BackHomeAfterPicking.Text" xml:space="preserve">
+    <value>Back to home after picking indiagram</value>
+  </data>
+  <data name="IndiagramProperty_IndiagramSize.Text" xml:space="preserve">
+    <value>Size of indiagram :</value>
+  </data>
+  <data name="IndiagramProperty_ChangeReinforcerColor.Text" xml:space="preserve">
+    <value>Change reinforcer color</value>
+  </data>
+  <data name="IndiagramProperty_EnableReinforcer.Text" xml:space="preserve">
+    <value>Reading reinforcer enabled</value>
+  </data>
+  <data name="ApplicationLook_AreaSize.Text" xml:space="preserve">
+    <value>Size of the top area (indiagram selection):</value>
+  </data>
+  <data name="ApplicationLook_ChangeTopColor.Text" xml:space="preserve">
+    <value>Touch top area to change its color</value>
+  </data>
+  <data name="ApplicationLook_ChangeBottomColor.Text" xml:space="preserve">
+    <value>Touch bottom area to change its color</value>
+  </data>
+  <data name="Credits_Android2011.Text" xml:space="preserve">
+    <value>Team Android - 2011</value>
+  </data>
+  <data name="Credits_Android2011Team.Text" xml:space="preserve">
+    <value>Cyprien Ruelle, Matthias David, Pauline Lopez, Heloise Suleiman, Quentin Malot, Quentin Duplaix</value>
+  </data>
+  <data name="Credits_Android2012.Text" xml:space="preserve">
+    <value>Team Android - 2012</value>
+  </data>
+  <data name="Credits_Android2012Team.Text" xml:space="preserve">
+    <value>Léa Muracciole, Arthur Guillaume, Jordan Fontorbe</value>
+  </data>
+  <data name="Credits_Android2013.Text" xml:space="preserve">
+    <value>Team Android - 2013</value>
+  </data>
+  <data name="Credits_Android2013Team.Text" xml:space="preserve">
+    <value>Florent Champigny, Alexandre Masson, Tristan Monediere, Kevin De Jesus Ferreira</value>
+  </data>
+  <data name="Credits_ApplicationName.Text" xml:space="preserve">
+    <value>India Rose Application</value>
+  </data>
+  <data name="Credits_Cloud2011.Text" xml:space="preserve">
+    <value>Team Cloud - 2011</value>
+  </data>
+  <data name="Credits_Cloud2011Team.Text" xml:space="preserve">
+    <value>Mélanie Pothain, Fabienne Bruneau, Alexis Fleuriet, François Lecugy, Adrien Tremblay</value>
+  </data>
+  <data name="Credits_Graphics.Text" xml:space="preserve">
+    <value>Design and communication</value>
+  </data>
+  <data name="Credits_GraphicsTeam.Text" xml:space="preserve">
+    <value>Aurélia Masquet, Michel Savariradjalou</value>
+  </data>
+  <data name="Credits_IndiagramProvider.Text" xml:space="preserve">
+    <value>Indiagram provider</value>
+  </data>
+  <data name="Credits_Officer.Text" xml:space="preserve">
+    <value>Management</value>
+  </data>
+  <data name="Credits_OfficerTeam.Text" xml:space="preserve">
+    <value>Julien Mialon, José Martins, Anthony Froissant, Julien De Sousa</value>
+  </data>
+  <data name="Credits_Sclera.Text" xml:space="preserve">
+    <value>www.sclera.tv</value>
+  </data>
+  <data name="Credits_Trainee2012.Text" xml:space="preserve">
+    <value>Trainee 2012/2013</value>
+  </data>
+  <data name="Credits_Trainee2012Team.Text" xml:space="preserve">
+    <value>Florian Blain</value>
+  </data>
+  <data name="Credits_Trainee2013.Text" xml:space="preserve">
+    <value>Trainee 2013/2014</value>
+  </data>
+  <data name="Credits_Trainee2013Team.Text" xml:space="preserve">
+    <value>Marco Da Cunha Fernandez, Nesrine Brahmi, El Mehdi Fahim, Lisa Deloménie, Erwan Durandet</value>
+  </data>
+  <data name="Credits_Trainee2014.Text" xml:space="preserve">
+    <value>Trainee 2014/2015</value>
+  </data>
+  <data name="Credits_Trainee2014Team.Text" xml:space="preserve">
+    <value>David Intho, Valentin Jubert, Julien Gauttier, Corentin Colomier</value>
+  </data>
+  <data name="Credits_University.Text" xml:space="preserve">
+    <value>Orléans University</value>
+  </data>
+  <data name="Credits_UniversityTeam.Text" xml:space="preserve">
+    <value>Frédéric Moal, Catherine Julié-Bonnet, Sylvain Jubertie, Wadoud Bousdira</value>
+  </data>
+  <data name="Credits_Windows2011.Text" xml:space="preserve">
+    <value>Team Windows 8 - 2011</value>
+  </data>
+  <data name="Credits_Windows2011Team.Text" xml:space="preserve">
+    <value>Benjamin Rousseau, Florent Monin, Corentin Barruet, Benjamin Remy</value>
+  </data>
+  <data name="Credits_Xamarin2014.Text" xml:space="preserve">
+    <value>Team Xamarin - 2014</value>
+  </data>
+  <data name="Credits_Xamarin2014Team.Text" xml:space="preserve">
+    <value>Vincent Fauveau, Nicolas Lacourte-Barbadaux, Lamia Meziani, Arthur Guillaume</value>
+  </data>
+  <data name="Collection_CategoryEmpty.Text" xml:space="preserve">
+    <value>This category is empty.</value>
+  </data>
+  <data name="Home_WebSite.Text" xml:space="preserve">
+    <value>indiarose.org</value>
+  </data>
+  <data name="Collection_EndPosition.Text" xml:space="preserve">
+    <value>-- At the end --</value>
+  </data>
+  <data name="Collection_HasChildren.Text" xml:space="preserve">
+    <value>This category has children, it can't be turned into a simple indiagram</value>
+  </data>
+  <data name="Collection_CorrectionCategoryName.Text" xml:space="preserve">
+    <value>Correction</value>
+  </data>
+  <data name="BackButton.Text" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Collection_ChildrensNotCategory.Text" xml:space="preserve">
+    <value>This category does not have children who is a category</value>
+  </data>
+  <data name="IndiagramSize.ConverterParameter" xml:space="preserve">
+    <value>{0} x {0}</value>
+  </data>
+  <data name="IndiagramProperty_MultipleIndiagramSelection.Text" xml:space="preserve">
+    <value>Can select the same indiagram multiple times</value>
+  </data>
+  <data name="SplashScreen_FromOldFormat.Text" xml:space="preserve">
+    <value>Updating your collection....</value>
+  </data>
+  <data name="SplashScreen_FromZipFormat.Text" xml:space="preserve">
+    <value>Creating collection...</value>
+  </data>
+  <data name="SplashScreen_Loading.Text" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="ImportCollection_DialogTitle.Text" xml:space="preserve">
+    <value>Initializing</value>
+  </data>
+  <data name="ImportCollection_FromOldFormat.Text" xml:space="preserve">
+    <value>Converting your collection to new efficient storage format</value>
+  </data>
+  <data name="ImportCollection_FromZip.Text" xml:space="preserve">
+    <value>Importing collection from initial data</value>
+  </data>
+  <data name="Credits_Original.Text" xml:space="preserve">
+    <value>Founders</value>
+  </data>
+  <data name="Credits_OriginalTeam.Text" xml:space="preserve">
+    <value>José Martins, Anthony Froissant</value>
+  </data>
+  <data name="Credits_Support.Text" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="Credits_SupportTeam.Text" xml:space="preserve">
+    <value>Marian Gappa, Joris Rubagotti, Cassandre Nunes, Joris Falip, Nicolas Serrette</value>
+  </data>
+</root>

@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              XmlStyle="{Resource RootLayoutStyle}"
+              android:orientation="horizontal">
+	<Resources>
+		<!-- Text styles -->
+		<Style Key="BaseTextStyle"
+		       android:layout_width="wrap_content"
+		       android:layout_height="wrap_content" />
+		<Style Key="TitleTextStyle"
+		       XmlStyle="{Resource BaseTextStyle}"
+		       android:textColor="#0AC808"
+		       android:textSize="40sp" />
+		<Style Key="SectionTextStyle"
+		       XmlStyle="{Resource BaseTextStyle}"
+		       android:textColor="#E3081C"
+		       android:layout_marginTop="20dip"
+		       android:textSize="22sp" />
+		<Style Key="PeopleTextStyle"
+		       XmlStyle="{Resource BaseTextStyle}"
+		       android:textColor="@android:color/black"
+		       android:textSize="20sp" />
+
+
+		<!-- Layout styles -->
+		<Style key="TextLayoutStyle"
+		       android:layout_width="match_parent"
+		       android:layout_height="match_parent"
+		       android:orientation="vertical"
+		       android:paddingLeft="50dip"
+		       android:paddingRight="50dip"
+		       android:paddingBottom="20dip"
+		       android:paddingTop="20dip" />
+
+		<Style Key="LogoLayoutStyle"
+		       android:layout_width="match_parent"
+		       android:layout_height="match_parent"
+		       android:layout_weight="3" />
+
+		<Style Key="ScrollViewStyle"
+		       android:layout_width="match_parent"
+		       android:layout_height="match_parent"
+		       android:layout_weight="1" />
+	</Resources>
+
+	<RelativeLayout XmlStyle="{Resource LogoLayoutStyle}">
+
+		<ImageView XmlStyle="{Resource BaseLogoStyle}"
+		           android:layout_centerInParent="true" />
+	</RelativeLayout>
+
+	<ScrollView XmlStyle="{Resource ScrollViewStyle}">
+
+		<LinearLayout XmlStyle="{Resource TextLayoutStyle}">
+
+			<TextView XmlStyle="{Resource TitleTextStyle}"
+			          Text="{Tr Text, Uid=Credits_ApplicationName}" />
+
+			<TextView XmlStyle="{Resource SectionTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Officer}" />
+
+			<TextView XmlStyle="{Resource PeopleTextStyle}"
+			          Text="{Tr Text, Uid=Credits_OfficerTeam}" />
+
+			<TextView XmlStyle="{Resource SectionTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Graphics}" />
+
+			<TextView XmlStyle="{Resource PeopleTextStyle}"
+			          Text="{Tr Text, Uid=Credits_GraphicsTeam}" />
+
+			<TextView XmlStyle="{Resource SectionTextStyle}"
+					  Text="{Tr Text, Uid=Credits_Support}" />
+			
+			<TextView XmlStyle="{Resource PeopleTextStyle}"
+					  Text="{Tr Text, Uid=Credits_SupportTeam}" />
+			
+			<TextView XmlStyle="{Resource SectionTextStyle}"
+			          Text="{Tr Text, Uid=Credits_University}" />
+
+			<TextView XmlStyle="{Resource PeopleTextStyle}"
+			          Text="{Tr Text, Uid=Credits_UniversityTeam}" />
+
+			<TextView XmlStyle="{Resource SectionTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Trainee2014}" />
+
+			<TextView XmlStyle="{Resource PeopleTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Trainee2014Team}" />
+
+			<TextView XmlStyle="{Resource SectionTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Xamarin2014}" />
+
+			<TextView XmlStyle="{Resource PeopleTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Xamarin2014Team}" />
+
+			<TextView XmlStyle="{Resource SectionTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Trainee2013}" />
+
+			<TextView XmlStyle="{Resource PeopleTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Trainee2013Team}" />
+
+			<TextView XmlStyle="{Resource SectionTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Android2013}" />
+
+			<TextView XmlStyle="{Resource PeopleTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Android2013Team}" />
+
+			<TextView XmlStyle="{Resource SectionTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Trainee2012}" />
+
+			<TextView XmlStyle="{Resource PeopleTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Trainee2012Team}" />
+
+			<TextView XmlStyle="{Resource SectionTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Android2012}" />
+
+			<TextView XmlStyle="{Resource PeopleTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Android2012Team}" />
+
+			<TextView XmlStyle="{Resource SectionTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Android2011}" />
+
+			<TextView XmlStyle="{Resource PeopleTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Android2011Team}" />
+
+			<TextView XmlStyle="{Resource SectionTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Cloud2011}" />
+
+			<TextView XmlStyle="{Resource PeopleTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Cloud2011Team}" />
+
+			<TextView XmlStyle="{Resource SectionTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Windows2011}" />
+
+			<TextView XmlStyle="{Resource PeopleTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Windows2011Team}" />
+
+			<TextView XmlStyle="{Resource SectionTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Original}" />
+
+			<TextView XmlStyle="{Resource PeopleTextStyle}"
+			          Text="{Tr Text, Uid=Credits_OriginalTeam}" />
+			
+			<TextView XmlStyle="{Resource SectionTextStyle}"
+			          Text="{Tr Text, Uid=Credits_IndiagramProvider}" />
+
+			<TextView XmlStyle="{Resource PeopleTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Sclera}" />
+		</LinearLayout>
+	</ScrollView>
+</LinearLayout>

@@ -1,0 +1,345 @@
+﻿{
+    "namespaces": [ "IndiaRose.Application" ],
+    "aliases": [
+        {
+            "alias": "IndiagramView",
+            "fullclassname": "IndiaRose.Framework.Views.IndiagramView"
+        },
+        {
+            "alias": "IndiagramBrowserView",
+            "fullclassname": "IndiaRose.Framework.Views.IndiagramBrowserView"
+        },
+        {
+            "alias": "BindableImageView",
+            "fullclassname": "IndiaRose.Framework.Views.BindableImageView"
+        },
+        {
+            "alias": "IndiagramPreviewView",
+            "fullclassname": "IndiaRose.Framework.Views.IndiagramPreviewView"
+        },
+        {
+            "alias": "ViewWithBorder",
+            "fullclassname": "IndiaRose.Framework.Views.ViewWithBorder"
+        },
+        {
+            "alias": "TabletPreviewView",
+            "fullclassname": "IndiaRose.Framework.Views.TabletPreviewView"
+        },
+        {
+            "alias": "TitleBarView",
+            "fullclassname": "IndiaRose.Framework.Views.TitleBarView"
+        },
+        {
+            "alias": "SentenceAreaView",
+            "fullclassname": "IndiaRose.Framework.Views.SentenceAreaView"
+        },
+        {
+            "alias": "UserView",
+            "fullclassname": "IndiaRose.Framework.Views.UserView"
+        }
+    ],
+    "globalResourceFiles": [
+        "Views/Resources/ButtonStyles.xml",
+        "Views/Resources/CommonStyles.xml",
+        "Views/Resources/Converters.xml",
+        "Views/Resources/DialogStyles.xml"
+    ],
+    "fileDescriptions": [
+
+        // Splashscreen
+        { // User splashscreen
+            "activity": {
+                "className": "UserSplashscreenActivity",
+                "namespaceName": "IndiaRose.Application.Activities.User"
+            },
+            "view": {
+                "inputFile": "Views/SplashScreen.xml",
+                "outputFile": "UserSplashScreen.axml"
+            }
+        },
+        { // Admin splashscreen
+            "activity": {
+                "className": "AdminSplashscreenActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin"
+            },
+            "view": {
+                "inputFile": "Views/SplashScreen.xml",
+                "outputFile": "AdminSplashScreen.axml"
+            }
+        },
+
+        /* ====================== 
+         * = /Admin description =
+         * ======================
+         */
+
+        { // Credits Activity
+            "activity": {
+                "className": "CreditsActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin"
+            },
+            "view": {
+                "inputFile": "Views/Admin/CreditsPage.xml",
+                "outputFile": "Admin_CreditsPage.axml"
+            }
+        },
+        { // Home Activity
+            "activity": {
+                "className": "HomeActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin"
+            },
+            "view": {
+                "inputFile": "Views/Admin/HomePage.xml",
+                "outputFile": "Admin_HomePage.axml"
+            }
+        },
+        { // Install Text To Speech Activity
+            "activity": {
+                "className": "InstallTextToSpeechActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin"
+            },
+            "view": {
+                "inputFile": "Views/Admin/InstallTextToSpeechPage.xml",
+                "outputFile": "Admin_InstallTextToSpeechPage.axml"
+            }
+        },
+        { // Mail Error Dialog
+            "fragment": {
+                "className": "MailErrorDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin"
+            },
+            "view": {
+                "inputFile": "Views/Admin/MailErrorDialog.xml",
+                "outputFile": "Admin_MailErrorDialog.axml"
+            }
+        },
+        { // Server Synchronization Activity
+            "activity": {
+                "className": "ServerSynchronizationActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin"
+            },
+            "view": {
+                "inputFile": "Views/Admin/ServerSynchronizationPage.xml",
+                "outputFile": "Admin_ServerSynchronizationPage.axml"
+            }
+        },
+
+        /* =============================== 
+         * = /Admin/Settings description =
+         * ===============================
+         */
+        {
+            "activity": {
+                "className": "ApplicationLookActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Settings"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Settings/ApplicationLookPage.xml",
+                "outputFile": "Admin_Settings_ApplicationLookPage.axml"
+            }
+        },
+        {
+            "activity": {
+                "className": "AppSettingsActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Settings"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Settings/AppSettingsPage.xml",
+                "outputFile": "Admin_Settings_AppSettingsPage.axml"
+            }
+        },
+        {
+            "activity": {
+                "className": "IndiagramPropertyActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Settings"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Settings/IndiagramPropertyPage.xml",
+                "outputFile": "Admin_Settings_IndiagramPropertyPage.axml"
+            }
+        },
+
+        /* ======================================= 
+         * = /Admin/Settings/Dialogs description =
+         * =======================================
+         */
+
+        {
+            "fragment": {
+                "className": "CategoryReadingDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Settings.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Settings/Dialogs/CategoryReadingDialog.xml",
+                "outputFile": "Admin_Settings_Dialogs_CategoryReading.axml"
+            }
+        },
+        {
+            "fragment": {
+                "className": "DragAndDropDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Settings.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Settings/Dialogs/DragAndDropDialog.xml",
+                "outputFile": "Admin_Settings_Dialogs_DragAndDrop.axml"
+            }
+        },
+        {
+            "fragment": {
+                "className": "ReadingDelayDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Settings.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Settings/Dialogs/ReadingDelayDialog.xml",
+                "outputFile": "Admin_Settings_Dialogs_ReadingDelay.axml"
+            }
+        },
+
+        /* =================================
+         * = /Admin/Collection description =
+         * =================================
+         */
+
+        {
+            "activity": {
+                "className": "AddIndiagramActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/AddIndiagramPage.xml",
+                "outputFile": "Admin_Collection_AddIndiagramPage.axml"
+            }
+        },
+        {
+            "activity": {
+                "className": "CollectionManagementActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/CollectionManagementPage.xml",
+                "outputFile": "Admin_Collection_CollectionManagementPage.axml"
+            }
+        },
+        {
+            "activity": {
+                "className": "WatchIndiagramActivity",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/WatchIndiagramPage.xml",
+                "outputFile": "Admin_Collection_WatchIndiagramPage.axml"
+            }
+        },
+
+        /* =========================================
+         * = /Admin/Collection/Dialogs description =
+         * =========================================
+         */
+
+
+		{
+			"fragment": {
+				"className": "ExploreCollectionCategoryDialog",
+				"namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+			},
+			"view": {
+				"inputFile": "Views/Admin/Collection/Dialogs/IndiagramDisplayDialog.xml",
+				"outputFile": "Admin_Collection_Dialogs_ExploreCollectionCategoryDialog.axml"
+			}
+		},
+		{
+            "fragment": {
+                "className": "ExploreCollectionCategoryWithoutChildrenDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/IndiagramDisplayDialog.xml",
+                "outputFile": "Admin_Collection_Dialogs_ExploreCollectionCategoryWithoutChildrenDialog.axml"
+            }
+        },
+        {
+            "fragment": {
+                "className": "ExploreCollectionIndiagramDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/IndiagramDisplayDialog.xml",
+                "outputFile": "Admin_Collection_Dialogs_ExploreCollectionIndiagramDialog.axml"
+            }
+        },
+        {
+            "fragment": {
+                "className": "ImageChoiceDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/ImageChoiceDialog.xml",
+                "outputFile": "Admin_Collection_Dialogs_ImageChoiceDialog.axml"
+            }
+        },
+        {
+            "fragment": {
+                "className": "RecordSoundDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/RecordSoundDialog.xml",
+                "outputFile": "Views_Admin_Collection_Dialogs_RecordSoundDialog.axml"
+            }
+        },
+		{
+			"fragment": {
+				"className": "SelectCategoryActionDialog",
+				"namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+			},
+			"view": {
+				"inputFile": "Views/Admin/Collection/Dialogs/IndiagramDisplayDialog.xml",
+				"outputFile": "Admin_Collection_Dialogs_SelectCategoryActionDialog.axml"
+			}
+		},
+		{
+            "fragment": {
+                "className": "SelectCategoryWithoutChildrenActionDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/IndiagramDisplayDialog.xml",
+                "outputFile": "Admin_Collection_Dialogs_SelectCategoryWithoutChildrenActionDialog.axml"
+            }
+        },
+        {
+            "fragment": {
+                "className": "SoundChoiceDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/SoundChoiceDialog.xml",
+                "outputFile": "Admin_Collection_Dialogs_SoundChoiceDialog.axml"
+            }
+        },
+        {
+            "fragment": {
+                "className": "ChooseCategoryDialog",
+                "namespaceName": "IndiaRose.Application.Activities.Admin.Collection.Dialogs"
+            },
+            "view": {
+                "inputFile": "Views/Admin/Collection/Dialogs/ChooseCategoryPage.xml",
+                "outputFile": "Admin_Collection_Dialogs_ChooseCategoryPage.axml"
+            }
+        },
+        /* =================
+         * = / Views/User  =
+         * =================
+         */        
+        { // Home Activity
+            "activity": {
+                "className": "UserHomeActivity",
+                "namespaceName": "IndiaRose.Application.Activities.User"
+            },
+            "view": {
+                "inputFile": "Views/User/HomePage.xml",
+                "outputFile": "User_HomePage.axml"
+            }
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+/*
+ * This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
+ */
+ -->
+<resources>
+    <color name="bleu_clair">#2E8AEF</color>
+    <color name="blue_progress">#34B3E1</color>
+        
+    <color name="couleur_cellule_paire">#FAC4FF</color>
+    <color name="couleur_cellule_impaire">#FFFFFF</color>
+    <color name="rose">#fca3ee</color>
+    <color name="vert">#89FF5E</color>
+    <color name="bleu">#7AAFFF</color>
+</resources>
