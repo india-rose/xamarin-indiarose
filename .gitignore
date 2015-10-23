@@ -194,3 +194,15 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+
+# Xamarin designer Android
+Resource.Designer.cs
+
+*.userprefs
+Thumbs.db
+
+# Project specific
+XamarinActionBarSherlock-*
+Strings.xml
+strings.xml
+Components/
