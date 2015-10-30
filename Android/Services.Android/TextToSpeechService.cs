@@ -66,7 +66,7 @@ namespace IndiaRose.Services.Android
 
 			string word = "india rose";
 #if __ANDROID_11__
-			if (Build.VERSION.SdkInt >= BuildVersionCodes.Honeycomb)
+			if (global::Android.OS.Build.VERSION.SdkInt >= global::Android.OS.BuildVersionCodes.Honeycomb)
 			{
 				word = "a";
 				speakParameters.Add(TextToSpeech.Engine.KeyParamVolume, "0");
@@ -89,13 +89,14 @@ namespace IndiaRose.Services.Android
 		{
 			Log.Error("TTS", "Initialize TTS engine");
 #if __ANDROID_17__
-			if (Build.VERSION.SdkInt >= BuildVersionCodes.JellyBeanMr1)
+			if (global::Android.OS.Build.VERSION.SdkInt >= global::Android.OS.BuildVersionCodes.JellyBeanMr1)
 			{
 				_speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity.ApplicationContext, this);
 				_initMutex.Set();
 				return;
 			}
 #endif
+
 			ActivityService.StartActivityForResult(new Intent().SetAction(TextToSpeech.Engine.ActionCheckTtsData),
 				(result, data) =>
 				{
@@ -113,7 +114,7 @@ namespace IndiaRose.Services.Android
 					}
 				});
 		}
-		
+
 		public void Close()
 		{
 			if (_speakerSpeech == null)
