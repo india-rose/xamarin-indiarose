@@ -6,6 +6,8 @@ using IndiaRose.Interfaces;
 using IndiaRose.Services;
 using IndiaRose.Services.Android;
 using IndiaRose.Storage.Sqlite;
+using IndiaRose.WebAPI.Sdk.Interfaces;
+using IndiaRose.WebAPI.Sdk.Services;
 using SQLite.Net.Platform.XamarinAndroid;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
@@ -61,6 +63,7 @@ namespace IndiaRose.Application
             RegisterInstance<ISettingsService>(_settingsService);
 			RegisterInstance<IXmlService>(new XmlService());
 			RegisterInstance<ICollectionStorageService>(_collectionStorageService);
+			RegisterInstance<IApiService>(new ApiService(new WebApiRequestService(), new ApiLogger(), Constants.COLLECTION_API_HOST));
 
 			Task.Run((Action)InitializeAsync);
 		}

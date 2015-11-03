@@ -48,6 +48,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceService.cs" />
     <Compile Include="ScreenService.cs" />
+    <Compile Include="WebApiRequestService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\IndiaRose.Data\IndiaRose.Data.csproj">
