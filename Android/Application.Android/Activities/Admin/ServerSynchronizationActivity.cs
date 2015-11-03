@@ -16,7 +16,7 @@ namespace IndiaRose.Application.Activities.Admin
 		{
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.Admin_ServerSynchronizationPage);
-            SetViewModel(Container.Locator.AdminServerSynchronizationViewModel);
+            SetViewModel(Container.Locator.AdminSynchronizationViewModel);
 		}
 	}
 }

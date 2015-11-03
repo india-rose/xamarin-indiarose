@@ -5,6 +5,7 @@ using IndiaRose.Business.ViewModels.Admin.Collection;
 using IndiaRose.Business.ViewModels.Admin.Collection.Dialogs;
 using IndiaRose.Business.ViewModels.Admin.Settings;
 using IndiaRose.Business.ViewModels.Admin.Settings.Dialogs;
+using IndiaRose.Business.ViewModels.Admin.Synchronization;
 using IndiaRose.Business.ViewModels.User;
 using Storm.Mvvm.Inject;
 
@@ -22,7 +23,7 @@ namespace IndiaRose.Business
 			container.RegisterFactory(x => new HomeViewModel());
 			container.RegisterFactory(x => new InstallVoiceSynthesisViewModel());
 			container.RegisterFactory(x => new CreditsViewModel());
-            container.RegisterFactory(x => new ServerSynchronizationViewModel());
+            container.RegisterFactory(x => new SynchronizationViewModel());
             container.RegisterFactory(x => new MailErrorViewModel());
 
 			// Admin/Settings
@@ -77,9 +78,9 @@ namespace IndiaRose.Business
 			get { return _container.Resolve<CreditsViewModel>(); }
 		}
 
-		public ServerSynchronizationViewModel AdminServerSynchronizationViewModel
+		public SynchronizationViewModel AdminSynchronizationViewModel
 		{
-			get { return _container.Resolve<ServerSynchronizationViewModel>(); }
+			get { return _container.Resolve<SynchronizationViewModel>(); }
 		}
 
 	    public MailErrorViewModel AdminMailErrorViewModel

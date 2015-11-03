@@ -64,7 +64,8 @@
     <Compile Include="ViewModels\Admin\Collection\WatchIndiagramViewModel.cs" />
     <Compile Include="ViewModels\Admin\CreditsViewModel.cs" />
     <Compile Include="ViewModels\Admin\MailErrorViewModel.cs" />
-    <Compile Include="ViewModels\Admin\ServerSynchronizationViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Synchronization\ConnectionCheckViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Synchronization\SynchronizationViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\AbstractSettingsViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\ApplicationLookViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\Dialogs\AbstractYesNoViewModel.cs" />
