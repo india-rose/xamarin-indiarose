@@ -125,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ActivityDescription.json" />
+    <None Include="app.config" />
     <None Include="packages.config" />
     <Compile Include="ServiceInitializerWrapper.cs" />
     <Compile Include="TextToSpeechService.cs" />

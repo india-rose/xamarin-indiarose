@@ -571,4 +571,19 @@ Commentaires : </value>
   <data name="AccountRegister_ServerError.Text" xml:space="preserve">
     <value>Impossible de se connecter au serveur, veuillez réessayer plus tard.</value>
   </data>
+  <data name="DeviceChoose_CannotRetrieveList.Text" xml:space="preserve">
+    <value>Impossible de récupérer la liste des configurations d'appareils</value>
+  </data>
+  <data name="DeviceChoose_DeviceAlreadyExists.Text" xml:space="preserve">
+    <value>Vous avez déjà une configuration portant ce nom.</value>
+  </data>
+  <data name="DeviceChoose_DeviceNameEmpty.Text" xml:space="preserve">
+    <value>Le nom de la configuration ne peut pas être vide.</value>
+  </data>
+  <data name="DeviceChoose_NoDeviceSelected.Text" xml:space="preserve">
+    <value>Aucune configuration d'appareil sélectionnée.</value>
+  </data>
+  <data name="DeviceChoose_UnableToCreateDevice.Text" xml:space="preserve">
+    <value>Impossible de créer la configuration.</value>
+  </data>
 </root>

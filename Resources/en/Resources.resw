@@ -570,4 +570,19 @@ Comments : </value>
   <data name="ConnectionCheck_ErrorNetwork.Text" xml:space="preserve">
     <value>Error, can not contact synchronization server. Are you sure you have internet connection ? Synchronization system could also be in maintenance, you could try again in few minutes.</value>
   </data>
+  <data name="DeviceChoose_CannotRetrieveList.Text" xml:space="preserve">
+    <value>Unable to download list of device configuration.</value>
+  </data>
+  <data name="DeviceChoose_DeviceAlreadyExists.Text" xml:space="preserve">
+    <value>Device configuration name already exists.</value>
+  </data>
+  <data name="DeviceChoose_DeviceNameEmpty.Text" xml:space="preserve">
+    <value>Device configuration name is empty.</value>
+  </data>
+  <data name="DeviceChoose_NoDeviceSelected.Text" xml:space="preserve">
+    <value>No device configuration selected.</value>
+  </data>
+  <data name="DeviceChoose_UnableToCreateDevice.Text" xml:space="preserve">
+    <value>Unable to create this device configuration.</value>
+  </data>
 </root>

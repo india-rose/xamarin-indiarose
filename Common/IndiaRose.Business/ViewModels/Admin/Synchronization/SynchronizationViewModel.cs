@@ -65,6 +65,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Synchronization
 		{
 			AccountLoginInit();
 			AccountRegisterInit();
+			DeviceChooseInit();
 		}
 
 		public override void OnNavigatedTo(NavigationArgs e, string parametersKey)

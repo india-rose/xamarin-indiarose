@@ -68,6 +68,7 @@
     <Compile Include="ViewModels\Admin\Synchronization\AccountLoginViewModel.cs" />
     <Compile Include="ViewModels\Admin\Synchronization\AccountRegisterViewModel.cs" />
     <Compile Include="ViewModels\Admin\Synchronization\ConnectionCheckViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Synchronization\DeviceChooseViewModel.cs" />
     <Compile Include="ViewModels\Admin\Synchronization\HelperSynchronizationViewModel.cs" />
     <Compile Include="ViewModels\Admin\Synchronization\SynchronizationViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\AbstractSettingsViewModel.cs" />
