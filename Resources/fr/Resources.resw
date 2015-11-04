@@ -544,4 +544,10 @@ Commentaires : </value>
   <data name="Credits_SupportTeam.Text" xml:space="preserve">
     <value>Marian Gappa, Joris Rubagotti, Cassandre Nunes, Joris Falip, Nicolas Serrette</value>
   </data>
+  <data name="ConnectionCheck_Connecting.Text" xml:space="preserve">
+    <value>Connexion en cours...</value>
+  </data>
+  <data name="ConnectionCheck_ErrorNetwork.Text" xml:space="preserve">
+    <value>Erreur, impossible de se connecter au serveur de synchronisation. Êtes vous sûr de disposer d'une connexion internet ? Le serveur peut également être en maintenance, dans ce cas, réessayez dans quelques minutes. </value>
+  </data>
 </root>

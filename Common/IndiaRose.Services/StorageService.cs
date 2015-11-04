@@ -28,6 +28,8 @@ namespace IndiaRose.Services
         private const string STORAGE_NEXTARROW_IMAGE = "nextarrow.png";
         private const string STORAGE_PLAYBUTTON_IMAGE = "playbutton.png";
         private const string STORAGE_ROOT_IMAGE = "root.png";
+	    private const string STORAGE_SYNCHRONIZATION_SETTINGS = "synchronization.json";
+
         private readonly string _storageDirectory;
 
         public string AppPath
@@ -75,10 +77,15 @@ namespace IndiaRose.Services
             get { return STORAGE_SETTINGS_NAME; }
         }
 
-        public string SettingsFilePath
-        {
-            get { return Path.Combine(SettingsFolderPath, SettingsFileName); }
-        }
+		public string SynchronizationFolderPath
+	    {
+			get { return RootPath; }
+	    }
+
+	    public string SynchronizationFileName
+	    {
+			get { return STORAGE_SYNCHRONIZATION_SETTINGS; }
+	    }
 
         public string RootPath
         {

@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using IndiaRose.WebAPI.Sdk.Interfaces;
+using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.Admin.Synchronization
@@ -18,6 +18,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Synchronization
 
 		private SynchronizationPageState _pageState = SynchronizationPageState.Starting;
 
+		protected IApiService ApiService
+		{
+			get { return LazyResolver<IApiService>.Service; }
+		}
+		
 		public SynchronizationPageState PageState
 		{
 			get { return _pageState; }

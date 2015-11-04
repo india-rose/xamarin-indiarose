@@ -4,31 +4,15 @@ using System.Threading.Tasks;
 using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
 using Newtonsoft.Json;
-using PCLStorage;
-using Storm.Mvvm;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 
 namespace IndiaRose.Services
 {
-	public class SettingsService : NotifierBase, ISettingsService
+	public class SettingsService : AbstractFileStorageService, ISettingsService
 	{
 		private bool _hasChanged;
-
-		#region Services
-
-		protected ILoggerService LoggerService
-		{
-			get { return LazyResolver<ILoggerService>.Service; }
-		}
-
-		protected IStorageService StorageService
-		{
-			get { return LazyResolver<IStorageService>.Service; }
-		}
-
-		#endregion
-
+		
 		#region Properties backing fields
 
 		private string _topBackgroundColor;
@@ -135,8 +119,7 @@ namespace IndiaRose.Services
 			set { SetProperty(ref _topBackgroundColor, value); }
 		}
 
-
-        public bool IsLoaded
+		public bool IsLoaded
         {
             get { return _isLoaded; }
             set
@@ -150,6 +133,9 @@ namespace IndiaRose.Services
 		public SettingsService()
 		{
 			PropertyChanged += OnAnyValueChanged;
+
+			FolderPath = StorageService.SettingsFolderPath;
+			FileName = StorageService.SettingsFileName;
 		}
 
 		private void OnAnyValueChanged(object sender, PropertyChangedEventArgs e)
@@ -181,25 +167,35 @@ namespace IndiaRose.Services
 				ReinforcerColor = ReinforcerColor,
                 TextColor = TextColor
 			};
-
-			await SaveOnDiskAsync(model);
+			_hasChanged = false;
+			await SaveToDiskAsync(JsonConvert.SerializeObject(model, Formatting.Indented));
 		}
 
 		public async Task LoadAsync()
 		{
+			await _LoadAsync();
+			IsLoaded = true;
+			_hasChanged = false;
+		}
+
+		private async Task _LoadAsync()
+		{
 			if (!await ExistsOnDiskAsync())
 			{
-                Reset();
-                IsLoaded = true;
+				Reset();
 				return;
 			}
 
-			SettingsModel model = await LoadFromDiskAsync();
-
-			if (model == null)
+			SettingsModel model;
+			try
 			{
-                Reset();
-                IsLoaded = true;
+				model = JsonConvert.DeserializeObject<SettingsModel>(await LoadFromDiskAsync());
+			}
+			catch (Exception e)
+			{
+				LoggerService.Log("IndiaRose.Services.SettingsService.LoadAsync() : cannot deserialize settings file content " + e, MessageSeverity.Critical);
+
+				Reset();
 				return;
 			}
 
@@ -216,11 +212,7 @@ namespace IndiaRose.Services
 			IsMultipleIndiagramSelectionEnabled = model.IsMultipleIndiagramSelectionEnabled;
 			TimeOfSilenceBetweenWords = model.TimeOfSilenceBetweenWords;
 			ReinforcerColor = model.ReinforcerColor;
-		    TextColor = model.TextColor;
-
-		    IsLoaded = true;
-
-			_hasChanged = false;
+			TextColor = model.TextColor;
 		}
 
 		public void Reset()
@@ -242,51 +234,5 @@ namespace IndiaRose.Services
 		}
 
 	    public event EventHandler<EventArgs> Loaded;
-
-	    protected async Task<bool> ExistsOnDiskAsync()
-		{
-			try
-			{
-				IFolder folder = await FileSystem.Current.GetFolderFromPathAsync(StorageService.SettingsFolderPath);
-				ExistenceCheckResult result = await folder.CheckExistsAsync(StorageService.SettingsFileName);
-				return result == ExistenceCheckResult.FileExists;
-			}
-			catch (Exception ex)
-			{
-				return false;
-			}
-		}
-
-		protected async Task<SettingsModel> LoadFromDiskAsync()
-		{
-			try
-			{
-				IFile file = await FileSystem.Current.GetFileFromPathAsync(StorageService.SettingsFilePath);
-				string content = await file.ReadAllTextAsync();
-				SettingsModel result = JsonConvert.DeserializeObject<SettingsModel>(content);
-				return result;
-			}
-			catch (Exception e)
-			{
-				LoggerService.Log("IndiaRose.Services.SettingsService.LoadFromDiskAsync() : exception while trying to load content from the settings file " + e, MessageSeverity.Critical);
-				return null;
-			}
-
-		}
-
-		protected async Task SaveOnDiskAsync(SettingsModel model)
-		{
-			try
-			{
-				IFolder folder = await FileSystem.Current.GetFolderFromPathAsync(StorageService.SettingsFolderPath);
-				IFile file = await folder.CreateFileAsync(StorageService.SettingsFileName, CreationCollisionOption.ReplaceExisting);
-				string content = JsonConvert.SerializeObject(model, Formatting.Indented);
-				await file.WriteAllTextAsync(content);
-			}
-			catch (Exception e)
-			{
-				LoggerService.Log("IndiaRose.Services.SettingsService.SaveOnDiskAsync() : exception while trying to write content to the settings file " + e, MessageSeverity.Critical);
-			}
-		}
 	}
 }

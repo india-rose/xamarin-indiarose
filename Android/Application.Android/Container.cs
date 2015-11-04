@@ -22,6 +22,7 @@ namespace IndiaRose.Application
 
 		private StorageService _storageService;
 		private ISettingsService _settingsService;
+		private ISynchronizationSettingsService _synchronizationSettingsService;
 		private ICollectionStorageService _collectionStorageService;
 		private IInitializationStateService _initializationStateService;
 
@@ -39,7 +40,10 @@ namespace IndiaRose.Application
 			ViewModelsLocator.Initialize(this);
 
 			_storageService = new StorageService(Environment.ExternalStorageDirectory.Path);
+			RegisterInstance<IStorageService>(_storageService);
+
 			_settingsService = new SettingsService();
+			_synchronizationSettingsService = new SynchronizationSettingsService();
 			_collectionStorageService = new SqliteCollectionStorageService(new SQLitePlatformAndroid());
 			_initializationStateService = new InitializationStateService(2);
 
@@ -59,8 +63,8 @@ namespace IndiaRose.Application
 
             RegisterInstance<ITextToSpeechService>(textToSpeechService);
 
-			RegisterInstance<IStorageService>(_storageService);
             RegisterInstance<ISettingsService>(_settingsService);
+			RegisterInstance<ISynchronizationSettingsService>(_synchronizationSettingsService);
 			RegisterInstance<IXmlService>(new XmlService());
 			RegisterInstance<ICollectionStorageService>(_collectionStorageService);
 			RegisterInstance<IApiService>(new ApiService(new WebApiRequestService(), new ApiLogger(), Constants.COLLECTION_API_HOST));
@@ -77,6 +81,7 @@ namespace IndiaRose.Application
 		{
 			await new ServiceInitializerWrapper(_storageService).InitializeAsync();
 			await _settingsService.LoadAsync();
+			await _synchronizationSettingsService.LoadAsync();
 			await _collectionStorageService.InitializeAsync();
 
 			_initializationStateService.InitializationFinished();

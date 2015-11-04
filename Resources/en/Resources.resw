@@ -543,4 +543,10 @@ Comments : </value>
   <data name="Credits_SupportTeam.Text" xml:space="preserve">
     <value>Marian Gappa, Joris Rubagotti, Cassandre Nunes, Joris Falip, Nicolas Serrette</value>
   </data>
+  <data name="ConnectionCheck_Connecting.Text" xml:space="preserve">
+    <value>Connecting...</value>
+  </data>
+  <data name="ConnectionCheck_ErrorNetwork.Text" xml:space="preserve">
+    <value>Error, can not contact synchronization server. Are you sure you have internet connection ? Synchronization system could also be in maintenance, you could try again in few minutes.</value>
+  </data>
 </root>

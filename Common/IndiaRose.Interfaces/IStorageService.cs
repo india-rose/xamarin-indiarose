@@ -18,7 +18,9 @@ namespace IndiaRose.Interfaces
 
 		string SettingsFileName { get; }
 
-		string SettingsFilePath { get; }
+		string SynchronizationFolderPath { get; }
+
+		string SynchronizationFileName { get; }
 
 		string RootPath { get; }
 
