@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
-using Newtonsoft.Json;
 using PCLStorage;
 using Storm.Mvvm;
 using Storm.Mvvm.Inject;
@@ -41,7 +36,7 @@ namespace IndiaRose.Services
 				ExistenceCheckResult result = await folder.CheckExistsAsync(FileName);
 				return result == ExistenceCheckResult.FileExists;
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				return false;
 			}

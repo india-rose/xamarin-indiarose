@@ -5,7 +5,11 @@
 		public string UserLogin { get; set; }
 
 		public string UserPasswd { get; set; }
-		
+
+		public bool UserRememberMe { get; set; }
+
+		public string DeviceName { get; set; }
+
 
 		public long CollectionVersion { get; set; }
 		

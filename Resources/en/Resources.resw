@@ -543,6 +543,27 @@ Comments : </value>
   <data name="Credits_SupportTeam.Text" xml:space="preserve">
     <value>Marian Gappa, Joris Rubagotti, Cassandre Nunes, Joris Falip, Nicolas Serrette</value>
   </data>
+  <data name="AccountLogin_EmptyLoginOrPassword.Text" xml:space="preserve">
+    <value>Missing login or password.</value>
+  </data>
+  <data name="AccountLogin_InvalidCredentials.Text" xml:space="preserve">
+    <value>Invalid login or password.</value>
+  </data>
+  <data name="AccountRegister_EmailAlreadyExists.Text" xml:space="preserve">
+    <value>This email is already registered.</value>
+  </data>
+  <data name="AccountRegister_InvalidPasswordConfirmation.Text" xml:space="preserve">
+    <value>Both passwords are not the same.</value>
+  </data>
+  <data name="AccountRegister_LoginAlreadyExists.Text" xml:space="preserve">
+    <value>This login is already registered.</value>
+  </data>
+  <data name="AccountRegister_MissingField.Text" xml:space="preserve">
+    <value>Please fill all fields.</value>
+  </data>
+  <data name="AccountRegister_ServerError.Text" xml:space="preserve">
+    <value>Can not connect to identification server, please try again later.</value>
+  </data>
   <data name="ConnectionCheck_Connecting.Text" xml:space="preserve">
     <value>Connecting...</value>
   </data>

@@ -1,4 +1,5 @@
-﻿using IndiaRose.WebAPI.Sdk.Interfaces;
+﻿using IndiaRose.Interfaces;
+using IndiaRose.WebAPI.Sdk.Interfaces;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
 
@@ -6,6 +7,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Synchronization
 {
 	public partial class SynchronizationViewModel : AbstractViewModel
 	{
+		#region Internal types
+
 		public enum SynchronizationPageState
 		{
 			Starting,
@@ -16,17 +19,52 @@ namespace IndiaRose.Business.ViewModels.Admin.Synchronization
 			SummaryPage,
 		}
 
-		private SynchronizationPageState _pageState = SynchronizationPageState.Starting;
+		#endregion
+
+		#region Services
 
 		protected IApiService ApiService
 		{
 			get { return LazyResolver<IApiService>.Service; }
 		}
-		
+
+		protected ISynchronizationSettingsService SynchronizationSettingsService
+		{
+			get { return LazyResolver<ISynchronizationSettingsService>.Service; }
+		}
+
+		#endregion
+
+		#region Binding properties
+
+		private SynchronizationPageState _pageState = SynchronizationPageState.Starting;
+		private string _errorMessage;
+		private bool _hasError;
+
 		public SynchronizationPageState PageState
 		{
 			get { return _pageState; }
 			set { SetProperty(ref _pageState, value); }
+		}
+
+		public string ErrorMessage
+		{
+			get { return _errorMessage; }
+			set { SetProperty(ref _errorMessage, value); }
+		}
+
+		public bool HasError
+		{
+			get { return _hasError; }
+			set { SetProperty(ref _hasError, value); }
+		}
+
+		#endregion
+
+		public SynchronizationViewModel()
+		{
+			AccountLoginInit();
+			AccountRegisterInit();
 		}
 
 		public override void OnNavigatedTo(NavigationArgs e, string parametersKey)
@@ -38,6 +76,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Synchronization
 
 		private void TransitionToState(SynchronizationPageState state)
 		{
+			HasError = false;
+			ErrorMessage = string.Empty;
+
 			if (PageState == state)
 			{
 				return;
@@ -63,6 +104,12 @@ namespace IndiaRose.Business.ViewModels.Admin.Synchronization
 					OnNavigatedToSummaryPage();
 					break;
 			}
+		}
+
+		private void SetError(string error)
+		{
+			HasError = !string.IsNullOrEmpty(error);
+			ErrorMessage = error;
 		}
 
 		partial void OnNavigatedToConnecting();

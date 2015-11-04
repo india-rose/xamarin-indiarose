@@ -11,6 +11,8 @@ namespace IndiaRose.Services
 	{
 		public string UserLogin { get; set; }
 		public string UserPasswd { get; set; }
+		public bool UserRememberMe { get; set; }
+		public string DeviceName { get; set; }
 
 		public long CollectionVersion { get; set; }
 		public long CollectionLastId { get; set; }
@@ -48,6 +50,8 @@ namespace IndiaRose.Services
 
 			UserLogin = model.UserLogin;
 			UserPasswd = model.UserPasswd;
+			UserRememberMe = model.UserRememberMe;
+			DeviceName = model.DeviceName;
 			CollectionVersion = model.CollectionVersion;
 			CollectionLastId = model.CollectionLastId;
 			CollectionLastContent = model.CollectionLastContent;
@@ -61,6 +65,8 @@ namespace IndiaRose.Services
 			{
 				UserLogin = UserLogin,
 				UserPasswd = UserPasswd,
+				UserRememberMe = UserRememberMe,
+				DeviceName = DeviceName,
 				CollectionVersion = CollectionVersion,
 				CollectionLastId = CollectionLastId,
 				CollectionLastContent = CollectionLastContent,
@@ -74,6 +80,7 @@ namespace IndiaRose.Services
 		{
 			UserLogin = null;
 			UserPasswd = null;
+			UserRememberMe = false;
 
 			CollectionVersion = -1;
 			CollectionLastId = -1;

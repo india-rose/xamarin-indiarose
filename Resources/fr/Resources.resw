@@ -550,4 +550,25 @@ Commentaires : </value>
   <data name="ConnectionCheck_ErrorNetwork.Text" xml:space="preserve">
     <value>Erreur, impossible de se connecter au serveur de synchronisation. Êtes vous sûr de disposer d'une connexion internet ? Le serveur peut également être en maintenance, dans ce cas, réessayez dans quelques minutes. </value>
   </data>
+  <data name="AccountLogin_EmptyLoginOrPassword.Text" xml:space="preserve">
+    <value>Veuillez indiquer votre login et votre mot de passe.</value>
+  </data>
+  <data name="AccountLogin_InvalidCredentials.Text" xml:space="preserve">
+    <value>Login ou mot de passe incorrecte.</value>
+  </data>
+  <data name="AccountRegister_EmailAlreadyExists.Text" xml:space="preserve">
+    <value>Cet email est déjà enregistré.</value>
+  </data>
+  <data name="AccountRegister_InvalidPasswordConfirmation.Text" xml:space="preserve">
+    <value>Les deux mots de passe ne sont pas identique.</value>
+  </data>
+  <data name="AccountRegister_LoginAlreadyExists.Text" xml:space="preserve">
+    <value>Ce login est déjà enregistré.</value>
+  </data>
+  <data name="AccountRegister_MissingField.Text" xml:space="preserve">
+    <value>Veuillez remplir tous les champs.</value>
+  </data>
+  <data name="AccountRegister_ServerError.Text" xml:space="preserve">
+    <value>Impossible de se connecter au serveur, veuillez réessayer plus tard.</value>
+  </data>
 </root>

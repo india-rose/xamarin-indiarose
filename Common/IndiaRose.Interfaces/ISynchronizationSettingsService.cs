@@ -8,6 +8,10 @@ namespace IndiaRose.Interfaces
 
 		string UserPasswd { get; set; }
 
+		bool UserRememberMe { get; set; }
+
+		string DeviceName { get; set; }
+
 
 		long CollectionVersion { get; set; }
 
