@@ -1,4 +1,5 @@
-﻿using IndiaRose.Interfaces;
+﻿using IndiaRose.Data.UIModel;
+using IndiaRose.Interfaces;
 using IndiaRose.WebAPI.Sdk.Interfaces;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
@@ -7,20 +8,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Synchronization
 {
 	public partial class SynchronizationViewModel : AbstractViewModel
 	{
-		#region Internal types
-
-		public enum SynchronizationPageState
-		{
-			Starting,
-			Connecting,
-			AccountLogin,
-			AccountRegister,
-			DeviceChoose,
-			SummaryPage,
-		}
-
-		#endregion
-
 		#region Services
 
 		protected IApiService ApiService
@@ -44,7 +31,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Synchronization
 		public SynchronizationPageState PageState
 		{
 			get { return _pageState; }
-			set { SetProperty(ref _pageState, value); }
+		    set
+		    {
+                LoggerService.Log("Set PageState to " + value, MessageSeverity.Info);
+		        SetProperty(ref _pageState, value);
+		    }
 		}
 
 		public string ErrorMessage

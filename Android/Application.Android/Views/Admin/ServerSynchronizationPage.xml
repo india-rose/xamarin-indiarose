@@ -1,45 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/white"
-                android:paddingLeft="50dip"
-                android:paddingRight="50dip">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  xmlns:converters="using:IndiaRose.Framework.Converters"
+              XmlStyle="{Resource RootLinearLayoutStyle}">
 	<Resources>
-		<Style Key="ContainerStyle"
-		       android:layout_width="match_parent"
-		       android:layout_height="match_parent"
-		       android:gravity="center"
-		       android:orientation="vertical"
-		       android:paddingBottom="25dip"
-		       android:paddingTop="25dip" />
-		<Style Key="TextViewStyle"
-		       android:layout_width="wrap_content"
-		       android:layout_height="wrap_content"
-		       android:layout_alignParentLeft="true"
-		       android:layout_centerVertical="true"
-		       android:layout_marginTop="10dip"
-		       android:textColor="@android:color/black" />
+		<converters:SynchronizationPageStateToVisibilityConverter Key="SynchronizationPageStateToVisibilityConverter" />
+	
+		<Style Key="CenteredTextViewStyle"
+			   android:layout_width="wrap_content"
+			   android:layout_height="wrap_content"
+			   android:gravity="center_horizontal"
+			   android:layout_centerHorizontal="true"
+			   android:layout_centerVertical="true"
+			   android:layout_marginTop="10dip"
+			   android:textColor="@android:color/black" />
 	</Resources>
+	
+	<!-- ConnectionCheck -->
+	<RelativeLayout XmlStyle="{Resource BaseRootLayoutStyle}"
+					android:gravity="center"
+					android:visibility="{Binding PageState, Converter={Resource SynchronizationPageStateToVisibilityConverter}, ConverterParameter='Connecting'}"
+					>
+		<TextView XmlStyle="{Resource CenteredTextViewStyle}"
+				  Text="{Binding ConnectionStatusMessage}"
+				  android:id="ConnectionCheck_StatusMessage"
+				  />
 
-	<LinearLayout XmlStyle="{Resource ContainerStyle}">
+		<ProgressBar style="?android:attr/progressBarStyleLarge"
+					 android:layout_width="wrap_content"
+					 android:layout_height="wrap_content"
+					 android:layout_centerHorizontal="true" 
+					 android:layout_below="@id/ConnectionCheck_StatusMessage"
+					 android:visibility="{Binding IsConnectionLoaderEnabled, Converter={Resource BooleanToVisibilityConverter}}"
+					 />
+	</RelativeLayout>
 
-		<TextView XmlStyle="{Resource TextViewStyle}"
-		          android:id="Label_send_logs"
-		          Text="{Tr Text, Uid=Server_SynchroStart}" />
+	<!-- AccountLogin -->
 
-		<ProgressBar
-			android:layout_width="50dip"
-			android:layout_height="50dip"
-			android:gravity="center"
-			android:layout_below="@id/Label_send_logs"
-			android:layout_margin="10dip" />
+	<RelativeLayout XmlStyle="{Resource BaseRootLayoutStyle}"
+					android:gravity="center"
+					android:visibility="{Binding PageState, Converter={Resource SynchronizationPageStateToVisibilityConverter}, ConverterParameter='AccountLogin'}"
+					>
+		<TextView XmlStyle="{Resource CenteredTextViewStyle}"
+				  android:text="Account login ok"
+				  />
+	</RelativeLayout>
 
-		<TextView XmlStyle="{Resource TextViewStyle}"
-		          Text="{Tr Text, Uid=Server_SynchroVoid}" />
-
-
-	</LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>

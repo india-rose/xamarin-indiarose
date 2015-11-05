@@ -1,8 +1,11 @@
-﻿namespace IndiaRose.Business.ViewModels.Admin.Synchronization
+﻿using IndiaRose.Data.UIModel;
+
+namespace IndiaRose.Business.ViewModels.Admin.Synchronization
 {
 	public partial class SynchronizationViewModel
 	{
 		private string _connectionStatusMessage;
+		private bool _isConnectionLoaderEnabled;
 
 		public string ConnectionStatusMessage
 		{
@@ -10,8 +13,15 @@
 			set { SetProperty(ref _connectionStatusMessage, value); }
 		}
 
+		public bool IsConnectionLoaderEnabled
+		{
+			get { return _isConnectionLoaderEnabled; }
+			set { SetProperty(ref _isConnectionLoaderEnabled, value); }
+		}
+
 		async partial void OnNavigatedToConnecting()
 		{
+			IsConnectionLoaderEnabled = true;
 			ConnectionStatusMessage = LocalizationService.GetString("ConnectionCheck_Connecting", "Text");
 
 			bool result = await ApiService.IsAlive();
@@ -38,6 +48,7 @@
 			}
 			else
 			{
+				IsConnectionLoaderEnabled = false;
 				// error webservice could be offline or no internet connection available
 				ConnectionStatusMessage = LocalizationService.GetString("ConnectionCheck_ErrorNetwork", "Text");
 			}

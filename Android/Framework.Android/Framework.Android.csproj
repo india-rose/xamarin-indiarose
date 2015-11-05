@@ -49,6 +49,7 @@
     <Compile Include="Converters\ColorContainerToDrawableColorConverter.cs" />
     <Compile Include="Converters\ParentCategoryTextConverter.cs" />
     <Compile Include="Converters\DefaultLocalizedStringIfNullConverter.cs" />
+    <Compile Include="Converters\SynchronizationPageStateToVisibilityConverter.cs" />
     <Compile Include="Helper\FontHelper.cs" />
     <Compile Include="Helper\ImageHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

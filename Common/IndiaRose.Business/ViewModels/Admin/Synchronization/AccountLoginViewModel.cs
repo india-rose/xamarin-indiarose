@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using IndiaRose.Data.UIModel;
 using Storm.Mvvm.Commands;
 
 namespace IndiaRose.Business.ViewModels.Admin.Synchronization

@@ -49,6 +49,7 @@
     <Compile Include="UIModel\ColorContainer.cs" />
     <Compile Include="UIModel\IndiagramContainer.cs" />
     <Compile Include="UIModel\IndiagramUIModel.cs" />
+    <Compile Include="UIModel\SynchronizationPageState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Funq.Portable">

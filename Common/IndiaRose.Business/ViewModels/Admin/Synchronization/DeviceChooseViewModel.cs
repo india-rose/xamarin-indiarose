@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using IndiaRose.Data.UIModel;
 using IndiaRose.WebAPI.Sdk.Results;
 using Storm.Mvvm.Commands;
 
