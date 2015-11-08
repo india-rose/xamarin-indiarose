@@ -585,4 +585,25 @@ Comments : </value>
   <data name="DeviceChoose_UnableToCreateDevice.Text" xml:space="preserve">
     <value>Unable to create this device configuration.</value>
   </data>
+  <data name="AccountLogin_LoginLabel.Text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="AccountLogin_PasswordLabel.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="AccountLogin_RememberMe.Text" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="AccountLogin_SignIn.Text" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="AccountLogin_SignUp.Text" xml:space="preserve">
+    <value>Sign up</value>
+  </data>
+  <data name="AccountRegister_EmailLabel.Text" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="AccountRegister_PasswordConfirmationLabel.Text" xml:space="preserve">
+    <value>Password confirmation</value>
+  </data>
 </root>
