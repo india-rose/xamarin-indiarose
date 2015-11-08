@@ -13,6 +13,13 @@
 			   android:layout_centerVertical="true"
 			   android:layout_marginTop="10dip"
 			   android:textColor="@android:color/black" />
+	
+		<DataTemplate Key="DeviceItemTemplate">
+			<LinearLayout XmlStyle="{Resource SpinnerItemLayoutStyle}">
+				<TextView XmlStyle="{Resource SpinnerItemTextStyle}"
+				          Text="{Binding .}" />
+			</LinearLayout>
+		</DataTemplate>
 	</Resources>
 	
 	<!-- ConnectionCheck -->
@@ -63,6 +70,11 @@
 			              Text="{Tr Text, Uid=AccountLogin_RememberMe}"
 			              android:checked="{Binding InputRememberMe, Mode=TwoWay, UpdateEvent=CheckedChange}" />
 			
+				<TextView XmlStyle="{Resource ErrorTextStyle}"
+						  Text="{Binding ErrorMessage}"
+						  Visibility="{Binding HasError, Converter={Resource BooleanToVisibilityConverter}}"
+						  />
+
 				<LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}"
 							  >
 					<Button XmlStyle="{Resource MediumBlueButtonStyle}"
@@ -123,6 +135,11 @@
 			              Text="{Tr Text, Uid=AccountLogin_RememberMe}"	
 			              android:checked="{Binding InputRememberMe, Mode=TwoWay, UpdateEvent=CheckedChange}" />
 			
+				<TextView XmlStyle="{Resource ErrorTextStyle}"
+						  Text="{Binding ErrorMessage}"
+						  Visibility="{Binding HasError, Converter={Resource BooleanToVisibilityConverter}}"
+						  />				
+
 				<LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}"
 							  >
 					<Button XmlStyle="{Resource MediumOrangeButtonStyle}"
@@ -140,5 +157,50 @@
 		</LinearLayout>					
 	</RelativeLayout>
 
+	<!-- DeviceChoose -->
+	<RelativeLayout XmlStyle="{Resource BaseRootLayoutStyle}"
+					android:gravity="center"
+					android:visibility="{Binding PageState, Converter={Resource SynchronizationPageStateToVisibilityConverter}, ConverterParameter='DeviceChoose'}"
+					>
+		<LinearLayout XmlStyle="{Resource ColumnContainerLinearLayoutStyle}">
+			<LinearLayout XmlStyle="{Resource ColumnLayoutStyle}" />
+			
+			<LinearLayout XmlStyle="{Resource LargeColumnLayoutStyle}" 
+						  android:orientation="vertical"
+						  >
+				<!-- Select existing device -->
+				<TextView XmlStyle="{Resource HeaderTopLabelStyle}"
+				          Text="{Tr Text, Uid=DeviceChoose_ChooseDeviceLabel}" />
+				<BindableSpinner XmlStyle="{Resource SpinnerStyle}"
+				                 adapter="{Binding InputDeviceNames, Template={Resource DeviceItemTemplate}}"
+				                 currentItem="{Binding InputSelectedDeviceName, Mode=TwoWay, UpdateEvent=CurrentItemChanged}" />
+				
+				<LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}">
+					<Button XmlStyle="{Resource MediumBlueButtonStyle}"
+							Text="{Tr Text, Uid=DeviceChoose_SelectDevice}"
+							Click="{Binding SelectDeviceCommand}"
+							/>
+				</LinearLayout>
+				
+				<!-- TODO : add border with a "or" in middle of it -->				
+
+				<!-- Create new device -->
+				<TextView XmlStyle="{Resource HeaderTopLabelStyle}"
+				          Text="{Tr Text, Uid=DeviceChoose_DeviceConfigurationLabel}" />
+				<EditText android:layout_width="match_parent"
+				          android:layout_height="wrap_content"
+				          android:textSize="16sp"
+				          Text="{Binding InputNewDeviceName, Mode=TwoWay, UpdateEvent=TextChanged}" />
+				<LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}">
+					<Button XmlStyle="{Resource MediumGreenButtonStyle}"
+							Text="{Tr Text, Uid=DeviceChoose_CreateDevice}"
+							Click="{Binding CreateDeviceCommand}"
+							/>
+				</LinearLayout>
+			</LinearLayout>
+		
+			<LinearLayout XmlStyle="{Resource ColumnLayoutStyle}" />
+		</LinearLayout>					
+	</RelativeLayout>
 
 </LinearLayout>
