@@ -35,14 +35,110 @@
 	</RelativeLayout>
 
 	<!-- AccountLogin -->
-
 	<RelativeLayout XmlStyle="{Resource BaseRootLayoutStyle}"
 					android:gravity="center"
 					android:visibility="{Binding PageState, Converter={Resource SynchronizationPageStateToVisibilityConverter}, ConverterParameter='AccountLogin'}"
 					>
-		<TextView XmlStyle="{Resource CenteredTextViewStyle}"
-				  android:text="Account login ok"
-				  />
+		<LinearLayout XmlStyle="{Resource ColumnContainerLinearLayoutStyle}">
+			<LinearLayout XmlStyle="{Resource ColumnLayoutStyle}" />
+			
+			<LinearLayout XmlStyle="{Resource LargeColumnLayoutStyle}" 
+						  android:orientation="vertical"
+						  >
+				<TextView XmlStyle="{Resource HeaderTopLabelStyle}"
+				          Text="{Tr Text, Uid=AccountLogin_LoginLabel}" />
+				<EditText android:layout_width="match_parent"
+				          android:layout_height="wrap_content"
+				          android:textSize="16sp"
+				          Text="{Binding InputLogin, Mode=TwoWay, UpdateEvent=TextChanged}" />
+			
+				<TextView XmlStyle="{Resource HeaderTopLabelStyle}"
+				          Text="{Tr Text, Uid=AccountLogin_PasswordLabel}" />
+				<EditText android:layout_width="match_parent"
+				          android:layout_height="wrap_content"
+				          android:textSize="16sp"
+				          Text="{Binding InputPassword, Mode=TwoWay, UpdateEvent=TextChanged}" />
+			
+				<CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
+			              Text="{Tr Text, Uid=AccountLogin_RememberMe}"
+			              android:checked="{Binding InputRememberMe, Mode=TwoWay, UpdateEvent=CheckedChange}" />
+			
+				<LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}"
+							  >
+					<Button XmlStyle="{Resource MediumBlueButtonStyle}"
+					        Text="{Tr Text, Uid=AccountLogin_SignUp}"
+					        Click="{Binding OpenRegisterCommand}"
+							/>
+					<Button XmlStyle="{Resource MediumGreenButtonStyle}"
+					        Text="{Tr Text, Uid=AccountLogin_SignIn}"
+					        Click="{Binding LoginCommand}"
+							/>
+				</LinearLayout>
+			</LinearLayout>
+		
+			<LinearLayout XmlStyle="{Resource ColumnLayoutStyle}" />
+		</LinearLayout>					
 	</RelativeLayout>
+
+	<!-- AccountRegister -->
+	<RelativeLayout XmlStyle="{Resource BaseRootLayoutStyle}"
+					android:gravity="center"
+					android:visibility="{Binding PageState, Converter={Resource SynchronizationPageStateToVisibilityConverter}, ConverterParameter='AccountRegister'}"
+					>
+		<LinearLayout XmlStyle="{Resource ColumnContainerLinearLayoutStyle}">
+			<LinearLayout XmlStyle="{Resource ColumnLayoutStyle}" />
+			
+			<LinearLayout XmlStyle="{Resource LargeColumnLayoutStyle}" 
+						  android:orientation="vertical"
+						  >
+				<TextView XmlStyle="{Resource HeaderTopLabelStyle}"
+				          Text="{Tr Text, Uid=AccountLogin_LoginLabel}" />
+				<EditText android:layout_width="match_parent"
+				          android:layout_height="wrap_content"
+				          android:textSize="16sp"
+				          Text="{Binding InputLogin, Mode=TwoWay, UpdateEvent=TextChanged}" />
+				
+				<TextView XmlStyle="{Resource HeaderTopLabelStyle}"
+				          Text="{Tr Text, Uid=AccountRegister_EmailLabel}" />
+				<EditText android:layout_width="match_parent"
+				          android:layout_height="wrap_content"
+				          android:textSize="16sp"
+				          Text="{Binding InputEmail, Mode=TwoWay, UpdateEvent=TextChanged}" />
+			
+				<TextView XmlStyle="{Resource HeaderTopLabelStyle}"
+				          Text="{Tr Text, Uid=AccountLogin_PasswordLabel}" />
+				<EditText android:layout_width="match_parent"
+				          android:layout_height="wrap_content"
+				          android:textSize="16sp"
+				          Text="{Binding InputPassword, Mode=TwoWay, UpdateEvent=TextChanged}" />
+				
+				<TextView XmlStyle="{Resource HeaderTopLabelStyle}"
+				          Text="{Tr Text, Uid=AccountRegister_PasswordConfirmationLabel}" />
+				<EditText android:layout_width="match_parent"
+				          android:layout_height="wrap_content"
+				          android:textSize="16sp"
+				          Text="{Binding InputPasswordConfirmation, Mode=TwoWay, UpdateEvent=TextChanged}" />
+			
+				<CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
+			              Text="{Tr Text, Uid=AccountLogin_RememberMe}"	
+			              android:checked="{Binding InputRememberMe, Mode=TwoWay, UpdateEvent=CheckedChange}" />
+			
+				<LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}"
+							  >
+					<Button XmlStyle="{Resource MediumOrangeButtonStyle}"
+					        Text="{Tr Text, Uid=AccountLogin_SignIn}"
+					        Click="{Binding OpenRegisterCommand}"
+							/>
+					<Button XmlStyle="{Resource MediumGreenButtonStyle}"
+					        Text="{Tr Text, Uid=AccountLogin_SignUp}"
+					        Click="{Binding LoginCommand}"
+							/>
+				</LinearLayout>
+			</LinearLayout>
+		
+			<LinearLayout XmlStyle="{Resource ColumnLayoutStyle}" />
+		</LinearLayout>					
+	</RelativeLayout>
+
 
 </LinearLayout>

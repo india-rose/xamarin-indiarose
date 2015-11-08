@@ -46,7 +46,7 @@
 	<Style Key="RootPaddingLinearLayoutStyle"
 	       XmlStyle="{Resource RootPaddingLayoutStyle}"
 	       android:orientation="vertical" />
-
+	
 	<!-- Styles for pages full of buttons -->
 
 	<Style Key="ButtonLineContainerStyle"
@@ -73,12 +73,22 @@
 	       android:orientation="horizontal" />
 
 	<!-- column layout -->
-	<Style Key="ColumnLayoutStyle"
-	       android:layout_width="match_parent"
+	<Style Key="BaseColumnLayoutStyle"
+		   android:layout_width="match_parent"
 	       android:layout_height="match_parent"
-	       android:layout_weight="1"
 	       android:layout_marginLeft="4dip"
-	       android:layout_marginRight="4dip" />
+	       android:layout_marginRight="4dip"
+		   />
+	
+	<Style Key="ColumnLayoutStyle"
+		   XmlStyle="{Resource BaseColumnLayoutStyle}"
+	       android:layout_weight="1"
+	       />
+
+	<Style Key="LargeColumnLayoutStyle"
+		   XmlStyle="{Resource BaseColumnLayoutStyle}"
+	       android:layout_weight="3"
+	       />
 
 	<Style Key="ColumnLinearLayoutStyle"
 	       XmlStyle="{Resource ColumnLayoutStyle}"
