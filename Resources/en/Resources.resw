@@ -606,4 +606,16 @@ Comments : </value>
   <data name="AccountRegister_PasswordConfirmationLabel.Text" xml:space="preserve">
     <value>Password confirmation</value>
   </data>
+  <data name="DeviceChoose_ChooseDeviceLabel.Text" xml:space="preserve">
+    <value>Choose existing configuration</value>
+  </data>
+  <data name="DeviceChoose_CreateDevice.Text" xml:space="preserve">
+    <value>Create configuration</value>
+  </data>
+  <data name="DeviceChoose_DeviceConfigurationLabel.Text" xml:space="preserve">
+    <value>Configuration name</value>
+  </data>
+  <data name="DeviceChoose_SelectDevice.Text" xml:space="preserve">
+    <value>Select this configuration</value>
+  </data>
 </root>
