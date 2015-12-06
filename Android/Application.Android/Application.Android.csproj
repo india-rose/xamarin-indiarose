@@ -95,6 +95,8 @@
     <Compile Include="Activities\Admin\HomeActivity.cs" />
     <AndroidResource Include="Resources\drawable\ir_logo.png" />
     <AndroidResource Include="Resources\drawable\ir_logo_params.png" />
+    <AndroidResource Include="Resources\values-large\dimens.xml" />
+    <AndroidResource Include="Resources\values\dimens.xml" />
     <Content Include="Views\SplashScreen.xml" />
     <None Include="Views\User\HomePage.back.xml" />
     <None Include="Views\Admin\Collection\Dialogs\RecordSoundDialog.xml" />
