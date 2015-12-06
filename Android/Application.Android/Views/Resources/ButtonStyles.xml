@@ -4,7 +4,7 @@
 
 	<Style Key="TextButtonStyle"
 	       android:textColor="@android:color/white"
-	       android:textSize="@dimen/textsize" />
+	       android:textSize="20sp" />
 
 	<Style Key="BaseSimpleButtonStyle"
 	       XmlStyle="{Resource TextButtonStyle}"
