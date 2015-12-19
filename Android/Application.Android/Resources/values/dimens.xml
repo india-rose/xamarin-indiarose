@@ -1,4 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Medium dimension values-->
 <resources>
-  <dimen name="textsize">10sp</dimen>
+  <!--Button Size-->
+  <dimen name="ButtonTextSize">13sp</dimen>
+  <dimen name="ValidationButtonSize">50sp</dimen>
+  <!--Special Size for TTS page-->
+  <dimen name="TTSMargin">13dip</dimen>
+  <dimen name="TTSButtonTextSize">20sp</dimen>
+  <dimen name="TTSTextSize">16sp</dimen>
 </resources>
