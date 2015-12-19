@@ -8,6 +8,9 @@
   <dimen name="TTSMargin">20dip</dimen>
   <dimen name="TTSButtonTextSize">30sp</dimen>
   <dimen name="TTSTextSize">22sp</dimen>
+  <!--Special Size for Credits Page-->
+  <dimen name="CreditTextPaddingLeftRight">50dip</dimen>
+  <dimen name="CreditTitleSize">40sp</dimen>
   <!--Common Size-->
   <dimen name="ButtonPagePadding">25dip</dimen>
   <dimen name="LinkSize">20sp</dimen>

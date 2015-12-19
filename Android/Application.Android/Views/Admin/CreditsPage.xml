@@ -11,7 +11,7 @@
 		<Style Key="TitleTextStyle"
 		       XmlStyle="{Resource BaseTextStyle}"
 		       android:textColor="#0AC808"
-		       android:textSize="40sp" />
+		       android:textSize="@dimen/CreditTitleSize" />
 		<Style Key="SectionTextStyle"
 		       XmlStyle="{Resource BaseTextStyle}"
 		       android:textColor="#E3081C"
@@ -28,15 +28,16 @@
 		       android:layout_width="match_parent"
 		       android:layout_height="match_parent"
 		       android:orientation="vertical"
-		       android:paddingLeft="50dip"
-		       android:paddingRight="50dip"
+		       android:paddingLeft="@dimen/CreditTextPaddingLeftRight"
+		       android:paddingRight="@dimen/CreditTextPaddingLeftRight"
 		       android:paddingBottom="20dip"
 		       android:paddingTop="20dip" />
 
 		<Style Key="LogoLayoutStyle"
 		       android:layout_width="match_parent"
 		       android:layout_height="match_parent"
-		       android:layout_weight="3" />
+		       android:layout_weight="3"
+           />
 
 		<Style Key="ScrollViewStyle"
 		       android:layout_width="match_parent"
