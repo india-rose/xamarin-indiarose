@@ -42,17 +42,13 @@
 	              android:layout_above="@id/buttons">
 		<!--First column-->
 		<ScrollView XmlStyle="{Resource ColumnLayoutStyle}">
-
-			<LinearLayout android:layout_width="match_parent"
-			              android:layout_height="wrap_content"
-						        android:orientation="vertical">
-
+			<LinearLayout XmlStyle="{Resource VerticalLinearLayoutStyle}">
 				<!--Text-->
 				<TextView XmlStyle="{Resource HeaderTopLabelStyle}"
 				          Text="{Tr Text, Uid=Collection_IndiagramText}" />
 				<EditText android:layout_width="match_parent"
 				          android:layout_height="wrap_content"
-				          android:textSize="16sp"
+				          android:textSize="@dimen/DefaultTextSize"
 				          Text="{Binding CurrentIndiagram.Text, Mode=TwoWay, UpdateEvent=TextChanged}" />
 
 				<!--Category-->
@@ -85,7 +81,7 @@
 				<LinearLayout XmlStyle="{Resource VerticalLinearLayoutStyle}">
 					<TextView XmlStyle="{Resource SmallFormLabelStyle}"
 					          Text="{Tr Text,Uid=Collection_PositionBefore}"
-							  android:gravity="left|center"/>
+							      android:gravity="left|center"/>
 					<BindableSpinner XmlStyle="{Resource SpinnerStyle}"
 					                 adapter="{Binding Brothers, Template={Resource PositionTemplate}}"
 					                 currentItem="{Binding BeforeIndiagram, Mode=TwoWay, UpdateEvent=CurrentItemChanged}" />

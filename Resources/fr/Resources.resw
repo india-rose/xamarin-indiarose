@@ -178,7 +178,7 @@
     <value>Supprimer le son</value>
   </data>
   <data name="Collection_CopyIndiagram.Text" xml:space="preserve">
-    <value>Copier l'indiagram</value>
+    <value>Copier l'indiagram :</value>
   </data>
   <data name="Collection_Copy.Text" xml:space="preserve">
     <value>Copier</value>
@@ -211,7 +211,7 @@
     <value>Texte de l'indiagram :</value>
   </data>
   <data name="Collection_ParentCategory.Text" xml:space="preserve">
-    <value>Catégorie parente</value>
+    <value>Catégorie parente :</value>
   </data>
   <data name="Collection_ParentCategoryName.Text" xml:space="preserve">
     <value>Nom : </value>

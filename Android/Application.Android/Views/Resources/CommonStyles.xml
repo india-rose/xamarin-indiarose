@@ -92,7 +92,7 @@
 
 	<Style Key="SpinnerStyle"
 	       android:layout_width="match_parent"
-	       android:layout_height="40dip" />
+	       android:layout_height="@dimen/SpinnerSize" />
 
 	<Style Key="SpinnerItemLayoutStyle"
 	       android:layout_width="match_parent"
@@ -101,7 +101,7 @@
 	<Style Key="SpinnerItemTextStyle"
 	       android:layout_width="wrap_content"
 	       android:layout_height="match_parent"
-	       android:textSize="20sp"
+	       android:textSize="@dimen/SpinnerTextSize"
 	       android:textColor="@android:color/black" />
 
 	<Style Key="BaseLabelStyle"
@@ -113,7 +113,7 @@
 	       android:layout_width="wrap_content"
 	       android:layout_height="wrap_content"
 	       android:textStyle="italic"
-		     android:textSize="18sp"
+		     android:textSize="@dimen/FormTextSize"
 		     />
 
 
@@ -121,14 +121,14 @@
 		   XmlStyle="{Resource BaseLabelStyle}"
 		   android:layout_width="wrap_content"
 		   android:layout_height="wrap_content"
-		   android:textSize="15sp"
+		   android:textSize="@dimen/DefaultTextSize"
 		   />
 
 	<Style Key="LargeFormLabelStyle"
 		   XmlStyle="{Resource BaseLabelStyle}"
 		   android:layout_width="wrap_content"
 		   android:layout_height="wrap_content"
-		   android:textSize="24sp"
+		   android:textSize="@dimen/LargeFormLabelTextSize"
 		   />
 
   <Style Key="HeaderLabelStyle"
@@ -136,8 +136,7 @@
 			   android:layout_marginTop="10dip"
 			   />
   <Style Key="HeaderItalicLabelStyle"
-			   XmlStyle="{Resource LargeFormLabelStyle}"
-			   android:layout_marginTop="10dip"
+			   XmlStyle="{Resource HeaderLabelStyle}"
 	       android:textStyle="italic"
 			   />
   <Style Key="HeaderTopLabelStyle"
@@ -149,13 +148,13 @@
 	       XmlStyle="{Resource BaseLabelStyle}"
 	       android:layout_width="wrap_content"
 	       android:layout_height="wrap_content" 
-		   android:textSize="18sp"
+		     android:textSize="@dimen/CheckboxTextSize"
 		   />
 
 	<Style Key="DefaultTextStyle"
 	       android:layout_width="wrap_content"
 	       android:layout_height="wrap_content"
-	       android:textSize="16sp"
+	       android:textSize="@dimen/DefaultTextSize"
 	       android:textColor="@android:color/black" />
 
   <Style Key="MatchWrapLayoutStyle"
@@ -173,7 +172,7 @@
 
 	<Style Key="ButtonContainerStyle"
 		   android:layout_width="match_parent"
-		   android:layout_height="60dip"
+		   android:layout_height="@dimen/ButtonContainerSize"
 		   android:orientation="horizontal"
 		   />
 

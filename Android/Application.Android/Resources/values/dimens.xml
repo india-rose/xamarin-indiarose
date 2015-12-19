@@ -14,4 +14,12 @@
   <!--Common Size-->
   <dimen name="ButtonPagePadding">15dip</dimen>
   <dimen name="LinkSize">15sp</dimen>
+  <dimen name="FormTextSize">18sp</dimen>
+  <dimen name="SpinnerSize">35dip</dimen>
+  <dimen name="SpinnerTextSize">15sp</dimen>
+  <dimen name="DefaultTextSize">16sp</dimen>
+  <dimen name="CheckboxTextSize">16sp</dimen>
+  <dimen name="MarginSeparatorSize">20dip</dimen>
+  <dimen name="ButtonContainerSize">-2dp</dimen><!-- -2dp is wrap_content-->
+  <dimen name="LargeFormLabelTextSize">20sp</dimen>
 </resources>

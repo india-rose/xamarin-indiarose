@@ -26,8 +26,18 @@
 			</LinearLayout>
 		</DataTemplate>
 	</Resources>
-
-	<LinearLayout XmlStyle="{Resource ColumnContainerLinearLayoutStyle}">
+  <!--Button ok & back-->
+  <LinearLayout XmlStyle="{Resource ValidationButtonLinearLayoutStyle}"
+                android:id="ippvalidationbutton">
+    <Button XmlStyle="{Resource OkButtonStyle}"
+		        Text="{Tr Text, Uid=Button_Ok}"
+		        Click="{Binding SaveCommand}" />
+    <Button XmlStyle="{Resource CancelButtonStyle}"
+		        Text="{Tr Text, Uid=Button_Cancel}"
+		        Click="{Binding BackCommand}" />
+  </LinearLayout>
+	<LinearLayout XmlStyle="{Resource ColumnContainerLinearLayoutStyle}"
+                android:layout_above="@id/ippvalidationbutton">
 		<!--First column-->
 		<ScrollView XmlStyle="{Resource ColumnLayoutStyle}">
 			<LinearLayout android:layout_width="match_parent"
@@ -54,7 +64,7 @@
 				          Text="{Tr Text, Uid=IndiagramProperty_FontSize}" />
 
 				<BindableSpinner XmlStyle="{Resource SpinnerStyle}"
-				                 android:layout_marginBottom="20dip"
+				                 android:layout_marginBottom="@dimen/MarginSeparatorSize"
 				                 adapter="{Binding FontSizes, Template={Resource FontSizeTemplate}}"
 				                 currentItem="{Binding FontSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}" />
 
@@ -65,7 +75,8 @@
 				<LinearLayout android:layout_width="match_parent"
 				              android:layout_height="wrap_content"
 				              android:orientation="horizontal"
-				              android:layout_marginBottom="10dip">
+                      android:layout_marginBottom="10dip"
+                      >
 					<TextView XmlStyle="{Resource DefaultTextStyle}"
 					          android:layout_marginRight="10dip"
 					          Text="{Tr Text, Uid=IndiagramProperty_TextColorLabel}" />
@@ -77,6 +88,7 @@
 				</LinearLayout>
 
 				<Button XmlStyle="{Resource BlueButtonStyle}"
+                android:layout_marginBottom="@dimen/MarginSeparatorSize"
 				        Text="{Tr Text, Uid=IndiagramProperty_ChangeTextColor}"
 				        Click="{Binding TextColorCommand}" />
 
@@ -109,14 +121,5 @@
 		</LinearLayout>
 	</LinearLayout>
 
-	<!--Button ok & back-->
-	<LinearLayout XmlStyle="{Resource ValidationButtonLinearLayoutStyle}">
-
-		<Button XmlStyle="{Resource OkButtonStyle}"
-		        Text="{Tr Text, Uid=Button_Ok}"
-		        Click="{Binding SaveCommand}" />
-		<Button XmlStyle="{Resource CancelButtonStyle}"
-		        Text="{Tr Text, Uid=Button_Cancel}"
-		        Click="{Binding BackCommand}" />
-	</LinearLayout>
+	
 </RelativeLayout>
