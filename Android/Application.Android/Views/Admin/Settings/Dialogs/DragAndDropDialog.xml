@@ -3,17 +3,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               XmlStyle="{Resource RootPaddingLinearLayoutStyle}">
 
-	<TextView XmlStyle="{Resource DialogText}"
+  <ScrollView XmlStyle="{Resource ScrollExplanationTextStyle}"
+              android:layout_weight="1">
+    <TextView XmlStyle="{Resource DialogText}"
 	          Text="{Tr Text, Uid=DragAndDrop_Explanation}" />
-	<RadioGroup XmlStyle="{Resource DialogRadioGroupStyle}">
+  </ScrollView>
 
-		<RadioButton XmlStyle="{Resource DialogRadioButtonStyle}"
+  <RadioGroup XmlStyle="{Resource DialogRadioGroupStyle}"
+              android:layout_weight="1">
+
+    <RadioButton XmlStyle="{Resource DialogRadioButtonStyle}"
 		             Text="{Tr Text, Uid=RadioButton_On}"
 		             checked="{Binding IsEnabled, Mode=TwoWay, UpdateEvent=CheckedChange}" />
 
-		<RadioButton XmlStyle="{Resource DialogRadioButtonStyle}"
+    <RadioButton XmlStyle="{Resource DialogRadioButtonStyle}"
 		             Text="{Tr Text, Uid=RadioButton_Off}"
 		             checked="{Binding IsDisabled, Mode=TwoWay, UpdateEvent=CheckedChange}" />
-	</RadioGroup>
+  </RadioGroup>
 
 </LinearLayout>

@@ -22,4 +22,7 @@
   <dimen name="MarginSeparatorSize">20dip</dimen>
   <dimen name="ButtonContainerSize">60dip</dimen>
   <dimen name="LargeFormLabelTextSize">24sp</dimen>
+  <!--Dialog Size-->
+  <dimen name="DialogTexSize">20sp</dimen>
+  <dimen name="DialogExplanationTextSize">20sp</dimen>
 </resources>

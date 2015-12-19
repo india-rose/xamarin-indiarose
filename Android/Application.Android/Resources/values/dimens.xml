@@ -22,4 +22,7 @@
   <dimen name="MarginSeparatorSize">20dip</dimen>
   <dimen name="ButtonContainerSize">-2dp</dimen><!-- -2dp is wrap_content-->
   <dimen name="LargeFormLabelTextSize">20sp</dimen>
+  <!--Dialog Size-->
+  <dimen name="DialogTexSize">15sp</dimen>
+  <dimen name="DialogExplanationTextSize">13sp</dimen>
 </resources>
