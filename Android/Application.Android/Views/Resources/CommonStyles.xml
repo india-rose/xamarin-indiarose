@@ -14,9 +14,9 @@
   
   <Style Key="LinkStyle"
          android:layout_width="wrap_content"
-	     android:layout_height="wrap_content"
+	       android:layout_height="wrap_content"
          android:autoLink="web"
-		 android:textSize="18dip"
+		     android:textSize="@dimen/LinkSize"
          />
 
 	<Style Key="LogoStyle"
@@ -52,7 +52,6 @@
 	<Style Key="ButtonLineContainerStyle"
 	       android:layout_width="match_parent"
 	       android:layout_height="match_parent"
-	       android:layout_marginBottom="4dip"
 	       android:layout_weight="1"
 	       android:gravity="center_horizontal"
 	       android:orientation="horizontal" />
@@ -61,8 +60,8 @@
 	       android:layout_height="match_parent"
 	       android:gravity="center"
 	       android:orientation="vertical"
-	       android:paddingBottom="25dip"
-	       android:paddingTop="25dip" />
+	       android:paddingBottom="@dimen/ButtonPagePadding"
+	       android:paddingTop="@dimen/ButtonPagePadding" />
 
 	<!-- Two column root layout -->
 	<Style Key="ColumnContainerLayoutStyle"

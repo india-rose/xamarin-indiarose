@@ -8,4 +8,7 @@
   <dimen name="TTSMargin">13dip</dimen>
   <dimen name="TTSButtonTextSize">20sp</dimen>
   <dimen name="TTSTextSize">16sp</dimen>
+  <!--Common Size-->
+  <dimen name="ButtonPagePadding">15dip</dimen>
+  <dimen name="LinkSize">15sp</dimen>
 </resources>
