@@ -17,8 +17,9 @@ namespace IndiaRose.Application.Activities.Admin.Settings.Dialogs
         public ResetSettingsDialog()
         {
             var trad = DependencyService.Container.Resolve<ILocalizationService>();
-
             Title = trad.GetString("ResetSettings_Title", "Text");
+            Message = trad.GetString("ResetSettings_Explanation", "Text");
+
             Buttons.Add(DialogsButton.Positive, trad.GetString("Button_Ok", "Text"));
             Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Cancel", "Text"));
         }

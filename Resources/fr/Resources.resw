@@ -130,7 +130,7 @@
     <value>Sélectionner</value>
   </data>
   <data name="DeleteCategoryConfirmation_Title.Text" xml:space="preserve">
-    <value>Cette catégorie a des enfants, si vous la supprimez, ses enfants seront également supprimés. Supprimer ?</value>
+    <value>Cette catégorie contient des Indiagrams</value>
   </data>
   <data name="DeleteCategoryWarning_Title.Text" xml:space="preserve">
     <value>Êtes-vous sûr de vouloir supprimer cette catégorie ?</value>
@@ -241,7 +241,7 @@
     <value>Choisissez la couleur</value>
   </data>
   <data name="ResetSettings_Title.Text" xml:space="preserve">
-    <value>Voulez vous réinitialiser les paramètres (votre collection sera conservée) ?</value>
+    <value>Réinitialisation des paramètres</value>
   </data>
   <data name="DragAndDrop_Explanation.Text" xml:space="preserve">
     <value>Deux modes de sélection sont disponibles, Touch (vous touchez juste un indiagram et il sera ajouté à la phrase) ou Glisser-Déposer (vous devez glisser l'indiagram depuis la zone du haut dans la bande phrase pour l'ajouter)</value>
@@ -543,5 +543,11 @@ Commentaires : </value>
   </data>
   <data name="Credits_SupportTeam.Text" xml:space="preserve">
     <value>Marian Gappa, Joris Rubagotti, Cassandre Nunes, Joris Falip, Nicolas Serrette</value>
+  </data>
+  <data name="DeleteCategoryConfirmation_Explanation.Text" xml:space="preserve">
+    <value>Ceci supprimera tous les Indiagrams contenu dans cette catégorie.\nÊtes-vous continuer ?</value>
+  </data>
+  <data name="ResetSettings_Explanation.Text" xml:space="preserve">
+    <value>Ceci réinitilisera vos paramètres.\nVotre collection NE sera PAS modifié</value>
   </data>
 </root>

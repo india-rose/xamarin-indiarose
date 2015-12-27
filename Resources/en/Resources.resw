@@ -130,7 +130,7 @@
     <value>Select</value>
   </data>
   <data name="DeleteCategoryConfirmation_Title.Text" xml:space="preserve">
-    <value>This category has children, if you delete it, it will also delete all of its children, are you sure you want it?</value>
+    <value>This category contains Indiagrams</value>
   </data>
   <data name="DeleteCategoryWarning_Title.Text" xml:space="preserve">
     <value>Do you really want to delete this category?</value>
@@ -241,7 +241,7 @@
     <value>Pick a color</value>
   </data>
   <data name="ResetSettings_Title.Text" xml:space="preserve">
-    <value>Do you want to reset the settings (not the collection)?</value>
+    <value>Settings reset</value>
   </data>
   <data name="DragAndDrop_Explanation.Text" xml:space="preserve">
     <value>Two modes are available to select indiagrams, Point and Click (just touch the indiagram and it will be added to the sentence) or Drag and drop (you need to drag indiagram from the browsing area and drop it in the sentence area)</value>
@@ -542,5 +542,11 @@ Comments : </value>
   </data>
   <data name="Credits_SupportTeam.Text" xml:space="preserve">
     <value>Marian Gappa, Joris Rubagotti, Cassandre Nunes, Joris Falip, Nicolas Serrette</value>
+  </data>
+  <data name="DeleteCategoryConfirmation_Explanation.Text" xml:space="preserve">
+    <value>This will supress all the Indiagrams contents.\nAre you sure to continue ?</value>
+  </data>
+  <data name="ResetSettings_Explanation.Text" xml:space="preserve">
+    <value>This will reset your settings\nYour collection will NOT be affected</value>
   </data>
 </root>
