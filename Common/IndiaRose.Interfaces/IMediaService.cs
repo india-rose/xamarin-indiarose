@@ -2,8 +2,13 @@
 
 namespace IndiaRose.Interfaces
 {
+    /// <summary>
+    /// Interface qui fournit les méthodes pour l'utilisation des média (Son & Caméra)
+    /// L'implémentation dépend de la plateforme
+    /// </summary>
     public interface IMediaService
     {
+        //TODO
         Task<string> GetPictureFromCameraAsync();
 
         Task<string> GetPictureFromGalleryAsync(); 
