@@ -3,8 +3,12 @@ using System.Threading.Tasks;
 
 namespace IndiaRose.Interfaces
 {
+    /// <summary>
+    /// Contient les préférences utilisateurs et des fonctions pour les gérer
+    /// </summary>
     public interface ISettingsService
     {
+        //TODO doc
         string TopBackgroundColor { get; set; }
 
         string BottomBackgroundColor { get; set; }

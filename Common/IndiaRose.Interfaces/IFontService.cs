@@ -8,7 +8,7 @@ namespace IndiaRose.Interfaces
     public interface IFontService
     {
         /// <summary>
-        /// Dictionnaire contenant les polices
+        /// Dictionnaire décrivant les polices
         /// </summary>
         Dictionary<string, string> FontList { get; }
     }

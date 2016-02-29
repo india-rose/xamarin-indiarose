@@ -14,7 +14,7 @@ namespace IndiaRose.Interfaces
         /// </summary>
         /// <param name="pdfFileName">Le chemin du pdf à ouvrir</param>
         void ShowPdfFile(string pdfFileName);
-        //TODO
+        //TODO doc
         Task<Stream> OpenZip(string zipFileName);
         /// <summary>
         /// Copie un fichier vers une nouvelle destination

@@ -8,7 +8,7 @@ namespace IndiaRose.Interfaces
     /// </summary>
     public interface IMediaService
     {
-        //TODO
+        //TODO doc
         Task<string> GetPictureFromCameraAsync();
 
         Task<string> GetPictureFromGalleryAsync(); 
