@@ -21,8 +21,16 @@ namespace IndiaRose.Interfaces
         /// <seealso cref="IResourceService.OpenZip"/>
 	    Task InitializeCollectionFromZipStreamAsync(Stream zipStream);
 
+        /// <summary>
+        /// Vérifie de manière si l'ancien format de stockage de la collection est présent
+        /// </summary>
+        /// <returns>La tâche asynchrone vérifiant la présence de l'ancien format de sauvegarde</returns>
 	    Task<bool> HasOldCollectionFormatAsync();
 
+        /// <summary>
+        /// Charge de manière asynchrone la collection avec l'ancien format de stockage
+        /// </summary>
+        /// <returns>La tâche asynchrone chargeant la collection</returns>
 	    Task InitializeCollectionFromOldFormatAsync();
     }
 }
