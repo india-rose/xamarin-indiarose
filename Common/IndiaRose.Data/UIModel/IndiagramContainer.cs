@@ -3,6 +3,9 @@ using Storm.Mvvm;
 
 namespace IndiaRose.Data.UIModel
 {
+    /// <summary>
+    /// Classe contenant un Indiagram
+    /// </summary>
     public class IndiagramContainer : NotifierBase
     {
         private Indiagram _indiagram;

@@ -10,25 +10,35 @@ namespace IndiaRose.Interfaces
     /// </summary>
     public interface IXmlService
     {
-        //TODO doc
+        /// <summary>
+        /// Événement indiquant la fin du chargement de la collection
+        /// Levé par InitializeCollectionFromOldFormatAsync ou InitializeCollectionFromZipStreamAsync
+        /// </summary>
+        /// <see cref="InitializeCollectionFromZipStreamAsync"/>
+        /// <seealso cref="InitializeCollectionFromOldFormatAsync"/>
 	    event EventHandler CollectionImported;
 
         /// <summary>
-        /// 
+        /// Charge la collection des Indiagrams à partir de l'archive de la collection
+        /// Lève CollectionImported à la fin du chargement
+        /// Méthode asynchrone
         /// </summary>
-        /// <param name="zipStream"></param>
-        /// <returns></returns>
+        /// <param name="zipStream">Le Stream de l'archive de la Collection</param>
+        /// <returns>La tâche asynchrone chargeant la collection</returns>
         /// <seealso cref="IResourceService.OpenZip"/>
 	    Task InitializeCollectionFromZipStreamAsync(Stream zipStream);
 
         /// <summary>
         /// Vérifie de manière si l'ancien format de stockage de la collection est présent
+        /// Méthode asynchrone
         /// </summary>
         /// <returns>La tâche asynchrone vérifiant la présence de l'ancien format de sauvegarde</returns>
 	    Task<bool> HasOldCollectionFormatAsync();
 
         /// <summary>
         /// Charge de manière asynchrone la collection avec l'ancien format de stockage
+        /// Lève CollectionImported à la fin du chargement
+        /// Méthode asynchrone
         /// </summary>
         /// <returns>La tâche asynchrone chargeant la collection</returns>
 	    Task InitializeCollectionFromOldFormatAsync();
