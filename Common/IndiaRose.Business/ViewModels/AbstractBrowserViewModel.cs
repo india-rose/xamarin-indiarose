@@ -12,6 +12,9 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels
 {
+    /// <summary>
+    /// VueModèle abstrait pour les pages utilisant l'affichage de la collection
+    /// </summary>
 	public abstract class AbstractBrowserViewModel : AbstractViewModel
     {
 		private int _collectionOffset;

@@ -7,6 +7,9 @@ using Storm.Mvvm.Commands;
 
 namespace IndiaRose.Business.ViewModels.Admin.Settings
 {
+    /// <summary>
+    /// VueModèle de la page de menu des préférences
+    /// </summary>
 	public class SettingsListViewModel : AbstractViewModel
 	{
 		#region Commands

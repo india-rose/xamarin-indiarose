@@ -5,6 +5,9 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Business.ViewModels.Admin.Settings
 {
+    /// <summary>
+    /// VueModèle abstrait dont les pages de configuration doivent hériter
+    /// </summary>
 	public abstract class AbstractSettingsViewModel : AbstractViewModel
 	{
 		public ISettingsService SettingsService

@@ -11,6 +11,9 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.Admin
 {
+    /// <summary>
+    /// VueModèle de la page d'accueil de la partie administrateur
+    /// </summary>
 	public class HomeViewModel : ViewModelBase
 	{
 		private const string HELP_DOCUMENT_UID = "Help";

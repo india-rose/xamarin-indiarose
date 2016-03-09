@@ -14,6 +14,9 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Business.ViewModels.Admin.Settings
 {
+    /// <summary>
+    /// VueModèle de la page "Couleur de Fond"
+    /// </summary>
 	public class ApplicationLookViewModel : AbstractSettingsViewModel
 	{
 		#region Properties
@@ -94,6 +97,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 			});
 		}
 
+        /// <summary>
+        /// Calcul les tailles pour les zones possibles
+        /// </summary>
 		private void InitZoneHeightsArray()
 		{
 			// clear the collection before filling it

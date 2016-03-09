@@ -13,6 +13,9 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Business.ViewModels.User
 {
+    /// <summary>
+    /// VueModèle de la page Utilisateur
+    /// </summary>
 	public class UserViewModel : AbstractViewModel
 	{
 		private readonly object _readingMutex = new object();
@@ -286,7 +289,6 @@ namespace IndiaRose.Business.ViewModels.User
 
 			Read(indiagram);
 		}
-
 
 		private void Read(Indiagram indiagram)
 		{

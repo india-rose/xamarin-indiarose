@@ -5,6 +5,9 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels
 {
+    /// <summary>
+    /// VueModèle de la page de chargement
+    /// </summary>
 	public class SplashScreenViewModel : AbstractViewModel
 	{
 		private const string PROPERTY = "Text";

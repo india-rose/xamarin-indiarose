@@ -10,6 +10,9 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels
 {
+    /// <summary>
+    /// Classe abstraite dont tous les VueModèles doivent descendre
+    /// </summary>
 	public abstract class AbstractViewModel : ViewModelBase
 	{
         protected IMessageDialogService MessageDialogService

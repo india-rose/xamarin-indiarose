@@ -9,6 +9,9 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Business.ViewModels.Admin
 {
+    /// <summary>
+    /// VueModèle pour la page de configuration du TTS
+    /// </summary>
 	public class InstallVoiceSynthesisViewModel : AbstractViewModel
 	{
 		public IInstallVoiceSynthesisService InstallVoiceSynthesisService

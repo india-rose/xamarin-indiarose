@@ -15,6 +15,9 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Business.ViewModels.Admin.Settings
 {
+    /// <summary>
+    /// VueModèle de la page "Propriétés des Indiagrams"
+    /// </summary>
 	public class IndiagramPropertyViewModel : AbstractSettingsViewModel
 	{
 		#region Services

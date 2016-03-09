@@ -1,5 +1,9 @@
 ﻿namespace IndiaRose.Business
 {
+    /// <summary>
+    /// Classe pour les déclarations des pages
+    /// Sert pour la navigation
+    /// </summary>
 	public class Views
 	{
 		// Pages in /Admin
