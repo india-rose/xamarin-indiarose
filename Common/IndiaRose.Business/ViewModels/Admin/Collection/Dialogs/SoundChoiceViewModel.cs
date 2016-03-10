@@ -12,6 +12,9 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
+    /// <summary>
+    /// VueModèle pour le dialogue de choix du son
+    /// </summary>
 	public class SoundChoiceViewModel : AbstractCollectionViewModel
 	{
 		private Indiagram _indiagramContainer;

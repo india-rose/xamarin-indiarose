@@ -6,6 +6,9 @@
 
 namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 {
+    /// <summary>
+    /// VueModèle pour le dialogue pour la lecture des catégorie
+    /// </summary>
 	public class CategoryReadingViewModel : AbstractYesNoViewModel
 	{
 		#region Constructor

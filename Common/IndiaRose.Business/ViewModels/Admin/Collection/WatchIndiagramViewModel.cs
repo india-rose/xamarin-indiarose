@@ -14,6 +14,9 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
+    /// <summary>
+    /// VueModèle de la page de résumé d'un Indiagram
+    /// </summary>
 	public class WatchIndiagramViewModel : AbstractCollectionViewModel
 	{
 		private ITextToSpeechService TtsService

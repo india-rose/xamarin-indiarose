@@ -10,6 +10,10 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
+    /// <summary>
+    /// VueModèle du dialogue de choix de la catégorie (après qu'on ait cliqué sur une catégorie)
+    /// Les actions possibles sont Choisir ou Aller dans (si la catégorie contient d'autre catégories)
+    /// </summary>
 	public class SelectCategoryActionViewModel : AbstractCollectionViewModel
 	{
 		private Indiagram _indiagram;

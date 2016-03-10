@@ -13,6 +13,9 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
+    /// <summary>
+    /// VueModèle de la première page de la partie collection (affichage de la collection)
+    /// </summary>
 	public class CollectionManagementViewModel : AbstractBrowserViewModel
 	{
 		public ICommand AddCommand { get; private set; }
@@ -29,7 +32,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 
 		private void AddAction()
 		{
-			// parameter can be removed when the framework has been updated
+			// todo parameter can be removed when the framework has been updated
 			NavigationService.Navigate(Views.ADMIN_COLLECTION_ADDINDIAGRAM);
 		}
 

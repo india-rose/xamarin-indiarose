@@ -16,6 +16,9 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
+    /// <summary>
+    /// VueModèle de la page d'ajout/édition d'un Indiagram
+    /// </summary>
     public class AddIndiagramViewModel : AbstractCollectionViewModel
     {
         private bool _isCategory;
@@ -26,6 +29,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         private List<Indiagram> _brothers;
         private Indiagram _beforeIndiagram;
 
+        #region Services
         public IPopupService PopupService
         {
             get { return LazyResolver<IPopupService>.Service; }
@@ -45,6 +49,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         {
             get { return LazyResolver<IMediaService>.Service; }
         }
+        #endregion
 
         public ICommand ImageChoiceCommand { get; private set; }
         public ICommand SoundChoiceCommand { get; private set; }

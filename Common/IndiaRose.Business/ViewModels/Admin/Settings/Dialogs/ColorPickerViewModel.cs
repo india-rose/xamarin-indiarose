@@ -12,6 +12,9 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 {
+    /// <summary>
+    /// VueModèle pour le dialogue de choix des couleurs
+    /// </summary>
 	public class ColorPickerViewModel : ViewModelBase
 	{
 		public const string COLOR_CONTAINER_PARAMETER = "Color";
