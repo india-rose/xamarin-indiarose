@@ -59,6 +59,9 @@ namespace IndiaRose.Business.ViewModels.User
 
 		#region Properties
 
+        /// <summary>
+        /// Catégorie Courante
+        /// </summary>
 		public Category CurrentCategory
 		{
 			get { return _currentCategory; }
@@ -66,11 +69,15 @@ namespace IndiaRose.Business.ViewModels.User
 			{
 				if (SetProperty(ref _currentCategory, value) && value != null)
 				{
+                    //si on change de catégorie on raffraichit l'affichage
 					RefreshDisplayList();
 				}
 			}
 		}
 
+        /// <summary>
+        /// Collection d'Indiagram à afficher
+        /// </summary>
 		public List<Indiagram> CollectionIndiagrams
 		{
 			get { return _collectionIndiagrams; }
@@ -89,17 +96,27 @@ namespace IndiaRose.Business.ViewModels.User
 			set { SetProperty(ref _collectionDisplayCount, value); }
 		}
 
+        /// <summary>
+        /// La liste des Indiagrams dans la phrase
+        /// </summary>
 		public ObservableCollection<IndiagramUIModel> SentenceIndiagrams
 		{
 			get { return _sentenceIndiagrams; }
 		}
 
+        /// <summary>
+        /// Booléen indiquant si on peut encore ajouter des Indiagrams à la phrase
+        /// S'il est à faux, en cas d'ajout il ne se passera rien
+        /// </summary>
 		public bool SentenceCanAddMoreIndiagrams
 		{
 			get { return _sentenceCanAddMoreIndiagrams; }
 			set { SetProperty(ref _sentenceCanAddMoreIndiagrams, value); }
 		}
 
+        /// <summary>
+        /// Vrai si on est dans le mode Correction
+        /// </summary>
 		public bool IsCorrectionModeEnabled
 		{
 			get { return _isCorrectionModeEnabled; }
@@ -122,6 +139,7 @@ namespace IndiaRose.Business.ViewModels.User
 
 		public UserViewModel()
 		{
+            //Création des catégories spéciales (Home et Correction)
 			Category rootCategory = new Category(CollectionStorageService.Collection)
 			{
 				Id = -1,
@@ -150,6 +168,10 @@ namespace IndiaRose.Business.ViewModels.User
 
 		#region Collection navigation
 
+        /// <summary>
+        /// Action résultant de l'appuie sur le bouton next de la collection
+        /// Affiche les Indiagrams suivants ou revient à la catégorie précédente
+        /// </summary>
 		private void CollectionNextAction()
 		{
 			int offset = CollectionOffset;
@@ -172,6 +194,9 @@ namespace IndiaRose.Business.ViewModels.User
 			}
 		}
 
+        /// <summary>
+        /// Push une catégorie sur la pile de navigation, reset l'offset d'affichage et change la catégorie courante
+        /// </summary>
 		private void PushCategory(Category category)
 		{
 			_navigationStack.Push(category);
@@ -179,6 +204,10 @@ namespace IndiaRose.Business.ViewModels.User
 			CurrentCategory = category;
 		}
 		
+        /// <summary>
+        /// Pop une catégorie de la stack, reset l'offset d'affichage et change la catégorie courante
+        /// </summary>
+        /// <returns>Retourne faux si la catégorie courante est la Home</returns>
 		private bool PopCategory()
 		{
 			if (_navigationStack.Count <= 1) //always keep root category on the stack
@@ -193,6 +222,9 @@ namespace IndiaRose.Business.ViewModels.User
 			return true;
 		}
 
+        /// <summary>
+        /// Change la collection d'Indiagram à afficher
+        /// </summary>
 		private void RefreshDisplayList()
 		{
 			if (_navigationStack.Count == 0)
@@ -208,6 +240,9 @@ namespace IndiaRose.Business.ViewModels.User
 
 		#endregion
 
+        /// <summary>
+        /// Entre dans le mode Correction
+        /// </summary>
 		private void EnterCorrectionModeAction()
 		{
 			if (SentenceIndiagrams.Count == 0 || CheckIsReading() || IsCorrectionModeEnabled)
@@ -226,6 +261,11 @@ namespace IndiaRose.Business.ViewModels.User
 			PushCategory(_correctionCategory);
 		}
 
+        /// <summary>
+        /// Action lorsqu'un Indiagram dans la phrase est selectionné
+        /// Retire l'Indiagram de la phrase et le rajoute dans la collection
+        /// </summary>
+        /// <param name="indiagram"></param>
 		private void SentenceIndiagramSelectedAction(IndiagramUIModel indiagram)
 		{
 			lock (_readingMutex)
