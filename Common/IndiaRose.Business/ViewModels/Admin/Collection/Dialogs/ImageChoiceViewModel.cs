@@ -11,6 +11,9 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
+    /// <summary>
+    /// VueModèle du menu de choix de l'image d'un Indiagram
+    /// </summary>
 	public class ImageChoiceViewModel : AbstractCollectionViewModel
 	{
 		[NavigationParameter]

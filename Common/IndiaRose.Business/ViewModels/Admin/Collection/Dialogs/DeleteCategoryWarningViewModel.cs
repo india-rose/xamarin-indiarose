@@ -11,6 +11,9 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
+    /// <summary>
+    /// VueModèle de confirmation de suppresion d'une Category
+    /// </summary>
 	public class DeleteCategoryWarningViewModel : AbstractCollectionViewModel
 	{
 		private Indiagram _indiagram;

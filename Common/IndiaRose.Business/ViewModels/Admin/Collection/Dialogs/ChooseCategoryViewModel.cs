@@ -13,6 +13,10 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
+    /// <summary>
+    /// VueModèle du dialogue de choix de la catégorie parente 
+    /// Page affichant tous les dialogues de la collection
+    /// </summary>
 	public class ChooseCategoryViewModel : AbstractBrowserViewModel
 	{
 		private Indiagram _excludedIndiagram;

@@ -11,6 +11,9 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
+    /// <summary>
+    /// VueModèle pour l'enregistrement d'un son
+    /// </summary>
 	public class RecordSoundViewModel : AbstractCollectionViewModel
 	{
 		private Indiagram _indiagramContainer;

@@ -11,6 +11,9 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
+    /// <summary>
+    /// VueModèle du dialogue suivant un touch sur une Catégorie (sur la page de navigation dans la collection dans la partie Administrateur)
+    /// </summary>
 	public class ExploreCollectionCategoryViewModel : AbstractCollectionViewModel
 	{
 		private Indiagram _indiagram;
