@@ -22,6 +22,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 			SaveCommand = new DelegateCommand(SaveAction);
 		}
 
+        /// <summary>
+        /// Action de sauvegarde des préférences
+        /// Utilise le SettingsService
+        /// </summary>
 		protected virtual void SaveAction()
 		{
 		    SettingsService.SaveAsync();

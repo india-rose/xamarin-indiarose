@@ -15,6 +15,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 
 		public CategoryReadingViewModel()
 		{
+            //Initilisation de la propriété déjà connu
 			IsEnabled = SettingsService.IsCategoryNameReadingEnabled;
 		}
 

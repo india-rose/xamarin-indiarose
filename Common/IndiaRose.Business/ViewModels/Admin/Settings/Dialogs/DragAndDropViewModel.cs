@@ -14,7 +14,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 		#region Constructor
 
 		public DragAndDropViewModel()
-		{
+        {
+            //Initilisation de la propriété déjà connu
 			IsEnabled = SettingsService.IsDragAndDropEnabled;
 		}
 

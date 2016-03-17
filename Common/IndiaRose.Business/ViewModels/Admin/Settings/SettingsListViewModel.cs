@@ -36,32 +36,49 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 
 		#region Commands implementation
 
+        /// <summary>
+        /// Ouvre la page de réglages des couleurs de fond de l'application et taille des zones de la partie utilisateur
+        /// </summary>
 		private void ApplicationLookAction()
 		{
 			NavigationService.Navigate(Views.ADMIN_SETTINGS_APPLICATIONLOOK);
 		}
 
+        /// <summary>
+        /// Ouvre la page de réglages des propriétés des Indiagrams
+        /// </summary>
 		private void IndiagramPropertyAction()
 		{
 			NavigationService.Navigate(Views.ADMIN_SETTINGS_INDIAGRAMPROPERTIES);
 		}
 
+        /// <summary>
+        /// Ouvre le dialogue de réglages du drag and drop
+        /// </summary>
 		private void DragAndDropAction()
 		{
 			MessageDialogService.Show(Business.Dialogs.ADMIN_SETTINGS_DRAGANDDROP);
 		}
 
-
+        /// <summary>
+        /// Ouvre le dialogue de réglages de la lecture des catégories
+        /// </summary>
 		private void CategoryReadingAction()
 		{
 			MessageDialogService.Show(Business.Dialogs.ADMIN_SETTINGS_CATEGORYREADING);
 		}
 
+        /// <summary>
+        /// Ouvre le dialogue de réglages du délai de lecture
+        /// </summary>
 		private void ReadingDelayAction()
 		{
 			MessageDialogService.Show(Business.Dialogs.ADMIN_SETTINGS_READINGDELAY);
 		}
 
+        /// <summary>
+        /// Ouvre le dialogue de réinitilisation des réglages
+        /// </summary>
 		private void ResetSettingsAction()
 		{
 			MessageDialogService.Show(Business.Dialogs.ADMIN_SETTINGS_RESETSETTINGS);
