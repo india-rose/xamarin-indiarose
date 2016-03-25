@@ -33,6 +33,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			DeleteCommand = new DelegateCommand(DeleteAction);
 		}
 
+        /// <summary>
+        /// Ouvre le dialogue de confirmation de suppression de l'Indiagram
+        /// </summary>
 		private void DeleteAction()
 		{
             CloseDialogAction();
@@ -41,7 +44,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 				{"Indiagram", Indiagram}
 			});
 		}
-
+        
+        /// <summary>
+        /// Ouvre la page de résumé de l'Indiagram
+        /// </summary>
 		private void WatchIndiagram()
 		{
 			NavigationService.Navigate(Views.ADMIN_COLLECTION_WATCHINDIAGRAM, new Dictionary<string, object>

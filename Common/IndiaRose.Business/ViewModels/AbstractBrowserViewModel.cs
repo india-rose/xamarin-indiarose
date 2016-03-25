@@ -98,6 +98,7 @@ namespace IndiaRose.Business.ViewModels
             // Load collection
             ObservableCollection<Indiagram> collection = CollectionStorageService.Collection;
 
+            //Création de la catégorie Home
 			_rootCollection = new Category(collection)
 			{
                 Text = LocalizationService.GetString("Collection_RootCategoryName", "Text"),
@@ -105,6 +106,10 @@ namespace IndiaRose.Business.ViewModels
             };
         }
 
+        /// <summary>
+        /// Méthode s'exécutant lorsqu'on arrive sur la pge
+        /// On push la catégorie Home sur le sommet de la pile
+        /// </summary>
 		public override void OnNavigatedTo(NavigationArgs e, string parametersKey)
 		{
             //todo debug windows line
@@ -117,6 +122,10 @@ namespace IndiaRose.Business.ViewModels
 			}
 		}
 
+        /// <summary>
+        /// Action lorsqu'on appuie sur le bouton Next de la collection
+        /// Recalcule les offset
+        /// </summary>
 		private void NextAction()
 		{
 			int offset = CollectionOffset;
@@ -139,6 +148,11 @@ namespace IndiaRose.Business.ViewModels
 			}
 		}
 
+        /// <summary>
+        /// Ajoute une nouvelle catégorie sur le sommet de la pile de navigation
+        /// </summary>
+        /// <param name="category">Categorie à push</param>
+        /// <param name="canBePopped">Indique si la nouvelle catégorie peut être pop</param>
 		protected void PushCategory(Category category, bool canBePopped = true)
 		{
 			if (_navigationStack.Any())
@@ -155,11 +169,19 @@ namespace IndiaRose.Business.ViewModels
 			RefreshDisplayList();
 		}
 
+        /// <summary>
+        /// Callback raffraichissant la liste
+        /// </summary>
 		private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
 		{
 			RefreshDisplayList();
 		}
 
+        /// <summary>
+        /// Retourne à la catégorie précédente
+        /// </summary>
+        /// <param name="force">Force le pop même si la catégorie ne peut pas être pop (par défaut à faux)</param>
+        /// <returns>Retourne vrai si on a pop, faux sinon</returns>
 		protected bool PopCategory(bool force = false)
 		{
 			if (_navigationStack.Count <= 1)
@@ -192,6 +214,9 @@ namespace IndiaRose.Business.ViewModels
 			CollectionOffset = 0;
 		}
 
+        /// <summary>
+        /// Raffraichit l'affichage de la liste
+        /// </summary>
 		protected void RefreshDisplayList()
 		{
 			if (_navigationStack.Count == 0)
@@ -207,6 +232,7 @@ namespace IndiaRose.Business.ViewModels
 			}
 			DisplayedIndiagrams = FilterCollection(_navigationStack.Peek().Children).ToList();
 
+            //Si on est en bout de liste on revient à la catégorie précédente
 			if (DisplayedIndiagrams.Count == 0 && _navigationStack.Count > 1)
 			{
 				PopCategory();

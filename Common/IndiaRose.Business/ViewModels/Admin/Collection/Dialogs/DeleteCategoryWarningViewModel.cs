@@ -34,6 +34,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			DeleteCommand = new DelegateCommand(DeleteAction);
 		}
 
+        /// <summary>
+        /// Si la Catégorie contient des Indiagrams ouvre un autre dialogue de confirmation sinon supprime la catégorie de la collection
+        /// </summary>
 		protected void DeleteAction()
 		{
             CloseDialogAction();

@@ -37,6 +37,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			GoIntoCommand = new DelegateCommand(GoIntoAction);
 		}
 
+        /// <summary>
+        /// Navigue vers la catégorie
+        /// </summary>
 		private void GoIntoAction()
 		{
 			if (GoIntoCallback != null)
@@ -46,6 +49,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			}
 		}
 
+        /// <summary>
+        /// Ouvre la page de résumé de la Categorie
+        /// </summary>
 		private void WatchIndiagramAction()
 		{
 			NavigationService.Navigate(Views.ADMIN_COLLECTION_WATCHINDIAGRAM, new Dictionary<string, object>

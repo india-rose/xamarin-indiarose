@@ -34,6 +34,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			DeleteCommand = new DelegateCommand(DeleteAction);
 		}
 
+        /// <summary>
+        /// Supprime la Categorie de la collection et lance le callback de suppression
+        /// </summary>
 		protected void DeleteAction()
 		{
 			CollectionStorageService.Delete(Indiagram);

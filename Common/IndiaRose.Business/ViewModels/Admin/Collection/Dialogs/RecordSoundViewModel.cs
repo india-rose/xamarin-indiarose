@@ -48,17 +48,26 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			StopCommand = new DelegateCommand(StopAction);
 		}
 
+        /// <summary>
+        /// Ferme le dialogue
+        /// </summary>
 		protected void CloseAction()
 		{
 			MessageDialogService.DismissCurrentDialog();
 		}
 
+        /// <summary>
+        /// Lance l'enregistrement
+        /// </summary>
 		protected void RecordAction()
 		{
 			IsRecording = true;
 			MediaService.RecordSound();
 		}
 
+        /// <summary>
+        /// Stop l'enregistrement et ferme le dialogue
+        /// </summary>
 		protected async void StopAction()
 		{
 			Indiagram.SoundPath = await MediaService.StopRecord();

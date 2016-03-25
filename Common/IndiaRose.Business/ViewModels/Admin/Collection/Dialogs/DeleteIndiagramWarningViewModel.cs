@@ -33,6 +33,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			DeleteCommand = new DelegateCommand(DeleteAction);
 		}
 
+        /// <summary>
+        /// Supprime l'Indiagram de la Collection
+        /// </summary>
 		protected void DeleteAction()
 		{
             CloseDialogAction();

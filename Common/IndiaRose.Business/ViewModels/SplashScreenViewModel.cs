@@ -38,6 +38,11 @@ namespace IndiaRose.Business.ViewModels
 			LazyResolver<IInitializationStateService>.Service.AddInitializedCallback(OnInitialized);
 		}
 
+        /// <summary>
+        /// Check s'il y a besoin d'importer la collection
+        /// Si oui l'importe depuis le bon format puis va dans la bonne partie de l'application (Admin ou User)
+        /// Sinon va juste dans la bonne partie de l'application
+        /// </summary>
 		private void OnInitialized()
 		{
 			Task.Run(async () =>

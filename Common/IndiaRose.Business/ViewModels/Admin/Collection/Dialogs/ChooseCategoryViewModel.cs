@@ -14,7 +14,7 @@ using Storm.Mvvm.Services;
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
     /// <summary>
-    /// VueModèle du dialogue de choix de la catégorie parente 
+    /// VueModèle de la page de choix de la catégorie parente 
     /// Page affichant tous les dialogues de la collection
     /// </summary>
 	public class ChooseCategoryViewModel : AbstractBrowserViewModel
@@ -62,6 +62,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			});	
 		}
 
+        /// <summary>
+        /// A appeler lorsque la catégorie est sélectionné
+        /// Ferme le dialogue courant et lance le callback passé en paramètre lors de la navigation vers la page
+        /// </summary>
+        /// <param name="category"></param>
 		private void OnCategorySelected(Category category)
 		{
 			MessageDialogService.DismissDialog(DialogId);
@@ -71,6 +76,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			}
 		}
 
+        /// <summary>
+        /// Navigue vers la catégorie selectionné (seulement si elle contient d'autre catégorie)
+        /// </summary>
+        /// <param name="category">Catégorie vers laquelle navigué</param>
 		private void GoIntoAction(Category category)
         {
             var trad = DependencyService.Container.Resolve<ILocalizationService>();
@@ -83,6 +92,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
             {
                 if (category.Children.All(x => !x.IsCategory))
                 {
+                    //s'il n'y a aucune catégorie on affiche un message
                     var message = trad.GetString("Collection_ChildrensNotCategory", "Text");
                     LazyResolver<IPopupService>.Service.DisplayPopup(message);
                 }
