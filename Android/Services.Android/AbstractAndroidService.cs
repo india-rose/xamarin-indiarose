@@ -8,13 +8,22 @@ using Storm.Mvvm.Interfaces;
 
 namespace IndiaRose.Services.Android
 {
+    /// <summary>
+    /// Classe abstraite définissant quelques outils utiles pour les services Android
+    /// </summary>
 	public abstract class AbstractAndroidService : AbstractService, IInitializable
 	{
+        /// <summary>
+        /// Service sur les Activités Android
+        /// </summary>
 		protected IActivityService ActivityService
 		{
 			get { return LazyResolver<IActivityService>.Service; }
 		}
 
+        /// <summary>
+        /// Activité courante
+        /// </summary>
 		protected Activity CurrentActivity
 		{
 			get { return ActivityService.CurrentActivity; }
@@ -40,11 +49,19 @@ namespace IndiaRose.Services.Android
 			await InitializeServiceAsync();
 		}
 
+        /// <summary>
+        /// Initialise le service
+        /// Méthode asynchrone
+        /// </summary>
+        /// <returns>La tâche asynchrone initialisant le service</returns>
 		protected virtual async Task InitializeServiceAsync()
 		{
 			
 		}
 
+        /// <summary>
+        /// Callback pour le changement d'activité
+        /// </summary>
 		private void OnActivityChanged(object sender, ValueChangedEventArgs<Activity> valueChangedEventArgs)
 		{
 			if (valueChangedEventArgs.NewValue != null)

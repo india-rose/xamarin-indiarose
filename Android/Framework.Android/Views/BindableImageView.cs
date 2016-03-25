@@ -9,8 +9,10 @@ using Android.Widget;
 
 namespace IndiaRose.Framework.Views
 {
+    //todo : definition de la vue ?
     public class BindableImageView : ImageView
     {
+        #region Properties
         private string _sourcePath;
         private int _size;
         private bool _displayDefaultRedSquare = true;
@@ -23,11 +25,11 @@ namespace IndiaRose.Framework.Views
             }
             set
             {
-	            if (value != _displayDefaultRedSquare)
-	            {
-		            _displayDefaultRedSquare = value;
-		            RefreshImage();
-	            }
+                if (value != _displayDefaultRedSquare)
+                {
+                    _displayDefaultRedSquare = value;
+                    RefreshImage();
+                }
             }
         }
 
@@ -38,11 +40,11 @@ namespace IndiaRose.Framework.Views
             {
                 if (!Equals(_sourcePath, value))
                 {
-					_sourcePath = value;
-					if (value != null)
-					{
-						RefreshImage();
-					}
+                    _sourcePath = value;
+                    if (value != null)
+                    {
+                        RefreshImage();
+                    }
                 }
             }
         }
@@ -59,6 +61,7 @@ namespace IndiaRose.Framework.Views
                 }
             }
         }
+        #endregion
 
         private void RefreshImage()
         {
@@ -72,33 +75,34 @@ namespace IndiaRose.Framework.Views
 
             if (SourcePath != null)
             {
-	            try
-	            {
-		            Bitmap originalImage = BitmapFactory.DecodeFile(SourcePath);
-		            if (originalImage != null)
-		            {
-			            Bitmap image = Bitmap.CreateScaledBitmap(originalImage, Size, Size, true);
-			            Post(() =>
-			            {
-							SetImageBitmap(image);
-							Invalidate();
-			            });
-			            return; //do not put default color
-		            }
-	            }
-	            catch (Exception)
-	            {
-		            //TODO : log error
-	            }
+                try
+                {
+                    Bitmap originalImage = BitmapFactory.DecodeFile(SourcePath);
+                    if (originalImage != null)
+                    {
+                        Bitmap image = Bitmap.CreateScaledBitmap(originalImage, Size, Size, true);
+                        Post(() =>
+                        {
+                            SetImageBitmap(image);
+                            Invalidate();
+                        });
+                        return; //do not put default color
+                    }
+                }
+                catch (Exception)
+                {
+                    //TODO : log error
+                }
             }
 
-			Post(() =>
-			{
-				SetImageDrawable(new ColorDrawable(DisplayDefaultRedSquare ? Color.Red : Color.Transparent));
-				Invalidate();
-			});
+            Post(() =>
+            {
+                SetImageDrawable(new ColorDrawable(DisplayDefaultRedSquare ? Color.Red : Color.Transparent));
+                Invalidate();
+            });
         }
 
+        #region Constructors
         protected BindableImageView(IntPtr javaReference, JniHandleOwnership transfer)
             : base(javaReference, transfer)
         {
@@ -118,6 +122,6 @@ namespace IndiaRose.Framework.Views
             : base(context, attrs, defStyleAttr)
         {
         }
-
+        #endregion
     }
 }

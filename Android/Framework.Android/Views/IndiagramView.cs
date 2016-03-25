@@ -11,6 +11,9 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Framework.Views
 {
+    /// <summary>
+    /// Classe préfabriqué pour l'affichage d'un Indiagram (image, texte et renforçateur)
+    /// </summary>
     public class IndiagramView : View
     {
         #region Fields
@@ -281,7 +284,10 @@ namespace IndiaRose.Framework.Views
                 }
             }
         }
-
+        
+        /// <summary>
+        /// Retourne la largeur théorique de la vue (taille de l'image + bordure)
+        /// </summary>
         public static int DefaultWidth
         {
             get
@@ -290,6 +296,9 @@ namespace IndiaRose.Framework.Views
             }
         }
 
+        /// <summary>
+        /// Retourne la hauteur théorique de la vue (taille de l'image + bordure + taille d'une ligne de texte)
+        /// </summary>
         public static int DefaultHeight
         {
             get

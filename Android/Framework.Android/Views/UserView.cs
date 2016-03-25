@@ -21,6 +21,7 @@ using Android.OS;
 
 namespace IndiaRose.Framework.Views
 {
+    //todo
 	public class UserView : AbsoluteLayout
 	{
 		#region Services

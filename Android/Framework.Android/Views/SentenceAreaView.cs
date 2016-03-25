@@ -18,6 +18,7 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Framework.Views
 {
+    //todo
 	public class SentenceAreaView : RelativeLayout
 	{
 		public event EventHandler CanAddIndiagramsChanged;

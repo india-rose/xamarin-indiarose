@@ -9,6 +9,9 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Framework.Views
 {
+    /// <summary>
+    /// View avec une bordure d'intégré
+    /// </summary>
     public class ViewWithBorder : View
     {
         protected static ISettingsService SettingsService
@@ -24,11 +27,11 @@ namespace IndiaRose.Framework.Views
 
         public Color BorderColor
         {
-            get { return _borderColor;}
+            get { return _borderColor; }
             set
             {
                 _borderColor = value;
-	            Post(Invalidate);
+                Post(Invalidate);
             }
         }
 
@@ -42,34 +45,40 @@ namespace IndiaRose.Framework.Views
             }
         }
 
-        protected ViewWithBorder(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
+        #region Constructeurs
+        protected ViewWithBorder(IntPtr javaReference, JniHandleOwnership transfer)
+            : base(javaReference, transfer)
         {
         }
 
-        public ViewWithBorder(Context context) : base(context)
+        public ViewWithBorder(Context context)
+            : base(context)
         {
         }
 
-        public ViewWithBorder(Context context, IAttributeSet attrs) : base(context, attrs)
+        public ViewWithBorder(Context context, IAttributeSet attrs)
+            : base(context, attrs)
         {
         }
 
-        public ViewWithBorder(Context context, IAttributeSet attrs, int defStyleAttr) : base(context, attrs, defStyleAttr)
+        public ViewWithBorder(Context context, IAttributeSet attrs, int defStyleAttr)
+            : base(context, attrs, defStyleAttr)
         {
         }
+        #endregion
 
         protected override void OnDraw(Canvas canvas)
         {
             base.OnDraw(canvas);
-            canvas.DrawRect(0,0,Width,Height, new Paint
+            canvas.DrawRect(0, 0, Width, Height, new Paint
             {
-                Color=Color.Black
+                Color = Color.Black
             });
             canvas.DrawRect(1, 1, Width - 1, Height - 1, new Paint
             {
                 Color = BackgroundColor
             });
-            
+
         }
     }
 }

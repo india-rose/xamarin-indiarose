@@ -13,6 +13,7 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Framework.Views
 {
+    //todo
 	public class TabletPreviewView : AbsoluteLayout
 	{
 		private ImageView _tabletImageView;
