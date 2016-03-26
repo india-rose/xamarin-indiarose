@@ -8,6 +8,14 @@ namespace IndiaRose.Framework.Converters
 {
     public class ColorContainerToColorConverter : IValueConverter
     {
+        /// <summary>
+        /// Convertit un ColorContainer en Color
+        /// </summary>
+        /// <param name="value">L'objet ColorConverter</param>
+        /// <param name="targetType">Inutile</param>
+        /// <param name="parameter">Inutile</param>
+        /// <param name="culture">Inutile</param>
+        /// <returns>L'objet Color correspondant</returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
 	        ColorContainer colorContainer = value as ColorContainer;
@@ -29,6 +37,10 @@ namespace IndiaRose.Framework.Converters
 	        }
         }
 
+        /// <summary>
+        /// Non implémenté
+        /// Retourne l'exception NotImplementedException
+        /// </summary>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();

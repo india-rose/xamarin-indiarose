@@ -6,12 +6,29 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Framework.Converters
 {
+    /// <summary>
+    /// Converter pour retourner une chaine par défaut si la resource voulu n'est pas présente
+    /// </summary>
 	public class DefaultLocalizedStringIfNullConverter : IValueConverter
 	{
+        /// <summary>
+        /// Id de la chaine voulu
+        /// </summary>
 		public string Uid { get; set; }
 
+        /// <summary>
+        /// Property de la chaine voulu
+        /// </summary>
 		public string Property { get; set; }
 
+        /// <summary>
+        /// Renvoie une chaine par défaut si la resource n'est pas présente
+        /// </summary>
+        /// <param name="value">La chaine par défaut</param>
+        /// <param name="targetType">Inutile</param>
+        /// <param name="parameter">Inutile</param>
+        /// <param name="culture">Inutile</param>
+        /// <returns>La chaine voulu ou celle par défaut</returns>
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			string input = value as string;

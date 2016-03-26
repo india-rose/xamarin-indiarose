@@ -7,6 +7,14 @@ namespace IndiaRose.Framework.Converters
 {
     public class ColorContainerToIntConverter : IValueConverter
     {
+        /// <summary>
+        /// Convertit un ColorContainer en uint
+        /// </summary>
+        /// <param name="value">L'objet ColorConverter</param>
+        /// <param name="targetType">Inutile</param>
+        /// <param name="parameter">Inutile</param>
+        /// <param name="culture">Inutile</param>
+        /// <returns>L'entier correspondant</returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
 	        ColorContainer colorContainer = value as ColorContainer;
