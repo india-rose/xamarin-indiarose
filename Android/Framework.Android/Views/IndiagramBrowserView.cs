@@ -13,7 +13,9 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Framework.Views
 {
-    //todo
+    /// <summary>
+    /// Vue personnalisé pour l'affichage de la collection
+    /// </summary>
 	public class IndiagramBrowserView : RelativeLayout
 	{
 		#region Private fields
@@ -46,12 +48,18 @@ namespace IndiaRose.Framework.Views
 
 		#region Public properties
 
+        /// <summary>
+        /// Nombre d'Indiagram à afficher
+        /// </summary>
 		public int Count
 		{
 			get { return _count; }
 			set { SetProperty(ref _count, value, () => CountChanged); }
 		}
 
+        /// <summary>
+        /// Numéro du premier Indiagram à afficher
+        /// </summary>
 		public int Offset
 		{
 			get { return _offset; }
@@ -64,6 +72,9 @@ namespace IndiaRose.Framework.Views
 			}
 		}
 
+        /// <summary>
+        /// Liste des Indiagrams à afficher
+        /// </summary>
 		public List<Indiagram> Indiagrams
 		{
 			get { return _indiagrams; }
@@ -76,6 +87,9 @@ namespace IndiaRose.Framework.Views
 			}
 		}
 
+        /// <summary>
+        /// Couleur des textes des Indiagrams
+        /// </summary>
 		public uint TextColor
 		{
 			get { return _textColor; }
@@ -88,12 +102,18 @@ namespace IndiaRose.Framework.Views
 			}
 		}
 
+        /// <summary>
+        /// Commande lorsqu'un indiagram est sélectionné
+        /// </summary>
 		public ICommand IndiagramSelected
 		{
 			get { return _indiagramSelected; }
 			set { SetProperty(ref _indiagramSelected, value); }
 		}
 
+        /// <summary>
+        /// Commande lorsque le bouton suivant est sélectionné
+        /// </summary>
 		public ICommand NextCommand
 		{
 			get { return _nextCommand; }
@@ -129,11 +149,12 @@ namespace IndiaRose.Framework.Views
 		private void Initialize()
 		{
 		    string path = LazyResolver<IStorageService>.Service.ImageNextArrowPath;
+            //initialisation du bouton next
 			NextButton = new IndiagramView(Context)
 			{
 				TextColor = 0,
 				Id = 0x20,
-				Indiagram = new Indiagram()
+				Indiagram = new Indiagram
 				{
 					Text = "next",
 					ImagePath = path
@@ -147,6 +168,13 @@ namespace IndiaRose.Framework.Views
 
 		#region Private methods
 
+        /// <summary>
+        /// Callback lorsque la taille de la vue change
+        /// </summary>
+        /// <param name="w">Largeur</param>
+        /// <param name="h">Hauteur</param>
+        /// <param name="oldw">Ancienne largeur</param>
+        /// <param name="oldh">Ancienne hauteur</param>
 		protected override void OnSizeChanged(int w, int h, int oldw, int oldh)
 		{
 			base.OnSizeChanged(w, h, oldw, oldh);
@@ -157,6 +185,10 @@ namespace IndiaRose.Framework.Views
 			}
 		}
 
+        /// <summary>
+        /// Réinitialise l'affichage de la collection
+        /// </summary>
+        /// <returns></returns>
 		private bool Reset()
 		{
 			// check if changed
@@ -215,6 +247,9 @@ namespace IndiaRose.Framework.Views
 			return true;
 		}
 
+        /// <summary>
+        /// Raffraichit l'affichage
+        /// </summary>
 		private void RefreshDisplay()
 		{
 			if (Indiagrams == null || _displayableViews == null || _lineCount == 0 || _columnCount == 0)
@@ -301,6 +336,9 @@ namespace IndiaRose.Framework.Views
 			Invalidate();
 		}
 
+        /// <summary>
+        /// Raffraichit la couleur du texte
+        /// </summary>
 		private void RefreshTextColor()
 		{
 			if (_displayableViews != null)
@@ -315,6 +353,9 @@ namespace IndiaRose.Framework.Views
 			}
 		}
 
+        /// <summary>
+        /// Callback lorsq'un Indiagram est sélectionné
+        /// </summary>
 		private void OnIndiagramTouch(object sender, TouchEventArgs touchEventArgs)
 		{
 			IndiagramView senderView = sender as IndiagramView;
@@ -343,6 +384,9 @@ namespace IndiaRose.Framework.Views
 			}
 		}
 
+        /// <summary>
+        /// Callback lorsque le bouton next est sélectionné
+        /// </summary>
 		private void OnNextTouch(object sender, TouchEventArgs touchEventArgs)
 		{
 			if (touchEventArgs.Event.ActionMasked == MotionEventActions.Down)

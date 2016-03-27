@@ -21,7 +21,12 @@ using Android.OS;
 
 namespace IndiaRose.Framework.Views
 {
-    //todo
+    /// <summary>
+    /// Affiche la partie utilisateur
+    /// Est composé de 2 parties : IndiagramBrowserView et SentenceAreaView
+    /// </summary> 
+    /// <see cref="IndiagramBrowserView"/>
+    /// <see cref="SentenceAreaView"/>
 	public class UserView : AbsoluteLayout
 	{
 		#region Services
@@ -201,6 +206,11 @@ namespace IndiaRose.Framework.Views
 
 		#endregion
 
+        /// <summary>
+        /// Initialise la vue
+        /// </summary>
+        /// <param name="availableHeight">Hauteur disponible à l'écran</param>
+        /// <param name="width">Largeur de l'écran</param>
 		public void Init(int availableHeight, int width)
 		{
 			int topHeight = (int)Math.Round(availableHeight * (SettingsService.SelectionAreaHeight / 100.0));
@@ -212,6 +222,11 @@ namespace IndiaRose.Framework.Views
 			_botViewYOffset = topHeight;
 		}
 
+        /// <summary>
+        /// Callback lorsqu'un Indiagram est sélectionné dans la partie collection (partie haute)
+        /// Lorsqu'il n'y a pas le drag & drop
+        /// </summary>
+        /// <param name="indiagram">Indiagram sélectionné</param>
 		private void OnTopIndiagramSelected(Indiagram indiagram)
 		{
 			if (!SettingsService.IsDragAndDropEnabled || indiagram.IsCategory)
@@ -225,6 +240,12 @@ namespace IndiaRose.Framework.Views
 		}
 
 		private IndiagramView _currentView;
+
+        /// <summary>
+        /// Callback lorsqu'un Indiagram est sélectionné dans la partie collection (partie haute)
+        /// Lorsqu'il y a le drag & drop
+        /// </summary>
+        /// <param name="view">Indiagram sélectionné</param>
 		private void OnTopIndiagramViewTouched(IndiagramView view)
 		{
 			if (SettingsService.IsDragAndDropEnabled && !view.Indiagram.IsCategory && !TextToSpeechService.IsReading)
@@ -256,6 +277,9 @@ namespace IndiaRose.Framework.Views
 			}
 		}
 
+        /// <summary>
+        /// Callback lorsqu'un Indiagram est cliqué
+        /// </summary>
 		private void OnIndiagramTouched(object sender, TouchEventArgs touchEventArgs)
 		{
 			IndiagramView view = sender as IndiagramView;
