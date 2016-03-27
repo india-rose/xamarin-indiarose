@@ -97,6 +97,7 @@ namespace IndiaRose.Services
                 ViewMode = PickerViewMode.Thumbnail,
                 SuggestedStartLocation = PickerLocationId.MusicLibrary
             };
+            //listing des formats audio existant
             openPicker.FileTypeFilter.Add(".mp3");
             openPicker.FileTypeFilter.Add(".aac");
             openPicker.FileTypeFilter.Add(".m4a");

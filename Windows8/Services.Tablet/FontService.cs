@@ -14,6 +14,10 @@ namespace IndiaRose.Services
 			get { return _font ?? (_font = LoadFonts()); }
 		}
 
+        /// <summary>
+        /// Charge la liste des polices du device
+        /// </summary>
+        /// <returns></returns>
 		private Dictionary<string, string> LoadFonts()
 		{
 			Dictionary<string, string> result = new Dictionary<string, string>();

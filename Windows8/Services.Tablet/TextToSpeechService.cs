@@ -29,6 +29,7 @@ namespace IndiaRose.Services
             SoundUtilities.Completed += (sender, args) => this.RaiseEvent(SpeakingCompleted);
         }
 
+        //todo
         public bool IsReading { get; private set; }
 
         public void Close()
