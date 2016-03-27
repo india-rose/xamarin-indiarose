@@ -6,6 +6,7 @@ using Windows.UI.Xaml.Media;
 
 namespace IndiaRose.Framework.Views
 {
+    //todo à finir ou à effacer ?
     class IndiagramPreviewView
     {
         private Canvas _reinforcerView;
@@ -51,15 +52,13 @@ namespace IndiaRose.Framework.Views
             if (!ReinforcerEnabled)
             {
                 _reinforcerView.Background = new SolidColorBrush(Colors.Transparent);
-                
+
             }
             else
             {
                 Invalidate();
             }
         }
-            
-
 
         public Brush ColorToBrush(Color c) // color = "#E7E44D"
         {

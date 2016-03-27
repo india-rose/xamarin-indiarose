@@ -21,23 +21,45 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Framework.Views
 {
+    /// <summary>
+    /// Affichage des Indiagrams devant être lu dans la partie utilisateur
+    /// </summary>
     public class SentenceAreaView : Grid
     {
+        /// <summary>
+        /// Événement indiquant qu'il y a un changement de la propriété CannAddIndiagrams
+        /// </summary>
+        /// <see cref="CanAddIndiagrams"/>
         public event EventHandler CanAddIndiagramsChanged;
 
+        #region Private fields
         private bool _canAddIndiagrams = true;
         private int _maxNumberOfIndiagrams;
         private readonly Image _playButton;
         private ObservableCollection<IndiagramUIModel> _indiagrams;
         private readonly List<IndiagramView> _indiagramViews = new List<IndiagramView>();
         private readonly ColorStringToSolidColorBrushConverter _colorConverter = new ColorStringToSolidColorBrushConverter();
+        #endregion
 
+        #region Properties
+        /// <summary>
+        /// Commande lorsqu'un Indiagram a été sélectionné
+        /// </summary>
         public ICommand IndiagramSelectedCommand { get; set; }
 
+        /// <summary>
+        /// Commande lorsque le bouton lecture a été sélectionné
+        /// </summary>
         public ICommand ReadCommand { get; set; }
 
+        /// <summary>
+        /// Commande lorsque le mode Correction a été demandé
+        /// </summary>
         public ICommand CorrectionCommand { get; set; }
 
+        /// <summary>
+        /// Indiagrams devant être affichés
+        /// </summary>
         public ObservableCollection<IndiagramUIModel> Indiagrams
         {
             get { return _indiagrams; }
@@ -58,6 +80,9 @@ namespace IndiaRose.Framework.Views
             }
         }
 
+        /// <summary>
+        /// Booléen indiquant s'il reste de la place dans la vue pour ajouter de nouveau Indiagrams
+        /// </summary>
         public bool CanAddIndiagrams
         {
             get { return _canAddIndiagrams; }
@@ -70,13 +95,14 @@ namespace IndiaRose.Framework.Views
                 }
             }
         }
+        #endregion
 
         public SentenceAreaView()
         {
             SizeChanged += SentenceAreaView_SizeChanged;
 
             // Init play button
-            _playButton = new Image()
+            _playButton = new Image
             {
                 Source = new BitmapImage(new Uri(LazyResolver<IStorageService>.Service.ImagePlayButtonPath, UriKind.Absolute)),
                 Width = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize,
@@ -92,6 +118,10 @@ namespace IndiaRose.Framework.Views
             };
         }
 
+        /// <summary>
+        /// Callback lorsque la taille de la vue a changé
+        /// Réinitialise l'affichage de la vue
+        /// </summary>
         void SentenceAreaView_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             var oldmaxnumber = _maxNumberOfIndiagrams;
@@ -101,7 +131,7 @@ namespace IndiaRose.Framework.Views
             ColumnDefinitions.Clear();
             for (var i = 0; i < _maxNumberOfIndiagrams + 1; i++)
             {
-                ColumnDefinitions.Add(new ColumnDefinition()
+                ColumnDefinitions.Add(new ColumnDefinition
                 {
                     Width = new GridLength(1, GridUnitType.Star)
                 });
@@ -114,7 +144,7 @@ namespace IndiaRose.Framework.Views
             // Init views
             for (var i = 0; i < _maxNumberOfIndiagrams; ++i)
             {
-                var view = new IndiagramView()
+                var view = new IndiagramView
                 {
                     TextColor = (SolidColorBrush)_colorConverter.Convert(settings.TextColor, null, null, "")
                 };
@@ -125,6 +155,9 @@ namespace IndiaRose.Framework.Views
             }
         }
 
+        /// <summary>
+        /// Callback lorsque la collection à afficher a changé
+        /// </summary>
         private void IndiagramsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.OldItems != null)
@@ -156,6 +189,9 @@ namespace IndiaRose.Framework.Views
             CanAddIndiagrams = (_indiagrams.Count < _indiagramViews.Count);
         }
 
+        /// <summary>
+        /// Callback lorsque le renforçateur d'un Indiagram change
+        /// </summary>
         private void IndiagramReinforcerChanged(object sender, EventArgs eventArgs)
         {
             var uiModel = sender as IndiagramUIModel;
@@ -187,6 +223,9 @@ namespace IndiaRose.Framework.Views
             }
         }
 
+        /// <summary>
+        /// Callback lorsqu'un Indiagram est sélectionné
+        /// </summary>
         private void OnIndiagramTouched(object sender, TappedRoutedEventArgs tappedRoutedEventArgs)
         {
             var view = sender as IndiagramView;
