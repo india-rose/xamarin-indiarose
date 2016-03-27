@@ -29,6 +29,8 @@ namespace IndiaRose.Services
             SoundUtilities.Completed += (sender, args) => this.RaiseEvent(SpeakingCompleted);
         }
 
+        public bool IsReading { get; private set; }
+
         public void Close()
         {
             _ttsSpeechSynthesizer.Dispose();
