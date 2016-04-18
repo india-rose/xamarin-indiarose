@@ -11,11 +11,19 @@ using Storm.Mvvm.Events;
 
 namespace IndiaRose.Services
 {
+    /// <summary>
+    /// Utilitaire pour la gestion des sons
+    /// </summary>
     public static class SoundUtilities
     {
+        /// <summary>
+        /// Event de fin de lecture
+        /// </summary>
         public static event EventHandler Completed;
+        //todo voir avec julien à quoi ça sert
         private static readonly Dictionary<string, SourceVoice> LoadedSounds = new Dictionary<string, SourceVoice>();
         private static readonly Dictionary<string, AudioBufferAndMetaData> AudioBuffers = new Dictionary<string, AudioBufferAndMetaData>();
+
         private static MasteringVoice _masteringVoice;
         public static MasteringVoice MasteringVoice
         {
@@ -24,11 +32,12 @@ namespace IndiaRose.Services
                 if (_masteringVoice == null)
                 {
                     _masteringVoice = new MasteringVoice(XAudio);
-                    _masteringVoice.SetVolume(1, 0);
+                    _masteringVoice.SetVolume(1);
                 }
                 return _masteringVoice;
             }
         }
+
         private static XAudio2 _xaudio;
         public static XAudio2 XAudio
         {
@@ -43,6 +52,12 @@ namespace IndiaRose.Services
                 return _xaudio;
             }
         }
+
+        /// <summary>
+        /// Lance la lecture d'un son
+        /// </summary>
+        /// <param name="soundfile">Chemin d'accès au son</param>
+        /// <param name="volume">Volume auquel le son doit être lu</param>
         public static void PlaySound(string soundfile, float volume = 1)
         {
             SourceVoice sourceVoice;
@@ -51,7 +66,7 @@ namespace IndiaRose.Services
 
                 var buffer = GetBuffer(soundfile);
                 sourceVoice = new SourceVoice(XAudio, buffer.WaveFormat, true);
-                sourceVoice.SetVolume(volume, SharpDX.XAudio2.XAudio2.CommitNow);
+                sourceVoice.SetVolume(volume);
                 sourceVoice.SubmitSourceBuffer(buffer, buffer.DecodedPacketsInfo);
                 sourceVoice.Start();
 
@@ -63,24 +78,38 @@ namespace IndiaRose.Services
                     sourceVoice.Stop();
             }
         }
+
+        /// <summary>
+        /// Lance la lecture d'un son
+        /// </summary>
+        /// <param name="soundStream">Stream du fichier son</param>
+        /// <param name="volume">Volume auquel le son doit être lu</param>
         public static void PlaySound(Stream soundStream, float volume = 1)
         {
-            SourceVoice sourceVoice;
-
             var buffer = GetBuffer(soundStream);
-            sourceVoice = new SourceVoice(XAudio, buffer.WaveFormat, true);
-            sourceVoice.SetVolume(volume, SharpDX.XAudio2.XAudio2.CommitNow);
+            var sourceVoice = new SourceVoice(XAudio, buffer.WaveFormat, true);
+            sourceVoice.SetVolume(volume);
             sourceVoice.SubmitSourceBuffer(buffer, buffer.DecodedPacketsInfo);
             sourceVoice.BufferEnd += SourceVoiceOnBufferEnd;
             sourceVoice.Start();
 
         }
 
+        /// <summary>
+        /// Callback de fin de lecture.
+        /// Lance l'event Completed.
+        /// </summary>
+        /// <see cref="Completed"/>
         private static void SourceVoiceOnBufferEnd(IntPtr intPtr)
         {
             new object().RaiseEvent(Completed);
         }
 
+        /// <summary>
+        /// Initialise le buffer à partir d'un fichier son
+        /// </summary>
+        /// <param name="soundfile">Le chemin d'accès au fichier</param>
+        /// <returns>Le buffer du son</returns>
         private static AudioBufferAndMetaData GetBuffer(string soundfile)
         {
             if (!AudioBuffers.ContainsKey(soundfile))
@@ -88,12 +117,11 @@ namespace IndiaRose.Services
                 var nativefilestream = new NativeFileStream(
                         soundfile,
                         NativeFileMode.Open,
-                        NativeFileAccess.Read,
-                        NativeFileShare.Read);
+                        NativeFileAccess.Read);
 
                 var soundstream = new SoundStream(nativefilestream);
 
-                var buffer = new AudioBufferAndMetaData()
+                var buffer = new AudioBufferAndMetaData
                 {
                     Stream = soundstream.ToDataStream(),
                     AudioBytes = (int)soundstream.Length,
@@ -105,12 +133,18 @@ namespace IndiaRose.Services
             }
             return AudioBuffers[soundfile];
 
-        }
+        } 
+        
+        /// <summary>
+        /// Initialise le buffer à partir d'un fichier son
+        /// </summary>
+        /// <param name="soundfile">Le Stream du sonr</param>
+        /// <returns>Le buffer du son</returns>
         private static AudioBufferAndMetaData GetBuffer(Stream soundfile)
         {
             var soundstream = new SoundStream(soundfile);
 
-            var buffer = new AudioBufferAndMetaData()
+            var buffer = new AudioBufferAndMetaData
             {
                 Stream = soundstream.ToDataStream(),
                 AudioBytes = (int)soundstream.Length,
@@ -121,6 +155,11 @@ namespace IndiaRose.Services
             return buffer;
 
         }
+       
+        /// <summary>
+        /// AudioBuffer classe avec des informations en plus
+        /// </summary>
+        /// <see cref="AudioBuffer"/>
         private sealed class AudioBufferAndMetaData : AudioBuffer
         {
             public WaveFormat WaveFormat { get; set; }

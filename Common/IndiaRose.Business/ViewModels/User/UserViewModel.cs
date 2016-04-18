@@ -13,6 +13,9 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Business.ViewModels.User
 {
+    /// <summary>
+    /// VueModèle de la page Utilisateur
+    /// </summary>
 	public class UserViewModel : AbstractViewModel
 	{
 		private readonly object _readingMutex = new object();
@@ -56,6 +59,9 @@ namespace IndiaRose.Business.ViewModels.User
 
 		#region Properties
 
+        /// <summary>
+        /// Catégorie Courante
+        /// </summary>
 		public Category CurrentCategory
 		{
 			get { return _currentCategory; }
@@ -63,11 +69,15 @@ namespace IndiaRose.Business.ViewModels.User
 			{
 				if (SetProperty(ref _currentCategory, value) && value != null)
 				{
+                    //si on change de catégorie on raffraichit l'affichage
 					RefreshDisplayList();
 				}
 			}
 		}
 
+        /// <summary>
+        /// Collection d'Indiagram à afficher
+        /// </summary>
 		public List<Indiagram> CollectionIndiagrams
 		{
 			get { return _collectionIndiagrams; }
@@ -86,17 +96,27 @@ namespace IndiaRose.Business.ViewModels.User
 			set { SetProperty(ref _collectionDisplayCount, value); }
 		}
 
+        /// <summary>
+        /// La liste des Indiagrams dans la phrase
+        /// </summary>
 		public ObservableCollection<IndiagramUIModel> SentenceIndiagrams
 		{
 			get { return _sentenceIndiagrams; }
 		}
 
+        /// <summary>
+        /// Booléen indiquant si on peut encore ajouter des Indiagrams à la phrase
+        /// S'il est à faux, en cas d'ajout il ne se passera rien
+        /// </summary>
 		public bool SentenceCanAddMoreIndiagrams
 		{
 			get { return _sentenceCanAddMoreIndiagrams; }
 			set { SetProperty(ref _sentenceCanAddMoreIndiagrams, value); }
 		}
 
+        /// <summary>
+        /// Vrai si on est dans le mode Correction
+        /// </summary>
 		public bool IsCorrectionModeEnabled
 		{
 			get { return _isCorrectionModeEnabled; }
@@ -119,6 +139,7 @@ namespace IndiaRose.Business.ViewModels.User
 
 		public UserViewModel()
 		{
+            //Création des catégories spéciales (Home et Correction)
 			Category rootCategory = new Category(CollectionStorageService.Collection)
 			{
 				Id = -1,
@@ -147,6 +168,10 @@ namespace IndiaRose.Business.ViewModels.User
 
 		#region Collection navigation
 
+        /// <summary>
+        /// Action résultant de l'appuie sur le bouton next de la collection
+        /// Affiche les Indiagrams suivants ou revient à la catégorie précédente
+        /// </summary>
 		private void CollectionNextAction()
 		{
 			int offset = CollectionOffset;
@@ -169,6 +194,9 @@ namespace IndiaRose.Business.ViewModels.User
 			}
 		}
 
+        /// <summary>
+        /// Push une catégorie sur la pile de navigation, reset l'offset d'affichage et change la catégorie courante
+        /// </summary>
 		private void PushCategory(Category category)
 		{
 			_navigationStack.Push(category);
@@ -176,6 +204,10 @@ namespace IndiaRose.Business.ViewModels.User
 			CurrentCategory = category;
 		}
 		
+        /// <summary>
+        /// Pop une catégorie de la stack, reset l'offset d'affichage et change la catégorie courante
+        /// </summary>
+        /// <returns>Retourne faux si la catégorie courante est la Home</returns>
 		private bool PopCategory()
 		{
 			if (_navigationStack.Count <= 1) //always keep root category on the stack
@@ -190,6 +222,9 @@ namespace IndiaRose.Business.ViewModels.User
 			return true;
 		}
 
+        /// <summary>
+        /// Change la collection d'Indiagram à afficher
+        /// </summary>
 		private void RefreshDisplayList()
 		{
 			if (_navigationStack.Count == 0)
@@ -205,6 +240,9 @@ namespace IndiaRose.Business.ViewModels.User
 
 		#endregion
 
+        /// <summary>
+        /// Entre dans le mode Correction
+        /// </summary>
 		private void EnterCorrectionModeAction()
 		{
 			if (SentenceIndiagrams.Count == 0 || CheckIsReading() || IsCorrectionModeEnabled)
@@ -223,6 +261,11 @@ namespace IndiaRose.Business.ViewModels.User
 			PushCategory(_correctionCategory);
 		}
 
+        /// <summary>
+        /// Action lorsqu'un Indiagram dans la phrase est selectionné
+        /// Retire l'Indiagram de la phrase et le rajoute dans la collection
+        /// </summary>
+        /// <param name="indiagram"></param>
 		private void SentenceIndiagramSelectedAction(IndiagramUIModel indiagram)
 		{
 			lock (_readingMutex)
@@ -240,6 +283,10 @@ namespace IndiaRose.Business.ViewModels.User
 			}
 		}
 
+        /// <summary>
+        /// Action lors de la sélection d'un Indiagram de la partie Collection
+        /// </summary>
+        /// <param name="indiagram">L'Indiagram sélectionné</param>
 		private void CollectionIndiagramSelectedAction(Indiagram indiagram)
 		{
 			if (CheckIsReading() && (indiagram.IsCategory || !SettingsService.IsDragAndDropEnabled))
@@ -277,6 +324,10 @@ namespace IndiaRose.Business.ViewModels.User
 			}
 		}
 
+        /// <summary>
+        /// Action lorsqu'un drag & drop est activé de la partie Collection
+        /// </summary>
+        /// <param name="indiagram">L'Indiagram sélectionné</param>
 		private void CollectionIndiagramDragStartAction(Indiagram indiagram)
 		{
 			if (CheckIsReading())
@@ -287,7 +338,10 @@ namespace IndiaRose.Business.ViewModels.User
 			Read(indiagram);
 		}
 
-
+        /// <summary>
+        /// Lance la lecture d'un Indiagram par le TTS
+        /// </summary>
+        /// <param name="indiagram">Indiagram à lire</param>
 		private void Read(Indiagram indiagram)
 		{
 			bool canRead = true;
@@ -317,6 +371,11 @@ namespace IndiaRose.Business.ViewModels.User
 			}
 		}
 
+        /// <summary>
+        /// Callback lors de la fin de la lecture d'un Indiagram
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="eventArgs"></param>
 		private void OnIndiagramReadCompleted(object sender, EventArgs eventArgs)
 		{
 			lock (_readingMutex)
@@ -328,6 +387,11 @@ namespace IndiaRose.Business.ViewModels.User
 
 		#region Read sentence handling part
 
+        /// <summary>
+        /// Ajoute un Indiagram à la phrase à lire (partie du bas)
+        /// Ne check pas s'il y a de la place pour ajouter, à faire avant d'appeler cette méthode
+        /// </summary>
+        /// <param name="indiagram">L'Indiagram à ajouté</param>
 		private void AddIndiagramToSentence(Indiagram indiagram)
 		{
 			if (SettingsService.IsMultipleIndiagramSelectionEnabled && !IsCorrectionModeEnabled)
@@ -342,6 +406,9 @@ namespace IndiaRose.Business.ViewModels.User
 			SentenceIndiagrams.Add(new IndiagramUIModel(indiagram));
 		}
 
+        /// <summary>
+        /// Action pour lancer la lecture de la phrase d'Indiagram
+        /// </summary>
 		private void ReadSentenceAction()
 		{
 			//if there is no indiagram to read do nothing
@@ -369,6 +436,10 @@ namespace IndiaRose.Business.ViewModels.User
 			Task.Run((Action)ReadSentence);
 		}
 
+        /// <summary>
+        /// Lit la phrase d'Indiagram
+        /// Méthode asynchrone
+        /// </summary>
 		private async void ReadSentence()
 		{
 			bool isReinforcerEnabled = SettingsService.IsReinforcerEnabled;
@@ -426,6 +497,11 @@ namespace IndiaRose.Business.ViewModels.User
 			});
 		}
 
+        /// <summary>
+        /// Callback de la fin de lecture d'une phrase
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="eventArgs"></param>
 		private void OnSentenceIndiagramReadCompleted(object sender, EventArgs eventArgs)
 		{
 			_sentenceReadingSemaphore.Set();

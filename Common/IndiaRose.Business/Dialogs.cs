@@ -1,5 +1,9 @@
 ﻿namespace IndiaRose.Business
 {
+    /// <summary>
+    /// Classe pour la déclaration des Dialogs
+    /// Sert à la navigation
+    /// </summary>
 	public class Dialogs
 	{
 		//Dialogs in /Admin

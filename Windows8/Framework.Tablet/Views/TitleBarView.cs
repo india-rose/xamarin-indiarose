@@ -11,14 +11,26 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Framework.Views
 {
+    /// <summary>
+    /// Affiche la barre de titre de la partie utilisateur
+    /// </summary>
     public class TitleBarView : Canvas
     {
+        /// <summary>
+        /// Image de la Categorie courante
+        /// </summary>
         private readonly Image _imagecategory;
+        /// <summary>
+        /// Texte de la Catégorie courante
+        /// </summary>
         private readonly TextBlock _textblock;
+        /// <summary>
+        /// Carré rouge, servant lorsque la Catégorie courante n'a pas d'image
+        /// </summary>
         private readonly StackPanel _redRect;
 
         public static readonly DependencyProperty CategoryProperty = DependencyProperty.Register(
-            "Category", typeof(Category), typeof(TitleBarView), new PropertyMetadata(default(Category),Refresh));
+            "Category", typeof(Category), typeof(TitleBarView), new PropertyMetadata(default(Category), Refresh));
 
         private static void Refresh(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -29,14 +41,16 @@ namespace IndiaRose.Framework.Views
         private void Refresh()
         {
             _textblock.Text = Category.Text;
+            //pourquoi ne pas sortir la suppression ?
             if (Category.ImagePath == null)
             {
+                //si la catégorie n'a pas d'image on met le rectangle rouge
                 try
                 {
                     Children.RemoveAt(0);
                 }
                 catch (ArgumentException) { }
-                Children.Insert(0,_redRect);
+                Children.Insert(0, _redRect);
             }
             else
             {
@@ -86,8 +100,8 @@ namespace IndiaRose.Framework.Views
             Height = 60;
             SetLeft(_textblock, _redRect.Width);
             SetTop(_textblock, (Height - _textblock.ActualHeight) / 2);
-            Background=new SolidColorBrush(Colors.White);
-            
+            Background = new SolidColorBrush(Colors.White);
+
             const string sourcelogo = "ms-appx:///Assets/logoIndiaRose.png";
             var logo = new Image
             {

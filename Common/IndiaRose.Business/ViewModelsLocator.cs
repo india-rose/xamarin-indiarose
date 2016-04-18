@@ -12,6 +12,10 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Business
 {
+    /// <summary>
+    /// Conteneur des ViewModels
+    /// Sert pour les parties platform-dependant
+    /// </summary>
 	public class ViewModelsLocator
 	{
 		private static IContainer _container;

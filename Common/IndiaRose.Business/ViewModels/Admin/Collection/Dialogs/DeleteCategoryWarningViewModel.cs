@@ -11,6 +11,9 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
+    /// <summary>
+    /// VueModèle de confirmation de suppresion d'une Category
+    /// </summary>
 	public class DeleteCategoryWarningViewModel : AbstractCollectionViewModel
 	{
 		private Indiagram _indiagram;
@@ -31,6 +34,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			DeleteCommand = new DelegateCommand(DeleteAction);
 		}
 
+        /// <summary>
+        /// Si la Catégorie contient des Indiagrams ouvre un autre dialogue de confirmation sinon supprime la catégorie de la collection
+        /// </summary>
 		protected void DeleteAction()
 		{
             CloseDialogAction();

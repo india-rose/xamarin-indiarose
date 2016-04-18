@@ -5,6 +5,9 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Business.ViewModels.Admin.Settings
 {
+    /// <summary>
+    /// VueModèle abstrait dont les pages de configuration doivent hériter
+    /// </summary>
 	public abstract class AbstractSettingsViewModel : AbstractViewModel
 	{
 		public ISettingsService SettingsService
@@ -19,6 +22,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 			SaveCommand = new DelegateCommand(SaveAction);
 		}
 
+        /// <summary>
+        /// Action de sauvegarde des préférences
+        /// Utilise le SettingsService
+        /// </summary>
 		protected virtual void SaveAction()
 		{
 		    SettingsService.SaveAsync();

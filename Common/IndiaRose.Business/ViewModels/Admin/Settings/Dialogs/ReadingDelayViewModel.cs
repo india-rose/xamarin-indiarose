@@ -2,6 +2,9 @@
 
 namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 {
+    /// <summary>
+    /// VueModèle du dialogue pour le délai de lecture
+    /// </summary>
 	public class ReadingDelayViewModel : AbstractSettingsViewModel
 	{
 		#region Properties backing fields

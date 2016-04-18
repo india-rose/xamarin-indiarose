@@ -1,5 +1,8 @@
 ﻿namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 {
+    /// <summary>
+    /// VueModèle abstrait pour les boites des dialogues pour l'activation de certaines préférences
+    /// </summary>
 	public abstract class AbstractYesNoViewModel : AbstractSettingsViewModel
 	{
 		private bool _isEnabled = false;

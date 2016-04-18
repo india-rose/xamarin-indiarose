@@ -16,6 +16,9 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
+    /// <summary>
+    /// VueModèle de la page d'ajout/édition d'un Indiagram
+    /// </summary>
     public class AddIndiagramViewModel : AbstractCollectionViewModel
     {
         private bool _isCategory;
@@ -26,6 +29,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         private List<Indiagram> _brothers;
         private Indiagram _beforeIndiagram;
 
+        #region Services
         public IPopupService PopupService
         {
             get { return LazyResolver<IPopupService>.Service; }
@@ -45,7 +49,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         {
             get { return LazyResolver<IMediaService>.Service; }
         }
+        #endregion
 
+        #region Command
         public ICommand ImageChoiceCommand { get; private set; }
         public ICommand SoundChoiceCommand { get; private set; }
         public ICommand RootCommand { get; private set; }
@@ -57,7 +63,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         public ICommand PasteCommand { get; private set; }
         public ICommand SelectCategoryCommand { get; private set; }
         public ICommand SaveCommand { get; private set; }
+        #endregion
 
+        #region Properties
         [NavigationParameter(Mode = NavigationParameterMode.Optional)]
         public IndiagramContainer Indiagram
         {
@@ -112,17 +120,25 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             set { SetProperty(ref _currentIndiagram, value); }
         }
 
+        /// <summary>
+        /// Indiagram présent dans la même catégorie que l'Indiagram courant
+        /// On en a besoin pour le classement dans la catégorie
+        /// </summary>
         public List<Indiagram> Brothers
         {
             get { return _brothers; }
             set { SetProperty(ref _brothers, value); }
         }
 
+        /// <summary>
+        /// Dans la catégorie de l'Indiagram courant, Indiagram juste avant l'Indiagram courant
+        /// </summary>
         public Indiagram BeforeIndiagram
         {
             get { return _beforeIndiagram; }
             set { SetProperty(ref _beforeIndiagram, value); }
         }
+        #endregion
 
         public AddIndiagramViewModel()
         {
@@ -142,6 +158,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             RefreshBrothers();
         }
 
+        /// <summary>
+        /// Actualise la liste des Indiagram dans la catégorie de l'Indiagram courant
+        /// </summary>
         protected void RefreshBrothers()
         {
             Category parent = CurrentIndiagram.Parent as Category;
@@ -181,6 +200,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             BeforeIndiagram = selectedIndiagram;
         }
 
+        /// <summary>
+        /// Ouvre le dialogue de choix de la catégorie
+        /// </summary>
         protected void SelectCategoryAction()
         {
             Indiagram excludedIndiagram = null;
@@ -188,13 +210,17 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             {
                 excludedIndiagram = Indiagram.Indiagram;
             }
-			MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_CHOOSE, new Dictionary<string, object>
+            MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_CHOOSE, new Dictionary<string, object>
 			{
 				{"ExcludedIndiagram", excludedIndiagram},
 				{"SelectedCallback", (Action<Category>) OnCategorySelected}
 			});
         }
 
+        /// <summary>
+        /// Callback pour le choix de la catégorie
+        /// </summary>
+        /// <param name="category">Catégorie choisi</param>
         private void OnCategorySelected(Category category)
         {
             if (!Data.Model.Indiagram.AreSameIndiagram(CurrentIndiagram.Parent, category))
@@ -204,19 +230,28 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             }
         }
 
+        /// <summary>
+        /// Active l'Indiagram courant
+        /// </summary>
         protected void ActivateAction()
         {
             CurrentIndiagram.IsEnabled = true;
         }
 
+        /// <summary>
+        /// Désactive l'Indiagram courant
+        /// </summary>
         protected void DesactivateAction()
         {
             CurrentIndiagram.IsEnabled = false;
         }
 
+        /// <summary>
+        /// Sauvegarde les modifications faites à l'Indiagram
+        /// </summary>
         protected void SaveAction()
         {
-            //todo : mettre un max char sinon utilisateur
+            //todo : mettre un max char au nom sinon utilisateur
             if (string.IsNullOrWhiteSpace(CurrentIndiagram.Text))
             {
                 PopupService.DisplayPopup(LocalizationService.GetString("Collection_MissingText", "Text"));
@@ -225,6 +260,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             Indiagram savedIndiagram;
             if (EditMode)
             {
+                //mode édition
                 Indiagram original = Indiagram.Indiagram;
                 Category parent = original.Parent as Category;
                 if (parent == null)
@@ -251,6 +287,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
                 //create a new indiagram in the storage
                 savedIndiagram = IsCategory ? new Category() : new Indiagram();
             }
+            //sauvegarde l'indiagram
             savedIndiagram.CopyFrom(CurrentIndiagram);
             CollectionStorageService.Save(savedIndiagram);
             if (Indiagram != null)
@@ -258,6 +295,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
                 Indiagram.Indiagram = savedIndiagram;
             }
 
+            //met à jour le parent
             Category newParent = savedIndiagram.Parent as Category;
             ObservableCollection<Indiagram> collection;
             if (newParent == null)
@@ -295,6 +333,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             BackAction();
         }
 
+        /// <summary>
+        /// Ouvre le dialogue pour le choix de l'image
+        /// </summary>
         protected void ImageChoiceAction()
         {
             MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_IMAGECHOICE, new Dictionary<string, object>
@@ -303,6 +344,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			});
         }
 
+        /// <summary>
+        /// Ouvre le dialogue pour le choix du son
+        /// </summary>
         protected void SoundChoiceAction()
         {
             MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_SOUNDCHOICE, new Dictionary<string, object>
@@ -311,20 +355,30 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
 			});
         }
 
+        /// <summary>
+        /// Met l'Indiagram courant dans la catégorie Home
+        /// </summary>
         protected void RootAction()
         {
             CurrentIndiagram.Parent = null;
-			RefreshBrothers ();
+            RefreshBrothers();
         }
 
+        /// <summary>
+        /// Supprime le son enregistré par l'utilisateur
+        /// La TTS lira le nom de l'Indiagram lors de la prochaine lecture (sauf s'il y a une nouvelle modification entre temps)
+        /// </summary>
         protected void ResetSoundAction()
         {
             CurrentIndiagram.SoundPath = null;
         }
 
+        /// <summary>
+        /// Lance la lecture de l'Indiagram
+        /// </summary>
         protected void ListenAction()
         {
-            if (string.IsNullOrWhiteSpace(CurrentIndiagram.Text)&&!CurrentIndiagram.HasCustomSound)
+            if (string.IsNullOrWhiteSpace(CurrentIndiagram.Text) && !CurrentIndiagram.HasCustomSound)
             {
                 PopupService.DisplayPopup(LocalizationService.GetString("Collection_MissingSound", "Text"));
             }
@@ -334,11 +388,17 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
             }
         }
 
+        /// <summary>
+        /// Copie dans le buffer l'Indiagram courant
+        /// </summary>
         protected void CopyAction()
         {
             CopyPasteService.Copy(CurrentIndiagram, IsCategory);
         }
 
+        /// <summary>
+        /// Colle le contenu du buffer à la place de l'Indiagram courant
+        /// </summary>
         protected void PasteAction()
         {
             CurrentIndiagram = CopyPasteService.Paste();

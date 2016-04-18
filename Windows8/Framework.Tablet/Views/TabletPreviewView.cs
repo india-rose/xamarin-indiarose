@@ -10,11 +10,15 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Framework.Views
 {
+    /// <summary>
+    /// Affiche la tablette pour la page de choix des couleurs de fond
+    /// </summary>
     public class TabletPreviewView : Grid
     {
 
         #region Properties
 
+        #region ButtonStyle
         public static readonly DependencyProperty ButtonStyleProperty = DependencyProperty.Register(
             "ButtonStyle", typeof(Style), typeof(TabletPreviewView), new PropertyMetadata(default(Style), RefreshStyle));
 
@@ -35,6 +39,9 @@ namespace IndiaRose.Framework.Views
             get { return (Style)GetValue(ButtonStyleProperty); }
             set { SetValue(ButtonStyleProperty, value); }
         }
+        #endregion
+
+        #region IndiagramSize
         public static readonly DependencyProperty IndiagramSizeProperty = DependencyProperty.Register(
             "IndiagramSize", typeof(int), typeof(TabletPreviewView), new PropertyMetadata(default(int), RefreshSize));
 
@@ -43,7 +50,9 @@ namespace IndiaRose.Framework.Views
             get { return (int)GetValue(IndiagramSizeProperty); }
             set { SetValue(IndiagramSizeProperty, value); }
         }
+        #endregion
 
+        #region Percentage
         public static readonly DependencyProperty PercentageProperty = DependencyProperty.Register(
             "Percentage", typeof(int), typeof(TabletPreviewView), new PropertyMetadata(default(int), RefreshSize));
 
@@ -53,12 +62,18 @@ namespace IndiaRose.Framework.Views
             if (view != null) view.RefreshSize();
         }
 
+        /// <summary>
+        /// Pourcentage de l'écran disponbile attribué à la partie haute.
+        /// Le pourcentage de la partie basse est obtenu par le calcul 1-%Haute
+        /// </summary>
         public int Percentage
         {
             get { return (int)GetValue(PercentageProperty); }
             set { SetValue(PercentageProperty, value); }
         }
+        #endregion
 
+        #region TopAreaColor
         public static readonly DependencyProperty TopAreaColorProperty = DependencyProperty.Register(
             "TopAreaColor", typeof(SolidColorBrush), typeof(TabletPreviewView), new PropertyMetadata(default(SolidColorBrush), RefreshTopButtonColor));
 
@@ -78,7 +93,9 @@ namespace IndiaRose.Framework.Views
             get { return (SolidColorBrush)GetValue(TopAreaColorProperty); }
             set { SetValue(TopAreaColorProperty, value); }
         }
+        #endregion
 
+        #region BottomAreaColor
         public static readonly DependencyProperty BottomAreaColorProperty = DependencyProperty.Register(
             "BottomAreaColor", typeof(SolidColorBrush), typeof(TabletPreviewView), new PropertyMetadata(default(SolidColorBrush), RefreshBotButtonColor));
 
@@ -98,7 +115,9 @@ namespace IndiaRose.Framework.Views
             get { return (SolidColorBrush)GetValue(BottomAreaColorProperty); }
             set { SetValue(BottomAreaColorProperty, value); }
         }
+        #endregion
 
+        #region TopAreaCommand
         public static readonly DependencyProperty TopAreaCommandProperty = DependencyProperty.Register(
             "TopAreaCommand", typeof(ICommand), typeof(TabletPreviewView), new PropertyMetadata(default(ICommand)));
 
@@ -107,7 +126,9 @@ namespace IndiaRose.Framework.Views
             get { return (ICommand)GetValue(TopAreaCommandProperty); }
             set { SetValue(TopAreaCommandProperty, value); }
         }
+        #endregion
 
+        #region BottomAreaCommand
         public static readonly DependencyProperty BottomAreaCommandProperty = DependencyProperty.Register(
             "BottomAreaCommand", typeof(ICommand), typeof(TabletPreviewView), new PropertyMetadata(default(ICommand)));
 
@@ -116,6 +137,9 @@ namespace IndiaRose.Framework.Views
             get { return (ICommand)GetValue(BottomAreaCommandProperty); }
             set { SetValue(BottomAreaCommandProperty, value); }
         }
+
+        #endregion
+
         #endregion
 
         private readonly Image _tabletImage = new Image();
@@ -132,10 +156,10 @@ namespace IndiaRose.Framework.Views
         public TabletPreviewView()
         {
             _catImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/chat.png"));
-            _catImage.VerticalAlignment=VerticalAlignment.Top;
+            _catImage.VerticalAlignment = VerticalAlignment.Top;
             _playImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/playbutton.png"));
             _rabbidImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/lapin.png"));
-            _rabbidImage.VerticalAlignment=VerticalAlignment.Top;
+            _rabbidImage.VerticalAlignment = VerticalAlignment.Top;
             _nextImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/nextarrow.png"));
             _nextImage.VerticalAlignment = VerticalAlignment.Top;
             _tabletImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/tab.png"));
@@ -155,6 +179,7 @@ namespace IndiaRose.Framework.Views
             SizeChanged += TabletPreview_SizeChanged;
         }
 
+        #region Callback
         void _bottomButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (BottomAreaCommand != null && BottomAreaCommand.CanExecute(null))
@@ -175,6 +200,7 @@ namespace IndiaRose.Framework.Views
         {
             RefreshSize();
         }
+        #endregion
 
         private void RefreshSize()
         {
@@ -184,7 +210,7 @@ namespace IndiaRose.Framework.Views
             //ratio from initial image without border
             height *= 0.81;
             width *= 0.79;
-            
+
             //empty area
             _stackPanel.Height = height;
             _stackPanel.Width = width;
@@ -195,18 +221,18 @@ namespace IndiaRose.Framework.Views
             //add a small border
             indiasize *= 1.2;
             RefreshIndiaSize(indiasize);
-            var nbIndia = (int)(width/indiasize);
+            var nbIndia = (int)(width / indiasize);
 
             _botGrid.ColumnDefinitions.Clear();
             _topGrid.ColumnDefinitions.Clear();
             //create cells to place preview of indiagram
             for (int i = 0; i < nbIndia; i++)
             {
-                _botGrid.ColumnDefinitions.Add(new ColumnDefinition()
+                _botGrid.ColumnDefinitions.Add(new ColumnDefinition
                 {
                     Width = new GridLength(1, GridUnitType.Star)
                 });
-                _topGrid.ColumnDefinitions.Add(new ColumnDefinition()
+                _topGrid.ColumnDefinitions.Add(new ColumnDefinition
                 {
                     Width = new GridLength(1, GridUnitType.Star)
                 });
@@ -215,7 +241,7 @@ namespace IndiaRose.Framework.Views
             {
                 AddGrid(nbIndia);
             }
-            catch (ArgumentException e)
+            catch (ArgumentException)
             {
             }
             //define height and width of button
@@ -238,9 +264,9 @@ namespace IndiaRose.Framework.Views
             _catImage.Width = indiasize;
 
 
-            _nextImage.Margin = new Thickness(0,10,0,0);
-            _rabbidImage.Margin = new Thickness(0,10,0,0);
-            _catImage.Margin = new Thickness(0,10,0,0);
+            _nextImage.Margin = new Thickness(0, 10, 0, 0);
+            _rabbidImage.Margin = new Thickness(0, 10, 0, 0);
+            _catImage.Margin = new Thickness(0, 10, 0, 0);
 
         }
 

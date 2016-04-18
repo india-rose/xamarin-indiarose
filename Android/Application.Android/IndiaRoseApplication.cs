@@ -37,6 +37,7 @@ namespace IndiaRose.Application
 			Insights.Initialize("794b025da8b9b50d4e4b6f8abf64cc051ec52f94", Context);
 			Insights.Track("IndiaRoseLaunched", "Email", "dev@indiarose.org");
 
+            //Dictionnaire regroupant les pages de l'application
             Dictionary<string, Type> views = new Dictionary<string, Type>
 			{
 				// Admin
@@ -56,6 +57,7 @@ namespace IndiaRose.Application
 				// User
 				{Views.USER_HOME, typeof(UserHomeActivity)}
 			};
+            //Dictionnaire regroupant les dialogues de l'application
             Dictionary<string, Type> dialogs = new Dictionary<string, Type>
 			{
 				// Admin

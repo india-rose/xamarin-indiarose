@@ -10,6 +10,9 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
+    /// <summary>
+    /// VueModèle du dialogue de confirmation d'un Indiagram
+    /// </summary>
 	public class DeleteIndiagramWarningViewModel : AbstractCollectionViewModel
 	{
 		private Indiagram _indiagram;
@@ -30,6 +33,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			DeleteCommand = new DelegateCommand(DeleteAction);
 		}
 
+        /// <summary>
+        /// Supprime l'Indiagram de la Collection
+        /// </summary>
 		protected void DeleteAction()
 		{
             CloseDialogAction();
