@@ -4,7 +4,7 @@
               XmlStyle="{Resource ColumnContainerLinearLayoutStyle}">
 	<Resources>
 		<DataTemplate Key="SpinnerDataTemplate">
-			<LinearLayout XmlStyle="{Resource SpinnerItemLayoutStyle}">
+			<LinearLayout XmlStyle="{Resource MatchLayoutStyle}">
 				<TextView XmlStyle="{Resource SpinnerItemTextStyle}"
 				          text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}%'}" />
 			</LinearLayout>
@@ -39,9 +39,7 @@
 
 	<RelativeLayout XmlStyle="{Resource ColumnLayoutStyle}">
 
-    <!-- Ici on pourrait ajouter le style SpinnerItemLayoutStyle, qui fonctionnerait pour layout_width/height mais le nom n'est pas très parlant et peut mener à confusion... -->
-		<TabletPreviewView android:layout_width="match_parent"
-		                   android:layout_height="match_parent"
+		<TabletPreviewView XmlStyle="{Resource MatchLayoutStyle}"
 		                   android:layout_centerInParent="true"
 		                   android:id="TabletPreview"
 		                   IndiagramSize="{Binding SettingsService.IndiagramDisplaySize}"

@@ -12,7 +12,7 @@
 		                                                  Property="Text" />
 
 		<DataTemplate Key="PositionTemplate">
-			<LinearLayout XmlStyle="{Resource SpinnerItemLayoutStyle}">
+			<LinearLayout XmlStyle="{Resource MatchLayoutStyle}">
 				<TextView XmlStyle="{Resource SpinnerItemTextStyle}"
 				          Text="{Binding Text}" />
 			</LinearLayout>

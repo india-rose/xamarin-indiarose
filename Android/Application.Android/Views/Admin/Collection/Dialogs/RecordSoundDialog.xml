@@ -19,7 +19,7 @@
 	          android:textSize="20sp"
 	          Text="{Tr Text,Uid=SoundChoice_Record}" />
 
-	<LinearLayout XmlStyle="{Resource HorizontalLinearLayoutSyle}"
+	<LinearLayout XmlStyle="{Resource HorizontalLinearLayoutStyle}"
 	              android:layout_marginBottom="10dip"
 	              android:gravity="center"
 	              >
