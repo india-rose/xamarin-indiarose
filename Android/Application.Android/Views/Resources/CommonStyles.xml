@@ -204,6 +204,22 @@
 		       android:gravity="center"
 		       android:textSize="16sp" />
 
+  <!-- SplashScreen -->
+  <Style Key="SplashScreenLayoutStyle"
+         XmlStyle="{Resource MatchLayoutStyle}"
+         android:orientation="vertical"
+         android:background="@android:color/white"
+         android:gravity="center" />
+
+  <Style Key="SplashScreenImageStyle"
+         XmlStyle="{Resource WrapLayoutStyle}"
+         android:gravity="center_horizontal" />
+  
+  <Style Key="SplashScreenTextStyle"
+         XmlStyle="{Resource WrapLayoutStyle}"
+         android:layout_marginTop="25dp"
+         android:textColor="@android:color/black" />
+  
   <!-- Dummy item to prevent EditView from receiving focus -->
   <Style Key="DummyItem"
         android:layout_width="0px"
