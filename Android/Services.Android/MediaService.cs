@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
@@ -95,7 +96,9 @@ namespace IndiaRose.Services.Android
 	        {
 		        using (System.IO.Stream stream = System.IO.File.OpenWrite(filename))
 		        {
-			        bitmap.Compress(Bitmap.CompressFormat.Png, 0, stream);
+			        bool b = bitmap.Compress(Bitmap.CompressFormat.Png, 100, stream);
+                    //stream.Flush();
+                    //stream.Close();
 		        }
 	        }
 	        catch (Exception)

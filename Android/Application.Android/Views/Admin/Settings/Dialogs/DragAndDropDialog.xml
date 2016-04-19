@@ -6,7 +6,7 @@
   <ScrollView XmlStyle="{Resource ScrollExplanationTextStyle}"
               android:layout_weight="1">
     <TextView XmlStyle="{Resource DialogText}"
-	          Text="{Tr Text, Uid=DragAndDrop_Explanation}" />
+	            Text="{Tr Text, Uid=DragAndDrop_Explanation}" />
   </ScrollView>
 
   <RadioGroup XmlStyle="{Resource DialogRadioGroupStyle}"

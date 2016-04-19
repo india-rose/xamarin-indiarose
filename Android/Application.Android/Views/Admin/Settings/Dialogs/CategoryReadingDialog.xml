@@ -5,6 +5,7 @@
 
 	<TextView XmlStyle="{Resource DialogText}"
 	          Text="{Tr Text, Uid=CategoryReading_Explanation}" />
+  
 	<RadioGroup XmlStyle="{Resource DialogRadioGroupStyle}">
 
 		<RadioButton XmlStyle="{Resource DialogRadioButtonStyle}"

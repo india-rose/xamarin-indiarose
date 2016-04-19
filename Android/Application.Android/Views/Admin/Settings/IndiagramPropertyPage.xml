@@ -40,9 +40,7 @@
                 android:layout_above="@id/ippvalidationbutton">
 		<!--First column-->
 		<ScrollView XmlStyle="{Resource ColumnLayoutStyle}">
-			<LinearLayout android:layout_width="match_parent"
-			              android:layout_height="wrap_content"
-			              android:orientation="vertical">
+			<LinearLayout XmlStyle="{Resource VerticalLinearLayoutStyle}">
 
 				<!-- Indiagram size -->
 				<TextView XmlStyle="{Resource FormLabelStyle}"
@@ -72,9 +70,7 @@
 				<TextView XmlStyle="{Resource FormLabelStyle}"
 				          Text="{Tr Text, Uid=IndiagramProperty_TextColor}" />
 
-				<LinearLayout android:layout_width="match_parent"
-				              android:layout_height="wrap_content"
-				              android:orientation="horizontal"
+				<LinearLayout XmlStyle="{Resource HorizontalLinearLayoutStyle}"
                       android:layout_marginBottom="10dip"
                       >
 					<TextView XmlStyle="{Resource DefaultTextStyle}"
@@ -101,10 +97,9 @@
 						  checked="{Binding MultipleIndiagramSelection, Mode=TwoWay, UpdateEvent=CheckedChange}" />
 			</LinearLayout>
 		</ScrollView>
+    
 		<!--Second column-->
-		<LinearLayout XmlStyle="{Resource ColumnLinearLayoutStyle}"
-		              android:layout_gravity="center"
-		              android:gravity="center">
+		<LinearLayout XmlStyle="{Resource ColumnLinearCenterLayoutStyle}">
 			<IndiagramPreviewView android:layout_height="wrap_content"
 			                      android:layout_width="wrap_content"
 			                      IndiagramSize="{Binding IndiagramSize}"

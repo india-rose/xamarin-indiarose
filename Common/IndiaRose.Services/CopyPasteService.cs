@@ -1,5 +1,4 @@
-﻿
-using IndiaRose.Data.Model;
+﻿using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
 using Storm.Mvvm;
 
