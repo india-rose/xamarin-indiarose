@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/white"
+                XmlStyle="{Resource BaseRootLayoutStyle}"
                 android:paddingLeft="50dip"
                 android:paddingRight="50dip">
-	<Resources>
+                <!-- android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"-->
+	
+  <Resources>
 		<Style Key="ContainerStyle"
 		       android:layout_width="match_parent"
 		       android:layout_height="match_parent"

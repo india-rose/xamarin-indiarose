@@ -25,13 +25,13 @@
 	       android:layout_alignParentTop="true" />
 
 	<Style Key="BaseRootLayoutStyle"
-		   android:layout_width="match_parent"
+		     android:layout_width="match_parent"
 	       android:layout_height="match_parent"
 	       android:background="@android:color/white"
 			/>
 
 	<Style Key="RootLayoutStyle"
-		   XmlStyle="{Resource BaseRootLayoutStyle}"
+		     XmlStyle="{Resource BaseRootLayoutStyle}"
 	       android:layout_margin="4dip" />
 
 	<Style Key="RootLinearLayoutStyle"
@@ -94,9 +94,9 @@
 	       android:layout_width="match_parent"
 	       android:layout_height="@dimen/SpinnerSize" />
 
-	<Style Key="SpinnerItemLayoutStyle"
+	<!--<Style Key="SpinnerItemLayoutStyle"
 	       android:layout_width="match_parent"
-	       android:layout_height="match_parent" />
+	       android:layout_height="match_parent" />-->
 
 	<Style Key="SpinnerItemTextStyle"
 	       android:layout_width="wrap_content"
@@ -161,6 +161,14 @@
 	       android:layout_width="match_parent"
 	       android:layout_height="wrap_content"
          />
+  <!--Added-->
+  <Style Key="WrapLayoutStyle"
+         android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"/>
+  <!---Added-->
+  <Style Key="MatchLayoutStyle"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"/>
   
   <Style Key="HorizontalLinearLayoutStyle"
          XmlStyle="{Resource MatchWrapLayoutStyle}"
@@ -169,7 +177,7 @@
   <Style Key="VerticalLinearLayoutStyle"        
          XmlStyle="{Resource MatchWrapLayoutStyle}"
 	       android:orientation="vertical" />
-
+  
 	<Style Key="ButtonContainerStyle"
 		   android:layout_width="match_parent"
 		   android:layout_height="@dimen/ButtonContainerSize"
