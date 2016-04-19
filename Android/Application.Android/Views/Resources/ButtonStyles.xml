@@ -37,12 +37,7 @@
 	       android:layout_margin="4dip" 
 		   android:background="@android:color/white"
 		   />
-  <!-- Dummy item to prevent EditView from receiving focus -->
-  <Style Key="DummyItem"
-        android:layout_width="0px"
-        android:layout_height="0px"
-        android:focusable="true"
-        android:focusableInTouchMode="true"/>
+
   
 	<Style Key="OkButtonStyle"
 	       XmlStyle="{Resource SmallButtonStyle}"

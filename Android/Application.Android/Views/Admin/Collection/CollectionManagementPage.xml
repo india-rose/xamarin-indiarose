@@ -13,8 +13,7 @@
 	</LinearLayout>
 
 	<!-- Browser -->
-	<IndiagramBrowserView android:layout_width="match_parent"
-	                      android:layout_height="match_parent"
+	<IndiagramBrowserView XmlStyle="{Resource MatchLayoutStyle}"
 	                      android:layout_above="@id/buttons"
 	                      Background="{Binding BackgroundColor, Converter={Resource ColorStringToDrawableColorConverter}}"
 	                      Count="{Binding CollectionDisplayCount, Mode=TwoWay, UpdateEvent=CountChanged}"
