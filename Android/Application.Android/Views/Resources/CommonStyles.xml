@@ -162,12 +162,6 @@
 	       android:layout_height="wrap_content"
 	       android:textSize="@dimen/DefaultTextSize"
 	       android:textColor="@android:color/black" />
-
-  <!--AddIndiagramPage.xml EditText-->
-  <Style Key="AddIndiagramPageTextStyle"
-         android:layout_width="match_parent"
-				 android:layout_height="wrap_content"
-				 android:textSize="@dimen/DefaultTextSize"/>
   
   <Style Key="MatchWrapLayoutStyle"
 	       android:layout_width="match_parent"
@@ -209,6 +203,13 @@
 		       android:textColor="@android:color/black"
 		       android:gravity="center"
 		       android:textSize="16sp" />
+
+  <!-- Dummy item to prevent EditView from receiving focus -->
+  <Style Key="DummyItem"
+        android:layout_width="0px"
+        android:layout_height="0px"
+        android:focusable="true"
+        android:focusableInTouchMode="true"/>
 
 	<!-- tbd -->
 
