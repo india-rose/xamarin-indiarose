@@ -20,8 +20,7 @@
 	</Resources>
 
 	<!-- Dummy item to prevent EditView from receiving focus -->
-	<LinearLayout
-        android:layout_width="0px"
+	<LinearLayout android:layout_width="0px"
         android:layout_height="0px"
         android:focusable="true"
         android:focusableInTouchMode="true" />
@@ -46,9 +45,9 @@
 				<!--Text-->
 				<TextView XmlStyle="{Resource HeaderTopLabelStyle}"
 				          Text="{Tr Text, Uid=Collection_IndiagramText}" />
-				<EditText android:layout_width="match_parent"
-				          android:layout_height="wrap_content"
-				          android:textSize="@dimen/DefaultTextSize"
+				<EditText android:layout_width="match_parent"	
+	                android:layout_height="wrap_content"
+	                android:textSize="@dimen/DefaultTextSize"
 				          Text="{Binding CurrentIndiagram.Text, Mode=TwoWay, UpdateEvent=TextChanged}" />
 
 				<!--Category-->
@@ -62,7 +61,6 @@
 					<TextView XmlStyle="{Resource DefaultTextStyle}"
 					          Text="{Binding CurrentIndiagram.Parent, Converter={Resource ParentCategoryConverter}}" />
 				</LinearLayout>
-
 				<!-- Choose category -->
 				<LinearLayout XmlStyle="{Resource ButtonContainerStyle}">
 
@@ -157,7 +155,7 @@
         <LinearLayout XmlStyle="{Resource VerticalLinearLayoutStyle}"
                 android:gravity="center">
 	        <BindableImageView android:layout_width="wrap_content"
-			                        android:layout_height="wrap_content"
+	                           android:layout_height="wrap_content"
 			                        android:id="Add_Img"
 			                        SourcePath="{Binding CurrentIndiagram.ImagePath}"
 			                        Size="{Binding SettingsService.IndiagramDisplaySize}" />

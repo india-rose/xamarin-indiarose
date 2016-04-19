@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:gravity="center">
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#444444" android:textSize="@dimen/DialogExplanationTextSize" marginBottom="2dp" android:id="@+id/Generated_ViewElement_156" />
+</RelativeLayout>

@@ -23,9 +23,6 @@
 	              android:layout_marginBottom="10dip"
 	              android:gravity="center"
 	              >
-    <!--android:layout_width="match_parent"
-	      android:layout_height="wrap_content"
-        android:orientation="horizontal"-->
 
 		<Button XmlStyle="{Resource ButtonStyle}"
 		        android:background="@drawable/buttonselector"
