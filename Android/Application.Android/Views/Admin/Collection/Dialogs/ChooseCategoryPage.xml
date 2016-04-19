@@ -12,6 +12,4 @@
 	                      TextColor="{Binding TextColor, Converter={Resource ColorStringToIntConverter}}"
 	                      IndiagramSelected="{Binding IndiagramSelectedCommand}"
 	                      NextCommand="{Binding NextCommand}" />
-                        <!--android:layout_width
-	                      android:layout_height="match_parent"-->
 </RelativeLayout>

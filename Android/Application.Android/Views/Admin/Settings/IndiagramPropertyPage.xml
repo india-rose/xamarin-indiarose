@@ -6,21 +6,21 @@
 
 	<Resources>
 		<DataTemplate Key="IndiagramSizeTemplate">
-			<LinearLayout XmlStyle="{Resource SpinnerItemLayoutStyle}">
+			<LinearLayout XmlStyle="{Resource MatchLayoutStyle}">
 				<TextView XmlStyle="{Resource SpinnerItemTextStyle}"
 				          Text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}x{0}'}" />
 			</LinearLayout>
 		</DataTemplate>
 
 		<DataTemplate Key="FontSizeTemplate">
-			<LinearLayout XmlStyle="{Resource SpinnerItemLayoutStyle}">
+			<LinearLayout XmlStyle="{Resource MatchLayoutStyle}">
 				<TextView XmlStyle="{Resource SpinnerItemTextStyle}"
 				          text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}'}" />
 			</LinearLayout>
 		</DataTemplate>
 
 		<DataTemplate Key="FontTemplate">
-			<LinearLayout XmlStyle="{Resource SpinnerItemLayoutStyle}">
+			<LinearLayout XmlStyle="{Resource MatchLayoutStyle}">
 				<TextView XmlStyle="{Resource SpinnerItemTextStyle}"
 				          text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}'}" />
 			</LinearLayout>
@@ -77,8 +77,7 @@
 					          android:layout_marginRight="10dip"
 					          Text="{Tr Text, Uid=IndiagramProperty_TextColorLabel}" />
 
-					<ViewWithBorder android:layout_width="match_parent"
-					                android:layout_height="match_parent"
+					<ViewWithBorder XmlStyle="{Resource MatchLayoutStyle}"
 					                BackgroundColor="{Binding TextColor.Color, Converter={Resource ColorStringToColorConverter}}" />
 
 				</LinearLayout>
@@ -100,8 +99,7 @@
     
 		<!--Second column-->
 		<LinearLayout XmlStyle="{Resource ColumnLinearCenterLayoutStyle}">
-			<IndiagramPreviewView android:layout_height="wrap_content"
-			                      android:layout_width="wrap_content"
+			<IndiagramPreviewView XmlStyle="{Resource WrapLayoutStyle}"
 			                      IndiagramSize="{Binding IndiagramSize}"
 			                      ReinforcerColor="{Binding ReinforcerColor.Color, Converter={Resource ColorStringToColorConverter}}"
 			                      ReinforcerEnabled="{Binding ReinforcerEnabled}" />

@@ -5,13 +5,9 @@
               android:layout_gravity="center"
               android:gravity="center"
 			        android:orientation="vertical">
-              <!--android:layout_width="match_parent"
-              android:layout_height="match_parent"-->
 	<BindableImageView XmlStyle ="{Resource WrapLayoutStyle}"
 	                   SourcePath="{Binding Indiagram.ImagePath}"
 	                   Size="{Binding SettingsService.IndiagramDisplaySize}" />
-                     <!--android:layout_width="wrap_content"
-	                   android:layout_height="wrap_content"-->
 	<TextView XmlStyle="{Resource DefaultTextStyle}"
 	          Text="{Binding Indiagram.Text}" />
 </LinearLayout>

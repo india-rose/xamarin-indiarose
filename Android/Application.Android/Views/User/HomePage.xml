@@ -3,14 +3,12 @@
                 XmlStyle="{Resource BaseRootLayoutStyle}"
                 android:id="RootLayout">
 	<!-- TitleBar to show current category name + image and india rose logo -->
-	<TitleBarView android:layout_width="match_parent"
-	              android:layout_height="wrap_content"
+	<TitleBarView XmlStyle ="{Resource MatchWrapLayoutStyle}"
 	              android:id="TitleBar"
 	              Category="{Binding CurrentCategory}" />
 	
 
-	<UserView android:layout_width="match_parent"
-	          android:layout_height="match_parent"
+	<UserView XmlStyle="{Resource MatchLayoutStyle}"
 	          android:layout_below="@id/TitleBar"
             android:id="MiddleScreen"
 			  

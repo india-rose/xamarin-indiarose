@@ -3,13 +3,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 XmlStyle="{Resource BaseRootLayoutStyle}"
                 android:id="RootLayout">
-	<TitleBarView android:layout_width="match_parent"
-	              android:layout_height="wrap_content"
+	<TitleBarView XmlStyle ="{Resource MatchWrapLayoutStyle}"
 	              android:id="TitleBar"
 	              Category="{Binding CurrentCategory}" />
   
-	<UserView android:layout_width="match_parent"
-	          android:layout_height="match_parent"
+	<UserView XmlStyle="{Resource MatchLayoutStyle}"
 	          android:layout_below="@id/TitleBar"
             android:id="MiddleScreen"
 			  
