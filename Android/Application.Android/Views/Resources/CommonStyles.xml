@@ -163,6 +163,12 @@
 	       android:textSize="@dimen/DefaultTextSize"
 	       android:textColor="@android:color/black" />
 
+  <!--AddIndiagramPage.xml EditText-->
+  <Style Key="AddIndiagramPageTextStyle"
+         android:layout_width="match_parent"
+				 android:layout_height="wrap_content"
+				 android:textSize="@dimen/DefaultTextSize"/>
+  
   <Style Key="MatchWrapLayoutStyle"
 	       android:layout_width="match_parent"
 	       android:layout_height="wrap_content"

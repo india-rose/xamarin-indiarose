@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@android:color/white" android:layout_margin="4dip" android:orientation="horizontal">
+	<RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginLeft="4dip" android:layout_marginRight="4dip">
+		<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_centerInParent="true">
+			<TextView android:textColor="#006FFF" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textStyle="italic" android:textSize="@dimen/FormTextSize" android:id="@+id/Generated_ViewElement_158" />
+			<storm.mvvm.components.BindableSpinner android:layout_width="match_parent" android:layout_height="@dimen/SpinnerSize" android:id="@+id/Generated_ViewElement_159" />
+		</LinearLayout>
+		<LinearLayout android:layout_width="match_parent" android:layout_height="@dimen/ValidationButtonSize" android:layout_alignParentBottom="true" android:orientation="horizontal" android:layout_margin="4dip" android:background="@android:color/white">
+			<Button android:textColor="@android:color/white" android:textSize="@dimen/ButtonTextSize" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="2dip" android:layout_weight="4" android:background="@drawable/buttongreen" android:id="@+id/Generated_ViewElement_160" />
+			<Button android:textColor="@android:color/white" android:textSize="@dimen/ButtonTextSize" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="2dip" android:layout_weight="4" android:background="@drawable/buttonorange" android:id="@+id/Generated_ViewElement_161" />
+		</LinearLayout>
+	</RelativeLayout>
+	<RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1" android:layout_marginLeft="4dip" android:layout_marginRight="4dip">
+		<indiarose.framework.views.TabletPreviewView android:layout_width="match_parent" android:layout_height="match_parent" android:layout_centerInParent="true" android:id="@+id/TabletPreview" />
+		<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/black" android:gravity="center" android:textSize="16sp" android:layout_above="@id/TabletPreview" android:id="@+id/Generated_ViewElement_162" />
+		<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/black" android:gravity="center" android:textSize="16sp" android:layout_below="@id/TabletPreview" android:id="@+id/Generated_ViewElement_163" />
+	</RelativeLayout>
+</LinearLayout>
