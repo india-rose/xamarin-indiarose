@@ -96,7 +96,7 @@ namespace IndiaRose.Services.Android
 	        {
 		        using (System.IO.Stream stream = System.IO.File.OpenWrite(filename))
 		        {
-			        bool b = bitmap.Compress(Bitmap.CompressFormat.Png, 100, stream);
+			        bool b = bitmap.Compress(Bitmap.CompressFormat.Png, 0, stream);
                     //stream.Flush();
                     //stream.Close();
 		        }

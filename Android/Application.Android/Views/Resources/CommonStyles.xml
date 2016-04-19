@@ -2,173 +2,151 @@
 
 <Resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-	<!-- Top logo style -->
-	<Style Key="BaseLogoStyle"
-	       android:layout_width="wrap_content"
-	       android:layout_height="wrap_content"
+  <!-- Top logo style -->
+  <Style Key="BaseLogoStyle"
+	       XmlStyle="{Resource WrapLayoutStyle}"
 	       android:layout_marginTop="10dip"
 	       android:layout_marginLeft="4dip"
 	       android:layout_marginRight="4dip"
 	       android:scaleType="fitXY"
 	       android:src="@drawable/logo" />
-  
+
   <Style Key="LinkStyle"
-         android:layout_width="wrap_content"
-	       android:layout_height="wrap_content"
+         XmlStyle="{Resource WrapLayoutStyle}"
          android:autoLink="web"
 		     android:textSize="@dimen/LinkSize"
          />
 
-	<Style Key="LogoStyle"
+  <Style Key="LogoStyle"
 	       XmlStyle="{Resource BaseLogoStyle}"
 	       android:layout_centerHorizontal="true"
 	       android:layout_alignParentTop="true" />
 
-	<Style Key="BaseRootLayoutStyle"
-		     android:layout_width="match_parent"
-	       android:layout_height="match_parent"
+  <Style Key="BaseRootLayoutStyle"
+		     XmlStyle="{Resource MatchLayoutStyle}"
 	       android:background="@android:color/white"
 			/>
 
-	<Style Key="RootLayoutStyle"
+  <Style Key="RootLayoutStyle"
 		     XmlStyle="{Resource BaseRootLayoutStyle}"
 	       android:layout_margin="4dip" />
 
-	<Style Key="RootLinearLayoutStyle"
+  <Style Key="RootLinearLayoutStyle"
 	       XmlStyle="{Resource RootLayoutStyle}"
 	       android:orientation="vertical" />
 
-	<Style Key="RootPaddingLayoutStyle"
+  <Style Key="RootPaddingLayoutStyle"
 	       XmlStyle="{Resource RootLayoutStyle}"
 	       android:paddingLeft="50dip"
 	       android:paddingRight="50dip" />
 
-	<Style Key="RootPaddingLinearLayoutStyle"
+  <Style Key="RootPaddingLinearLayoutStyle"
 	       XmlStyle="{Resource RootPaddingLayoutStyle}"
 	       android:orientation="vertical" />
 
-	<!-- Styles for pages full of buttons -->
+  <!-- Styles for pages full of buttons -->
 
-	<Style Key="ButtonLineContainerStyle"
-	       android:layout_width="match_parent"
-	       android:layout_height="match_parent"
+  <Style Key="ButtonLineContainerStyle"
+	       XmlStyle="{Resource MatchLayoutStyle}"
 	       android:layout_weight="1"
 	       android:gravity="center_horizontal"
 	       android:orientation="horizontal" />
-  
-	<Style Key="ButtonPageContainerStyle"
-	       android:layout_width="match_parent"
-	       android:layout_height="match_parent"
+
+  <Style Key="ButtonPageContainerStyle"
+	       XmlStyle="{Resource MatchLayoutStyle}"
 	       android:gravity="center"
 	       android:orientation="vertical"
 	       android:paddingBottom="@dimen/ButtonPagePadding"
 	       android:paddingTop="@dimen/ButtonPagePadding" />
 
-	<!-- Two column root layout -->
-	<Style Key="ColumnContainerLayoutStyle"
+  <!-- Two column root layout -->
+  <Style Key="ColumnContainerLayoutStyle"
 	       XmlStyle="{Resource RootLayoutStyle}" />
 
-	<Style Key="ColumnContainerLinearLayoutStyle"
+  <Style Key="ColumnContainerLinearLayoutStyle"
 	       XmlStyle="{Resource ColumnContainerLayoutStyle}"
 	       android:orientation="horizontal" />
 
-	<!-- column layout -->
-	<Style Key="ColumnLayoutStyle"
-	       android:layout_width="match_parent"
-	       android:layout_height="match_parent"
+  <!-- column layout -->
+  <Style Key="ColumnLayoutStyle"
+	       XmlStyle="{Resource MatchLayoutStyle}"
 	       android:layout_weight="1"
 	       android:layout_marginLeft="4dip"
 	       android:layout_marginRight="4dip" />
 
-	<Style Key="ColumnLinearLayoutStyle"
+  <Style Key="ColumnLinearLayoutStyle"
 	       XmlStyle="{Resource ColumnLayoutStyle}"
 	       android:orientation="vertical" />
-  
+
   <Style Key="ColumnLinearCenterLayoutStyle"
          XmlStyle="{Resource ColumnLinearLayoutStyle}"
          android:layout_gravity="center"
 		     android:gravity="center" />
 
-	<!-- Forms styles -->
-	<Style Key="LabelLeftTextStyle"
-	       android:layout_width="wrap_content"
-	       android:layout_height="wrap_content"
+  <!-- Forms styles -->
+  <Style Key="LabelLeftTextStyle"
+	       XmlStyle="{Resource WrapLayoutStyle}"
 	       android:textColor="@android:color/black"
 	       android:textSize="15sp" />
 
-	<Style Key="SpinnerStyle"
+  <Style Key="SpinnerStyle"
 	       android:layout_width="match_parent"
 	       android:layout_height="@dimen/SpinnerSize" />
 
-	<!--<Style Key="SpinnerItemLayoutStyle"
+  <!--<Style Key="SpinnerItemLayoutStyle"
 	       android:layout_width="match_parent"
 	       android:layout_height="match_parent" />-->
 
-	<Style Key="SpinnerItemTextStyle"
+  <Style Key="SpinnerItemTextStyle"
 	       android:layout_width="wrap_content"
 	       android:layout_height="match_parent"
 	       android:textSize="@dimen/SpinnerTextSize"
 	       android:textColor="@android:color/black" />
 
-	<Style Key="BaseLabelStyle"
-	       android:textColor="#006FFF"
-	       />
+  <Style Key="BaseLabelStyle"
+         XmlStyle="{Resource WrapLayoutStyle}"
+	       android:textColor="#006FFF" />
 
-	<Style Key="FormLabelStyle"
+  <Style Key="FormLabelStyle"
 	       XmlStyle="{Resource BaseLabelStyle}"
-	       android:layout_width="wrap_content"
-	       android:layout_height="wrap_content"
 	       android:textStyle="italic"
-		     android:textSize="@dimen/FormTextSize"
-		     />
+		     android:textSize="@dimen/FormTextSize" />
 
 
-	<Style Key="SmallFormLabelStyle"
-		   XmlStyle="{Resource BaseLabelStyle}"
-		   android:layout_width="wrap_content"
-		   android:layout_height="wrap_content"
-		   android:textSize="@dimen/DefaultTextSize"
-		   />
+  <Style Key="SmallFormLabelStyle"
+		     XmlStyle="{Resource BaseLabelStyle}"
+		     android:textSize="@dimen/DefaultTextSize" />
 
-	<Style Key="LargeFormLabelStyle"
-		   XmlStyle="{Resource BaseLabelStyle}"
-		   android:layout_width="wrap_content"
-		   android:layout_height="wrap_content"
-		   android:textSize="@dimen/LargeFormLabelTextSize"
-		   />
+  <Style Key="LargeFormLabelStyle"
+		     XmlStyle="{Resource BaseLabelStyle}"
+		     android:textSize="@dimen/LargeFormLabelTextSize" />
 
   <Style Key="HeaderLabelStyle"
 			   XmlStyle="{Resource LargeFormLabelStyle}"
-			   android:layout_marginTop="10dip"
-			   />
+			   android:layout_marginTop="10dip" />
+
   <Style Key="HeaderItalicLabelStyle"
 			   XmlStyle="{Resource HeaderLabelStyle}"
-	       android:textStyle="italic"
-			   />
+	       android:textStyle="italic" />
+
   <Style Key="HeaderTopLabelStyle"
 			   XmlStyle="{Resource LargeFormLabelStyle}"
-	       android:textStyle="italic"
-			   />
-	
-	<Style Key="FormCheckBoxStyle"
-	       XmlStyle="{Resource BaseLabelStyle}"
-	       android:layout_width="wrap_content"
-	       android:layout_height="wrap_content" 
-		     android:textSize="@dimen/CheckboxTextSize"
-		   />
+	       android:textStyle="italic" />
 
-	<Style Key="DefaultTextStyle"
-	       android:layout_width="wrap_content"
-	       android:layout_height="wrap_content"
+  <Style Key="FormCheckBoxStyle"
+	       XmlStyle="{Resource BaseLabelStyle}"
+		     android:textSize="@dimen/CheckboxTextSize" />
+
+  <Style Key="DefaultTextStyle"
+	       XmlStyle="{Resource WrapLayoutStyle}"
 	       android:textSize="@dimen/DefaultTextSize"
 	       android:textColor="@android:color/black" />
 
   <!--AddIndiagramPage.xml EditText-->
   <Style Key="AddIndiagramPageTextStyle"
-         android:layout_width="match_parent"
-				 android:layout_height="wrap_content"
+         XmlStyle="{Resource MatchWrapLayoutStyle}"
 				 android:textSize="@dimen/DefaultTextSize"/>
-  
+
   <Style Key="MatchWrapLayoutStyle"
 	       android:layout_width="match_parent"
 	       android:layout_height="wrap_content"
@@ -181,36 +159,35 @@
   <Style Key="MatchLayoutStyle"
          android:layout_width="match_parent"
          android:layout_height="match_parent"/>
-  
+
   <Style Key="HorizontalLinearLayoutStyle"
          XmlStyle="{Resource MatchWrapLayoutStyle}"
 	       android:orientation="horizontal" />
-  
-  <Style Key="VerticalLinearLayoutStyle"        
+
+  <Style Key="VerticalLinearLayoutStyle"
          XmlStyle="{Resource MatchWrapLayoutStyle}"
 	       android:orientation="vertical" />
-  
-	<Style Key="ButtonContainerStyle"
-		   android:layout_width="match_parent"
-		   android:layout_height="@dimen/ButtonContainerSize"
-		   android:orientation="horizontal"
-		   />
 
-	<Style Key="LineSeparatorStyle"
+  <Style Key="ButtonContainerStyle"
+		     android:layout_width="match_parent"
+		     android:layout_height="@dimen/ButtonContainerSize"
+		     android:orientation="horizontal" />
+
+  <Style Key="LineSeparatorStyle"
 	       android:layout_width="match_parent"
 	       android:layout_height="1dip"
 	       android:background="#090909" />
-  
+
   <!-- ApplicationLookPage -->
 
   <Style Key="HelpColorTextStyle"
-		       android:layout_width="match_parent"
-		       android:layout_height="wrap_content"
-		       android:textColor="@android:color/black"
-		       android:gravity="center"
-		       android:textSize="16sp" />
+		     XmlStyle="{Resource MatchWrapLayoutStyle}"
+		     android:textColor="@android:color/black"
+		     android:gravity="center"
+		     android:textSize="16sp" />
 
   <!-- SplashScreen -->
+
   <Style Key="SplashScreenLayoutStyle"
          XmlStyle="{Resource MatchLayoutStyle}"
          android:orientation="vertical"
@@ -220,15 +197,15 @@
   <Style Key="SplashScreenImageStyle"
          XmlStyle="{Resource WrapLayoutStyle}"
          android:gravity="center_horizontal" />
-  
+
   <Style Key="SplashScreenTextStyle"
          XmlStyle="{Resource WrapLayoutStyle}"
          android:layout_marginTop="25dp"
          android:textColor="@android:color/black" />
-  
-	<!-- tbd -->
 
-	<!--<Style Key="Ok_Back_Container"
+  <!-- tbd -->
+
+  <!--<Style Key="Ok_Back_Container"
 	       android:layout_width="match_parent"
 	       android:layout_height="75dip"
 	       android:layout_alignParentBottom="true"
