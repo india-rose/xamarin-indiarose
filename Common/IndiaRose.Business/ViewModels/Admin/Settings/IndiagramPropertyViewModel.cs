@@ -139,7 +139,8 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 		    }
 		    else
 		    {
-			    FontName = FontService.FontList.First().Key;
+		        //FontName = FontService.FontList.ContainsKey("DroidSans.ttf") ? "DroidSans.ttf" : FontService.FontList.First().Key;
+		        FontName = FontService.FontList.First().Key;
 		    }
 	    }
 
