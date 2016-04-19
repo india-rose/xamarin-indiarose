@@ -60,11 +60,8 @@
 	       android:paddingTop="@dimen/ButtonPagePadding" />
 
   <!-- Two column root layout -->
-  <Style Key="ColumnContainerLayoutStyle"
-	       XmlStyle="{Resource RootLayoutStyle}" />
-
   <Style Key="ColumnContainerLinearLayoutStyle"
-	       XmlStyle="{Resource ColumnContainerLayoutStyle}"
+	       XmlStyle="{Resource RootLayoutStyle}"
 	       android:orientation="horizontal" />
 
   <!-- column layout -->
@@ -84,10 +81,10 @@
 		     android:gravity="center" />
 
   <!-- Forms styles -->
-  <Style Key="LabelLeftTextStyle"
+  <!--<Style Key="LabelLeftTextStyle"
 	       XmlStyle="{Resource WrapLayoutStyle}"
 	       android:textColor="@android:color/black"
-	       android:textSize="15sp" />
+	       android:textSize="15sp" />-->
 
   <Style Key="SpinnerStyle"
 	       android:layout_width="match_parent"
@@ -116,7 +113,7 @@
   <Style Key="SmallFormLabelStyle"
 		     XmlStyle="{Resource BaseLabelStyle}"
 		     android:textSize="@dimen/DefaultTextSize" />
-
+  
   <Style Key="LargeFormLabelStyle"
 		     XmlStyle="{Resource BaseLabelStyle}"
 		     android:textSize="@dimen/LargeFormLabelTextSize" />
@@ -141,11 +138,6 @@
 	       XmlStyle="{Resource WrapLayoutStyle}"
 	       android:textSize="@dimen/DefaultTextSize"
 	       android:textColor="@android:color/black" />
-
-  <!--AddIndiagramPage.xml EditText-->
-  <Style Key="AddIndiagramPageTextStyle"
-         XmlStyle="{Resource MatchWrapLayoutStyle}"
-				 android:textSize="@dimen/DefaultTextSize"/>
 
   <Style Key="MatchWrapLayoutStyle"
 	       android:layout_width="match_parent"
