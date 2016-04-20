@@ -246,7 +246,7 @@ namespace IndiaRose.Services
             return res;
         }
 
-        // Lit un stream en entier et renvoi son contenu dans une string
+        // Lit un stream en entier et renvoie son contenu dans une string
         private string ReadStream(Stream stream)
         {
             byte[] buffer = new byte[2048];
