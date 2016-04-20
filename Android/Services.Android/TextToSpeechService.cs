@@ -41,8 +41,8 @@ namespace IndiaRose.Services.Android
 		public TextToSpeechService()
 		{
 			ActivityService.ActivityChanged += InitTts;
-			//ActivityService.ActivityChanging += ReleaseTts;
-		}
+            //ActivityService.ActivityChanging += ReleaseTts;
+        }
 
 		public void OnInit(OperationResult status)
 		{
@@ -57,7 +57,7 @@ namespace IndiaRose.Services.Android
 				return;
 			}
 			_speakerSpeech.SetLanguage(Locale.Default);
-			_speakerSpeech.SetOnUtteranceCompletedListener(this);
+			_speakerSpeech.SetOnUtteranceCompletedListener(this); // Deprecated
 
 			Dictionary<string, string> speakParameters = new Dictionary<string, string>
 			{

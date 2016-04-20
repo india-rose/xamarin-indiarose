@@ -13,7 +13,7 @@
 		       android:paddingBottom="25dip"
 		       android:paddingTop="25dip" />
 		<Style Key="TextViewStyle"
-		        XmlStyle="{Resource WrapLayoutStyle}"
+		       XmlStyle="{Resource WrapLayoutStyle}"
 		       android:layout_alignParentLeft="true"
 		       android:layout_centerVertical="true"
 		       android:layout_marginTop="10dip"

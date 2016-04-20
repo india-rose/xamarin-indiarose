@@ -10,6 +10,7 @@ using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
 using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
+using Android.Util;
 
 namespace IndiaRose.Business.ViewModels.User
 {
@@ -19,7 +20,7 @@ namespace IndiaRose.Business.ViewModels.User
 		private readonly ManualResetEvent _sentenceReadingSemaphore = new ManualResetEvent(false);
 		private readonly Category _correctionCategory;
 		private readonly Stack<Category> _navigationStack = new Stack<Category>();
-		private readonly ObservableCollection<IndiagramUIModel> _sentenceIndiagrams = new ObservableCollection<IndiagramUIModel>(); 
+		private readonly ObservableCollection<IndiagramUIModel> _sentenceIndiagrams = new ObservableCollection<IndiagramUIModel>();
 
 		private int _collectionOffset;
 		private int _collectionDisplayCount;
@@ -113,7 +114,6 @@ namespace IndiaRose.Business.ViewModels.User
 		public ICommand CollectionNextCommand { get; private set; }
 		public ICommand ReadSentenceCommand { get; private set; }
 		public ICommand CollectionIndiagramDragStartCommand { get; private set; }
-
 
 		#endregion
 
@@ -369,7 +369,8 @@ namespace IndiaRose.Business.ViewModels.User
 			Task.Run((Action)ReadSentence);
 		}
 
-		private async void ReadSentence()
+        // Todo: Le "APRES" est bien après le "Utterance completed" (TtsService) seulement à la première lecture, après on a AVANT->APRES->Utterance completed
+        private async void ReadSentence()
 		{
 			bool isReinforcerEnabled = SettingsService.IsReinforcerEnabled;
 			foreach (IndiagramUIModel sentenceIndiagram in SentenceIndiagrams)
@@ -383,10 +384,12 @@ namespace IndiaRose.Business.ViewModels.User
 
 				// read indiagram and wait for reading to finished
 				TextToSpeechService.PlayIndiagram(sentenceIndiagram.Model);
-				_sentenceReadingSemaphore.WaitOne();
+                Log.Error("TTS", "AVANT");
+                _sentenceReadingSemaphore.WaitOne();
+                Log.Error("TTS", "APRES");
 
-				// wait delay specified in settings before going to next one
-				int millisecondsToWait = (int)(SettingsService.TimeOfSilenceBetweenWords * 1000);
+                // wait delay specified in settings before going to next one
+                int millisecondsToWait = (int)(SettingsService.TimeOfSilenceBetweenWords * 1000);
 				if (millisecondsToWait > 10)
 				{
 					await Task.Delay(millisecondsToWait);
@@ -395,7 +398,7 @@ namespace IndiaRose.Business.ViewModels.User
 				// disable reinforcer
 				if (isReinforcerEnabled)
 				{
-					DispatcherService.InvokeOnUIThread(() =>currentIndiagram.IsReinforcerEnabled = false);
+					DispatcherService.InvokeOnUIThread(() => currentIndiagram.IsReinforcerEnabled = false);
 				}
 			}
 

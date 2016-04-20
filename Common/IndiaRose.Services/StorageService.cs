@@ -1,16 +1,21 @@
 ﻿#region Usings
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
 using PCLStorage;
 using Storm.Mvvm.Extensions;
 using Storm.Mvvm.Inject;
+using Android.Util;
+using PCLCrypto;
+using Storm.Mvvm.Services;
 
 #endregion
 
@@ -29,6 +34,8 @@ namespace IndiaRose.Services
         private const string STORAGE_PLAYBUTTON_IMAGE = "playbutton.png";
         private const string STORAGE_ROOT_IMAGE = "root.png";
         private readonly string _storageDirectory;
+
+        private IHashAlgorithmProvider _hasher;
 
         public string AppPath
         {
@@ -97,6 +104,8 @@ namespace IndiaRose.Services
 
         public async Task InitializeAsync()
         {
+            _hasher = WinRTCrypto.HashAlgorithmProvider.OpenAlgorithm(HashAlgorithm.Sha1);
+
             IFolder rootFolder = await FileSystem.Current.GetFolderFromPathAsync(_storageDirectory);
 
             if (await rootFolder.CheckExistsAsync(STORAGE_DIRECTORY_NAME) == ExistenceCheckResult.NotFound)
@@ -120,7 +129,7 @@ namespace IndiaRose.Services
 
             IFolder appFolder = await FileSystem.Current.GetFolderFromPathAsync(AppPath);
             var res = LazyResolver<IResourceService>.Service;
-            if (await appFolder.CheckExistsAsync(STORAGE_CORRECTION_IMAGE) == ExistenceCheckResult.NotFound)
+            if (await appFolder.CheckExistsAsync(STORAGE_CORRECTION_IMAGE) == ExistenceCheckResult.FileExists)
             {
                 res.Copy(STORAGE_CORRECTION_IMAGE, ImageCorrectionPath);
             }
@@ -136,6 +145,8 @@ namespace IndiaRose.Services
             {
                 res.Copy(STORAGE_ROOT_IMAGE, ImageRootPath);
             }
+
+            CheckAssetsAsync();
         }
 
         public string GenerateFilename(StorageType type, string extension)
@@ -172,5 +183,81 @@ namespace IndiaRose.Services
             listFile.RemoveAll(x => listSoundpath.Contains(x.Path));
             listFile.ForEach(x => x.DeleteAsync());
         }
+
+        #region Ajouts Martin pour correction https://github.com/india-rose/xamarin-indiarose/issues/2
+        /* Permet de changer les assets lors du passage à la dernière version
+         * On compare donc les fichiers présents dans le dossier IndiaRose/app et avec les assets
+         * Pour chaque fichier, on récupère le stream correspondant, qu'on lie, puis qu'on hash en SHA1
+         * Un Hase a une taille fixe.
+         * Si les hash sont différents, c'est que les fichiers le sont aussi, il faut donc copier le fichier,
+         * des assets vers le dossier app.
+         * */
+        private async void CheckAssetsAsync()
+        {
+            IFolder appFolder = await FileSystem.Current.GetFolderFromPathAsync(AppPath);
+
+            IList<IFile> fileList = await appFolder.GetFilesAsync();
+            foreach (var file in fileList)
+            {
+                if (file.Name != STORAGE_CORRECTION_IMAGE && file.Name != STORAGE_PLAYBUTTON_IMAGE &&
+                    file.Name != STORAGE_NEXTARROW_IMAGE && file.Name != STORAGE_ROOT_IMAGE)
+                    continue;
+
+                // File
+                Stream streamFile = await file.OpenAsync(FileAccess.Read);
+                string contentFile = ReadStream(streamFile);
+                string hashFile = Hash(contentFile);
+                streamFile.Dispose();
+
+                // Asset
+                Stream streamAsset = LazyResolver<IAssetsService>.Service.OpenAssets(file.Name);
+                string contentAsset = ReadStream(streamAsset);
+                string hashAsset = Hash(contentAsset);
+                streamAsset.Dispose();
+
+                if (hashFile != hashAsset)
+                {
+                    if (file.Name == STORAGE_CORRECTION_IMAGE)
+                    {
+                        LazyResolver<IResourceService>.Service.Copy(STORAGE_CORRECTION_IMAGE, ImageCorrectionPath);
+                    }
+                    else if (file.Name == STORAGE_PLAYBUTTON_IMAGE)
+                    {
+                        LazyResolver<IResourceService>.Service.Copy(STORAGE_PLAYBUTTON_IMAGE, ImagePlayButtonPath);
+                    }
+                    else if (file.Name == STORAGE_NEXTARROW_IMAGE)
+                    {
+                        LazyResolver<IResourceService>.Service.Copy(STORAGE_NEXTARROW_IMAGE, ImageNextArrowPath);
+                    }
+                    else if (file.Name == STORAGE_ROOT_IMAGE)
+                    {
+                        LazyResolver<IResourceService>.Service.Copy(STORAGE_ROOT_IMAGE, ImageRootPath);
+                    }
+                }
+            }
+        }
+
+        // Prend une string, la hash en SHA1, puis renvoie le hash sous forme de chaine
+        private string Hash(string text)
+        {
+            byte[] input = System.Text.Encoding.UTF8.GetBytes(text);
+            byte[] output = _hasher.HashData(input);
+            string res = BitConverter.ToString(output);
+            return res;
+        }
+
+        // Lit un stream en entier et renvoi son contenu dans une string
+        private string ReadStream(Stream stream)
+        {
+            byte[] buffer = new byte[2048];
+            string str = "";
+            while (stream.Read(buffer, 0, buffer.Length) > 0)
+            {
+                str += BitConverter.ToString(buffer);
+                str = str.Replace("-", "");
+            }
+            return str;
+        }
+        #endregion
     }
 }
