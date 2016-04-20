@@ -26,6 +26,7 @@ namespace IndiaRose.Framework.Views
 		private IndiagramView _backupView;
 		private IndiagramView[][] _displayableViews;
 		public IndiagramView NextButton{ get; set; }
+        public IndiagramView BackCategoryButton { get; set; }
 
 		#endregion
 
@@ -37,6 +38,7 @@ namespace IndiaRose.Framework.Views
 		private uint _textColor;
 		private ICommand _indiagramSelected;
 		private ICommand _nextCommand;
+        private ICommand _backCategoryCommand;
 
 		#endregion
 
@@ -120,7 +122,16 @@ namespace IndiaRose.Framework.Views
 			set { SetProperty(ref _nextCommand, value); }
 		}
 
-		public ICommand IndiagramViewSelectedCommand { get; set; }
+        /// <summary>
+        /// Commande lorsque le bouton backCategory est sélectionné
+        /// </summary>
+		public ICommand BackCategoryCommand
+        {
+            get { return _backCategoryCommand; }
+            set { SetProperty(ref _backCategoryCommand, value); }
+        }
+
+        public ICommand IndiagramViewSelectedCommand { get; set; }
 
 		#endregion
 
@@ -162,7 +173,21 @@ namespace IndiaRose.Framework.Views
 			};
 
 			NextButton.Touch += OnNextTouch;
-		}
+            path = LazyResolver<IStorageService>.Service.ImageBackCategoryPath;
+            //initialisation du bouton backCategory
+            BackCategoryButton = new IndiagramView(Context)
+            {
+                TextColor = 0,
+                Id = 0x21,
+                Indiagram = new Indiagram
+                {
+                    Text = "backCategory",
+                    ImagePath = path
+                }
+            };
+
+            BackCategoryButton.Touch += OnBackCategoryTouch;
+        }
 
 		#endregion
 
@@ -331,6 +356,10 @@ namespace IndiaRose.Framework.Views
 			forbutton.AddRule(LayoutRules.AlignParentTop);
 			AddView(NextButton, forbutton);
 
+            LayoutParams backcategorybutton = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
+            backcategorybutton.AddRule(LayoutRules.AlignParentLeft);
+            AddView(BackCategoryButton, backcategorybutton);
+
 			Count = displayCount;
 
 			Invalidate();
@@ -399,11 +428,26 @@ namespace IndiaRose.Framework.Views
 			}
 		}
 
-		#endregion
+        /// <summary>
+        /// Callback lorsque le bouton backCategory est sélectionné
+        /// </summary>
+		private void OnBackCategoryTouch(object sender, TouchEventArgs touchEventArgs)
+        {
+            if (touchEventArgs.Event.ActionMasked == MotionEventActions.Down)
+            {
+                ICommand command = BackCategoryCommand;
+                if (command != null && command.CanExecute(null))
+                {
+                    command.Execute(null);
+                }
+            }
+        }
 
-		#region Private tools methods
+        #endregion
 
-		private bool SetProperty<T>(ref T storage, T value)
+        #region Private tools methods
+
+        private bool SetProperty<T>(ref T storage, T value)
 		{
 			if (Equals(storage, value))
 			{

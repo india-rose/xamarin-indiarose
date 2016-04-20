@@ -86,6 +86,8 @@ namespace IndiaRose.Business.ViewModels
 
 		public ICommand NextCommand { get; private set; }
 
+        public ICommand BackCategoryCommand { get; private set; }
+
 		public ICommand IndiagramSelectedCommand { get; private set; }
 
 		#endregion
@@ -93,6 +95,7 @@ namespace IndiaRose.Business.ViewModels
 		protected AbstractBrowserViewModel()
 		{
 			NextCommand = new DelegateCommand(NextAction);
+            BackCategoryCommand = new DelegateCommand(BackCategoryAction);
 			IndiagramSelectedCommand = new DelegateCommand<Indiagram>(IndiagramSelectedAction);
             
             // Load collection
@@ -147,6 +150,18 @@ namespace IndiaRose.Business.ViewModels
 				CollectionOffset = offset;
 			}
 		}
+
+        /// <summary>
+        /// Action lorsqu'on appuie sur le bouton BackCategory de la collection
+        /// Reviens sur la categorie précédente
+        /// </summary>
+		private void BackCategoryAction()
+        {
+                if (_navigationStack.Count > 1)
+                {
+                    PopCategory();
+                }
+        }
 
         /// <summary>
         /// Ajoute une nouvelle catégorie sur le sommet de la pile de navigation

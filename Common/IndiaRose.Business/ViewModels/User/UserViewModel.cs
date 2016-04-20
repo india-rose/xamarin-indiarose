@@ -131,6 +131,7 @@ namespace IndiaRose.Business.ViewModels.User
 		public ICommand SentenceIndiagramSelectedCommand { get; private set; }
 		public ICommand EnterCorrectionModeCommand { get; private set; }
 		public ICommand CollectionNextCommand { get; private set; }
+        public ICommand CollectionBackCategoryCommand { get; private set; }
 		public ICommand ReadSentenceCommand { get; private set; }
 		public ICommand CollectionIndiagramDragStartCommand { get; private set; }
 
@@ -159,7 +160,8 @@ namespace IndiaRose.Business.ViewModels.User
 			SentenceIndiagramSelectedCommand = new DelegateCommand<IndiagramUIModel>(SentenceIndiagramSelectedAction);
 			EnterCorrectionModeCommand = new DelegateCommand(EnterCorrectionModeAction);
 			CollectionNextCommand = new DelegateCommand(CollectionNextAction);
-			ReadSentenceCommand = new DelegateCommand(ReadSentenceAction);
+            CollectionBackCategoryCommand = new DelegateCommand(CollectionBackCategory);
+            ReadSentenceCommand = new DelegateCommand(ReadSentenceAction);
 
 			PushCategory(rootCategory);
 
@@ -193,6 +195,17 @@ namespace IndiaRose.Business.ViewModels.User
 				CollectionOffset = offset;
 			}
 		}
+        /// <summary>
+        /// Action résultant de l'appuie sur le bouton back de la collection
+        /// Revient à la catégorie précédente
+        /// </summary>
+        private void CollectionBackCategory()
+        {
+            if (_navigationStack.Count > 1)
+            {
+                PopCategory();
+            }
+        }
 
         /// <summary>
         /// Push une catégorie sur la pile de navigation, reset l'offset d'affichage et change la catégorie courante

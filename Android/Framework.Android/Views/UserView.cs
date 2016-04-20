@@ -106,7 +106,14 @@ namespace IndiaRose.Framework.Views
 			set { _topView.NextCommand = value; }
 		}
 
-		public ViewStates TopNextButtonVisibility
+        public ICommand TopBackCategoryCommand
+        {
+            get { return _topView.BackCategoryCommand; }
+            set { _topView.BackCategoryCommand = value; }
+        }
+
+
+        public ViewStates TopNextButtonVisibility
 		{
 			get { return _topView.NextButton.Visibility; }
 			set { _topView.NextButton.Visibility = value; }
