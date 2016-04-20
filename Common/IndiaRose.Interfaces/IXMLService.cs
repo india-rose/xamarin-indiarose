@@ -42,5 +42,17 @@ namespace IndiaRose.Interfaces
         /// </summary>
         /// <returns>La tâche asynchrone chargeant la collection</returns>
 	    Task InitializeCollectionFromOldFormatAsync();
+
+        /// <summary>
+        /// Vérifie de manière asynchrone si l'ancien format de stockage des paramétres est présent
+        /// </summary>
+        /// <returns>La tâche asynchrone vérifiant la présence des anciens paramétres</returns>
+        Task<bool> HasOldSettingsAsync();
+
+        /// <summary>
+        /// Charge de manière asynchrone les paramétres avec l'ancien format de stockage
+        /// </summary>
+        /// <returns>La tâche asynchrone chargeant les paramétres</returns>
+        Task ReadOldSettings();
     }
 }

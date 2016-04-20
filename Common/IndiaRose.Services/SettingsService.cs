@@ -189,6 +189,17 @@ namespace IndiaRose.Services
 		{
 			if (!await ExistsOnDiskAsync())
 			{
+           /* 
+           protected IXmlService XmlService
+           {
+               get { return LazyResolver<IXmlService>.Service; }
+           }
+
+           if (await XmlService.HasOldSettingsAsync())
+           {
+              System.Diagnostics.Debug.WriteLine("Je suis ici");
+              await XmlService.ReadOldSettings();
+           }*/
                 Reset();
                 IsLoaded = true;
 				return;

@@ -29,6 +29,11 @@ namespace IndiaRose.Services
 			get { return LazyResolver<ICollectionStorageService>.Service; }
 		}
 
+	    protected ISettingsService SettingService
+	    {
+	        get { return LazyResolver<ISettingsService>.Service; }
+	    }
+
 		#region Initialize collection from zip file
 
 		public event EventHandler CollectionImported;
@@ -299,12 +304,74 @@ namespace IndiaRose.Services
 
 		}
 
-		#endregion
+        #endregion
+
+        #region Initialize Settings from old format 
 
 
-		#region Helper methods
+        public async Task<bool> HasOldSettingsAsync()
+        {
+            IFolder appFolder = await FileSystem.Current.GetFolderFromPathAsync(StorageService.AppPath);
+            return (await appFolder.CheckExistsAsync("settings.xml") == ExistenceCheckResult.FileExists);
+        }
 
-		private async Task<Indiagram> CreateIndiagramFromXml(XElement rootElement, bool isCategory, Indiagram parent, Func<string, StorageType, Task<Stream>> resourceStreamOpener)
+        public async Task ReadOldSettings()
+        {
+            if (!await HasOldSettingsAsync())
+                return;
+
+            IFolder appFolder = await FileSystem.Current.GetFolderFromPathAsync(StorageService.AppPath);
+            IFile settingFile = await appFolder.GetFileAsync("settings.xml");
+            Stream settingStream = await settingFile.OpenAsync(FileAccess.Read);
+            using (settingStream)
+            {
+                XDocument xmlDocument = XDocument.Load(settingStream);
+                XElement rootElement = xmlDocument.Element("settings");
+                if (rootElement == null)
+                    return;
+                XElement heightSelection = xmlDocument.Element("heightSelectionArea");
+                XElement backgroundSelection = xmlDocument.Element("backgroundSelectionArea");
+                XElement reiforcerReadingColor = xmlDocument.Element("backgroundReinforcerReading");
+                XElement sentenceArea = xmlDocument.Element("backgroundSentenceArea");
+                XElement indiagramSize = xmlDocument.Element("indiagramSize");
+                XElement fontFamily = xmlDocument.Element("fontFamily");
+                XElement fontSize = xmlDocument.Element("fontSize");
+                XElement wordsReadindDelay = xmlDocument.Element("wordsReadingDelay");
+                XElement dragAndDrop = xmlDocument.Element("enableDragAndDrop");
+                XElement categoryReading = xmlDocument.Element("enableCategoryReading");
+                XElement readingRenforcer = xmlDocument.Element("enableReadingRenforcer");
+
+                int num;
+                if (int.TryParse(heightSelection?.Value, out num))
+                    SettingService.SelectionAreaHeight = num;
+                if (int.TryParse(indiagramSize?.Value, out num))
+                    SettingService.IndiagramDisplaySize = num;
+                if (int.TryParse(fontSize?.Value, out num))
+                    SettingService.FontSize = num;
+                if (int.TryParse(wordsReadindDelay?.Value, out num))
+                    SettingService.TimeOfSilenceBetweenWords = num;
+
+                SettingService.TopBackgroundColor = backgroundSelection?.Value;
+                SettingService.ReinforcerColor = reiforcerReadingColor?.Value;
+                SettingService.BottomBackgroundColor = sentenceArea?.Value;
+                SettingService.FontName = fontFamily?.Value;
+
+                SettingService.IsDragAndDropEnabled = Convert.ToBoolean(dragAndDrop?.Value);
+                SettingService.IsCategoryNameReadingEnabled = Convert.ToBoolean(categoryReading?.Value);
+                SettingService.IsReinforcerEnabled = Convert.ToBoolean(readingRenforcer?.Value);
+            }
+            //voir si reste
+            await settingFile.DeleteAsync();
+        }
+
+
+        #endregion
+
+
+
+        #region Helper methods
+
+        private async Task<Indiagram> CreateIndiagramFromXml(XElement rootElement, bool isCategory, Indiagram parent, Func<string, StorageType, Task<Stream>> resourceStreamOpener)
 		{
 			XElement textElement = rootElement.Element("text");
 			XElement imagePathElement = rootElement.Element("picture");
