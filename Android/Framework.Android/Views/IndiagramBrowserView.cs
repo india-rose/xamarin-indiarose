@@ -355,9 +355,9 @@ namespace IndiaRose.Framework.Views
 			forbutton.AddRule(LayoutRules.AlignParentRight);
 			forbutton.AddRule(LayoutRules.AlignParentTop);
 			AddView(NextButton, forbutton);
-
             LayoutParams backcategorybutton = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
-            backcategorybutton.AddRule(LayoutRules.AlignParentLeft);
+            backcategorybutton.AddRule(LayoutRules.AlignParentRight);
+            backcategorybutton.AddRule(LayoutRules.Below,NextButton.Id);
             AddView(BackCategoryButton, backcategorybutton);
 
 			Count = displayCount;
