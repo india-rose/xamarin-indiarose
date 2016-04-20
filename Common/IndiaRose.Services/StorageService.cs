@@ -142,6 +142,8 @@ namespace IndiaRose.Services
             {
                 res.Copy(STORAGE_ROOT_IMAGE, ImageRootPath);
             }
+
+            CheckAssetsAsync();
         }
 
         public string GenerateFilename(StorageType type, string extension)
