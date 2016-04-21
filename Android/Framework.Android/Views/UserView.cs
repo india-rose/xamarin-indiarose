@@ -44,6 +44,7 @@ namespace IndiaRose.Framework.Views
 
 		#region Private field
 
+        private TitleBarView _titleBar;
 		private IndiagramBrowserView _topView;
 		private SentenceAreaView _botView;
 		private double _botViewYOffset;
@@ -100,18 +101,17 @@ namespace IndiaRose.Framework.Views
 
 		public ICommand TopIndiagramDragStartCommand { get; set; }
 
+        public ICommand CurrentCategory
+        {
+            get { return _titleBar.BackCategoryCommand; }
+            set { _titleBar.BackCategoryCommand = value; }
+        }
+
 		public ICommand TopNextCommand
 		{
 			get { return _topView.NextCommand; }
 			set { _topView.NextCommand = value; }
 		}
-
-        public ICommand TopBackCategoryCommand
-        {
-            get { return _topView.BackCategoryCommand; }
-            set { _topView.BackCategoryCommand = value; }
-        }
-
 
         public ViewStates TopNextButtonVisibility
 		{

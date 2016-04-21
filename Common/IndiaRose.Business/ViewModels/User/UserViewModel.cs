@@ -160,7 +160,7 @@ namespace IndiaRose.Business.ViewModels.User
 			SentenceIndiagramSelectedCommand = new DelegateCommand<IndiagramUIModel>(SentenceIndiagramSelectedAction);
 			EnterCorrectionModeCommand = new DelegateCommand(EnterCorrectionModeAction);
 			CollectionNextCommand = new DelegateCommand(CollectionNextAction);
-            CollectionBackCategoryCommand = new DelegateCommand(CollectionBackCategory);
+            CollectionBackCategoryCommand = new DelegateCommand(CollectionBackCategoryAction);
             ReadSentenceCommand = new DelegateCommand(ReadSentenceAction);
 
 			PushCategory(rootCategory);
@@ -199,7 +199,7 @@ namespace IndiaRose.Business.ViewModels.User
         /// Action résultant de l'appuie sur le bouton back de la collection
         /// Revient à la catégorie précédente
         /// </summary>
-        private void CollectionBackCategory()
+        private void CollectionBackCategoryAction()
         {
             if (_navigationStack.Count > 1)
             {

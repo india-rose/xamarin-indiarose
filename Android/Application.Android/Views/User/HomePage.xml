@@ -22,7 +22,6 @@
 	          TopIndiagramSelectedCommand="{Binding CollectionIndiagramSelectedCommand}"
 	          TopNextCommand="{Binding CollectionNextCommand}"
 	          TopNextButtonVisibility="{Binding IsCorrectionModeEnabled, Converter={Resource BooleanToVisibilityConverter}, ConverterParameter=Negation}"
-			      TopBackCategoryCommand="{Binding CollectionBackCategoryCommand}"
             TopIndiagramDragStartCommand="{Binding CollectionIndiagramDragStartCommand}"
 			  IsCorrectionModeEnabled="{Binding IsCorrectionModeEnabled}"
 			  

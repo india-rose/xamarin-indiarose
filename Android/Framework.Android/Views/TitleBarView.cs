@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Input;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
@@ -6,6 +7,8 @@ using IndiaRose.Data.Model;
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
+using IndiaRose.Interfaces;
+using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Framework.Views
 {
@@ -17,6 +20,38 @@ namespace IndiaRose.Framework.Views
         private ImageView _imageCategoryView;
         private TextView _textCategoryView;
         private Category _category;
+        private ICommand _backCategoryCommand;
+
+        #region Private tools methods
+
+        private bool SetProperty<T>(ref T storage, T value)
+        {
+            if (Equals(storage, value))
+            {
+                return false;
+            }
+
+            storage = value;
+            return true;
+        }
+
+        private bool SetProperty<T>(ref T storage, T value, Func<EventHandler> eventGetter)
+        {
+            if (Equals(storage, value))
+            {
+                return false;
+            }
+
+            storage = value;
+
+            EventHandler handler = eventGetter();
+            if (handler != null)
+            {
+                handler(this, EventArgs.Empty);
+            }
+            return true;
+        }
+    #endregion
 
         public Category Category
         {
@@ -25,6 +60,15 @@ namespace IndiaRose.Framework.Views
             {
                 SetTitleInfo(value);
             }
+        }
+
+        /// <summary>
+        /// Commande lorsque le bouton backCategory (currentCategory) est sélectionné
+        /// </summary>
+		public ICommand BackCategoryCommand
+        {
+            get { return _backCategoryCommand; }
+            set { SetProperty(ref _backCategoryCommand, value); }
         }
 
         private void Initialize()
@@ -45,6 +89,8 @@ namespace IndiaRose.Framework.Views
             _imageCategoryView.SetMinimumWidth(60);
             _imageCategoryView.SetMaxWidth(60);
             _imageCategoryView.Measure(60, 60);
+            //Defini en tant que bouton backCategory
+            _imageCategoryView.Touch += OnBackCategoryTouch;
 
             //Initialisation du texte de la catégorie courante
             _textCategoryView = new TextView(Context);
@@ -103,6 +149,21 @@ namespace IndiaRose.Framework.Views
                 }
                 _textCategoryView.Text = category.Text;
                 _category = category;
+            }
+        }
+
+        /// <summary>
+        /// Callback lorsque le bouton backCategory (currentCategory) est sélectionné
+        /// </summary>
+		private void OnBackCategoryTouch(object sender, TouchEventArgs touchEventArgs)
+        {
+            if (touchEventArgs.Event.ActionMasked == MotionEventActions.Down)
+            {
+                ICommand command = BackCategoryCommand;
+                if (command != null && command.CanExecute(null))
+                {
+                    command.Execute(null);
+                }
             }
         }
 

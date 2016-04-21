@@ -28,7 +28,6 @@ namespace IndiaRose.Services
         private const string STORAGE_NEXTARROW_IMAGE = "nextarrow.png";
         private const string STORAGE_PLAYBUTTON_IMAGE = "playbutton.png";
         private const string STORAGE_ROOT_IMAGE = "root.png";
-        private const string STORAGE_BACKCATEGORY_IMAGE = "playbutton.png";
         private readonly string _storageDirectory;
 
         public string AppPath
@@ -44,11 +43,6 @@ namespace IndiaRose.Services
         public string ImageRootPath
         {
             get { return Path.Combine(AppPath, STORAGE_ROOT_IMAGE); }
-        }
-
-        public string ImageBackCategoryPath
-        {
-            get { return Path.Combine(AppPath, STORAGE_BACKCATEGORY_IMAGE); }
         }
 
         public string ImagePlayButtonPath

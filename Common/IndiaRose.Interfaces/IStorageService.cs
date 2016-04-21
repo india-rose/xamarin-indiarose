@@ -63,12 +63,6 @@ namespace IndiaRose.Interfaces
         string ImageRootPath { get; }
 
         /// <summary>
-        /// Chemin d'accès pour l'image BackCategory
-        /// Pour l'instant c'est le même que Play
-        /// </summary>
-        string ImageBackCategoryPath { get; }
-
-        /// <summary>
         /// Chemin d'accès pour l'image Play
         /// </summary>
         string ImagePlayButtonPath { get; }
