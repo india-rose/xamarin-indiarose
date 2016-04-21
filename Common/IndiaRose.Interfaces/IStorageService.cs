@@ -78,6 +78,11 @@ namespace IndiaRose.Interfaces
         string ImageNextArrowPath { get; }
 
         /// <summary>
+        /// Chemin d'accès pour l'image Back
+        /// </summary>
+        string ImageBackPath { get; }
+
+        /// <summary>
         /// Génère un nom unique et y ajoute l'extension voulu
         /// </summary>
         /// <param name="type">Type du fichier</param>

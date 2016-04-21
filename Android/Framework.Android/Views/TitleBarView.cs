@@ -64,12 +64,7 @@ namespace IndiaRose.Framework.Views
         /// <summary>
         /// Commande lorsque le bouton backCategory (currentCategory) est sélectionné
         /// </summary>
-		public ICommand BackCategoryCommand { get; set; }
-
-        protected IStorageService StorageService
-        {
-            get { return LazyResolver<IStorageService>.Service; }
-        }
+		public ICommand BackCategoryCommand { get;set ; }
 
         private void Initialize()
         {
@@ -127,39 +122,13 @@ namespace IndiaRose.Framework.Views
             {
                 if (category.ImagePath != null)
                 {
-                    if (category.Id == -1)
+                    try
                     {
-                        try
-                        {
-                            _imageCategoryView.SetImageBitmap(BitmapFactory.DecodeFile(StorageService.ImageRootPath));
-                        }
-                        catch (Exception)
-                        {
-                            //TODO : log error
-                        }
-                    } else if (category.Id == -2)
-                    {
-                        try
-                        {
-                            _imageCategoryView.SetImageBitmap(
-                                BitmapFactory.DecodeFile(StorageService.ImageCorrectionPath));
-                        }
-                        catch (Exception)
-                        {
-                            //TODO : log error
-                        }
+                        _imageCategoryView.SetImageBitmap(BitmapFactory.DecodeFile(category.ImagePath));
                     }
-                    else
+                    catch (Exception)
                     {
-                        try
-                        {
-                            _imageCategoryView.SetImageBitmap(
-                                BitmapFactory.DecodeFile(StorageService.ImageNextArrowPath));
-                        }
-                        catch (Exception)
-                        {
-                            //TODO : log error
-                        }
+                        //TODO : log error
                     }
 
                     LayoutParams param = (LayoutParams)_textCategoryView.LayoutParameters;

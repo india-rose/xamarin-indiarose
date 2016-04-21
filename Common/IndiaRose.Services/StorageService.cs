@@ -27,6 +27,7 @@ namespace IndiaRose.Services
         private const string STORAGE_CORRECTION_IMAGE = "correction.png";
         private const string STORAGE_NEXTARROW_IMAGE = "nextarrow.png";
         private const string STORAGE_PLAYBUTTON_IMAGE = "playbutton.png";
+        private const string STORAGE_BACK_IMAGE = "back.png";
         private const string STORAGE_ROOT_IMAGE = "root.png";
         private readonly string _storageDirectory;
 
@@ -53,6 +54,11 @@ namespace IndiaRose.Services
         public string ImageNextArrowPath
         {
             get { return Path.Combine(AppPath, STORAGE_NEXTARROW_IMAGE); }
+        }
+
+        public string ImageBackPath
+        {
+            get { return Path.Combine(AppPath, STORAGE_BACK_IMAGE); }
         }
 
         public StorageService(string rootStorageDirectory)
