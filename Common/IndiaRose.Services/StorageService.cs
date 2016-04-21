@@ -129,7 +129,7 @@ namespace IndiaRose.Services
 
             IFolder appFolder = await FileSystem.Current.GetFolderFromPathAsync(AppPath);
             var res = LazyResolver<IResourceService>.Service;
-            if (await appFolder.CheckExistsAsync(STORAGE_CORRECTION_IMAGE) == ExistenceCheckResult.FileExists)
+            if (await appFolder.CheckExistsAsync(STORAGE_CORRECTION_IMAGE) == ExistenceCheckResult.NotFound)
             {
                 res.Copy(STORAGE_CORRECTION_IMAGE, ImageCorrectionPath);
             }
