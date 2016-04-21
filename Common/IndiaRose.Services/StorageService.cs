@@ -13,6 +13,7 @@ using PCLStorage;
 using Storm.Mvvm.Extensions;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
+using Android.Util;
 
 #endregion
 
@@ -217,18 +218,22 @@ namespace IndiaRose.Services
                     if (file.Name == STORAGE_CORRECTION_IMAGE)
                     {
                         LazyResolver<IResourceService>.Service.Copy(STORAGE_CORRECTION_IMAGE, ImageCorrectionPath);
+                        Log.WriteLine(LogPriority.Info, "HomeMade", "Copy " + STORAGE_CORRECTION_IMAGE);
                     }
                     else if (file.Name == STORAGE_PLAYBUTTON_IMAGE)
                     {
                         LazyResolver<IResourceService>.Service.Copy(STORAGE_PLAYBUTTON_IMAGE, ImagePlayButtonPath);
+                        Log.WriteLine(LogPriority.Info, "HomeMade", "Copy " + STORAGE_PLAYBUTTON_IMAGE);
                     }
                     else if (file.Name == STORAGE_NEXTARROW_IMAGE)
                     {
                         LazyResolver<IResourceService>.Service.Copy(STORAGE_NEXTARROW_IMAGE, ImageNextArrowPath);
+                        Log.WriteLine(LogPriority.Info, "HomeMade", "Copy " + STORAGE_NEXTARROW_IMAGE);
                     }
                     else if (file.Name == STORAGE_ROOT_IMAGE)
                     {
                         LazyResolver<IResourceService>.Service.Copy(STORAGE_ROOT_IMAGE, ImageRootPath);
+                        Log.WriteLine(LogPriority.Info, "HomeMade", "Copy " + STORAGE_ROOT_IMAGE);
                     }
                 }
             }
