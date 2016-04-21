@@ -66,6 +66,11 @@ namespace IndiaRose.Framework.Views
         /// </summary>
 		public ICommand BackCategoryCommand { get; set; }
 
+        protected IStorageService StorageService
+        {
+            get { return LazyResolver<IStorageService>.Service; }
+        }
+
         private void Initialize()
         {
             //Initialisation du logo India Rose
@@ -122,13 +127,39 @@ namespace IndiaRose.Framework.Views
             {
                 if (category.ImagePath != null)
                 {
-                    try
+                    if (category.Id == -1)
                     {
-                        _imageCategoryView.SetImageBitmap(BitmapFactory.DecodeFile(category.ImagePath));
+                        try
+                        {
+                            _imageCategoryView.SetImageBitmap(BitmapFactory.DecodeFile(StorageService.ImageRootPath));
+                        }
+                        catch (Exception)
+                        {
+                            //TODO : log error
+                        }
+                    } else if (category.Id == -2)
+                    {
+                        try
+                        {
+                            _imageCategoryView.SetImageBitmap(
+                                BitmapFactory.DecodeFile(StorageService.ImageCorrectionPath));
+                        }
+                        catch (Exception)
+                        {
+                            //TODO : log error
+                        }
                     }
-                    catch (Exception)
+                    else
                     {
-                        //TODO : log error
+                        try
+                        {
+                            _imageCategoryView.SetImageBitmap(
+                                BitmapFactory.DecodeFile(StorageService.ImageNextArrowPath));
+                        }
+                        catch (Exception)
+                        {
+                            //TODO : log error
+                        }
                     }
 
                     LayoutParams param = (LayoutParams)_textCategoryView.LayoutParameters;
