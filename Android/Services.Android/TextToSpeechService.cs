@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Android.App;
@@ -41,6 +42,7 @@ namespace IndiaRose.Services.Android
 		public TextToSpeechService()
 		{
 			ActivityService.ActivityChanged += InitTts;
+
             //ActivityService.ActivityChanging += ReleaseTts;
         }
 
@@ -65,13 +67,13 @@ namespace IndiaRose.Services.Android
 			};
 
 			string word = "india rose";
-#if __ANDROID_11__
+
 			if (global::Android.OS.Build.VERSION.SdkInt >= global::Android.OS.BuildVersionCodes.Honeycomb)
 			{
 				word = "a";
 				speakParameters.Add(TextToSpeech.Engine.KeyParamVolume, "0");
 			}
-#endif
+
 			_speakerSpeech.Speak(word, QueueMode.Add, speakParameters);
 			Log.Error("TTS", "Engine initialized");
 		}
@@ -88,31 +90,8 @@ namespace IndiaRose.Services.Android
 		private void Initialize()
 		{
 			Log.Error("TTS", "Initialize TTS engine");
-#if __ANDROID_17__
-			if (global::Android.OS.Build.VERSION.SdkInt >= global::Android.OS.BuildVersionCodes.JellyBeanMr1)
-			{
-				_speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity.ApplicationContext, this);
-				_initMutex.Set();
-				return;
-			}
-#endif
-
-			ActivityService.StartActivityForResult(new Intent().SetAction(TextToSpeech.Engine.ActionCheckTtsData),
-				(result, data) =>
-				{
-					if (result == Result.Ok)
-					{
-						// success, create the TTS instance
-						_speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity, this);
-						_initMutex.Set();
-					}
-					else
-					{
-						Intent installIntent = new Intent();
-						installIntent.SetAction(TextToSpeech.Engine.ActionInstallTtsData);
-						ActivityService.CurrentActivity.StartActivity(installIntent);
-					}
-				});
+			_speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity.ApplicationContext, this);
+			_initMutex.Set();
 		}
 
 		public void Close()
@@ -123,8 +102,11 @@ namespace IndiaRose.Services.Android
 			}
 			Log.Error("TTS", "TTS engine shutting down");
 			_speakerSpeech.Stop();
-			_speakerSpeech.Shutdown();
-			_speakerSpeech.Dispose();
+		    if (global::Android.OS.Build.VERSION.SdkInt >= global::Android.OS.BuildVersionCodes.JellyBeanMr1)
+            {
+                _speakerSpeech.Shutdown(); // Fait planter l'app sur Android 4.1.1
+            }
+            _speakerSpeech.Dispose();
 			_speakerSpeech = null;
 		}
 
