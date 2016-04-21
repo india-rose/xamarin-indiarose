@@ -160,7 +160,9 @@ namespace IndiaRose.Business.ViewModels.User
 			SentenceIndiagramSelectedCommand = new DelegateCommand<IndiagramUIModel>(SentenceIndiagramSelectedAction);
 			EnterCorrectionModeCommand = new DelegateCommand(EnterCorrectionModeAction);
 			CollectionNextCommand = new DelegateCommand(CollectionNextAction);
+
             CollectionBackCategoryCommand = new DelegateCommand(CollectionBackCategoryAction);
+
             ReadSentenceCommand = new DelegateCommand(ReadSentenceAction);
 
 			PushCategory(rootCategory);

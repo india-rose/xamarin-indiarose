@@ -20,7 +20,6 @@ namespace IndiaRose.Framework.Views
         private ImageView _imageCategoryView;
         private TextView _textCategoryView;
         private Category _category;
-        private ICommand _backCategoryCommand;
 
         #region Private tools methods
 
@@ -65,11 +64,7 @@ namespace IndiaRose.Framework.Views
         /// <summary>
         /// Commande lorsque le bouton backCategory (currentCategory) est sélectionné
         /// </summary>
-		public ICommand BackCategoryCommand
-        {
-            get { return _backCategoryCommand; }
-            set { SetProperty(ref _backCategoryCommand, value); }
-        }
+		public ICommand BackCategoryCommand { get; set; }
 
         private void Initialize()
         {
