@@ -20,7 +20,9 @@ namespace IndiaRose.Framework.Views
         private ImageView _imageCategoryView;
         private ImageView _backButton;
         private TextView _textCategoryView;
+        private TextView _oldCategory;
         private Category _category;
+        private Category _parent;
 
         protected IStorageService StorageService
         {
@@ -65,6 +67,12 @@ namespace IndiaRose.Framework.Views
             {
                 SetTitleInfo(value);
             }
+        }
+
+        public Category ParentCategory
+        {
+            get { return _parent; }
+            set { SetOldCategoryText(value); }
         }
 
         /// <summary>
@@ -112,6 +120,14 @@ namespace IndiaRose.Framework.Views
             //Defini en tant que bouton backCategory
             _backButton.Touch += OnBackCategoryTouch;
 
+            //Initialisation du texte de la catégorie precedente
+            _oldCategory = new TextView(Context);
+            _oldCategory.SetMaxHeight(60);
+            _oldCategory.SetTextColor(Color.Black);
+            _oldCategory.Id = 0x0fffff2e;
+            _oldCategory.SetTextSize(ComplexUnitType.Sp, 15);
+            _oldCategory.Gravity = GravityFlags.CenterVertical;
+
 
             LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
             lp.AddRule(LayoutRules.CenterInParent);
@@ -133,6 +149,12 @@ namespace IndiaRose.Framework.Views
             lp.AddRule(LayoutRules.AlignParentRight);
             lp.AddRule(LayoutRules.CenterVertical);
             AddView(_backButton, lp);
+
+            lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
+            lp.AddRule(LayoutRules.LeftOf, _backButton.Id);
+            lp.AddRule(LayoutRules.CenterVertical);
+            lp.SetMargins(60, 0, 60, 0);
+            AddView(_oldCategory, lp);
         }
 
         /// <summary>
@@ -183,6 +205,12 @@ namespace IndiaRose.Framework.Views
                     command.Execute(null);
                 }
             }
+        }
+
+        private void SetOldCategoryText(Category c)
+        {
+            _oldCategory.Text = c.Text;
+            _parent = c;
         }
 
         #region Constructeurs
