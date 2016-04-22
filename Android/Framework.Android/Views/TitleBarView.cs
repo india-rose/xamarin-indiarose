@@ -18,8 +18,14 @@ namespace IndiaRose.Framework.Views
     public class TitleBarView : RelativeLayout
     {
         private ImageView _imageCategoryView;
+        private ImageView _backButton;
         private TextView _textCategoryView;
         private Category _category;
+
+        protected IStorageService StorageService
+        {
+            get { return LazyResolver<IStorageService>.Service; }
+        }
 
         #region Private tools methods
 
@@ -84,9 +90,7 @@ namespace IndiaRose.Framework.Views
             _imageCategoryView.SetMinimumWidth(60);
             _imageCategoryView.SetMaxWidth(60);
             _imageCategoryView.Measure(60, 60);
-            //Defini en tant que bouton backCategory
-            _imageCategoryView.Touch += OnBackCategoryTouch;
-
+            
             //Initialisation du texte de la catégorie courante
             _textCategoryView = new TextView(Context);
             _textCategoryView.SetMaxHeight(60);
@@ -95,8 +99,22 @@ namespace IndiaRose.Framework.Views
             _textCategoryView.SetTextSize(ComplexUnitType.Sp, 15);
             _textCategoryView.Gravity = GravityFlags.CenterVertical;
 
+            //Initialisation du bouton retour
+            _backButton = new ImageView(Context);
+            _backButton.SetAdjustViewBounds(true);
+            _backButton.SetMinimumHeight(60);
+            _backButton.SetMaxHeight(60);
+            _backButton.Id = 0x0fffff2d;
+            _backButton.SetMinimumWidth(60);
+            _backButton.SetMaxWidth(60);
+            _backButton.Measure(60, 60);
+            _backButton.SetImageBitmap(BitmapFactory.DecodeFile(StorageService.ImageBackPath));
+            //Defini en tant que bouton backCategory
+            _backButton.Touch += OnBackCategoryTouch;
+
+
             LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
-            lp.AddRule(LayoutRules.AlignParentRight);
+            lp.AddRule(LayoutRules.CenterInParent);
             lp.AddRule(LayoutRules.CenterVertical);
             AddView(logo, lp);
 
@@ -110,6 +128,11 @@ namespace IndiaRose.Framework.Views
             lp.AddRule(LayoutRules.CenterVertical);
             lp.SetMargins(60, 0, 60, 0);
             AddView(_textCategoryView, lp);
+
+            lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
+            lp.AddRule(LayoutRules.AlignParentRight);
+            lp.AddRule(LayoutRules.CenterVertical);
+            AddView(_backButton, lp);
         }
 
         /// <summary>
