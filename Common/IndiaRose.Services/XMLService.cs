@@ -161,7 +161,7 @@ namespace IndiaRose.Services
 			// How to check ? just access the app directory and check for home.xml
 
 			IFolder appFolder = await FileSystem.Current.GetFolderFromPathAsync(StorageService.AppPath);
-			return (await appFolder.CheckExistsAsync("home.xml") == ExistenceCheckResult.FileExists);
+            return (await appFolder.CheckExistsAsync("home.xml") == ExistenceCheckResult.FileExists);
 		}
 
 		public async Task InitializeCollectionFromOldFormatAsync()
@@ -329,17 +329,17 @@ namespace IndiaRose.Services
                 XElement rootElement = xmlDocument.Element("settings");
                 if (rootElement == null)
                     return;
-                XElement heightSelection = xmlDocument.Element("heightSelectionArea");
-                XElement backgroundSelection = xmlDocument.Element("backgroundSelectionArea");
-                XElement reiforcerReadingColor = xmlDocument.Element("backgroundReinforcerReading");
-                XElement sentenceArea = xmlDocument.Element("backgroundSentenceArea");
-                XElement indiagramSize = xmlDocument.Element("indiagramSize");
-                XElement fontFamily = xmlDocument.Element("fontFamily");
-                XElement fontSize = xmlDocument.Element("fontSize");
-                XElement wordsReadindDelay = xmlDocument.Element("wordsReadingDelay");
-                XElement dragAndDrop = xmlDocument.Element("enableDragAndDrop");
-                XElement categoryReading = xmlDocument.Element("enableCategoryReading");
-                XElement readingRenforcer = xmlDocument.Element("enableReadingRenforcer");
+                XElement heightSelection = rootElement.Element("heightSelectionArea");
+                XElement backgroundSelection = rootElement.Element("backgroundSelectionArea");
+                XElement reiforcerReadingColor = rootElement.Element("backgroundReinforcerReading");
+                XElement sentenceArea = rootElement.Element("backgroundSentenceArea");
+                XElement indiagramSize = rootElement.Element("indiagramSize");
+                XElement fontFamily = rootElement.Element("fontFamily");
+                XElement fontSize = rootElement.Element("fontSize");
+                XElement wordsReadindDelay = rootElement.Element("wordsReadingDelay");
+                XElement dragAndDrop = rootElement.Element("enableDragAndDrop");
+                XElement categoryReading = rootElement.Element("enableCategoryReading");
+                XElement readingReinforcer = rootElement.Element("enableReadingReinforcer");
 
                 int num;
                 if (int.TryParse(heightSelection?.Value, out num))
@@ -348,20 +348,27 @@ namespace IndiaRose.Services
                     SettingService.IndiagramDisplaySize = num;
                 if (int.TryParse(fontSize?.Value, out num))
                     SettingService.FontSize = num;
-                if (int.TryParse(wordsReadindDelay?.Value, out num))
-                    SettingService.TimeOfSilenceBetweenWords = num;
+                SettingService.TimeOfSilenceBetweenWords = float.Parse(wordsReadindDelay?.Value, CultureInfo.InvariantCulture.NumberFormat);
 
-                SettingService.TopBackgroundColor = backgroundSelection?.Value;
-                SettingService.ReinforcerColor = reiforcerReadingColor?.Value;
-                SettingService.BottomBackgroundColor = sentenceArea?.Value;
+                //Difference d'encodage
+                //Voir si pas manière plus jolie pour le subString (enleve le # de la valeur)
+                SettingService.TopBackgroundColor = "#FF"  + backgroundSelection?.Value.ToUpper().Substring(1, 6);
+                SettingService.ReinforcerColor = "#FF" + reiforcerReadingColor?.Value.ToUpper().Substring(1, 6);
+                SettingService.BottomBackgroundColor = "#FF" + sentenceArea?.Value.ToUpper().Substring(1, 6);
                 SettingService.FontName = fontFamily?.Value;
 
-                SettingService.IsDragAndDropEnabled = Convert.ToBoolean(dragAndDrop?.Value);
-                SettingService.IsCategoryNameReadingEnabled = Convert.ToBoolean(categoryReading?.Value);
-                SettingService.IsReinforcerEnabled = Convert.ToBoolean(readingRenforcer?.Value);
+                SettingService.IsDragAndDropEnabled = dragAndDrop?.Value == "1";
+                SettingService.IsCategoryNameReadingEnabled = categoryReading?.Value == "1";;
+                SettingService.IsReinforcerEnabled = readingReinforcer?.Value == "1";
+
+                SettingService.IsBackHomeAfterSelectionEnabled = true;
+                SettingService.IsMultipleIndiagramSelectionEnabled = false;
+                SettingService.TextColor = "#FFFFFFFF";
+
+                await SettingService.SaveAsync();
             }
-            //voir si reste
-            await settingFile.DeleteAsync();
+            
+            //await settingFile.DeleteAsync();
         }
 
 

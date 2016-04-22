@@ -157,7 +157,12 @@ namespace IndiaRose.Services
 			_hasChanged = true;
 		}
 
-		public async Task SaveAsync()
+        protected IXmlService XmlService
+        {
+            get { return LazyResolver<IXmlService>.Service; }
+        }
+
+        public async Task SaveAsync()
 		{
 			if(!_hasChanged)
 			{ 
@@ -189,21 +194,14 @@ namespace IndiaRose.Services
 		{
 			if (!await ExistsOnDiskAsync())
 			{
-           /* 
-           protected IXmlService XmlService
-           {
-               get { return LazyResolver<IXmlService>.Service; }
-           }
+			    if (await XmlService.HasOldSettingsAsync())
+			        await XmlService.ReadOldSettings();
+                else 
+			        Reset();
 
-           if (await XmlService.HasOldSettingsAsync())
-           {
-              System.Diagnostics.Debug.WriteLine("Je suis ici");
-              await XmlService.ReadOldSettings();
-           }*/
-                Reset();
                 IsLoaded = true;
-				return;
-			}
+                return;
+            }
 
 			SettingsModel model = await LoadFromDiskAsync();
 
