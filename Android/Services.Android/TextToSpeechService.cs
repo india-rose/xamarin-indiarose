@@ -136,7 +136,8 @@ namespace IndiaRose.Services.Android
 				if (_registeredSounds.ContainsKey(indiagram.SoundPath))
 				{
 					word = _registeredSounds[indiagram.SoundPath];
-				}
+                    _speakerSpeech.AddSpeech(word, indiagram.SoundPath);
+                }
 				else
 				{
 					if (_speakerSpeech != null)

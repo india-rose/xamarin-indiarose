@@ -262,7 +262,7 @@ namespace IndiaRose.Services
 				ExistenceCheckResult result = await folder.CheckExistsAsync(StorageService.SettingsFileName);
 				return result == ExistenceCheckResult.FileExists;
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				return false;
 			}
