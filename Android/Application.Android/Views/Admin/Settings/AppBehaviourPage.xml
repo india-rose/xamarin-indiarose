@@ -1,36 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 XmlStyle="{Resource RootLayoutStyle}">
+  
+  <LinearLayout android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              XmlStyle="{Resource VerticalLinearLayoutStyle}">
+    <CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
+              Checked="{Binding DragAndDrop, Mode=TwoWay, UpdateEvent=CheckedChange}"
+              Text="{Tr Text, Uid=DragAndDrop_Title}"
+              />
 
-  <CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
-            Checked="{Binding DragAndDrop, Mode=TwoWay, UpdateEvent=CheckedChange}"
-            Text="{Tr Text, Uid=DragAndDrop_Title}"
-            />
+    <CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
+              Checked="{Binding CategoryReading, Mode=TwoWay, UpdateEvent=CheckedChange}"
+						  Text="{Tr Text, Uid=CategoryReading_Title}"
+						  />
 
-  <CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
-            Checked="{Binding CategoryReading, Mode=TwoWay, UpdateEvent=CheckedChange}"
-						Text="{Tr Text, Uid=CategoryReading_Title}"
-						/>
+    <CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
+              Checked="{Binding BackButtonActivated, Mode=TwoWay, UpdateEvent=CheckedChange}"
+              Text="{Tr Text, Uid=BackButton_Activated}"
+              />
 
-  <CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
-            Checked="{Binding BackButtonActivated, Mode=TwoWay, UpdateEvent=CheckedChange}"
-            Text="{Tr Text, Uid=BackButton_Activated}"
-            />
+    <TextView XmlStyle="{Resource FormLabelStyle}"
+              Text="{Tr Text, Uid=ReadingDelay_Explanation}"
+              android:layout_marginTop="5dp"/>
 
-  <TextView XmlStyle="{Resource FormLabelStyle}"
-            Text="{Tr Text, Uid=ReadingDelay_Explanation}"
-            android:layout_marginTop="5dp"/>
+    <SeekBar XmlStyle="{Resource SeekBarStyle}"
+             android:max="90"
+             progress="{Binding SliderValue, Mode=TwoWay, UpdateEvent=ProgressChanged}" />
 
-  <SeekBar XmlStyle="{Resource SeekBarStyle}"
-           android:max="90"
-           progress="{Binding SliderValue, Mode=TwoWay, UpdateEvent=ProgressChanged}" />
+    <TextView XmlStyle="{Resource LargeFormLabelStyle}"
+              Text="{Binding Delay, Converter={Resource StringFormatConverter}, ConverterParameter={Tr ConverterParameter, Uid=ReadingDelay_ValueFormat}}"/>
+  
+  </LinearLayout>
 
-  <TextView XmlStyle="{Resource LargeFormLabelStyle}"
-            Text="{Binding Delay, Converter={Resource StringFormatConverter}, ConverterParameter={Tr ConverterParameter, Uid=ReadingDelay_ValueFormat}}"/>
+  <LinearLayout XmlStyle="{Resource ValidationButtonLinearLayoutStyle}">
 
-
-  <LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}">
     <Button XmlStyle="{Resource OkButtonStyle}"
             Text="{Tr Text, Uid=Button_Ok}"
             Click="{Binding OkCommand}"/>
@@ -40,4 +45,4 @@
             Click="{Binding CancelCommand}"/>
   </LinearLayout>
   
-</LinearLayout>
+</RelativeLayout>

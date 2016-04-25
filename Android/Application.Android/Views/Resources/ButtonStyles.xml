@@ -35,8 +35,8 @@
 	       android:layout_alignParentBottom="true"
 	       android:orientation="horizontal"
 	       android:layout_margin="4dip" 
-		   android:background="@android:color/white"
-		   />
+		     android:background="@android:color/white"
+		     />
 
 	<Style Key="OkButtonStyle"
 	       XmlStyle="{Resource SmallButtonStyle}"
@@ -98,6 +98,7 @@
 	<Style Key="BlueButtonStyle"
 		   XmlStyle="{Resource BaseSimpleButtonStyle}"
 	       android:background="@drawable/buttonblue" />
+
 
 
 </Resources>
