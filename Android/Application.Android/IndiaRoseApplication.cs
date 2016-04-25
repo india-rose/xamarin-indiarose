@@ -49,6 +49,7 @@ namespace IndiaRose.Application
                 {Views.ADMIN_SETTINGS_HOME, typeof(AppSettingsActivity)},
                 {Views.ADMIN_SETTINGS_APPLICATIONLOOK, typeof(ApplicationLookActivity)},
          		{Views.ADMIN_SETTINGS_INDIAGRAMPROPERTIES, typeof(IndiagramPropertyActivity)},
+                {Views.ADMIN_SETTINGS_APPBEHAVIOUR, typeof(AppBehaviourActivity) },
 				// Admin/Collection
                 {Views.ADMIN_COLLECTION_HOME, typeof(CollectionManagementActivity)},
                 {Views.ADMIN_COLLECTION_ADDINDIAGRAM, typeof(AddIndiagramActivity)},

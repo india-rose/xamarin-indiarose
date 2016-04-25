@@ -97,7 +97,7 @@
     <AndroidResource Include="Resources\drawable\ir_logo.png" />
     <AndroidResource Include="Resources\drawable\ir_logo_params.png" />
     <AndroidAsset Include="Assets\back.png" />
-    <Content Include="Views\Admin\Settings\AppBehaviorPage.xml" />
+    <Content Include="Views\Admin\Settings\AppBehaviourPage.xml" />
     <Content Include="Views\SplashScreen.xml" />
     <None Include="Views\User\HomePage.back.xml" />
     <None Include="Views\Admin\Collection\Dialogs\RecordSoundDialog.xml" />
@@ -169,7 +169,9 @@
     <None Include="Views\Resources\Converters.xml" />
     <None Include="Views\Resources\ButtonStyles.xml" />
     <None Include="Views\Admin\Settings\ApplicationLookPage.xml" />
-    <None Include="Views\Admin\Settings\AppSettingsPage.xml" />
+    <None Include="Views\Admin\Settings\AppSettingsPage.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Views\Admin\CreditsPage.xml" />
     <None Include="Views\Admin\InstallTextToSpeechPage.xml" />
   </ItemGroup>

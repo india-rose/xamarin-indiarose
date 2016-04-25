@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IndiaRose.Business.ViewModels.Admin.Settings
 {
-    public class AppBehaviorViewModel : AbstractSettingsViewModel
+    public class AppBehaviourViewModel : AbstractSettingsViewModel
     {
 
         #region Properties

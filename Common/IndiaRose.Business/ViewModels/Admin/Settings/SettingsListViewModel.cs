@@ -16,10 +16,12 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 
 		public ICommand ApplicationLookCommand { get; private set; }
 		public ICommand IndiagramPropertyCommand { get; private set; }
-		public ICommand DragAndDropCommand { get; private set; }
+		/*public ICommand DragAndDropCommand { get; private set; }
 
 		public ICommand ReadingDelayCommand { get; private set; }
-		public ICommand CategoryReadingCommand { get; private set; }
+		public ICommand CategoryReadingCommand { get; private set; }*/
+        public ICommand AppBehaviourCommand { get; private set; }
+
 		public ICommand ResetSettingsCommand { get; private set; }
 
 		#endregion
@@ -27,9 +29,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 		public SettingsListViewModel()
 		{
 			ApplicationLookCommand = new DelegateCommand(ApplicationLookAction);
-			ReadingDelayCommand = new DelegateCommand(ReadingDelayAction);
+			/*ReadingDelayCommand = new DelegateCommand(ReadingDelayAction);
 			DragAndDropCommand = new DelegateCommand(DragAndDropAction);
-			CategoryReadingCommand = new DelegateCommand(CategoryReadingAction);
+			CategoryReadingCommand = new DelegateCommand(CategoryReadingAction);*/
+            AppBehaviourCommand = new DelegateCommand(AppBehaviourAction);
+
             ResetSettingsCommand = new DelegateCommand(ResetSettingsAction);
 			IndiagramPropertyCommand = new DelegateCommand(IndiagramPropertyAction);
 		}
@@ -76,10 +80,15 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 			MessageDialogService.Show(Business.Dialogs.ADMIN_SETTINGS_READINGDELAY);
 		}
 
+        private void AppBehaviourAction()
+        {
+            NavigationService.Navigate(Views.ADMIN_SETTINGS_APPBEHAVIOUR);
+        }
+
         /// <summary>
         /// Ouvre le dialogue de réinitilisation des réglages
         /// </summary>
-		private void ResetSettingsAction()
+        private void ResetSettingsAction()
 		{
 			MessageDialogService.Show(Business.Dialogs.ADMIN_SETTINGS_RESETSETTINGS);
 		}
