@@ -35,7 +35,13 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
         public float Delay
         {
             get { return _delay; }
-            set { SetProperty(ref _delay, value); }
+            set
+            {
+                if (SetProperty(ref _delay, value))
+                {
+                    SliderValue = (int) (value) * 10;
+                }
+            }
         }
 
         public int SliderValue
@@ -45,7 +51,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
             {
                 if (SetProperty(ref _sliderValue, value))
                 {
-                    Delay = (value+10) / 10.0f;
+                    Delay = (value) / 10.0f;
                 }
             }
         }
@@ -72,7 +78,6 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
         private void OkClicked()
         {
             SaveAction();
-            //Debug.WriteLine("Drag&drop = " + DragAndDrop + " CategoryReading = " + CategoryReading + " BackButtonActivated = " + BackButtonActivated + " Delay/SliderValue = " + Delay + " / " + SliderValue);
         }
 
         private void CancelClicked()

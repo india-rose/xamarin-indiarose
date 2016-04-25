@@ -65,9 +65,6 @@ namespace IndiaRose.Application
                 {Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
 				// Admin/Settings/Dialogs
 				{Dialogs.ADMIN_SETTINGS_COLORPICKER, typeof(ColorPickerDialog)},
-				{Dialogs.ADMIN_SETTINGS_DRAGANDDROP, typeof(DragAndDropDialog)},
-                {Dialogs.ADMIN_SETTINGS_READINGDELAY , typeof(ReadingDelayDialog)},
-				{Dialogs.ADMIN_SETTINGS_CATEGORYREADING, typeof(CategoryReadingDialog)},
                 {Dialogs.ADMIN_SETTINGS_RESETSETTINGS, typeof(ResetSettingsDialog)},
 				// Admin/Collection/Dialogs
 				// called from add indiagram

@@ -69,12 +69,9 @@
     <Compile Include="ViewModels\Admin\Settings\AppBehaviourViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\ApplicationLookViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\Dialogs\AbstractYesNoViewModel.cs" />
-    <Compile Include="ViewModels\Admin\Settings\Dialogs\CategoryReadingViewModel.cs" />
-    <Compile Include="ViewModels\Admin\Settings\Dialogs\DragAndDropViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\Dialogs\ResetSettingsViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\IndiagramPropertyViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\Dialogs\ColorPickerViewModel.cs" />
-    <Compile Include="ViewModels\Admin\Settings\Dialogs\ReadingDelayViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\SettingsListViewModel.cs" />
     <Compile Include="ViewModels\Admin\HomeViewModel.cs" />
     <Compile Include="ViewModels\Admin\InstallVoiceSynthesisViewModel.cs" />
