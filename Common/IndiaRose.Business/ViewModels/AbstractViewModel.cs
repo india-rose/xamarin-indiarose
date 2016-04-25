@@ -10,6 +10,9 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels
 {
+    /// <summary>
+    /// Classe abstraite dont tous les VueModèles doivent descendre
+    /// </summary>
 	public abstract class AbstractViewModel : ViewModelBase
 	{
         protected IMessageDialogService MessageDialogService
@@ -31,10 +34,17 @@ namespace IndiaRose.Business.ViewModels
             CloseDialogCommand = new DelegateCommand(CloseDialogAction);
 		}
 
+        /// <summary>
+        /// Action de fermeture du dialogue courant
+        /// </summary>
 	    protected virtual void CloseDialogAction()
 	    {
 	        MessageDialogService.DismissCurrentDialog();
 	    }
+
+        /// <summary>
+        /// Action de retour à la page précédente
+        /// </summary>
 		protected virtual void BackAction()
 		{
 			NavigationService.GoBack();

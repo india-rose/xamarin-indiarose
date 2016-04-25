@@ -11,6 +11,9 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
+    /// <summary>
+    /// VueModèle du dialogue suivant un touch sur une Catégorie (sur la page de navigation dans la collection dans la partie Administrateur)
+    /// </summary>
 	public class ExploreCollectionCategoryViewModel : AbstractCollectionViewModel
 	{
 		private Indiagram _indiagram;
@@ -34,6 +37,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			GoIntoCommand = new DelegateCommand(GoIntoAction);
 		}
 
+        /// <summary>
+        /// Navigue vers la catégorie
+        /// </summary>
 		private void GoIntoAction()
 		{
 			if (GoIntoCallback != null)
@@ -43,6 +49,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			}
 		}
 
+        /// <summary>
+        /// Ouvre la page de résumé de la Categorie
+        /// </summary>
 		private void WatchIndiagramAction()
 		{
 			NavigationService.Navigate(Views.ADMIN_COLLECTION_WATCHINDIAGRAM, new Dictionary<string, object>

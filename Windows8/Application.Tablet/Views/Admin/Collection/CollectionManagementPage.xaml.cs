@@ -17,14 +17,14 @@ using Windows.UI.Xaml.Navigation;
 
 namespace IndiaRose.Application.Views.Collection
 {
-	 //<summary>
-	 //Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
-	// </summary>
-	public sealed partial class CollectionManagementPage
-	{
-		public CollectionManagementPage()
-		{
-			this.InitializeComponent();
-		}
-	}
+    ///<summary>
+    ///Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
+    /// </summary>
+    public sealed partial class CollectionManagementPage
+    {
+        public CollectionManagementPage()
+        {
+            this.InitializeComponent();
+        }
+    }
 }

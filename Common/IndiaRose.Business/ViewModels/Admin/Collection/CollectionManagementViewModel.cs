@@ -1,4 +1,4 @@
-﻿#region Usings 
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -13,60 +13,74 @@ using Storm.Mvvm.Services;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection
 {
-	public class CollectionManagementViewModel : AbstractBrowserViewModel
-	{
-		public ICommand AddCommand { get; private set; }
+    /// <summary>
+    /// VueModèle de la première page de la partie collection (affichage de la collection)
+    /// </summary>
+    public class CollectionManagementViewModel : AbstractBrowserViewModel
+    {
+        public ICommand AddCommand { get; private set; }
 
-		public IPopupService PopupService
-		{
-			get { return LazyResolver<IPopupService>.Service; }
-		}
+        public IPopupService PopupService
+        {
+            get { return LazyResolver<IPopupService>.Service; }
+        }
 
-		public CollectionManagementViewModel()
-		{
-			AddCommand = new DelegateCommand(AddAction);
-		}
+        public CollectionManagementViewModel()
+        {
+            AddCommand = new DelegateCommand(AddAction);
+        }
 
-		private void AddAction()
-		{
-			// parameter can be removed when the framework has been updated
-			NavigationService.Navigate(Views.ADMIN_COLLECTION_ADDINDIAGRAM);
-		}
+        #region Actions
 
-		protected override void IndiagramSelectedAction(Indiagram indiagram)
-		{
-			base.IndiagramSelectedAction(indiagram);
-			
-			if (indiagram.IsCategory)
-			{
-				string dialogKey = indiagram.HasChildren ? Business.Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY : Business.Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY_WITHOUTCHILDREN;
-				MessageDialogService.Show(dialogKey, new Dictionary<string, object>
+        /// <summary>
+        /// Ouvre la page d'ajout d'Indiagram
+        /// </summary>
+        private void AddAction()
+        {
+            // todo parameter can be removed when the framework has been updated
+            NavigationService.Navigate(Views.ADMIN_COLLECTION_ADDINDIAGRAM);
+        }
+
+        protected override void IndiagramSelectedAction(Indiagram indiagram)
+        {
+            base.IndiagramSelectedAction(indiagram);
+
+            if (indiagram.IsCategory)
+            {
+                string dialogKey = indiagram.HasChildren ? Business.Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY : Business.Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY_WITHOUTCHILDREN;
+                MessageDialogService.Show(dialogKey, new Dictionary<string, object>
 				{
 					{"Indiagram", indiagram},
 					{"GoIntoCallback", (Action<Category>)GoIntoAction }
 				});
-			}
-			else
-			{
-				MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM, new Dictionary<string, object>
+            }
+            else
+            {
+                MessageDialogService.Show(Business.Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM, new Dictionary<string, object>
 				{
 					{"Indiagram", indiagram}
 				});
-			}
-		}
+            }
+        }
 
-		private void GoIntoAction(Category category)
-		{
-			if (!category.HasChildren)
-			{
-				var trad = DependencyService.Container.Resolve<ILocalizationService>();
-				var message = trad.GetString("Collection_CategoryEmpty", "Text");
-				LazyResolver<IPopupService>.Service.DisplayPopup(message);
-			}
-			else
-			{
-				PushCategory(category);
-			}
-		}
-	}
+        /// <summary>
+        /// Navigue vers la catégorie
+        /// Si la catégorie n'a pas d'Indiagram, affiche un message
+        /// </summary>
+        /// <param name="category"></param>
+        private void GoIntoAction(Category category)
+        {
+            if (!category.HasChildren)
+            {
+                var trad = DependencyService.Container.Resolve<ILocalizationService>();
+                var message = trad.GetString("Collection_CategoryEmpty", "Text");
+                LazyResolver<IPopupService>.Service.DisplayPopup(message);
+            }
+            else
+            {
+                PushCategory(category);
+            }
+        }
+        #endregion
+    }
 }

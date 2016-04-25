@@ -10,6 +10,10 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
+    /// <summary>
+    /// VueModèle de la deuxième confirmation lors de la suppresion d'une Catégorie.
+    /// Arrive lorsque la catégorie a des enfants
+    /// </summary>
 	public class DeleteCategoryConfirmationViewModel : AbstractCollectionViewModel
 	{
 		private Indiagram _indiagram;
@@ -30,6 +34,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			DeleteCommand = new DelegateCommand(DeleteAction);
 		}
 
+        /// <summary>
+        /// Supprime la Categorie de la collection et lance le callback de suppression
+        /// </summary>
 		protected void DeleteAction()
 		{
 			CollectionStorageService.Delete(Indiagram);

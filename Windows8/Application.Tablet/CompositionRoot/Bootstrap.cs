@@ -43,7 +43,7 @@ namespace IndiaRose.Application.CompositionRoot
                 {Dialogs.ADMIN_SETTINGS_READINGDELAY, typeof(ReadingDelayDialog)},
                 {Dialogs.ADMIN_SETTINGS_COLORPICKER, typeof(ColorPickerDialog)},
                 {Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
-                {Dialogs.IMPORTING_COLLECTION, typeof(ImportingCollectionDialog)},
+             //   {Dialogs.IMPORTING_COLLECTION, typeof(ImportingCollectionDialog)},
                 {Dialogs.ADMIN_COLLECTION_IMAGECHOICE, typeof(ImageChoiceDialog)},
                 {Dialogs.ADMIN_COLLECTION_SOUNDCHOICE, typeof(SoundChoiceDialog)},
                 {Dialogs.ADMIN_COLLECTION_RECORDSOUND,typeof(RecordSoundDialog)},

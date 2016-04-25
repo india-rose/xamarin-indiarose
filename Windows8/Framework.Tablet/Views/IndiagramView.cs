@@ -16,13 +16,27 @@ namespace IndiaRose.Framework.Views
         {
             get { return LazyResolver<ISettingsService>.Service; }
         }
+
         private readonly TextBlock _textBlock;
         private readonly Image _image;
+        /// <summary>
+        /// Si l'Indiagram n'a pas d'Image, on affiche un carré rouge
+        /// </summary>
         private readonly StackPanel _redRect;
 
+        #region TextColor
         public static readonly DependencyProperty TextColorProperty = DependencyProperty.Register(
                 "TextColor", typeof(SolidColorBrush), typeof(IndiagramView), new PropertyMetadata(default(SolidColorBrush), RefreshColor));
 
+        private static void RefreshColor(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        {
+            var indiaView = dependencyObject as IndiagramView;
+            if (indiaView != null) indiaView.RefreshColor();
+        }
+
+        /// <summary>
+        /// Couleur du texte de l'Indiagram
+        /// </summary>
         public SolidColorBrush TextColor
         {
             get { return (SolidColorBrush)GetValue(TextColorProperty); }
@@ -31,10 +45,24 @@ namespace IndiaRose.Framework.Views
                 SetValue(TextColorProperty, value);
             }
         }
+        #endregion
+
+        #region Indiagram
 
         public static readonly DependencyProperty IndiagramProperty = DependencyProperty.Register(
-                "Indiagram", typeof(Indiagram), typeof(IndiagramView), new PropertyMetadata(default(Indiagram), RefreshDisplay));
+                       "Indiagram", typeof(Indiagram), typeof(IndiagramView), new PropertyMetadata(default(Indiagram), RefreshDisplay));
 
+        protected static void RefreshDisplay(DependencyObject dependencyObject,
+            DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        {
+            var indiaView = dependencyObject as IndiagramView;
+            if (indiaView != null) indiaView.RefreshDisplay();
+        }
+
+
+        /// <summary>
+        /// Indiagram à afficher
+        /// </summary>
         public Indiagram Indiagram
         {
             get { return (Indiagram)GetValue(IndiagramProperty); }
@@ -44,6 +72,8 @@ namespace IndiaRose.Framework.Views
             }
         }
 
+        #endregion
+
         public IndiagramView()
         {
             Orientation = Orientation.Vertical;
@@ -51,13 +81,13 @@ namespace IndiaRose.Framework.Views
             var margin = indiaSize / 10;
             Width = indiaSize + 2 * margin;
             Children.Clear();
-            _image = new Image()
+            _image = new Image
             {
                 Margin = new Thickness(0, margin, 0, 0),
                 Height = SettingsService.IndiagramDisplaySize,
                 Width = SettingsService.IndiagramDisplaySize,
             };
-            _textBlock = new TextBlock()
+            _textBlock = new TextBlock
             {
                 Margin = new Thickness(margin, 0, margin, 0),
                 FontSize = SettingsService.FontSize,
@@ -65,7 +95,7 @@ namespace IndiaRose.Framework.Views
                 HorizontalAlignment = HorizontalAlignment.Center,
                 FontFamily = new FontFamily(SettingsService.FontName)
             };
-            _redRect = new StackPanel()
+            _redRect = new StackPanel
             {
                 Margin = new Thickness(0, margin, 0, 0),
                 Height = SettingsService.IndiagramDisplaySize,
@@ -76,23 +106,9 @@ namespace IndiaRose.Framework.Views
             Children.Add(_textBlock);
         }
 
-
-        private static void RefreshColor(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var indiaView = dependencyObject as IndiagramView;
-            if (indiaView != null) indiaView.RefreshColor();
-        }
-
         private void RefreshColor()
         {
             _textBlock.Foreground = TextColor;
-        }
-
-        protected static void RefreshDisplay(DependencyObject dependencyObject,
-            DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var indiaView = dependencyObject as IndiagramView;
-            if (indiaView != null) indiaView.RefreshDisplay();
         }
 
         protected virtual void RefreshDisplay()
@@ -102,8 +118,10 @@ namespace IndiaRose.Framework.Views
                 Children.Clear();
                 return;
             }
+            //sortir la suppression ?
             if (!string.IsNullOrEmpty(Indiagram.ImagePath))
             {
+                //si l'Indiagram a une image
                 if (Children[0] != _image)
                 {
                     try
@@ -119,6 +137,7 @@ namespace IndiaRose.Framework.Views
             }
             else
             {
+                //si l'indiagram n'a pas d'image
                 try
                 {
                     Children.RemoveAt(0);
@@ -142,6 +161,9 @@ namespace IndiaRose.Framework.Views
                 _textBlock.Text = Indiagram.Text;
         }
 
+        /// <summary>
+        /// Largeur attendu pour la Vue
+        /// </summary>
         public static int DefaultWidth
         {
             get
@@ -150,6 +172,9 @@ namespace IndiaRose.Framework.Views
             }
         }
 
+        /// <summary>
+        /// Hauteur attendu pour la Vue (avec une seul ligne de texte)
+        /// </summary>
         public static int DefaultHeight
         {
             get

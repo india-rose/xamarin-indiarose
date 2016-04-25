@@ -8,10 +8,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
+using PCLCrypto;
 using PCLStorage;
 using Storm.Mvvm.Extensions;
 using Storm.Mvvm.Inject;
-using PCLCrypto;
 using Storm.Mvvm.Services;
 
 #endregion
@@ -25,6 +25,7 @@ namespace IndiaRose.Services
         private const string STORAGE_IMAGE_NAME = "image";
         private const string STORAGE_SOUND_NAME = "sound";
         private const string STORAGE_SETTINGS_NAME = "settings.json";
+        private const string STORAGE_OLD_SETTINGS_NAME = "settings.xml";
         private const string STORAGE_APP_NAME = "app";
         private const string STORAGE_CORRECTION_IMAGE = "correction.png";
         private const string STORAGE_NEXTARROW_IMAGE = "nextarrow.png";
@@ -55,7 +56,11 @@ namespace IndiaRose.Services
 
         public string SettingsFileName => STORAGE_SETTINGS_NAME;
 
+        public string OldSettingsFileName => STORAGE_OLD_SETTINGS_NAME;
+
         public string SettingsFilePath => Path.Combine(SettingsFolderPath, SettingsFileName);
+
+        public string OldSettingsFilePath => Path.Combine(AppPath, OldSettingsFileName);
 
         public string RootPath => Path.Combine(_storageDirectory, STORAGE_DIRECTORY_NAME);
 

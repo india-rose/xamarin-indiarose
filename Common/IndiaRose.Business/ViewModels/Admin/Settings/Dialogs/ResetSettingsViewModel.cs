@@ -5,6 +5,9 @@
 #endregion
 namespace IndiaRose.Business.ViewModels.Admin.Settings.Dialogs
 {
+    /// <summary>
+    /// VueModèle du dialogue de réinitialisation des paramètres
+    /// </summary>
     public class ResetSettingsViewModel : AbstractSettingsViewModel
     {
         #region Commands implementation

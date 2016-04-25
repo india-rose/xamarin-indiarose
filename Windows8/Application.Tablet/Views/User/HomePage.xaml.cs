@@ -33,13 +33,13 @@ namespace IndiaRose.Application.Views.User
 
         async void HomePage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            //secondary tile
+            //initialisation du second point d'entrée de l'application (parti admin)
             var secondaryTileId = "AdminPage";
             if (!SecondaryTile.Exists(secondaryTileId))
             {
                 Uri square150x150Logo = new Uri("ms-appx:///Assets/150winAdmin.png");
                 Uri square30x30Logo = new Uri("ms-appx:///Assets/30winAdmin.png");
-                string tileActivationArguments = secondaryTileId + " was pinned at = " + DateTime.Now.ToLocalTime().ToString();
+                string tileActivationArguments = secondaryTileId + " was pinned at = " + DateTime.Now.ToLocalTime();
                 string displayName = "IndiaRose.Admin";
 
                 TileSize newTileDesiredSize = TileSize.Square150x150;

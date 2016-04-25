@@ -107,36 +107,35 @@ namespace IndiaRose.Services.Android
             _speakerSpeech = null;
         }
 
-        public void PlayIndiagram(Indiagram indiagram)
-        {
-            if (indiagram.HasCustomSound)
-            {
-                string word;
-                if (_registeredSounds.ContainsKey(indiagram.SoundPath))
-                {
-                    word = _registeredSounds[indiagram.SoundPath];
+		public void PlayIndiagram(Indiagram indiagram)
+		{
+			if (indiagram.HasCustomSound)
+			{
+				string word="";
+				if (_registeredSounds.ContainsKey(indiagram.SoundPath))
+				{
+					word = _registeredSounds[indiagram.SoundPath];
                 }
-                else
-                {
-                    if (_speakerSpeech != null)
-                    {
-                        word = Guid.NewGuid().ToString();
-                        _registeredSounds.Add(indiagram.SoundPath, word);
-                        _speakerSpeech.AddSpeech(word, indiagram.SoundPath);
-                    }
-                    else
-                    {
-                        //TODO : log issue
-                        word = "e";
-                    }
+				else
+				{
+					if (_speakerSpeech != null)
+					{
+						word = Guid.NewGuid().ToString();
+						_registeredSounds.Add(indiagram.SoundPath, word);
+					}
+					else
+					{
+						//TODO : log issue
+					}
                 }
-                PlayText(word);
-            }
-            else
-            {
-                PlayText(indiagram.Text);
-            }
-        }
+			    _speakerSpeech?.AddSpeech(word, indiagram.SoundPath);
+			    PlayText(word);
+			}
+			else
+			{
+				PlayText(indiagram.Text);
+			}
+		}
 
         protected void PlayText(string text)
         {

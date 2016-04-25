@@ -66,6 +66,12 @@ namespace IndiaRose.Services.Android
             });
         }
 
+        /// <summary>
+        /// Lance la redimensionnement d'une image
+        /// </summary>
+        /// <param name="picUri">Uri de l'image à redimensionner</param>
+        /// <param name="callbackResult">Callback à executer lorsque le redimensionnement est terminé</param>
+        /// <param name="path">Chemin de l'accès à l'image redimensionné</param>
         private void PerformCrop(Uri picUri, Action<string> callbackResult, string path)
         {
             Intent cropIntent = new Intent("com.android.camera.action.CROP");
@@ -85,6 +91,11 @@ namespace IndiaRose.Services.Android
             });
         }
 
+        /// <summary>
+        /// Sauvegarde une image bitmap sous forme de png
+        /// </summary>
+        /// <param name="bitmap">L'image bitmap à enregistrer</param>
+        /// <returns>Le chemin d'accès à l'image</returns>
         private string SavePhoto(Bitmap bitmap)
         {
             string filename = StorageService.GenerateFilename(StorageType.Image, "png");

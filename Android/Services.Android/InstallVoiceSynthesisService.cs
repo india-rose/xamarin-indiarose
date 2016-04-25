@@ -12,6 +12,11 @@ namespace IndiaRose.Services.Android
             CurrentActivity.StartActivity(intent);
         }
 
+        /// <summary>
+        /// Construit un Intent pour lancer le PlayStore
+        /// </summary>
+        /// <param name="url">L'adresse à laquelle lancé le PlayStore</param>
+        /// <returns>L'Intent lançant le PlayStore</returns>
         private Intent GoToMarket(string url)
         {
             Intent intent = new Intent(Intent.ActionView);

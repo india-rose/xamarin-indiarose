@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using IndiaRose.Interfaces;
+using Storm.Mvvm.Extensions;
 
 namespace IndiaRose.Services.Android
 {
@@ -13,6 +14,10 @@ namespace IndiaRose.Services.Android
 			get { return _fonts ?? (_fonts = LoadFonts()); }
         }
 
+        /// <summary>
+        /// Charge la liste des polices du device
+        /// </summary>
+        /// <returns></returns>
 		private Dictionary<string, string> LoadFonts()
 		{
 			Dictionary<string, string> result = new Dictionary<string, string>();

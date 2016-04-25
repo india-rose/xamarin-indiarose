@@ -12,6 +12,10 @@ using Storm.Mvvm.Navigation;
 
 namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 {
+    /// <summary>
+    /// VueModèle pour le dialogue de choix du son
+    /// Propose 2 choix : ouvrir la galerie ou enregistrer un son via le micro
+    /// </summary>
 	public class SoundChoiceViewModel : AbstractCollectionViewModel
 	{
 		private Indiagram _indiagramContainer;
@@ -37,6 +41,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			GalleryCommand = new DelegateCommand(GalleryAction);
 		}
 
+        /// <summary>
+        /// Ouvre le dialogue d'enregistrement de son
+        /// </summary>
 		private void RecordSoundAction()
 		{
 			MessageDialogService.DismissCurrentDialog();
@@ -46,6 +53,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 			});
 		}
 
+        /// <summary>
+        /// Lance la gallerie pour laisser l'utilisateur choisir le son
+        /// </summary>
 		private async void GalleryAction()
 		{
 			Indiagram.SoundPath = await MediaService.GetSoundFromGalleryAsync();

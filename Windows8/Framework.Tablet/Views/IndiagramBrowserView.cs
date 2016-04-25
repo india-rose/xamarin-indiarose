@@ -13,6 +13,9 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Framework.Views
 {
+    /// <summary>
+    /// Sert à l'affichage de la collection
+    /// </summary>
     public class IndiagramBrowserView : StackPanel
     {
         #region Private fields
@@ -59,37 +62,56 @@ namespace IndiaRose.Framework.Views
                    "NextCommand", typeof(ICommand), typeof(IndiagramBrowserView), new PropertyMetadata(default(ICommand)));
 
         #endregion
+
         #region Public Properties
+        /// <summary>
+        /// Nombre d'Indiagram à afficher
+        /// </summary>
         public int Count
         {
             get { return (int)GetValue(CountProperty); }
             set { SetValue(CountProperty, value); }
         }
 
+        /// <summary>
+        /// Numéro du premier Indiagram à afficher
+        /// </summary>
         public int Offset
         {
             get { return (int)GetValue(OffsetProperty); }
             set { SetValue(OffsetProperty, value); }
         }
 
+        /// <summary>
+        /// Liste des Indiagrams à afficher
+        /// </summary>
         public List<Indiagram> Indiagrams
         {
             get { return (List<Indiagram>)GetValue(IndiagramsProperty); }
             set { SetValue(IndiagramsProperty, value); }
         }
 
+        /// <summary>
+        /// Couleur des textes des Indiagrams
+        /// </summary>
         public SolidColorBrush TextColor
         {
             get { return (SolidColorBrush)GetValue(TextColorProperty); }
             set { SetValue(TextColorProperty, value); }
         }
 
+        /// <summary>
+        /// Commande lorsqu'un indiagram est sélectionné
+        /// </summary>
         public ICommand IndiagramSelected
         {
             get { return (ICommand)GetValue(IndiagramSelectedProperty); }
             set { SetValue(IndiagramSelectedProperty, value); }
         }
 
+        /// <summary>
+        /// Commande lorsque le bouton suivant est sélectionné
+        /// </summary>
         public ICommand NextCommand
         {
             get { return (ICommand)GetValue(NextCommandProperty); }
@@ -103,7 +125,7 @@ namespace IndiaRose.Framework.Views
             var margin = indiaSize / 10;
             _nextButton = new Image()
             {
-                VerticalAlignment=VerticalAlignment.Top,
+                VerticalAlignment = VerticalAlignment.Top,
                 Height = indiaSize,
                 Width = indiaSize,
                 Margin = new Thickness(margin, margin, margin, 0),
@@ -122,6 +144,7 @@ namespace IndiaRose.Framework.Views
                 NextCommand.Execute(null);
         }
 
+        #region Private static callback for DependencyProperty
         private static void Refresh(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var indiaBrowserView = d as IndiagramBrowserView;
@@ -133,7 +156,11 @@ namespace IndiaRose.Framework.Views
             var indiaBrowserView = dependencyObject as IndiagramBrowserView;
             if (indiaBrowserView != null) indiaBrowserView.RefreshTextColor();
         }
+        #endregion
 
+        /// <summary>
+        /// Raffraichit la couleur du texte des Indiagrams
+        /// </summary>
         private void RefreshTextColor()
         {
             if (_displayableViews == null)
@@ -143,6 +170,10 @@ namespace IndiaRose.Framework.Views
                 cell.TextColor = TextColor;
             }
         }
+
+        /// <summary>
+        /// Réinitialise la taille de la grille d'affichage
+        /// </summary>
         private void ResetGrid()
         {
             _grid.ColumnDefinitions.Clear();
@@ -167,12 +198,20 @@ namespace IndiaRose.Framework.Views
             Children.Add(_grid);
         }
 
+        /// <summary>
+        /// Callback lorsque la taille de la Vue change
+        /// Lance le raffraichissement
+        /// </summary>
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (Reset())
                 RefreshDisplay();
         }
 
+        /// <summary>
+        /// Reset l'affichage de la collection
+        /// </summary>
+        /// <returns>Retourne faux lorsque le reset ne changerait rien</returns>
         private bool Reset()
         {
             int newColumnCount = (int)(ActualWidth / IndiagramView.DefaultWidth);
@@ -198,7 +237,7 @@ namespace IndiaRose.Framework.Views
             _displayableViews = new IndiagramView[_lineCount][];
             for (int line = 0; line < _lineCount; ++line)
             {
-                _displayableViews[line] = new IndiagramView[_columnCount - ((line == 0) ? 1 : 0)];
+                _displayableViews[line] = new IndiagramView[_columnCount - (line == 0 ? 1 : 0)];
                 for (int column = 0; column < _displayableViews[line].Length; ++column)
                 {
                     var view = new IndiagramView { TextColor = TextColor };
@@ -210,6 +249,9 @@ namespace IndiaRose.Framework.Views
             return true;
         }
 
+        /// <summary>
+        /// Callback lorsqu'un Indiagram a été sélectionné
+        /// </summary>=
         void view_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var senderView = sender as IndiagramView;
@@ -224,6 +266,9 @@ namespace IndiaRose.Framework.Views
             }
         }
 
+        /// <summary>
+        /// Raffraichit l'affichage
+        /// </summary>
         private void RefreshDisplay()
         {
             if (Indiagrams == null || _displayableViews == null || _lineCount == 0 || _columnCount == 0)
@@ -257,13 +302,16 @@ namespace IndiaRose.Framework.Views
                     view.SizeChanged += LastLineVerification;
                     oldview = view;
                 }
-                    displayCount += lineCount;
+                displayCount += lineCount;
                 if (stop)
                     break;
             }
             Count = displayCount;
         }
 
+        /// <summary>
+        /// Vérifie que la dernière ligne ne dépasse pas du bord de l'écran
+        /// </summary>
         private void LastLineVerification(object sender, SizeChangedEventArgs sizeChangedEventArgs)
         {
             var view = sender as IndiagramView;
@@ -284,7 +332,7 @@ namespace IndiaRose.Framework.Views
             {
                 var displayCount = 0;
                 {
-                    foreach (var cell in _displayableViews[_lineCount-1])
+                    foreach (var cell in _displayableViews[_lineCount - 1])
                     {
                         _grid.Children.Remove(cell);
                         if (cell.Indiagram != null)

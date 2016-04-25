@@ -13,13 +13,16 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Business.ViewModels.User
 {
-    public class UserViewModel : AbstractViewModel
-    {
-        private readonly object _readingMutex = new object();
-        private readonly ManualResetEvent _sentenceReadingSemaphore = new ManualResetEvent(false);
-        private readonly Category _correctionCategory;
-        private readonly Stack<Category> _navigationStack = new Stack<Category>();
-        private readonly ObservableCollection<IndiagramUIModel> _sentenceIndiagrams = new ObservableCollection<IndiagramUIModel>();
+    /// <summary>
+    /// VueModèle de la page Utilisateur
+    /// </summary>
+	public class UserViewModel : AbstractViewModel
+	{
+		private readonly object _readingMutex = new object();
+		private readonly ManualResetEvent _sentenceReadingSemaphore = new ManualResetEvent(false);
+		private readonly Category _correctionCategory;
+		private readonly Stack<Category> _navigationStack = new Stack<Category>();
+		private readonly ObservableCollection<IndiagramUIModel> _sentenceIndiagrams = new ObservableCollection<IndiagramUIModel>(); 
 
         private int _collectionOffset;
         private int _collectionDisplayCount;
@@ -44,23 +47,30 @@ namespace IndiaRose.Business.ViewModels.User
 
         #region Properties
 
-        public Category CurrentCategory
-        {
-            get { return _currentCategory; }
-            set
-            {
-                if (SetProperty(ref _currentCategory, value) && value != null)
-                {
-                    RefreshDisplayList();
-                }
-            }
-        }
+        /// <summary>
+        /// Catégorie Courante
+        /// </summary>
+		public Category CurrentCategory
+		{
+			get { return _currentCategory; }
+			set
+			{
+				if (SetProperty(ref _currentCategory, value) && value != null)
+				{
+                    //si on change de catégorie on raffraichit l'affichage
+					RefreshDisplayList();
+				}
+			}
+		}
 
-        public List<Indiagram> CollectionIndiagrams
-        {
-            get { return _collectionIndiagrams; }
-            set { SetProperty(ref _collectionIndiagrams, value); }
-        }
+        /// <summary>
+        /// Collection d'Indiagram à afficher
+        /// </summary>
+		public List<Indiagram> CollectionIndiagrams
+		{
+			get { return _collectionIndiagrams; }
+			set { SetProperty(ref _collectionIndiagrams, value); }
+		}
 
         public int CollectionOffset
         {
@@ -74,19 +84,32 @@ namespace IndiaRose.Business.ViewModels.User
             set { SetProperty(ref _collectionDisplayCount, value); }
         }
 
-        public ObservableCollection<IndiagramUIModel> SentenceIndiagrams => _sentenceIndiagrams;
+        /// <summary>
+        /// La liste des Indiagrams dans la phrase
+        /// </summary>
+		public ObservableCollection<IndiagramUIModel> SentenceIndiagrams
+		{
+			get { return _sentenceIndiagrams; }
+		}
 
-        public bool SentenceCanAddMoreIndiagrams
-        {
-            get { return _sentenceCanAddMoreIndiagrams; }
-            set { SetProperty(ref _sentenceCanAddMoreIndiagrams, value); }
-        }
+        /// <summary>
+        /// Booléen indiquant si on peut encore ajouter des Indiagrams à la phrase
+        /// S'il est à faux, en cas d'ajout il ne se passera rien
+        /// </summary>
+		public bool SentenceCanAddMoreIndiagrams
+		{
+			get { return _sentenceCanAddMoreIndiagrams; }
+			set { SetProperty(ref _sentenceCanAddMoreIndiagrams, value); }
+		}
 
-        public bool IsCorrectionModeEnabled
-        {
-            get { return _isCorrectionModeEnabled; }
-            set { SetProperty(ref _isCorrectionModeEnabled, value); }
-        }
+        /// <summary>
+        /// Vrai si on est dans le mode Correction
+        /// </summary>
+		public bool IsCorrectionModeEnabled
+		{
+			get { return _isCorrectionModeEnabled; }
+			set { SetProperty(ref _isCorrectionModeEnabled, value); }
+		}
 
         #endregion
 
@@ -101,14 +124,15 @@ namespace IndiaRose.Business.ViewModels.User
 
         #endregion
 
-        public UserViewModel()
-        {
-            Category rootCategory = new Category(CollectionStorageService.Collection)
-            {
-                Id = -1,
-                Text = LocalizationService.GetString("Collection_RootCategoryName", "Text"),
-                ImagePath = StorageService.ImageRootPath,
-            };
+		public UserViewModel()
+		{
+            //Création des catégories spéciales (Home et Correction)
+			Category rootCategory = new Category(CollectionStorageService.Collection)
+			{
+				Id = -1,
+				Text = LocalizationService.GetString("Collection_RootCategoryName", "Text"),
+				ImagePath = StorageService.ImageRootPath,
+			};
 
             _correctionCategory = new Category
             {
@@ -131,10 +155,14 @@ namespace IndiaRose.Business.ViewModels.User
 
         #region Collection navigation
 
-        private void CollectionNextAction()
-        {
-            int offset = CollectionOffset;
-            offset += CollectionDisplayCount;
+        /// <summary>
+        /// Action résultant de l'appuie sur le bouton next de la collection
+        /// Affiche les Indiagrams suivants ou revient à la catégorie précédente
+        /// </summary>
+		private void CollectionNextAction()
+		{
+			int offset = CollectionOffset;
+			offset += CollectionDisplayCount;
 
             if (offset >= CollectionIndiagrams.Count)
             {
@@ -153,19 +181,26 @@ namespace IndiaRose.Business.ViewModels.User
             }
         }
 
-        private void PushCategory(Category category)
-        {
-            _navigationStack.Push(category);
-            CollectionOffset = 0;
-            CurrentCategory = category;
-        }
-
-        private bool PopCategory()
-        {
-            if (_navigationStack.Count <= 1) //always keep root category on the stack
-            {
-                return false;
-            }
+        /// <summary>
+        /// Push une catégorie sur la pile de navigation, reset l'offset d'affichage et change la catégorie courante
+        /// </summary>
+		private void PushCategory(Category category)
+		{
+			_navigationStack.Push(category);
+			CollectionOffset = 0;
+			CurrentCategory = category;
+		}
+		
+        /// <summary>
+        /// Pop une catégorie de la stack, reset l'offset d'affichage et change la catégorie courante
+        /// </summary>
+        /// <returns>Retourne faux si la catégorie courante est la Home</returns>
+		private bool PopCategory()
+		{
+			if (_navigationStack.Count <= 1) //always keep root category on the stack
+			{
+				return false;
+			}
 
             _navigationStack.Pop();
             CollectionOffset = 0;
@@ -174,12 +209,15 @@ namespace IndiaRose.Business.ViewModels.User
             return true;
         }
 
-        private void RefreshDisplayList()
-        {
-            if (_navigationStack.Count == 0)
-            {
-                return;
-            }
+        /// <summary>
+        /// Change la collection d'Indiagram à afficher
+        /// </summary>
+		private void RefreshDisplayList()
+		{
+			if (_navigationStack.Count == 0)
+			{
+				return;
+			}
 
             CollectionIndiagrams = CurrentCategory.Children.Where(
                 SettingsService.IsMultipleIndiagramSelectionEnabled && !IsCorrectionModeEnabled ?
@@ -189,12 +227,15 @@ namespace IndiaRose.Business.ViewModels.User
 
         #endregion
 
-        private void EnterCorrectionModeAction()
-        {
-            if (SentenceIndiagrams.Count == 0 || CheckIsReading() || IsCorrectionModeEnabled)
-            {
-                return;
-            }
+        /// <summary>
+        /// Entre dans le mode Correction
+        /// </summary>
+		private void EnterCorrectionModeAction()
+		{
+			if (SentenceIndiagrams.Count == 0 || CheckIsReading() || IsCorrectionModeEnabled)
+			{
+				return;
+			}
 
             _correctionCategory.Children.Clear();
             foreach (IndiagramUIModel indiagramUI in SentenceIndiagrams)
@@ -207,15 +248,20 @@ namespace IndiaRose.Business.ViewModels.User
             PushCategory(_correctionCategory);
         }
 
-        private void SentenceIndiagramSelectedAction(IndiagramUIModel indiagram)
-        {
-            lock (_readingMutex)
-            {
-                if (_isReading)
-                {
-                    return;
-                }
-            }
+        /// <summary>
+        /// Action lorsqu'un Indiagram dans la phrase est selectionné
+        /// Retire l'Indiagram de la phrase et le rajoute dans la collection
+        /// </summary>
+        /// <param name="indiagram"></param>
+		private void SentenceIndiagramSelectedAction(IndiagramUIModel indiagram)
+		{
+			lock (_readingMutex)
+			{
+				if (_isReading)
+				{
+					return;
+				}
+			}
 
             SentenceIndiagrams.Remove(indiagram);
             if (!SettingsService.IsMultipleIndiagramSelectionEnabled || IsCorrectionModeEnabled)
@@ -224,12 +270,16 @@ namespace IndiaRose.Business.ViewModels.User
             }
         }
 
-        private void CollectionIndiagramSelectedAction(Indiagram indiagram)
-        {
-            if (CheckIsReading() && (indiagram.IsCategory || !SettingsService.IsDragAndDropEnabled))
-            {
-                return;
-            }
+        /// <summary>
+        /// Action lors de la sélection d'un Indiagram de la partie Collection
+        /// </summary>
+        /// <param name="indiagram">L'Indiagram sélectionné</param>
+		private void CollectionIndiagramSelectedAction(Indiagram indiagram)
+		{
+			if (CheckIsReading() && (indiagram.IsCategory || !SettingsService.IsDragAndDropEnabled))
+			{
+				return;
+			}
 
             Category category = indiagram as Category;
             if (category != null)
@@ -261,24 +311,31 @@ namespace IndiaRose.Business.ViewModels.User
             }
         }
 
-        private void CollectionIndiagramDragStartAction(Indiagram indiagram)
-        {
-            if (CheckIsReading())
-            {
-                return;
-            }
+        /// <summary>
+        /// Action lorsqu'un drag & drop est activé de la partie Collection
+        /// </summary>
+        /// <param name="indiagram">L'Indiagram sélectionné</param>
+		private void CollectionIndiagramDragStartAction(Indiagram indiagram)
+		{
+			if (CheckIsReading())
+			{
+				return;
+			}
 
             Read(indiagram);
         }
 
-
-        private void Read(Indiagram indiagram)
-        {
-            bool canRead = true;
-            if (indiagram.IsCategory)
-            {
-                canRead = SettingsService.IsCategoryNameReadingEnabled;
-            }
+        /// <summary>
+        /// Lance la lecture d'un Indiagram par le TTS
+        /// </summary>
+        /// <param name="indiagram">Indiagram à lire</param>
+		private void Read(Indiagram indiagram)
+		{
+			bool canRead = true;
+			if (indiagram.IsCategory)
+			{
+				canRead = SettingsService.IsCategoryNameReadingEnabled;
+			}
 
             if (canRead)
             {
@@ -301,38 +358,51 @@ namespace IndiaRose.Business.ViewModels.User
             }
         }
 
-        private void OnIndiagramReadCompleted(object sender, EventArgs eventArgs)
-        {
-            lock (_readingMutex)
-            {
-                _isReading = false;
-            }
-        }
+        /// <summary>
+        /// Callback lors de la fin de la lecture d'un Indiagram
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="eventArgs"></param>
+		private void OnIndiagramReadCompleted(object sender, EventArgs eventArgs)
+		{
+			lock (_readingMutex)
+			{
+				_isReading = false;
+			}
+		}
 
 
         #region Read sentence handling part
 
-        private void AddIndiagramToSentence(Indiagram indiagram)
-        {
-            if (SettingsService.IsMultipleIndiagramSelectionEnabled && !IsCorrectionModeEnabled)
-            {
-                // need to create a copy of the indiagram
-                Indiagram copy = new Indiagram();
-                copy.CopyFrom(indiagram);
-                indiagram = copy;
-                indiagram.Id = _sentenceIndiagramId--;
-            }
+        /// <summary>
+        /// Ajoute un Indiagram à la phrase à lire (partie du bas)
+        /// Ne check pas s'il y a de la place pour ajouter, à faire avant d'appeler cette méthode
+        /// </summary>
+        /// <param name="indiagram">L'Indiagram à ajouté</param>
+		private void AddIndiagramToSentence(Indiagram indiagram)
+		{
+			if (SettingsService.IsMultipleIndiagramSelectionEnabled && !IsCorrectionModeEnabled)
+			{
+				// need to create a copy of the indiagram
+				Indiagram copy = new Indiagram();
+				copy.CopyFrom(indiagram);
+				indiagram = copy;
+				indiagram.Id = _sentenceIndiagramId--;
+			}
 
             SentenceIndiagrams.Add(new IndiagramUIModel(indiagram));
         }
 
-        private void ReadSentenceAction()
-        {
-            //if there is no indiagram to read do nothing
-            if (SentenceIndiagrams.Count == 0)
-            {
-                return;
-            }
+        /// <summary>
+        /// Action pour lancer la lecture de la phrase d'Indiagram
+        /// </summary>
+		private void ReadSentenceAction()
+		{
+			//if there is no indiagram to read do nothing
+			if (SentenceIndiagrams.Count == 0)
+			{
+				return;
+			}
 
             bool canRead = false;
             lock (_readingMutex)
@@ -353,18 +423,21 @@ namespace IndiaRose.Business.ViewModels.User
             Task.Run((Action)ReadSentence);
         }
 
-        // Todo: Le "APRES" est bien après le "Utterance completed" (TtsService) seulement à la première lecture, après on a AVANT->APRES->Utterance completed
-        private async void ReadSentence()
-        {
-            bool isReinforcerEnabled = SettingsService.IsReinforcerEnabled;
-            foreach (IndiagramUIModel sentenceIndiagram in SentenceIndiagrams)
-            {
-                IndiagramUIModel currentIndiagram = sentenceIndiagram;
-                //enable reinforcer
-                if (isReinforcerEnabled)
-                {
-                    DispatcherService.InvokeOnUIThread(() => currentIndiagram.IsReinforcerEnabled = true);
-                }
+        /// <summary>
+        /// Lit la phrase d'Indiagram
+        /// Méthode asynchrone
+        /// </summary>
+		private async void ReadSentence()
+		{
+			bool isReinforcerEnabled = SettingsService.IsReinforcerEnabled;
+			foreach (IndiagramUIModel sentenceIndiagram in SentenceIndiagrams)
+			{
+				IndiagramUIModel currentIndiagram = sentenceIndiagram;
+				//enable reinforcer
+				if (isReinforcerEnabled)
+				{
+					DispatcherService.InvokeOnUIThread(() => currentIndiagram.IsReinforcerEnabled = true);
+				}
 
                 // read indiagram and wait for reading to finished
                 TextToSpeechService.PlayIndiagram(sentenceIndiagram.Model);
@@ -412,10 +485,15 @@ namespace IndiaRose.Business.ViewModels.User
             });
         }
 
-        private void OnSentenceIndiagramReadCompleted(object sender, EventArgs eventArgs)
-        {
-            _sentenceReadingSemaphore.Set();
-        }
+        /// <summary>
+        /// Callback de la fin de lecture d'une phrase
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="eventArgs"></param>
+		private void OnSentenceIndiagramReadCompleted(object sender, EventArgs eventArgs)
+		{
+			_sentenceReadingSemaphore.Set();
+		}
 
         #endregion
 
