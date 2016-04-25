@@ -28,6 +28,7 @@ namespace IndiaRose.Business.ViewModels.User
 		private int _collectionDisplayCount;
 		private List<Indiagram> _collectionIndiagrams;
 		private Category _currentCategory;
+        private Category _parentCategory;
 		private bool _isReading;
 		private bool _isCorrectionModeEnabled;
 		private bool _sentenceCanAddMoreIndiagrams = true;
@@ -74,6 +75,16 @@ namespace IndiaRose.Business.ViewModels.User
 				}
 			}
 		}
+
+        public Category ParentCategory
+        {
+            get { return _parentCategory; }
+            set
+            {
+                //if (_navigationStack.Count != 1)
+                    SetProperty(ref _parentCategory, value);
+            }
+        }
 
         /// <summary>
         /// Collection d'Indiagram à afficher
@@ -216,7 +227,8 @@ namespace IndiaRose.Business.ViewModels.User
 		{
 			_navigationStack.Push(category);
 			CollectionOffset = 0;
-			CurrentCategory = category;
+            ParentCategory = CurrentCategory;
+            CurrentCategory = category;
 		}
 		
         /// <summary>
@@ -229,10 +241,13 @@ namespace IndiaRose.Business.ViewModels.User
 			{
 				return false;
 			}
-
-			_navigationStack.Pop();
+            _navigationStack.Pop();
 			CollectionOffset = 0;
-			CurrentCategory = _navigationStack.Peek();
+            if (_navigationStack.Count == 1)
+                ParentCategory = new Category();
+            else
+                ParentCategory = _navigationStack.ElementAt(_navigationStack.Count - 1);
+            CurrentCategory = _navigationStack.Peek();
 
 			return true;
 		}
