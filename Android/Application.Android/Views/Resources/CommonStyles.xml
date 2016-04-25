@@ -14,9 +14,9 @@
   
   <Style Key="LinkStyle"
          android:layout_width="wrap_content"
-	     android:layout_height="wrap_content"
+	       android:layout_height="wrap_content"
          android:autoLink="web"
-		 android:textSize="18dip"
+		     android:textSize="18dip"
          />
 
 	<Style Key="LogoStyle"
@@ -25,13 +25,13 @@
 	       android:layout_alignParentTop="true" />
 
 	<Style Key="BaseRootLayoutStyle"
-		   android:layout_width="match_parent"
+		     android:layout_width="match_parent"
 	       android:layout_height="match_parent"
 	       android:background="@android:color/white"
 			/>
 
 	<Style Key="RootLayoutStyle"
-		   XmlStyle="{Resource BaseRootLayoutStyle}"
+		     XmlStyle="{Resource BaseRootLayoutStyle}"
 	       android:layout_margin="4dip" />
 
 	<Style Key="RootLinearLayoutStyle"
