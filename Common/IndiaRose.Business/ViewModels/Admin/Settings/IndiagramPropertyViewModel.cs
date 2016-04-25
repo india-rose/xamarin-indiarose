@@ -24,10 +24,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 
         protected IFontService FontService => LazyResolver<IFontService>.Service;
 
-        protected IScreenService ScreenService
-        {
-            get { return LazyResolver<IScreenService>.Service; }
-        }
+        protected IScreenService ScreenService => LazyResolver<IScreenService>.Service;
 
         #endregion
 

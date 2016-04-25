@@ -24,15 +24,9 @@ namespace IndiaRose.Framework.Views
         private Category _category;
         private Category _parent;
 
-        protected IStorageService StorageService
-        {
-            get { return LazyResolver<IStorageService>.Service; }
-        }
+        protected IStorageService StorageService => LazyResolver<IStorageService>.Service;
 
-        protected ISettingsService SettingsService
-        {
-            get { return LazyResolver<ISettingsService>.Service; }
-        }
+        protected ISettingsService SettingsService => LazyResolver<ISettingsService>.Service;
 
         #region Private tools methods
 

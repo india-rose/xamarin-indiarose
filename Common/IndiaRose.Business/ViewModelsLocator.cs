@@ -84,12 +84,9 @@ namespace IndiaRose.Business
 
         public IndiagramPropertyViewModel AdminSettingsIndiagramPropertyViewModel => _container.Resolve<IndiagramPropertyViewModel>();
 
-        public AppBehaviourViewModel AdminSettingsAppBehaviourViewModel
-        {
-            get { return _container.Resolve<AppBehaviourViewModel>(); }
-        }
+        public AppBehaviourViewModel AdminSettingsAppBehaviourViewModel => _container.Resolve<AppBehaviourViewModel>();
 
-		#endregion
+        #endregion
 
 
         #region ViewModels : /Admin/Settings/Dialogs
@@ -97,17 +94,9 @@ namespace IndiaRose.Business
         public ColorPickerViewModel AdminSettingsDialogsColorPickerViewModel => _container.Resolve<ColorPickerViewModel>();
 
 		
-        public ResetSettingsViewModel AdminSettingsDialogsResetSettingsViewModel
-        {
-            get { return _container.Resolve<ResetSettingsViewModel>(); }
-        }
+        public ResetSettingsViewModel AdminSettingsDialogsResetSettingsViewModel => _container.Resolve<ResetSettingsViewModel>();
 
-		public CategoryReadingViewModel AdminSettingsDialogsCategoryReadingViewModel
-		{
-			get { return _container.Resolve<CategoryReadingViewModel>(); }
-		}
-
-		#endregion
+        #endregion
 
         #region ViewModels : /Admin/Collection
 

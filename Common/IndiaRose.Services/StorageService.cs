@@ -40,6 +40,10 @@ namespace IndiaRose.Services
 
         public string ImageCorrectionPath => Path.Combine(AppPath, STORAGE_CORRECTION_IMAGE);
 
+        public string ImageNextArrowPath => Path.Combine(AppPath, STORAGE_NEXTARROW_IMAGE);
+
+        public string ImageBackPath => Path.Combine(AppPath, STORAGE_BACK_IMAGE);
+
         public string ImageRootPath => Path.Combine(AppPath, STORAGE_ROOT_IMAGE);
 
         public string ImagePlayButtonPath => Path.Combine(AppPath, STORAGE_PLAYBUTTON_IMAGE);
