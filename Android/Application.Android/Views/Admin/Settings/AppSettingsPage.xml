@@ -14,17 +14,16 @@
 			<Button XmlStyle="{Resource MediumGreenButtonStyle}"
               Text="{Tr Text, Uid=AppSettings_AppBehaviour}"
               Click="{Binding AppBehaviourCommand}"/>
-
 		</LinearLayout>
 
 		<LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}">
-			<!--    <Button XmlStyle="{Resource MediumGreenButtonStyle}"
+			<!--<Button XmlStyle="{Resource MediumGreenButtonStyle}"
 			        Text="{Tr Text,Uid=AppSettings_ReadingCategory}"
 			        Click="{Binding CategoryReadingCommand}" />
 			<Button XmlStyle="{Resource MediumPurpleButtonStyle}"
 			        Text="{Tr Text,Uid=AppSettings_ReadingDelay}"
 			        Click="{Binding ReadingDelayCommand}" />-->
-			<Button XmlStyle="{Resource RedButtonStyle}"
+			<Button XmlStyle="{Resource MediumRedButtonStyle}"
 			        Text="{Tr Text, Uid=AppSettings_Reset}"
 			        Click="{Binding ResetSettingsCommand}" />
 		</LinearLayout>
