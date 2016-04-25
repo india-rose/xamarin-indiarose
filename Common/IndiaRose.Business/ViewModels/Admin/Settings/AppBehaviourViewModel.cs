@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Windows.Input;
 using Storm.Mvvm.Commands;
 
@@ -35,13 +36,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
         public float Delay
         {
             get { return _delay; }
-            set
-            {
-                if (SetProperty(ref _delay, value))
-                {
-                    SliderValue = (int) (value) * 10;
-                }
-            }
+            set { SetProperty(ref _delay, value); }
         }
 
         public int SliderValue
@@ -57,14 +52,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
         }
         #endregion
 
-        public ICommand OkCommand { get; private set; }
-        public ICommand CancelCommand { get; private set; }
-
         public AppBehaviourViewModel()
         {
             Initialize();
-            OkCommand = new DelegateCommand(OkClicked);
-            CancelCommand = new DelegateCommand(CancelClicked);
         }
 
         private void Initialize()
@@ -73,16 +63,13 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
             CategoryReading = SettingsService.IsCategoryNameReadingEnabled;
             BackButtonActivated = SettingsService.IsBackCategoryEnabled;
             Delay = SettingsService.TimeOfSilenceBetweenWords;
-        }
+            
+            SliderValue = Convert.ToInt32(Delay*10.0f);
+            // Ne pas remplacer par SliderValue = (int)(Delay*10.0f); qui renvoie parfois des résultats erronés (tester avec 2.6 par ex). Pourquoi ?
 
-        private void OkClicked()
-        {
-            SaveAction();
-        }
-
-        private void CancelClicked()
-        {
-            BackAction();
+            // float temp = Delay*10.0f;
+            // SliderValue = (int) temp;
+            // Fonctionne, mais demande une variable intermédiaire.
         }
 
         protected override void SaveAction()

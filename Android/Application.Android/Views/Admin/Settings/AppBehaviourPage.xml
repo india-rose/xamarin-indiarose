@@ -37,11 +37,11 @@
 
     <Button XmlStyle="{Resource OkButtonStyle}"
             Text="{Tr Text, Uid=Button_Ok}"
-            Click="{Binding OkCommand}"/>
+            Click="{Binding SaveCommand}"/>
 
     <Button XmlStyle="{Resource CancelButtonStyle}"
             Text="{Tr Text, Uid=Button_Cancel}"
-            Click="{Binding CancelCommand}"/>
+            Click="{Binding BackCommand}"/>
   </LinearLayout>
   
 </RelativeLayout>
