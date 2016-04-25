@@ -13,7 +13,7 @@
 			        Click="{Binding IndiagramPropertyCommand}" />
 			<Button XmlStyle="{Resource MediumGreenButtonStyle}"
               Text ="Parametre de l'application"
-              Click="{Binding AppBehaviour}"/>
+              Click="{Binding AppBehaviourCommand}"/>
             <!--Text="{Tr Text, Uid=AppSettings_DragDrop}"
 			        Click="{Binding DragAndDropCommand}"-->
 		</LinearLayout>
