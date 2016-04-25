@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using System.Windows.Input;
 using Storm.Mvvm.Commands;
 
@@ -61,18 +56,39 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 
         public AppBehaviourViewModel()
         {
+            Initialize();
             OkCommand = new DelegateCommand(OkClicked);
             CancelCommand = new DelegateCommand(CancelClicked);
         }
 
+        private void Initialize()
+        {
+            DragAndDrop = SettingsService.IsDragAndDropEnabled;
+            CategoryReading = SettingsService.IsCategoryNameReadingEnabled;
+            BackButtonActivated = SettingsService.IsBackCategoryEnabled;
+            Delay = SettingsService.TimeOfSilenceBetweenWords;
+        }
+
         private void OkClicked()
         {
+            SaveAction();
             //Debug.WriteLine("Drag&drop = " + DragAndDrop + " CategoryReading = " + CategoryReading + " BackButtonActivated = " + BackButtonActivated + " Delay/SliderValue = " + Delay + " / " + SliderValue);
         }
 
         private void CancelClicked()
         {
-            
+            BackAction();
+        }
+
+        protected override void SaveAction()
+        {
+            SettingsService.IsDragAndDropEnabled = DragAndDrop;
+            SettingsService.IsCategoryNameReadingEnabled = CategoryReading;
+            SettingsService.IsBackCategoryEnabled = BackButtonActivated;
+            SettingsService.TimeOfSilenceBetweenWords = Delay;
+
+            base.SaveAction();
+            BackAction();
         }
     }
 }
