@@ -33,6 +33,7 @@ namespace IndiaRose.Business
 			container.RegisterFactory(x => new SettingsListViewModel());
 			container.RegisterFactory(x => new ApplicationLookViewModel());
 			container.RegisterFactory(x => new IndiagramPropertyViewModel());
+            container.RegisterFactory(x => new AppBehaviourViewModel());
 
 			// Admin/Settings/Dialogs
 			container.RegisterFactory(x => new ColorPickerViewModel());
@@ -92,7 +93,6 @@ namespace IndiaRose.Business
 	    }
 
 		#endregion
-
 		#region ViewModels : /Admin/Settings
 
 		public SettingsListViewModel AdminSettingsAppSettingsViewModel
@@ -110,7 +110,13 @@ namespace IndiaRose.Business
 			get { return _container.Resolve<IndiagramPropertyViewModel>(); }
 		}
 
+        public AppBehaviourViewModel AdminSettingsAppBehaviourViewModel
+        {
+            get { return _container.Resolve<AppBehaviourViewModel>(); }
+        }
+
 		#endregion
+
 
         #region ViewModels : /Admin/Settings/Dialogs
 

@@ -16,6 +16,7 @@
 		public const string ADMIN_SETTINGS_HOME = "Admin_Settings_HomeView";
 		public const string ADMIN_SETTINGS_APPLICATIONLOOK = "Admin_Settings_ApplicationLookView";
 		public const string ADMIN_SETTINGS_INDIAGRAMPROPERTIES = "Admin_Settings_IndiagramPropertiesView";
+        public const string ADMIN_SETTINGS_APPBEHAVIOUR = "Admin_Settings_AppBehaviourView";
 
         //Pages in /Admin/Collection
 	    public const string ADMIN_COLLECTION_HOME = "Admin_Collection_HomeView";

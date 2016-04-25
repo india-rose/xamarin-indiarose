@@ -148,16 +148,26 @@
                 "outputFile": "Admin_Settings_AppSettingsPage.axml"
             }
         },
-        {
-            "activity": {
-                "className": "IndiagramPropertyActivity",
-                "namespaceName": "IndiaRose.Application.Activities.Admin.Settings"
-            },
-            "view": {
-                "inputFile": "Views/Admin/Settings/IndiagramPropertyPage.xml",
-                "outputFile": "Admin_Settings_IndiagramPropertyPage.axml"
-            }
+      {
+        "activity": {
+          "className": "IndiagramPropertyActivity",
+          "namespaceName": "IndiaRose.Application.Activities.Admin.Settings"
         },
+        "view": {
+          "inputFile": "Views/Admin/Settings/IndiagramPropertyPage.xml",
+          "outputFile": "Admin_Settings_IndiagramPropertyPage.axml"
+        }
+      },
+      {
+        "activity": {
+          "classname": "AppBehaviourActivity",
+          "namespaceName": "IndiaRose.Application.Activities.Admin.Settings"
+        },
+        "view": {
+          "inputFile": "Views/Admin/Settings/AppBehaviourPage.xml",
+          "outputFile": "Admin_Settings_AppBehaviourPage.axml"
+        }
+      },
 
         /* ======================================= 
          * = /Admin/Settings/Dialogs description =

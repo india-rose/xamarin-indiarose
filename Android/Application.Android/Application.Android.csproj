@@ -74,6 +74,7 @@
     <Compile Include="Activities\Admin\Collection\Dialogs\DeleteIndiagramWarningDialog.cs" />
     <Compile Include="Activities\Admin\Collection\Dialogs\ChooseCategoryDialog.cs" />
     <Compile Include="Activities\Admin\Collection\WatchIndiagramActivity.cs" />
+    <Compile Include="Activities\Admin\Settings\AppBehaviourActivity.cs" />
     <Compile Include="Activities\Admin\Settings\AppSettingsActivity.cs" />
     <Compile Include="Activities\Admin\Settings\ApplicationLookActivity.cs" />
     <Compile Include="Activities\Admin\Settings\Dialogs\CategoryReadingDialog.cs" />
