@@ -3,37 +3,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               XmlStyle="{Resource VerticalLinearLayoutStyle}">
 
-  <!--
-  <Resources>
-    <DataTemplate Key="SpinnerDataTemplate">
-      <LinearLayout XmlStyle="{Resource SpinnerItemLayoutStyle}">
-        <TextView XmlStyle="{Resource SpinnerItemTextStyle}"
-				          text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}%'}" />
-      </LinearLayout>
-    </DataTemplate>
-   </Resources> -->
   
   <CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
-            Text="DRAG AND DROP"
             Checked="{Binding DragAndDrop, Mode=TwoWay, UpdateEvent=CheckedChange}"
+            android:text="DRAG AND DROP"
             />
 
   <CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
             Checked="{Binding CategoryReading, Mode=TwoWay, UpdateEvent=CheckedChange}"
-						Text="CATEGORY READING"
+						android:text="CATEGORY READING"
 						/>
 
   <CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
             Checked="{Binding BackButtonActivated, Mode=TwoWay, UpdateEvent=CheckedChange}"
-            Text="BACK BUTTON ACTIVATED (CAPS LOCK FTW)"
+            android:text="BACK BUTTON ACTIVATED (CAPS LOCK FTW)"
             />
-  
-  <!--Checked="{Binding MultipleIndiagramSelection, Mode=TwoWay, UpdateEvent=CheckedChange}"-->
 
-  
-  <!--
-  <BindableSpinner XmlStyle="{Resource SpinnerStyle}"
-			             adapter="{Binding ZoneHeightCollection, Template={Resource SpinnerDataTemplate}}"
-			             currentItem="{Binding CurrentSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}" /> -->
+  <SeekBar android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="25dp"
+           android:layout_marginBottom="5dp"
+           progress="{Binding SliderValue, Mode=TwoWay, UpdateEvent=ProgressChanged}" />
+
+  <LinearLayout XmlStyle="{Resource ButtonLineContainerStyle}">
+    <Button XmlStyle="{Resource OkButtonStyle}"
+            android:text="Ok"
+            Click="{Binding OkCommand}"/>
+
+    <Button XmlStyle="{Resource CancelButtonStyle}"
+            android:text="Cancel"
+            Click="{Binding CancelCommand}"/>
+  </LinearLayout>
   
 </LinearLayout>
