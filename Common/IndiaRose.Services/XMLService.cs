@@ -364,11 +364,10 @@ namespace IndiaRose.Services
                 SettingService.IsBackHomeAfterSelectionEnabled = true;
                 SettingService.IsMultipleIndiagramSelectionEnabled = false;
                 SettingService.TextColor = "#FFFFFFFF";
+                //have to be modified every time a feature is added
 
                 await SettingService.SaveAsync();
             }
-            
-            //await settingFile.DeleteAsync();
         }
 
 
