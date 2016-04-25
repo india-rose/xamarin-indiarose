@@ -14,12 +14,19 @@
    </Resources> -->
   
   <CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
-            Text="Text check box 1"
+            Text="DRAG AND DROP"
+            Checked="{Binding DragAndDrop, Mode=TwoWay, UpdateEvent=CheckedChange}"
             />
 
   <CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
-						Text="Text check box 2"
+            Checked="{Binding CategoryReading, Mode=TwoWay, UpdateEvent=CheckedChange}"
+						Text="CATEGORY READING"
 						/>
+
+  <CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
+            Checked="{Binding BackButtonActivated, Mode=TwoWay, UpdateEvent=CheckedChange}"
+            Text="BACK BUTTON ACTIVATED (CAPS LOCK FTW)"
+            />
   
   <!--Checked="{Binding MultipleIndiagramSelection, Mode=TwoWay, UpdateEvent=CheckedChange}"-->
 
