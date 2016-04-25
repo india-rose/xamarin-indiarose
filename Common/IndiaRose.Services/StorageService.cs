@@ -1,19 +1,16 @@
 ﻿#region Usings
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
 using PCLStorage;
 using Storm.Mvvm.Extensions;
 using Storm.Mvvm.Inject;
-using Android.Util;
 using PCLCrypto;
 using Storm.Mvvm.Services;
 
@@ -37,70 +34,34 @@ namespace IndiaRose.Services
 
         private IHashAlgorithmProvider _hasher;
 
-        public string AppPath
-        {
-            get { return Path.Combine(RootPath, STORAGE_APP_NAME); }
-        }
+        public string AppPath => Path.Combine(RootPath, STORAGE_APP_NAME);
 
-        public string ImageCorrectionPath
-        {
-            get { return Path.Combine(AppPath, STORAGE_CORRECTION_IMAGE); }
-        }
+        public string ImageCorrectionPath => Path.Combine(AppPath, STORAGE_CORRECTION_IMAGE);
 
-        public string ImageRootPath
-        {
-            get { return Path.Combine(AppPath, STORAGE_ROOT_IMAGE); }
-        }
+        public string ImageRootPath => Path.Combine(AppPath, STORAGE_ROOT_IMAGE);
 
-        public string ImagePlayButtonPath
-        {
-            get { return Path.Combine(AppPath, STORAGE_PLAYBUTTON_IMAGE); }
-        }
+        public string ImagePlayButtonPath => Path.Combine(AppPath, STORAGE_PLAYBUTTON_IMAGE);
 
-        public string ImageNextArrowPath
-        {
-            get { return Path.Combine(AppPath, STORAGE_NEXTARROW_IMAGE); }
-        }
+        public string ImageNextArrowPath => Path.Combine(AppPath, STORAGE_NEXTARROW_IMAGE);
 
         public StorageService(string rootStorageDirectory)
         {
             _storageDirectory = rootStorageDirectory;
         }
 
-        public string DatabasePath
-        {
-            get { return Path.Combine(RootPath, STORAGE_DATABASE_NAME); }
-        }
+        public string DatabasePath => Path.Combine(RootPath, STORAGE_DATABASE_NAME);
 
-        public string SettingsFolderPath
-        {
-            get { return RootPath; }
-        }
+        public string SettingsFolderPath => RootPath;
 
-        public string SettingsFileName
-        {
-            get { return STORAGE_SETTINGS_NAME; }
-        }
+        public string SettingsFileName => STORAGE_SETTINGS_NAME;
 
-        public string SettingsFilePath
-        {
-            get { return Path.Combine(SettingsFolderPath, SettingsFileName); }
-        }
+        public string SettingsFilePath => Path.Combine(SettingsFolderPath, SettingsFileName);
 
-        public string RootPath
-        {
-            get { return Path.Combine(_storageDirectory, STORAGE_DIRECTORY_NAME); }
-        }
+        public string RootPath => Path.Combine(_storageDirectory, STORAGE_DIRECTORY_NAME);
 
-        public string ImagePath
-        {
-            get { return Path.Combine(RootPath, STORAGE_IMAGE_NAME); }
-        }
+        public string ImagePath => Path.Combine(RootPath, STORAGE_IMAGE_NAME);
 
-        public string SoundPath
-        {
-            get { return Path.Combine(RootPath, STORAGE_SOUND_NAME); }
-        }
+        public string SoundPath => Path.Combine(RootPath, STORAGE_SOUND_NAME);
 
         public async Task InitializeAsync()
         {
@@ -188,7 +149,7 @@ namespace IndiaRose.Services
         /* Permet de changer les assets lors du passage à la dernière version
          * On compare donc les fichiers présents dans le dossier IndiaRose/app et avec les assets
          * Pour chaque fichier, on récupère le stream correspondant, qu'on lie, puis qu'on hash en SHA1
-         * Un Hase a une taille fixe.
+         * Un hash a une taille fixe.
          * Si les hash sont différents, c'est que les fichiers le sont aussi, il faut donc copier le fichier,
          * des assets vers le dossier app.
          * */
