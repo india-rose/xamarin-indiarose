@@ -544,4 +544,7 @@ Commentaires : </value>
   <data name="Credits_SupportTeam.Text" xml:space="preserve">
     <value>Marian Gappa, Joris Rubagotti, Cassandre Nunes, Joris Falip, Nicolas Serrette</value>
   </data>
+  <data name="AppSettings_AppBehaviour.Text" xml:space="preserve">
+    <value>Propriétés de l'application</value>
+  </data>
 </root>
