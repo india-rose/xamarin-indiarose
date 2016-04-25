@@ -97,7 +97,6 @@
     <AndroidResource Include="Resources\drawable\ir_logo.png" />
     <AndroidResource Include="Resources\drawable\ir_logo_params.png" />
     <Content Include="Views\SplashScreen.xml" />
-    <None Include="app.config" />
     <None Include="Views\User\HomePage.back.xml" />
     <None Include="Views\Admin\Collection\Dialogs\RecordSoundDialog.xml" />
     <None Include="Views\User\HomePage.xml" />

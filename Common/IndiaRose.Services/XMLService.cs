@@ -360,7 +360,7 @@ namespace IndiaRose.Services
                 await SettingService.SaveAsync();
             }
 
-            //await settingFile.DeleteAsync();
+            await settingFile.DeleteAsync();
         }
 
 
