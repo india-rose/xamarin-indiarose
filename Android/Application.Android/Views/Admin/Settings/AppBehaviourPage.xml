@@ -25,9 +25,8 @@
               Text="{Tr Text, Uid=ReadingDelay_Explanation}"
               android:layout_marginTop="5dp"/>
 
-    <SeekBar XmlStyle="{Resource SeekBarStyle}"
-             android:max="90"
-             progress="{Binding SliderValue, Mode=TwoWay, UpdateEvent=ProgressChanged}" />
+  <SeekBar XmlStyle="{Resource SeekBarStyle}"
+           progress="{Binding SliderValue, Mode=TwoWay, UpdateEvent=ProgressChanged}" />
 
     <TextView XmlStyle="{Resource LargeFormLabelStyle}"
               Text="{Binding Delay, Converter={Resource StringFormatConverter}, ConverterParameter={Tr ConverterParameter, Uid=ReadingDelay_ValueFormat}}"/>

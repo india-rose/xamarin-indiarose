@@ -37,9 +37,6 @@ namespace IndiaRose.Business
 
 			// Admin/Settings/Dialogs
 			container.RegisterFactory(x => new ColorPickerViewModel());
-			container.RegisterFactory(x => new DragAndDropViewModel());
-			container.RegisterFactory(x => new ReadingDelayViewModel());
-			container.RegisterFactory(x => new CategoryReadingViewModel());
             container.RegisterFactory(x => new ResetSettingsViewModel());
 
             //Admin/Collection
@@ -125,24 +122,11 @@ namespace IndiaRose.Business
 			get { return _container.Resolve<ColorPickerViewModel>(); }
 		}
 
-		public DragAndDropViewModel AdminSettingsDialogsDragAndDropViewModel
-		{
-			get { return _container.Resolve<DragAndDropViewModel>(); }
-		}
-
-		public ReadingDelayViewModel AdminSettingsDialogsReadingDelayViewModel
-		{
-			get { return _container.Resolve<ReadingDelayViewModel>(); }
-		}
+		
         public ResetSettingsViewModel AdminSettingsDialogsResetSettingsViewModel
         {
             get { return _container.Resolve<ResetSettingsViewModel>(); }
         }
-
-		public CategoryReadingViewModel AdminSettingsDialogsCategoryReadingViewModel
-		{
-			get { return _container.Resolve<CategoryReadingViewModel>(); }
-		}
 
 		#endregion
 
