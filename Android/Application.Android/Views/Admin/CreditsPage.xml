@@ -6,12 +6,11 @@
 	<Resources>
 		<!-- Text styles -->
 		<Style Key="BaseTextStyle"
-		       android:layout_width="wrap_content"
-		       android:layout_height="wrap_content" />
+		       XmlStyle="{Resource WrapLayoutStyle}" />
 		<Style Key="TitleTextStyle"
 		       XmlStyle="{Resource BaseTextStyle}"
 		       android:textColor="#0AC808"
-		       android:textSize="40sp" />
+		       android:textSize="@dimen/CreditTitleSize" />
 		<Style Key="SectionTextStyle"
 		       XmlStyle="{Resource BaseTextStyle}"
 		       android:textColor="#E3081C"
@@ -25,22 +24,20 @@
 
 		<!-- Layout styles -->
 		<Style key="TextLayoutStyle"
-		       android:layout_width="match_parent"
-		       android:layout_height="match_parent"
+		       XmlStyle="{Resource MatchLayoutStyle}"
 		       android:orientation="vertical"
-		       android:paddingLeft="50dip"
-		       android:paddingRight="50dip"
+		       android:paddingLeft="@dimen/CreditTextPaddingLeftRight"
+		       android:paddingRight="@dimen/CreditTextPaddingLeftRight"
 		       android:paddingBottom="20dip"
 		       android:paddingTop="20dip" />
 
 		<Style Key="LogoLayoutStyle"
-		       android:layout_width="match_parent"
-		       android:layout_height="match_parent"
-		       android:layout_weight="3" />
+           XmlStyle="{Resource MatchLayoutStyle}"
+		       android:layout_weight="3"
+           />
 
 		<Style Key="ScrollViewStyle"
-		       android:layout_width="match_parent"
-		       android:layout_height="match_parent"
+           XmlStyle="{Resource MatchLayoutStyle}"
 		       android:layout_weight="1" />
 	</Resources>
 

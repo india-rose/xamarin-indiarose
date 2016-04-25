@@ -36,9 +36,9 @@ namespace IndiaRose.Framework.Converters
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             uint input = (uint) value;
-            return new ColorContainer()
+            return new ColorContainer
             {
-                Color = string.Format("#{0:X8}", input)
+                Color = $"#{input:X8}"
             };
         }
     }

@@ -20,10 +20,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
     {
         public ICommand AddCommand { get; private set; }
 
-        public IPopupService PopupService
-        {
-            get { return LazyResolver<IPopupService>.Service; }
-        }
+        public IPopupService PopupService => LazyResolver<IPopupService>.Service;
 
         public CollectionManagementViewModel()
         {

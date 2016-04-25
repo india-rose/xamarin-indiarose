@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Large dimension values-->
+<resources>
+  <!--Button Size-->
+  <dimen name="ButtonTextSize">20sp</dimen>
+  <dimen name="ValidationButtonSize">75sp</dimen>
+  <!--Special Size for TTS page-->
+  <dimen name="TTSMargin">20dip</dimen>
+  <dimen name="TTSButtonTextSize">30sp</dimen>
+  <dimen name="TTSTextSize">22sp</dimen>
+  <!--Special Size for Credits Page-->
+  <dimen name="CreditTextPaddingLeftRight">50dip</dimen>
+  <dimen name="CreditTitleSize">40sp</dimen>
+  <!--Common Size-->
+  <dimen name="ButtonPagePadding">25dip</dimen>
+  <dimen name="LinkSize">20sp</dimen>
+  <dimen name="FormTextSize">18sp</dimen>
+  <dimen name="SpinnerSize">40dip</dimen>
+  <dimen name="SpinnerTextSize">20sp</dimen>
+  <dimen name="DefaultTextSize">16sp</dimen>
+  <dimen name="CheckboxTextSize">18sp</dimen>
+  <dimen name="MarginSeparatorSize">20dip</dimen>
+  <dimen name="ButtonContainerSize">60dip</dimen>
+  <dimen name="LargeFormLabelTextSize">24sp</dimen>
+  <!--Dialog Size-->
+  <dimen name="DialogTexSize">20sp</dimen>
+  <dimen name="DialogExplanationTextSize">20sp</dimen>
+</resources>

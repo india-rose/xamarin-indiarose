@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
+<!--TODO better divison of this page needed for easier scalability-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               XmlStyle="{Resource RootPaddingLayoutStyle}"
               android:gravity="center"
@@ -8,25 +8,22 @@
 
 	<Resources>
 		<Style Key="LineLayoutStyle"
-		       android:layout_width="match_parent"
-		       android:layout_height="wrap_content"
-		       android:layout_marginTop="20dip"
+		       XmlStyle="{Resource MatchWrapLayoutStyle}"
+		       android:layout_marginTop="@dimen/TTSMargin"
 		       android:gravity="center" />
 
 		<Style Key="ButtonStyle"
-		       android:layout_width="wrap_content"
-		       android:layout_height="wrap_content"
+		       XmlStyle="{Resource WrapLayoutStyle}"
 		       android:layout_alignParentRight="true"
-		       android:layout_centerVertical="true"
-		       android:minWidth="70dip"
+           android:layout_centerVertical="true"
+           android:minWidth="70dip"
 		       android:textColor="@android:color/white"
-		       android:textSize="30sp" />
+		       android:textSize="@dimen/TTSButtonTextSize" />
 		<Style Key="TextViewStyle"
-		       android:layout_width="wrap_content"
-		       android:layout_height="wrap_content"
+		       XmlStyle="{Resource WrapLayoutStyle}"
 		       android:layout_alignParentLeft="true"
 		       android:layout_centerVertical="true"
-		       android:textSize="22sp"
+		       android:textSize="@dimen/TTSTextSize"
 		       android:textColor="@android:color/black" />
 
 	</Resources>

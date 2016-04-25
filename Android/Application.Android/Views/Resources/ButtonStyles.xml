@@ -4,7 +4,7 @@
 
 	<Style Key="TextButtonStyle"
 	       android:textColor="@android:color/white"
-	       android:textSize="20sp" />
+	       android:textSize="@dimen/ButtonTextSize" />
 
 	<Style Key="BaseSimpleButtonStyle"
 	       XmlStyle="{Resource TextButtonStyle}"
@@ -31,13 +31,14 @@
 	<!-- Material design button Ok/Cancel-->
 	<Style Key="ValidationButtonLinearLayoutStyle"
 	       android:layout_width="match_parent"
-	       android:layout_height="75dip"
+	       android:layout_height="@dimen/ValidationButtonSize"
 	       android:layout_alignParentBottom="true"
 	       android:orientation="horizontal"
 	       android:layout_margin="4dip" 
 		     android:background="@android:color/white"
 		     />
 
+  
 	<Style Key="OkButtonStyle"
 	       XmlStyle="{Resource SmallButtonStyle}"
 	       android:background="@drawable/buttongreen" />

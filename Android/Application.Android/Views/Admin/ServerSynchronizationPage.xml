@@ -1,22 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/white"
+                XmlStyle="{Resource BaseRootLayoutStyle}"
                 android:paddingLeft="50dip"
                 android:paddingRight="50dip">
-	<Resources>
+  
+  <Resources>
 		<Style Key="ContainerStyle"
-		       android:layout_width="match_parent"
-		       android:layout_height="match_parent"
+		       XmlStyle="{Resource MatchLayoutStyle}"
 		       android:gravity="center"
 		       android:orientation="vertical"
 		       android:paddingBottom="25dip"
 		       android:paddingTop="25dip" />
 		<Style Key="TextViewStyle"
-		       android:layout_width="wrap_content"
-		       android:layout_height="wrap_content"
+		       XmlStyle="{Resource WrapLayoutStyle}"
 		       android:layout_alignParentLeft="true"
 		       android:layout_centerVertical="true"
 		       android:layout_marginTop="10dip"

@@ -3,36 +3,34 @@
                 XmlStyle="{Resource BaseRootLayoutStyle}"
                 android:id="RootLayout">
 	<!-- TitleBar to show current category name + image and india rose logo -->
-	<TitleBarView android:layout_width="match_parent"
-	              android:layout_height="wrap_content"
+	<TitleBarView XmlStyle ="{Resource MatchWrapLayoutStyle}"
 	              android:id="TitleBar"
                 BackCategoryCommand="{Binding CollectionBackCategoryCommand}"
                 ParentCategory="{Binding ParentCategory}"
 	              Category="{Binding CurrentCategory}" />
 	
 
-	<UserView android:layout_width="match_parent"
-	          android:layout_height="match_parent"
+	<UserView XmlStyle="{Resource MatchLayoutStyle}"
 	          android:layout_below="@id/TitleBar"
-			  android:id="MiddleScreen"
+            android:id="MiddleScreen"
 			  
-	          TopBackground="{Binding SettingsService.TopBackgroundColor, Converter={Resource ColorStringToDrawableColorConverter}}"
-	          TopCount="{Binding CollectionDisplayCount, Mode=TwoWay, UpdateEvent=TopCountChanged}"
-	          TopOffset="{Binding CollectionOffset}"
-	          TopIndiagrams="{Binding CollectionIndiagrams}"
-	          TopTextColor="{Binding SettingsService.TextColor, Converter={Resource ColorStringToIntConverter}}"
-	          TopIndiagramSelectedCommand="{Binding CollectionIndiagramSelectedCommand}"
-	          TopNextCommand="{Binding CollectionNextCommand}"
-	          TopNextButtonVisibility="{Binding IsCorrectionModeEnabled, Converter={Resource BooleanToVisibilityConverter}, ConverterParameter=Negation}"
+            TopBackground="{Binding SettingsService.TopBackgroundColor, Converter={Resource ColorStringToDrawableColorConverter}}"
+            TopCount="{Binding CollectionDisplayCount, Mode=TwoWay, UpdateEvent=TopCountChanged}"
+            TopOffset="{Binding CollectionOffset}"
+            TopIndiagrams="{Binding CollectionIndiagrams}"
+            TopTextColor="{Binding SettingsService.TextColor, Converter={Resource ColorStringToIntConverter}}"
+            TopIndiagramSelectedCommand="{Binding CollectionIndiagramSelectedCommand}"
+            TopNextCommand="{Binding CollectionNextCommand}"
+            TopNextButtonVisibility="{Binding IsCorrectionModeEnabled, Converter={Resource BooleanToVisibilityConverter}, ConverterParameter=Negation}"
             TopIndiagramDragStartCommand="{Binding CollectionIndiagramDragStartCommand}"
-			  IsCorrectionModeEnabled="{Binding IsCorrectionModeEnabled}"
+            IsCorrectionModeEnabled="{Binding IsCorrectionModeEnabled}"
 			  
-			  BotBackground="{Binding SettingsService.BottomBackgroundColor, Converter={Resource ColorStringToDrawableColorConverter}}"
-			  BotIndiagrams="{Binding SentenceIndiagrams}" 
-			  BotCanAddIndiagrams="{Binding SentenceCanAddMoreIndiagrams, Mode=TwoWay, UpdateEvent=BotCanAddIndiagramsChanged}"
-			  BotReadCommand="{Binding ReadSentenceCommand}"
-			  BotIndiagramSelectedCommand="{Binding SentenceIndiagramSelectedCommand}"
-			  BotCorrectionCommand="{Binding EnterCorrectionModeCommand}"
-			  />
+            BotBackground="{Binding SettingsService.BottomBackgroundColor, Converter={Resource ColorStringToDrawableColorConverter}}"
+            BotIndiagrams="{Binding SentenceIndiagrams}" 
+            BotCanAddIndiagrams="{Binding SentenceCanAddMoreIndiagrams, Mode=TwoWay, UpdateEvent=BotCanAddIndiagramsChanged}"
+            BotReadCommand="{Binding ReadSentenceCommand}"
+            BotIndiagramSelectedCommand="{Binding SentenceIndiagramSelectedCommand}"
+            BotCorrectionCommand="{Binding EnterCorrectionModeCommand}"
+            />
 
 </RelativeLayout>

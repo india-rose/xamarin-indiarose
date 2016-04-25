@@ -17,21 +17,17 @@ namespace IndiaRose.Services
 
 		#region Services
 
-		protected ILoggerService LoggerService
-		{
-			get { return LazyResolver<ILoggerService>.Service; }
-		}
+		protected ILoggerService LoggerService => LazyResolver<ILoggerService>.Service;
 
-		protected IStorageService StorageService
-		{
-			get { return LazyResolver<IStorageService>.Service; }
-		}
+	    protected IStorageService StorageService => LazyResolver<IStorageService>.Service;
 
-		#endregion
+	    protected IXmlService XmlService => LazyResolver<IXmlService>.Service;
 
-		#region Properties backing fields
+	    #endregion
 
-		private string _topBackgroundColor;
+        #region Properties backing fields
+
+        private string _topBackgroundColor;
 		private string _bottomBackgroundColor;
 		private int _selectionAreaHeight;
 		private int _indiagramDisplaySize;
@@ -163,7 +159,7 @@ namespace IndiaRose.Services
 			_hasChanged = true;
 		}
 
-		public async Task SaveAsync()
+        public async Task SaveAsync()
 		{
 			if(!_hasChanged)
 			{ 
@@ -196,10 +192,14 @@ namespace IndiaRose.Services
 		{
 			if (!await ExistsOnDiskAsync())
 			{
-                Reset();
+			    if (await XmlService.HasOldSettingsAsync())
+			        await XmlService.ReadOldSettings();
+                else 
+			        Reset();
+
                 IsLoaded = true;
-				return;
-			}
+                return;
+            }
 
 			SettingsModel model = await LoadFromDiskAsync();
 
@@ -262,7 +262,7 @@ namespace IndiaRose.Services
 				ExistenceCheckResult result = await folder.CheckExistsAsync(StorageService.SettingsFileName);
 				return result == ExistenceCheckResult.FileExists;
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				return false;
 			}

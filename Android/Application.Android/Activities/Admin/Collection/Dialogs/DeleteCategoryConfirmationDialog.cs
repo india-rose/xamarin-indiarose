@@ -12,10 +12,11 @@ namespace IndiaRose.Application.Activities.Admin.Collection.Dialogs
 	{
 		public DeleteCategoryConfirmationDialog()
 		{
-			var trad = DependencyService.Container.Resolve<ILocalizationService>();
-			Title = trad.GetString("DeleteCategoryConfirmation_Title", "Text");
-
-			Buttons.Add(DialogsButton.Positive, trad.GetString("Button_Delete", "Text"));
+            var trad = DependencyService.Container.Resolve<ILocalizationService>();
+            Title = trad.GetString("DeleteCategoryConfirmation_Title", "Text");
+		    Message = trad.GetString("DeleteCategoryConfirmation_Explanation","Text");
+            
+            Buttons.Add(DialogsButton.Positive, trad.GetString("Button_Delete", "Text"));
 			Buttons.Add(DialogsButton.Negative, trad.GetString("Button_Cancel", "Text"));
 		}
 		protected override View CreateView(LayoutInflater inflater, ViewGroup container)

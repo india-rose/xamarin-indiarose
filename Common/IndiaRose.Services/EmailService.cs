@@ -30,7 +30,8 @@ namespace IndiaRose.Services
 		    }
 			catch (Exception e)
 			{
-				LoggerService.Log(string.Format("IndiaRose.Services.EmailService.SendContactEmail() : Exception during email sending process => {0}", e.Message), MessageSeverity.Critical);
+				LoggerService.Log(
+				    $"IndiaRose.Services.EmailService.SendContactEmail() : Exception during email sending process => {e.Message}", MessageSeverity.Critical);
 			}
 		    return false;
 	    }

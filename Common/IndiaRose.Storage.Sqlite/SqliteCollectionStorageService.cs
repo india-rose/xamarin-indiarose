@@ -26,12 +26,9 @@ namespace IndiaRose.Storage.Sqlite
 
 		private bool _isInitialized;
 
-		public ObservableCollection<Indiagram> Collection
-		{
-			get { return _collection; }
-		}
+		public ObservableCollection<Indiagram> Collection => _collection;
 
-		public bool IsInitialized
+	    public bool IsInitialized
 		{
 			get { return _isInitialized; }
 			private set
@@ -41,20 +38,14 @@ namespace IndiaRose.Storage.Sqlite
 					_isInitialized = true;
 
 					EventHandler handler = Initialized;
-					if (handler != null)
-					{
-						handler(this, EventArgs.Empty);
-					}
+				    handler?.Invoke(this, EventArgs.Empty);
 				}
 			}
 		}
 
-		protected SQLiteConnection Connection
-		{
-			get { return _connection; }
-		}
+		protected SQLiteConnection Connection => _connection;
 
-		public SqliteCollectionStorageService(ISQLitePlatform platform)
+	    public SqliteCollectionStorageService(ISQLitePlatform platform)
 		{
 			_platform = platform;
 		}
@@ -106,7 +97,7 @@ namespace IndiaRose.Storage.Sqlite
 		{
 			if (indiagram == null)
 			{
-				throw new ArgumentNullException("indiagram");
+				throw new ArgumentNullException(nameof(indiagram));
 			}
 
 			if (indiagram.Id > 0)
@@ -121,7 +112,7 @@ namespace IndiaRose.Storage.Sqlite
 			IndiagramSql sqlObject = SearchById(indiagram.Id);
 			if (sqlObject == null)
 			{
-				throw new InvalidOperationException(string.Format("Can not update a non created object, id = {0}", indiagram.Id));
+				throw new InvalidOperationException($"Can not update a non created object, id = {indiagram.Id}");
 			}
 
 			sqlObject.FromModel(indiagram);
@@ -193,29 +184,24 @@ namespace IndiaRose.Storage.Sqlite
 
 		private void DeleteTree(Category category)
 		{
-			if (category == null)
+		    category?.Children.ForEach(x =>
 			{
-				return;
-			}
+			    IndiagramSql indiagram = SearchById(x.Id);
 
-			category.Children.ForEach(x =>
-			{
-				IndiagramSql indiagram = SearchById(x.Id);
+			    if (x.IsCategory)
+			    {
+			        DeleteTree(x as Category);
+			    }
 
-				if (x.IsCategory)
-				{
-					DeleteTree(x as Category);
-				}
-
-				_databaseContent.Remove(indiagram);
-				try
-				{
-					Connection.Delete<IndiagramSql>(indiagram.Id);
-				}
-				catch (Exception)
-				{
-					//TODO : log error
-				}
+			    _databaseContent.Remove(indiagram);
+			    try
+			    {
+			        Connection.Delete<IndiagramSql>(indiagram.Id);
+			    }
+			    catch (Exception)
+			    {
+			        //TODO : log error
+			    }
 			});
 		}
 

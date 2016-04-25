@@ -8,9 +8,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
+using PCLCrypto;
 using PCLStorage;
 using Storm.Mvvm.Extensions;
 using Storm.Mvvm.Inject;
+using Storm.Mvvm.Services;
 
 #endregion
 
@@ -23,6 +25,7 @@ namespace IndiaRose.Services
         private const string STORAGE_IMAGE_NAME = "image";
         private const string STORAGE_SOUND_NAME = "sound";
         private const string STORAGE_SETTINGS_NAME = "settings.json";
+        private const string STORAGE_OLD_SETTINGS_NAME = "settings.xml";
         private const string STORAGE_APP_NAME = "app";
         private const string STORAGE_CORRECTION_IMAGE = "correction.png";
         private const string STORAGE_NEXTARROW_IMAGE = "nextarrow.png";
@@ -31,78 +34,43 @@ namespace IndiaRose.Services
         private const string STORAGE_ROOT_IMAGE = "root.png";
         private readonly string _storageDirectory;
 
-        public string AppPath
-        {
-            get { return Path.Combine(RootPath, STORAGE_APP_NAME); }
-        }
+        private IHashAlgorithmProvider _hasher;
 
-        public string ImageCorrectionPath
-        {
-            get { return Path.Combine(AppPath, STORAGE_CORRECTION_IMAGE); }
-        }
+        public string AppPath => Path.Combine(RootPath, STORAGE_APP_NAME);
 
-        public string ImageRootPath
-        {
-            get { return Path.Combine(AppPath, STORAGE_ROOT_IMAGE); }
-        }
+        public string ImageCorrectionPath => Path.Combine(AppPath, STORAGE_CORRECTION_IMAGE);
 
-        public string ImagePlayButtonPath
-        {
-            get { return Path.Combine(AppPath, STORAGE_PLAYBUTTON_IMAGE); }
-        }
+        public string ImageRootPath => Path.Combine(AppPath, STORAGE_ROOT_IMAGE);
 
-        public string ImageNextArrowPath
-        {
-            get { return Path.Combine(AppPath, STORAGE_NEXTARROW_IMAGE); }
-        }
-
-        public string ImageBackPath
-        {
-            get { return Path.Combine(AppPath, STORAGE_BACK_IMAGE); }
-        }
+        public string ImagePlayButtonPath => Path.Combine(AppPath, STORAGE_PLAYBUTTON_IMAGE);
 
         public StorageService(string rootStorageDirectory)
         {
             _storageDirectory = rootStorageDirectory;
         }
 
-        public string DatabasePath
-        {
-            get { return Path.Combine(RootPath, STORAGE_DATABASE_NAME); }
-        }
+        public string DatabasePath => Path.Combine(RootPath, STORAGE_DATABASE_NAME);
 
-        public string SettingsFolderPath
-        {
-            get { return RootPath; }
-        }
+        public string SettingsFolderPath => RootPath;
 
-        public string SettingsFileName
-        {
-            get { return STORAGE_SETTINGS_NAME; }
-        }
+        public string SettingsFileName => STORAGE_SETTINGS_NAME;
 
-        public string SettingsFilePath
-        {
-            get { return Path.Combine(SettingsFolderPath, SettingsFileName); }
-        }
+        public string OldSettingsFileName => STORAGE_OLD_SETTINGS_NAME;
 
-        public string RootPath
-        {
-            get { return Path.Combine(_storageDirectory, STORAGE_DIRECTORY_NAME); }
-        }
+        public string SettingsFilePath => Path.Combine(SettingsFolderPath, SettingsFileName);
 
-        public string ImagePath
-        {
-            get { return Path.Combine(RootPath, STORAGE_IMAGE_NAME); }
-        }
+        public string OldSettingsFilePath => Path.Combine(AppPath, OldSettingsFileName);
 
-        public string SoundPath
-        {
-            get { return Path.Combine(RootPath, STORAGE_SOUND_NAME); }
-        }
+        public string RootPath => Path.Combine(_storageDirectory, STORAGE_DIRECTORY_NAME);
+
+        public string ImagePath => Path.Combine(RootPath, STORAGE_IMAGE_NAME);
+
+        public string SoundPath => Path.Combine(RootPath, STORAGE_SOUND_NAME);
 
         public async Task InitializeAsync()
         {
+            _hasher = WinRTCrypto.HashAlgorithmProvider.OpenAlgorithm(HashAlgorithm.Sha1);
+
             IFolder rootFolder = await FileSystem.Current.GetFolderFromPathAsync(_storageDirectory);
 
             if (await rootFolder.CheckExistsAsync(STORAGE_DIRECTORY_NAME) == ExistenceCheckResult.NotFound)
@@ -142,10 +110,6 @@ namespace IndiaRose.Services
             {
                 res.Copy(STORAGE_ROOT_IMAGE, ImageRootPath);
             }
-            if (await appFolder.CheckExistsAsync(STORAGE_BACK_IMAGE) == ExistenceCheckResult.NotFound)
-            {
-                res.Copy(STORAGE_BACK_IMAGE, ImageBackPath);
-            }
         }
 
         public string GenerateFilename(StorageType type, string extension)
@@ -153,9 +117,9 @@ namespace IndiaRose.Services
             switch (type)
             {
                 case StorageType.Image:
-                    return Path.Combine(ImagePath, string.Format("Image_{0}.{1}", Guid.NewGuid(), extension));
+                    return Path.Combine(ImagePath, $"Image_{Guid.NewGuid()}.{extension}");
                 case StorageType.Sound:
-                    return Path.Combine(SoundPath, string.Format("Sound_{0}.{1}", Guid.NewGuid(), extension));
+                    return Path.Combine(SoundPath, $"Sound_{Guid.NewGuid()}.{extension}");
             }
             throw new Exception("GenerateFilename : Type mismatch");
         }
@@ -182,5 +146,81 @@ namespace IndiaRose.Services
             listFile.RemoveAll(x => listSoundpath.Contains(x.Path));
             listFile.ForEach(x => x.DeleteAsync());
         }
+
+        #region Ajouts Martin pour correction https://github.com/india-rose/xamarin-indiarose/issues/2
+        /* Permet de changer les assets lors du passage à la dernière version
+         * On compare donc les fichiers présents dans le dossier IndiaRose/app et avec les assets
+         * Pour chaque fichier, on récupère le stream correspondant, qu'on lie, puis qu'on hash en SHA1
+         * Un hash a une taille fixe.
+         * Si les hash sont différents, c'est que les fichiers le sont aussi, il faut donc copier le fichier,
+         * des assets vers le dossier app.
+         * */
+        private async void CheckAssetsAsync()
+        {
+            IFolder appFolder = await FileSystem.Current.GetFolderFromPathAsync(AppPath);
+
+            IList<IFile> fileList = await appFolder.GetFilesAsync();
+            foreach (var file in fileList)
+            {
+                if (file.Name != STORAGE_CORRECTION_IMAGE && file.Name != STORAGE_PLAYBUTTON_IMAGE &&
+                    file.Name != STORAGE_NEXTARROW_IMAGE && file.Name != STORAGE_ROOT_IMAGE)
+                    continue;
+
+                // File
+                Stream streamFile = await file.OpenAsync(FileAccess.Read);
+                string contentFile = ReadStream(streamFile);
+                string hashFile = Hash(contentFile);
+                streamFile.Dispose();
+
+                // Asset
+                Stream streamAsset = LazyResolver<IAssetsService>.Service.OpenAssets(file.Name);
+                string contentAsset = ReadStream(streamAsset);
+                string hashAsset = Hash(contentAsset);
+                streamAsset.Dispose();
+
+                if (hashFile != hashAsset)
+                {
+                    if (file.Name == STORAGE_CORRECTION_IMAGE)
+                    {
+                        LazyResolver<IResourceService>.Service.Copy(STORAGE_CORRECTION_IMAGE, ImageCorrectionPath);
+                    }
+                    else if (file.Name == STORAGE_PLAYBUTTON_IMAGE)
+                    {
+                        LazyResolver<IResourceService>.Service.Copy(STORAGE_PLAYBUTTON_IMAGE, ImagePlayButtonPath);
+                    }
+                    else if (file.Name == STORAGE_NEXTARROW_IMAGE)
+                    {
+                        LazyResolver<IResourceService>.Service.Copy(STORAGE_NEXTARROW_IMAGE, ImageNextArrowPath);
+                    }
+                    else if (file.Name == STORAGE_ROOT_IMAGE)
+                    {
+                        LazyResolver<IResourceService>.Service.Copy(STORAGE_ROOT_IMAGE, ImageRootPath);
+                    }
+                }
+            }
+        }
+
+        // Prend une string, la hash en SHA1, puis renvoie le hash sous forme de chaine
+        private string Hash(string text)
+        {
+            byte[] input = System.Text.Encoding.UTF8.GetBytes(text);
+            byte[] output = _hasher.HashData(input);
+            string res = BitConverter.ToString(output);
+            return res;
+        }
+
+        // Lit un stream en entier et renvoie son contenu dans une string
+        private string ReadStream(Stream stream)
+        {
+            byte[] buffer = new byte[2048];
+            string str = "";
+            while (stream.Read(buffer, 0, buffer.Length) > 0)
+            {
+                str += BitConverter.ToString(buffer);
+                str = str.Replace("-", "");
+            }
+            return str;
+        }
+        #endregion
     }
 }

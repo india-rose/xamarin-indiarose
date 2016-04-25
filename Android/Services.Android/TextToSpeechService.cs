@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Android.App;
@@ -20,138 +21,115 @@ using Object = Java.Lang.Object;
 
 namespace IndiaRose.Services.Android
 {
-	public class TextToSpeechService : Object, ITextToSpeechService, TextToSpeech.IOnInitListener, TextToSpeech.IOnUtteranceCompletedListener
-	{
-		private const string INITIALIZE_UTTERANCE_ID = "Storm0x2a";
-		public event EventHandler SpeakingCompleted;
-		public event EventHandler Initialized;
+    public class TextToSpeechService : Object, ITextToSpeechService, TextToSpeech.IOnInitListener, TextToSpeech.IOnUtteranceCompletedListener
+    {
+        private const string INITIALIZE_UTTERANCE_ID = "Storm0x2a";
+        public event EventHandler SpeakingCompleted;
+        public event EventHandler Initialized;
 
-		protected IActivityService ActivityService
-		{
-			get { return LazyResolver<IActivityService>.Service; }
-		}
+        protected IActivityService ActivityService => LazyResolver<IActivityService>.Service;
 
-		private int _readingCountStack;
-		public bool IsReading { get { return _readingCountStack > 0; } }
+        private int _readingCountStack;
+        public bool IsReading => _readingCountStack > 0;
 
-		private TextToSpeech _speakerSpeech;
-		private readonly Dictionary<string, string> _registeredSounds = new Dictionary<string, string>();
-		private readonly ManualResetEvent _initMutex = new ManualResetEvent(false);
+        private TextToSpeech _speakerSpeech;
+        private readonly Dictionary<string, string> _registeredSounds = new Dictionary<string, string>();
+        private readonly ManualResetEvent _initMutex = new ManualResetEvent(false);
 
-		public TextToSpeechService()
-		{
-			ActivityService.ActivityChanged += InitTts;
-			//ActivityService.ActivityChanging += ReleaseTts;
-		}
+        public TextToSpeechService()
+        {
+            ActivityService.ActivityChanged += InitTts;
 
-		public void OnInit(OperationResult status)
-		{
-			if (_speakerSpeech == null)
-			{
-				Task.Run(() =>
-				{
-					_initMutex.WaitOne();
-					LazyResolver<IDispatcherService>.Service.InvokeOnUIThread(() => OnInit(status));
-				});
+            //ActivityService.ActivityChanging += ReleaseTts;
+        }
 
-				return;
-			}
-			_speakerSpeech.SetLanguage(Locale.Default);
-			_speakerSpeech.SetOnUtteranceCompletedListener(this);
+        public void OnInit(OperationResult status)
+        {
+            if (_speakerSpeech == null)
+            {
+                Task.Run(() =>
+                {
+                    _initMutex.WaitOne();
+                    LazyResolver<IDispatcherService>.Service.InvokeOnUIThread(() => OnInit(status));
+                });
 
-			Dictionary<string, string> speakParameters = new Dictionary<string, string>
-			{
-				{TextToSpeech.Engine.KeyParamUtteranceId, INITIALIZE_UTTERANCE_ID}
-			};
+                return;
+            }
+            _speakerSpeech.SetLanguage(Locale.Default);
+            _speakerSpeech.SetOnUtteranceCompletedListener(this); // Deprecated
 
-			string word = "india rose";
-#if __ANDROID_11__
-			if (global::Android.OS.Build.VERSION.SdkInt >= global::Android.OS.BuildVersionCodes.Honeycomb)
-			{
-				word = "a";
-				speakParameters.Add(TextToSpeech.Engine.KeyParamVolume, "0");
-			}
-#endif
-			_speakerSpeech.Speak(word, QueueMode.Add, speakParameters);
-			Log.Error("TTS", "Engine initialized");
-		}
+            Dictionary<string, string> speakParameters = new Dictionary<string, string>
+            {
+                {TextToSpeech.Engine.KeyParamUtteranceId, INITIALIZE_UTTERANCE_ID}
+            };
 
-		//todo a tester sur faible api
-		private void InitTts(object sender, ValueChangedEventArgs<Activity> valueChangedEventArgs)
-		{
-			if (_speakerSpeech == null)
-			{
-				Initialize();
-			}
-		}
+            string word = "india rose";
 
-		private void Initialize()
-		{
-			Log.Error("TTS", "Initialize TTS engine");
-#if __ANDROID_17__
-			if (global::Android.OS.Build.VERSION.SdkInt >= global::Android.OS.BuildVersionCodes.JellyBeanMr1)
-			{
-				_speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity.ApplicationContext, this);
-				_initMutex.Set();
-				return;
-			}
-#endif
+            if (global::Android.OS.Build.VERSION.SdkInt >= global::Android.OS.BuildVersionCodes.Honeycomb)
+            {
+                word = "a";
+                speakParameters.Add(TextToSpeech.Engine.KeyParamVolume, "0");
+            }
 
-			ActivityService.StartActivityForResult(new Intent().SetAction(TextToSpeech.Engine.ActionCheckTtsData),
-				(result, data) =>
-				{
-					if (result == Result.Ok)
-					{
-						// success, create the TTS instance
-						_speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity, this);
-						_initMutex.Set();
-					}
-					else
-					{
-						Intent installIntent = new Intent();
-						installIntent.SetAction(TextToSpeech.Engine.ActionInstallTtsData);
-						ActivityService.CurrentActivity.StartActivity(installIntent);
-					}
-				});
-		}
+            _speakerSpeech.Speak(word, QueueMode.Add, speakParameters);
+            Log.Error("TTS", "Engine initialized");
+        }
 
-		public void Close()
-		{
-			if (_speakerSpeech == null)
-			{
-				return;
-			}
-			Log.Error("TTS", "TTS engine shutting down");
-			_speakerSpeech.Stop();
-			_speakerSpeech.Shutdown();
-			_speakerSpeech.Dispose();
-			_speakerSpeech = null;
-		}
+        private void InitTts(object sender, ValueChangedEventArgs<Activity> valueChangedEventArgs)
+        {
+            if (_speakerSpeech == null)
+            {
+                Initialize();
+            }
+        }
+
+        private void Initialize()
+        {
+            Log.Error("TTS", "Initialize TTS engine");
+            //todo gerer le check
+            _speakerSpeech = new TextToSpeech(ActivityService.CurrentActivity.ApplicationContext, this);
+            _initMutex.Set();
+        }
+
+        public void Close()
+        {
+            if (_speakerSpeech == null)
+            {
+                return;
+            }
+            Log.Error("TTS", "TTS engine shutting down");
+            _speakerSpeech.Stop();
+            if (global::Android.OS.Build.VERSION.SdkInt >= global::Android.OS.BuildVersionCodes.JellyBeanMr1)
+            {
+                _speakerSpeech.Shutdown(); // Fait planter l'app sur Android 4.1.1
+            }
+            _speakerSpeech.Dispose();
+            _speakerSpeech = null;
+        }
 
 		public void PlayIndiagram(Indiagram indiagram)
 		{
 			if (indiagram.HasCustomSound)
 			{
-				string word;
+				string word="";
 				if (_registeredSounds.ContainsKey(indiagram.SoundPath))
 				{
 					word = _registeredSounds[indiagram.SoundPath];
-				}
+                }
 				else
 				{
 					if (_speakerSpeech != null)
 					{
 						word = Guid.NewGuid().ToString();
 						_registeredSounds.Add(indiagram.SoundPath, word);
-						_speakerSpeech.AddSpeech(word, indiagram.SoundPath);
 					}
 					else
 					{
 						//TODO : log issue
-						word = "e";
 					}
-				}
-				PlayText(word);
+                }
+			    _speakerSpeech?.AddSpeech(word, indiagram.SoundPath);
+			    PlayText(word);
 			}
 			else
 			{
@@ -159,34 +137,34 @@ namespace IndiaRose.Services.Android
 			}
 		}
 
-		protected void PlayText(string text)
-		{
-			if (_speakerSpeech == null)
-			{
-				//TODO : log issue
-				this.RaiseEvent(SpeakingCompleted);
-				return;
-			}
+        protected void PlayText(string text)
+        {
+            if (_speakerSpeech == null)
+            {
+                //TODO : log issue
+                this.RaiseEvent(SpeakingCompleted);
+                return;
+            }
 
-			Log.Error("TTS", "Playing indiagram {0}", text);
-			_readingCountStack++;
-			_speakerSpeech.Speak(text, QueueMode.Add, new Dictionary<string, string>
-			{
-				{TextToSpeech.Engine.KeyParamUtteranceId, Guid.NewGuid().ToString()},
-			});
-		}
+            Log.Error("TTS", "Playing indiagram {0}", text);
+            _readingCountStack++;
+            _speakerSpeech.Speak(text, QueueMode.Add, new Dictionary<string, string>
+            {
+                {TextToSpeech.Engine.KeyParamUtteranceId, Guid.NewGuid().ToString()},
+            });
+        }
 
-		public void OnUtteranceCompleted(string utteranceId)
-		{
-			Log.Error("TTS", "Utterance completed");
-			if (INITIALIZE_UTTERANCE_ID.Equals(utteranceId))
-			{
-				Log.Error("TTS", "Initialize Utterance received !");
-				this.RaiseEvent(Initialized);
-				return;
-			}
-			_readingCountStack--;
-			this.RaiseEvent(SpeakingCompleted);
-		}
-	}
+        public void OnUtteranceCompleted(string utteranceId)
+        {
+            Log.Error("TTS", "Utterance completed");
+            if (INITIALIZE_UTTERANCE_ID.Equals(utteranceId))
+            {
+                Log.Error("TTS", "Initialize Utterance received !");
+                this.RaiseEvent(Initialized);
+                return;
+            }
+            _readingCountStack--;
+            this.RaiseEvent(SpeakingCompleted);
+        }
+    }
 }

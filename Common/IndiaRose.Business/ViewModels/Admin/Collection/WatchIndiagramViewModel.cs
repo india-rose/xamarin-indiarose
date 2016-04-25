@@ -19,10 +19,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
     /// </summary>
     public class WatchIndiagramViewModel : AbstractCollectionViewModel
     {
-        private ITextToSpeechService TtsService
-        {
-            get { return LazyResolver<ITextToSpeechService>.Service; }
-        }
+        private ITextToSpeechService TtsService => LazyResolver<ITextToSpeechService>.Service;
         private IndiagramContainer _indiagramContainer;
 
         #region Commands

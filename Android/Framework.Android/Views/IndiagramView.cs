@@ -78,10 +78,7 @@ namespace IndiaRose.Framework.Views
 
         #region Services
 
-        protected static ISettingsService SettingsService
-        {
-            get { return LazyResolver<ISettingsService>.Service; }
-        }
+        protected static ISettingsService SettingsService => LazyResolver<ISettingsService>.Service;
 
         #endregion
 
@@ -143,12 +140,9 @@ namespace IndiaRose.Framework.Views
 		    }
 	    }
 
-        public int RealHeight
-        {
-            get { return _height; }
-        }
+        public int RealHeight => _height;
 
-	    public TouchEventArgs LastTouchArgs { get; set; }
+        public TouchEventArgs LastTouchArgs { get; set; }
 
         #endregion
 
@@ -288,23 +282,11 @@ namespace IndiaRose.Framework.Views
         /// <summary>
         /// Retourne la largeur théorique de la vue (taille de l'image + bordure)
         /// </summary>
-        public static int DefaultWidth
-        {
-            get
-            {
-                return (int)(SettingsService.IndiagramDisplaySize * 1.2);
-            }
-        }
+        public static int DefaultWidth => (int)(SettingsService.IndiagramDisplaySize * 1.2);
 
         /// <summary>
         /// Retourne la hauteur théorique de la vue (taille de l'image + bordure + taille d'une ligne de texte)
         /// </summary>
-        public static int DefaultHeight
-        {
-            get
-            {
-                return (int)(SettingsService.IndiagramDisplaySize * 1.2 + SettingsService.FontSize);
-            }
-        }
+        public static int DefaultHeight => (int)(SettingsService.IndiagramDisplaySize * 1.2 + SettingsService.FontSize);
     }
 }

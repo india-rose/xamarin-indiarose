@@ -3,8 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 XmlStyle="{Resource BaseRootLayoutStyle}">
 
-	<IndiagramBrowserView android:layout_width="match_parent"
-	                      android:layout_height="match_parent"
+	<IndiagramBrowserView XmlStyle ="{Resource MatchLayoutStyle}"
 	                      android:layout_above="@id/buttons"
 	                      Background="{Binding BackgroundColor, Converter={Resource ColorStringToDrawableColorConverter}}"
 	                      Count="{Binding CollectionDisplayCount, Mode=TwoWay, UpdateEvent=CountChanged}"

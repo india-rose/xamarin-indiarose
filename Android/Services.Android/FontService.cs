@@ -9,12 +9,9 @@ namespace IndiaRose.Services.Android
 	{
 		private Dictionary<string, string> _fonts; 
 
-        public Dictionary<string, string> FontList
-        {
-			get { return _fonts ?? (_fonts = LoadFonts()); }
-        }
+        public Dictionary<string, string> FontList => _fonts ?? (_fonts = LoadFonts());
 
-        /// <summary>
+	    /// <summary>
         /// Charge la liste des polices du device
         /// </summary>
         /// <returns></returns>

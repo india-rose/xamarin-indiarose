@@ -2,39 +2,54 @@
 
 <Resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-	<Style Key="ErrorDialogRootLayoutStyle"
+  <Style Key="ErrorDialogRootLayoutStyle"
 	       android:layout_width="wrap_content"
 	       android:layout_height="wrap_content"
 	       android:layout_gravity="center"
 	       android:gravity="center" />
 
-	<Style Key="ErrorDialogTextStyle"
+  <Style Key="DialogRadioButtonStyle"
 	       android:layout_width="wrap_content"
 	       android:layout_height="wrap_content"
-	       android:textSize="23sp" />
+         android:textSize="@dimen/DialogExplanationTextSize"/>
 
-	<Style Key="DialogRadioButtonStyle"
-	       android:layout_width="wrap_content"
-	       android:layout_height="wrap_content" />
-	
-	<Style Key="DialogRadioGroupStyle"
+  <Style Key="DialogRadioGroupStyle"
 	       android:layout_width="match_parent"
 	       android:layout_height="wrap_content"
 	       android:orientation="vertical" />
 
-	<Style Key="DialogText"
+  <Style Key="DialogText"
 	       android:layout_width="wrap_content"
 	       android:layout_height="wrap_content"
 	       android:textColor="#444444"
-	       android:textSize="13sp"
+	       android:textSize="@dimen/DialogExplanationTextSize"
 	       marginBottom="2dp" />
 
-	<Style Key="ButtonDialogStyle"
+  <Style Key="ButtonDialogStyle"
 	       android:layout_width="match_parent"
 	       android:layout_height="wrap_content"
 	       android:paddingLeft="10dip"
-	       android:textSize="20sp"
+	       android:textSize="@dimen/DialogTexSize"
 	       android:background="@android:color/white"
 	       android:gravity="center|left" />
+  
+  <Style Key="ScrollExplanationTextStyle"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" />
+
+  <!-- ReadingDelayDialog -->
+  
+  <Style Key="DialogSeekBarDelayStyle"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="25dp"
+         android:layout_marginBottom="5dp"/>
+  
+  <Style Key="DialogTextDelayStyle"
+         android:textAppearance="?android:attr/textAppearanceLarge"
+         android:layout_width="match_parent"
+	       android:layout_height="wrap_content"
+	       android:layout_marginBottom="25dp"
+	       android:layout_marginLeft="15dp" />
 
 </Resources>

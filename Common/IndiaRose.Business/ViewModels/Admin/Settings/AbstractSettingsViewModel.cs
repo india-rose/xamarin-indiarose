@@ -10,12 +10,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
     /// </summary>
 	public abstract class AbstractSettingsViewModel : AbstractViewModel
 	{
-		public ISettingsService SettingsService
-		{
-			get { return LazyResolver<ISettingsService>.Service; }
-		}
+		public ISettingsService SettingsService => LazyResolver<ISettingsService>.Service;
 
-		public ICommand SaveCommand { get; private set; }
+        public ICommand SaveCommand { get; private set; }
 
 		protected AbstractSettingsViewModel()
 		{

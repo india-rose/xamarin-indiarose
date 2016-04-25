@@ -13,26 +13,17 @@ namespace IndiaRose.Data.Model
         /// <summary>
         /// Collection des Indiagrams contenus
         /// </summary>
-		public ObservableCollection<Indiagram> Children
-		{
-			get { return _children; }
-		}
+		public ObservableCollection<Indiagram> Children => _children;
 
         /// <summary>
         /// Toujours vrai
         /// </summary>
-		public override bool IsCategory
-		{
-			get { return true; }
-		}
+		public override bool IsCategory => true;
 
         /// <summary>
         /// Vrai si la catégorie contient d'autres Indiagrams
         /// </summary>
-	    public override bool HasChildren
-	    {
-		    get { return Children.Count > 0; }
-	    }
+	    public override bool HasChildren => Children.Count > 0;
 
         /// <summary>
         /// Constructeur vide

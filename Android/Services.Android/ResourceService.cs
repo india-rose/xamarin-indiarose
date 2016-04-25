@@ -29,7 +29,7 @@ namespace IndiaRose.Services.Android
                 }
                 catch (Exception)
                 {
-                    LoggerService.Log(string.Format("ResourceService.ShowPdfFile() : Cannot create external file {0}", path), MessageSeverity.Error);
+                    LoggerService.Log($"ResourceService.ShowPdfFile() : Cannot create external file {path}", MessageSeverity.Error);
                 }
             }
             try
@@ -75,5 +75,6 @@ namespace IndiaRose.Services.Android
             output.Flush();
             output.Close();
         }
+
     }
 }

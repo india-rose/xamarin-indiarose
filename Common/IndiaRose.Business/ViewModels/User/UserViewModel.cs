@@ -34,31 +34,19 @@ namespace IndiaRose.Business.ViewModels.User
 		private bool _sentenceCanAddMoreIndiagrams = true;
 		private int _sentenceIndiagramId = -242;
 
-		#region Services
+        #region Services
 
-		public ISettingsService SettingsService
-		{
-			get { return LazyResolver<ISettingsService>.Service; }
-		}
+        public ISettingsService SettingsService => LazyResolver<ISettingsService>.Service;
 
-		protected ICollectionStorageService CollectionStorageService
-		{
-			get { return LazyResolver<ICollectionStorageService>.Service; }
-		}
+        protected ICollectionStorageService CollectionStorageService => LazyResolver<ICollectionStorageService>.Service;
 
-		protected IStorageService StorageService
-		{
-			get { return LazyResolver<IStorageService>.Service; }
-		}
+        protected IStorageService StorageService => LazyResolver<IStorageService>.Service;
 
-		protected ITextToSpeechService TextToSpeechService
-		{
-			get { return LazyResolver<ITextToSpeechService>.Service; }
-		}
+        protected ITextToSpeechService TextToSpeechService => LazyResolver<ITextToSpeechService>.Service;
 
-		#endregion
+        #endregion
 
-		#region Properties
+        #region Properties
 
         /// <summary>
         /// Catégorie Courante
@@ -95,25 +83,22 @@ namespace IndiaRose.Business.ViewModels.User
 			set { SetProperty(ref _collectionIndiagrams, value); }
 		}
 
-		public int CollectionOffset
-		{
-			get { return _collectionOffset; }
-			set { SetProperty(ref _collectionOffset, value); }
-		}
+        public int CollectionOffset
+        {
+            get { return _collectionOffset; }
+            set { SetProperty(ref _collectionOffset, value); }
+        }
 
-		public int CollectionDisplayCount
-		{
-			get { return _collectionDisplayCount; }
-			set { SetProperty(ref _collectionDisplayCount, value); }
-		}
+        public int CollectionDisplayCount
+        {
+            get { return _collectionDisplayCount; }
+            set { SetProperty(ref _collectionDisplayCount, value); }
+        }
 
         /// <summary>
         /// La liste des Indiagrams dans la phrase
         /// </summary>
-		public ObservableCollection<IndiagramUIModel> SentenceIndiagrams
-		{
-			get { return _sentenceIndiagrams; }
-		}
+		public ObservableCollection<IndiagramUIModel> SentenceIndiagrams => _sentenceIndiagrams;
 
         /// <summary>
         /// Booléen indiquant si on peut encore ajouter des Indiagrams à la phrase
@@ -134,9 +119,9 @@ namespace IndiaRose.Business.ViewModels.User
 			set { SetProperty(ref _isCorrectionModeEnabled, value); }
 		}
 
-		#endregion
+        #endregion
 
-		#region ICommand
+        #region ICommand
 
 		public ICommand CollectionIndiagramSelectedCommand { get; private set; }
 		public ICommand SentenceIndiagramSelectedCommand { get; private set; }
@@ -146,8 +131,7 @@ namespace IndiaRose.Business.ViewModels.User
 		public ICommand ReadSentenceCommand { get; private set; }
 		public ICommand CollectionIndiagramDragStartCommand { get; private set; }
 
-
-		#endregion
+        #endregion
 
 		public UserViewModel()
 		{
@@ -159,12 +143,12 @@ namespace IndiaRose.Business.ViewModels.User
 				ImagePath = StorageService.ImageRootPath,
 			};
 
-			_correctionCategory = new Category
-			{
-				Id = -2,
-				Text = LocalizationService.GetString("Collection_CorrectionCategoryName", "Text"),
-				ImagePath = StorageService.ImageCorrectionPath
-			};
+            _correctionCategory = new Category
+            {
+                Id = -2,
+                Text = LocalizationService.GetString("Collection_CorrectionCategoryName", "Text"),
+                ImagePath = StorageService.ImageCorrectionPath
+            };
 
 			CollectionIndiagramSelectedCommand = new DelegateCommand<Indiagram>(CollectionIndiagramSelectedAction);
 			CollectionIndiagramDragStartCommand = new DelegateCommand<Indiagram>(CollectionIndiagramDragStartAction);
@@ -176,12 +160,12 @@ namespace IndiaRose.Business.ViewModels.User
 
             ReadSentenceCommand = new DelegateCommand(ReadSentenceAction);
 
-			PushCategory(rootCategory);
+            PushCategory(rootCategory);
 
-			TextToSpeechService.SpeakingCompleted += OnIndiagramReadCompleted;
-		}
+            TextToSpeechService.SpeakingCompleted += OnIndiagramReadCompleted;
+        }
 
-		#region Collection navigation
+        #region Collection navigation
 
         /// <summary>
         /// Action résultant de l'appuie sur le bouton next de la collection
@@ -249,8 +233,8 @@ namespace IndiaRose.Business.ViewModels.User
                 ParentCategory = _navigationStack.ElementAt(_navigationStack.Count - 1);
             CurrentCategory = _navigationStack.Peek();
 
-			return true;
-		}
+            return true;
+        }
 
         /// <summary>
         /// Change la collection d'Indiagram à afficher
@@ -262,13 +246,13 @@ namespace IndiaRose.Business.ViewModels.User
 				return;
 			}
 
-			CollectionIndiagrams = CurrentCategory.Children.Where(
-				SettingsService.IsMultipleIndiagramSelectionEnabled && !IsCorrectionModeEnabled ? 
-					(Func<Indiagram, bool>)(x => x.IsEnabled) : 
-					(x => x.IsEnabled && SentenceIndiagrams.All(y => y.Model.Id != x.Id))).ToList();
-		}
+            CollectionIndiagrams = CurrentCategory.Children.Where(
+                SettingsService.IsMultipleIndiagramSelectionEnabled && !IsCorrectionModeEnabled ?
+                    (Func<Indiagram, bool>)(x => x.IsEnabled) :
+                    (x => x.IsEnabled && SentenceIndiagrams.All(y => y.Model.Id != x.Id))).ToList();
+        }
 
-		#endregion
+        #endregion
 
         /// <summary>
         /// Entre dans le mode Correction
@@ -280,16 +264,16 @@ namespace IndiaRose.Business.ViewModels.User
 				return;
 			}
 
-			_correctionCategory.Children.Clear();
-			foreach (IndiagramUIModel indiagramUI in SentenceIndiagrams)
-			{
-				_correctionCategory.Children.Add(indiagramUI.Model);
-			}
-			
-			SentenceIndiagrams.Clear();
-			IsCorrectionModeEnabled = true;
-			PushCategory(_correctionCategory);
-		}
+            _correctionCategory.Children.Clear();
+            foreach (IndiagramUIModel indiagramUI in SentenceIndiagrams)
+            {
+                _correctionCategory.Children.Add(indiagramUI.Model);
+            }
+
+            SentenceIndiagrams.Clear();
+            IsCorrectionModeEnabled = true;
+            PushCategory(_correctionCategory);
+        }
 
         /// <summary>
         /// Action lorsqu'un Indiagram dans la phrase est selectionné
@@ -306,12 +290,12 @@ namespace IndiaRose.Business.ViewModels.User
 				}
 			}
 
-			SentenceIndiagrams.Remove(indiagram);
-			if (!SettingsService.IsMultipleIndiagramSelectionEnabled || IsCorrectionModeEnabled)
-			{
-				RefreshDisplayList();
-			}
-		}
+            SentenceIndiagrams.Remove(indiagram);
+            if (!SettingsService.IsMultipleIndiagramSelectionEnabled || IsCorrectionModeEnabled)
+            {
+                RefreshDisplayList();
+            }
+        }
 
         /// <summary>
         /// Action lors de la sélection d'un Indiagram de la partie Collection
@@ -324,35 +308,35 @@ namespace IndiaRose.Business.ViewModels.User
 				return;
 			}
 
-			Category category = indiagram as Category;
-			if (category != null)
-			{
-				Read(indiagram);
-				PushCategory(category);
-			}
-			else
-			{
-				if (SentenceCanAddMoreIndiagrams)
-				{
-					if (!SettingsService.IsDragAndDropEnabled)
-					{
-						Read(indiagram);
-					}
-					AddIndiagramToSentence(indiagram);
+            Category category = indiagram as Category;
+            if (category != null)
+            {
+                Read(indiagram);
+                PushCategory(category);
+            }
+            else
+            {
+                if (SentenceCanAddMoreIndiagrams)
+                {
+                    if (!SettingsService.IsDragAndDropEnabled)
+                    {
+                        Read(indiagram);
+                    }
+                    AddIndiagramToSentence(indiagram);
 
-					if (SettingsService.IsBackHomeAfterSelectionEnabled && !IsCorrectionModeEnabled && PopCategory())
-					{
-						while (PopCategory())
-						{
-						}
-					}
-					else
-					{
-						RefreshDisplayList();
-					}
-				}
-			}
-		}
+                    if (SettingsService.IsBackHomeAfterSelectionEnabled && !IsCorrectionModeEnabled && PopCategory())
+                    {
+                        while (PopCategory())
+                        {
+                        }
+                    }
+                    else
+                    {
+                        RefreshDisplayList();
+                    }
+                }
+            }
+        }
 
         /// <summary>
         /// Action lorsqu'un drag & drop est activé de la partie Collection
@@ -365,8 +349,8 @@ namespace IndiaRose.Business.ViewModels.User
 				return;
 			}
 
-			Read(indiagram);
-		}
+            Read(indiagram);
+        }
 
         /// <summary>
         /// Lance la lecture d'un Indiagram par le TTS
@@ -380,26 +364,26 @@ namespace IndiaRose.Business.ViewModels.User
 				canRead = SettingsService.IsCategoryNameReadingEnabled;
 			}
 
-			if (canRead)
-			{
-				lock (_readingMutex)
-				{
-					if (_isReading)
-					{
-						canRead = false;
-					}
-					else
-					{
-						_isReading = true;
-					}
-				}
-			}
+            if (canRead)
+            {
+                lock (_readingMutex)
+                {
+                    if (_isReading)
+                    {
+                        canRead = false;
+                    }
+                    else
+                    {
+                        _isReading = true;
+                    }
+                }
+            }
 
-			if (canRead)
-			{
-				TextToSpeechService.PlayIndiagram(indiagram);
-			}
-		}
+            if (canRead)
+            {
+                TextToSpeechService.PlayIndiagram(indiagram);
+            }
+        }
 
         /// <summary>
         /// Callback lors de la fin de la lecture d'un Indiagram
@@ -415,7 +399,7 @@ namespace IndiaRose.Business.ViewModels.User
 		}
 
 
-		#region Read sentence handling part
+        #region Read sentence handling part
 
         /// <summary>
         /// Ajoute un Indiagram à la phrase à lire (partie du bas)
@@ -433,8 +417,8 @@ namespace IndiaRose.Business.ViewModels.User
 				indiagram.Id = _sentenceIndiagramId--;
 			}
 
-			SentenceIndiagrams.Add(new IndiagramUIModel(indiagram));
-		}
+            SentenceIndiagrams.Add(new IndiagramUIModel(indiagram));
+        }
 
         /// <summary>
         /// Action pour lancer la lecture de la phrase d'Indiagram
@@ -447,24 +431,24 @@ namespace IndiaRose.Business.ViewModels.User
 				return;
 			}
 
-			bool canRead = false;
-			lock (_readingMutex)
-			{
-				if (!_isReading)
-				{
-					canRead = true;
-					_isReading = true;
-				}
-			}
-			if (!canRead)
-			{
-				return;
-			}
-			TextToSpeechService.SpeakingCompleted -= OnIndiagramReadCompleted;
-			TextToSpeechService.SpeakingCompleted += OnSentenceIndiagramReadCompleted;
+            bool canRead = false;
+            lock (_readingMutex)
+            {
+                if (!_isReading)
+                {
+                    canRead = true;
+                    _isReading = true;
+                }
+            }
+            if (!canRead)
+            {
+                return;
+            }
+            TextToSpeechService.SpeakingCompleted -= OnIndiagramReadCompleted;
+            TextToSpeechService.SpeakingCompleted += OnSentenceIndiagramReadCompleted;
 
-			Task.Run((Action)ReadSentence);
-		}
+            Task.Run((Action)ReadSentence);
+        }
 
         /// <summary>
         /// Lit la phrase d'Indiagram
@@ -482,50 +466,51 @@ namespace IndiaRose.Business.ViewModels.User
 					DispatcherService.InvokeOnUIThread(() => currentIndiagram.IsReinforcerEnabled = true);
 				}
 
-				// read indiagram and wait for reading to finished
-				TextToSpeechService.PlayIndiagram(sentenceIndiagram.Model);
-				_sentenceReadingSemaphore.WaitOne();
+                // read indiagram and wait for reading to finished
+                TextToSpeechService.PlayIndiagram(sentenceIndiagram.Model);
+                //AVANT
+                _sentenceReadingSemaphore.WaitOne();
+                //APRES
+                // wait delay specified in settings before going to next one
+                int millisecondsToWait = (int)(SettingsService.TimeOfSilenceBetweenWords * 1000);
+                if (millisecondsToWait > 10)
+                {
+                    await Task.Delay(millisecondsToWait);
+                }
 
-				// wait delay specified in settings before going to next one
-				int millisecondsToWait = (int)(SettingsService.TimeOfSilenceBetweenWords * 1000);
-				if (millisecondsToWait > 10)
-				{
-					await Task.Delay(millisecondsToWait);
-				}
+                // disable reinforcer
+                if (isReinforcerEnabled)
+                {
+                    DispatcherService.InvokeOnUIThread(() => currentIndiagram.IsReinforcerEnabled = false);
+                }
+            }
 
-				// disable reinforcer
-				if (isReinforcerEnabled)
-				{
-					DispatcherService.InvokeOnUIThread(() =>currentIndiagram.IsReinforcerEnabled = false);
-				}
-			}
+            _sentenceIndiagramId = -242;
+            // rewire events correctly
+            TextToSpeechService.SpeakingCompleted -= OnSentenceIndiagramReadCompleted;
+            TextToSpeechService.SpeakingCompleted += OnIndiagramReadCompleted;
 
-			_sentenceIndiagramId = -242;
-			// rewire events correctly
-			TextToSpeechService.SpeakingCompleted -= OnSentenceIndiagramReadCompleted;
-			TextToSpeechService.SpeakingCompleted += OnIndiagramReadCompleted;
+            lock (_readingMutex)
+            {
+                _isReading = false;
+            }
 
-			lock (_readingMutex)
-			{
-				_isReading = false;
-			}
-
-			DispatcherService.InvokeOnUIThread(() =>
-			{
-				IsCorrectionModeEnabled = false;
-				SentenceIndiagrams.Clear();
-				if (PopCategory())
-				{
-					while (PopCategory())
-					{
-					}
-				}
-				else
-				{
-					RefreshDisplayList();
-				}
-			});
-		}
+            DispatcherService.InvokeOnUIThread(() =>
+            {
+                IsCorrectionModeEnabled = false;
+                SentenceIndiagrams.Clear();
+                if (PopCategory())
+                {
+                    while (PopCategory())
+                    {
+                    }
+                }
+                else
+                {
+                    RefreshDisplayList();
+                }
+            });
+        }
 
         /// <summary>
         /// Callback de la fin de lecture d'une phrase
@@ -537,18 +522,18 @@ namespace IndiaRose.Business.ViewModels.User
 			_sentenceReadingSemaphore.Set();
 		}
 
-		#endregion
+        #endregion
 
-		#region Reading freezing input part
+        #region Reading freezing input part
 
-		private bool CheckIsReading()
-		{
-			lock (_readingMutex)
-			{
-				return _isReading;
-			}
-		}
+        private bool CheckIsReading()
+        {
+            lock (_readingMutex)
+            {
+                return _isReading;
+            }
+        }
 
-		#endregion
-	}
+        #endregion
+    }
 }

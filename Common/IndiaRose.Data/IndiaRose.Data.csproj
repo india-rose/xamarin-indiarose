@@ -21,6 +21,8 @@
     <SccProvider>SAK</SccProvider>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ActivityDescription.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
@@ -67,7 +70,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Storm.Mvvm.Android.1.2.21\build\Storm.Mvvm.Android.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Storm.Mvvm.Android.1.2.21\build\Storm.Mvvm.Android.targets'))" />
   </Target>
+  <Import Project="..\..\packages\Storm.Mvvm.Android.1.2.21\build\Storm.Mvvm.Android.targets" Condition="Exists('..\..\packages\Storm.Mvvm.Android.1.2.21\build\Storm.Mvvm.Android.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

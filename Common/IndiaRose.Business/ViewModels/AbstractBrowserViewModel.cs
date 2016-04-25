@@ -28,37 +28,22 @@ namespace IndiaRose.Business.ViewModels
 
 		#region Services
 
-		protected ISettingsService SettingsService
-		{
-			get { return LazyResolver<ISettingsService>.Service; }
-		}
+		protected ISettingsService SettingsService => LazyResolver<ISettingsService>.Service;
 
-        protected ICollectionStorageService CollectionStorageService
-        {
-            get { return LazyResolver<ICollectionStorageService>.Service; }
-        }
+        protected ICollectionStorageService CollectionStorageService => LazyResolver<ICollectionStorageService>.Service;
 
-        protected IStorageService StorageService
-        {
-            get { return LazyResolver<IStorageService>.Service; }
-        }
+        protected IStorageService StorageService => LazyResolver<IStorageService>.Service;
 
-		#endregion
+        #endregion
 
 		#region Public properties
 
 
-		public string TextColor
-		{
-			get { return SettingsService.TextColor; }
-		}
+		public string TextColor => SettingsService.TextColor;
 
-		public string BackgroundColor
-		{
-			get { return SettingsService.TopBackgroundColor; }
-		}
+        public string BackgroundColor => SettingsService.TopBackgroundColor;
 
-		public int CollectionOffset
+        public int CollectionOffset
 		{
 			get { return _collectionOffset; }
 			set { SetProperty(ref _collectionOffset, value); }
@@ -76,11 +61,9 @@ namespace IndiaRose.Business.ViewModels
 			private set { SetProperty(ref _displayedIndiagrams, value); }
 		}
 
-	    public Category CurrentCategory
-	    {
-            get { return _navigationStack != null && _navigationStack.Any() ? _navigationStack.Peek() : null; }
-	    }
-		#endregion
+	    public Category CurrentCategory => _navigationStack != null && _navigationStack.Any() ? _navigationStack.Peek() : null;
+
+        #endregion
 
 		#region Commands
 

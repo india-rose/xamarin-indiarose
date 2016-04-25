@@ -10,12 +10,9 @@ namespace IndiaRose.Services.Android
 {
 	public class ServiceInitializerWrapper : IInitializable
 	{
-		protected IActivityService ActivityService
-		{
-			get { return LazyResolver<IActivityService>.Service; }
-		}
+		protected IActivityService ActivityService => LazyResolver<IActivityService>.Service;
 
-		private readonly Semaphore _semaphore = new Semaphore(0, 1);
+	    private readonly Semaphore _semaphore = new Semaphore(0, 1);
 		private readonly IInitializable _service;
 
 		public ServiceInitializerWrapper(IInitializable service)

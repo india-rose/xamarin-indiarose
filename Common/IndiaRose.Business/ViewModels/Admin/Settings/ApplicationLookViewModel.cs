@@ -47,10 +47,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 
         #region Services
 
-        public IScreenService ScreenService
-        {
-            get { return LazyResolver<IScreenService>.Service; }
-        }
+        public IScreenService ScreenService => LazyResolver<IScreenService>.Service;
 
         #endregion
 
