@@ -81,6 +81,11 @@ namespace IndiaRose.Interfaces
         float TimeOfSilenceBetweenWords { get; set; }
 
         /// <summary>
+        /// Bouton retour dans la title bar
+        /// </summary>
+        bool IsBackCategoryEnabled { get; set; }
+
+        /// <summary>
         /// Sauvegarde de manière asynchrone les préférences
         /// </summary>
         /// <returns>La tâche asynchrone faisant la sauvegarde des préférences</returns>

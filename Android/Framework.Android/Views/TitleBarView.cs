@@ -29,6 +29,11 @@ namespace IndiaRose.Framework.Views
             get { return LazyResolver<IStorageService>.Service; }
         }
 
+        protected ISettingsService SettingsService
+        {
+            get { return LazyResolver<ISettingsService>.Service; }
+        }
+
         #region Private tools methods
 
         private bool SetProperty<T>(ref T storage, T value)
@@ -83,7 +88,7 @@ namespace IndiaRose.Framework.Views
         private void Initialize()
         {
             //Initialisation du logo India Rose
-            ImageView logo = new ImageView(Context) { Id = 0x0fffff2a };
+            ImageView logo = new ImageView(Context) {Id = 0x0fffff2a};
             logo.SetImageResource(Resource.Drawable.logo);
             logo.SetAdjustViewBounds(true);
             logo.SetMinimumHeight(60);
@@ -98,7 +103,7 @@ namespace IndiaRose.Framework.Views
             _imageCategoryView.SetMinimumWidth(60);
             _imageCategoryView.SetMaxWidth(60);
             _imageCategoryView.Measure(60, 60);
-            
+
             //Initialisation du texte de la catégorie courante
             _textCategoryView = new TextView(Context);
             _textCategoryView.SetMaxHeight(60);
@@ -107,33 +112,54 @@ namespace IndiaRose.Framework.Views
             _textCategoryView.SetTextSize(ComplexUnitType.Sp, 15);
             _textCategoryView.Gravity = GravityFlags.CenterVertical;
 
-            //Initialisation du bouton retour
-            _backButton = new ImageView(Context);
-            _backButton.SetAdjustViewBounds(true);
-            _backButton.SetMinimumHeight(60);
-            _backButton.SetMaxHeight(60);
-            _backButton.Id = 0x0fffff2d;
-            _backButton.SetMinimumWidth(60);
-            _backButton.SetMaxWidth(60);
-            _backButton.Measure(60, 60);
-            _backButton.SetImageBitmap(BitmapFactory.DecodeFile(StorageService.ImageBackPath));
-            //Defini en tant que bouton backCategory
-            _backButton.Touch += OnBackCategoryTouch;
+            LayoutParams lp;
 
-            //Initialisation du texte de la catégorie precedente
-            _oldCategory = new TextView(Context);
-            _oldCategory.SetMaxHeight(60);
-            _oldCategory.SetTextColor(Color.Black);
-            _oldCategory.Id = 0x0fffff2e;
-            _oldCategory.SetTextSize(ComplexUnitType.Sp, 15);
-            _oldCategory.Gravity = GravityFlags.CenterVertical;
+            if (SettingsService.IsBackCategoryEnabled)
+            {
+                //Initialisation du bouton retour
+                _backButton = new ImageView(Context);
+                _backButton.SetAdjustViewBounds(true);
+                _backButton.SetMinimumHeight(60);
+                _backButton.SetMaxHeight(60);
+                _backButton.Id = 0x0fffff2d;
+                _backButton.SetMinimumWidth(60);
+                _backButton.SetMaxWidth(60);
+                _backButton.Measure(60, 60);
+                _backButton.SetImageBitmap(BitmapFactory.DecodeFile(StorageService.ImageBackPath));
+                //Defini en tant que bouton backCategory
+                _backButton.Touch += OnBackCategoryTouch;
 
+                //Initialisation du texte de la catégorie precedente
+                _oldCategory = new TextView(Context);
+                _oldCategory.SetMaxHeight(60);
+                _oldCategory.SetTextColor(Color.Black);
+                _oldCategory.Id = 0x0fffff2e;
+                _oldCategory.SetTextSize(ComplexUnitType.Sp, 15);
+                _oldCategory.Gravity = GravityFlags.CenterVertical;
 
-            LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
-            lp.AddRule(LayoutRules.CenterInParent);
-            lp.AddRule(LayoutRules.CenterVertical);
-            AddView(logo, lp);
+                lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
+                lp.AddRule(LayoutRules.CenterInParent);
+                lp.AddRule(LayoutRules.CenterVertical);
+                AddView(logo, lp);
 
+                lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
+                lp.AddRule(LayoutRules.AlignParentRight);
+                lp.AddRule(LayoutRules.CenterVertical);
+                AddView(_backButton, lp);
+
+                lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
+                lp.AddRule(LayoutRules.LeftOf, _backButton.Id);
+                lp.AddRule(LayoutRules.CenterVertical);
+                lp.SetMargins(60, 0, 60, 0);
+                AddView(_oldCategory, lp);
+            }
+            else
+            {
+                lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
+                lp.AddRule(LayoutRules.AlignParentRight);
+                lp.AddRule(LayoutRules.CenterVertical);
+                AddView(logo, lp);
+            }
             lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
             lp.AddRule(LayoutRules.AlignParentLeft);
             lp.AddRule(LayoutRules.CenterVertical);
@@ -144,17 +170,6 @@ namespace IndiaRose.Framework.Views
             lp.AddRule(LayoutRules.CenterVertical);
             lp.SetMargins(60, 0, 60, 0);
             AddView(_textCategoryView, lp);
-
-            lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
-            lp.AddRule(LayoutRules.AlignParentRight);
-            lp.AddRule(LayoutRules.CenterVertical);
-            AddView(_backButton, lp);
-
-            lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
-            lp.AddRule(LayoutRules.LeftOf, _backButton.Id);
-            lp.AddRule(LayoutRules.CenterVertical);
-            lp.SetMargins(60, 0, 60, 0);
-            AddView(_oldCategory, lp);
         }
 
         /// <summary>

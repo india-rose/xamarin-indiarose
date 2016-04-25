@@ -59,7 +59,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
         /// <summary>
         /// Ouvre le dialogue de réglages du drag and drop
         /// </summary>
-		private void DragAndDropAction()
+        /*private void DragAndDropAction()
 		{
 			MessageDialogService.Show(Business.Dialogs.ADMIN_SETTINGS_DRAGANDDROP);
 		}
@@ -79,7 +79,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 		{
 			MessageDialogService.Show(Business.Dialogs.ADMIN_SETTINGS_READINGDELAY);
 		}
+        */
 
+        /// <summary>
+        /// Ouvre la page de réglages des features de l'application
+        /// </summary>
         private void AppBehaviourAction()
         {
             NavigationService.Navigate(Views.ADMIN_SETTINGS_APPBEHAVIOUR);

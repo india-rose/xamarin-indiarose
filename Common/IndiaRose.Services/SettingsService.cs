@@ -45,6 +45,7 @@ namespace IndiaRose.Services
         private float _timeOfSilenceBetweenWords;
         private string _reinforcerColor;
         private string _textColor;
+	    private bool _isBackCategoryEnabled;
 
 	    private bool _isLoaded;
 
@@ -135,6 +136,11 @@ namespace IndiaRose.Services
 			set { SetProperty(ref _topBackgroundColor, value); }
 		}
 
+	    public bool IsBackCategoryEnabled
+	    {
+	        get { return _isBackCategoryEnabled; }
+            set { SetProperty(ref _isBackCategoryEnabled, value); }
+	    }
 
         public bool IsLoaded
         {
@@ -179,7 +185,8 @@ namespace IndiaRose.Services
 				IsMultipleIndiagramSelectionEnabled = IsMultipleIndiagramSelectionEnabled,
 				TimeOfSilenceBetweenWords = TimeOfSilenceBetweenWords,
 				ReinforcerColor = ReinforcerColor,
-                TextColor = TextColor
+                TextColor = TextColor,
+                IsBackCategoryEnabled = IsBackCategoryEnabled
 			};
 
 			await SaveOnDiskAsync(model);
@@ -217,8 +224,10 @@ namespace IndiaRose.Services
 			TimeOfSilenceBetweenWords = model.TimeOfSilenceBetweenWords;
 			ReinforcerColor = model.ReinforcerColor;
 		    TextColor = model.TextColor;
+		    IsBackCategoryEnabled = IsBackCategoryEnabled;
 
-		    IsLoaded = true;
+
+            IsLoaded = true;
 
 			_hasChanged = false;
 		}
@@ -239,6 +248,8 @@ namespace IndiaRose.Services
 			TimeOfSilenceBetweenWords = 1.0f;
 			ReinforcerColor = "#FFFF00FF";
 		    TextColor = "#FFFFFFFF";
+		    IsBackCategoryEnabled = true;
+
 		}
 
 	    public event EventHandler<EventArgs> Loaded;

@@ -35,5 +35,7 @@ namespace IndiaRose.Data.Model
         public bool IsMultipleIndiagramSelectionEnabled { get; set; }
 
         public float TimeOfSilenceBetweenWords { get; set; }
+
+        public bool IsBackCategoryEnabled { get; set; }
     }
 }
