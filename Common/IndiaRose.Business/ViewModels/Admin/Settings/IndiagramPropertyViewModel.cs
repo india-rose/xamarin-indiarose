@@ -27,6 +27,11 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
             get { return LazyResolver<IFontService>.Service; }
         }
 
+        protected IScreenService ScreenService
+        {
+            get { return LazyResolver<IScreenService>.Service; }
+        }
+
         #endregion
 
         #region Properties
@@ -183,7 +188,10 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
             SettingsService.IsBackHomeAfterSelectionEnabled = BackAfterSelection;
             SettingsService.IsReinforcerEnabled = ReinforcerEnabled;
             SettingsService.IsMultipleIndiagramSelectionEnabled = MultipleIndiagramSelection;
-
+            //On vérifie si la hauteur est supérieur à la taille maximum, si c'est le cas on met la valeur au maximum possible
+            int maxHeight = 95 - (int)((IndiagramSize * 1.2) / ScreenService.Height * 100);
+            if (SettingsService.SelectionAreaHeight > maxHeight)
+                SettingsService.SelectionAreaHeight = maxHeight;
             base.SaveAction();
             BackAction();
         }
