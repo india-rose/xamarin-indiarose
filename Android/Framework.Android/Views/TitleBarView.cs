@@ -113,6 +113,7 @@ namespace IndiaRose.Framework.Views
             _textCategoryView.Gravity = GravityFlags.CenterVertical;
 
             LayoutParams lp;
+            _oldCategory = new TextView(Context);
 
             if (SettingsService.IsBackCategoryEnabled)
             {
@@ -130,7 +131,6 @@ namespace IndiaRose.Framework.Views
                 _backButton.Touch += OnBackCategoryTouch;
 
                 //Initialisation du texte de la catégorie precedente
-                _oldCategory = new TextView(Context);
                 _oldCategory.SetMaxHeight(60);
                 _oldCategory.SetTextColor(Color.Black);
                 _oldCategory.Id = 0x0fffff2e;
