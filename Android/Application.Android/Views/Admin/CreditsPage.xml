@@ -81,6 +81,12 @@
 			<TextView XmlStyle="{Resource PeopleTextStyle}"
 			          Text="{Tr Text, Uid=Credits_UniversityTeam}" />
 
+      <TextView XmlStyle="{Resource SectionTextStyle}"
+      Text="{Tr Text, Uid=Credits_Trainee2015}" />
+
+      <TextView XmlStyle="{Resource PeopleTextStyle}"
+			          Text="{Tr Text, Uid=Credits_Trainee2015Team}" />
+      
 			<TextView XmlStyle="{Resource SectionTextStyle}"
 			          Text="{Tr Text, Uid=Credits_Trainee2014}" />
 

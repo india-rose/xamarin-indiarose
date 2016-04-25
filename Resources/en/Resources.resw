@@ -549,4 +549,10 @@ Comments : </value>
   <data name="BackButton_Activated.Text" xml:space="preserve">
     <value>Use the back button</value>
   </data>
+  <data name="Credits_Trainee2015.Text" xml:space="preserve">
+    <value>Trainee 2015/2016</value>
+  </data>
+  <data name="Credits_Trainee2015Team.Text" xml:space="preserve">
+    <value>Martin Chertier, Donovan Ferre, Lindsay Grignon, Benjamin Meyer</value>
+  </data>
 </root>
