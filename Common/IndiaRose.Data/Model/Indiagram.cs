@@ -90,26 +90,17 @@ namespace IndiaRose.Data.Model
         /// <summary>
         /// Vrai si l'Indiagram est une catégorie
         /// </summary>
-		public virtual bool IsCategory
-		{
-			get { return false; }
-		}
+		public virtual bool IsCategory => false;
 
         /// <summary>
         /// Vrai si l'Indiagram contient d'autres Indiagrams
         /// </summary>
-		public virtual bool HasChildren
-		{
-			get { return false; }
-		}
+		public virtual bool HasChildren => false;
 
         /// <summary>
         /// Vrai si l'Indiagram a un son (le texte ne devant pas être lu par le TTS)
         /// </summary>
-		public bool HasCustomSound
-		{
-			get { return !string.IsNullOrWhiteSpace(SoundPath); }
-		}
+		public bool HasCustomSound => !string.IsNullOrWhiteSpace(SoundPath);
 
         /// <summary>
         /// Copie les paramètres d'un autre Indiagram

@@ -30,17 +30,11 @@ namespace IndiaRose.Framework.Views
 	public class UserView : AbsoluteLayout
 	{
 		#region Services
-		public ISettingsService SettingsService
-		{
-			get { return LazyResolver<ISettingsService>.Service; }
-		}
+		public ISettingsService SettingsService => LazyResolver<ISettingsService>.Service;
 
-		protected ITextToSpeechService TextToSpeechService
-		{
-			get { return LazyResolver<ITextToSpeechService>.Service; }
-		}
+        protected ITextToSpeechService TextToSpeechService => LazyResolver<ITextToSpeechService>.Service;
 
-		#endregion
+        #endregion
 
 		#region Private field
 

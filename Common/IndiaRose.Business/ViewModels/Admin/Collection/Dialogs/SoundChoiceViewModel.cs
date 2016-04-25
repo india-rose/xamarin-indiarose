@@ -20,12 +20,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 	{
 		private Indiagram _indiagramContainer;
 
-		public IMediaService MediaService
-		{
-			get { return LazyResolver<IMediaService>.Service; }
-		}
+		public IMediaService MediaService => LazyResolver<IMediaService>.Service;
 
-		public ICommand RecordSoundCommand { get; private set; }
+        public ICommand RecordSoundCommand { get; private set; }
 		public ICommand GalleryCommand { get; private set; }
 
 		[NavigationParameter]

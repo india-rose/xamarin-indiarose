@@ -7,16 +7,10 @@ namespace IndiaRose.Services
 	{
 		#region Service property
 
-		protected ILocalizationService LocalizationService
-		{
-			get { return LazyResolver<ILocalizationService>.Service; }
-		}
+		protected ILocalizationService LocalizationService => LazyResolver<ILocalizationService>.Service;
 
-		protected ILoggerService LoggerService
-		{
-			get { return LazyResolver<ILoggerService>.Service; }
-		}
+	    protected ILoggerService LoggerService => LazyResolver<ILoggerService>.Service;
 
-		#endregion
+	    #endregion
 	}
 }

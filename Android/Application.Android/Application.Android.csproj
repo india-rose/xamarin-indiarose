@@ -99,6 +99,7 @@
     <AndroidResource Include="Resources\values-large\dimens.xml" />
     <AndroidResource Include="Resources\values\dimens.xml" />
     <Content Include="Views\SplashScreen.xml" />
+    <None Include="app.config" />
     <None Include="Views\User\HomePage.back.xml" />
     <None Include="Views\Admin\Collection\Dialogs\RecordSoundDialog.xml" />
     <None Include="Views\User\HomePage.xml" />

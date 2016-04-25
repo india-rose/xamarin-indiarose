@@ -87,10 +87,7 @@ namespace IndiaRose.Business.ViewModels.User
         /// <summary>
         /// La liste des Indiagrams dans la phrase
         /// </summary>
-		public ObservableCollection<IndiagramUIModel> SentenceIndiagrams
-		{
-			get { return _sentenceIndiagrams; }
-		}
+		public ObservableCollection<IndiagramUIModel> SentenceIndiagrams => _sentenceIndiagrams;
 
         /// <summary>
         /// Booléen indiquant si on peut encore ajouter des Indiagrams à la phrase

@@ -14,12 +14,9 @@ namespace IndiaRose.Business.ViewModels.Admin
     /// </summary>
 	public class InstallVoiceSynthesisViewModel : AbstractViewModel
 	{
-		public IInstallVoiceSynthesisService InstallVoiceSynthesisService
-		{
-			get { return LazyResolver<IInstallVoiceSynthesisService>.Service; }
-		}
+		public IInstallVoiceSynthesisService InstallVoiceSynthesisService => LazyResolver<IInstallVoiceSynthesisService>.Service;
 
-		#region Commands
+        #region Commands
 
 		public ICommand InstallVoiceSynthesisEngineCommand { get; private set; }
 		public ICommand InstallLanguagePackCommand { get; private set; }

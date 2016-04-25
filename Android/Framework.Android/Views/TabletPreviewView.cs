@@ -105,13 +105,7 @@ namespace IndiaRose.Framework.Views
         public ICommand BottomAreaCommand { get; set; }
         #endregion
 
-        protected IScreenService ScreenService
-        {
-            get
-            {
-                return LazyResolver<IScreenService>.Service;
-            }
-        }
+        protected IScreenService ScreenService => LazyResolver<IScreenService>.Service;
 
         #region Constructors
 

@@ -74,7 +74,7 @@ namespace IndiaRose.Services
                             {
                                 return resourceEntries[key].OpenEntryStream();
                             }
-                            throw new IndexOutOfRangeException(string.Format("Key {0} is not available in resources", key));
+                            throw new IndexOutOfRangeException($"Key {key} is not available in resources");
                         });
                     });
                 }
@@ -95,7 +95,7 @@ namespace IndiaRose.Services
                             {
                                 return resourceEntries[key].OpenEntryStream();
                             }
-                            throw new IndexOutOfRangeException(string.Format("Key {0} is not available in resources", key));
+                            throw new IndexOutOfRangeException($"Key {key} is not available in resources");
                         });
                     });
 
@@ -152,7 +152,7 @@ namespace IndiaRose.Services
             // How to check ? just access the app directory and check for home.xml
 
             IFolder appFolder = await FileSystem.Current.GetFolderFromPathAsync(StorageService.AppPath);
-            return (await appFolder.CheckExistsAsync("home.xml") == ExistenceCheckResult.FileExists);
+            return await appFolder.CheckExistsAsync("home.xml") == ExistenceCheckResult.FileExists;
         }
 
         public async Task InitializeCollectionFromOldFormatAsync()
@@ -176,11 +176,7 @@ namespace IndiaRose.Services
                 XDocument xmlDocument = XDocument.Load(homeStream);
 
                 XElement rootElement = xmlDocument.Element("category");
-                if (rootElement == null)
-                {
-                    return;
-                }
-                XElement indiagramsElement = rootElement.Element("indiagrams");
+                XElement indiagramsElement = rootElement?.Element("indiagrams");
                 if (indiagramsElement == null)
                 {
                     return;
@@ -235,7 +231,7 @@ namespace IndiaRose.Services
                 IFile file = await folder.GetFileAsync(fileName);
                 return await file.OpenAsync(FileAccess.Read);
             }
-            throw new Exception(string.Format("Can not found resource file {0}", resourcePath));
+            throw new Exception($"Can not found resource file {resourcePath}");
         }
 
         private async Task ReadCollectionFromOldFormat(Stream inputStream, IFolder currentFolder, string currentDirectoryPath, IFolder imageFolder, IFolder soundFolder, Indiagram parent)
@@ -246,7 +242,7 @@ namespace IndiaRose.Services
             if (rootElement != null)
             {
                 // the current element is an indiagram, just read it
-                await CreateIndiagramFromXml(rootElement, false, parent, ((key, type) => GetResourceStream(key, (type == StorageType.Image) ? imageFolder : soundFolder)));
+                await CreateIndiagramFromXml(rootElement, false, parent, (key, type) => GetResourceStream(key, type == StorageType.Image ? imageFolder : soundFolder));
             }
             else
             {
@@ -257,7 +253,7 @@ namespace IndiaRose.Services
                     return;
                 }
 
-                Indiagram category = await CreateIndiagramFromXml(rootElement, true, parent, ((key, type) => GetResourceStream(key, (type == StorageType.Image) ? imageFolder : soundFolder)));
+                Indiagram category = await CreateIndiagramFromXml(rootElement, true, parent, (key, type) => GetResourceStream(key, type == StorageType.Image ? imageFolder : soundFolder));
 
                 XElement indiagramsElement = rootElement.Element("indiagrams");
                 if (indiagramsElement == null)
@@ -303,7 +299,7 @@ namespace IndiaRose.Services
         public async Task<bool> HasOldSettingsAsync()
         {
             IFolder appFolder = await FileSystem.Current.GetFolderFromPathAsync(StorageService.AppPath);
-            return (await appFolder.CheckExistsAsync(StorageService.OldSettingsFileName) == ExistenceCheckResult.FileExists);
+            return await appFolder.CheckExistsAsync(StorageService.OldSettingsFileName) == ExistenceCheckResult.FileExists;
         }
 
         public async Task ReadOldSettings()
@@ -423,10 +419,7 @@ namespace IndiaRose.Services
             if (parent != null)
             {
                 Category category = parent as Category;
-                if (category != null)
-                {
-                    category.Children.Add(result);
-                }
+                category?.Children.Add(result);
             }
             else
             {

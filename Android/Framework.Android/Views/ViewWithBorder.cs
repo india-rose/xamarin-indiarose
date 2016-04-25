@@ -14,10 +14,7 @@ namespace IndiaRose.Framework.Views
     /// </summary>
     public class ViewWithBorder : View
     {
-        protected static ISettingsService SettingsService
-        {
-            get { return LazyResolver<ISettingsService>.Service; }
-        }
+        protected static ISettingsService SettingsService => LazyResolver<ISettingsService>.Service;
 
         private Color _borderColor;
         private Color _backgroundColor;

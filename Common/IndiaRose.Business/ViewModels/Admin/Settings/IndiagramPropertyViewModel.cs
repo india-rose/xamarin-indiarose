@@ -22,10 +22,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
     {
         #region Services
 
-        protected IFontService FontService
-        {
-            get { return LazyResolver<IFontService>.Service; }
-        }
+        protected IFontService FontService => LazyResolver<IFontService>.Service;
 
         #endregion
 

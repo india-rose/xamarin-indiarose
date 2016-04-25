@@ -15,15 +15,9 @@ namespace IndiaRose.Business.ViewModels
     /// </summary>
 	public abstract class AbstractViewModel : ViewModelBase
 	{
-        protected IMessageDialogService MessageDialogService
-        {
-            get { return LazyResolver<IMessageDialogService>.Service; }
-        }
+        protected IMessageDialogService MessageDialogService => LazyResolver<IMessageDialogService>.Service;
 
-		protected ILocalizationService LocalizationService
-		{
-			get { return LazyResolver<ILocalizationService>.Service; }
-		}
+        protected ILocalizationService LocalizationService => LazyResolver<ILocalizationService>.Service;
 
         public ICommand CloseDialogCommand { get; private set; }
 		public ICommand BackCommand { get; private set; }

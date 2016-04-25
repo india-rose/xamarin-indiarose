@@ -22,12 +22,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 		public ICommand CameraCommand { get; private set; }
 		public ICommand GalleryCommand { get; private set; }
 
-		public IMediaService MediaService
-		{
-			get { return LazyResolver<IMediaService>.Service; }
-		}
+		public IMediaService MediaService => LazyResolver<IMediaService>.Service;
 
-		public ImageChoiceViewModel()
+        public ImageChoiceViewModel()
 		{
 			CameraCommand = new DelegateCommand(CameraAction);
 			GalleryCommand = new DelegateCommand(GalleryAction);

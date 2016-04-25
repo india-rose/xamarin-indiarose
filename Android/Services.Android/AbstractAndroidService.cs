@@ -16,20 +16,14 @@ namespace IndiaRose.Services.Android
         /// <summary>
         /// Service sur les Activités Android
         /// </summary>
-		protected IActivityService ActivityService
-		{
-			get { return LazyResolver<IActivityService>.Service; }
-		}
+		protected IActivityService ActivityService => LazyResolver<IActivityService>.Service;
 
         /// <summary>
         /// Activité courante
         /// </summary>
-		protected Activity CurrentActivity
-		{
-			get { return ActivityService.CurrentActivity; }
-		}
+		protected Activity CurrentActivity => ActivityService.CurrentActivity;
 
-		private readonly Semaphore _semaphore = new Semaphore(0, 1);
+        private readonly Semaphore _semaphore = new Semaphore(0, 1);
 
 		public async Task InitializeAsync()
 		{

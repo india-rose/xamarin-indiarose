@@ -19,12 +19,9 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection.Dialogs
 		private Indiagram _indiagramContainer;
 		private bool _isRecording;
 
-		public IMediaService MediaService
-		{
-			get { return LazyResolver<IMediaService>.Service; }
-		}
+		public IMediaService MediaService => LazyResolver<IMediaService>.Service;
 
-		public ICommand CloseCommand { get; private set; }
+        public ICommand CloseCommand { get; private set; }
 		public ICommand RecordCommand { get; private set; }
 		public ICommand StopCommand { get; private set; }
 

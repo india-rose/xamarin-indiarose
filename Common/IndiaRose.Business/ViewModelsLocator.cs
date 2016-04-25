@@ -66,155 +66,77 @@ namespace IndiaRose.Business
 
 		#region ViewModels : /Admin
 
-		public HomeViewModel AdminHomeViewModel
-		{
-			get { return _container.Resolve<HomeViewModel>(); }
-		}
+		public HomeViewModel AdminHomeViewModel => _container.Resolve<HomeViewModel>();
 
-		public InstallVoiceSynthesisViewModel AdminInstallTextToSpeechViewModel
-		{
-			get { return _container.Resolve<InstallVoiceSynthesisViewModel>(); }
-		}
+        public InstallVoiceSynthesisViewModel AdminInstallTextToSpeechViewModel => _container.Resolve<InstallVoiceSynthesisViewModel>();
 
-		public CreditsViewModel AdminCreditsViewModel
-		{
-			get { return _container.Resolve<CreditsViewModel>(); }
-		}
+        public CreditsViewModel AdminCreditsViewModel => _container.Resolve<CreditsViewModel>();
 
-		public ServerSynchronizationViewModel AdminServerSynchronizationViewModel
-		{
-			get { return _container.Resolve<ServerSynchronizationViewModel>(); }
-		}
+        public ServerSynchronizationViewModel AdminServerSynchronizationViewModel => _container.Resolve<ServerSynchronizationViewModel>();
 
-	    public MailErrorViewModel AdminMailErrorViewModel
-	    {
-            get { return _container.Resolve<MailErrorViewModel>(); }
-	    }
+        public MailErrorViewModel AdminMailErrorViewModel => _container.Resolve<MailErrorViewModel>();
 
-		#endregion
+        #endregion
 
 		#region ViewModels : /Admin/Settings
 
-		public SettingsListViewModel AdminSettingsAppSettingsViewModel
-		{
-			get { return _container.Resolve<SettingsListViewModel>(); }
-		}
+		public SettingsListViewModel AdminSettingsAppSettingsViewModel => _container.Resolve<SettingsListViewModel>();
 
-		public ApplicationLookViewModel AdminSettingsApplicationLookViewModel
-		{
-			get { return _container.Resolve<ApplicationLookViewModel>(); }
-		}
+        public ApplicationLookViewModel AdminSettingsApplicationLookViewModel => _container.Resolve<ApplicationLookViewModel>();
 
-		public IndiagramPropertyViewModel AdminSettingsIndiagramPropertyViewModel
-		{
-			get { return _container.Resolve<IndiagramPropertyViewModel>(); }
-		}
+        public IndiagramPropertyViewModel AdminSettingsIndiagramPropertyViewModel => _container.Resolve<IndiagramPropertyViewModel>();
 
-		#endregion
+        #endregion
 
         #region ViewModels : /Admin/Settings/Dialogs
 
-        public ColorPickerViewModel AdminSettingsDialogsColorPickerViewModel
-		{
-			get { return _container.Resolve<ColorPickerViewModel>(); }
-		}
+        public ColorPickerViewModel AdminSettingsDialogsColorPickerViewModel => _container.Resolve<ColorPickerViewModel>();
 
-		public DragAndDropViewModel AdminSettingsDialogsDragAndDropViewModel
-		{
-			get { return _container.Resolve<DragAndDropViewModel>(); }
-		}
+        public DragAndDropViewModel AdminSettingsDialogsDragAndDropViewModel => _container.Resolve<DragAndDropViewModel>();
 
-		public ReadingDelayViewModel AdminSettingsDialogsReadingDelayViewModel
-		{
-			get { return _container.Resolve<ReadingDelayViewModel>(); }
-		}
-        public ResetSettingsViewModel AdminSettingsDialogsResetSettingsViewModel
-        {
-            get { return _container.Resolve<ResetSettingsViewModel>(); }
-        }
+        public ReadingDelayViewModel AdminSettingsDialogsReadingDelayViewModel => _container.Resolve<ReadingDelayViewModel>();
 
-		public CategoryReadingViewModel AdminSettingsDialogsCategoryReadingViewModel
-		{
-			get { return _container.Resolve<CategoryReadingViewModel>(); }
-		}
+        public ResetSettingsViewModel AdminSettingsDialogsResetSettingsViewModel => _container.Resolve<ResetSettingsViewModel>();
 
-		#endregion
+        public CategoryReadingViewModel AdminSettingsDialogsCategoryReadingViewModel => _container.Resolve<CategoryReadingViewModel>();
+
+        #endregion
 
         #region ViewModels : /Admin/Collection
 
-        public CollectionManagementViewModel AdminCollectionManagementViewModel
-        {
-            get { return _container.Resolve<CollectionManagementViewModel>(); }
-        }
+        public CollectionManagementViewModel AdminCollectionManagementViewModel => _container.Resolve<CollectionManagementViewModel>();
 
-	    public AddIndiagramViewModel AdminCollectionAddIndiagramViewModel
-	    {
-            get { return _container.Resolve<AddIndiagramViewModel>(); }
-	    }
+        public AddIndiagramViewModel AdminCollectionAddIndiagramViewModel => _container.Resolve<AddIndiagramViewModel>();
 
-	    public WatchIndiagramViewModel AdminCollectionWatchIndiagramViewModel
-	    {
-            get { return _container.Resolve<WatchIndiagramViewModel>(); }
-	    }
+        public WatchIndiagramViewModel AdminCollectionWatchIndiagramViewModel => _container.Resolve<WatchIndiagramViewModel>();
 
         #endregion
 
         #region ViewModels : /Admin/Collection/Dialogs
 
-		public ChooseCategoryViewModel AdminCollectionDialogsChooseCategoryViewModel
-		{
-			get { return _container.Resolve<ChooseCategoryViewModel>(); }
-		}
+		public ChooseCategoryViewModel AdminCollectionDialogsChooseCategoryViewModel => _container.Resolve<ChooseCategoryViewModel>();
 
-		public ExploreCollectionCategoryViewModel AdminCollectionDialogsExploreCollectionCategoryViewModel
-	    {
-            get { return _container.Resolve<ExploreCollectionCategoryViewModel>(); }
-	    }
+        public ExploreCollectionCategoryViewModel AdminCollectionDialogsExploreCollectionCategoryViewModel => _container.Resolve<ExploreCollectionCategoryViewModel>();
 
-		public ExploreCollectionIndiagramViewModel AdminCollectionDialogsExploreCollectionIndiagramViewModel
-		{
-			get { return _container.Resolve<ExploreCollectionIndiagramViewModel>(); }
-		}
+        public ExploreCollectionIndiagramViewModel AdminCollectionDialogsExploreCollectionIndiagramViewModel => _container.Resolve<ExploreCollectionIndiagramViewModel>();
 
-	    public ImageChoiceViewModel AdminCollectionDialogsImageChoiceViewModel
-	    {
-            get { return _container.Resolve<ImageChoiceViewModel>(); }
-	    }
+        public ImageChoiceViewModel AdminCollectionDialogsImageChoiceViewModel => _container.Resolve<ImageChoiceViewModel>();
 
-        public SoundChoiceViewModel AdminCollectionDialogsSoundChoiceViewModel
-        {
-            get { return _container.Resolve<SoundChoiceViewModel>(); }
-        }
+        public SoundChoiceViewModel AdminCollectionDialogsSoundChoiceViewModel => _container.Resolve<SoundChoiceViewModel>();
 
-        public RecordSoundViewModel AdminCollectionDialogsRecordSoundViewModel
-        {
-            get { return _container.Resolve<RecordSoundViewModel>(); }
-        }
+        public RecordSoundViewModel AdminCollectionDialogsRecordSoundViewModel => _container.Resolve<RecordSoundViewModel>();
 
-		public SelectCategoryActionViewModel AdminCollectionDialogsSelectCategoryActionViewModel
-        {
-            get { return _container.Resolve<SelectCategoryActionViewModel>(); }
-        }
-		public DeleteIndiagramWarningViewModel AdminCollectionDialogsDeleteIndiagramWarningViewModel
-        {
-            get { return _container.Resolve<DeleteIndiagramWarningViewModel>(); }
-        }
-		public DeleteCategoryWarningViewModel AdminCollectionDialogsDeleteCategoryWarningViewModel
-        {
-            get { return _container.Resolve<DeleteCategoryWarningViewModel>(); }
-        }
+        public SelectCategoryActionViewModel AdminCollectionDialogsSelectCategoryActionViewModel => _container.Resolve<SelectCategoryActionViewModel>();
+        public DeleteIndiagramWarningViewModel AdminCollectionDialogsDeleteIndiagramWarningViewModel => _container.Resolve<DeleteIndiagramWarningViewModel>();
+        public DeleteCategoryWarningViewModel AdminCollectionDialogsDeleteCategoryWarningViewModel => _container.Resolve<DeleteCategoryWarningViewModel>();
 
-		public DeleteCategoryConfirmationViewModel AdminCollectionDialogsDeleteCategoryConfirmationViewModel
-		{
-			get { return _container.Resolve<DeleteCategoryConfirmationViewModel>(); }
-		}
+        public DeleteCategoryConfirmationViewModel AdminCollectionDialogsDeleteCategoryConfirmationViewModel => _container.Resolve<DeleteCategoryConfirmationViewModel>();
+
         #endregion
 
         #region ViewModels : /User
-        public UserViewModel UserHomeViewModel
-        {
-			get { return _container.Resolve<UserViewModel>(); }
-        }
+        public UserViewModel UserHomeViewModel => _container.Resolve<UserViewModel>();
+
         #endregion
     }
 }

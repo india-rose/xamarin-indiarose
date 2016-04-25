@@ -30,25 +30,14 @@ namespace IndiaRose.Business.ViewModels.Admin.Collection
         private Indiagram _beforeIndiagram;
 
         #region Services
-        public IPopupService PopupService
-        {
-            get { return LazyResolver<IPopupService>.Service; }
-        }
+        public IPopupService PopupService => LazyResolver<IPopupService>.Service;
 
-        public ICopyPasteService CopyPasteService
-        {
-            get { return LazyResolver<ICopyPasteService>.Service; }
-        }
+        public ICopyPasteService CopyPasteService => LazyResolver<ICopyPasteService>.Service;
 
-        public ITextToSpeechService TtsService
-        {
-            get { return LazyResolver<ITextToSpeechService>.Service; }
-        }
+        public ITextToSpeechService TtsService => LazyResolver<ITextToSpeechService>.Service;
 
-        public IMediaService MediaService
-        {
-            get { return LazyResolver<IMediaService>.Service; }
-        }
+        public IMediaService MediaService => LazyResolver<IMediaService>.Service;
+
         #endregion
 
         #region Command

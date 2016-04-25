@@ -39,7 +39,7 @@ namespace IndiaRose.Framework.Converters
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             uint input = (uint) value;
-            return string.Format("#{0:X8}", input);
+            return $"#{input:X8}";
         }
     }
 }

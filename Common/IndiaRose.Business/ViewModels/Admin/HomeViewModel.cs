@@ -21,35 +21,17 @@ namespace IndiaRose.Business.ViewModels.Admin
 
         #region Services
 
-        protected IEmailService EmailService
-        {
-            get { return LazyResolver<IEmailService>.Service; }
-        }
+        protected IEmailService EmailService => LazyResolver<IEmailService>.Service;
 
-        protected IResourceService ResourceService
-        {
-            get { return LazyResolver<IResourceService>.Service; }
-        }
+        protected IResourceService ResourceService => LazyResolver<IResourceService>.Service;
 
-        protected ILocalizationService LocalizationService
-        {
-            get { return LazyResolver<ILocalizationService>.Service; }
-        }
+        protected ILocalizationService LocalizationService => LazyResolver<ILocalizationService>.Service;
 
-        protected IMessageDialogService MessageDialogService
-        {
-            get { return LazyResolver<IMessageDialogService>.Service; }
-        }
+        protected IMessageDialogService MessageDialogService => LazyResolver<IMessageDialogService>.Service;
 
-        protected ICollectionStorageService CollectionStorageService
-        {
-            get { return LazyResolver<ICollectionStorageService>.Service; }
-        }
+        protected ICollectionStorageService CollectionStorageService => LazyResolver<ICollectionStorageService>.Service;
 
-        protected IXmlService XmlService
-        {
-            get { return LazyResolver<IXmlService>.Service; }
-        }
+        protected IXmlService XmlService => LazyResolver<IXmlService>.Service;
 
         #endregion
 

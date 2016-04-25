@@ -155,7 +155,7 @@ namespace IndiaRose.Framework.Views
             {
                 TextColor = 0,
                 Id = _viewId++,
-                Indiagram = new Indiagram()
+                Indiagram = new Indiagram
                 {
                     Text = "play",
                     ImagePath = LazyResolver<IStorageService>.Service.ImagePlayButtonPath
@@ -260,7 +260,7 @@ namespace IndiaRose.Framework.Views
             if (e.Event.ActionMasked == MotionEventActions.Down)
             {
                 IndiagramView view = sender as IndiagramView;
-                if (view != null && view.Indiagram != null && IndiagramSelectedCommand != null)
+                if (view?.Indiagram != null && IndiagramSelectedCommand != null)
                 {
                     IndiagramUIModel param = _indiagrams.FirstOrDefault(x => Indiagram.AreSameIndiagram(x.Model, view.Indiagram));
                     if (param != null && IndiagramSelectedCommand.CanExecute(param))

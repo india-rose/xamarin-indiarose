@@ -120,9 +120,9 @@ namespace IndiaRose.Services
             switch (type)
             {
                 case StorageType.Image:
-                    return Path.Combine(ImagePath, string.Format("Image_{0}.{1}", Guid.NewGuid(), extension));
+                    return Path.Combine(ImagePath, $"Image_{Guid.NewGuid()}.{extension}");
                 case StorageType.Sound:
-                    return Path.Combine(SoundPath, string.Format("Sound_{0}.{1}", Guid.NewGuid(), extension));
+                    return Path.Combine(SoundPath, $"Sound_{Guid.NewGuid()}.{extension}");
             }
             throw new Exception("GenerateFilename : Type mismatch");
         }
