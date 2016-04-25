@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              XmlStyle="{Resource VerticalLinearLayoutStyle}">
+
+  <!--
+  <Resources>
+    <DataTemplate Key="SpinnerDataTemplate">
+      <LinearLayout XmlStyle="{Resource SpinnerItemLayoutStyle}">
+        <TextView XmlStyle="{Resource SpinnerItemTextStyle}"
+				          text="{Binding Converter={Resource StringFormatConverter}, ConverterParameter='{0}%'}" />
+      </LinearLayout>
+    </DataTemplate>
+   </Resources> -->
+  
+  <CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
+            Text="DRAG AND DROP"
+            Checked="{Binding DragAndDrop, Mode=TwoWay, UpdateEvent=CheckedChange}"
+            />
+
+  <CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
+            Checked="{Binding CategoryReading, Mode=TwoWay, UpdateEvent=CheckedChange}"
+						Text="CATEGORY READING"
+						/>
+
+  <CheckBox XmlStyle="{Resource FormCheckBoxStyle}"
+            Checked="{Binding BackButtonActivated, Mode=TwoWay, UpdateEvent=CheckedChange}"
+            Text="BACK BUTTON ACTIVATED (CAPS LOCK FTW)"
+            />
+  
+  <!--Checked="{Binding MultipleIndiagramSelection, Mode=TwoWay, UpdateEvent=CheckedChange}"-->
+
+  
+  <!--
+  <BindableSpinner XmlStyle="{Resource SpinnerStyle}"
+			             adapter="{Binding ZoneHeightCollection, Template={Resource SpinnerDataTemplate}}"
+			             currentItem="{Binding CurrentSize, Mode=TwoWay, UpdateEvent=CurrentItemChanged}" /> -->
+  
+</LinearLayout>

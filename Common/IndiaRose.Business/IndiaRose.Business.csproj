@@ -66,6 +66,7 @@
     <Compile Include="ViewModels\Admin\MailErrorViewModel.cs" />
     <Compile Include="ViewModels\Admin\ServerSynchronizationViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\AbstractSettingsViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Settings\AppBehaviorViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\ApplicationLookViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\Dialogs\AbstractYesNoViewModel.cs" />
     <Compile Include="ViewModels\Admin\Settings\Dialogs\CategoryReadingViewModel.cs" />
