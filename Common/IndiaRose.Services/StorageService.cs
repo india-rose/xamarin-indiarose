@@ -13,7 +13,6 @@ using PCLStorage;
 using Storm.Mvvm.Extensions;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
-using Android.Util;
 
 #endregion
 
@@ -26,6 +25,7 @@ namespace IndiaRose.Services
         private const string STORAGE_IMAGE_NAME = "image";
         private const string STORAGE_SOUND_NAME = "sound";
         private const string STORAGE_SETTINGS_NAME = "settings.json";
+        private const string STORAGE_OLD_SETTINGS_NAME = "settings.xml";
         private const string STORAGE_APP_NAME = "app";
         private const string STORAGE_CORRECTION_IMAGE = "correction.png";
         private const string STORAGE_NEXTARROW_IMAGE = "nextarrow.png";
@@ -35,70 +35,38 @@ namespace IndiaRose.Services
 
         private IHashAlgorithmProvider _hasher;
 
-        public string AppPath
-        {
-            get { return Path.Combine(RootPath, STORAGE_APP_NAME); }
-        }
+        public string AppPath => Path.Combine(RootPath, STORAGE_APP_NAME);
 
-        public string ImageCorrectionPath
-        {
-            get { return Path.Combine(AppPath, STORAGE_CORRECTION_IMAGE); }
-        }
+        public string ImageCorrectionPath => Path.Combine(AppPath, STORAGE_CORRECTION_IMAGE);
 
-        public string ImageRootPath
-        {
-            get { return Path.Combine(AppPath, STORAGE_ROOT_IMAGE); }
-        }
+        public string ImageRootPath => Path.Combine(AppPath, STORAGE_ROOT_IMAGE);
 
-        public string ImagePlayButtonPath
-        {
-            get { return Path.Combine(AppPath, STORAGE_PLAYBUTTON_IMAGE); }
-        }
+        public string ImagePlayButtonPath => Path.Combine(AppPath, STORAGE_PLAYBUTTON_IMAGE);
 
-        public string ImageNextArrowPath
-        {
-            get { return Path.Combine(AppPath, STORAGE_NEXTARROW_IMAGE); }
-        }
+        public string ImageNextArrowPath => Path.Combine(AppPath, STORAGE_NEXTARROW_IMAGE);
 
         public StorageService(string rootStorageDirectory)
         {
             _storageDirectory = rootStorageDirectory;
         }
 
-        public string DatabasePath
-        {
-            get { return Path.Combine(RootPath, STORAGE_DATABASE_NAME); }
-        }
+        public string DatabasePath => Path.Combine(RootPath, STORAGE_DATABASE_NAME);
 
-        public string SettingsFolderPath
-        {
-            get { return RootPath; }
-        }
+        public string SettingsFolderPath => RootPath;
 
-        public string SettingsFileName
-        {
-            get { return STORAGE_SETTINGS_NAME; }
-        }
+        public string SettingsFileName => STORAGE_SETTINGS_NAME;
 
-        public string SettingsFilePath
-        {
-            get { return Path.Combine(SettingsFolderPath, SettingsFileName); }
-        }
+        public string OldSettingsFileName => STORAGE_OLD_SETTINGS_NAME;
 
-        public string RootPath
-        {
-            get { return Path.Combine(_storageDirectory, STORAGE_DIRECTORY_NAME); }
-        }
+        public string SettingsFilePath => Path.Combine(SettingsFolderPath, SettingsFileName);
 
-        public string ImagePath
-        {
-            get { return Path.Combine(RootPath, STORAGE_IMAGE_NAME); }
-        }
+        public string OldSettingsFilePath => Path.Combine(AppPath, OldSettingsFileName);
 
-        public string SoundPath
-        {
-            get { return Path.Combine(RootPath, STORAGE_SOUND_NAME); }
-        }
+        public string RootPath => Path.Combine(_storageDirectory, STORAGE_DIRECTORY_NAME);
+
+        public string ImagePath => Path.Combine(RootPath, STORAGE_IMAGE_NAME);
+
+        public string SoundPath => Path.Combine(RootPath, STORAGE_SOUND_NAME);
 
         public async Task InitializeAsync()
         {
@@ -218,22 +186,18 @@ namespace IndiaRose.Services
                     if (file.Name == STORAGE_CORRECTION_IMAGE)
                     {
                         LazyResolver<IResourceService>.Service.Copy(STORAGE_CORRECTION_IMAGE, ImageCorrectionPath);
-                        Log.WriteLine(LogPriority.Info, "HomeMade", "Copy " + STORAGE_CORRECTION_IMAGE);
                     }
                     else if (file.Name == STORAGE_PLAYBUTTON_IMAGE)
                     {
                         LazyResolver<IResourceService>.Service.Copy(STORAGE_PLAYBUTTON_IMAGE, ImagePlayButtonPath);
-                        Log.WriteLine(LogPriority.Info, "HomeMade", "Copy " + STORAGE_PLAYBUTTON_IMAGE);
                     }
                     else if (file.Name == STORAGE_NEXTARROW_IMAGE)
                     {
                         LazyResolver<IResourceService>.Service.Copy(STORAGE_NEXTARROW_IMAGE, ImageNextArrowPath);
-                        Log.WriteLine(LogPriority.Info, "HomeMade", "Copy " + STORAGE_NEXTARROW_IMAGE);
                     }
                     else if (file.Name == STORAGE_ROOT_IMAGE)
                     {
                         LazyResolver<IResourceService>.Service.Copy(STORAGE_ROOT_IMAGE, ImageRootPath);
-                        Log.WriteLine(LogPriority.Info, "HomeMade", "Copy " + STORAGE_ROOT_IMAGE);
                     }
                 }
             }

@@ -17,21 +17,17 @@ namespace IndiaRose.Services
 
 		#region Services
 
-		protected ILoggerService LoggerService
-		{
-			get { return LazyResolver<ILoggerService>.Service; }
-		}
+		protected ILoggerService LoggerService => LazyResolver<ILoggerService>.Service;
 
-		protected IStorageService StorageService
-		{
-			get { return LazyResolver<IStorageService>.Service; }
-		}
+	    protected IStorageService StorageService => LazyResolver<IStorageService>.Service;
 
-		#endregion
+	    protected IXmlService XmlService => LazyResolver<IXmlService>.Service;
 
-		#region Properties backing fields
+	    #endregion
 
-		private string _topBackgroundColor;
+        #region Properties backing fields
+
+        private string _topBackgroundColor;
 		private string _bottomBackgroundColor;
 		private int _selectionAreaHeight;
 		private int _indiagramDisplaySize;
@@ -156,11 +152,6 @@ namespace IndiaRose.Services
 		{
 			_hasChanged = true;
 		}
-
-        protected IXmlService XmlService
-        {
-            get { return LazyResolver<IXmlService>.Service; }
-        }
 
         public async Task SaveAsync()
 		{

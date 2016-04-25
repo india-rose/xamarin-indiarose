@@ -34,12 +34,20 @@ namespace IndiaRose.Interfaces
         /// <summary>
         /// Nom du fichier des settings
         /// </summary>
-		string SettingsFileName { get; }
+        string SettingsFileName { get; }
+        /// <summary>
+        /// Nom du fichier des settings (ancienne version)
+        /// </summary>
+		string OldSettingsFileName { get; }
 
         /// <summary>
         /// Chemin d'accès vers le fichier des settings
         /// </summary>
 		string SettingsFilePath { get; }
+        /// <summary>
+        /// Chemin d'accès vers le fichier des settings (ancienne version)
+        /// </summary>
+        string OldSettingsFilePath { get; }
 
         /// <summary>
         /// Chemin de l'application

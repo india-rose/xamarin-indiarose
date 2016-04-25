@@ -132,11 +132,10 @@ namespace IndiaRose.Services.Android
 		{
 			if (indiagram.HasCustomSound)
 			{
-				string word;
+				string word="";
 				if (_registeredSounds.ContainsKey(indiagram.SoundPath))
 				{
 					word = _registeredSounds[indiagram.SoundPath];
-                    _speakerSpeech.AddSpeech(word, indiagram.SoundPath);
                 }
 				else
 				{
@@ -144,15 +143,14 @@ namespace IndiaRose.Services.Android
 					{
 						word = Guid.NewGuid().ToString();
 						_registeredSounds.Add(indiagram.SoundPath, word);
-						_speakerSpeech.AddSpeech(word, indiagram.SoundPath);
 					}
 					else
 					{
 						//TODO : log issue
-						word = "e";
 					}
-				}
-				PlayText(word);
+                }
+			    _speakerSpeech?.AddSpeech(word, indiagram.SoundPath);
+			    PlayText(word);
 			}
 			else
 			{
