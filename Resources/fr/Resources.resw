@@ -247,7 +247,7 @@
     <value>Deux modes de sélection sont disponibles, Touch (vous touchez juste un indiagram et il sera ajouté à la phrase) ou Glisser-Déposer (vous devez glisser l'indiagram depuis la zone du haut dans la bande phrase pour l'ajouter)</value>
   </data>
   <data name="DragAndDrop_Title.Text" xml:space="preserve">
-    <value>Voulez vous utiliser le Glisser-Déposer ?</value>
+    <value>Activer le Glisser-Déposer</value>
   </data>
   <data name="ReadingDelay_Explanation.Text" xml:space="preserve">
     <value>Modifier le délai entre la lecture de deux mots d'une phrase</value>
@@ -546,5 +546,8 @@ Commentaires : </value>
   </data>
   <data name="AppSettings_AppBehaviour.Text" xml:space="preserve">
     <value>Propriétés de l'application</value>
+  </data>
+  <data name="BackButton_Activated.Text" xml:space="preserve">
+    <value>Activer le bouton retour</value>
   </data>
 </root>

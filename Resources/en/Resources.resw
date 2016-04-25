@@ -247,7 +247,7 @@
     <value>Two modes are available to select indiagrams, Point and Click (just touch the indiagram and it will be added to the sentence) or Drag and drop (you need to drag indiagram from the browsing area and drop it in the sentence area)</value>
   </data>
   <data name="DragAndDrop_Title.Text" xml:space="preserve">
-    <value>Do you want to use the drag and drop ?</value>
+    <value>Use the drag and drop</value>
   </data>
   <data name="ReadingDelay_Explanation.Text" xml:space="preserve">
     <value>Modify the delay between two words</value>
@@ -262,7 +262,7 @@
     <value>If you activate this option, the categories will be read by the application when selected.</value>
   </data>
   <data name="CategoryReading_Title.Text" xml:space="preserve">
-    <value>Play sound associated with the category when selected?</value>
+    <value>Play sound associated with the category when selected</value>
   </data>
   <data name="RadioButton_Off.Text" xml:space="preserve">
     <value>Disabled</value>
@@ -545,5 +545,8 @@ Comments : </value>
   </data>
   <data name="AppSettings_AppBehaviour.Text" xml:space="preserve">
     <value>Application properties</value>
+  </data>
+  <data name="BackButton_Activated.Text" xml:space="preserve">
+    <value>Use the back button</value>
   </data>
 </root>

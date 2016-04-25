@@ -183,6 +183,12 @@
 	       android:layout_height="1dip"
 	       android:background="#090909" />
 
+  <Style Key="SeekBarStyle"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="5dp"
+         android:layout_marginBottom="5dp"/>
+
 	<!-- tbd -->
 
 	<!--<Style Key="Ok_Back_Container"

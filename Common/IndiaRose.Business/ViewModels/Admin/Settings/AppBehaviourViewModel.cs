@@ -50,7 +50,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
             {
                 if (SetProperty(ref _sliderValue, value))
                 {
-                    Delay = value / 10.0f;
+                    Delay = (value+10) / 10.0f;
                 }
             }
         }
@@ -67,7 +67,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
 
         private void OkClicked()
         {
-            Debug.WriteLine("Drag&drop = " + DragAndDrop + " CategoryReading = " + CategoryReading + " BackButtonActivated = " + BackButtonActivated + " Delay/SliderValue = " + Delay + " / " + SliderValue);
+            //Debug.WriteLine("Drag&drop = " + DragAndDrop + " CategoryReading = " + CategoryReading + " BackButtonActivated = " + BackButtonActivated + " Delay/SliderValue = " + Delay + " / " + SliderValue);
         }
 
         private void CancelClicked()

@@ -84,13 +84,13 @@
 
 
 	<Style Key="OrangeButtonStyle"
-		   XmlStyle="{Resource BaseSimpleButtonStyle}"
+		     XmlStyle="{Resource BaseSimpleButtonStyle}"
 	       android:background="@drawable/buttonorange" />
 	<Style Key="PinkButtonStyle"
-		   XmlStyle="{Resource BaseSimpleButtonStyle}"
+		     XmlStyle="{Resource BaseSimpleButtonStyle}"
 	       android:background="@drawable/buttonpink" />
 	<Style Key="RedButtonStyle"
-		   XmlStyle="{Resource BaseSimpleButtonStyle}"
+		     XmlStyle="{Resource BaseSimpleButtonStyle}"
 	       android:background="@drawable/buttonred" />
 	<Style Key="PurpleButtonStyle"
 	       XmlStyle="{Resource BaseSimpleButtonStyle}"
