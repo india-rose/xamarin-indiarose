@@ -206,3 +206,5 @@ XamarinActionBarSherlock-*
 Strings.xml
 strings.xml
 Components/
+
+project.lock.json
