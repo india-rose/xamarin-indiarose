@@ -198,7 +198,7 @@ namespace IndiaRose.Business.ViewModels.User
         /// </summary>
         private void CollectionBackCategoryAction()
         {
-            if (_navigationStack.Count > 1)
+            if (_navigationStack.Count > 1 && !_isCorrectionModeEnabled)
             {
                 PopCategory();
             }
