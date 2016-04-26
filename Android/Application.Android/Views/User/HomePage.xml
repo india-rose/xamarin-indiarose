@@ -7,7 +7,7 @@
 	              android:id="TitleBar"
                 BackCategoryCommand="{Binding CollectionBackCategoryCommand}"
                 ParentCategory="{Binding ParentCategory}"
-	              Category="{Binding CurrentCategory}" />
+	              Category="{Binding CurrentCategory}"/>
 	
 
 	<UserView XmlStyle="{Resource MatchLayoutStyle}"

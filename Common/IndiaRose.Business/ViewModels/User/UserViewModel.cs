@@ -64,6 +64,9 @@ namespace IndiaRose.Business.ViewModels.User
 			}
 		}
 
+        /// <summary>
+        /// Catégorie Parente
+        /// </summary>
         public Category ParentCategory
         {
             get { return _parentCategory; }
@@ -198,7 +201,7 @@ namespace IndiaRose.Business.ViewModels.User
         /// </summary>
         private void CollectionBackCategoryAction()
         {
-            if (_navigationStack.Count > 1 && !_isCorrectionModeEnabled)
+            if (_navigationStack.Count > 1)
             {
                 PopCategory();
             }
@@ -208,13 +211,13 @@ namespace IndiaRose.Business.ViewModels.User
         /// Push une catégorie sur la pile de navigation, reset l'offset d'affichage et change la catégorie courante
         /// </summary>
 		private void PushCategory(Category category)
-		{
+        {
 			_navigationStack.Push(category);
-			CollectionOffset = 0;
+            CollectionOffset = 0;
             ParentCategory = CurrentCategory;
             CurrentCategory = category;
 		}
-		
+
         /// <summary>
         /// Pop une catégorie de la stack, reset l'offset d'affichage et change la catégorie courante
         /// </summary>
@@ -227,10 +230,9 @@ namespace IndiaRose.Business.ViewModels.User
 			}
             _navigationStack.Pop();
 			CollectionOffset = 0;
-            if (_navigationStack.Count == 1)
-                ParentCategory = new Category();
-            else
-                ParentCategory = _navigationStack.ElementAt(_navigationStack.Count - 1);
+            if (_isCorrectionModeEnabled)
+                IsCorrectionModeEnabled = !IsCorrectionModeEnabled;
+            ParentCategory = _navigationStack.Count == 1 ? new Category() : _navigationStack.ElementAt(_navigationStack.Count - 1);
             CurrentCategory = _navigationStack.Peek();
 
             return true;
