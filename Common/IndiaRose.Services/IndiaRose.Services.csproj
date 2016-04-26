@@ -109,8 +109,9 @@
     <Reference Include="SharpCompress">
       <HintPath>..\..\packages\p3-sharpcompress.0.10.5.2\lib\portable-net4+sl5+wp8+wp8.1+win8\SharpCompress.dll</HintPath>
     </Reference>
-    <Reference Include="Storm.Mvvm, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\packages\Storm.Mvvm.1.2.10\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
+    <Reference Include="Storm.Mvvm, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Storm.Mvvm.1.2.11\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Validation, Version=2.2.0.0, Culture=neutral, PublicKeyToken=2fc06f0d701809a7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Validation.2.2.8\lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Validation.dll</HintPath>
