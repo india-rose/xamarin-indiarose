@@ -114,7 +114,10 @@ namespace IndiaRose.Services
             {
                 res.Copy(STORAGE_ROOT_IMAGE, ImageRootPath);
             }
-
+            if (await appFolder.CheckExistsAsync(STORAGE_BACK_IMAGE) == ExistenceCheckResult.NotFound)
+            {
+                res.Copy(STORAGE_BACK_IMAGE, ImageBackPath);
+            }
             CheckAssetsAsync();
         }
 

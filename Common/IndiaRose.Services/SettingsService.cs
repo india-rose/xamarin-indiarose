@@ -224,7 +224,7 @@ namespace IndiaRose.Services
 			TimeOfSilenceBetweenWords = model.TimeOfSilenceBetweenWords;
 			ReinforcerColor = model.ReinforcerColor;
 		    TextColor = model.TextColor;
-		    IsBackCategoryEnabled = IsBackCategoryEnabled;
+		    IsBackCategoryEnabled = model.IsBackCategoryEnabled;
 
 
             IsLoaded = true;
