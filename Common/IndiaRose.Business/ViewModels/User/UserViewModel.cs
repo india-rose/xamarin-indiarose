@@ -231,7 +231,10 @@ namespace IndiaRose.Business.ViewModels.User
             _navigationStack.Pop();
 			CollectionOffset = 0;
             if (_isCorrectionModeEnabled)
+            {
                 IsCorrectionModeEnabled = !IsCorrectionModeEnabled;
+                SentenceIndiagrams.Clear();
+            }
             ParentCategory = _navigationStack.Count == 1 ? new Category() : _navigationStack.ElementAt(_navigationStack.Count - 1);
             CurrentCategory = _navigationStack.Peek();
 
