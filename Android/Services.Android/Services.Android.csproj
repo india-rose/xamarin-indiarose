@@ -81,6 +81,10 @@
       <HintPath>..\..\packages\PCLCrypto.2.0.147\lib\MonoAndroid23\PCLCrypto.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Storm.Mvvm, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Storm.Mvvm.1.2.11\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Storm.Mvvm.Android.Support, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Storm.Mvvm.Android.Support.1.2.21\lib\MonoAndroid22\Storm.Mvvm.Android.Support.dll</HintPath>
       <Private>True</Private>
@@ -94,9 +98,6 @@
     </Reference>
     <Reference Include="SQLite.Net.Platform.XamarinAndroid">
       <HintPath>..\..\packages\SQLite.Net-PCL.3.0.5\lib\MonoAndroid\SQLite.Net.Platform.XamarinAndroid.dll</HintPath>
-    </Reference>
-    <Reference Include="Storm.Mvvm, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\packages\Storm.Mvvm.1.2.10\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Storm.Mvvm.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Android.Support.v4.23.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll</HintPath>
