@@ -351,6 +351,7 @@ namespace IndiaRose.Services
                 SettingService.IsBackHomeAfterSelectionEnabled = true;
                 SettingService.IsMultipleIndiagramSelectionEnabled = false;
                 SettingService.TextColor = "#FFFFFFFF";
+                SettingService.IsBackCategoryEnabled = Convert.ToBoolean("true");
                 //have to be modified every time a feature is added
 
                 await SettingService.SaveAsync();
