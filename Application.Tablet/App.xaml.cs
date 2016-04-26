@@ -20,7 +20,7 @@ namespace Application.Tablet
     /// <summary>
     /// Fournit un comportement spécifique à l'application afin de compléter la classe Application par défaut.
     /// </summary>
-    sealed partial class App : Application
+    sealed partial class App 
     {
         /// <summary>
         /// Initialise l'objet d'application de singleton.  Il s'agit de la première ligne du code créé
