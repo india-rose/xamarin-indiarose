@@ -6,7 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvvm="using:Storm.Mvvm"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=AdminSettingsAppSettingsViewModel}">
 
     <Grid VerticalAlignment="Stretch" Background="White">
         <Grid.ColumnDefinitions>
@@ -23,23 +24,33 @@
         </Grid.RowDefinitions>
 
         <Button Style="{StaticResource BigBlueButton}" 
-                Grid.Row="1" Grid.Column="0" >
+                Grid.Row="1" Grid.Column="0"
+                Command="{Binding ApplicationLookCommand}">
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="AppSettings_Background"/>
         </Button>
 
         <Button Style="{StaticResource BigPinkButton}"
-                Grid.Row="1" Grid.Column="2">
+                Grid.Row="1" Grid.Column="2"
+                Command="{Binding IndiagramPropertyCommand}">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="AppSettings_Indiagram"/>
         </Button>
 
         <Button Style="{StaticResource BigGreenButton}"
-                Grid.Row="2" Grid.Column="0">
+                Grid.Row="2" Grid.Column="0"
+                 Command="{Binding AppBehaviourCommand}">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="AppSettings_AppBehaviour"/>
         </Button>
 
         <Button Style="{StaticResource BigRedButton}"
-                Grid.Row="2" Grid.Column="2">
+                Grid.Row="2" Grid.Column="2"
+                Command="{Binding ResetSettingsCommand}">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="AppSettings_Reset"/>
+        </Button>
+
+        <Button Style="{StaticResource BigOrangeButton}"
+                Grid.Row="3" Grid.Column="1"
+                Command="{Binding BackCommand}">
+            <TextBlock Style="{StaticResource TextButton}" x:Uid="BackButton"/>
         </Button>
 
     </Grid>
