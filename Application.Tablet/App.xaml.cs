@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Globalization;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -14,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Application.Tablet.CompositionRoot;
 
 namespace Application.Tablet
 {
@@ -39,12 +41,7 @@ namespace Application.Tablet
         /// <param name="e">Détails concernant la requête et le processus de lancement.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-#if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                this.DebugSettings.EnableFrameRateCounter = true;
-            }
-#endif
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Ne répétez pas l'initialisation de l'application lorsque la fenêtre comporte déjà du contenu,
@@ -52,7 +49,11 @@ namespace Application.Tablet
             if (rootFrame == null)
             {
                 // Créez un Frame utilisable comme contexte de navigation et naviguez jusqu'à la première page
-                rootFrame = new Frame();
+                rootFrame = new Frame
+                {
+                    // Définir la page par défaut
+                    Language = ApplicationLanguages.Languages[0]
+                };
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
@@ -64,6 +65,7 @@ namespace Application.Tablet
                 // Placez le frame dans la fenêtre active
                 Window.Current.Content = rootFrame;
             }
+           // Bootstrap.Initialize(rootFrame);
 
             if (e.PrelaunchActivated == false)
             {
@@ -72,7 +74,8 @@ namespace Application.Tablet
                     // Quand la pile de navigation n'est pas restaurée, accédez à la première page,
                     // puis configurez la nouvelle page en transmettant les informations requises en tant que
                     // paramètre
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    var target = typeof(Views.Admin.MainPage) ;
+                    rootFrame.Navigate(target, e.Arguments);
                 }
                 // Vérifiez que la fenêtre actuelle est active
                 Window.Current.Activate();
