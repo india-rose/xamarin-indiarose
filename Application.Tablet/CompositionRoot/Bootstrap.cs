@@ -24,6 +24,7 @@ namespace Application.Tablet.CompositionRoot
                 {ViewKey.ADMIN_SETTINGS_INDIAGRAMPROPERTIES, typeof(IndiagramPropertyPage) },
                 {ViewKey.ADMIN_SETTINGS_HOME, typeof(AppSettingsPage) },
                 {ViewKey.ADMIN_INSTALLVOICE_SYNTHESIS, typeof(InstallTextToSpeechPage) },
+                {ViewKey.ADMIN_SETTINGS_APPBEHAVIOUR, typeof(AppBehaviourPage) }
             };
 
 			var dialogs = new Dictionary<string, Type>

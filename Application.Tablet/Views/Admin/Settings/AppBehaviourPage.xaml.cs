@@ -20,9 +20,9 @@ namespace Application.Tablet.Views.Admin.Settings
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
-    public sealed partial class AppBehaviour
+    public sealed partial class AppBehaviourPage
     {
-        public AppBehaviour()
+        public AppBehaviourPage()
         {
             this.InitializeComponent();
         }
