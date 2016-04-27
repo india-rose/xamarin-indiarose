@@ -5,6 +5,7 @@
     xmlns:local="using:Application.Tablet"
     xmlns:business="using:IndiaRose.Business"
     xmlns:converters="using:Storm.Mvvm.Converters"
+    xmlns:conv="using:Framework.Tablet.Converters"
     RequestedTheme="Light">
 
     <Application.Resources>
@@ -13,6 +14,19 @@
             
             <!-- Converter-->
             <converters:StringFormatConverter x:Key="StringFormatConverter"/>
+            <conv:TopAreaSizeToBottomAreaSizeConverter x:Key="TopAreaSizeToBottomAreaSizeConverter"/>
+            <conv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <conv:IndiaSizeToReinforcerSizeConverter x:Key="IndiaSizeToReinforcerSizeConverter"/>
+            <conv:ParentCategoryTextConverter x:Key="ParentCategoryConverter"
+		                                        Uid="Collection_RootCategoryName"
+		                                        Property="Text" />
+            <conv:DefaultLocalizedStringIfNullConverter x:Key="DefaultLocalizedStringIfNullConverter"
+                                                          Uid="Collection_NoSound"
+		                                                  Property="Text"/>
+            <conv:BooleanToColumnSpanConverter x:Key="BooleanToColumnSpanConverter"/>
+            <conv:IndiaSizeToMarginSize x:Key="IndiaSizeToMarginSize"/>
+            <conv:ColorStringToIntConverter x:Key="ColorStringToIntConverter"/>
+            <conv:ColorStringToSolidColorBrushConverter x:Key="ColorStringToSolidColorBrushConverter"/>
             
             <!--Button Style-->
             <Style x:Key="ImageButtonStyle" TargetType="Button">

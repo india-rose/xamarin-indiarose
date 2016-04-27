@@ -5,6 +5,8 @@
     "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "Newtonsoft.Json": "7.0.1",
+    "PCLCrypto": "2.0.147",
+    "PCLStorage": "1.0.2",
     "Storm.Mvvm": "1.2.11",
     "Storm.Mvvm.UWP": "1.2.11"
   },

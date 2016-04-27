@@ -139,11 +139,14 @@
       <Link>Resources\fr\Resources.resw</Link>
     </PRIResource>
     <None Include="Application.Tablet_TemporaryKey.pfx" />
+    <None Include="Assets\indiagrams.zip" />
     <None Include="Assets\manuel.pdf" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\back.png" />
     <Content Include="Assets\chat.png" />
+    <Content Include="Assets\correction.png" />
     <Content Include="Assets\nextarrow.png" />
     <Content Include="Assets\playbutton.png" />
     <Content Include="Assets\root.png" />
