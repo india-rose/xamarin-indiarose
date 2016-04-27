@@ -223,6 +223,16 @@
                 <Setter Property="FontStyle" Value="Italic"/>
             </Style>
 
+            <!--Custom Style-->
+            <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="10,0,10,0"/>
+            </Style>
+            <Style x:Key="CheckBoxStyle" TargetType="CheckBox">
+                <Setter Property="Margin" Value="10,0,0,0"></Setter>
+            </Style>
+
             <!--Popup Style-->
             <Style x:Key="PopupTitleStyle" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="30"/>
