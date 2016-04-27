@@ -73,7 +73,7 @@ namespace Application.Tablet
                     // Quand la pile de navigation n'est pas restaurée, accédez à la première page,
                     // puis configurez la nouvelle page en transmettant les informations requises en tant que
                     // paramètre
-                    var target = typeof(Views.Admin.Settings.ApplicationLookPage);
+                    var target = typeof(Views.Admin.InstallTextToSpeechPage);
                     rootFrame.Navigate(target, e.Arguments);
                 }
                 // Vérifiez que la fenêtre actuelle est active
