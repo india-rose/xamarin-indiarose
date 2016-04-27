@@ -9,7 +9,6 @@ using Windows.UI.Xaml.Navigation;
 using IndiaRose.Application.CompositionRoot;
 using IndiaRose.Application.Views;
 using IndiaRose.Application.Views.User;
-using IndiaRose.Framework.Converters;
 
 // Pour plus d'informations sur le modèle Application vide, consultez la page http://go.microsoft.com/fwlink/?LinkId=234227
 
