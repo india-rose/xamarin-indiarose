@@ -23,6 +23,13 @@
             <RowDefinition Height="10*"></RowDefinition>
         </Grid.RowDefinitions>
 
+        <!--Todo replace with logo-->
+        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" 
+                   Margin="50,10,50,10"
+                   Text="IndiaRoses"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="40"/>
+        
         <Button Style="{StaticResource BigBlueButton}" 
                 Grid.Row="1" Grid.Column="0" >
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="Home_AppSettings"/>
@@ -52,6 +59,11 @@
                 Grid.Row="3" Grid.Column="2">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_Credits"/>
         </Button>
-        
+
+        <HyperlinkButton Style="{StaticResource LinkStyle}"
+            Grid.Row="4" Grid.Column="3"
+            NavigateUri="http://indiarose.org">indiarose.org
+        </HyperlinkButton>
+
     </Grid>
 </mvvm:MvvmPage>
