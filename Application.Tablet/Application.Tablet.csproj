@@ -127,10 +127,15 @@
       <Link>Resources\fr\Resources.resw</Link>
     </PRIResource>
     <None Include="Application.Tablet_TemporaryKey.pfx" />
+    <None Include="Assets\manuel.pdf" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\chat.png" />
+    <Content Include="Assets\nextarrow.png" />
+    <Content Include="Assets\playbutton.png" />
+    <Content Include="Assets\root.png" />
+    <Content Include="Assets\tab.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
