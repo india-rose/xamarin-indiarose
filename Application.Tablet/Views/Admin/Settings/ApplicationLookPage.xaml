@@ -23,7 +23,7 @@
             <ColumnDefinition Width="5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <ScrollViewer Grid.Column="1" Grid.Row="1">
+        <ScrollViewer Grid.Column="1" Grid.Row="1" VerticalScrollBarVisibility="Hidden">
             <StackPanel VerticalAlignment="Center">
                 <TextBlock Style="{StaticResource TextStyle}" x:Uid="ApplicationLook_AreaSize"
                            HorizontalAlignment="Center"/>
