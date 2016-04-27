@@ -126,6 +126,26 @@
                 <Setter Property="FontWeight" Value="ExtraLight"/>
                 <Setter Property="Foreground" Value="Black"/>
             </Style>
+            <Style x:Key="TextStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="RoyalBlue"/>
+                <Setter Property="FontSize" Value="35"/>
+                <Setter Property="FontWeight" Value="Light"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="TextWrapping" Value="Wrap"/>
+            </Style>
+            <Style x:Key="ItalicTextStyle" TargetType="TextBlock" BasedOn="{StaticResource TextStyle}">
+                <Setter Property="FontStyle" Value="Italic"/>
+            </Style>
+            
+            <!--Custom Style-->
+            <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="10,0,10,0"/>
+            </Style>
+            <Style x:Key="CheckBoxStyle" TargetType="CheckBox">
+                <Setter Property="Margin" Value="10,0,0,0"></Setter>
+            </Style>
             
         </ResourceDictionary>
      </Application.Resources>
