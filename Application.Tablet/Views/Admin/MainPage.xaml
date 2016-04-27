@@ -48,12 +48,14 @@
         </Button>
 
         <Button Style="{StaticResource BigPinkButton}"
-                Grid.Row="2" Grid.Column="2">
+                Grid.Row="2" Grid.Column="2"
+                Command="{Binding HelpCommand}">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_Help"/>
         </Button>
 
         <Button Style="{StaticResource BigRedButton}"
-                Grid.Row="3" Grid.Column="0">
+                Grid.Row="3" Grid.Column="0"
+                Command="{Binding ContactCommand}">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_Contact"/>
         </Button>
         

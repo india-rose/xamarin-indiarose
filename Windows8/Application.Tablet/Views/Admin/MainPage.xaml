@@ -36,7 +36,7 @@
         </Button>
         
         <Button Style="{StaticResource BigGreenButton}"
-                 Command="{Binding CollectionManagementCommand}"
+                Command="{Binding CollectionManagementCommand}"
                 Grid.Row="1" Grid.Column="2">
             <TextBlock  Style="{StaticResource TextButton}" x:Uid="Home_CollectionManagement"/>
         </Button>
