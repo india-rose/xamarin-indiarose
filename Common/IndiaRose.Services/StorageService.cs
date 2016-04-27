@@ -118,7 +118,10 @@ namespace IndiaRose.Services
             {
                 res.Copy(STORAGE_BACK_IMAGE, ImageBackPath);
             }
+
+#if __ANDROID__
             CheckAssetsAsync();
+#endif
         }
 
         public string GenerateFilename(StorageType type, string extension)
@@ -156,7 +159,7 @@ namespace IndiaRose.Services
             listFile.ForEach(x => x.DeleteAsync());
         }
 
-        #region Ajouts Martin pour correction https://github.com/india-rose/xamarin-indiarose/issues/2
+#region Ajouts Martin pour correction https://github.com/india-rose/xamarin-indiarose/issues/2
         /* Permet de changer les assets lors du passage à la dernière version
          * On compare donc les fichiers présents dans le dossier IndiaRose/app et avec les assets
          * Pour chaque fichier, on récupère le stream correspondant, qu'on lie, puis qu'on hash en SHA1
@@ -230,6 +233,6 @@ namespace IndiaRose.Services
             }
             return str;
         }
-        #endregion
+#endregion
     }
 }

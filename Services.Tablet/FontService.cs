@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using IndiaRose.Interfaces;
-//using SharpDX.DirectWrite;
+using SharpDX.DirectWrite;
 
 namespace IndiaRose.Services
 {
@@ -21,9 +21,9 @@ namespace IndiaRose.Services
 		private Dictionary<string, string> LoadFonts()
 		{
 			Dictionary<string, string> result = new Dictionary<string, string>();
-            result.Add("toto", "toto");
+            //result.Add("toto", "toto");
 
-			/*var factory = new Factory();
+			var factory = new Factory();
 			var fontCollection = factory.GetSystemFontCollection(false);
 			var familyCount = fontCollection.FontFamilyCount;
 
@@ -39,7 +39,7 @@ namespace IndiaRose.Services
 				}
 				string name = familyNames.GetString(index);
 				result.Add(name, name);
-			}*/
+			}
 
 
 			return result;
