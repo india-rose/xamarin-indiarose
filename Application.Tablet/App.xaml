@@ -3,12 +3,17 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Application.Tablet"
+    xmlns:business="using:IndiaRose.Business"
+    xmlns:converters="using:Storm.Mvvm.Converters"
     RequestedTheme="Light">
 
     <Application.Resources>
         <ResourceDictionary>
-
-
+            <business:ViewModelsLocator x:Key="Locator"/>
+            
+            <!-- Converter-->
+            <converters:StringFormatConverter x:Key="StringFormatConverter"/>
+            
             <!--Button Style-->
             <Style x:Key="ImageButtonStyle" TargetType="Button">
                 <Setter Property="VerticalAlignment" Value="Stretch"/>
