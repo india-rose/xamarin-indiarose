@@ -22,8 +22,45 @@
             <RowDefinition Height="30*"></RowDefinition>
             <RowDefinition Height="10*"></RowDefinition>
         </Grid.RowDefinitions>
-        
-        <TextBlock></TextBlock>
+
+        <TextBlock
+            VerticalAlignment="Center"
+            Style="{StaticResource TextStyle}"
+            x:Uid="TTS_Ivona"
+            Grid.Column="1"
+            Grid.Row="1"/>
+
+        <TextBlock
+            VerticalAlignment="Center"
+            Style="{StaticResource TextStyle}"
+            x:Uid="TTS_LangPack"
+            Grid.Column="1"
+            Grid.Row="2"/>
+
+        <TextBlock
+            VerticalAlignment="Center"
+            Style="{StaticResource TextStyle}"
+            x:Uid="TTS_Choose"
+            Grid.Column="1"
+            Grid.Row="3"/>
+
+        <Button Style="{StaticResource RedButton}"
+                Grid.Column="2"
+                Grid.Row="1">
+            <TextBlock x:Uid="TTS_1"/>
+        </Button>
+
+        <Button Style="{StaticResource BlueButton}"
+                Grid.Column="2"
+                Grid.Row="2">
+            <TextBlock x:Uid="TTS_2"/>
+        </Button>
+
+        <Button Style="{StaticResource PurpleButton}"
+                Grid.Column="2"
+                Grid.Row="3">
+            <TextBlock x:Uid="TTS_3"/>
+        </Button>
     </Grid>
     
 </mvvm:MvvmPage>
