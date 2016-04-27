@@ -118,6 +118,9 @@
     <Compile Include="Views\Admin\Settings\IndiagramPropertyPage.xaml.cs">
       <DependentUpon>IndiagramPropertyPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dialogs\ResetSettingsDialog.xaml.cs">
+      <DependentUpon>ResetSettingsDialog.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -179,9 +182,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Dialogs\ResetSettingsDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Dialogs\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>

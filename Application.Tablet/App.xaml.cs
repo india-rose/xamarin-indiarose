@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Application.Tablet.CompositionRoot;
 
 namespace Application.Tablet
 {
@@ -64,7 +65,7 @@ namespace Application.Tablet
                 // Placez le frame dans la fenêtre active
                 Window.Current.Content = rootFrame;
             }
-            //Bootstrap.Initialize(rootFrame);
+            Bootstrap.Initialize(rootFrame);
 
             if (e.PrelaunchActivated == false)
             {
@@ -73,7 +74,7 @@ namespace Application.Tablet
                     // Quand la pile de navigation n'est pas restaurée, accédez à la première page,
                     // puis configurez la nouvelle page en transmettant les informations requises en tant que
                     // paramètre
-                    var target = typeof(Views.Admin.InstallTextToSpeechPage);
+                    var target = typeof(Views.Admin.MainPage);
                     rootFrame.Navigate(target, e.Arguments);
                 }
                 // Vérifiez que la fenêtre actuelle est active
