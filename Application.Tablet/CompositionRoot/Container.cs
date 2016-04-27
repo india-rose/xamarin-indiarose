@@ -12,37 +12,37 @@ namespace Application.Tablet.CompositionRoot
 {
 	class Container : WindowsContainer
 	{
-		/*private StorageService _storageService;
-		private ISettingsService _settingsService;
+        private ISettingsService _settingsService;
+        /*private StorageService _storageService;
 		private ICollectionStorageService _collectionStorageService;*/
 
-		protected override void Initialize(Frame rootFrame, Dictionary<string, Type> views, Dictionary<string, Type> dialogs)
+        protected override void Initialize(Frame rootFrame, Dictionary<string, Type> views, Dictionary<string, Type> dialogs)
 		{
 			base.Initialize(rootFrame, views, dialogs);
+            _settingsService = new SettingsService();
 
-			/*_storageService = new StorageService(FileSystem.Current.LocalStorage.Path);
-			_settingsService = new SettingsService();
+            /*_storageService = new StorageService(FileSystem.Current.LocalStorage.Path);
 			_collectionStorageService = new SqliteCollectionStorageService(new SQLitePlatformWinRT());*/
 
             RegisterInstance<INavigationService>(new NavigationService(rootFrame,views));
-			/*RegisterInstance<IEmailService>(new EmailService());
+            RegisterInstance<ISettingsService>(_settingsService);
+            RegisterInstance<IScreenService>(new ScreenService());
+            RegisterInstance<IFontService>(new FontService());
+            /*RegisterInstance<IEmailService>(new EmailService());
 			RegisterInstance<IResourceService>(new ResourceService());
 			RegisterInstance<IEmailService>(new EmailService());
 			//RegisterInstance<IInstallVoiceSynthesisService>(new InstallVoiceSynthesisService());
-			RegisterInstance<IScreenService>(new ScreenService());
-			RegisterInstance<IFontService>(new FontService());
             RegisterInstance<IMediaService>(new MediaService());
             RegisterInstance<IPopupService>(new PopupService());
             RegisterInstance<ICopyPasteService>(new CopyPasteService());
             RegisterInstance<ITextToSpeechService>(new TextToSpeechService());
 
 			RegisterInstance<IStorageService>(_storageService);
-            RegisterInstance<ISettingsService>(_settingsService);
 			RegisterInstance<IXmlService>(new XmlService());
 			RegisterInstance<ICollectionStorageService>(_collectionStorageService);*/
 
-			//InitializeAsync();
-		}
+            //InitializeAsync();
+        }
 
 		/*protected async void InitializeAsync()
         {

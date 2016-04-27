@@ -107,6 +107,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FontService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenService.cs" />
     <EmbeddedResource Include="Properties\Services.Tablet.rd.xml" />
