@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     xmlns:mvvm="using:Storm.Mvvm"
     PopupHeight="300"
-    >
+    DataContext="{Binding Source={StaticResource Locator}, Path=AdminSettingsDialogsResetSettingsViewModel}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -29,6 +29,9 @@
                    Style="{StaticResource PopupTitleStyle}"
                    x:Uid="ResetSettings_Title"/>
 
+        <TextBlock Grid.Row="1"   Grid.Column="1"
+                   Style="{StaticResource PopupContentStyle}"
+                   x:Uid="ResetSettings_Explanation"/>
 
         <Button Style="{StaticResource SmallButton}" 
                 Grid.Row="3" 
@@ -41,7 +44,8 @@
         <Button Style="{StaticResource SmallButton}" 
                 Grid.Row="3" 
                 Grid.Column="2"
-                Grid.ColumnSpan="2">
+                Grid.ColumnSpan="2"
+                Command="{Binding BackCommand}">
             <TextBlock Style="{StaticResource TextButton}" 
                        x:Uid="Button_Cancel" />
         </Button>
