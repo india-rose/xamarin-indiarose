@@ -69,6 +69,9 @@
             <Style x:Key="BigButton" BasedOn="{StaticResource Button}" TargetType="Button">
                 <Setter Property="Grid.ColumnSpan" Value="2"/>
             </Style>
+            <Style x:Key="SmallButton" BasedOn="{StaticResource Button}" TargetType="Button">
+                <Setter Property="Grid.ColumnSpan" Value="1"/>
+            </Style>
 
             <Style x:Key="TextButton" TargetType="TextBlock">
                 <Setter Property="VerticalAlignment" Value="Center"/>
@@ -77,6 +80,25 @@
                 <Setter Property="TextWrapping" Value="Wrap"/>
             </Style>
 
+            <!--Normal Color Button-->
+            <Style x:Key="OrangeButton" BasedOn="{StaticResource SmallButton}" TargetType="Button">
+                <Setter Property="Background" Value="OrangeRed"/>
+            </Style>
+            <Style x:Key="GreenButton" BasedOn="{StaticResource SmallButton}" TargetType="Button">
+                <Setter Property="Background" Value="ForestGreen"/>
+            </Style>
+            <Style x:Key="PurpleButton" BasedOn="{StaticResource SmallButton}" TargetType="Button">
+                <Setter Property="Background" Value="Purple"/>
+            </Style>
+            <Style x:Key="BlueButton" BasedOn="{StaticResource SmallButton}" TargetType="Button">
+                <Setter Property="Background" Value="DodgerBlue"/>
+            </Style>
+            <Style x:Key="PinkButton" BasedOn="{StaticResource SmallButton}" TargetType="Button">
+                <Setter Property="Background" Value="DeepPink"/>
+            </Style>
+            <Style x:Key="RedButton" BasedOn="{StaticResource SmallButton}" TargetType="Button">
+                <Setter Property="Background" Value="Red"/>
+            </Style>
             <!--Big button Style-->
             <Style x:Key="BigOrangeButton" BasedOn="{StaticResource BigButton}" TargetType="Button">
                 <Setter Property="Background" Value="OrangeRed"/>

@@ -24,22 +24,22 @@
 
         <Button Style="{StaticResource BigBlueButton}" 
                 Grid.Row="1" Grid.Column="0" >
-            <TextBlock  Style="{StaticResource TextButton}" x:Uid="Home_AppSettings"/>
+            <TextBlock  Style="{StaticResource TextButton}" x:Uid="AppSettings_Background"/>
         </Button>
 
         <Button Style="{StaticResource BigPinkButton}"
                 Grid.Row="1" Grid.Column="2">
-            <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_Help"/>
+            <TextBlock Style="{StaticResource TextButton}" x:Uid="AppSettings_Indiagram"/>
         </Button>
 
         <Button Style="{StaticResource BigGreenButton}"
                 Grid.Row="2" Grid.Column="0">
-            <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_CollectionManagement"/>
+            <TextBlock Style="{StaticResource TextButton}" x:Uid="AppSettings_AppBehaviour"/>
         </Button>
 
         <Button Style="{StaticResource BigRedButton}"
                 Grid.Row="2" Grid.Column="2">
-            <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_Contact"/>
+            <TextBlock Style="{StaticResource TextButton}" x:Uid="AppSettings_Reset"/>
         </Button>
 
     </Grid>
