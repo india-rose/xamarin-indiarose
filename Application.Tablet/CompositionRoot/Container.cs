@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 using IndiaRose.Interfaces;
 using IndiaRose.Services;
+using IndiaRose.Storage.Sqlite;
 using PCLStorage;
 using Services.Tablet;
 using Storm.Mvvm.Inject;
 using Storm.Mvvm.Services;
-//using SQLite.Net.Platform.WinRT;
+using SQLite.Net.Platform.WinRT;
 
 namespace Application.Tablet.CompositionRoot
 {
@@ -23,7 +24,7 @@ namespace Application.Tablet.CompositionRoot
             _settingsService = new SettingsService();
 
             _storageService = new StorageService(FileSystem.Current.LocalStorage.Path);
-		   // _collectionStorageService = new SqliteCollectionStorageService(new SQLitePlatformWinRT());*/
+		    //_collectionStorageService = new SqliteCollectionStorageService(new SQLitePlatformWinRT());
 
             RegisterInstance<INavigationService>(new NavigationService(rootFrame,views));
             RegisterInstance<ISettingsService>(_settingsService);
@@ -40,7 +41,7 @@ namespace Application.Tablet.CompositionRoot
 
 			RegisterInstance<IStorageService>(_storageService);
 			RegisterInstance<IXmlService>(new XmlService());
-			RegisterInstance<ICollectionStorageService>(_collectionStorageService);
+			//RegisterInstance<ICollectionStorageService>(_collectionStorageService);
 
             InitializeAsync();
         }
