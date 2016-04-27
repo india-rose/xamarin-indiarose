@@ -562,7 +562,4 @@ Commentaires : </value>
   <data name="ResetSettings_Explanation.Text" xml:space="preserve">
     <value>Ceci réinitilisera vos paramètres.\nVotre collection NE sera PAS modifié</value>
   </data>
-  <data name="ResetSettings_Explanation_Win.Text" xml:space="preserve">
-    <value>Ceci réinitilisera vos paramètres.\r\nVotre collection NE sera PAS modifié</value>
-  </data>
 </root>
