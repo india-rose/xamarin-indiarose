@@ -126,6 +126,14 @@
                 <Setter Property="FontWeight" Value="ExtraLight"/>
                 <Setter Property="Foreground" Value="Black"/>
             </Style>
+            <Style x:Key="TextStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="RoyalBlue"/>
+                <Setter Property="FontSize" Value="35"/>
+                <Setter Property="FontWeight" Value="Light"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="TextWrapping" Value="Wrap"/>
+            </Style>
+            
             
         </ResourceDictionary>
      </Application.Resources>

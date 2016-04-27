@@ -97,8 +97,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CompositionRoot\Bootstrap.cs" />
-    <Compile Include="CompositionRoot\Container.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -127,9 +125,14 @@
       <Link>Resources\fr\Resources.resw</Link>
     </PRIResource>
     <None Include="Application.Tablet_TemporaryKey.pfx" />
+    <Content Include="Assets\manuel.pdf" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\nextarrow.png" />
+    <Content Include="Assets\playbutton.png" />
+    <Content Include="Assets\root.png" />
+    <Content Include="Assets\tab.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -191,6 +194,18 @@
     <ProjectReference Include="..\Common\IndiaRose.Services\IndiaRose.Services.csproj">
       <Project>{d5e65cc0-2f09-47fc-aa26-74fc9e43de01}</Project>
       <Name>IndiaRose.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\IndiaRose.Storage.Sqlite\IndiaRose.Storage.Sqlite.csproj">
+      <Project>{7264f4cf-e626-4069-b5a1-87d1d51eb3d9}</Project>
+      <Name>IndiaRose.Storage.Sqlite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework.Tablet\Framework.Tablet.csproj">
+      <Project>{4dbcf32b-032d-4064-a43a-d008c6f9df11}</Project>
+      <Name>Framework.Tablet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services.Tablet\Services.Tablet.csproj">
+      <Project>{0fe305c6-f7a3-46ad-bc5b-1d3c89757793}</Project>
+      <Name>Services.Tablet</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

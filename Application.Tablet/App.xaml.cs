@@ -15,7 +15,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Application.Tablet.CompositionRoot;
 
 namespace Application.Tablet
 {
@@ -65,7 +64,7 @@ namespace Application.Tablet
                 // Placez le frame dans la fenêtre active
                 Window.Current.Content = rootFrame;
             }
-           // Bootstrap.Initialize(rootFrame);
+            //Bootstrap.Initialize(rootFrame);
 
             if (e.PrelaunchActivated == false)
             {
