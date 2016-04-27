@@ -106,6 +106,9 @@
     <Compile Include="Views\Admin\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admin\Settings\AppBehaviour.xaml.cs">
+      <DependentUpon>AppBehaviour.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\Settings\AppSettingsPage.xaml.cs">
       <DependentUpon>AppSettingsPage.xaml</DependentUpon>
     </Compile>
@@ -148,6 +151,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Admin\Settings\AppBehaviour.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Admin\Settings\AppSettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -177,6 +184,14 @@
     <ProjectReference Include="..\Common\IndiaRose.Services\IndiaRose.Services.csproj">
       <Project>{d5e65cc0-2f09-47fc-aa26-74fc9e43de01}</Project>
       <Name>IndiaRose.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework.Tablet\Framework.Tablet.csproj">
+      <Project>{4dbcf32b-032d-4064-a43a-d008c6f9df11}</Project>
+      <Name>Framework.Tablet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services.Tablet\Services.Tablet.csproj">
+      <Project>{0fe305c6-f7a3-46ad-bc5b-1d3c89757793}</Project>
+      <Name>Services.Tablet</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

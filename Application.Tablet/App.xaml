@@ -3,11 +3,15 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Application.Tablet"
+    xmlns:converters="using:Storm.Mvvm.Converters"
+    xmlns:business="using:IndiaRose.Business"
     RequestedTheme="Light">
 
     <Application.Resources>
         <ResourceDictionary>
-            
+            <business:ViewModelsLocator x:Key="Locator"/>
+            <!--Converter-->
+            <converters:StringFormatConverter x:Key="StringFormatConverter"/>
             <!-- Button Style -->
             <Style x:Key="Button" TargetType="Button">
                 <Setter Property="Foreground" Value="White"/>
@@ -66,6 +70,9 @@
                     </Setter>
             </Style>
 
+            <Style x:Key="SmallButton" BasedOn="{StaticResource Button}" TargetType="Button">
+                <Setter Property="Grid.ColumnSpan" Value="1"/>
+            </Style>
             <Style x:Key="BigButton" BasedOn="{StaticResource Button}" TargetType="Button">
                 <Setter Property="Grid.ColumnSpan" Value="2"/>
             </Style>
@@ -77,6 +84,13 @@
                 <Setter Property="TextWrapping" Value="Wrap"/>
             </Style>
 
+            <!--Normal Color Button-->
+            <Style x:Key="OrangeButton" BasedOn="{StaticResource SmallButton}" TargetType="Button">
+                <Setter Property="Background" Value="OrangeRed"/>
+            </Style>
+            <Style x:Key="GreenButton" BasedOn="{StaticResource SmallButton}" TargetType="Button">
+                <Setter Property="Background" Value="ForestGreen"/>
+            </Style>
             <!--Big button Style-->
             <Style x:Key="BigOrangeButton" BasedOn="{StaticResource BigButton}" TargetType="Button">
                 <Setter Property="Background" Value="OrangeRed"/>
@@ -104,7 +118,24 @@
                 <Setter Property="FontWeight" Value="ExtraLight"/>
                 <Setter Property="Foreground" Value="Black"/>
             </Style>
-            
+            <Style x:Key="TextStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="RoyalBlue"/>
+                <Setter Property="FontSize" Value="35"/>
+                <Setter Property="FontWeight" Value="Light"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="TextWrapping" Value="Wrap"/>
+            </Style>
+            <Style x:Key="SmallTextStyle" TargetType="TextBlock" BasedOn="{StaticResource TextStyle}">
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+
+            <!--Popup Style-->
+            <Style x:Key="PopupValueStyle" TargetType="TextBlock" BasedOn="{StaticResource SmallTextStyle}">
+                <Setter Property="Grid.ColumnSpan" Value="2"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
         </ResourceDictionary>
      </Application.Resources>
 
