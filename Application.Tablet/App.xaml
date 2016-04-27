@@ -97,6 +97,14 @@
                 <Setter Property="Background" Value="Red"/>
             </Style>
 
+            <!--Text Style-->
+            <Style x:Key="LinkStyle" TargetType="HyperlinkButton">
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="FontWeight" Value="ExtraLight"/>
+                <Setter Property="Foreground" Value="Black"/>
+            </Style>
+            
         </ResourceDictionary>
      </Application.Resources>
 
