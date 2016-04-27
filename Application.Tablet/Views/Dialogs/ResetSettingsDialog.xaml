@@ -31,7 +31,7 @@
 
         <TextBlock Grid.Row="1"   Grid.Column="1"
                    Style="{StaticResource PopupContentStyle}"
-                   x:Uid="ResetSettings_Explanation"/>
+                   x:Uid="ResetSettings_Explanation_Win"/>
 
         <Button Style="{StaticResource SmallButton}" 
                 Grid.Row="3" 
@@ -45,7 +45,7 @@
                 Grid.Row="3" 
                 Grid.Column="2"
                 Grid.ColumnSpan="2"
-                Command="{Binding BackCommand}">
+                 Command="{Binding CloseDialogCommand}">
             <TextBlock Style="{StaticResource TextButton}" 
                        x:Uid="Button_Cancel" />
         </Button>
