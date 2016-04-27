@@ -8,7 +8,7 @@
     xmlns:mvvm="using:Storm.Mvvm"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminSettingsIndiagramPropertyViewModel}">
-
+    
     <Grid VerticalAlignment="Stretch" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"></ColumnDefinition>
@@ -28,25 +28,19 @@
                       VerticalScrollBarVisibility="Hidden">
             <StackPanel>
                 <TextBlock Style="{StaticResource TextStyle}" x:Uid="IndiagramProperty_IndiagramSize"/>
-                <ComboBox Style="{StaticResource ComboBoxStyle}">
-                    <ComboBoxItem IsSelected="True">Value 1</ComboBoxItem>
-                    <ComboBoxItem>Value 2</ComboBoxItem>
-                    <ComboBoxItem>Value 3</ComboBoxItem>
-                </ComboBox>
+                <ComboBox Style="{StaticResource ComboBoxStyle}"
+                          ItemsSource="{Binding IndiagramSizes}"
+                          SelectedItem="{Binding IndiagramSize, Mode=TwoWay}"/>
 
                 <TextBlock Style="{StaticResource TextStyle}" x:Uid="IndiagramProperty_FontFamily"/>
-                <ComboBox Style="{StaticResource ComboBoxStyle}">
-                    <ComboBoxItem IsSelected="True">Value 1</ComboBoxItem>
-                    <ComboBoxItem>Value 2</ComboBoxItem>
-                    <ComboBoxItem>Value 3</ComboBoxItem>
-                </ComboBox>
+                <ComboBox Style="{StaticResource ComboBoxStyle}"
+                          ItemsSource="{Binding FontNames}"
+                          SelectedItem="{Binding FontName}"/>
 
-                <TextBlock Style="{StaticResource TextStyle}" x:Uid="IndiagramProperty_FontSize"/>
-                <ComboBox Style="{StaticResource ComboBoxStyle}">
-                    <ComboBoxItem IsSelected="True">Value 1</ComboBoxItem>
-                    <ComboBoxItem>Value 2</ComboBoxItem>
-                    <ComboBoxItem>Value 3</ComboBoxItem>
-                </ComboBox>
+                    <TextBlock Style="{StaticResource TextStyle}" x:Uid="IndiagramProperty_FontSize"/>
+                <ComboBox Style="{StaticResource ComboBoxStyle}"
+                          ItemsSource="{Binding FontSizes}"
+                          SelectedItem="{Binding FontSize, Mode=TwoWay}"/>
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextStyle}" x:Uid="IndiagramProperty_TextColorLabel"/>
@@ -60,11 +54,13 @@
                     <TextBlock Style="{StaticResource TextButton}" x:Uid="IndiagramProperty_ChangeTextColor"/>
                 </Button>
 
-                <CheckBox Style="{StaticResource CheckBoxStyle}">
+                <CheckBox Style="{StaticResource CheckBoxStyle}"
+                          IsChecked="{Binding BackAfterSelection, Mode=TwoWay}">
                     <TextBlock x:Uid="IndiagramProperty_BackHomeAfterPicking"/>
                 </CheckBox>
 
-                <CheckBox Style="{StaticResource CheckBoxStyle}">
+                <CheckBox Style="{StaticResource CheckBoxStyle}"
+                          IsChecked="{Binding MultipleIndiagramSelection, Mode=TwoWay}">
                     <TextBlock x:Uid="IndiagramProperty_MultipleIndiagramSelection"/>
                 </CheckBox>
 
@@ -73,12 +69,18 @@
 
         <!-- Right Column -->
         <StackPanel Grid.Column="2" Grid.Row="1" VerticalAlignment="Center">
-            <Image Source="/Assets/chat.png"
-                   VerticalAlignment="Top"
-                   HorizontalAlignment="Center"
-                   Height="200"
-                   Width="200"/>
-            <CheckBox Style="{StaticResource CheckBoxStyle}">
+            <Border BorderThickness="5"
+                    BorderBrush="Blue"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    Height="200"
+                    Width="200">
+                <!-- Ici il faudrait utiliser un BooleanToVisibilityConverter pour afficher
+                ou non le border, mais je n'ai pas réussi pour le moment.-->
+                <Image Source="/Assets/chat.png"/>
+            </Border>
+            <CheckBox Style="{StaticResource CheckBoxStyle}"
+                      IsChecked="{Binding ReinforcerEnabled, Mode=TwoWay}">
                 <TextBlock x:Uid="IndiagramProperty_EnableReinforcer"/>
             </CheckBox>
 
