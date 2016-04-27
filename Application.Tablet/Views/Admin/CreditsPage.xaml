@@ -1,0 +1,94 @@
+﻿<mvvm:MvvmPage 
+
+    x:Class="Application.Tablet.Views.Admin.CreditsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Application.Tablet.Views.Admin"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mvvm="using:Storm.Mvvm"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=AdminCreditsViewModel}">
+
+    <Page.Resources>
+        <Style x:Key="TextLayoutStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0, 0, 0, 25" />
+            <Setter Property="TextWrapping" Value="WrapWholeWords" />
+            <Setter Property="FontSize" Value="42" />
+            <Setter Property="Foreground" Value="#0AC808" />
+        </Style>
+        <Style x:Key="PeopleTextStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0, 0, 0, 15" />
+            <Setter Property="FontSize" Value="28" />
+            <Setter Property="TextWrapping" Value="WrapWholeWords" />
+            <Setter Property="Foreground" Value="Black" />
+        </Style>
+        <Style x:Key="SectionTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#E3081C" />
+            <Setter Property="TextWrapping" Value="WrapWholeWords" />
+            <Setter Property="FontSize" Value="36" />
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="50*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid VerticalAlignment="Stretch" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <!--mettre l'image du logo-->
+            <Button Grid.Row="1" Grid.Column="1"
+                Style="{StaticResource OrangeButton}"
+                 Command="{Binding BackCommand}">
+                <TextBlock Style="{StaticResource TextButton}" x:Uid="BackButton" />
+            </Button>
+        </Grid>
+
+        
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical">
+
+                <TextBlock Style="{StaticResource TextLayoutStyle}" x:Uid="Credits_ApplicationName" Text="" />
+                <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Officer" Text="" />
+                <TextBlock Style="{StaticResource PeopleTextStyle}"  x:Uid="Credits_OfficerTeam" Text="" />
+                <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Graphics" Text="" />
+                <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_GraphicsTeam" Text="" />
+                <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_University" Text="" />
+                <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_UniversityTeam" Text="" />
+                <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Trainee2015" Text=""/>
+                <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Trainee2015Team" Text=""/>
+                <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Trainee2014" Text="" />
+                <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Trainee2014Team" Text="" />
+                <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Xamarin2014" Text="" />
+                <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Xamarin2014Team" Text="" />
+                <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Trainee2013" Text="" />
+                <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Trainee2013Team" Text="" />
+                <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Android2013" Text="" />
+                <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Android2013Team" Text="" />
+                <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Trainee2012" Text="" />
+                <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Trainee2012Team" Text="" />
+                <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Android2012" Text="" />
+                <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Android2012Team" Text="" />
+                <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Android2011" Text="" />
+                <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Android2011Team" Text="" />
+                <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Cloud2011" Text="" />
+                <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Cloud2011Team" Text="" />
+                <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Windows2011" Text="" />
+                <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Windows2011Team" Text="" />
+                <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_IndiagramProvider" Text="" />
+                <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_Sclera" Text="" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+
+</mvvm:MvvmPage>

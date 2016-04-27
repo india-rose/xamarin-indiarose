@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Windows.Globalization;
 using Windows.UI.Xaml.Controls;
+using Application.Tablet.Views.Admin;
+using Application.Tablet.Views.Admin.Settings;
+using IndiaRose.Application.Views.Dialogs;
 using IndiaRose.Business;
 using Storm.Mvvm.Inject;
 //using IndiagramPropertyPage = IndiaRose.Application.Views.IndiagramPropertyPage;
@@ -15,15 +19,20 @@ namespace Application.Tablet.CompositionRoot
             var views = new Dictionary<string, Type>
             {
                 {ViewKey.ADMIN_HOME, typeof(MainPage)},
+                {ViewKey.ADMIN_CREDITS, typeof(CreditsPage) },
+                {ViewKey.ADMIN_SETTINGS_APPLICATIONLOOK, typeof(ApplicationLookPage) },
+                {ViewKey.ADMIN_SETTINGS_INDIAGRAMPROPERTIES, typeof(IndiagramPropertyPage) },
+                {ViewKey.ADMIN_SETTINGS_HOME, typeof(AppSettingsPage) },
+                {ViewKey.ADMIN_INSTALLVOICE_SYNTHESIS, typeof(InstallTextToSpeechPage) }
             };
 
 			var dialogs = new Dictionary<string, Type>
             {
 				/*{Dialogs.ADMIN_COLLECTION_SELECTCATEGORY,typeof(SelectCategoryActionDialog)},
 				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY,typeof(ExploreCollectionCategoryDialog)},
-				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM,typeof(ExploreCollectionIndiagramDialog)},
+				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM,typeof(ExploreCollectionIndiagramDialog)},*/
                 {Dialogs.ADMIN_SETTINGS_RESETSETTINGS,typeof(ResetSettingsDialog)},
-                {Dialogs.ADMIN_SETTINGS_COLORPICKER, typeof(ColorPickerDialog)},
+                /*{Dialogs.ADMIN_SETTINGS_COLORPICKER, typeof(ColorPickerDialog)},
                 {Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
                 {Dialogs.ADMIN_COLLECTION_IMAGECHOICE, typeof(ImageChoiceDialog)},
                 {Dialogs.ADMIN_COLLECTION_SOUNDCHOICE, typeof(SoundChoiceDialog)},

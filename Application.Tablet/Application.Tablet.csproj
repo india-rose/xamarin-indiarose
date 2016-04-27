@@ -103,14 +103,29 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Admin\CreditsPage.xaml.cs">
+      <DependentUpon>CreditsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\InstallTextToSpeechPage.xaml.cs">
+      <DependentUpon>InstallTextToSpeechPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Settings\ApplicationLookPage.xaml.cs">
+      <DependentUpon>ApplicationLookPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\Settings\AppBehaviour.xaml.cs">
       <DependentUpon>AppBehaviour.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\Settings\AppSettingsPage.xaml.cs">
       <DependentUpon>AppSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Settings\IndiagramPropertyPage.xaml.cs">
+      <DependentUpon>IndiagramPropertyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\ResetSettingsDialog.xaml.cs">
+      <DependentUpon>ResetSettingsDialog.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -124,9 +139,15 @@
       <Link>Resources\fr\Resources.resw</Link>
     </PRIResource>
     <None Include="Application.Tablet_TemporaryKey.pfx" />
+    <None Include="Assets\manuel.pdf" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\chat.png" />
+    <Content Include="Assets\nextarrow.png" />
+    <Content Include="Assets\playbutton.png" />
+    <Content Include="Assets\root.png" />
+    <Content Include="Assets\tab.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -147,7 +168,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Admin\CreditsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\InstallTextToSpeechPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Admin\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\Settings\ApplicationLookPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,9 +192,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Admin\Settings\IndiagramPropertyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\ResetSettingsDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Dialogs\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
