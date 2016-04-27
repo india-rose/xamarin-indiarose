@@ -21,7 +21,6 @@ namespace IndiaRose.Services
 		private Dictionary<string, string> LoadFonts()
 		{
 			Dictionary<string, string> result = new Dictionary<string, string>();
-            //result.Add("toto", "toto");
 
 			var factory = new Factory();
 			var fontCollection = factory.GetSystemFontCollection(false);
