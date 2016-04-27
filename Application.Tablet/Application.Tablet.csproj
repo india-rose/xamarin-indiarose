@@ -115,6 +115,9 @@
     <Compile Include="Views\Admin\Settings\ApplicationLookPage.xaml.cs">
       <DependentUpon>ApplicationLookPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admin\Settings\AppBehaviour.xaml.cs">
+      <DependentUpon>AppBehaviour.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\Settings\AppSettingsPage.xaml.cs">
       <DependentUpon>AppSettingsPage.xaml</DependentUpon>
     </Compile>
@@ -178,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Admin\Settings\ApplicationLookPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\Settings\AppBehaviour.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

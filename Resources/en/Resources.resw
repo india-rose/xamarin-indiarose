@@ -561,7 +561,4 @@ Comments : </value>
   <data name="ResetSettings_Explanation.Text" xml:space="preserve">
     <value>This will reset your settings\nYour collection will NOT be affected</value>
   </data>
-  <data name="ReadingDelay_Explanation_Win.Text" xml:space="preserve">
-    <value>This will reset your settings\r\nYour collection will NOT be affected</value>
-  </data>
 </root>

@@ -1,0 +1,80 @@
+﻿<mvvm:MvvmPage
+    x:Class="Application.Tablet.Views.Admin.Settings.AppBehaviour"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Application.Tablet.Views.Admin.Settings"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mvvm="using:Storm.Mvvm"
+    xmlns:localization="using:Storm.Mvvm.Localization"
+    mc:Ignorable="d">
+
+    <Grid VerticalAlignment="Stretch" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <CheckBox Grid.Row="0" Grid.Column="1" RequestedTheme="Light" HorizontalAlignment="Left">
+            <TextBlock Style="{StaticResource SmallTextStyle}" 
+                x:Uid="DragAndDrop_Title"/>
+        </CheckBox>
+        <CheckBox Grid.Row="1" Grid.Column="1" RequestedTheme="Light" HorizontalAlignment="Left">
+            <TextBlock Style="{StaticResource SmallTextStyle}" 
+                x:Uid="CategoryReading_Title"/>
+        </CheckBox>
+        <CheckBox Grid.Row="2" Grid.Column="1" RequestedTheme="Light" HorizontalAlignment="Left">
+            <TextBlock Style="{StaticResource SmallTextStyle}" 
+                x:Uid="BackButton_Activated"/>
+        </CheckBox>
+        <TextBlock Grid.Row="3" Grid.Column="1"  Style="{StaticResource SmallTextStyle}" 
+                x:Uid="ReadingDelay_Explanation"/>
+        <Slider
+            
+            Grid.Row="4" 
+            Grid.Column="1" 
+            Grid.ColumnSpan="2"
+            >
+        </Slider>
+        <TextBlock 
+            Style="{StaticResource PopupValueStyle}" 
+                   Grid.Row="5" 
+                   Grid.Column="1" 
+           >
+            <TextBlock.Text>
+                <Binding Path="CurrentDelay"
+                         Converter="{StaticResource StringFormatConverter}"
+                         localization:LocalizationHelper.Properties="ConverterParameter"
+                         localization:LocalizationHelper.Uid="ReadingDelay_ValueFormat"
+                         />
+            </TextBlock.Text>
+        </TextBlock>
+        <Button Style="{StaticResource GreenButton}"
+                Command="{Binding SaveCommand}"
+                Grid.Column="1"
+                Grid.Row="6"
+                >
+            <TextBlock Style="{StaticResource TextButton}" 
+                     x:Uid="Button_Ok"/>
+        </Button>
+
+        <Button Style="{StaticResource OrangeButton}"
+                Command="{Binding BackCommand}"
+                Grid.Column="2"
+                Grid.Row="6"
+                >
+            <TextBlock Style="{StaticResource TextButton}"
+                     x:Uid="Button_Cancel"/>
+        </Button>
+    </Grid>
+</mvvm:MvvmPage>
