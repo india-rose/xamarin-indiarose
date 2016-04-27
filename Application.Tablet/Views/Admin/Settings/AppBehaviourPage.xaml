@@ -12,11 +12,12 @@
 
     <Grid VerticalAlignment="Stretch" Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*" />
-            <RowDefinition Height="5*" />
-            <RowDefinition Height="5*" />
-            <RowDefinition Height="5*" />
-            <RowDefinition Height="5*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
             <RowDefinition Height="5*" />
             <RowDefinition Height="5*" />
         </Grid.RowDefinitions>
@@ -38,32 +39,35 @@
             <TextBlock Style="{StaticResource SmallTextStyle}" 
                 x:Uid="BackButton_Activated"/>
         </CheckBox>
-        <TextBlock Grid.Row="3" Grid.Column="1"  Style="{StaticResource SmallTextStyle}" 
+        <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource SmallTextStyle}" 
                 x:Uid="ReadingDelay_Explanation"/>
         <Slider Grid.Row="4" 
                 Grid.Column="1" 
-                Grid.ColumnSpan="2">
+                Grid.ColumnSpan="2"
+                IsThumbToolTipEnabled="False"
+                Value="{Binding SliderValue, Mode=TwoWay}">
         </Slider>
         <TextBlock Style="{StaticResource PopupValueStyle}" 
+                   HorizontalAlignment="Left"
                    Grid.Row="5" 
-                   Grid.Column="1">
+                   Grid.Column="1"
+                   Grid.ColumnSpan="1">
             <TextBlock.Text>
-                <Binding Path="CurrentDelay"
+                <Binding Path="Delay"
                          Converter="{StaticResource StringFormatConverter}"
-                         localization:LocalizationHelper.Properties="ConverterParameter"
-                         localization:LocalizationHelper.Uid="ReadingDelay_ValueFormat" />
+                         x:Uid="ReadingDelay_ValueFormat" />
             </TextBlock.Text>
         </TextBlock>
         <Button Style="{StaticResource GreenButton}"
                 Grid.Column="1"
-                Grid.Row="6">
+                Grid.Row="7">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="Button_Ok"/>
         </Button>
 
         <Button Style="{StaticResource OrangeButton}"
                 Command="{Binding BackCommand}"
                 Grid.Column="2"
-                Grid.Row="6">
+                Grid.Row="7">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="Button_Cancel"/>
         </Button>
     </Grid>
