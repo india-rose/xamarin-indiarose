@@ -22,10 +22,22 @@
             <RowDefinition Height="60*"></RowDefinition>
             <RowDefinition Height="10*"></RowDefinition>
         </Grid.RowDefinitions>
+        
+        <views:IndiagramBrowserView Grid.Column="0" 
+                                    Grid.Row="0" 
+                                    Grid.RowSpan="2" 
+                                    Grid.ColumnSpan="4" 
+                                    Background="{Binding BackgroundColor}"
+                                    Count="{Binding CollectionDisplayCount, Mode=TwoWay}"
+	                                Offset="{Binding CollectionOffset}"
+	                                Indiagrams="{Binding DisplayedIndiagrams}"
+	                                TextColor="{Binding TextColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
+	                                IndiagramSelected="{Binding IndiagramSelectedCommand}"
+	                                NextCommand="{Binding NextCommand}"/>
 
         <Button Style="{StaticResource GreenButton}"
-                Grid.Column="1" Grid.Row="2">
-            <!--Command="{Binding AddCommand}"-->
+                Grid.Column="1" Grid.Row="2"
+                Command="{Binding AddCommand}">
             <TextBlock Style="{StaticResource TextButton}"
                 x:Uid="CollectionManagement_Add"></TextBlock>
         </Button>

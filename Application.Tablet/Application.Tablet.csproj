@@ -103,6 +103,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Admin\Collection\AddIndiagramPage.xaml.cs">
+      <DependentUpon>AddIndiagramPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\Collection\CollectionManagementPage.xaml.cs">
       <DependentUpon>CollectionManagementPage.xaml</DependentUpon>
     </Compile>
@@ -129,6 +132,12 @@
     </Compile>
     <Compile Include="Views\Dialogs\ColorPickerDialog.xaml.cs">
       <DependentUpon>ColorPickerDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\ExploreCollectionCategoryDialog.xaml.cs">
+      <DependentUpon>ExploreCollectionCategoryDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\ExploreCollectionIndiagramDialog.xaml.cs">
+      <DependentUpon>ExploreCollectionIndiagramDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Dialogs\ResetSettingsDialog.xaml.cs">
       <DependentUpon>ResetSettingsDialog.xaml</DependentUpon>
@@ -180,6 +189,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Admin\Collection\AddIndiagramPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Admin\Collection\CollectionManagementPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -215,6 +228,14 @@
     <Page Include="Views\Dialogs\ColorPickerDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\ExploreCollectionCategoryDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\ExploreCollectionIndiagramDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dialogs\ResetSettingsDialog.xaml">
       <Generator>MSBuild:Compile</Generator>

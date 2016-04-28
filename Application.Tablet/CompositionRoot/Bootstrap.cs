@@ -26,14 +26,15 @@ namespace Application.Tablet.CompositionRoot
                 {ViewKey.ADMIN_SETTINGS_INDIAGRAMPROPERTIES, typeof(IndiagramPropertyPage) },
                 {ViewKey.ADMIN_SETTINGS_HOME, typeof(AppSettingsPage) },
                 {ViewKey.ADMIN_SETTINGS_APPBEHAVIOUR, typeof(AppBehaviourPage) },
-                {ViewKey.ADMIN_COLLECTION_HOME, typeof(CollectionManagementPage) }
+                {ViewKey.ADMIN_COLLECTION_HOME, typeof(CollectionManagementPage) },
+                {ViewKey.ADMIN_COLLECTION_ADDINDIAGRAM, typeof(AddIndiagramPage) }
             };
 
 			var dialogs = new Dictionary<string, Type>
             {
-				/*{Dialogs.ADMIN_COLLECTION_SELECTCATEGORY,typeof(SelectCategoryActionDialog)},
+				/*{Dialogs.ADMIN_COLLECTION_SELECTCATEGORY,typeof(SelectCategoryActionDialog)},*/
 				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY,typeof(ExploreCollectionCategoryDialog)},
-				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM,typeof(ExploreCollectionIndiagramDialog)},*/
+				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM,typeof(ExploreCollectionIndiagramDialog)},
                 {Dialogs.ADMIN_SETTINGS_RESETSETTINGS,typeof(ResetSettingsDialog)},
                 {Dialogs.ADMIN_SETTINGS_COLORPICKER, typeof(ColorPickerDialog)}
                 /*{{Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},

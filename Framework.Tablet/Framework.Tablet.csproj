@@ -117,6 +117,9 @@
     <Compile Include="Converters\ParentCategoryTextConverter.cs" />
     <Compile Include="Converters\TopAreaSizeToBottomAreaSizeConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\BindableImageView.cs" />
+    <Compile Include="Views\IndiagramBrowserView.cs" />
+    <Compile Include="Views\IndiagramView.cs" />
     <Compile Include="Views\TabletPreviewView.cs" />
     <EmbeddedResource Include="Properties\Framework.Tablet.rd.xml" />
   </ItemGroup>
