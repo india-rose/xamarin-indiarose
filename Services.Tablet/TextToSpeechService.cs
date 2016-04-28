@@ -11,13 +11,13 @@ namespace Services.Tablet
 {
     public class TextToSpeechService : ITextToSpeechService
     {
-        private readonly SpeechSynthesizer _ttsSpeechSynthesizer = new SpeechSynthesizer();
+        //private readonly SpeechSynthesizer _ttsSpeechSynthesizer = new SpeechSynthesizer();
 
         public event EventHandler SpeakingCompleted;
 
         public TextToSpeechService()
         {
-            SoundUtilities.Completed += (sender, args) => this.RaiseEvent(SpeakingCompleted);
+            //SoundUtilities.Completed += (sender, args) => this.RaiseEvent(SpeakingCompleted);
         }
 
         //todo
@@ -25,12 +25,12 @@ namespace Services.Tablet
 
         public void Close()
         {
-            _ttsSpeechSynthesizer.Dispose();
+            //_ttsSpeechSynthesizer.Dispose();
         }
 
         public async void PlayIndiagram(Indiagram indiagram)
         {
-            if (indiagram.HasCustomSound)
+            /*if (indiagram.HasCustomSound)
             {
                 var audioFile = await StorageFile.GetFileFromPathAsync(indiagram.SoundPath);
                 var stream = await audioFile.OpenAsync(FileAccessMode.Read);
@@ -40,7 +40,7 @@ namespace Services.Tablet
             {
                 SpeechSynthesisStream stream = await _ttsSpeechSynthesizer.SynthesizeTextToStreamAsync(indiagram.Text);
                 PlayStream(stream);
-            }
+            }*/
         }
 
         private void PlayStream(IRandomAccessStream stream)
