@@ -1,6 +1,6 @@
 ﻿using System;
 using IndiaRose.Interfaces;
-using Lotz.Xam.Messaging;
+using Plugin.Messaging;
 using Storm.Mvvm.Services;
 
 namespace IndiaRose.Services
@@ -16,10 +16,10 @@ namespace IndiaRose.Services
 	    {
 		    try
 		    {
-			    var emailTask = MessagingPlugin.EmailMessenger;
+		        var emailTask = CrossMessaging.Current.EmailMessenger;
 			    if (emailTask.CanSendEmail)
 			    {
-				    string address = LocalizationService.GetString(CONTACT_UID, ADDRESS_PROPERTY);
+			        string address = LocalizationService.GetString(CONTACT_UID, ADDRESS_PROPERTY);
 				    string title = LocalizationService.GetString(CONTACT_UID, TITLE_PROPERTY);
 				    string body = LocalizationService.GetString(CONTACT_UID, BODY_PROPERTY);
 

@@ -10,7 +10,8 @@
     "PCLStorage": "1.0.2",
     "SQLite.Net-PCL": "3.0.5",
     "Storm.Mvvm": "1.2.11",
-    "Storm.Mvvm.UWP": "1.2.11"
+    "Storm.Mvvm.UWP": "1.2.11",
+    "Xam.Plugins.Messaging": "3.2.1"
   },
   "frameworks": {
     "uap10.0": {}

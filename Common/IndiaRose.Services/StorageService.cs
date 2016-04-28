@@ -119,9 +119,7 @@ namespace IndiaRose.Services
                 res.Copy(STORAGE_BACK_IMAGE, ImageBackPath);
             }
 
-#if __ANDROID__
-            CheckAssetsAsync();
-#endif
+            //CheckAssetsAsync();
         }
 
         public string GenerateFilename(StorageType type, string extension)

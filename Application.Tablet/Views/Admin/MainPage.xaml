@@ -56,8 +56,8 @@
         </Button>
 
         <Button Style="{StaticResource BigRedButton}"
-                Grid.Row="3" Grid.Column="0">
-            <!--Command="{Binding ContactCommand}"-->
+                Grid.Row="3" Grid.Column="0"
+                Command="{Binding ContactCommand}">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_Contact"/>
         </Button>
         
