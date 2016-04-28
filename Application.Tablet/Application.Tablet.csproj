@@ -106,6 +106,9 @@
     <Compile Include="Views\Admin\Collection\CollectionManagementPage.xaml.cs">
       <DependentUpon>CollectionManagementPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admin\Collection\WatchIndiagramPage.xaml.cs">
+      <DependentUpon>WatchIndiagramPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\CreditsPage.xaml.cs">
       <DependentUpon>CreditsPage.xaml</DependentUpon>
     </Compile>
@@ -178,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Admin\Collection\CollectionManagementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\Collection\WatchIndiagramPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
