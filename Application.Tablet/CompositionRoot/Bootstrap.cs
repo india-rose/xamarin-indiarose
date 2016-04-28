@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Windows.Globalization;
 using Windows.UI.Xaml.Controls;
+using Application.Tablet.Views;
 using Application.Tablet.Views.Admin;
 using Application.Tablet.Views.Admin.Collection;
 using Application.Tablet.Views.Admin.Settings;
@@ -12,6 +13,7 @@ using IndiaRose.Business;
 using Storm.Mvvm.Inject;
 using ColorPickerDialog = Application.Tablet.Views.Dialogs.ColorPickerDialog;
 using IndiagramPropertyPage = Application.Tablet.Views.Admin.Settings.IndiagramPropertyPage;
+using SelectCategoryActionDialog = Application.Tablet.Views.Dialogs.SelectCategoryActionDialog;
 using ViewKey = IndiaRose.Business.Views;
 
 namespace Application.Tablet.CompositionRoot
@@ -31,7 +33,7 @@ namespace Application.Tablet.CompositionRoot
                 {ViewKey.ADMIN_COLLECTION_HOME, typeof(CollectionManagementPage) },
                 {ViewKey.ADMIN_COLLECTION_ADDINDIAGRAM, typeof(AddIndiagramPage) },
                 {ViewKey.ADMIN_COLLECTION_WATCHINDIAGRAM, typeof(WatchIndiagramPage) },
-                {ViewKey.USER_HOME, typeof(HomePage) }
+                {ViewKey.USER_HOME, typeof(HomePage) },
             };
 
 			var dialogs = new Dictionary<string, Type>
@@ -49,6 +51,8 @@ namespace Application.Tablet.CompositionRoot
                 {Dialogs.ADMIN_COLLECTION_DELETEWARNING_CATEGORY,typeof(DeleteCategoryWarning)},
                 {Dialogs.ADMIN_COLLECTION_DELETEWARNING_INDIAGRAM, typeof(DeleteIndiagramWarningDialog)},
                 {Dialogs.ADMIN_COLLECTION_CHOOSE,typeof(ChooseCategoryDialog)},
+                {Dialogs.ADMIN_COLLECTION_SELECTCATEGORY_WITHOUTCHILDREN, typeof(SelectCategoryActionWithoutChildrenDialog) },
+                {Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY_WITHOUTCHILDREN, typeof(ExploreCollectionCategoryWithoutChildrenDialog) }
             };
             
 

@@ -1,12 +1,13 @@
 ﻿<mvvm:DialogPage
-    x:Class="Application.Tablet.Views.Dialogs.SelectCategoryActionDialog"
+    x:Class="Application.Tablet.Views.Dialogs.SelectCategoryActionWithoutChildrenDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Application.Tablet.Views.Dialogs"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvvm="using:Storm.Mvvm"
-    xmlns:views="using:Framework.Tablet.Views"
     mc:Ignorable="d"
+    xmlns:views="using:Framework.Tablet.Views"
     PopupHeight="300"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminCollectionDialogsSelectCategoryActionViewModel}">
 
@@ -21,7 +22,7 @@
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        
+
         <TextBlock Grid.Column="0" 
                    Grid.Row="0" 
                    Grid.ColumnSpan="3" 
@@ -52,14 +53,6 @@
 
         <Button Style="{StaticResource SmallButton}" 
                 Grid.Row="2" 
-                Grid.Column="1"
-                Command="{Binding GoIntoCommand}">
-            <TextBlock Style="{StaticResource TextButton}" 
-                       x:Uid="ExploreCollection_GoIntoCategory" />
-            </Button>
-
-            <Button Style="{StaticResource SmallButton}" 
-                Grid.Row="2" 
                 Grid.Column="2"
                 Command="{Binding SelectCommand}">
             <TextBlock Style="{StaticResource TextButton}" 
@@ -67,3 +60,4 @@
         </Button>
     </Grid>
 </mvvm:DialogPage>
+

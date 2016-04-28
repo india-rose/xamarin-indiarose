@@ -77,6 +77,7 @@ namespace Application.Tablet
                     // paramètre
                     //var target = e.TileId == "AdminPage" ? typeof(MainPage) : typeof(HomePage);
                     var target = typeof(Views.Admin.MainPage);
+                    //var target = typeof (SplashScreen);
                     rootFrame.Navigate(target, e.Arguments);
                 }
                 // Vérifiez que la fenêtre actuelle est active

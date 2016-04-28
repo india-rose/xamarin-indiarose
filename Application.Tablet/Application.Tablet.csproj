@@ -148,6 +148,9 @@
     <Compile Include="Views\Dialogs\ExploreCollectionCategoryDialog.xaml.cs">
       <DependentUpon>ExploreCollectionCategoryDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dialogs\ExploreCollectionCategoryWithoutChildrenDialog.xaml.cs">
+      <DependentUpon>ExploreCollectionCategoryWithoutChildrenDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\ExploreCollectionIndiagramDialog.xaml.cs">
       <DependentUpon>ExploreCollectionIndiagramDialog.xaml</DependentUpon>
     </Compile>
@@ -166,8 +169,14 @@
     <Compile Include="Views\Dialogs\SelectCategoryActionDialog.xaml.cs">
       <DependentUpon>SelectCategoryActionDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dialogs\SelectCategoryActionWithoutChildrenDialog.xaml.cs">
+      <DependentUpon>SelectCategoryActionWithoutChildrenDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\SoundChoiceDialog.xaml.cs">
       <DependentUpon>SoundChoiceDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SplashScreen.xaml.cs">
+      <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\User\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
@@ -184,11 +193,12 @@
       <Link>Resources\fr\Resources.resw</Link>
     </PRIResource>
     <None Include="Application.Tablet_TemporaryKey.pfx" />
-    <None Include="Assets\indiagrams.zip" />
+    <Content Include="Assets\indiagrams.zip" />
     <Content Include="Assets\cancel.png" />
     <Content Include="Assets\logoIndiaRose.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <AndroidResource Include="Assets\logo_admin.png" />
     <Content Include="Assets\manuel.pdf" />
     <None Include="project.json" />
   </ItemGroup>
@@ -282,6 +292,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Dialogs\ExploreCollectionCategoryWithoutChildrenDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Dialogs\ExploreCollectionIndiagramDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -306,9 +320,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Dialogs\SelectCategoryActionWithoutChildrenDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Dialogs\SoundChoiceDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SplashScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\User\HomePage.xaml">
       <Generator>MSBuild:Compile</Generator>
