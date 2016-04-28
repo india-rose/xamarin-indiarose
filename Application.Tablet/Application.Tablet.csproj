@@ -109,6 +109,9 @@
     <Compile Include="Views\Admin\Collection\CollectionManagementPage.xaml.cs">
       <DependentUpon>CollectionManagementPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admin\Collection\WatchIndiagramPage.xaml.cs">
+      <DependentUpon>WatchIndiagramPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\CreditsPage.xaml.cs">
       <DependentUpon>CreditsPage.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,9 @@
     </Compile>
     <Compile Include="Views\Admin\Settings\IndiagramPropertyPage.xaml.cs">
       <DependentUpon>IndiagramPropertyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\ChooseCategoryDialog.xaml.cs">
+      <DependentUpon>ChooseCategoryDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Dialogs\ColorPickerDialog.xaml.cs">
       <DependentUpon>ColorPickerDialog.xaml</DependentUpon>
@@ -145,8 +151,20 @@
     <Compile Include="Views\Dialogs\ExploreCollectionIndiagramDialog.xaml.cs">
       <DependentUpon>ExploreCollectionIndiagramDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dialogs\ImageChoiceDialog.xaml.cs">
+      <DependentUpon>ImageChoiceDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\RecordSoundDialog.xaml.cs">
+      <DependentUpon>RecordSoundDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\ResetSettingsDialog.xaml.cs">
       <DependentUpon>ResetSettingsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\SelectCategoryActionDialog.xaml.cs">
+      <DependentUpon>SelectCategoryActionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\SoundChoiceDialog.xaml.cs">
+      <DependentUpon>SoundChoiceDialog.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +179,7 @@
     </PRIResource>
     <None Include="Application.Tablet_TemporaryKey.pfx" />
     <None Include="Assets\indiagrams.zip" />
+    <Content Include="Assets\cancel.png" />
     <Content Include="Assets\logoIndiaRose.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -171,9 +190,11 @@
     <Content Include="Assets\back.png" />
     <Content Include="Assets\chat.png" />
     <Content Include="Assets\correction.png" />
+    <Content Include="Assets\microphone.png" />
     <Content Include="Assets\nextarrow.png" />
     <Content Include="Assets\playbutton.png" />
     <Content Include="Assets\root.png" />
+    <Content Include="Assets\stop.png" />
     <Content Include="Assets\tab.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -203,6 +224,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Admin\Collection\WatchIndiagramPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Admin\CreditsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -227,6 +252,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Dialogs\ChooseCategoryDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Dialogs\ColorPickerDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -244,14 +273,30 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dialogs\ExploreCollectionCategoryDialog.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Dialogs\ExploreCollectionIndiagramDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\ImageChoiceDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Dialogs\RecordSoundDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Dialogs\ResetSettingsDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\SelectCategoryActionDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\SoundChoiceDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

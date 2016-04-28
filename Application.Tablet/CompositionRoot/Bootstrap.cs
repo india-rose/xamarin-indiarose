@@ -6,6 +6,7 @@ using Application.Tablet.Views.Admin;
 using Application.Tablet.Views.Admin.Collection;
 using Application.Tablet.Views.Admin.Settings;
 using Application.Tablet.Views.Dialogs;
+using IndiaRose.Application.Views.Dialogs;
 using IndiaRose.Business;
 using Storm.Mvvm.Inject;
 using ColorPickerDialog = Application.Tablet.Views.Dialogs.ColorPickerDialog;
@@ -27,7 +28,8 @@ namespace Application.Tablet.CompositionRoot
                 {ViewKey.ADMIN_SETTINGS_HOME, typeof(AppSettingsPage) },
                 {ViewKey.ADMIN_SETTINGS_APPBEHAVIOUR, typeof(AppBehaviourPage) },
                 {ViewKey.ADMIN_COLLECTION_HOME, typeof(CollectionManagementPage) },
-                {ViewKey.ADMIN_COLLECTION_ADDINDIAGRAM, typeof(AddIndiagramPage) }
+                {ViewKey.ADMIN_COLLECTION_ADDINDIAGRAM, typeof(AddIndiagramPage) },
+                {ViewKey.ADMIN_COLLECTION_WATCHINDIAGRAM, typeof(WatchIndiagramPage) }
             };
 
 			var dialogs = new Dictionary<string, Type>
@@ -37,7 +39,7 @@ namespace Application.Tablet.CompositionRoot
 				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM,typeof(ExploreCollectionIndiagramDialog)},
                 {Dialogs.ADMIN_SETTINGS_RESETSETTINGS,typeof(ResetSettingsDialog)},
                 {Dialogs.ADMIN_SETTINGS_COLORPICKER, typeof(ColorPickerDialog)},
-                /*{{Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
+                //{{Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
                 {Dialogs.ADMIN_COLLECTION_IMAGECHOICE, typeof(ImageChoiceDialog)},
                 {Dialogs.ADMIN_COLLECTION_SOUNDCHOICE, typeof(SoundChoiceDialog)},
                 {Dialogs.ADMIN_COLLECTION_RECORDSOUND,typeof(RecordSoundDialog)},*/
@@ -45,6 +47,8 @@ namespace Application.Tablet.CompositionRoot
                 {Dialogs.ADMIN_COLLECTION_DELETEWARNING_CATEGORY,typeof(DeleteCategoryWarning)},
                 {Dialogs.ADMIN_COLLECTION_DELETEWARNING_INDIAGRAM, typeof(DeleteIndiagramWarningDialog)}
                 /*{Dialogs.ADMIN_COLLECTION_CHOOSE,typeof(ChooseCategoryDialog)}*/
+                {Dialogs.ADMIN_COLLECTION_DELETEWARNING_INDIAGRAM, typeof(DeleteIndiagramWarningDialog)},*/
+                {Dialogs.ADMIN_COLLECTION_CHOOSE,typeof(ChooseCategoryDialog)}
             };
             
 

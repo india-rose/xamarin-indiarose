@@ -46,11 +46,12 @@
                     <TextBlock Style="{StaticResource TextStyle}" x:Uid="IndiagramProperty_TextColorLabel"/>
                     <Rectangle Width="100"
                                Height="30"
-                               Fill="Blue"
+                               Fill="{Binding TextColor.Color}"
                                Stroke="Black"
                                StrokeThickness="1"/>
                 </StackPanel>
-                <Button Style="{StaticResource BlueButton}">
+                <Button Style="{StaticResource BlueButton}"
+                        Command="{Binding TextColorCommand}">
                     <TextBlock Style="{StaticResource TextButton}" x:Uid="IndiagramProperty_ChangeTextColor"/>
                 </Button>
 
@@ -69,22 +70,35 @@
 
         <!-- Right Column -->
         <StackPanel Grid.Column="2" Grid.Row="1" VerticalAlignment="Center">
-            <Border BorderThickness="5"
+            <!--<Border BorderThickness="5"
                     BorderBrush="Blue"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Center"
                     Height="200"
-                    Width="200">
-                <!-- Ici il faudrait utiliser un BooleanToVisibilityConverter pour afficher
-                ou non le border, mais je n'ai pas réussi pour le moment.-->
+                    Width="200"
+                    Visibility="{Binding ReinforcerEnabled, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Image Source="/Assets/chat.png"/>
-            </Border>
+            </Border>-->
+
+            <Canvas Height="{Binding IndiagramSize, Converter={StaticResource IndiaSizeToReinforcerSizeConverter}}" 
+                    Width="{Binding IndiagramSize, Converter={StaticResource IndiaSizeToReinforcerSizeConverter}}">
+                <Rectangle
+                    Visibility="{Binding ReinforcerEnabled, Converter={ StaticResource BooleanToVisibilityConverter}}" 
+                    Fill="{Binding ReinforcerColor.Color}"
+                    Height="{Binding IndiagramSize, Converter={StaticResource IndiaSizeToReinforcerSizeConverter}}" 
+                    Width="{Binding IndiagramSize, Converter={StaticResource IndiaSizeToReinforcerSizeConverter}}" />
+                <Image Height="{Binding IndiagramSize}" Margin="{Binding IndiagramSize, Converter={StaticResource IndiaSizeToMarginSize}}"
+                       Width="{Binding IndiagramSize}" Source="/Assets/chat.png" >
+                </Image>
+            </Canvas>
+
             <CheckBox Style="{StaticResource CheckBoxStyle}"
                       IsChecked="{Binding ReinforcerEnabled, Mode=TwoWay}">
                 <TextBlock x:Uid="IndiagramProperty_EnableReinforcer"/>
             </CheckBox>
 
-            <Button Style="{StaticResource PurpleButton}">
+            <Button Style="{StaticResource PurpleButton}"
+                    Command="{Binding ReinforcerColorCommand}">
                 <TextBlock Style="{StaticResource TextButton}" x:Uid="IndiagramProperty_ChangeReinforcerColor"/>
             </Button>
         </StackPanel>
@@ -92,7 +106,8 @@
         <!-- Bottom buttons -->
         <Button Style="{StaticResource GreenButton}"
                 Grid.Column="1"
-                Grid.Row="2">
+                Grid.Row="2"
+                Command="{Binding SaveCommand}">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="Button_Ok"/>
         </Button>
 

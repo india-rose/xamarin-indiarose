@@ -1,0 +1,98 @@
+﻿<mvvm:MvvmPage
+    x:Class="Application.Tablet.Views.Admin.Collection.WatchIndiagramPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Application.Tablet.Views.Admin.Collection"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mvvm="using:Storm.Mvvm"
+    mc:Ignorable="d">
+
+    <Grid VerticalAlignment="Stretch" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="20*"></RowDefinition>
+            <RowDefinition Height="20*"></RowDefinition>
+            <RowDefinition Height="20*"></RowDefinition>
+            <RowDefinition Height="20*"></RowDefinition>
+            <RowDefinition Height="20*"></RowDefinition>
+            <RowDefinition Height="20*"></RowDefinition>
+            <RowDefinition Height="30*"></RowDefinition>
+            <RowDefinition Height="30*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="1"
+                   Grid.Row="1"
+                   Style="{StaticResource TextStyle}"
+                   x:Uid="Collection_IndiagramText"/>
+        
+        <TextBlock Grid.Column="1"
+                   Grid.Row="2"
+                   Style="{StaticResource SmallTextStyle}"
+                   Foreground="Black">Toto</TextBlock>
+
+        <TextBlock Grid.Column="1"
+                   Grid.Row="3"
+                   Style="{StaticResource TextStyle}"
+                   x:Uid="Collection_IndiagramText"/>
+        
+        <StackPanel Grid.Column="1"
+                    Grid.Row="4"
+                    Orientation="Horizontal">
+            
+            <TextBlock x:Uid="Collection_ParentCategoryName"
+                       Style="{StaticResource SmallTextStyle}"/>
+            <TextBlock Style="{StaticResource SmallTextStyle}"
+                       Foreground="Black">Toto</TextBlock>
+        </StackPanel>
+
+        <TextBlock Grid.Column="1"
+                   Grid.Row="5"
+                   Style="{StaticResource TextStyle}"
+                   x:Uid="Collection_IndiagramText"/>
+        
+        <StackPanel Grid.Column="1"
+                    Grid.Row="6"
+                    Orientation="Horizontal">
+            
+            <TextBlock x:Uid="Collection_SoundPath"
+                       Style="{StaticResource SmallTextStyle}"/>
+            <TextBlock Style="{StaticResource SmallTextStyle}"
+                       Foreground="Black">Toto</TextBlock>
+        </StackPanel>
+
+        <Button Grid.Column="1"
+                Grid.Row="7"
+                Style="{StaticResource BlueButton}">
+            
+            <TextBlock x:Uid="Collection_ListenSound"
+                       Style="{StaticResource TextButton}"/>
+        </Button>
+
+        <Button Grid.Column="1"
+                Grid.Row="8"
+                Style="{StaticResource GreenButton}">
+            
+            <TextBlock x:Uid="Button_Edit"
+                       Style="{StaticResource TextButton}"/>
+        </Button>
+
+        <Button Grid.Column="2"
+                Grid.Row="8"
+                Style="{StaticResource OrangeButton}">
+            
+            <TextBlock x:Uid="Button_Delete"
+                       Style="{StaticResource TextButton}"/>
+        </Button>
+        
+        <Image Grid.Column="2" Grid.Row="1" Grid.RowSpan="6" Source="/Assets/chat.png"/>
+
+    </Grid>
+</mvvm:MvvmPage>

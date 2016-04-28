@@ -85,9 +85,7 @@
             </Button>
         </Grid>
 
-        <views:BindableImageView
-            Size="{Binding SettingsService.IndiagramDisplaySize}"
-            ImagePath="{Binding IndiagramContainer.Indiagram.ImagePath}"
+        <Image
             Grid.Column="2"
             Grid.Row="1"
             VerticalAlignment="Center"
