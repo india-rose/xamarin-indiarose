@@ -28,7 +28,8 @@ namespace Application.Tablet.CompositionRoot
                 {ViewKey.ADMIN_SETTINGS_HOME, typeof(AppSettingsPage) },
                 {ViewKey.ADMIN_SETTINGS_APPBEHAVIOUR, typeof(AppBehaviourPage) },
                 {ViewKey.ADMIN_COLLECTION_HOME, typeof(CollectionManagementPage) },
-                {ViewKey.ADMIN_COLLECTION_ADDINDIAGRAM, typeof(AddIndiagramPage) }
+                {ViewKey.ADMIN_COLLECTION_ADDINDIAGRAM, typeof(AddIndiagramPage) },
+                {ViewKey.ADMIN_COLLECTION_WATCHINDIAGRAM, typeof(WatchIndiagramPage) }
             };
 
 			var dialogs = new Dictionary<string, Type>
