@@ -32,9 +32,9 @@ namespace Application.Tablet.CompositionRoot
 
 			var dialogs = new Dictionary<string, Type>
             {
-				/*{Dialogs.ADMIN_COLLECTION_SELECTCATEGORY,typeof(SelectCategoryActionDialog)},
+				/*{Dialogs.ADMIN_COLLECTION_SELECTCATEGORY,typeof(SelectCategoryActionDialog)},*/
 				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY,typeof(ExploreCollectionCategoryDialog)},
-				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM,typeof(ExploreCollectionIndiagramDialog)},*/
+				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM,typeof(ExploreCollectionIndiagramDialog)},
                 {Dialogs.ADMIN_SETTINGS_RESETSETTINGS,typeof(ResetSettingsDialog)},
                 {Dialogs.ADMIN_SETTINGS_COLORPICKER, typeof(ColorPickerDialog)}
                 /*{{Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
