@@ -44,9 +44,11 @@ namespace Application.Tablet.CompositionRoot
                 {Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
                 {Dialogs.ADMIN_COLLECTION_IMAGECHOICE, typeof(ImageChoiceDialog)},
                 {Dialogs.ADMIN_COLLECTION_SOUNDCHOICE, typeof(SoundChoiceDialog)},
-                {Dialogs.ADMIN_COLLECTION_RECORDSOUND,typeof(RecordSoundDialog)},
-               /* {Dialogs.ADMIN_COLLECTION_DELETECONFIRMATION_CATEGORY,typeof(DeleteCategoryConfirmation)},
+                {Dialogs.ADMIN_COLLECTION_RECORDSOUND,typeof(RecordSoundDialog)},*/
+                {Dialogs.ADMIN_COLLECTION_DELETECONFIRMATION_CATEGORY,typeof(DeleteCategoryConfirmation)},
                 {Dialogs.ADMIN_COLLECTION_DELETEWARNING_CATEGORY,typeof(DeleteCategoryWarning)},
+                {Dialogs.ADMIN_COLLECTION_DELETEWARNING_INDIAGRAM, typeof(DeleteIndiagramWarningDialog)}
+                /*{Dialogs.ADMIN_COLLECTION_CHOOSE,typeof(ChooseCategoryDialog)}*/
                 {Dialogs.ADMIN_COLLECTION_DELETEWARNING_INDIAGRAM, typeof(DeleteIndiagramWarningDialog)},*/
                 {Dialogs.ADMIN_COLLECTION_CHOOSE,typeof(ChooseCategoryDialog)}
             };

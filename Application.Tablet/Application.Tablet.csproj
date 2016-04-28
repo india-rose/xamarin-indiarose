@@ -136,6 +136,15 @@
     <Compile Include="Views\Dialogs\ColorPickerDialog.xaml.cs">
       <DependentUpon>ColorPickerDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dialogs\DeleteCategoryConfirmation.xaml.cs">
+      <DependentUpon>DeleteCategoryConfirmation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\DeleteCategoryWarning.xaml.cs">
+      <DependentUpon>DeleteCategoryWarning.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\DeleteIndiagramWarningDialog.xaml.cs">
+      <DependentUpon>DeleteIndiagramWarningDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\ExploreCollectionCategoryDialog.xaml.cs">
       <DependentUpon>ExploreCollectionCategoryDialog.xaml</DependentUpon>
     </Compile>
@@ -256,6 +265,18 @@
     <Page Include="Views\Dialogs\ColorPickerDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\DeleteCategoryConfirmation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\DeleteCategoryWarning.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\DeleteIndiagramWarningDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dialogs\ExploreCollectionCategoryDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
