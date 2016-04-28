@@ -76,7 +76,7 @@ namespace Application.Tablet
                     // puis configurez la nouvelle page en transmettant les informations requises en tant que
                     // paramètre
                     //var target = e.TileId == "AdminPage" ? typeof(MainPage) : typeof(HomePage);
-                    var target = typeof(HomePage);
+                    var target = typeof(Views.Admin.MainPage);
                     rootFrame.Navigate(target, e.Arguments);
                 }
                 // Vérifiez que la fenêtre actuelle est active
