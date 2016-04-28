@@ -28,14 +28,15 @@
                    Style="{StaticResource PopupTitleStyle}"
                    x:Uid="ResetSettings_Title"/>
 
-       <!-- <TextBlock Grid.Row="1"   Grid.Column="1"
+        <TextBlock Grid.Row="1"   Grid.Column="1"
                    Style="{StaticResource PopupContentStyle}"
-                   x:Uid="ResetSettings_Explanation"/>-->
+                   x:Uid="ResetSettings_Explanation"/>
 
         <Button Style="{StaticResource SmallButton}" 
                 Grid.Row="3" 
                 Grid.Column="0"
-                Grid.ColumnSpan="2">
+                Grid.ColumnSpan="2"
+                Command="{Binding SaveCommand}">
             <TextBlock Style="{StaticResource TextButton}" 
                        x:Uid="Button_Ok" />
         </Button>
