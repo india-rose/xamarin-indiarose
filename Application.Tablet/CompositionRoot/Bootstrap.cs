@@ -4,10 +4,11 @@ using Windows.Globalization;
 using Windows.UI.Xaml.Controls;
 using Application.Tablet.Views.Admin;
 using Application.Tablet.Views.Admin.Settings;
-using IndiaRose.Application.Views.Dialogs;
+using Application.Tablet.Views.Dialogs;
 using IndiaRose.Business;
 using Storm.Mvvm.Inject;
-//using IndiagramPropertyPage = IndiaRose.Application.Views.IndiagramPropertyPage;
+using ColorPickerDialog = Application.Tablet.Views.Dialogs.ColorPickerDialog;
+using IndiagramPropertyPage = Application.Tablet.Views.Admin.Settings.IndiagramPropertyPage;
 using ViewKey = IndiaRose.Business.Views;
 
 namespace Application.Tablet.CompositionRoot
@@ -33,8 +34,8 @@ namespace Application.Tablet.CompositionRoot
 				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY,typeof(ExploreCollectionCategoryDialog)},
 				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM,typeof(ExploreCollectionIndiagramDialog)},*/
                 {Dialogs.ADMIN_SETTINGS_RESETSETTINGS,typeof(ResetSettingsDialog)},
-                /*{Dialogs.ADMIN_SETTINGS_COLORPICKER, typeof(ColorPickerDialog)},
-                {Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
+                {Dialogs.ADMIN_SETTINGS_COLORPICKER, typeof(ColorPickerDialog)}
+                /*{{Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
                 {Dialogs.ADMIN_COLLECTION_IMAGECHOICE, typeof(ImageChoiceDialog)},
                 {Dialogs.ADMIN_COLLECTION_SOUNDCHOICE, typeof(SoundChoiceDialog)},
                 {Dialogs.ADMIN_COLLECTION_RECORDSOUND,typeof(RecordSoundDialog)},

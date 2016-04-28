@@ -59,8 +59,8 @@
             </TextBlock.Text>
         </TextBlock>
         <Button Style="{StaticResource GreenButton}"
-                Grid.Column="1"
-                Grid.Row="7">
+                Grid.Column="1" Grid.Row="7"
+                Command="{Binding SaveCommand}">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="Button_Ok"/>
         </Button>
 

@@ -35,7 +35,7 @@ namespace Application.Tablet.CompositionRoot
 			RegisterInstance<IEmailService>(new EmailService());
 			//RegisterInstance<IInstallVoiceSynthesisService>(new InstallVoiceSynthesisService());
             //RegisterInstance<IMediaService>(new MediaService());
-            //RegisterInstance<IPopupService>(new PopupService());
+            RegisterInstance<IPopupService>(new PopupService());
             RegisterInstance<ICopyPasteService>(new CopyPasteService());
             //RegisterInstance<ITextToSpeechService>(new TextToSpeechService());
 
