@@ -31,7 +31,7 @@
                    x:Uid="ColorPicker_Title"
                    />
 
-<!--TODO paramettre du color icker pas opti a voir -->
+<!--TODO parametre du color picker pas opti a voir -->
         <Grid Grid.Row="1" Grid.ColumnSpan="4" Grid.Column="0" Name="MainGridLayout" Background="{Binding CurrentColor,Mode=TwoWay,Converter={StaticResource ColorStringToSolidColorBrushConverter}}">
             <xc:ColorPicker SelectedColor="{Binding CurrentColor}" x:Name="Color"/>
         </Grid>

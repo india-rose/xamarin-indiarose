@@ -36,6 +36,6 @@ namespace IndiaRose.Data.Model
 
         public float TimeOfSilenceBetweenWords { get; set; }
 
-        public bool IsBackCategoryEnabled { get; set; }
+        public bool IsBackButtonEnabled { get; set; }
     }
 }

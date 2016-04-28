@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Windows.Globalization;
 using Windows.UI.Xaml.Controls;
 using Application.Tablet.Views.Admin;
+using Application.Tablet.Views.Admin.Collection;
 using Application.Tablet.Views.Admin.Settings;
 using Application.Tablet.Views.Dialogs;
 using IndiaRose.Business;
@@ -25,7 +26,8 @@ namespace Application.Tablet.CompositionRoot
                 {ViewKey.ADMIN_SETTINGS_INDIAGRAMPROPERTIES, typeof(IndiagramPropertyPage) },
                 {ViewKey.ADMIN_SETTINGS_HOME, typeof(AppSettingsPage) },
                 {ViewKey.ADMIN_INSTALLVOICE_SYNTHESIS, typeof(InstallTextToSpeechPage) },
-                {ViewKey.ADMIN_SETTINGS_APPBEHAVIOUR, typeof(AppBehaviourPage) }
+                {ViewKey.ADMIN_SETTINGS_APPBEHAVIOUR, typeof(AppBehaviourPage) },
+                {ViewKey.ADMIN_COLLECTION_HOME, typeof(CollectionManagementPage) }
             };
 
 			var dialogs = new Dictionary<string, Type>
