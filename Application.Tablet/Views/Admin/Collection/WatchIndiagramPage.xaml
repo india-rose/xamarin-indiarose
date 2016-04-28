@@ -6,7 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvvm="using:Storm.Mvvm"
-    mc:Ignorable="d">
+    xmlns:views="using:Framework.Tablet.Views"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator},Path=AdminCollectionWatchIndiagramViewModel}">
 
     <Grid VerticalAlignment="Stretch" Background="White">
         <Grid.ColumnDefinitions>
@@ -35,22 +37,22 @@
         
         <TextBlock Grid.Column="1"
                    Grid.Row="2"
-                   Style="{StaticResource SmallTextStyle}"
-                   Foreground="Black">Toto</TextBlock>
+                   Style="{StaticResource BlackMediumTextStyle}"
+                   Text="{Binding IndiagramContainer.Indiagram.Text}"/>
 
         <TextBlock Grid.Column="1"
                    Grid.Row="3"
                    Style="{StaticResource TextStyle}"
-                   x:Uid="Collection_IndiagramText"/>
+                   x:Uid="Collection_ParentCategory"/>
         
         <StackPanel Grid.Column="1"
                     Grid.Row="4"
                     Orientation="Horizontal">
             
             <TextBlock x:Uid="Collection_ParentCategoryName"
-                       Style="{StaticResource SmallTextStyle}"/>
-            <TextBlock Style="{StaticResource SmallTextStyle}"
-                       Foreground="Black">Toto</TextBlock>
+                       Style="{StaticResource MediumTextStyle}"/>
+            <TextBlock Style="{StaticResource BlackMediumTextStyle}"
+                       Text="{Binding IndiagramContainer.Indiagram.Parent, Converter={StaticResource ParentCategoryConverter}}"/>
         </StackPanel>
 
         <TextBlock Grid.Column="1"
@@ -63,36 +65,65 @@
                     Orientation="Horizontal">
             
             <TextBlock x:Uid="Collection_SoundPath"
-                       Style="{StaticResource SmallTextStyle}"/>
-            <TextBlock Style="{StaticResource SmallTextStyle}"
-                       Foreground="Black">Toto</TextBlock>
+                       Style="{StaticResource MediumTextStyle}"/>
+            <TextBlock Style="{StaticResource BlackMediumTextStyle}"
+                       Text="{Binding IndiagramContainer.Indiagram.SoundPath, Converter={StaticResource DefaultLocalizedStringIfNullConverter}}"/>
         </StackPanel>
 
         <Button Grid.Column="1"
                 Grid.Row="7"
                 Style="{StaticResource BlueButton}">
-            
+
             <TextBlock x:Uid="Collection_ListenSound"
                        Style="{StaticResource TextButton}"/>
         </Button>
 
-        <Button Grid.Column="1"
-                Grid.Row="8"
-                Style="{StaticResource GreenButton}">
-            
-            <TextBlock x:Uid="Button_Edit"
-                       Style="{StaticResource TextButton}"/>
-        </Button>
+        <Grid Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" VerticalAlignment="Stretch" Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
 
-        <Button Grid.Column="2"
-                Grid.Row="8"
-                Style="{StaticResource OrangeButton}">
-            
-            <TextBlock x:Uid="Button_Delete"
+            <Button Grid.Column="0"
+                    Grid.Row="0"
+                    Style="{StaticResource OrangeButton}"
+                    Command="{Binding BackCommand}">
+
+                <TextBlock x:Uid="BackButton"
                        Style="{StaticResource TextButton}"/>
-        </Button>
-        
-        <Image Grid.Column="2" Grid.Row="1" Grid.RowSpan="6" Source="/Assets/chat.png"/>
+            </Button>
+            
+            <Button Grid.Column="1"
+                    Grid.Row="0"
+                    Style="{StaticResource GreenButton}"
+                    Command="{Binding EditCommand}">
+
+                <TextBlock x:Uid="Button_Edit"
+                       Style="{StaticResource TextButton}"/>
+            </Button>
+
+            <Button Grid.Column="2"
+                    Grid.Row="0"
+                    Style="{StaticResource PurpleButton}"
+                    Command="{Binding DeleteCommand}">
+
+                <TextBlock x:Uid="Button_Delete"
+                       Style="{StaticResource TextButton}"/>
+            </Button>
+        </Grid>
+
+        <views:BindableImageView
+            Size="{Binding SettingsService.IndiagramDisplaySize}"
+            ImagePath="{Binding IndiagramContainer.Indiagram.ImagePath}"
+            Grid.Column="2"
+            Grid.Row="1"
+            Grid.RowSpan="7"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
 
     </Grid>
 </mvvm:MvvmPage>

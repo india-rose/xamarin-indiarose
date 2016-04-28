@@ -11,7 +11,7 @@
     xmlns:views="using:IndiaRose.Framework.Views"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator},Path=AdminCollectionWatchIndiagramViewModel}">
-    
+
     <Grid VerticalAlignment="Stretch" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"></ColumnDefinition>
@@ -35,7 +35,7 @@
                 <TextBlock x:Uid="Collection_ParentCategory"  Style="{StaticResource TextStyle}" />
                 <StackPanel Orientation="Horizontal">
                     <TextBlock x:Uid="Collection_ParentCategoryName" Style="{StaticResource SmallTextStyle}" />
-                    <TextBlock  Text="{Binding IndiagramContainer.Indiagram.Parent, Converter={StaticResource ParentCategoryConverter}}" Style="{StaticResource BlackSmallTextStyle}" />
+                    <TextBlock Text="{Binding IndiagramContainer.Indiagram.Parent, Converter={StaticResource ParentCategoryConverter}}" Style="{StaticResource BlackSmallTextStyle}" />
                 </StackPanel>
 
                 <TextBlock x:Uid="Collection_Sound"  Style="{StaticResource TextStyle}" />
@@ -85,13 +85,20 @@
             </Button>
         </Grid>
 
-        <Image
+        <views:BindableImageView
+            Size="{Binding SettingsService.IndiagramDisplaySize}"
+            ImagePath="{Binding IndiagramContainer.Indiagram.ImagePath}"
             Grid.Column="2"
             Grid.Row="1"
             VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            />
+            HorizontalAlignment="Center"/>
+
+        <!-- <Image Source="{Binding IndiagramContainer.Indiagram.ImagePath}"
+               Grid.Column="2"
+               Grid.Row="1"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"/> -->
 
     </Grid>
-    
+
 </mvvm:MvvmPage>

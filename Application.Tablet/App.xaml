@@ -230,6 +230,12 @@
             <Style x:Key="BlackSmallTextStyle" TargetType="TextBlock" BasedOn="{StaticResource SmallTextStyle}">
                 <Setter Property="Foreground" Value="Black"/>
             </Style>
+            <Style x:Key="MediumTextStyle" TargetType="TextBlock" BasedOn="{StaticResource TextStyle}">
+                <Setter Property="FontSize" Value="28"/>
+            </Style>
+            <Style x:Key="BlackMediumTextStyle" TargetType="TextBlock" BasedOn="{StaticResource MediumTextStyle}">
+                <Setter Property="Foreground" Value="Black"/>
+            </Style>
             <Style x:Key="SmallTextButton" TargetType="TextBlock" BasedOn="{StaticResource TextButton}">
                 <Setter Property="FontSize" Value="20"/>
             </Style>
