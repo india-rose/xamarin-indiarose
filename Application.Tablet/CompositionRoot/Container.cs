@@ -34,14 +34,14 @@ namespace Application.Tablet.CompositionRoot
 			RegisterInstance<IResourceService>(new ResourceService());
 			RegisterInstance<IEmailService>(new EmailService());
 			//RegisterInstance<IInstallVoiceSynthesisService>(new InstallVoiceSynthesisService());
-            //RegisterInstance<IMediaService>(new MediaService());
+            RegisterInstance<IMediaService>(new MediaService());
             RegisterInstance<IPopupService>(new PopupService());
             RegisterInstance<ICopyPasteService>(new CopyPasteService());
-            //RegisterInstance<ITextToSpeechService>(new TextToSpeechService());
+            RegisterInstance<ITextToSpeechService>(new TextToSpeechService());
 
 			RegisterInstance<IStorageService>(_storageService);
 			RegisterInstance<IXmlService>(new XmlService());
-			//RegisterInstance<ICollectionStorageService>(_collectionStorageService);
+			RegisterInstance<ICollectionStorageService>(_collectionStorageService);
 
             InitializeAsync();
         }

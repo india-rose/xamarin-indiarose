@@ -24,12 +24,8 @@
             <RowDefinition Height="10*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <!--Todo replace with logo-->
-        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" 
-                   Margin="50,10,50,10"
-                   Text="IndiaRoses"
-                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                   FontSize="40"/>
+        <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Source="../../Assets/logoIndiaRose.png" 
+               Stretch="Uniform" HorizontalAlignment="Stretch" Margin="0,20,50,10"/>
         
         <Button Style="{StaticResource BigBlueButton}" 
                 Grid.Row="1" Grid.Column="0" 
@@ -38,8 +34,8 @@
         </Button>
 
         <Button Style="{StaticResource BigGreenButton}"
-                Grid.Row="1" Grid.Column="2">
-            <!--Command="{Binding CollectionManagementCommand}"-->
+                Grid.Row="1" Grid.Column="2"
+                Command="{Binding CollectionManagementCommand}">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_CollectionManagement"/>
         </Button>
 
@@ -50,8 +46,8 @@
         </Button>
 
         <Button Style="{StaticResource BigPinkButton}"
-                Grid.Row="2" Grid.Column="2">
-                <!--Command="{Binding HelpCommand}"-->
+                Grid.Row="2" Grid.Column="2"
+                Command="{Binding HelpCommand}">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_Help"/>
         </Button>
 

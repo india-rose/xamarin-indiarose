@@ -83,7 +83,7 @@ namespace IndiaRose.Interfaces
         /// <summary>
         /// Bouton retour dans la title bar
         /// </summary>
-        bool IsBackCategoryEnabled { get; set; }
+        bool IsBackButtonEnabled { get; set; }
 
         /// <summary>
         /// Sauvegarde de manière asynchrone les préférences

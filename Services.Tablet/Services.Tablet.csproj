@@ -108,10 +108,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FontService.cs" />
+    <Compile Include="MediaService.cs" />
     <Compile Include="PopupService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceService.cs" />
     <Compile Include="ScreenService.cs" />
+    <Compile Include="SoundUtilities.cs" />
+    <Compile Include="TextToSpeechService.cs" />
     <EmbeddedResource Include="Properties\Services.Tablet.rd.xml" />
   </ItemGroup>
   <ItemGroup>
