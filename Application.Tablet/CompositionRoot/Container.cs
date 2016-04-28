@@ -50,7 +50,7 @@ namespace Application.Tablet.CompositionRoot
 
             await _storageService.InitializeAsync();
 			await _settingsService.LoadAsync();
-            await _collectionStorageService.InitializeAsync();
+                await _collectionStorageService.InitializeAsync();
 		}
 	}
 }
