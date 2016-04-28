@@ -120,7 +120,10 @@
     <Compile Include="Views\BindableImageView.cs" />
     <Compile Include="Views\IndiagramBrowserView.cs" />
     <Compile Include="Views\IndiagramView.cs" />
+    <Compile Include="Views\SentenceAreaView.cs" />
     <Compile Include="Views\TabletPreviewView.cs" />
+    <Compile Include="Views\TitleBarView.cs" />
+    <Compile Include="Views\UserView.cs" />
     <EmbeddedResource Include="Properties\Framework.Tablet.rd.xml" />
   </ItemGroup>
   <ItemGroup>

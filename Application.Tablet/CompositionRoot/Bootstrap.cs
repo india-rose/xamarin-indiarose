@@ -6,6 +6,7 @@ using Application.Tablet.Views.Admin;
 using Application.Tablet.Views.Admin.Collection;
 using Application.Tablet.Views.Admin.Settings;
 using Application.Tablet.Views.Dialogs;
+using Application.Tablet.Views.User;
 using IndiaRose.Application.Views.Dialogs;
 using IndiaRose.Business;
 using Storm.Mvvm.Inject;
@@ -29,17 +30,18 @@ namespace Application.Tablet.CompositionRoot
                 {ViewKey.ADMIN_SETTINGS_APPBEHAVIOUR, typeof(AppBehaviourPage) },
                 {ViewKey.ADMIN_COLLECTION_HOME, typeof(CollectionManagementPage) },
                 {ViewKey.ADMIN_COLLECTION_ADDINDIAGRAM, typeof(AddIndiagramPage) },
-                {ViewKey.ADMIN_COLLECTION_WATCHINDIAGRAM, typeof(WatchIndiagramPage) }
+                {ViewKey.ADMIN_COLLECTION_WATCHINDIAGRAM, typeof(WatchIndiagramPage) },
+                {ViewKey.USER_HOME, typeof(HomePage) }
             };
 
 			var dialogs = new Dictionary<string, Type>
             {
-				/*{Dialogs.ADMIN_COLLECTION_SELECTCATEGORY,typeof(SelectCategoryActionDialog)},*/
+				{Dialogs.ADMIN_COLLECTION_SELECTCATEGORY,typeof(SelectCategoryActionDialog)},
 				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_CATEGORY,typeof(ExploreCollectionCategoryDialog)},
 				{Dialogs.ADMIN_COLLECTION_EXPLORECOLLECTION_INDIAGRAM,typeof(ExploreCollectionIndiagramDialog)},
                 {Dialogs.ADMIN_SETTINGS_RESETSETTINGS,typeof(ResetSettingsDialog)},
                 {Dialogs.ADMIN_SETTINGS_COLORPICKER, typeof(ColorPickerDialog)},
-                //{{Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
+                {Dialogs.ADMIN_MAILERROR,typeof(MailErrorDialog)},
                 {Dialogs.ADMIN_COLLECTION_IMAGECHOICE, typeof(ImageChoiceDialog)},
                 {Dialogs.ADMIN_COLLECTION_SOUNDCHOICE, typeof(SoundChoiceDialog)},
                 {Dialogs.ADMIN_COLLECTION_RECORDSOUND,typeof(RecordSoundDialog)},

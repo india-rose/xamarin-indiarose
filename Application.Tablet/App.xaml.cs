@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Application.Tablet.CompositionRoot;
+using Application.Tablet.Views.User;
 
 namespace Application.Tablet
 {
@@ -74,7 +75,8 @@ namespace Application.Tablet
                     // Quand la pile de navigation n'est pas restaurée, accédez à la première page,
                     // puis configurez la nouvelle page en transmettant les informations requises en tant que
                     // paramètre
-                    var target = typeof(Views.Admin.MainPage);
+                    //var target = e.TileId == "AdminPage" ? typeof(MainPage) : typeof(HomePage);
+                    var target = typeof(HomePage);
                     rootFrame.Navigate(target, e.Arguments);
                 }
                 // Vérifiez que la fenêtre actuelle est active

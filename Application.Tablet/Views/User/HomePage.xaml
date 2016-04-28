@@ -1,0 +1,34 @@
+﻿<mvvm:MvvmPage
+    x:Class="Application.Tablet.Views.User.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mvvm="using:Storm.Mvvm"
+    mc:Ignorable="d"
+    xmlns:views="using:Framework.Tablet.Views"
+    DataContext="{Binding Source={StaticResource Locator}, Path=UserHomeViewModel}">
+    <StackPanel>
+    
+        <views:TitleBarView
+              Category="{Binding CurrentCategory}"
+            />
+        <views:UserView
+	          TopBackground="{Binding BackgroundColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
+	          TopCount="{Binding CollectionDisplayCount, Mode=TwoWay}"
+	          TopOffset="{Binding CollectionOffset}"
+	          TopIndiagrams="{Binding DisplayedIndiagrams}"
+	          TopTextColor="{Binding TextColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
+	          TopIndiagramSelectedCommand="{Binding IndiagramSelectedCommand}"
+	          TopNextCommand="{Binding NextCommand}"
+	          TopNextButtonVisibility="{Binding CorrectionMode, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Negation}"
+	          
+			  BotBackground="{Binding BotBackgroundColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
+	          BotIndiagrams="{Binding SentenceIndiagrams}" 
+			  BotCanAddIndiagrams="{Binding CanAddMoreIndiagrams, Mode=TwoWay}"
+			  BotReadCommand="{Binding ReadSentenceCommand}"
+			  BotIndiagramSelectedCommand="{Binding SentenceIndiagramSelectedCommand}"
+			  BotCorrectionCommand="{Binding CorrectionCommand}"
+            />
+    </StackPanel>
+</mvvm:MvvmPage>

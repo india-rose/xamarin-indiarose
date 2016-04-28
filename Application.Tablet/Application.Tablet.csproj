@@ -145,6 +145,9 @@
     <Compile Include="Views\Dialogs\ImageChoiceDialog.xaml.cs">
       <DependentUpon>ImageChoiceDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dialogs\MailErrorDialog.xaml.cs">
+      <DependentUpon>MailErrorDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\RecordSoundDialog.xaml.cs">
       <DependentUpon>RecordSoundDialog.xaml</DependentUpon>
     </Compile>
@@ -156,6 +159,9 @@
     </Compile>
     <Compile Include="Views\Dialogs\SoundChoiceDialog.xaml.cs">
       <DependentUpon>SoundChoiceDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -263,6 +269,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Dialogs\MailErrorDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Dialogs\RecordSoundDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -279,10 +289,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\User\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\User\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Common\IndiaRose.Business\IndiaRose.Business.csproj">
       <Project>{a97ac8d7-a77e-4e99-973e-aedefdc711a5}</Project>
