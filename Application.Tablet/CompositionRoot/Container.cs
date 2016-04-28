@@ -24,7 +24,7 @@ namespace Application.Tablet.CompositionRoot
             _settingsService = new SettingsService();
 
             _storageService = new StorageService(FileSystem.Current.LocalStorage.Path);
-		    //_collectionStorageService = new SqliteCollectionStorageService(new SQLitePlatformWinRT());
+		    _collectionStorageService = new SqliteCollectionStorageService(new SQLitePlatformWinRT());
 
             RegisterInstance<INavigationService>(new NavigationService(rootFrame,views));
             RegisterInstance<ISettingsService>(_settingsService);
@@ -33,7 +33,6 @@ namespace Application.Tablet.CompositionRoot
             RegisterInstance<IEmailService>(new EmailService());
 			RegisterInstance<IResourceService>(new ResourceService());
 			RegisterInstance<IEmailService>(new EmailService());
-			//RegisterInstance<IInstallVoiceSynthesisService>(new InstallVoiceSynthesisService());
             RegisterInstance<IMediaService>(new MediaService());
             RegisterInstance<IPopupService>(new PopupService());
             RegisterInstance<ICopyPasteService>(new CopyPasteService());
@@ -51,7 +50,7 @@ namespace Application.Tablet.CompositionRoot
 
             await _storageService.InitializeAsync();
 			await _settingsService.LoadAsync();
-            //await _collectionStorageService.InitializeAsync();
+            await _collectionStorageService.InitializeAsync();
             
 		}
 	}
