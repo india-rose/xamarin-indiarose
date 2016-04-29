@@ -99,9 +99,6 @@
     </Compile>
     <Compile Include="CompositionRoot\Bootstrap.cs" />
     <Compile Include="CompositionRoot\Container.cs" />
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Admin\Collection\AddIndiagramPage.xaml.cs">
       <DependentUpon>AddIndiagramPage.xaml</DependentUpon>
@@ -198,7 +195,6 @@
     <Content Include="Assets\logoIndiaRose.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <AndroidResource Include="Assets\logo_admin.png" />
     <Content Include="Assets\manuel.pdf" />
     <None Include="project.json" />
   </ItemGroup>
@@ -228,10 +224,6 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Admin\Collection\AddIndiagramPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

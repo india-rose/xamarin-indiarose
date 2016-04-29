@@ -6,8 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvvm="using:Storm.Mvvm"
-    mc:Ignorable="d"
-    DataContext="{Binding Source={StaticResource Locator}, Path=SplashScreenViewModel}">
+    mc:Ignorable="d">
+    <!--
+    DataContext="{Binding Source={StaticResource Locator}, Path=SplashScreenViewModel}"-->
 
     <Grid VerticalAlignment="Stretch" Background="White">
         <Grid.ColumnDefinitions>
@@ -21,8 +22,11 @@
             <RowDefinition Height="20*"></RowDefinition>
         </Grid.RowDefinitions>
         
-        <Image Source="../../Assets/logo_admin.png" Grid.Row="1"
-               Grid.Column="1 "/>
-        
-     </Grid>
+        <Image Source="../../Assets/logoIndiaRose.png" Grid.Row="1"
+               Grid.Column="1 " />
+
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="ceci fais chier" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+    </Grid>
 </mvvm:MvvmPage>

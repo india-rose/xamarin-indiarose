@@ -14,21 +14,22 @@
               Category="{Binding CurrentCategory}"
             />
         <views:UserView
-	          TopBackground="{Binding BackgroundColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
+	          TopBackground="{Binding SettingsService.TopBackgroundColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
 	          TopCount="{Binding CollectionDisplayCount, Mode=TwoWay}"
 	          TopOffset="{Binding CollectionOffset}"
-	          TopIndiagrams="{Binding DisplayedIndiagrams}"
-	          TopTextColor="{Binding TextColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
-	          TopIndiagramSelectedCommand="{Binding IndiagramSelectedCommand}"
-	          TopNextCommand="{Binding NextCommand}"
-	          TopNextButtonVisibility="{Binding CorrectionMode, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Negation}"
-	          
-			  BotBackground="{Binding BotBackgroundColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
+	          TopIndiagrams="{Binding CollectionIndiagrams}"
+	          TopTextColor="{Binding SettingsService.TextColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
+	          TopIndiagramSelectedCommand="{Binding CollectionIndiagramSelectedCommand}"
+	          TopNextCommand="{Binding CollectionNextCommand}"
+	          TopNextButtonVisibility="{Binding IsCorrectionModeEnabled, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Negation}"
+	        
+			  BotBackground="{Binding SettingsService.BottomBackgroundColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
 	          BotIndiagrams="{Binding SentenceIndiagrams}" 
-			  BotCanAddIndiagrams="{Binding CanAddMoreIndiagrams, Mode=TwoWay}"
+			  BotCanAddIndiagrams="{Binding SentenceCanAddMoreIndiagrams, Mode=TwoWay}"
 			  BotReadCommand="{Binding ReadSentenceCommand}"
 			  BotIndiagramSelectedCommand="{Binding SentenceIndiagramSelectedCommand}"
-			  BotCorrectionCommand="{Binding CorrectionCommand}"
+			  BotCorrectionCommand="{Binding EnterCorrectionModeCommand}"
             />
     </StackPanel>
+    <!--TODO faire attentino au placement des bouton/ logo qui sont couper-->
 </mvvm:MvvmPage>

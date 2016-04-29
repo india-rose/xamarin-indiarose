@@ -34,6 +34,7 @@ namespace Application.Tablet.CompositionRoot
                 {ViewKey.ADMIN_COLLECTION_ADDINDIAGRAM, typeof(AddIndiagramPage) },
                 {ViewKey.ADMIN_COLLECTION_WATCHINDIAGRAM, typeof(WatchIndiagramPage) },
                 {ViewKey.USER_HOME, typeof(HomePage) },
+                {"plash", typeof(SplashScreen) }
             };
 
 			var dialogs = new Dictionary<string, Type>

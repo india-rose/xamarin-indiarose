@@ -17,14 +17,16 @@ namespace Application.Tablet.CompositionRoot
         private ISettingsService _settingsService;
         private StorageService _storageService;
 		private ICollectionStorageService _collectionStorageService;
+	    private IInitializationStateService _initializationStateService;
 
         protected override void Initialize(Frame rootFrame, Dictionary<string, Type> views, Dictionary<string, Type> dialogs)
 		{
 			base.Initialize(rootFrame, views, dialogs);
-            _settingsService = new SettingsService();
 
+            _settingsService = new SettingsService();
             _storageService = new StorageService(FileSystem.Current.LocalStorage.Path);
 		    _collectionStorageService = new SqliteCollectionStorageService(new SQLitePlatformWinRT());
+            _initializationStateService = new InitializationStateService(2);
 
             RegisterInstance<INavigationService>(new NavigationService(rootFrame,views));
             RegisterInstance<ISettingsService>(_settingsService);
@@ -37,6 +39,7 @@ namespace Application.Tablet.CompositionRoot
             RegisterInstance<IPopupService>(new PopupService());
             RegisterInstance<ICopyPasteService>(new CopyPasteService());
             RegisterInstance<ITextToSpeechService>(new TextToSpeechService());
+            RegisterInstance<IInitializationStateService>(_initializationStateService);
 
 			RegisterInstance<IStorageService>(_storageService);
 			RegisterInstance<IXmlService>(new XmlService());
@@ -45,12 +48,11 @@ namespace Application.Tablet.CompositionRoot
             InitializeAsync();
         }
 
-		protected async void InitializeAsync()
+        protected async void InitializeAsync()
         {
-
             await _storageService.InitializeAsync();
 			await _settingsService.LoadAsync();
-                await _collectionStorageService.InitializeAsync();
+            await _collectionStorageService.InitializeAsync();
 		}
 	}
 }
