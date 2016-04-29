@@ -29,7 +29,7 @@ namespace Application.Tablet.Views
         public SplashScreen()
         {
             this.InitializeComponent();
-            DataContext = new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.User);
+            DataContext = new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.Admin);
         }
     }
 }

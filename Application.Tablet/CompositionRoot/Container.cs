@@ -26,7 +26,8 @@ namespace Application.Tablet.CompositionRoot
             _settingsService = new SettingsService();
             _storageService = new StorageService(FileSystem.Current.LocalStorage.Path);
 		    _collectionStorageService = new SqliteCollectionStorageService(new SQLitePlatformWinRT());
-            _initializationStateService = new InitializationStateService(2);
+            //_initializationStateService = new InitializationStateService(2); Utiliser cette ligne si utilisation TTS
+            _initializationStateService = new InitializationStateService(1);
 
             RegisterInstance<INavigationService>(new NavigationService(rootFrame,views));
             RegisterInstance<ISettingsService>(_settingsService);
@@ -53,6 +54,7 @@ namespace Application.Tablet.CompositionRoot
             await _storageService.InitializeAsync();
 			await _settingsService.LoadAsync();
             await _collectionStorageService.InitializeAsync();
-		}
+            _initializationStateService.InitializationFinished();
+        }
 	}
 }
