@@ -72,7 +72,8 @@
 
         <Button Grid.Column="1"
                 Grid.Row="7"
-                Style="{StaticResource BlueButton}">
+                Style="{StaticResource BlueButton}"
+                Command="{Binding ListenCommand}">
 
             <TextBlock x:Uid="Collection_ListenSound"
                        Style="{StaticResource TextButton}"/>

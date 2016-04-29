@@ -25,16 +25,16 @@ namespace Application.Tablet.CompositionRoot
             var views = new Dictionary<string, Type>
             {
                 {ViewKey.ADMIN_HOME, typeof(MainPage)},
-                {ViewKey.ADMIN_CREDITS, typeof(CreditsPage) },
-                {ViewKey.ADMIN_SETTINGS_APPLICATIONLOOK, typeof(ApplicationLookPage) },
-                {ViewKey.ADMIN_SETTINGS_INDIAGRAMPROPERTIES, typeof(IndiagramPropertyPage) },
-                {ViewKey.ADMIN_SETTINGS_HOME, typeof(AppSettingsPage) },
-                {ViewKey.ADMIN_SETTINGS_APPBEHAVIOUR, typeof(AppBehaviourPage) },
-                {ViewKey.ADMIN_COLLECTION_HOME, typeof(CollectionManagementPage) },
-                {ViewKey.ADMIN_COLLECTION_ADDINDIAGRAM, typeof(AddIndiagramPage) },
-                {ViewKey.ADMIN_COLLECTION_WATCHINDIAGRAM, typeof(WatchIndiagramPage) },
-                {ViewKey.USER_HOME, typeof(HomePage) },
-                {"plash", typeof(SplashScreen) }
+                {ViewKey.ADMIN_CREDITS, typeof(CreditsPage)},
+                {ViewKey.ADMIN_SETTINGS_APPLICATIONLOOK, typeof(ApplicationLookPage)},
+                {ViewKey.ADMIN_SETTINGS_INDIAGRAMPROPERTIES, typeof(IndiagramPropertyPage)},
+                {ViewKey.ADMIN_SETTINGS_HOME, typeof(AppSettingsPage)},
+                {ViewKey.ADMIN_SETTINGS_APPBEHAVIOUR, typeof(AppBehaviourPage)},
+                {ViewKey.ADMIN_COLLECTION_HOME, typeof(CollectionManagementPage)},
+                {ViewKey.ADMIN_COLLECTION_ADDINDIAGRAM, typeof(AddIndiagramPage)},
+                {ViewKey.ADMIN_COLLECTION_WATCHINDIAGRAM, typeof(WatchIndiagramPage)},
+                {ViewKey.USER_HOME, typeof(HomePage)},
+                {"splash", typeof(SplashScreen)}
             };
 
 			var dialogs = new Dictionary<string, Type>
