@@ -25,7 +25,7 @@
 
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
                    Grid.Column="1"
-                   Style="{StaticResource PopupContentStyle}"
+                   Style="{StaticResource PopupTitleStyle}"
                    x:Uid="DeleteCategoryConfirmation_Title"/>
 
         <Button Style="{StaticResource SmallButton}" 

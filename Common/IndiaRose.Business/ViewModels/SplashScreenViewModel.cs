@@ -13,7 +13,7 @@ namespace IndiaRose.Business.ViewModels
 		private const string PROPERTY = "Text";
 		private const string LOADING_UID = "SplashScreen_Loading";
 		private const string FROM_OLD_FORMAT_UID = "SplashScreen_FromOldFormat";
-		private const string FROM_ZIP_UID = "SplashScreen_FromZip";
+		private const string FROM_ZIP_UID = "SplashScreen_FromZipFormat";
 
 		public enum LaunchingType
 		{

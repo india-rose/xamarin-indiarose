@@ -25,8 +25,10 @@
         <Image Source="../../Assets/logoIndiaRose.png" Grid.Row="1"
                Grid.Column="1 " />
 
-        <TextBlock Grid.Row="2" Grid.Column="1" Text="votre texte ici" 
-                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Grid.Column="1"
+                   Text="{Binding Status}" 
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
 
     </Grid>
 </mvvm:MvvmPage>
