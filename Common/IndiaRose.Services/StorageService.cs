@@ -119,6 +119,8 @@ namespace IndiaRose.Services
                 res.Copy(STORAGE_BACK_IMAGE, ImageBackPath);
             }
 
+
+            //Doit être appelé sur android mais pas sur windows10...
             //CheckAssetsAsync();
         }
 
