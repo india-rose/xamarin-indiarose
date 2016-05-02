@@ -9,10 +9,13 @@
     xmlns:views="using:Framework.Tablet.Views"
     DataContext="{Binding Source={StaticResource Locator}, Path=UserHomeViewModel}">
     <StackPanel>
-    
+
         <views:TitleBarView
               Category="{Binding CurrentCategory}"
+              BackCategoryCommand ="{Binding CollectionBackCategoryCommand}"
+              ParentCategory="{Binding ParentCategory}"
             />
+       
         <views:UserView
 	          TopBackground="{Binding SettingsService.TopBackgroundColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
 	          TopCount="{Binding CollectionDisplayCount, Mode=TwoWay}"
