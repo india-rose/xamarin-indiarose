@@ -5,6 +5,8 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
+using Windows.UI.StartScreen;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,6 +28,33 @@ namespace Application.Tablet.Views.Admin
         public MainPage()
         {
             this.InitializeComponent();
+            //Loaded += MainPage_Loaded;
         }
+
+        /*async void MainPage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var secondaryTileId = "AdminPage";
+            if (!SecondaryTile.Exists(secondaryTileId))
+            {
+                Uri square150x150Logo = new Uri("ms-appx:///Assets/150winAdmin.png");
+                Uri square30x30Logo = new Uri("ms-appx:///Assets/30winAdmin.png");
+                string tileActivationArguments = secondaryTileId + " was pinned at = " + DateTime.Now.ToLocalTime();
+                string displayName = "IndiaRose.Admin";
+
+                TileSize newTileDesiredSize = TileSize.Square150x150;
+
+                SecondaryTile secondaryTile = new SecondaryTile(secondaryTileId,
+                                                                displayName,
+                                                                tileActivationArguments,
+                                                                square150x150Logo,
+                                                                newTileDesiredSize);
+
+                secondaryTile.VisualElements.Square30x30Logo = square30x30Logo;
+                secondaryTile.VisualElements.ForegroundText = ForegroundText.Dark;
+                secondaryTile.BackgroundColor = Colors.CornflowerBlue;
+                await secondaryTile.RequestCreateAsync();
+            }
+        }*/
+
     }
 }

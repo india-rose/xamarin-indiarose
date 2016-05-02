@@ -48,8 +48,6 @@ namespace Application.Tablet.Views.User
                                                                 tileActivationArguments,
                                                                 square150x150Logo,
                                                                 newTileDesiredSize);
-
-               
                 
                 secondaryTile.VisualElements.Square30x30Logo = square30x30Logo;
                 secondaryTile.VisualElements.ForegroundText = ForegroundText.Dark;
