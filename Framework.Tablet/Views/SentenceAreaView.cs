@@ -217,7 +217,7 @@ namespace Framework.Tablet.Views
                 else
                 {
                     // set it back to transparent
-                    view.Background = new SolidColorBrush(Colors.White);
+                    view.Background = new SolidColorBrush(Colors.Transparent);
                 }
             }
         }
