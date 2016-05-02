@@ -191,9 +191,13 @@
     </PRIResource>
     <None Include="Application.Tablet_TemporaryKey.pfx" />
     <Content Include="Assets\150winAdmin.png" />
+    <Content Include="Assets\150winUser.png" />
     <Content Include="Assets\30winAdmin.png" />
+    <Content Include="Assets\30winUser.png" />
     <Content Include="Assets\50winAdmin.png" />
+    <Content Include="Assets\50winUser.png" />
     <Content Include="Assets\70winAdmin.png" />
+    <Content Include="Assets\70winUser.png" />
     <Content Include="Assets\indiagrams.zip" />
     <Content Include="Assets\cancel.png" />
     <Content Include="Assets\logoIndiaRose.png">

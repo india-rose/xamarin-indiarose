@@ -28,12 +28,13 @@ namespace Application.Tablet.Views.Admin
         public MainPage()
         {
             this.InitializeComponent();
-            //Loaded += MainPage_Loaded;
+            Loaded += MainPage_Loaded;
         }
 
-        /*async void MainPage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        async void MainPage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var secondaryTileId = "AdminPage";
+            //initialisation du second point d'entrée de l'application (partie admin)
+            /*var secondaryTileId = "AdminPage";
             if (!SecondaryTile.Exists(secondaryTileId))
             {
                 Uri square150x150Logo = new Uri("ms-appx:///Assets/150winAdmin.png");
@@ -51,10 +52,9 @@ namespace Application.Tablet.Views.Admin
 
                 secondaryTile.VisualElements.Square30x30Logo = square30x30Logo;
                 secondaryTile.VisualElements.ForegroundText = ForegroundText.Dark;
-                secondaryTile.BackgroundColor = Colors.CornflowerBlue;
+                secondaryTile.VisualElements.BackgroundColor = Colors.CornflowerBlue;
                 await secondaryTile.RequestCreateAsync();
-            }
-        }*/
-
+            }*/
+        }
     }
 }

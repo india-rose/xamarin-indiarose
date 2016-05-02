@@ -32,14 +32,14 @@ namespace Application.Tablet.Views.User
 
         async void HomePage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            //initialisation du second point d'entrée de l'application (parti admin)
-            var secondaryTileId = "AdminPage";
+            /*//initialisation du second point d'entrée de l'application (partie user)
+            var secondaryTileId = "UserPage";
             if (!SecondaryTile.Exists(secondaryTileId))
             {
-                Uri square150x150Logo = new Uri("ms-appx:///Assets/150winAdmin.png");
-                Uri square30x30Logo = new Uri("ms-appx:///Assets/30winAdmin.png");
+                Uri square150x150Logo = new Uri("ms-appx:///Assets/150winUser.png");
+                Uri square30x30Logo = new Uri("ms-appx:///Assets/30winUser.png");
                 string tileActivationArguments = secondaryTileId + " was pinned at = " + DateTime.Now.ToLocalTime();
-                string displayName = "IndiaRose.Admin";
+                string displayName = "IndiaRose.User";
 
                 TileSize newTileDesiredSize = TileSize.Square150x150;
 
@@ -51,9 +51,9 @@ namespace Application.Tablet.Views.User
                 
                 secondaryTile.VisualElements.Square30x30Logo = square30x30Logo;
                 secondaryTile.VisualElements.ForegroundText = ForegroundText.Dark;
-                secondaryTile.BackgroundColor = Colors.CornflowerBlue;
+                secondaryTile.VisualElements.BackgroundColor = Colors.DodgerBlue;
                 await secondaryTile.RequestCreateAsync();
-            }
+            }*/
         }
 
         void HomePage_DataContextChanged(Windows.UI.Xaml.FrameworkElement sender, Windows.UI.Xaml.DataContextChangedEventArgs args)
