@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using Windows.ApplicationModel.DataTransfer;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
@@ -330,7 +333,12 @@ namespace Framework.Tablet.Views
         public UserView()
         {
             Orientation = Orientation.Vertical;
-            _botScreen = new SentenceAreaView();
+            _botScreen = new SentenceAreaView
+            {
+                //AllowDrop = true,
+                //DragOver += botScreen_DragOver,
+                //Drop += botScreen_Drop
+            };
             _topScreen = new IndiagramBrowserView();
             Children.Add(_topScreen);
             Children.Add(_botScreen);
@@ -357,6 +365,21 @@ namespace Framework.Tablet.Views
             _topScreen.Height = screenHeight * ratio / 100;
             _botScreen.Height = screenHeight - _topScreen.Height;
         }
+        #endregion
+
+        #region Dreg and Drop
+
+        private void botScreen_DragOver (object sender, DragEventArgs e)
+        {
+            e.AcceptedOperation = DataPackageOperation.Move;
+            //si plusieur item de active faire DataPackageOperation.Copy
+        }
+
+        private async void botScreen_Drop(object sender, DragEventArgs e)
+        {
+            //ajouter l'indiagram au sentence Area view
+        }
+
         #endregion
     }
 }
