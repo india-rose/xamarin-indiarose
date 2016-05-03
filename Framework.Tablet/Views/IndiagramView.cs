@@ -122,13 +122,13 @@ namespace Framework.Tablet.Views
             if (!string.IsNullOrEmpty(Indiagram.ImagePath))
             {
                 //si l'Indiagram a une image
-                if (Children[0] != _image)
+                if (Children != null && Children[0] != _image)
                 {
                     try
                     {
                         Children.RemoveAt(0);
                     }
-                    catch (ArgumentException)
+                    catch (Exception)
                     {
                     }
                     Children.Insert(0, _image);
