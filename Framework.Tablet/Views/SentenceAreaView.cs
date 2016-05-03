@@ -4,7 +4,9 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Windows.Input;
+using Windows.Foundation;
 using Windows.UI;
+using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -109,6 +111,14 @@ namespace Framework.Tablet.Views
                 Height = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize
             };
 
+            _playButton.IsRightTapEnabled = true;
+            _playButton.RightTapped += (sender, args) =>
+            {
+                if (CorrectionCommand != null && CorrectionCommand.CanExecute(null))
+                {
+                    CorrectionCommand.Execute(null);
+                } 
+            };
             _playButton.Tapped += (sender, args) =>
             {
                 if (ReadCommand != null && ReadCommand.CanExecute(null))
