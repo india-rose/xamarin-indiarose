@@ -86,6 +86,8 @@ namespace Framework.Tablet.Views
                 Margin = new Thickness(0, margin, 0, 0),
                 Height = SettingsService.IndiagramDisplaySize,
                 Width = SettingsService.IndiagramDisplaySize,
+                //CanDrag = true
+                //voir si il faut relier le bool a IsDragAndDropEnabled des settings
             };
             _textBlock = new TextBlock
             {
