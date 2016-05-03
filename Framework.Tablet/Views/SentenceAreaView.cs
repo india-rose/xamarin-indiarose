@@ -38,6 +38,7 @@ namespace Framework.Tablet.Views
         private ObservableCollection<IndiagramUIModel> _indiagrams;
         private readonly List<IndiagramView> _indiagramViews = new List<IndiagramView>();
         private readonly ColorStringToSolidColorBrushConverter _colorConverter = new ColorStringToSolidColorBrushConverter();
+        private int _heightOfBiggerIndiagram = IndiagramView.DefaultHeight;
         #endregion
 
         #region Properties
@@ -148,6 +149,7 @@ namespace Framework.Tablet.Views
                     TextColor = (SolidColorBrush)_colorConverter.Convert(settings.TextColor, null, null, "")
                 };
                 view.Tapped += OnIndiagramTouched;
+
                 SetColumn(view, i);
                 Children.Add(view);
                 _indiagramViews.Add(view);
@@ -159,6 +161,8 @@ namespace Framework.Tablet.Views
         /// </summary>
         private void IndiagramsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
+            _heightOfBiggerIndiagram = IndiagramView.DefaultHeight;
+
             if (e.OldItems != null)
             {
                 foreach (IndiagramUIModel model in e.OldItems)
@@ -173,7 +177,7 @@ namespace Framework.Tablet.Views
                 {
                     model.ReinforcerStateChanged += IndiagramReinforcerChanged;
                 }
-            }
+            }   
 
             //refresh everything
             var i = 0;
@@ -186,6 +190,8 @@ namespace Framework.Tablet.Views
                 _indiagramViews[i].Indiagram = null;
             }
             CanAddIndiagrams = (_indiagrams.Count < _indiagramViews.Count);
+
+            CheckViewsHeight();
         }
 
         /// <summary>
@@ -228,12 +234,47 @@ namespace Framework.Tablet.Views
         private void OnIndiagramTouched(object sender, TappedRoutedEventArgs tappedRoutedEventArgs)
         {
             var view = sender as IndiagramView;
+
+            if (view == null)
+                return;
+
             IndiagramUIModel ind = _indiagrams.FirstOrDefault(x => Indiagram.AreSameIndiagram(x.Model, view.Indiagram));
 
-            if (view != null && view.Indiagram != null && IndiagramSelectedCommand != null &&
-                IndiagramSelectedCommand.CanExecute(ind))
+            if (view.Indiagram != null && IndiagramSelectedCommand != null && IndiagramSelectedCommand.CanExecute(ind))
             {
                 IndiagramSelectedCommand.Execute(ind);
+            }
+        }
+
+        /// <summary>
+        /// Vérifie la hauteur de l'Indiagram qui a le texte le plus long (au cas où ce dernier est sur plusieurs lignes)
+        /// Permet d'aligner tous les Indiagrams par rapport au plus gros, et d'éviter que le renforceur prenne toute la hauteur
+        /// La hauteur l'actuel plus gros indiagram est stockée dans _heightOfBiggerIndiagram
+        /// </summary>
+        private void CheckViewsHeight()
+        {
+            foreach (var view in _indiagramViews)
+            {
+                if (view != null && view.Indiagram != null)
+                {
+                    int h = IndiagramView.DefaultHeight;
+                    int w = IndiagramView.DefaultWidth;
+                    int length = view.Indiagram.Text.Length;
+                    int fontSize = LazyResolver<ISettingsService>.Service.FontSize;
+                    int n = length / (w / fontSize);
+                    h += n * fontSize;
+                    // En théorie, il faudrait utiliser h += --n * fontSize, mais on ne peut pas à cause de l'indiagram lieux/page2/parc d'attraction
+                    // Du coup on a une ligne en trop sur la majorité des indiagrams, à régler...
+
+                    if (h > _heightOfBiggerIndiagram)
+                        _heightOfBiggerIndiagram = h;
+                }
+            }
+
+            foreach (var view in _indiagramViews)
+            {
+                if (view != null && view.Indiagram != null)
+                    view.Height = _heightOfBiggerIndiagram;
             }
         }
     }

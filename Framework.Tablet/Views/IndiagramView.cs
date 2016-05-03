@@ -60,6 +60,7 @@ namespace Framework.Tablet.Views
             if (indiaView != null) indiaView.RefreshDisplay();
         }
 
+        #endregion
 
         /// <summary>
         /// Indiagram à afficher
@@ -72,8 +73,6 @@ namespace Framework.Tablet.Views
                 SetValue(IndiagramProperty, value);
             }
         }
-
-        #endregion
 
         public IndiagramView()
         {
@@ -137,7 +136,9 @@ namespace Framework.Tablet.Views
                     {
                     }
                     Children.Insert(0, _image);
-                    Children.Insert(1, _textBlock);
+
+                    if(Children[1] == null)
+                        Children.Insert(1, _textBlock);
                 }
                 _image.Source = new BitmapImage(new Uri(Indiagram.ImagePath, UriKind.Absolute));
             }
@@ -146,13 +147,15 @@ namespace Framework.Tablet.Views
                 //si l'indiagram n'a pas d'image
                 try
                 {
-                    Children.RemoveAt(0);
+                    Children.Remove(Children[0]);
                 }
                 catch (ArgumentException)
                 {
                 }
                 Children.Insert(0, _redRect);
-                Children.Insert(1, _textBlock);
+
+                if (Children[1] == null)
+                    Children.Insert(1, _textBlock);
             }
             if (!Indiagram.IsEnabled)
             {
