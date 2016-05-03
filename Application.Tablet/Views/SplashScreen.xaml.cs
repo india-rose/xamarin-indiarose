@@ -69,7 +69,7 @@ namespace Application.Tablet.Views
 
                 secondaryTile.VisualElements.Square30x30Logo = square30x30Logo;
                 secondaryTile.VisualElements.ForegroundText = ForegroundText.Dark;
-                secondaryTile.VisualElements.BackgroundColor = Colors.DodgerBlue;
+                secondaryTile.VisualElements.BackgroundColor = Colors.White;
                 await secondaryTile.RequestCreateAsync();
             }
 
@@ -92,7 +92,7 @@ namespace Application.Tablet.Views
 
                 secondaryTile.VisualElements.Square30x30Logo = square30x30Logo;
                 secondaryTile.VisualElements.ForegroundText = ForegroundText.Dark;
-                secondaryTile.VisualElements.BackgroundColor = Colors.CornflowerBlue;
+                secondaryTile.VisualElements.BackgroundColor = Colors.WhiteSmoke;
                 await secondaryTile.RequestCreateAsync();
             }
         }
