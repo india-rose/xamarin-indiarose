@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -124,16 +125,19 @@ namespace Framework.Tablet.Views
             if (!string.IsNullOrEmpty(Indiagram.ImagePath))
             {
                 //si l'Indiagram a une image
-                if (Children != null && Children[0] != _image)
+                if (Children[0] != _image)
                 {
                     try
                     {
-                        Children.RemoveAt(0);
+                        Children.Remove(Children[0]);
+                        //Children.RemoveAt(0);
+
                     }
-                    catch (Exception)
+                    catch (ArgumentException)
                     {
                     }
                     Children.Insert(0, _image);
+                    Children.Insert(1, _textBlock);
                 }
                 _image.Source = new BitmapImage(new Uri(Indiagram.ImagePath, UriKind.Absolute));
             }
@@ -148,6 +152,7 @@ namespace Framework.Tablet.Views
                 {
                 }
                 Children.Insert(0, _redRect);
+                Children.Insert(1, _textBlock);
             }
             if (!Indiagram.IsEnabled)
             {
