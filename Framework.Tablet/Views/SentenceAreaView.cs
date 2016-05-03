@@ -238,10 +238,12 @@ namespace Framework.Tablet.Views
         private void OnIndiagramTouched(object sender, TappedRoutedEventArgs tappedRoutedEventArgs)
         {
             var view = sender as IndiagramView;
+            IndiagramUIModel ind = _indiagrams.FirstOrDefault(x => Indiagram.AreSameIndiagram(x.Model, view.Indiagram));
+
             if (view != null && view.Indiagram != null && IndiagramSelectedCommand != null &&
-                IndiagramSelectedCommand.CanExecute(view.Indiagram))
+                IndiagramSelectedCommand.CanExecute(ind))
             {
-                IndiagramSelectedCommand.Execute(view.Indiagram);
+                IndiagramSelectedCommand.Execute(ind);
             }
         }
     }
