@@ -45,7 +45,7 @@ namespace Application.Tablet.Views
             if (_tileId == "TILE_ID_USER")
                 DataContext = new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.User);
             else
-                DataContext = new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.Admin);
+                DataContext = new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.User);
         }
 
         async void SplashScreen_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
