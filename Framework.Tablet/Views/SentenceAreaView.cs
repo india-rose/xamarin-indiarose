@@ -106,13 +106,15 @@ namespace Framework.Tablet.Views
             // Init play button
             _playButton = new Image
             {
-                Source = new BitmapImage(new Uri(LazyResolver<IStorageService>.Service.ImagePlayButtonPath, UriKind.Absolute)),
+                Source =
+                    new BitmapImage(new Uri(LazyResolver<IStorageService>.Service.ImagePlayButtonPath, UriKind.Absolute)),
                 Width = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize,
-                Height = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize
+                Height = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize,
+                IsHoldingEnabled = true,
+                CanDrag=true
             };
 
-            _playButton.IsRightTapEnabled = true;
-            _playButton.RightTapped += (sender, args) =>
+            _playButton.DragStarting += (sender, args) =>
             {
                 if (CorrectionCommand != null && CorrectionCommand.CanExecute(null))
                 {
