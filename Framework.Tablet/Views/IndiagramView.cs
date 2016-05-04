@@ -86,8 +86,8 @@ namespace Framework.Tablet.Views
                 Margin = new Thickness(0, margin, 0, 0),
                 Height = SettingsService.IndiagramDisplaySize,
                 Width = SettingsService.IndiagramDisplaySize,
-                //CanDrag = true
-                //voir si il faut relier le bool a IsDragAndDropEnabled des settings
+                //Todo empecher le drag dans la partie admin
+                CanDrag = LazyResolver<ISettingsService>.Service.IsDragAndDropEnabled
             };
             _textBlock = new TextBlock
             {

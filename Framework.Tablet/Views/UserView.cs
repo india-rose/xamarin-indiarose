@@ -333,12 +333,10 @@ namespace Framework.Tablet.Views
         public UserView()
         {
             Orientation = Orientation.Vertical;
-            _botScreen = new SentenceAreaView
-            {
-                //AllowDrop = true,
-                //DragOver += botScreen_DragOver,
-                //Drop += botScreen_Drop
-            };
+            _botScreen = new SentenceAreaView();
+            //DragOver += botScreen_DragEnter;
+            //Drop += botScreen_Drop;
+            //DragStarting += botScreen_DragStart;
             _topScreen = new IndiagramBrowserView();
             Children.Add(_topScreen);
             Children.Add(_botScreen);
@@ -367,18 +365,26 @@ namespace Framework.Tablet.Views
         }
         #endregion
 
-        #region Dreg and Drop
+        #region Drag and Drop
 
-        private void botScreen_DragOver (object sender, DragEventArgs e)
+        /*private void botScreen_DragEnter (object sender, DragEventArgs e)
         {
-            e.AcceptedOperation = DataPackageOperation.Move;
-            //si plusieur item de active faire DataPackageOperation.Copy
+            e.AcceptedOperation = LazyResolver<ISettingsService>.Service.IsMultipleIndiagramSelectionEnabled ? DataPackageOperation.Copy : DataPackageOperation.Move;
         }
 
-        private async void botScreen_Drop(object sender, DragEventArgs e)
+        private void botScreen_DragStart(object sender, DragStartingEventArgs args)
         {
-            //ajouter l'indiagram au sentence Area view
+            //dire que l'objet drag est un indiagram
         }
+
+        private void botScreen_Drop(object sender, DragEventArgs e)
+        {
+            //recupperer l'indiagram
+                Indiagram india = new Indiagram();
+                IndiagramUIModel i = new IndiagramUIModel(india);
+                if (_botScreen.CanAddIndiagrams)
+                    _botScreen.Indiagrams.Add(i);
+        }*/
 
         #endregion
     }
