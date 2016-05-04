@@ -189,7 +189,7 @@ namespace Framework.Tablet.Views
                 Margin = new Thickness(0, 0, 10, 0)
             };
 
-            _tilteBar.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(_imagecategory.Width, GridUnitType.Star) });
+            _tilteBar.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(_imagecategory.Width/*, GridUnitType.Star*/) });
 
 
             if (!settingsService.IsBackButtonEnabled)
@@ -201,7 +201,7 @@ namespace Framework.Tablet.Views
             else
             {
                 _tilteBar.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(screenService.Width - (_imagecategory.Width + _buttonBack.Width), GridUnitType.Star) });
-                _tilteBar.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(_buttonBack.Width, GridUnitType.Star) });
+                _tilteBar.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(_buttonBack.Width/*, GridUnitType.Star*/) });
 
                 _logo.SetValue(Grid.ColumnProperty, 1);
                 _logo.HorizontalAlignment = HorizontalAlignment.Center;

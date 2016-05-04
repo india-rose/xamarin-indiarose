@@ -146,8 +146,8 @@ namespace Framework.Tablet.Views
                     Width = new GridLength(1, GridUnitType.Star)
                 });
             }
+            Children.Remove(_playButton);
             SetColumn(_playButton, _maxNumberOfIndiagrams);
-            Children.Clear();
             Children.Add(_playButton);
             var settings = LazyResolver<ISettingsService>.Service;
 
