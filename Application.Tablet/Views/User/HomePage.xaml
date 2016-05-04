@@ -23,10 +23,11 @@
 	          TopOffset="{Binding CollectionOffset}"
 	          TopIndiagrams="{Binding CollectionIndiagrams}"
 	          TopTextColor="{Binding SettingsService.TextColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
-	          TopIndiagramSelectedCommand="{Binding CollectionIndiagramSelectedCommand}"
+              TopIndiagramSelectedCommand="{Binding CollectionIndiagramSelectedCommand}"
 	          TopNextCommand="{Binding CollectionNextCommand}"
 	          TopNextButtonVisibility="{Binding IsCorrectionModeEnabled, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Negation}"
-	        
+              
+                        
 			  BotBackground="{Binding SettingsService.BottomBackgroundColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
 	          BotIndiagrams="{Binding SentenceIndiagrams}" 
 			  BotCanAddIndiagrams="{Binding SentenceCanAddMoreIndiagrams, Mode=TwoWay}"
@@ -35,5 +36,7 @@
 			  BotCorrectionCommand="{Binding EnterCorrectionModeCommand}"
             />
     </StackPanel>
-    <!--TODO faire attentino au placement des bouton/ logo qui sont couper-->
+    <!--TODO faire attentino au placement des bouton/ logo qui sont couper
+    TopIndiagramDragStartCommand="{Binding CollectionIndiagramDragStartCommand}"
+    -->
 </mvvm:MvvmPage>
