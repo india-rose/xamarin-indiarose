@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -86,9 +87,9 @@ namespace Framework.Tablet.Views
                 Margin = new Thickness(0, margin, 0, 0),
                 Height = SettingsService.IndiagramDisplaySize,
                 Width = SettingsService.IndiagramDisplaySize,
-                //Todo empecher le drag dans la partie admin
-                CanDrag = LazyResolver<ISettingsService>.Service.IsDragAndDropEnabled
+                CanDrag = true
             };
+
             _textBlock = new TextBlock
             {
                 Margin = new Thickness(margin, 0, margin, 0),

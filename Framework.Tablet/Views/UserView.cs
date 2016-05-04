@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
+using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
 
 namespace Framework.Tablet.Views
@@ -184,6 +185,30 @@ namespace Framework.Tablet.Views
         }
         #endregion
 
+       /* #region TopIndiagramDragStartCommand
+
+        public static readonly DependencyProperty TopIndiagramDragStartCommandProperty = DependencyProperty.Register(
+            "TopIndiagramDragStartCommand", typeof(ICommand), typeof (UserView), new PropertyMetadata(default(ICommand), RefreshTopIndiagramDragStartCommand));
+
+        private static void RefreshTopIndiagramDragStartCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var view = d as UserView;
+            if (view != null) view.RefreshTopIndiagramDragStartCommand();
+        }
+
+        private void RefreshTopIndiagramDragStartCommand()
+        {
+            _topScreen.IndiagramSelected = TopIndiagramDragStartCommand;
+        }
+
+        public ICommand TopIndiagramDragStartCommand
+        {
+            get { return (ICommand)GetValue(TopIndiagramDragStartCommandProperty); }
+            set { SetValue(TopIndiagramDragStartCommandProperty, value);}
+        }
+
+        #endregion*/
+
         #region TopNextCommand
         public static readonly DependencyProperty TopNextCommandProperty = DependencyProperty.Register(
             "TopNextCommand", typeof(ICommand), typeof(UserView), new PropertyMetadata(default(ICommand), RefreshTopNextCommand));
@@ -327,22 +352,25 @@ namespace Framework.Tablet.Views
             set { SetValue(BotCorrectionCommandProperty, value); }
         }
         #endregion
-
+       
         #endregion
 
         public UserView()
         {
             Orientation = Orientation.Vertical;
             _botScreen = new SentenceAreaView();
-            //DragOver += botScreen_DragEnter;
-            //Drop += botScreen_Drop;
-            //DragStarting += botScreen_DragStart;
             _topScreen = new IndiagramBrowserView();
             Children.Add(_topScreen);
             Children.Add(_botScreen);
             SizeChanged += UserView_SizeChanged;
             _topScreen.CountChanged += _topScreen_CountChanged;
             _botScreen.CanAddIndiagramsChanged += _botScreen_CanAddIndiagramsChanged;
+
+            DragEnter += (sender, e) =>
+            {
+                e.AcceptedOperation = LazyResolver<ISettingsService>.Service.IsMultipleIndiagramSelectionEnabled ? DataPackageOperation.Copy : DataPackageOperation.Move;
+            };
+
         }
 
         #region Callback
@@ -363,29 +391,6 @@ namespace Framework.Tablet.Views
             _topScreen.Height = screenHeight * ratio / 100;
             _botScreen.Height = screenHeight - _topScreen.Height;
         }
-        #endregion
-
-        #region Drag and Drop
-
-        /*private void botScreen_DragEnter (object sender, DragEventArgs e)
-        {
-            e.AcceptedOperation = LazyResolver<ISettingsService>.Service.IsMultipleIndiagramSelectionEnabled ? DataPackageOperation.Copy : DataPackageOperation.Move;
-        }
-
-        private void botScreen_DragStart(object sender, DragStartingEventArgs args)
-        {
-            //dire que l'objet drag est un indiagram
-        }
-
-        private void botScreen_Drop(object sender, DragEventArgs e)
-        {
-            //recupperer l'indiagram
-                Indiagram india = new Indiagram();
-                IndiagramUIModel i = new IndiagramUIModel(india);
-                if (_botScreen.CanAddIndiagrams)
-                    _botScreen.Indiagrams.Add(i);
-        }*/
-
         #endregion
     }
 }
