@@ -8,11 +8,12 @@ using Application.Tablet.Views.Admin.Collection;
 using Application.Tablet.Views.Admin.Settings;
 using Application.Tablet.Views.Dialogs;
 using Application.Tablet.Views.User;
-using IndiaRose.Application.Views.Dialogs;
 using IndiaRose.Business;
 using Storm.Mvvm.Inject;
+using ChooseCategoryDialog = Application.Tablet.Views.Dialogs.ChooseCategoryDialog;
 using ColorPickerDialog = Application.Tablet.Views.Dialogs.ColorPickerDialog;
 using IndiagramPropertyPage = Application.Tablet.Views.Admin.Settings.IndiagramPropertyPage;
+using RecordSoundDialog = Application.Tablet.Views.Dialogs.RecordSoundDialog;
 using SelectCategoryActionDialog = Application.Tablet.Views.Dialogs.SelectCategoryActionDialog;
 using ViewKey = IndiaRose.Business.Views;
 

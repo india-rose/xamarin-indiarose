@@ -1,16 +1,13 @@
 ﻿<mvvm:DialogPage
-    x:Class="IndiaRose.Application.Views.Dialogs.RecordSoundDialog"
+    x:Class="Application.Tablet.Views.Dialogs.RecordSoundDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:IndiaRose.Application.Views.Dialogs"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvvm="using:Storm.Mvvm"
     mc:Ignorable="d"
-    PopupHeight="300"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminCollectionDialogsRecordSoundViewModel}">
-
-    <Grid Background= "{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="DarkSlateBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="3*"/>

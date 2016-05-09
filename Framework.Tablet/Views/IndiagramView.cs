@@ -87,7 +87,7 @@ namespace Framework.Tablet.Views
                 Margin = new Thickness(0, margin, 0, 0),
                 Height = SettingsService.IndiagramDisplaySize,
                 Width = SettingsService.IndiagramDisplaySize,
-                CanDrag = true
+                //CanDrag = LazyResolver<ISettingsService>.Service.IsDragAndDropEnabled
             };
 
             _textBlock = new TextBlock
@@ -170,6 +170,10 @@ namespace Framework.Tablet.Views
             }
             if (!string.IsNullOrEmpty(Indiagram.Text))
                 _textBlock.Text = Indiagram.Text;
+
+            //if (Indiagram.HasChildren)
+                //_image.CanDrag = false;
+            
         }
 
         /// <summary>

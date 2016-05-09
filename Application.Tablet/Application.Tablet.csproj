@@ -192,6 +192,7 @@
     <None Include="Application.Tablet_TemporaryKey.pfx" />
     <Content Include="Assets\150winAdmin.png" />
     <Content Include="Assets\150winUser.png" />
+    <Content Include="Assets\150winUser.scale-100.png" />
     <Content Include="Assets\30winAdmin.png" />
     <Content Include="Assets\30winUser.png" />
     <Content Include="Assets\50winAdmin.png" />

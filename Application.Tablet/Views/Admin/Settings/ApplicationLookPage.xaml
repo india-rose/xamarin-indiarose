@@ -28,7 +28,7 @@
             <StackPanel VerticalAlignment="Center">
                 <TextBlock Style="{StaticResource TextStyle}" x:Uid="ApplicationLook_AreaSize"
                            HorizontalAlignment="Center"/>
-                <ComboBox HorizontalAlignment="Center" Margin="20"
+                <ComboBox HorizontalAlignment="Center" Margin="20" Width="150"
                           ItemsSource ="{Binding ZoneHeightCollection}"
                           SelectedItem="{Binding CurrentSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
