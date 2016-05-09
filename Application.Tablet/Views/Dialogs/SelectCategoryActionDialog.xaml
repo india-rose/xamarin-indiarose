@@ -7,7 +7,6 @@
     xmlns:mvvm="using:Storm.Mvvm"
     xmlns:views="using:Framework.Tablet.Views"
     mc:Ignorable="d"
-    PopupHeight="300"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminCollectionDialogsSelectCategoryActionViewModel}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">

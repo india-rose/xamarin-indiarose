@@ -12,6 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using IndiaRose.Interfaces;
+using Storm.Mvvm.Inject;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, voir la page http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,9 +24,18 @@ namespace Application.Tablet.Views.Dialogs
     /// </summary>
     public sealed partial class SelectCategoryActionWithoutChildrenDialog
     {
-        public SelectCategoryActionWithoutChildrenDialog() : base (300)
+        public IScreenService ScreenService => LazyResolver<IScreenService>.Service;
+
+        public SelectCategoryActionWithoutChildrenDialog()
+            : base((int) Window.Current.Bounds.Height - (int) Window.Current.Bounds.Height*55/100)
         {
             this.InitializeComponent();
+
+            Window.Current.SizeChanged += (sender, args) =>
+            {
+                Width = ScreenService.Width;
+                Height = ScreenService.Height - (ScreenService.Height * 55 / 100);
+            };
         }
     }
 }

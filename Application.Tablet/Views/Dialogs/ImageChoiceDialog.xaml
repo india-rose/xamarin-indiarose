@@ -6,7 +6,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvvm="using:Storm.Mvvm"
     mc:Ignorable="d" 
-    PopupHeight="300"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminCollectionDialogsImageChoiceViewModel}">
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">

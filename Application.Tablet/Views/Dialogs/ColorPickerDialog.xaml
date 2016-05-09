@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     xmlns:xc="using:ColorPicker"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminSettingsDialogsColorPickerViewModel}"
-    PopupHeight="600">
+    > 
 
 
     <Grid Name="Grid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">

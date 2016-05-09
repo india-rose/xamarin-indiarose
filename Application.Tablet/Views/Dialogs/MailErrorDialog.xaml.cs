@@ -1,5 +1,9 @@
 ﻿// Pour en savoir plus sur le modèle d'élément Page vierge, consultez la page http://go.microsoft.com/fwlink/?LinkId=234238
 
+using Windows.UI.Xaml;
+using IndiaRose.Interfaces;
+using Storm.Mvvm.Inject;
+
 namespace Application.Tablet.Views.Dialogs
 {
     /// <summary>
@@ -7,9 +11,18 @@ namespace Application.Tablet.Views.Dialogs
     /// </summary>
     public sealed partial class MailErrorDialog
     {
-        public MailErrorDialog() : base(300)
+        public IScreenService ScreenService => LazyResolver<IScreenService>.Service;
+
+        public MailErrorDialog()
+            : base((int) Window.Current.Bounds.Height - (int) Window.Current.Bounds.Height*55/100)
         {
             this.InitializeComponent();
+
+            Window.Current.SizeChanged += (sender, args) =>
+            {
+                Width = ScreenService.Width;
+                Height = ScreenService.Height - (ScreenService.Height * 55 / 100);
+            };
         }
     }
 }
