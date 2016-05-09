@@ -42,16 +42,13 @@ namespace Application.Tablet.Views
             if(e.Parameter != null)
                 _tileId = e.Parameter.ToString();
 
-            if (_tileId == "TILE_ID_USER")
-                DataContext = new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.User); // User
-            else
-                DataContext = new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.User); // Admin
+            DataContext = _tileId == TILE_ID_USER ? new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.User) : new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.User);
         }
 
         async void SplashScreen_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             //initialisation du second point d'entrée de l'application (partie user)
-            var secondaryTileId = "TILE_ID_USER";
+            var secondaryTileId = TILE_ID_USER;
             if (!SecondaryTile.Exists(secondaryTileId))
             {
                 Uri square150x150Logo = new Uri("ms-appx:///Assets/150winUser.png");
@@ -74,7 +71,7 @@ namespace Application.Tablet.Views
             }
 
             //initialisation du second point d'entrée de l'application (partie admin)
-            secondaryTileId = "TILE_ID_ADMIN";
+            secondaryTileId = TILE_ID_ADMIN;
             if (!SecondaryTile.Exists(secondaryTileId))
             {
                 Uri square150x150Logo = new Uri("ms-appx:///Assets/150winAdmin.png");
@@ -92,7 +89,7 @@ namespace Application.Tablet.Views
 
                 secondaryTile.VisualElements.Square30x30Logo = square30x30Logo;
                 secondaryTile.VisualElements.ForegroundText = ForegroundText.Dark;
-                secondaryTile.VisualElements.BackgroundColor = Colors.WhiteSmoke;
+                secondaryTile.VisualElements.BackgroundColor = Colors.LightGray;
                 await secondaryTile.RequestCreateAsync();
             }
         }
