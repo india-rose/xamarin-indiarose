@@ -39,14 +39,14 @@
                 Grid.Column="1" Grid.Row="2"
                 Command="{Binding AddCommand}">
             <TextBlock Style="{StaticResource TextButton}"
-                x:Uid="CollectionManagement_Add"></TextBlock>
+                x:Uid="CollectionManagement_Add"/>
         </Button>
         
         <Button Style="{StaticResource OrangeButton}"
             Grid.Column="2" Grid.Row="2"
             Command="{Binding BackCommand}">
             <TextBlock Style="{StaticResource TextButton}"
-                x:Uid="Button_Cancel"></TextBlock>
+                x:Uid="BackButton"/>
         </Button>
 
     </Grid>

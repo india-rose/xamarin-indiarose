@@ -86,6 +86,7 @@
                            x:Uid="Collection_PositionBefore" />
 
                 <ComboBox
+                    Style="{StaticResource ComboBoxStyle}"
                     ItemTemplate="{StaticResource PositionTemplate}"
                     ItemsSource="{Binding Brothers}"
                     SelectedItem="{Binding BeforeIndiagram, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
