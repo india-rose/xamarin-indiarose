@@ -45,6 +45,8 @@ namespace Services.Tablet
                 _url = string.Format("Image_{0}.{1}", Guid.NewGuid(), _recordStorageFile.FileType);
                 var folder = await StorageFolder.GetFolderFromPathAsync(path);
 
+                //TODO crop 
+
                 await _recordStorageFile.MoveAsync(folder, _url, NameCollisionOption.FailIfExists);
 
                 return string.Format("{0}\\{1}",path, _url);

@@ -185,7 +185,7 @@ namespace Framework.Tablet.Views
         }
         #endregion
 
-        #region TopIndiagramDragStartCommand
+      /*  #region TopIndiagramDragStartCommand
 
         public static readonly DependencyProperty TopIndiagramDragStartCommandProperty = DependencyProperty.Register(
             "TopIndiagramDragStartCommand", typeof(ICommand), typeof (UserView), new PropertyMetadata(default(ICommand), RefreshTopIndiagramDragStartCommand));
@@ -207,7 +207,7 @@ namespace Framework.Tablet.Views
             set { SetValue(TopIndiagramDragStartCommandProperty, value);}
         }
 
-        #endregion
+        #endregion*/
 
         #region TopNextCommand
         public static readonly DependencyProperty TopNextCommandProperty = DependencyProperty.Register(

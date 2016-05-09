@@ -27,7 +27,7 @@
 	          TopNextCommand="{Binding CollectionNextCommand}"
 	          TopNextButtonVisibility="{Binding IsCorrectionModeEnabled, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Negation}"
               
-    TopIndiagramDragStartCommand="{Binding CollectionIndiagramDragStartCommand}"
+ 
                         
 			  BotBackground="{Binding SettingsService.BottomBackgroundColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
 	          BotIndiagrams="{Binding SentenceIndiagrams}" 
@@ -37,8 +37,7 @@
 			  BotCorrectionCommand="{Binding EnterCorrectionModeCommand}"
             />
     </StackPanel>
-    <!--TODO faire attentino au placement des bouton/ logo qui sont couper
-    
+    <!--
     TopIndiagramDragStartCommand="{Binding CollectionIndiagramDragStartCommand}"
     -->
 </mvvm:MvvmPage>
