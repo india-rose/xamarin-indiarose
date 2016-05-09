@@ -10,6 +10,7 @@ using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 using IndiaRose.Interfaces;
+using SharpDX.XAudio2;
 using Storm.Mvvm.Inject;
 
 namespace Services.Tablet
@@ -85,33 +86,42 @@ namespace Services.Tablet
 		}
 
         public async Task<string> GetSoundFromGalleryAsync()
-		{
-            var openPicker = new FileOpenPicker
+        {
+            //Create a new picker
+            var filePicker = new FileOpenPicker
             {
                 ViewMode = PickerViewMode.Thumbnail,
                 SuggestedStartLocation = PickerLocationId.MusicLibrary
             };
-            //listing des formats audio existant
-            openPicker.FileTypeFilter.Add(".mp3");
-            openPicker.FileTypeFilter.Add(".aac");
-            openPicker.FileTypeFilter.Add(".m4a");
-            openPicker.FileTypeFilter.Add(".m4p");
-            openPicker.FileTypeFilter.Add(".m4b");
-            openPicker.FileTypeFilter.Add(".mp4");
-            openPicker.FileTypeFilter.Add(".3gp");
-            openPicker.FileTypeFilter.Add(".wma");
-            openPicker.FileTypeFilter.Add(".flac");
-            openPicker.FileTypeFilter.Add(".ogg");
-            openPicker.FileTypeFilter.Add(".oga");
-            openPicker.FileTypeFilter.Add(".alac");
 
-            var file = await openPicker.PickSingleFileAsync();
+            //Add filetype filters.
+            filePicker.FileTypeFilter.Add(".mp3");  // Ok
+            filePicker.FileTypeFilter.Add(".m4a");  // Ok
+            filePicker.FileTypeFilter.Add(".3gp");  // Ok
+            filePicker.FileTypeFilter.Add(".3gpp"); // Ok
+            filePicker.FileTypeFilter.Add(".wma");  // Ok
+            filePicker.FileTypeFilter.Add(".flac"); // Ok
+            filePicker.FileTypeFilter.Add(".wav");  // Ok
+            filePicker.FileTypeFilter.Add(".mp4");  // Ok, même en donnant un fichier vidéo :D
+            /*
+            filePicker.FileTypeFilter.Add(".ogg");  // Pas testé
+            filePicker.FileTypeFilter.Add(".oga");  // Pas testé
+            filePicker.FileTypeFilter.Add(".alac"); // Pas testé
+            filePicker.FileTypeFilter.Add(".m4p");  // Pas testé
+            filePicker.FileTypeFilter.Add(".m4b");  // Pas testé
+            filePicker.FileTypeFilter.Add(".aac");  // Pas testé
+            */
+
+
+            //Retrieve file from picker
+            StorageFile file = await filePicker.PickSingleFileAsync();
+
             if (file != null)
             {
                 var path = Path.Combine(StorageService.SoundPath);
                 var folder = await StorageFolder.GetFolderFromPathAsync(path);
                 _url = string.Format("Sound_{0}.{1}", Guid.NewGuid(), file.FileType);
-                file.CopyAsync(folder, _url);
+                await file.CopyAsync(folder, _url);
 
                 return string.Format("{0}\\{1}", path, _url);
             }

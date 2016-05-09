@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
+using Windows.Media.Core;
 using Windows.Media.SpeechSynthesis;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using Windows.UI.Xaml.Controls;
 using IndiaRose.Data.Model;
 using IndiaRose.Interfaces;
 using IndiaRose.Services;
@@ -34,8 +36,16 @@ namespace Services.Tablet
             if (indiagram.HasCustomSound)
             {
                 var audioFile = await StorageFile.GetFileFromPathAsync(indiagram.SoundPath);
-                var stream = await audioFile.OpenAsync(FileAccessMode.Read);
-                PlayStream(stream);
+
+                if (audioFile != null)
+                {
+                    MediaSource mediaSource;
+                    MediaElement mediaElement = new MediaElement();
+
+                    mediaSource = MediaSource.CreateFromStorageFile(audioFile);
+                    mediaElement.SetPlaybackSource(mediaSource);
+                    mediaElement.Play();
+                }
             }
             else
             {
