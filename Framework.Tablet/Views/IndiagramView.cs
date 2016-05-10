@@ -86,8 +86,7 @@ namespace Framework.Tablet.Views
             {
                 Margin = new Thickness(0, margin, 0, 0),
                 Height = SettingsService.IndiagramDisplaySize,
-                Width = SettingsService.IndiagramDisplaySize,
-                CanDrag = LazyResolver<ISettingsService>.Service.IsDragAndDropEnabled
+                Width = SettingsService.IndiagramDisplaySize
             };
 
             _textBlock = new TextBlock
@@ -105,6 +104,13 @@ namespace Framework.Tablet.Views
                 Width = SettingsService.IndiagramDisplaySize,
                 Background = new SolidColorBrush(Colors.Red)
             };
+
+            CanDrag = LazyResolver<ISettingsService>.Service.IsDragAndDropEnabled;
+            DragStarting += (sender, e) =>
+            {
+                e.Data.SetText(Indiagram.Id.ToString());
+            };
+
             Children.Insert(0, _image);
             Children.Add(_textBlock);
         }

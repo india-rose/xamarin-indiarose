@@ -166,20 +166,22 @@ namespace Framework.Tablet.Views
                 //le drag c'est un indiagram
             };
 
-            Drop += (sender, e) =>
+            Drop += async (sender, e) =>
             {
                 //if (TopIndiagramDragStartCommand != null && TopIndiagramDragStartCommand.CanExecute(null))
                 //{
-                    //var indiagram =  e.quelquechose.get..(le truc dans lequel tu as stocker l'indiagram) as Indiagram
-                    Indiagram indiagram = new Indiagram();
-                    indiagram.Text = "test";
-                    IndiagramUIModel indiaUi = new IndiagramUIModel(indiagram);
-                    if (CanAddIndiagrams)
-                        Indiagrams.Add(indiaUi);
+                //var indiagram =  e.quelquechose.get..(le truc dans lequel tu as stocker l'indiagram) as Indiagram
+                string indID = await e.DataView.GetTextAsync();
+                Indiagram indiagram = LazyResolver<ICollectionStorageService>.Service.Collection.FirstOrDefault(x => x.Id.ToString() == indID);
+                //Indiagram i = await e.DataView.GetDataAsync("toto") as Indiagram;
 
-                    //TopIndiagramDragStartCommand.Execute(indiagram);
+                IndiagramUIModel indiaUi = new IndiagramUIModel(indiagram);
+                if (CanAddIndiagrams)
+                    Indiagrams.Add(indiaUi);
 
-               // }
+                //TopIndiagramDragStartCommand.Execute(indiagram);
+
+                // }
             };
         }
 
