@@ -171,9 +171,9 @@ namespace Framework.Tablet.Views
                 //if (TopIndiagramDragStartCommand != null && TopIndiagramDragStartCommand.CanExecute(null))
                 //{
                 //var indiagram =  e.quelquechose.get..(le truc dans lequel tu as stocker l'indiagram) as Indiagram
+
                 string indID = await e.DataView.GetTextAsync();
-                Indiagram indiagram = LazyResolver<ICollectionStorageService>.Service.Collection.FirstOrDefault(x => x.Id.ToString() == indID);
-                //Indiagram i = await e.DataView.GetDataAsync("toto") as Indiagram;
+                Indiagram indiagram = GetIndiagramById(Int32.Parse(indID), LazyResolver<ICollectionStorageService>.Service.Collection);
 
                 IndiagramUIModel indiaUi = new IndiagramUIModel(indiagram);
                 if (CanAddIndiagrams)
@@ -183,6 +183,37 @@ namespace Framework.Tablet.Views
 
                 // }
             };
+        }
+
+        /// <summary>
+        /// Méthode pour rechercher un indiagram dans une ObservableCollection<Indiagram>
+        /// Tout en sachant qu'un indiagram peut être une catégorie, qui va elle même contenir une ObservableCollection<Indiagram>
+        /// Et ainsi de suite, il fallait donc faire une méthode récursive
+        /// Elle n'est pas contre surement pas au bon endroit ; la déplacer dans le CollectionStorageService ?
+        /// </summary>
+        /// <param name="searchedId"></param>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        private Indiagram GetIndiagramById(int searchedId, ObservableCollection<Indiagram> list)
+        {
+            if (list == null)
+                return null;
+
+            foreach (var indiagram in list)
+            {
+                if (indiagram.Id == searchedId)
+                {
+                    return indiagram;
+                }
+                if (indiagram.IsCategory && indiagram.HasChildren)
+                {
+                    Category category = indiagram as Category;
+                    Indiagram temp = GetIndiagramById(searchedId, category.Children);
+                    if (temp != null)
+                        return temp;
+                }
+            }
+            return null;
         }
 
         /// <summary>
