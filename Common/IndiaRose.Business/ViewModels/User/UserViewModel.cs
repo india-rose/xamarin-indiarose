@@ -307,8 +307,24 @@ namespace IndiaRose.Business.ViewModels.User
         /// </summary>
         /// <param name="indiagram">L'Indiagram sélectionné</param>
 		private void CollectionIndiagramSelectedAction(Indiagram indiagram)
-		{
-			if (CheckIsReading() && (indiagram.IsCategory || !SettingsService.IsDragAndDropEnabled))
+        {
+            //if (CheckIsReading()) return;
+            //if (indiagram.IsCategory) return;
+            //if (SettingsService.IsDragAndDropEnabled && !indiagram.IsCategory) return;
+            //if (indiagram.IsCategory || !SettingsService.IsDragAndDropEnabled) return;
+
+            /* Pour l'instant je n'ai rien changé car je n'ai pas de solution :
+             * A l'heure actuelle cette méthode est appelée lors du clic et du drag&drop.
+             * Sauf que sur Android, à partir du moment où le d&d est activé, on ne peut plus cliquer du tout
+             * ce qui n'est pas le cas sur W10.
+             * Ce qu'il faudrait faire :
+             *      - Dans un premier temps, tout empêcher si une lecture est en cours.
+             *      - Puis, si le d&d est activé est qu'on click sur une catégorie, on y rentre.
+             *        Si on click sur une indiagram "simple", on ne fait rien.
+             *      - Si le d&d est désactivé, alors on réagi aux clicks normalement.
+             * */
+
+            if (CheckIsReading() && (indiagram.IsCategory || !SettingsService.IsDragAndDropEnabled))
 			{
 				return;
 			}
