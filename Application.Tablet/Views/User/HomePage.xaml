@@ -17,7 +17,7 @@
               ParentCategory="{Binding ParentCategory}"
             />
 
-        <views:UserView AllowDrop="True"
+        <views:UserView 
 	          TopBackground="{Binding SettingsService.TopBackgroundColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
 	          TopCount="{Binding CollectionDisplayCount, Mode=TwoWay}"
 	          TopOffset="{Binding CollectionOffset}"
@@ -26,9 +26,7 @@
               TopIndiagramSelectedCommand="{Binding CollectionIndiagramSelectedCommand}"
 	          TopNextCommand="{Binding CollectionNextCommand}"
 	          TopNextButtonVisibility="{Binding IsCorrectionModeEnabled, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Negation}"
-              
- 
-                        
+         
 			  BotBackground="{Binding SettingsService.BottomBackgroundColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
 	          BotIndiagrams="{Binding SentenceIndiagrams}" 
 			  BotCanAddIndiagrams="{Binding SentenceCanAddMoreIndiagrams, Mode=TwoWay}"
@@ -38,6 +36,6 @@
             />
     </StackPanel>
     <!--
-    TopIndiagramDragStartCommand="{Binding CollectionIndiagramDragStartCommand}"
+               TopIndiagramDragStartCommand="{Binding CollectionIndiagramDragStartCommand}"
     -->
 </mvvm:MvvmPage>

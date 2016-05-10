@@ -185,30 +185,6 @@ namespace Framework.Tablet.Views
         }
         #endregion
 
-      /*  #region TopIndiagramDragStartCommand
-
-        public static readonly DependencyProperty TopIndiagramDragStartCommandProperty = DependencyProperty.Register(
-            "TopIndiagramDragStartCommand", typeof(ICommand), typeof (UserView), new PropertyMetadata(default(ICommand), RefreshTopIndiagramDragStartCommand));
-
-        private static void RefreshTopIndiagramDragStartCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var view = d as UserView;
-            if (view != null) view.RefreshTopIndiagramDragStartCommand();
-        }
-
-        private void RefreshTopIndiagramDragStartCommand()
-        {
-            _topScreen.IndiagramSelected = TopIndiagramDragStartCommand;
-        }
-
-        public ICommand TopIndiagramDragStartCommand
-        {
-            get { return (ICommand)GetValue(TopIndiagramDragStartCommandProperty); }
-            set { SetValue(TopIndiagramDragStartCommandProperty, value);}
-        }
-
-        #endregion*/
-
         #region TopNextCommand
         public static readonly DependencyProperty TopNextCommandProperty = DependencyProperty.Register(
             "TopNextCommand", typeof(ICommand), typeof(UserView), new PropertyMetadata(default(ICommand), RefreshTopNextCommand));
@@ -365,32 +341,6 @@ namespace Framework.Tablet.Views
             SizeChanged += UserView_SizeChanged;
             _topScreen.CountChanged += _topScreen_CountChanged;
             _botScreen.CanAddIndiagramsChanged += _botScreen_CanAddIndiagramsChanged;
-
-           /* DragEnter += (sender, e) =>
-            {
-                e.AcceptedOperation = LazyResolver<ISettingsService>.Service.IsMultipleIndiagramSelectionEnabled ? DataPackageOperation.Copy : DataPackageOperation.Move;
-            };*/
-
-           /* DragStarting += (sender, e) =>
-            {
-                //le drag c'est un indiagram
-            };*/
-
-           /* Drop += (sender, e) =>
-            {
-                if(TopIndiagramDragStartCommand != null && TopIndiagramDragStartCommand.CanExecute(null))
-                {
-                    //var indiagram =  e.quelquechose.get..(le truc dans lequel tu as stocker l'indiagram) as Indiagram
-                    Indiagram indiagram = new Indiagram();
-                    indiagram.Text = "test";
-                    IndiagramUIModel indiaUi = new IndiagramUIModel(indiagram);
-                    if (_botScreen.CanAddIndiagrams)
-                        _botScreen.Indiagrams.Add(indiaUi);
-
-                    TopIndiagramDragStartCommand.Execute(indiagram);
-
-                }
-            };*/
 
         }
 

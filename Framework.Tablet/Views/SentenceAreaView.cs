@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Windows.Input;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.UI;
 using Windows.UI.Input;
@@ -59,6 +60,30 @@ namespace Framework.Tablet.Views
         /// </summary>
         public ICommand CorrectionCommand { get; set; }
 
+        /*#region TopIndiagramDragStartCommand
+
+        public static readonly DependencyProperty TopIndiagramDragStartCommandProperty = DependencyProperty.Register(
+            "TopIndiagramDragStartCommand", typeof(ICommand), typeof(UserView), new PropertyMetadata(default(ICommand), RefreshTopIndiagramDragStartCommand));
+
+        private static void RefreshTopIndiagramDragStartCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var view = d as UserView;
+            if (view != null) view.RefreshTopIndiagramDragStartCommand();
+        }
+
+        private void RefreshTopIndiagramDragStartCommand()
+        {
+            IndiagramSelected = TopIndiagramDragStartCommand;
+        }
+
+        public ICommand TopIndiagramDragStartCommand
+        {
+            get { return (ICommand)GetValue(TopIndiagramDragStartCommandProperty); }
+            set { SetValue(TopIndiagramDragStartCommandProperty, value); }
+        }
+
+        #endregion*/
+
         /// <summary>
         /// Indiagrams devant être affichés
         /// </summary>
@@ -103,6 +128,8 @@ namespace Framework.Tablet.Views
         {
             SizeChanged += SentenceAreaView_SizeChanged;
 
+            AllowDrop = true;
+
             // Init play button
             _playButton = new Image
             {
@@ -127,6 +154,32 @@ namespace Framework.Tablet.Views
                 {
                     ReadCommand.Execute(null);
                 }
+            };
+
+            DragEnter += (sender, e) =>
+            {
+                e.AcceptedOperation = LazyResolver<ISettingsService>.Service.IsMultipleIndiagramSelectionEnabled ? DataPackageOperation.Copy : DataPackageOperation.Move;
+            };
+
+            DragStarting += (sender, e) =>
+            {
+                //le drag c'est un indiagram
+            };
+
+            Drop += (sender, e) =>
+            {
+                //if (TopIndiagramDragStartCommand != null && TopIndiagramDragStartCommand.CanExecute(null))
+                //{
+                    //var indiagram =  e.quelquechose.get..(le truc dans lequel tu as stocker l'indiagram) as Indiagram
+                    Indiagram indiagram = new Indiagram();
+                    indiagram.Text = "test";
+                    IndiagramUIModel indiaUi = new IndiagramUIModel(indiagram);
+                    if (CanAddIndiagrams)
+                        Indiagrams.Add(indiaUi);
+
+                    //TopIndiagramDragStartCommand.Execute(indiagram);
+
+               // }
             };
         }
 
