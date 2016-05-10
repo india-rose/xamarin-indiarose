@@ -117,6 +117,13 @@ namespace Framework.Tablet.Views
             DragStarting += (sender, e) =>
             {
                 e.Data.SetText(Indiagram.Id.ToString());
+
+                // TODO utiliser SetData au lieu de SetText
+                /* Pour éviter de passer l'id, puis de devoir faire une recherche pour trouver le bon Indiagram dans la collection
+                 * il faudrait pouvoir passer l'Indiagram directement, avec SetData, mais il faut un formatId
+                 * et je comprends pas ce que c'est.
+                 */
+                //e.Data.SetData(StandardDataFormats.Text, Indiagram);
             };
 
             Children.Insert(0, _image);
