@@ -72,6 +72,14 @@ namespace Framework.Tablet.Views
             set
             {
                 SetValue(IndiagramProperty, value);
+                if (value != null)
+                {
+                    if (value.IsCategory)
+                        CanDrag = false;
+                    else
+                        CanDrag = LazyResolver<ISettingsService>.Service.IsDragAndDropEnabled;
+                }
+                
             }
         }
 
