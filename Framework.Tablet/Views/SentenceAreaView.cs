@@ -138,16 +138,17 @@ namespace Framework.Tablet.Views
                 Width = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize,
                 Height = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize,
                 IsHoldingEnabled = true,
-                CanDrag=true
+                //CanDrag=true
             };
 
-            _playButton.DragStarting += (sender, args) =>
+            /*_playButton.DragStarting += (sender, args) =>
             {
                 if (CorrectionCommand != null && CorrectionCommand.CanExecute(null))
                 {
                     CorrectionCommand.Execute(null);
                 } 
-            };
+            };*/
+
             _playButton.Tapped += (sender, args) =>
             {
                 if (ReadCommand != null && ReadCommand.CanExecute(null))
@@ -159,11 +160,6 @@ namespace Framework.Tablet.Views
             DragEnter += (sender, e) =>
             {
                 e.AcceptedOperation = LazyResolver<ISettingsService>.Service.IsMultipleIndiagramSelectionEnabled ? DataPackageOperation.Copy : DataPackageOperation.Move;
-            };
-
-            DragStarting += (sender, e) =>
-            {
-                //le drag c'est un indiagram
             };
 
             Drop += async (sender, e) =>
@@ -182,6 +178,10 @@ namespace Framework.Tablet.Views
                 //TopIndiagramDragStartCommand.Execute(indiagram);
 
                 // }
+
+                //todo voir pour le click 
+                //todo voir pour le deplacement de l'indiagram
+                //todo voir pour la lecture
             };
         }
 
