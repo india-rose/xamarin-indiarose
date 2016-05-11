@@ -271,6 +271,7 @@ namespace Framework.Tablet.Views
             if (IndiagramSelected != null && IndiagramSelected.CanExecute(indiagram))
             {
                 IndiagramSelected.Execute(indiagram);
+                RefreshDisplay();
             }
         }
 
