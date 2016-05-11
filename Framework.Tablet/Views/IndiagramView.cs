@@ -113,7 +113,7 @@ namespace Framework.Tablet.Views
                 Background = new SolidColorBrush(Colors.Red)
             };
 
-            CanDrag = LazyResolver<ISettingsService>.Service.IsDragAndDropEnabled;
+            //CanDrag = LazyResolver<ISettingsService>.Service.IsDragAndDropEnabled;
             DragStarting += (sender, e) =>
             {
                 e.Data.SetText(Indiagram.Id.ToString());

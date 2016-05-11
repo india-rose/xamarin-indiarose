@@ -182,6 +182,7 @@ namespace Framework.Tablet.Views
                 //todo voir pour le click 
                 //todo voir pour le deplacement de l'indiagram
                 //todo voir pour la lecture
+                //todo voir pour le retour a l'acceuil apres selection
             };
         }
 
