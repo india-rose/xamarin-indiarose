@@ -87,7 +87,7 @@ namespace Framework.Tablet.Views
             }
         }
 
-        public IndiagramView(bool draggable)
+        public IndiagramView(bool draggable = false)
         {
             _draggable = draggable;
 
