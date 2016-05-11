@@ -243,7 +243,7 @@ namespace Framework.Tablet.Views
             // Init views
             for (var i = 0; i < _maxNumberOfIndiagrams; ++i)
             {
-                var view = new IndiagramView
+                var view = new IndiagramView(false)
                 {
                     TextColor = (SolidColorBrush)_colorConverter.Convert(settings.TextColor, null, null, "")
                 };

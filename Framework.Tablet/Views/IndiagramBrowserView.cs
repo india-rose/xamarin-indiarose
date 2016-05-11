@@ -117,10 +117,18 @@ namespace Framework.Tablet.Views
             get { return (ICommand)GetValue(NextCommandProperty); }
             set { SetValue(NextCommandProperty, value); }
         }
+
+        /// <summary>
+        /// Permet de savoir si les indiagrams contenus doivent être draggable ou pas.
+        /// Propriété publique, même si à l'heure actuelle elle n'a pas besoin de l'être, cela permet de la binder facilement.
+        /// </summary>
+        public bool DraggableIndiagrams = false;
+
         #endregion
 
-        public IndiagramBrowserView()
+        public IndiagramBrowserView(bool draggableIndiagrams = false)
         {
+            DraggableIndiagrams = draggableIndiagrams;
             var indiaSize = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize;
             var margin = indiaSize / 10;
             _nextButton = new Image()
@@ -240,7 +248,7 @@ namespace Framework.Tablet.Views
                 _displayableViews[line] = new IndiagramView[_columnCount - (line == 0 ? 1 : 0)];
                 for (int column = 0; column < _displayableViews[line].Length; ++column)
                 {
-                    var view = new IndiagramView { TextColor = TextColor };
+                    var view = new IndiagramView(DraggableIndiagrams) { TextColor = TextColor };
                     view.Tapped += view_Tapped;
                     _displayableViews[line][column] = view;
                 }

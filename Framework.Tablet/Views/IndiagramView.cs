@@ -26,6 +26,8 @@ namespace Framework.Tablet.Views
         /// </summary>
         private readonly StackPanel _redRect;
 
+        private bool _draggable;
+
         #region TextColor
         public static readonly DependencyProperty TextColorProperty = DependencyProperty.Register(
                 "TextColor", typeof(SolidColorBrush), typeof(IndiagramView), new PropertyMetadata(default(SolidColorBrush), RefreshColor));
@@ -76,15 +78,19 @@ namespace Framework.Tablet.Views
                 {
                     if (value.IsCategory)
                         CanDrag = false;
+                    else if (LazyResolver<ISettingsService>.Service.IsDragAndDropEnabled)
+                        CanDrag = _draggable;
                     else
-                        CanDrag = LazyResolver<ISettingsService>.Service.IsDragAndDropEnabled;
+                        CanDrag = false;
                 }
                 
             }
         }
 
-        public IndiagramView()
+        public IndiagramView(bool draggable)
         {
+            _draggable = draggable;
+
             Orientation = Orientation.Vertical;
             var indiaSize = SettingsService.IndiagramDisplaySize;
             var margin = indiaSize / 10;

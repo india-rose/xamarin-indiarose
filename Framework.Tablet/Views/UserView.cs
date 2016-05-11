@@ -335,7 +335,7 @@ namespace Framework.Tablet.Views
         {
             Orientation = Orientation.Vertical;
             _botScreen = new SentenceAreaView();
-            _topScreen = new IndiagramBrowserView();
+            _topScreen = new IndiagramBrowserView(true);
             Children.Add(_topScreen);
             Children.Add(_botScreen);
             SizeChanged += UserView_SizeChanged;
