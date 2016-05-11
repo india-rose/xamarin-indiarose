@@ -175,7 +175,6 @@ namespace Framework.Tablet.Views
                 if (CanAddIndiagrams)
                     Indiagrams.Add(indiaUi);
 
-                LazyResolver<ITextToSpeechService>.Service.PlayIndiagram(indiagram);
                 //TopIndiagramDragStartCommand.Execute(indiagram);
 
                 // }
