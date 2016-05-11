@@ -79,7 +79,7 @@ namespace Framework.Tablet.Views
                     if (value.IsCategory)
                         CanDrag = false;
                     else if (LazyResolver<ISettingsService>.Service.IsDragAndDropEnabled)
-                        CanDrag = _draggable;
+                        CanDrag = /*_draggable*/ true;
                     else
                         CanDrag = false;
                 }

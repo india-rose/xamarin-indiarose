@@ -185,6 +185,30 @@ namespace Framework.Tablet.Views
         }
         #endregion
 
+        #region TopIndiagramDragStartCommand
+
+        public static readonly DependencyProperty TopIndiagramDragStartCommandProperty = DependencyProperty.Register(
+            "TopIndiagramDragStartCommand", typeof(ICommand), typeof(UserView), new PropertyMetadata(default(ICommand), RefreshTopIndiagramDragStartCommand));
+
+        private static void RefreshTopIndiagramDragStartCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var view = d as UserView;
+            if (view != null) view.RefreshTopIndiagramDragStartCommand();
+        }
+
+        private void RefreshTopIndiagramDragStartCommand()
+        {
+            _botScreen.DragStarCommand = TopIndiagramDragStartCommand;
+        }
+
+        public ICommand TopIndiagramDragStartCommand
+        {
+            get { return (ICommand)GetValue(TopIndiagramDragStartCommandProperty); }
+            set { SetValue(TopIndiagramDragStartCommandProperty, value); }
+        }
+
+        #endregion
+
         #region TopNextCommand
         public static readonly DependencyProperty TopNextCommandProperty = DependencyProperty.Register(
             "TopNextCommand", typeof(ICommand), typeof(UserView), new PropertyMetadata(default(ICommand), RefreshTopNextCommand));
@@ -335,7 +359,7 @@ namespace Framework.Tablet.Views
         {
             Orientation = Orientation.Vertical;
             _botScreen = new SentenceAreaView();
-            _topScreen = new IndiagramBrowserView(true);
+            _topScreen = new IndiagramBrowserView(/*true*/);
             Children.Add(_topScreen);
             Children.Add(_botScreen);
             SizeChanged += UserView_SizeChanged;

@@ -126,9 +126,9 @@ namespace Framework.Tablet.Views
 
         #endregion
 
-        public IndiagramBrowserView(bool draggableIndiagrams = false)
+        public IndiagramBrowserView(/*bool draggableIndiagrams = false*/)
         {
-            DraggableIndiagrams = draggableIndiagrams;
+            DraggableIndiagrams = false /*draggableIndiagrams*/;
             var indiaSize = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize;
             var margin = indiaSize / 10;
             _nextButton = new Image()

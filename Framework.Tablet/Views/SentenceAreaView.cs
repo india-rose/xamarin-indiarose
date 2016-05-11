@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Framework.Tablet.Converters;
+using IndiaRose.Business.ViewModels.User;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
@@ -60,29 +61,7 @@ namespace Framework.Tablet.Views
         /// </summary>
         public ICommand CorrectionCommand { get; set; }
 
-        /*#region TopIndiagramDragStartCommand
-
-        public static readonly DependencyProperty TopIndiagramDragStartCommandProperty = DependencyProperty.Register(
-            "TopIndiagramDragStartCommand", typeof(ICommand), typeof(UserView), new PropertyMetadata(default(ICommand), RefreshTopIndiagramDragStartCommand));
-
-        private static void RefreshTopIndiagramDragStartCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var view = d as UserView;
-            if (view != null) view.RefreshTopIndiagramDragStartCommand();
-        }
-
-        private void RefreshTopIndiagramDragStartCommand()
-        {
-            IndiagramSelected = TopIndiagramDragStartCommand;
-        }
-
-        public ICommand TopIndiagramDragStartCommand
-        {
-            get { return (ICommand)GetValue(TopIndiagramDragStartCommandProperty); }
-            set { SetValue(TopIndiagramDragStartCommandProperty, value); }
-        }
-
-        #endregion*/
+        public ICommand DragStarCommand { get; set; }
 
         /// <summary>
         /// Indiagrams devant être affichés
@@ -164,8 +143,8 @@ namespace Framework.Tablet.Views
 
             Drop += async (sender, e) =>
             {
-                //if (TopIndiagramDragStartCommand != null && TopIndiagramDragStartCommand.CanExecute(null))
-                //{
+                if (DragStarCommand!= null && DragStarCommand.CanExecute(null))
+                {
                 //var indiagram =  e.quelquechose.get..(le truc dans lequel tu as stocker l'indiagram) as Indiagram
 
                 string indID = await e.DataView.GetTextAsync();
@@ -174,10 +153,10 @@ namespace Framework.Tablet.Views
                 IndiagramUIModel indiaUi = new IndiagramUIModel(indiagram);
                 if (CanAddIndiagrams)
                     Indiagrams.Add(indiaUi);
+  
+                DragStarCommand.Execute(indiagram);
 
-                //TopIndiagramDragStartCommand.Execute(indiagram);
-
-                // }
+                }
 
                 //todo voir pour le click 
                 //todo voir pour le deplacement de l'indiagram
