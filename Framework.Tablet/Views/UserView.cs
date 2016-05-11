@@ -185,30 +185,6 @@ namespace Framework.Tablet.Views
         }
         #endregion
 
-        #region BotIndiagramDragStartCommand
-
-        public static readonly DependencyProperty BotIndiagramDragStartCommandProperty = DependencyProperty.Register(
-            "BotIndiagramDragStartCommand", typeof(ICommand), typeof(UserView), new PropertyMetadata(default(ICommand), RefreshBotIndiagramDragStartCommand));
-
-        private static void RefreshBotIndiagramDragStartCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var view = d as UserView;
-            if (view != null) view.RefreshBotIndiagramDragStartCommand();
-        }
-
-        private void RefreshBotIndiagramDragStartCommand()
-        {
-            _botScreen.DragStarCommand = BotIndiagramDragStartCommand;
-        }
-
-        public ICommand BotIndiagramDragStartCommand
-        {
-            get { return (ICommand)GetValue(BotIndiagramDragStartCommandProperty); }
-            set { SetValue(BotIndiagramDragStartCommandProperty, value); }
-        }
-
-        #endregion
-
         #region TopNextCommand
         public static readonly DependencyProperty TopNextCommandProperty = DependencyProperty.Register(
             "TopNextCommand", typeof(ICommand), typeof(UserView), new PropertyMetadata(default(ICommand), RefreshTopNextCommand));
@@ -285,6 +261,30 @@ namespace Framework.Tablet.Views
             get { return (bool)GetValue(BotCanAddIndiagramsProperty); }
             set { SetValue(BotCanAddIndiagramsProperty, value); }
         }
+        #endregion
+
+        #region BotIndiagramDragStartCommand
+
+        public static readonly DependencyProperty BotIndiagramDragStartCommandProperty = DependencyProperty.Register(
+            "BotIndiagramDragStartCommand", typeof(ICommand), typeof(UserView), new PropertyMetadata(default(ICommand), RefreshBotIndiagramDragStartCommand));
+
+        private static void RefreshBotIndiagramDragStartCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var view = d as UserView;
+            if (view != null) view.RefreshBotIndiagramDragStartCommand();
+        }
+
+        private void RefreshBotIndiagramDragStartCommand()
+        {
+            _botScreen.DragStarCommand = BotIndiagramDragStartCommand;
+        }
+
+        public ICommand BotIndiagramDragStartCommand
+        {
+            get { return (ICommand)GetValue(BotIndiagramDragStartCommandProperty); }
+            set { SetValue(BotIndiagramDragStartCommandProperty, value); }
+        }
+
         #endregion
 
         #region BotReadCommand

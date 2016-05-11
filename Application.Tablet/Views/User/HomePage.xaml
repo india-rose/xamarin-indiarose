@@ -37,7 +37,5 @@
 			  BotCorrectionCommand="{Binding EnterCorrectionModeCommand}"
             />
     </StackPanel>
-    <!--
-               TopIndiagramDragStartCommand="{Binding CollectionIndiagramDragStartCommand}"
-    -->
+
 </mvvm:MvvmPage>
