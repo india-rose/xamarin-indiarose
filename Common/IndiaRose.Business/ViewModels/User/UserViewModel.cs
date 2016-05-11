@@ -371,6 +371,17 @@ namespace IndiaRose.Business.ViewModels.User
 			}
 
             Read(indiagram);
+
+            if (SettingsService.IsBackHomeAfterSelectionEnabled && !IsCorrectionModeEnabled && PopCategory())
+            {
+                while (PopCategory())
+                {
+                }
+            }
+            else
+            {
+                RefreshDisplayList();
+            }
         }
 
         /// <summary>

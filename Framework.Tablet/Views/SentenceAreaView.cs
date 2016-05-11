@@ -149,20 +149,17 @@ namespace Framework.Tablet.Views
 
                 string indID = await e.DataView.GetTextAsync();
                 Indiagram indiagram = GetIndiagramById(Int32.Parse(indID), LazyResolver<ICollectionStorageService>.Service.Collection);
-                Indiagram copy = new Indiagram();
-                copy.CopyFrom(indiagram);
-                indiagram = copy;
                 IndiagramUIModel indiaUi = new IndiagramUIModel(indiagram);
-                if (CanAddIndiagrams)
-                    Indiagrams.Add(indiaUi);
-  
-                DragStarCommand.Execute(copy);
+                    if (CanAddIndiagrams)
+                    {
+                        Indiagrams.Add(indiaUi);
+                        DragStarCommand.Execute(indiagram);
+                    }
+
 
                 }
 
                 //todo voir pour le click 
-                //todo voir pour le deplacement de l'indiagram
-                //todo voir pour le retour a l'acceuil apres selection
             };
         }
 
