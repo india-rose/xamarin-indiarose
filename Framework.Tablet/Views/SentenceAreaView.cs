@@ -136,6 +136,14 @@ namespace Framework.Tablet.Views
                 }
             };
 
+            DoubleTapped += (sender, args) =>
+            {
+                if (CorrectionCommand != null && CorrectionCommand.CanExecute(null))
+                {
+                    CorrectionCommand.Execute(null);
+                }
+            };
+
             DragEnter += (sender, e) =>
             {
                 e.AcceptedOperation = LazyResolver<ISettingsService>.Service.IsMultipleIndiagramSelectionEnabled ? DataPackageOperation.Copy : DataPackageOperation.Move;
