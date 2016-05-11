@@ -185,26 +185,26 @@ namespace Framework.Tablet.Views
         }
         #endregion
 
-        #region TopIndiagramDragStartCommand
+        #region BotIndiagramDragStartCommand
 
-        public static readonly DependencyProperty TopIndiagramDragStartCommandProperty = DependencyProperty.Register(
-            "TopIndiagramDragStartCommand", typeof(ICommand), typeof(UserView), new PropertyMetadata(default(ICommand), RefreshTopIndiagramDragStartCommand));
+        public static readonly DependencyProperty BotIndiagramDragStartCommandProperty = DependencyProperty.Register(
+            "BotIndiagramDragStartCommand", typeof(ICommand), typeof(UserView), new PropertyMetadata(default(ICommand), RefreshBotIndiagramDragStartCommand));
 
-        private static void RefreshTopIndiagramDragStartCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void RefreshBotIndiagramDragStartCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as UserView;
-            if (view != null) view.RefreshTopIndiagramDragStartCommand();
+            if (view != null) view.RefreshBotIndiagramDragStartCommand();
         }
 
-        private void RefreshTopIndiagramDragStartCommand()
+        private void RefreshBotIndiagramDragStartCommand()
         {
-            _botScreen.DragStarCommand = TopIndiagramDragStartCommand;
+            _botScreen.DragStarCommand = BotIndiagramDragStartCommand;
         }
 
-        public ICommand TopIndiagramDragStartCommand
+        public ICommand BotIndiagramDragStartCommand
         {
-            get { return (ICommand)GetValue(TopIndiagramDragStartCommandProperty); }
-            set { SetValue(TopIndiagramDragStartCommandProperty, value); }
+            get { return (ICommand)GetValue(BotIndiagramDragStartCommandProperty); }
+            set { SetValue(BotIndiagramDragStartCommandProperty, value); }
         }
 
         #endregion
