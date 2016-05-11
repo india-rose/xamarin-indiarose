@@ -342,13 +342,13 @@ namespace IndiaRose.Business.ViewModels.User
                     if (!SettingsService.IsDragAndDropEnabled)
                     {
                         Read(indiagram);
-                        AddIndiagramToSentence(indiagram);
-                    
+                    }
+                    AddIndiagramToSentence(indiagram);
+
                     if (SettingsService.IsBackHomeAfterSelectionEnabled && !IsCorrectionModeEnabled && PopCategory())
                     {
                         while (PopCategory())
                         {
-                        }
                         }
                     }
                     else
