@@ -359,13 +359,12 @@ namespace Framework.Tablet.Views
         {
             Orientation = Orientation.Vertical;
             _botScreen = new SentenceAreaView();
-            _topScreen = new IndiagramBrowserView(/*true*/);
+            _topScreen = new IndiagramBrowserView();
             Children.Add(_topScreen);
             Children.Add(_botScreen);
             SizeChanged += UserView_SizeChanged;
             _topScreen.CountChanged += _topScreen_CountChanged;
             _botScreen.CanAddIndiagramsChanged += _botScreen_CanAddIndiagramsChanged;
-
         }
 
         #region Callback

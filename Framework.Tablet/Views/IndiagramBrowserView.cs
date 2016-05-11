@@ -122,13 +122,13 @@ namespace Framework.Tablet.Views
         /// Permet de savoir si les indiagrams contenus doivent être draggable ou pas.
         /// Propriété publique, même si à l'heure actuelle elle n'a pas besoin de l'être, cela permet de la binder facilement.
         /// </summary>
-        public bool DraggableIndiagrams = false;
+        public bool DraggableIndiagrams { get; set; }
 
         #endregion
 
-        public IndiagramBrowserView(/*bool draggableIndiagrams = false*/)
+        public IndiagramBrowserView()
         {
-            DraggableIndiagrams = false /*draggableIndiagrams*/;
+            DraggableIndiagrams = true;
             var indiaSize = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize;
             var margin = indiaSize / 10;
             _nextButton = new Image()
