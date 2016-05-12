@@ -60,5 +60,43 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Android\Application.Android\Application.Android.csproj">
+      <Project>{d2010ac3-d809-4c3b-8dbd-4c06d506e1e0}</Project>
+      <Name>Application.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Android\Framework.Android\Framework.Android.csproj">
+      <Project>{a927a4b2-e383-4c4a-a1e8-1c4a0e53e093}</Project>
+      <Name>Framework.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Android\Services.Android\Services.Android.csproj">
+      <Project>{888e0f53-9f3e-4de3-9ab4-50283d005717}</Project>
+      <Name>Services.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\IndiaRose.Business\IndiaRose.Business.csproj">
+      <Project>{a97ac8d7-a77e-4e99-973e-aedefdc711a5}</Project>
+      <Name>IndiaRose.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\IndiaRose.Data\IndiaRose.Data.csproj">
+      <Project>{4c9de63b-da7f-4e65-8638-a4953f4a07e0}</Project>
+      <Name>IndiaRose.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\IndiaRose.Framework\IndiaRose.Framework.csproj">
+      <Project>{0423e61f-ebff-4cac-b3e6-ab446e4da4c8}</Project>
+      <Name>IndiaRose.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\IndiaRose.Interfaces\IndiaRose.Interfaces.csproj">
+      <Project>{4a1f6c63-f97f-4e4b-a20c-8842cc486670}</Project>
+      <Name>IndiaRose.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\IndiaRose.Services\IndiaRose.Services.csproj">
+      <Project>{d5e65cc0-2f09-47fc-aa26-74fc9e43de01}</Project>
+      <Name>IndiaRose.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\IndiaRose.Storage.Sqlite\IndiaRose.Storage.Sqlite.csproj">
+      <Project>{7264f4cf-e626-4069-b5a1-87d1d51eb3d9}</Project>
+      <Name>IndiaRose.Storage.Sqlite</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
