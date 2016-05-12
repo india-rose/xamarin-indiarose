@@ -23,14 +23,24 @@ namespace UITest.Android
                 .Android
                 // TODO: Update this path to point to your Android app and uncomment the
                 // code if the app is not included in the solution.
-                //.ApkFile ("../../../Android/bin/Debug/UITestsAndroid.apk")
+
+                //.ApkFile ("../../../../Android/Application.Android/bin/Debug/org.indiarose.apk")
+                //.LaunchableActivity("md5e9eb850b4bfdb148cd4a09650ab85c90.AdminSplashscreenActivity")
+
                 .StartApp();
         }
 
-        [Test]
+        /*[Test]
         public void AppLaunches()
         {
             app.Screenshot("First screen.");
+        }*/
+
+        [Test]
+        public void DummyTest()
+        {
+            //Assert.AreEqual(1, 1);
+            app.Repl();
         }
     }
 }
