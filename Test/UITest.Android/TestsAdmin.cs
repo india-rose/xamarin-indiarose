@@ -49,7 +49,7 @@ namespace UITest.Android
         /// le nouvel indiagram ne sera pas dans la vue alors qu'il pourrait très bien avoir été ajouté quand même
         /// </summary>
         [Test]
-        public void a_AddIndiagramTest()
+        public void A_AddIndiagramTest()
         {
             //app.Repl();
 
@@ -66,6 +66,24 @@ namespace UITest.Android
             int nbIndiagramsAfterAdd = app.Query(c => c.Class("IndiagramView")).Length;
             //Debug.WriteLine("Add : " + nbIndiagrams + " -> " + nbIndiagramsAfterAdd);
             Assert.AreEqual(nbIndiagrams + 1, nbIndiagramsAfterAdd);
+        }
+        /// <summary>
+        /// Effectue automatiquement l'edit du dernier indiagram ajouter
+        /// </summary>
+        [Test]
+        public void B_EditIndiagramTest()
+        {
+            var temp = app.Query(c => c.Class("IndiagramView"));
+            var ind = temp[temp.Length - 2]; 
+            app.Tap(ind.Id);
+            app.Tap("See");
+            app.Tap("Edit");
+            app.ClearText(c => c.Class("EditText"));
+            app.EnterText(c => c.Class("EditText"), "TestEditIndiagram");
+            app.DismissKeyboard();
+            app.Tap("Ok");
+            app.Back();
+            app.WaitForElement(c => c.Class("IndiagramBrowserView"));
         }
 
         /// <summary>
@@ -141,6 +159,29 @@ namespace UITest.Android
             Assert.AreEqual(nbIndiagrams - 1, nbIndiagramsAfterDelete);
         }
 
+        /// <summary>
+        /// Effectue automatiquement l'ajout d'un indiagram puis va le supprime via la page d'edit
+        /// </summary>
+        [Test]
+        public void D_DeleteFromEdit()
+        {
+            //vu que l'indiagram a ete delete lors de l'execution de la methode C
+            //creation d'un indiagram
+            app.Tap("Add");
+            app.EnterText(c => c.Class("EditText"), "TestIndiagram");
+            app.DismissKeyboard();
+            app.Tap("Ok");
+            app.WaitForElement(c => c.Class("IndiagramBrowserView"));
+            
+            var temp = app.Query(c => c.Class("IndiagramView"));
+            var ind = temp[temp.Length - 2]; 
+            app.Tap(ind.Id);
+            app.Tap("See");
+            app.Tap("Delete");
+            app.Tap("Delete");
+        }
+
+
         [Test]
         public void e_BrowseCategoryTest()
         {
@@ -162,6 +203,7 @@ namespace UITest.Android
         }
 
 
+        /* 
         /// <summary>
         /// Permet de verifier que le reset des paramètres a bien été effectuer en 
         /// Puisque l'on a pas accès aux services impossible de le faire tourner
@@ -169,7 +211,7 @@ namespace UITest.Android
         [Test]
         public void SettingResetTest()
         {
-            /*ISettingsService settingsService = LazyResolver<ISettingsService>.Service;
+            ISettingsService settingsService = LazyResolver<ISettingsService>.Service;
 
             //Set des valeurs par defaut
             settingsService.TopBackgroundColor = "FF4042FF";
@@ -208,8 +250,8 @@ namespace UITest.Android
             Assert.Equals(settingsService.TimeOfSilenceBetweenWords, 1.0f);
             Assert.Equals(settingsService.ReinforcerColor, "#FFFF00FF");
             Assert.Equals(settingsService.TextColor, "#FFFFFFFF");
-            Assert.Equals(settingsService.IsBackButtonEnabled, true);*/
-        }
+            Assert.Equals(settingsService.IsBackButtonEnabled, true);
+        }*/
     }
 }
 
