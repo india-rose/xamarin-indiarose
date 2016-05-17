@@ -67,6 +67,7 @@ namespace UITest.Android
             //Debug.WriteLine("Add : " + nbIndiagrams + " -> " + nbIndiagramsAfterAdd);
             Assert.AreEqual(nbIndiagrams + 1, nbIndiagramsAfterAdd);
         }
+
         /// <summary>
         /// Effectue automatiquement l'edit du dernier indiagram ajouter
         /// </summary>
@@ -91,7 +92,7 @@ namespace UITest.Android
         /// Problème de fiabilité, cf summary de AddIndiagramTest
         /// </summary>
         [Test]
-        public void b_DeleteIndiagramTest()
+        public void C_DeleteIndiagramTest()
         {
             int nbIndiagrams = app.Query(c => c.Class("IndiagramView")).Length;
             var temp = app.Query(c => c.Class("IndiagramView"));
@@ -108,7 +109,7 @@ namespace UITest.Android
         }
 
         [Test]
-        public void c_AddIndiagramInCategoryTest()
+        public void D_AddIndiagramInCategoryTest()
         {
             app.Tap("Collection management");
             app.WaitForElement(c => c.Class("IndiagramBrowserView"));
@@ -142,7 +143,7 @@ namespace UITest.Android
         }
 
         [Test]
-        public void d_DeleteIndiagramInCategoryTest()
+        public void E_DeleteIndiagramInCategoryTest()
         {
             app.WaitForElement(c => c.Class("IndiagramBrowserView"));
             int nbIndiagrams = app.Query(c => c.Class("IndiagramView")).Length;
@@ -163,9 +164,10 @@ namespace UITest.Android
         /// Effectue automatiquement l'ajout d'un indiagram puis va le supprime via la page d'edit
         /// </summary>
         [Test]
-        public void D_DeleteFromEdit()
+        public void F_DeleteFromEdit()
         {
-            //vu que l'indiagram a ete delete lors de l'execution de la methode C
+            app.Tap("Collection management");
+            //vu que l'indiagram a ete delete précédemment
             //creation d'un indiagram
             app.Tap("Add");
             app.EnterText(c => c.Class("EditText"), "TestIndiagram");
@@ -179,11 +181,12 @@ namespace UITest.Android
             app.Tap("See");
             app.Tap("Delete");
             app.Tap("Delete");
+            app.Back();
         }
 
 
         [Test]
-        public void e_BrowseCategoryTest()
+        public void G_BrowseCategoryTest()
         {
             app.Tap("Collection management");
             app.WaitForElement(c => c.Class("IndiagramBrowserView"));
@@ -199,7 +202,10 @@ namespace UITest.Android
             temp = app.Query(c => c.Class("IndiagramView"));
             if (temp.Length > 0)
                 Assert.Pass();
+            else
+                Assert.Fail();
 
+            app.Back();
         }
 
 
