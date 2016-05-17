@@ -92,9 +92,20 @@ namespace UITest.Android
             Assert.AreEqual(nbIndiagrams - 1, nbIndiagramsAfterDelete);
         }
 
+        /// <summary>
+        /// Effectue automatiquement l'ajout d'un indiagram puis va le supprime via la page d'edit
+        /// </summary>
         [Test]
         public void D_DeleteFromEdit()
         {
+            //vu que l'indiagram a ete delete lors de l'execution de la methode C
+            //creation d'un indiagram
+            app.Tap("Add");
+            app.EnterText(c => c.Class("EditText"), "TestIndiagram");
+            app.DismissKeyboard();
+            app.Tap("Ok");
+            app.WaitForElement(c => c.Class("IndiagramBrowserView"));
+            
             var temp = app.Query(c => c.Class("IndiagramView"));
             var ind = temp[temp.Length - 2]; 
             app.Tap(ind.Id);
@@ -102,6 +113,8 @@ namespace UITest.Android
             app.Tap("Delete");
             app.Tap("Delete");
         }
+
+
 
         /* 
         /// <summary>
