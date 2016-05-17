@@ -13,26 +13,26 @@ using Xamarin.UITest.Android;
 namespace UITest.Android
 {
     [TestFixture]
-    public class Tests
+    public class TestsAdmin
     {
         AndroidApp app;
 
-        public Tests()
+        public TestsAdmin()
         {
             // J'ai déplacé cette partie dans le constructeur pour éviter de relancer l'app à chaque test (c'est ce qui se passe quand ce code est dans BeforeEachTest())
             app = ConfigureApp
                 .Android
                 //.ApkFile ("../../../../Android/Application.Android/bin/Debug/org.indiarose.apk")
-                .LaunchableActivity("md5e9eb850b4bfdb148cd4a09650ab85c90.AdminSplashscreenActivity")
+                //.LaunchableActivity("md5e9eb850b4bfdb148cd4a09650ab85c90.AdminSplashscreenActivity")
                 .StartApp();
         }
 
-        [SetUp]
+        /*[SetUp]
         public void BeforeEachTest()
         {
             
-        }
-
+        }*/
+        
         /// <summary>
         /// Permet de vérifier si l'indiagram est bien créé
         /// Le problème est que pour le moment, on ne peut pas pas accéder aux services ici
@@ -80,11 +80,15 @@ namespace UITest.Android
             Assert.AreEqual(nbIndiagrams - 1, nbIndiagramsAfterDelete);
         }
 
-        //Ne fonctionne pas car impossible de recupperer le service : null exception
-        /*[Test]
+
+        /// <summary>
+        /// Permet de verifier que le reset des paramètres a bien été effectuer en 
+        /// Puisque l'on a pas accès aux services impossible de le faire tourner
+        /// </summary>
+        [Test]
         public void SettingResetTest()
         {
-            ISettingsService settingsService = LazyResolver<ISettingsService>.Service;
+            /*ISettingsService settingsService = LazyResolver<ISettingsService>.Service;
 
             //Set des valeurs par defaut
             settingsService.TopBackgroundColor = "FF4042FF";
@@ -123,8 +127,8 @@ namespace UITest.Android
             Assert.Equals(settingsService.TimeOfSilenceBetweenWords, 1.0f);
             Assert.Equals(settingsService.ReinforcerColor, "#FFFF00FF");
             Assert.Equals(settingsService.TextColor, "#FFFFFFFF");
-            Assert.Equals(settingsService.IsBackButtonEnabled, true);
-        }*/
+            Assert.Equals(settingsService.IsBackButtonEnabled, true);*/
+        }
     }
 }
 
