@@ -23,7 +23,7 @@ namespace UITest.Android
             app = ConfigureApp
                 .Android
                 //.ApkFile ("../../../../Android/Application.Android/bin/Debug/org.indiarose.apk")
-                //.LaunchableActivity("md5e9eb850b4bfdb148cd4a09650ab85c90.AdminSplashscreenActivity")
+                .LaunchableActivity("md5e9eb850b4bfdb148cd4a09650ab85c90.AdminSplashscreenActivity")
                 .StartApp();
         }
 
@@ -32,7 +32,15 @@ namespace UITest.Android
         {
             
         }*/
-        
+
+        /*[Test]
+        public void OpenREPL()
+        {
+            app.Repl();
+        }*/
+
+       
+
         /// <summary>
         /// Permet de vérifier si l'indiagram est bien créé
         /// Le problème est que pour le moment, on ne peut pas pas accéder aux services ici
@@ -41,7 +49,7 @@ namespace UITest.Android
         /// le nouvel indiagram ne sera pas dans la vue alors qu'il pourrait très bien avoir été ajouté quand même
         /// </summary>
         [Test]
-        public void AddIndiagramTest()
+        public void a_AddIndiagramTest()
         {
             //app.Repl();
 
@@ -65,7 +73,7 @@ namespace UITest.Android
         /// Problème de fiabilité, cf summary de AddIndiagramTest
         /// </summary>
         [Test]
-        public void DeleteIndiagramTest()
+        public void b_DeleteIndiagramTest()
         {
             int nbIndiagrams = app.Query(c => c.Class("IndiagramView")).Length;
             var temp = app.Query(c => c.Class("IndiagramView"));
@@ -77,7 +85,80 @@ namespace UITest.Android
             app.WaitForElement(c => c.Class("IndiagramBrowserView"));
             int nbIndiagramsAfterDelete = app.Query(c => c.Class("IndiagramView")).Length;
             //Debug.WriteLine("Delete : " + nbIndiagrams + " -> " + nbIndiagramsAfterDelete);
+            app.Back();
             Assert.AreEqual(nbIndiagrams - 1, nbIndiagramsAfterDelete);
+        }
+
+        [Test]
+        public void c_AddIndiagramInCategoryTest()
+        {
+            app.Tap("Collection management");
+            app.WaitForElement(c => c.Class("IndiagramBrowserView"));
+            int nbIndiagrams = app.Query(c => c.Class("IndiagramView")).Length;
+            app.Tap("Add");
+            app.EnterText(c => c.Class("EditText"), "TestIndiagramInCategory");
+            app.DismissKeyboard();
+
+            app.Tap("Choose category");
+            app.WaitForElement(c => c.Class("IndiagramBrowserView"));
+            var temp = app.Query(c => c.Class("IndiagramView"));
+            app.Tap(temp[3].Id);
+            app.Tap("button1");
+            app.Tap("Ok");
+            // Ajout terminé
+
+            // On va maintenant vérifier le contenu de la catégorie
+            app.WaitForElement(c => c.Class("IndiagramBrowserView"));
+            temp = app.Query(c => c.Class("IndiagramView"));
+            app.Tap(temp[3].Id);
+            app.Tap("button3");
+
+            app.WaitForElement(c => c.Class("IndiagramBrowserView"));
+            temp = app.Query(c => c.Class("IndiagramView"));
+            Assert.IsTrue(temp.Length > 10); // Les 9 chiffres (il manque le 0) + l'indiagramview du button next
+
+            /*app.WaitForElement(c => c.Class("IndiagramBrowserView"));
+            int nbIndiagramsAfterAdd = app.Query(c => c.Class("IndiagramView")).Length;
+            //Debug.WriteLine("Add : " + nbIndiagrams + " -> " + nbIndiagramsAfterAdd);
+            Assert.AreEqual(nbIndiagrams + 1, nbIndiagramsAfterAdd);*/
+        }
+
+        [Test]
+        public void d_DeleteIndiagramInCategoryTest()
+        {
+            app.WaitForElement(c => c.Class("IndiagramBrowserView"));
+            int nbIndiagrams = app.Query(c => c.Class("IndiagramView")).Length;
+            var temp = app.Query(c => c.Class("IndiagramView"));
+            var ind = temp[temp.Length - 2]; // Le dernier element est la fleche "next", donc on prend celui d'avant
+            app.Tap(ind.Id);
+            app.Tap("Delete");
+            app.Tap("Delete");
+
+            app.WaitForElement(c => c.Class("IndiagramBrowserView"));
+            int nbIndiagramsAfterDelete = app.Query(c => c.Class("IndiagramView")).Length;
+            //Debug.WriteLine("Delete : " + nbIndiagrams + " -> " + nbIndiagramsAfterDelete);
+            app.Back();
+            Assert.AreEqual(nbIndiagrams - 1, nbIndiagramsAfterDelete);
+        }
+
+        [Test]
+        public void e_BrowseCategoryTest()
+        {
+            app.Tap("Collection management");
+            app.WaitForElement(c => c.Class("IndiagramBrowserView"));
+
+            var temp = app.Query(c => c.Class("IndiagramView"));
+            var ind = temp[1];
+            app.Tap(ind.Id);
+
+            app.WaitForElement(c => c.Id("buttonPanel"));
+            app.Tap("button3");
+
+            app.WaitForElement(c => c.Class("IndiagramBrowserView"));
+            temp = app.Query(c => c.Class("IndiagramView"));
+            if (temp.Length > 0)
+                Assert.Pass();
+
         }
 
 
