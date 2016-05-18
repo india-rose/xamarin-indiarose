@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -91,7 +92,7 @@ namespace UITest.Android
         /// Problème de fiabilité, cf summary de AddIndiagramTest
         /// </summary>
         [Test]
-        public void b_DeleteIndiagramTest()
+        public void C_DeleteIndiagramTest()
         {
             int nbIndiagrams = app.Query(c => c.Class("IndiagramView")).Length;
             var temp = app.Query(c => c.Class("IndiagramView"));
@@ -108,7 +109,7 @@ namespace UITest.Android
         }
 
         [Test]
-        public void c_AddIndiagramInCategoryTest()
+        public void D_AddIndiagramInCategoryTest()
         {
             app.Tap("Collection management");
             app.WaitForElement(c => c.Class("IndiagramBrowserView"));
@@ -142,7 +143,7 @@ namespace UITest.Android
         }
 
         [Test]
-        public void d_DeleteIndiagramInCategoryTest()
+        public void E_DeleteIndiagramInCategoryTest()
         {
             app.WaitForElement(c => c.Class("IndiagramBrowserView"));
             int nbIndiagrams = app.Query(c => c.Class("IndiagramView")).Length;
@@ -163,8 +164,10 @@ namespace UITest.Android
         /// Effectue automatiquement l'ajout d'un indiagram puis va le supprime via la page d'edit
         /// </summary>
         [Test]
-        public void D_DeleteFromEdit()
+        public void F_DeleteFromEdit()
         {
+            app.Tap("Collection management");
+            app.WaitForElement(c => c.Class("IndiagramBrowserView"));
             //vu que l'indiagram a ete delete lors de l'execution de la methode C
             //creation d'un indiagram
             app.Tap("Add");
@@ -179,11 +182,12 @@ namespace UITest.Android
             app.Tap("See");
             app.Tap("Delete");
             app.Tap("Delete");
+            app.Back();
         }
 
 
         [Test]
-        public void e_BrowseCategoryTest()
+        public void G_BrowseCategoryTest()
         {
             app.Tap("Collection management");
             app.WaitForElement(c => c.Class("IndiagramBrowserView"));
@@ -199,43 +203,73 @@ namespace UITest.Android
             temp = app.Query(c => c.Class("IndiagramView"));
             if (temp.Length > 0)
                 Assert.Pass();
-
+            app.Back();
+            app.Back();
         }
 
+        [Test]
+        public void H_ChangeTopAreaSize()
+        {
+            app.Tap("Application settings");
+            app.Tap("Background color properties");
+            app.Tap("50%");
+            app.ScrollDown();
+            app.ScrollDown();
+            app.Tap("70%");
+            app.Tap("Ok");
+        }
 
-        /* 
+        [Test]
+        public void I_ChangeIndiagramProperties()
+        {
+            app.Tap("Indiagram properties");
+            //change indiagram size
+            app.Tap("128x128");
+            app.Tap("200x200");
+
+            //change indiagram font
+            app.Tap("AndroidClock.ttf");
+            app.Tap("DroidSans.ttf");
+
+            //change indiagram font size 
+            app.Tap("20");
+            app.Tap("30");
+
+            //change indiafgram font color 
+            app.Tap("Change text's color");
+            app.TapCoordinates(400, 200);
+            app.Tap("Ok");
+
+            //change reinforcer color
+            app.Tap("Change reinforcer color");
+            app.TapCoordinates(700, 300);
+            app.Tap("Ok");
+
+            app.Tap("Ok");
+        }
+
+        [Test]
+        public void J_ChangeIndiagramPropertiesCheckbox()
+        {
+            app.Tap("Indiagram properties");
+            app.Tap("Back to home after picking indiagram");
+            app.Tap("Can select the same indiagram multiple times");
+            app.Tap("Reading reinforcer enabled");
+            app.Tap("Ok");
+        }
+
+        
         /// <summary>
         /// Permet de verifier que le reset des paramètres a bien été effectuer en 
         /// Puisque l'on a pas accès aux services impossible de le faire tourner
         /// </summary>
         [Test]
-        public void SettingResetTest()
+        public void K_SettingResetTest()
         {
-            ISettingsService settingsService = LazyResolver<ISettingsService>.Service;
-
-            //Set des valeurs par defaut
-            settingsService.TopBackgroundColor = "FF4042FF";
-            LazyResolver<ISettingsService>.Service.BottomBackgroundColor = "FF5060FF";
-            settingsService.SelectionAreaHeight = 60;
-            settingsService.IndiagramDisplaySize = 300;
-            settingsService.FontName = "DroidSans.ttf";
-            settingsService.FontSize = 36;
-            settingsService.IsReinforcerEnabled = false;
-            settingsService.IsDragAndDropEnabled = true;
-            settingsService.IsCategoryNameReadingEnabled = false;
-            settingsService.IsBackButtonEnabled = false;
-            settingsService.IsMultipleIndiagramSelectionEnabled = true;
-            settingsService.TimeOfSilenceBetweenWords = 2.0f;
-            settingsService.ReinforcerColor = "FF6589FF";
-            settingsService.TextColor = "FF000000";
-            settingsService.IsBackButtonEnabled = false;
-
-            //Comportement de l'application
-            app.Tap(c=>c.Button().Text("Application settings"));
             app.Tap(c=>c.Button().Text("Reset settings"));
             app.Tap(c=>c.Button().Text("Ok"));
 
-            //verification du reset 
+           /* //verification du reset 
             Assert.Equals(settingsService.TopBackgroundColor, "#FF3838FF");
             Assert.Equals(settingsService.BottomBackgroundColor, "#FF73739E");
             Assert.Equals(settingsService.SelectionAreaHeight, 50);
@@ -250,8 +284,8 @@ namespace UITest.Android
             Assert.Equals(settingsService.TimeOfSilenceBetweenWords, 1.0f);
             Assert.Equals(settingsService.ReinforcerColor, "#FFFF00FF");
             Assert.Equals(settingsService.TextColor, "#FFFFFFFF");
-            Assert.Equals(settingsService.IsBackButtonEnabled, true);
-        }*/
+            Assert.Equals(settingsService.IsBackButtonEnabled, true);*/
+        }
     }
 }
 
