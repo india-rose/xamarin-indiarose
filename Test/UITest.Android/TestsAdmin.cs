@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using IndiaRose.Framework.Views;
 using IndiaRose.Interfaces;
+using NUnit.Core;
 using NUnit.Framework;
 using Storm.Mvvm.Inject;
 using Xamarin.UITest;
@@ -36,11 +37,33 @@ namespace UITest.Android
         /*[Test]
         public void OpenREPL()
         {
-            app.Repl();
+            //app.Repl();
         }*/
 
-       
+        [Test]
+        public void AppBehaviorTest()
+        {
+            app.Tap("Application settings");
+            app.WaitForElement(c => c.Id("content"));
 
+            app.Tap("Application properties");
+            app.WaitForElement(c => c.Id("content"));
+
+            var temp = app.Query(c => c.Class("CheckBox"));
+            Debug.WriteLine("temp length = " + temp.Length);
+            for (int i = 0; i < temp.Length; i++)
+            {
+                app.Tap(temp[i].Id);
+            }
+
+            var seekBar = app.Query(c => c.Class("SeekBar")).FirstOrDefault();
+            app.TapCoordinates(150, seekBar.Rect.CenterY);
+
+            app.Tap("Ok");
+            app.Back();
+        }
+
+        
         /// <summary>
         /// Permet de vérifier si l'indiagram est bien créé
         /// Le problème est que pour le moment, on ne peut pas pas accéder aux services ici
@@ -135,11 +158,6 @@ namespace UITest.Android
             app.WaitForElement(c => c.Class("IndiagramBrowserView"));
             temp = app.Query(c => c.Class("IndiagramView"));
             Assert.IsTrue(temp.Length > 10); // Les 9 chiffres (il manque le 0) + l'indiagramview du button next
-
-            /*app.WaitForElement(c => c.Class("IndiagramBrowserView"));
-            int nbIndiagramsAfterAdd = app.Query(c => c.Class("IndiagramView")).Length;
-            //Debug.WriteLine("Add : " + nbIndiagrams + " -> " + nbIndiagramsAfterAdd);
-            Assert.AreEqual(nbIndiagrams + 1, nbIndiagramsAfterAdd);*/
         }
 
         [Test]
