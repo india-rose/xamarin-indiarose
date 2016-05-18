@@ -38,7 +38,7 @@ namespace UITest.Android
         /*[Test]
         public void OpenREPL()
         {
-            //app.Repl();
+            app.Repl();
         }*/
 
         
@@ -224,7 +224,7 @@ namespace UITest.Android
 
             //change indiagram font
             app.Tap("AndroidClock.ttf");
-            app.Tap("DroidSans.ttf");
+            app.Tap("DroidSans-Bold.ttf");
 
             //change indiagram font size 
             app.Tap("20");
@@ -247,6 +247,7 @@ namespace UITest.Android
         public void J_ChangeIndiagramPropertiesCheckbox()
         {
             app.Tap("Indiagram properties");
+            app.ScrollDown();
             app.Tap("Back to home after picking indiagram");
             app.Tap("Can select the same indiagram multiple times");
             app.Tap("Reading reinforcer enabled");
@@ -267,7 +268,7 @@ namespace UITest.Android
             }
 
             var seekBar = app.Query(c => c.Class("SeekBar")).FirstOrDefault();
-            app.TapCoordinates(150, seekBar.Rect.CenterY);
+            app.TapCoordinates(350, seekBar.Rect.CenterY);
 
             app.Tap("Ok");
             app.Back();
@@ -280,6 +281,7 @@ namespace UITest.Android
         [Test]
         public void L_SettingResetTest()
         {
+            app.Tap(c => c.Button().Text("Application settings"));
             app.Tap(c=>c.Button().Text("Reset settings"));
             app.Tap(c=>c.Button().Text("Ok"));
 
