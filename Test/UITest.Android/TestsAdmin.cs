@@ -49,7 +49,7 @@ namespace UITest.Android
         /// Ce qui n'est pas fiable, cas dans le cas où tous les indiagrams ne peuvent pas être affichés,
         /// le nouvel indiagram ne sera pas dans la vue alors qu'il pourrait très bien avoir été ajouté quand même
         /// </summary>
-      /*  [Test]
+        [Test]
         public void A_AddIndiagramTest()
         {
             //app.Repl();
@@ -179,7 +179,7 @@ namespace UITest.Android
             app.Tap("Delete");
             app.Tap("Delete");
             app.Back();
-        }*/
+        }
 
 
         [Test]

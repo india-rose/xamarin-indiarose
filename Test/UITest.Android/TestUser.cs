@@ -20,25 +20,41 @@ namespace UITest.Android
                 .StartApp();
         }
 
+       /* [Test]
+        public void AA_Test()
+        {
+            app.Repl();
+        }
+        */
         /// <summary>
         /// Rentre dans la categorie objet puis divers 
         /// et utilise le bouton retour pour retourner a l'acceuil
         /// Pas opti car on utilise les coordonees voir si on peut pas recupper les indiagramViews
         /// </summary>
         [Test]
-        public void A_ButtonBackTest()
+        public void ButtonBackTest()
         {
             var temp = app.Query(c => c.Class("IndiagramView"));
             var ind = temp.First();
             app.Tap(ind.Id);
-            app.TapCoordinates(1250, 30);
+            temp = app.Query(c => c.Class("ImageView"));
+            app.Tap(temp[1].Id);
+           // app.TapCoordinates(1250, 30);
+        }
+
+        [Test]
+        public void B_EnterCorrectionError()
+        {
+            var temp = app.Query(c => c.Class("IndiagramView"));
+            var ind = temp[temp.Length - 1];
+            app.DragCoordinates(ind.Rect.CenterX, ind.Rect.CenterY, temp[0].Rect.CenterX, ind.Rect.CenterY);
         }
 
         /// <summary>
         /// ajoute un indiagram dans la sentenceAreaView
         /// </summary>
         [Test]
-        public void B_AddIndiaInSentence()
+        public void C_AddIndiaInSentence()
         {
             //rentre dans une categorie
             var temp = app.Query(c => c.Class("IndiagramView"));
@@ -51,5 +67,16 @@ namespace UITest.Android
             app.Tap(ind.Id);
         }
 
+        [Test]
+        public void D_EnterCorrection()
+        {
+            var temp = app.Query(c => c.Class("IndiagramView"));
+            var ind = temp[temp.Length - 1];
+            app.DragCoordinates(ind.Rect.CenterX, ind.Rect.CenterY, temp[0].Rect.CenterX, ind.Rect.CenterY);
+
+            //temp = app.Query(c => c.Class("ImageView"));
+            //app.Tap(temp[1].Id);
+        }
+        
     }
 }
