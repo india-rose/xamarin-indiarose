@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using IndiaRose.Framework.Views;
 using IndiaRose.Interfaces;
+using NUnit.Core;
 using NUnit.Framework;
 using Storm.Mvvm.Inject;
 using Xamarin.UITest;
@@ -39,8 +41,7 @@ namespace UITest.Android
             app.Repl();
         }*/
 
-       
-
+        
         /// <summary>
         /// Permet de vérifier si l'indiagram est bien créé
         /// Le problème est que pour le moment, on ne peut pas pas accéder aux services ici
@@ -135,11 +136,6 @@ namespace UITest.Android
             app.WaitForElement(c => c.Class("IndiagramBrowserView"));
             temp = app.Query(c => c.Class("IndiagramView"));
             Assert.IsTrue(temp.Length > 10); // Les 9 chiffres (il manque le 0) + l'indiagramview du button next
-
-            /*app.WaitForElement(c => c.Class("IndiagramBrowserView"));
-            int nbIndiagramsAfterAdd = app.Query(c => c.Class("IndiagramView")).Length;
-            //Debug.WriteLine("Add : " + nbIndiagrams + " -> " + nbIndiagramsAfterAdd);
-            Assert.AreEqual(nbIndiagrams + 1, nbIndiagramsAfterAdd);*/
         }
 
         [Test]
@@ -167,7 +163,8 @@ namespace UITest.Android
         public void F_DeleteFromEdit()
         {
             app.Tap("Collection management");
-            //vu que l'indiagram a ete delete précédemment
+            app.WaitForElement(c => c.Class("IndiagramBrowserView"));
+            //vu que l'indiagram a ete delete lors de l'execution de la methode C
             //creation d'un indiagram
             app.Tap("Add");
             app.EnterText(c => c.Class("EditText"), "TestIndiagram");
@@ -200,48 +197,95 @@ namespace UITest.Android
 
             app.WaitForElement(c => c.Class("IndiagramBrowserView"));
             temp = app.Query(c => c.Class("IndiagramView"));
+            app.Back();
             if (temp.Length > 0)
                 Assert.Pass();
-            else
-                Assert.Fail();
+        }
 
+        [Test]
+        public void H_ChangeTopAreaSize()
+        {
+            app.Tap("Application settings");
+            app.Tap("Background color properties");
+            app.Tap("50%");
+            app.ScrollDown();
+            app.ScrollDown();
+            app.Tap("70%");
+            app.Tap("Ok");
+        }
+
+        [Test]
+        public void I_ChangeIndiagramProperties()
+        {
+            app.Tap("Indiagram properties");
+            //change indiagram size
+            app.Tap("128x128");
+            app.Tap("200x200");
+
+            //change indiagram font
+            app.Tap("AndroidClock.ttf");
+            app.Tap("DroidSans-Bold.ttf");
+
+            //change indiagram font size 
+            app.Tap("20");
+            app.Tap("30");
+
+            //change indiafgram font color 
+            app.Tap("Change text's color");
+            app.TapCoordinates(400, 200);
+            app.Tap("Ok");
+
+            //change reinforcer color
+            app.Tap("Change reinforcer color");
+            app.TapCoordinates(700, 300);
+            app.Tap("Ok");
+
+            app.Tap("Ok");
+        }
+
+        [Test]
+        public void J_ChangeIndiagramPropertiesCheckbox()
+        {
+            app.Tap("Indiagram properties");
+            app.ScrollDown();
+            app.Tap("Back to home after picking indiagram");
+            app.Tap("Can select the same indiagram multiple times");
+            app.Tap("Reading reinforcer enabled");
+            app.Tap("Ok");
+        }
+
+        [Test]
+        public void K_AppBehaviorTest()
+        {
+            app.Tap("Application properties");
+            app.WaitForElement(c => c.Id("content"));
+
+            var temp = app.Query(c => c.Class("CheckBox"));
+            Debug.WriteLine("temp length = " + temp.Length);
+            for (int i = 0; i < temp.Length; i++)
+            {
+                app.Tap(temp[i].Id);
+            }
+
+            var seekBar = app.Query(c => c.Class("SeekBar")).FirstOrDefault();
+            app.TapCoordinates(350, seekBar.Rect.CenterY);
+
+            app.Tap("Ok");
             app.Back();
         }
 
-
-        /* 
         /// <summary>
         /// Permet de verifier que le reset des paramètres a bien été effectuer en 
         /// Puisque l'on a pas accès aux services impossible de le faire tourner
         /// </summary>
         [Test]
-        public void SettingResetTest()
+        public void L_SettingResetTest()
         {
-            ISettingsService settingsService = LazyResolver<ISettingsService>.Service;
-
-            //Set des valeurs par defaut
-            settingsService.TopBackgroundColor = "FF4042FF";
-            LazyResolver<ISettingsService>.Service.BottomBackgroundColor = "FF5060FF";
-            settingsService.SelectionAreaHeight = 60;
-            settingsService.IndiagramDisplaySize = 300;
-            settingsService.FontName = "DroidSans.ttf";
-            settingsService.FontSize = 36;
-            settingsService.IsReinforcerEnabled = false;
-            settingsService.IsDragAndDropEnabled = true;
-            settingsService.IsCategoryNameReadingEnabled = false;
-            settingsService.IsBackButtonEnabled = false;
-            settingsService.IsMultipleIndiagramSelectionEnabled = true;
-            settingsService.TimeOfSilenceBetweenWords = 2.0f;
-            settingsService.ReinforcerColor = "FF6589FF";
-            settingsService.TextColor = "FF000000";
-            settingsService.IsBackButtonEnabled = false;
-
-            //Comportement de l'application
-            app.Tap(c=>c.Button().Text("Application settings"));
+            app.Tap(c => c.Button().Text("Application settings"));
             app.Tap(c=>c.Button().Text("Reset settings"));
             app.Tap(c=>c.Button().Text("Ok"));
 
-            //verification du reset 
+           /* //verification du reset 
             Assert.Equals(settingsService.TopBackgroundColor, "#FF3838FF");
             Assert.Equals(settingsService.BottomBackgroundColor, "#FF73739E");
             Assert.Equals(settingsService.SelectionAreaHeight, 50);
@@ -256,8 +300,8 @@ namespace UITest.Android
             Assert.Equals(settingsService.TimeOfSilenceBetweenWords, 1.0f);
             Assert.Equals(settingsService.ReinforcerColor, "#FFFF00FF");
             Assert.Equals(settingsService.TextColor, "#FFFFFFFF");
-            Assert.Equals(settingsService.IsBackButtonEnabled, true);
-        }*/
+            Assert.Equals(settingsService.IsBackButtonEnabled, true);*/
+        }
     }
 }
 
