@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Linq;
 using NUnit.Framework;
 using Xamarin.UITest;
 using Xamarin.UITest.Android;
@@ -46,8 +47,12 @@ namespace UITest.Android
         public void B_EnterCorrectionError()
         {
             var temp = app.Query(c => c.Class("IndiagramView"));
+            int nbIndView = temp.Length;
             var ind = temp[temp.Length - 1];
             app.DragCoordinates(ind.Rect.CenterX, ind.Rect.CenterY, temp[0].Rect.CenterX, ind.Rect.CenterY);
+            int newNb = app.Query(c => c.Class("IndiagramView")).Length;
+
+            Assert.IsTrue(newNb == nbIndView);
         }
 
         /// <summary>
@@ -71,9 +76,15 @@ namespace UITest.Android
         public void D_EnterCorrection()
         {
             var temp = app.Query(c => c.Class("IndiagramView"));
+            int nbIndView = temp.Length;
             var ind = temp[temp.Length - 1];
             app.DragCoordinates(ind.Rect.CenterX, ind.Rect.CenterY, temp[0].Rect.CenterX, ind.Rect.CenterY);
 
+            app.WaitForElement(c => c.Class("IndiagramBrowserView"));
+            int newNb = app.Query(c => c.Class("IndiagramView")).Length;
+
+            Debug.WriteLine(newNb + " " + nbIndView);
+            Assert.IsTrue(newNb < nbIndView);
             //temp = app.Query(c => c.Class("ImageView"));
             //app.Tap(temp[1].Id);
         }
