@@ -41,29 +41,6 @@ namespace UITest.Android
             //app.Repl();
         }*/
 
-        [Test]
-        public void AppBehaviorTest()
-        {
-            app.Tap("Application settings");
-            app.WaitForElement(c => c.Id("content"));
-
-            app.Tap("Application properties");
-            app.WaitForElement(c => c.Id("content"));
-
-            var temp = app.Query(c => c.Class("CheckBox"));
-            Debug.WriteLine("temp length = " + temp.Length);
-            for (int i = 0; i < temp.Length; i++)
-            {
-                app.Tap(temp[i].Id);
-            }
-
-            var seekBar = app.Query(c => c.Class("SeekBar")).FirstOrDefault();
-            app.TapCoordinates(150, seekBar.Rect.CenterY);
-
-            app.Tap("Ok");
-            app.Back();
-        }
-
         
         /// <summary>
         /// Permet de vérifier si l'indiagram est bien créé
@@ -277,13 +254,35 @@ namespace UITest.Android
             app.Tap("Ok");
         }
 
-        
+        [Test]
+        public void K_AppBehaviorTest()
+        {
+            app.Tap("Application settings");
+            app.WaitForElement(c => c.Id("content"));
+
+            app.Tap("Application properties");
+            app.WaitForElement(c => c.Id("content"));
+
+            var temp = app.Query(c => c.Class("CheckBox"));
+            Debug.WriteLine("temp length = " + temp.Length);
+            for (int i = 0; i < temp.Length; i++)
+            {
+                app.Tap(temp[i].Id);
+            }
+
+            var seekBar = app.Query(c => c.Class("SeekBar")).FirstOrDefault();
+            app.TapCoordinates(150, seekBar.Rect.CenterY);
+
+            app.Tap("Ok");
+            app.Back();
+        }
+
         /// <summary>
         /// Permet de verifier que le reset des paramètres a bien été effectuer en 
         /// Puisque l'on a pas accès aux services impossible de le faire tourner
         /// </summary>
         [Test]
-        public void K_SettingResetTest()
+        public void L_SettingResetTest()
         {
             app.Tap(c=>c.Button().Text("Reset settings"));
             app.Tap(c=>c.Button().Text("Ok"));
