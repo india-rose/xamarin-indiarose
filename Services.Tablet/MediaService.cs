@@ -7,7 +7,6 @@ using Windows.Media.Capture;
 using Windows.Media.MediaProperties;
 using Windows.Storage;
 using Windows.Storage.Pickers;
-using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 using IndiaRose.Interfaces;
 using SharpDX.XAudio2;
@@ -20,13 +19,9 @@ namespace Services.Tablet
     {
         private MediaCapture _recordMediaCapture;
         private StorageFile _recordStorageFile;
-        private String _url;
-        private MediaElement _sound;
+        private string _url;
 
-        public IStorageService StorageService
-        {
-            get { return LazyResolver<IStorageService>.Service; }
-        }
+        public IStorageService StorageService => LazyResolver<IStorageService>.Service;
 
         public async Task<string> GetPictureFromCameraAsync()
         {
@@ -73,7 +68,7 @@ namespace Services.Tablet
                 image.SetSource(stream);
 
                 var path = Path.Combine(StorageService.ImagePath);
-                _url = String.Format("Image_{0}.{1}", Guid.NewGuid(), file.FileType);
+                _url = string.Format("Image_{0}.{1}", Guid.NewGuid(), file.FileType);
                 var folder = await StorageFolder.GetFolderFromPathAsync(path);
 
                 //TODO rajouter le code pour le redimensionnement de l'image

@@ -13,6 +13,7 @@ namespace Services.Tablet
 		{
 			var source = new Uri("ms-appx:///Assets/" + pdfFileName);
 			StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(source);
+            //todo await ?
 			Windows.ApplicationModel.Package.Current.InstalledLocation.GetFileAsync(pdfFileName);
 			Windows.System.Launcher.LaunchFileAsync(file);
 		}

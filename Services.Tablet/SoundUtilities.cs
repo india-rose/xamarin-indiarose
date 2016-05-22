@@ -72,8 +72,7 @@ namespace Services.Tablet
             else
             {
                 sourceVoice = LoadedSounds[soundfile];
-                if (sourceVoice != null)
-                    sourceVoice.Stop();
+                sourceVoice?.Stop();
             }
         }
 

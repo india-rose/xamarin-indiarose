@@ -9,12 +9,9 @@ namespace IndiaRose.Services
 	{
 		private Dictionary<string, string> _font;
 
-		public Dictionary<string, string> FontList
-		{
-			get { return _font ?? (_font = LoadFonts()); }
-		}
+		public Dictionary<string, string> FontList => _font ?? (_font = LoadFonts());
 
-        /// <summary>
+	    /// <summary>
         /// Charge la liste des polices du device
         /// </summary>
         /// <returns></returns>

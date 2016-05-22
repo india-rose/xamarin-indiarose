@@ -7,6 +7,7 @@ namespace Services.Tablet
 		public void DisplayPopup(string message)
 		{
 			var msg = new Windows.UI.Popups.MessageDialog(message);
+            //todo await ?
 			msg.ShowAsync();
 		}
 		 

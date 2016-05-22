@@ -39,10 +39,9 @@ namespace Services.Tablet
 
                 if (audioFile != null)
                 {
-                    MediaSource mediaSource;
                     MediaElement mediaElement = new MediaElement();
 
-                    mediaSource = MediaSource.CreateFromStorageFile(audioFile);
+                    var mediaSource = MediaSource.CreateFromStorageFile(audioFile);
                     mediaElement.SetPlaybackSource(mediaSource);
                     mediaElement.Play();
                 }
