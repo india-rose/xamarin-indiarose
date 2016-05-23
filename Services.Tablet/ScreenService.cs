@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Store;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using IndiaRose.Interfaces;
 
-namespace IndiaRose.Services
+namespace Services.Tablet
 {
     public class ScreenService : IScreenService
     {
