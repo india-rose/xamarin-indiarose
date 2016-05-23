@@ -3,7 +3,7 @@ using System.Globalization;
 using IndiaRose.Interfaces;
 using SharpDX.DirectWrite;
 
-namespace IndiaRose.Services
+namespace Services.Tablet
 {
 	public class FontService : IFontService
 	{

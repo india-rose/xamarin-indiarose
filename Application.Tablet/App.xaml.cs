@@ -8,6 +8,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Globalization;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -83,6 +84,8 @@ namespace Application.Tablet
                     rootFrame.Navigate(target, e.TileId);
                     //rootFrame.Navigate(target, e.Arguments);
                 }
+                //Pour avoir l'appli en full Screen
+                ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
                 // Vérifiez que la fenêtre actuelle est active
                 Window.Current.Activate();
             }

@@ -13,8 +13,8 @@ namespace Services.Tablet
 		{
 			var source = new Uri("ms-appx:///Assets/" + pdfFileName);
 			StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(source);
-			Windows.ApplicationModel.Package.Current.InstalledLocation.GetFileAsync(pdfFileName);
-			Windows.System.Launcher.LaunchFileAsync(file);
+			await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFileAsync(pdfFileName);
+			await Windows.System.Launcher.LaunchFileAsync(file);
 		}
 
 		public async Task<Stream> OpenZip(string zipFileName)

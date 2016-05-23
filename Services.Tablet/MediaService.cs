@@ -21,7 +21,7 @@ namespace Services.Tablet
         private MediaCapture _recordMediaCapture;
         private StorageFile _recordStorageFile;
         private String _url;
-        private MediaElement _sound;
+        //private MediaElement _sound;
 
         public IStorageService StorageService
         {
