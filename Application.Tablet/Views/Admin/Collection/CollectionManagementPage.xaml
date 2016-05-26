@@ -13,8 +13,9 @@
     <Grid VerticalAlignment="Stretch" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"></ColumnDefinition>
-            <ColumnDefinition Width="50*"></ColumnDefinition>
-            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="25*"></ColumnDefinition>
+            <ColumnDefinition Width="25*"></ColumnDefinition>
+            <ColumnDefinition Width="25*"></ColumnDefinition>
             <ColumnDefinition Width="5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -26,7 +27,7 @@
         <views:IndiagramBrowserView Grid.Column="0" 
                                     Grid.Row="0" 
                                     Grid.RowSpan="2" 
-                                    Grid.ColumnSpan="4"
+                                    Grid.ColumnSpan="5"
                                     DraggableIndiagrams="False"
                                     Background="{Binding BackgroundColor}"
                                     Count="{Binding CollectionDisplayCount, Mode=TwoWay}"
@@ -36,18 +37,26 @@
 	                                IndiagramSelected="{Binding IndiagramSelectedCommand}"
 	                                NextCommand="{Binding NextCommand}"/>
 
+       
+        <Button Style="{StaticResource OrangeButton}"
+            Grid.Column="1" Grid.Row="2"
+            Command="{Binding BackCommand}">
+            <TextBlock Style="{StaticResource TextButton}"
+                x:Uid="BackButton"/>
+        </Button>
+
         <Button Style="{StaticResource GreenButton}"
-                Grid.Column="1" Grid.Row="2"
+                Grid.Column="2" Grid.Row="2"
                 Command="{Binding AddCommand}">
             <TextBlock Style="{StaticResource TextButton}"
                 x:Uid="CollectionManagement_Add"/>
         </Button>
-        
-        <Button Style="{StaticResource OrangeButton}"
-            Grid.Column="2" Grid.Row="2"
-            Command="{Binding BackCommand}">
+
+        <Button Style="{StaticResource PurpleButton}"
+                Grid.Column="3" Grid.Row="2"
+                Command="{Binding BackCategoryCommand}">
             <TextBlock Style="{StaticResource TextButton}"
-                x:Uid="BackButton"/>
+                x:Uid="BackCategory"/>
         </Button>
 
     </Grid>

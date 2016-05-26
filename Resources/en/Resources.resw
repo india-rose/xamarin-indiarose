@@ -561,4 +561,7 @@ Comments : </value>
   <data name="ResetSettings_Explanation.Text" xml:space="preserve">
     <value>This will reset your settings\nYour collection will NOT be affected</value>
   </data>
+  <data name="BackCategory.Text" xml:space="preserve">
+    <value>Back category</value>
+  </data>
 </root>
