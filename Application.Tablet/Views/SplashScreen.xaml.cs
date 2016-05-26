@@ -25,7 +25,7 @@ namespace Application.Tablet.Views
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
-    public sealed partial class SplashScreen : MvvmPage
+    public sealed partial class SplashScreen
     {
         private const string TILE_ID_USER = "UserPage";
         private const string TILE_ID_ADMIN = "AdminPage";
@@ -43,7 +43,9 @@ namespace Application.Tablet.Views
                 _tileId = e.Parameter.ToString();
 
             if (_tileId == TILE_ID_USER)
+            {
                 DataContext = new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.User); // User
+            } 
             else
                 DataContext = new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.Admin); // Admin
         }

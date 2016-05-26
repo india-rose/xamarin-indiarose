@@ -203,6 +203,7 @@
     <Content Include="Assets\logoIndiaRose.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <AndroidResource Include="Assets\logo_admin.png" />
     <Content Include="Assets\manuel.pdf" />
     <None Include="project.json" />
   </ItemGroup>
