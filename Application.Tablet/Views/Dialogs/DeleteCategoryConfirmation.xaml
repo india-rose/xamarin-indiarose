@@ -10,7 +10,9 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -22,10 +24,10 @@
 
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
                    Grid.Column="1"
-                   Style="{StaticResource PopupTitleStyle}"
+                   Style="{StaticResource PopupContentStyle}"
                    x:Uid="DeleteCategoryConfirmation_Title"/>
         <Button Style="{StaticResource SmallButton}" 
-                Grid.Row="1" 
+                Grid.Row="3" 
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Command="{Binding DeleteCommand}">
@@ -34,13 +36,14 @@
         </Button>
 
         <Button Style="{StaticResource SmallButton}" 
-                Grid.Row="1" 
+                Grid.Row="3" 
                 Grid.Column="2"
                 Grid.ColumnSpan="2"
                 Command="{Binding CloseDialogCommand}">
             <TextBlock Style="{StaticResource TextButton}" 
                        x:Uid="Button_Cancel" />
         </Button>
+
 
     </Grid>
 </mvvm:DialogPage>

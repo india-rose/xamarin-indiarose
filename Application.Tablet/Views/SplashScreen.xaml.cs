@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using Storm.Mvvm;
 using IndiaRose.Business.ViewModels;
@@ -25,7 +26,7 @@ namespace Application.Tablet.Views
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
-    public sealed partial class SplashScreen : MvvmPage
+    public sealed partial class SplashScreen
     {
         private const string TILE_ID_USER = "UserPage";
         private const string TILE_ID_ADMIN = "AdminPage";
@@ -34,6 +35,7 @@ namespace Application.Tablet.Views
         public SplashScreen()
         {
             this.InitializeComponent();
+
             Loaded += SplashScreen_Loaded;
         }
 
@@ -43,9 +45,14 @@ namespace Application.Tablet.Views
                 _tileId = e.Parameter.ToString();
 
             if (_tileId == TILE_ID_USER)
+            {
                 DataContext = new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.User); // User
+            }
             else
+            {
+                ImageLogo.Source = new BitmapImage(new Uri("ms-appx:///Assets/logo_admin.png"));
                 DataContext = new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.Admin); // Admin
+            }
         }
 
         async void SplashScreen_Loaded(object sender, RoutedEventArgs e)

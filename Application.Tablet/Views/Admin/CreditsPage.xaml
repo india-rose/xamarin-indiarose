@@ -38,8 +38,8 @@
 
     <Grid Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50*" />
-            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="25*" />
+            <ColumnDefinition Width="75*" />
         </Grid.ColumnDefinitions>
 
         <Grid VerticalAlignment="Stretch" Grid.Column="0">
@@ -63,7 +63,7 @@
         </Grid>
 
         
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="15,15,15,15">
             <StackPanel Orientation="Vertical">
 
                 <TextBlock Style="{StaticResource TextLayoutStyle}" x:Uid="Credits_ApplicationName" Text="" />

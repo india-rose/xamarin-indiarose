@@ -200,9 +200,8 @@
     <Content Include="Assets\70winUser.png" />
     <Content Include="Assets\indiagrams.zip" />
     <Content Include="Assets\cancel.png" />
-    <Content Include="Assets\logoIndiaRose.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Assets\logoIndiaRose.png" />
+    <Content Include="Assets\logo_admin.png" />
     <Content Include="Assets\manuel.pdf" />
     <None Include="project.json" />
   </ItemGroup>
