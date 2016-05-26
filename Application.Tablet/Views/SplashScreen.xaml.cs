@@ -45,10 +45,10 @@ namespace Application.Tablet.Views
             if (_tileId == TILE_ID_USER)
                 DataContext = new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.User); // User
             else
-                DataContext = new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.User); // Admin
+                DataContext = new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.Admin); // Admin
         }
 
-        async void SplashScreen_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        async void SplashScreen_Loaded(object sender, RoutedEventArgs e)
         {
             //initialisation du second point d'entrée de l'application (partie user)
             var secondaryTileId = TILE_ID_USER;

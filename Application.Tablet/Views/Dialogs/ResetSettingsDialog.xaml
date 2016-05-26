@@ -24,7 +24,6 @@
                    Grid.Column="1"
                    Style="{StaticResource PopupTitleStyle}"
                    x:Uid="ResetSettings_Title"/>
-
         <!--<TextBlock Grid.Row="1"   Grid.Column="1"
                    Style="{StaticResource PopupContentStyle}"
                    x:Uid="ResetSettings_Explanation"/>-->
