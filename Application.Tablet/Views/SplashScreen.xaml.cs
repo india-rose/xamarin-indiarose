@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using Storm.Mvvm;
 using IndiaRose.Business.ViewModels;
@@ -34,6 +35,7 @@ namespace Application.Tablet.Views
         public SplashScreen()
         {
             this.InitializeComponent();
+
             Loaded += SplashScreen_Loaded;
         }
 
@@ -45,9 +47,12 @@ namespace Application.Tablet.Views
             if (_tileId == TILE_ID_USER)
             {
                 DataContext = new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.User); // User
-            } 
+            }
             else
+            {
+                ImageLogo.Source = new BitmapImage(new Uri("ms-appx:///Assets/logo_admin.png"));
                 DataContext = new SplashScreenViewModel(SplashScreenViewModel.LaunchingType.Admin); // Admin
+            }
         }
 
         async void SplashScreen_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)

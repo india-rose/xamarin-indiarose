@@ -21,8 +21,10 @@
             <RowDefinition Height="75*"></RowDefinition>
             <RowDefinition Height="20*"></RowDefinition>
         </Grid.RowDefinitions>
-        
-        <Image Source="../../Assets/logoIndiaRose.png" Grid.Row="1"
+
+        <Image x:Name="ImageLogo"
+               Source="../../Assets/logoIndiaRose.png"
+               Grid.Row="1"
                Grid.Column="1 " />
 
         <TextBlock Grid.Row="2" Grid.Column="1"
