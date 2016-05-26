@@ -11,15 +11,8 @@ namespace IndiaRose.Services
 {
     public class ScreenService : IScreenService
     {
-        public int Width
-        {
+        public int Width => (int)Window.Current.Bounds.Width;
 
-			get { return (int)Window.Current.Bounds.Width; }
-        }
-
-        public int Height
-        {
-			get { return (int)Window.Current.Bounds.Height; }
-        }
+        public int Height => (int)Window.Current.Bounds.Height;
     }
 }
