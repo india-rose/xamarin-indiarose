@@ -13,7 +13,6 @@ namespace Services.Tablet
 		{
 			var source = new Uri("ms-appx:///Assets/" + pdfFileName);
 			StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(source);
-            //todo await ?
 			Windows.ApplicationModel.Package.Current.InstalledLocation.GetFileAsync(pdfFileName);
 			Windows.System.Launcher.LaunchFileAsync(file);
 		}
@@ -21,7 +20,6 @@ namespace Services.Tablet
 		public async Task<Stream> OpenZip(string zipFileName)
 		{
 			var source = new Uri("ms-appx:///Assets/" + zipFileName);
-			StorageFolder installFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
 			StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(source);
 			IRandomAccessStream tmp = await file.OpenAsync(FileAccessMode.Read);
 			return tmp.AsStream();

@@ -55,7 +55,7 @@ namespace Application.Tablet.Views
             }
         }
 
-        async void SplashScreen_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        async void SplashScreen_Loaded(object sender, RoutedEventArgs e)
         {
             //initialisation du second point d'entrée de l'application (partie user)
             var secondaryTileId = TILE_ID_USER;
