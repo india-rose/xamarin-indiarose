@@ -557,7 +557,7 @@ Commentaires : </value>
     <value>Martin Chertier, Donovan Ferre, Lindsay Grignon, Benjamin Meyer</value>
   </data>
   <data name="DeleteCategoryConfirmation_Explanation.Text" xml:space="preserve">
-    <value>Ceci supprimera tous les Indiagrams contenu dans cette catégorie.\nÊtes-vous continuer ?</value>
+    <value>Ceci supprimera tous les Indiagrams contenu dans cette catégorie.\nVoulez-vous continuer ?</value>
   </data>
   <data name="ResetSettings_Explanation.Text" xml:space="preserve">
     <value>Ceci réinitilisera vos paramètres.\nVotre collection NE sera PAS modifié</value>
