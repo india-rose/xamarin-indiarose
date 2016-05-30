@@ -27,6 +27,7 @@
             <conv:IndiaSizeToMarginSize x:Key="IndiaSizeToMarginSize"/>
             <conv:ColorStringToIntConverter x:Key="ColorStringToIntConverter"/>
             <conv:ColorStringToSolidColorBrushConverter x:Key="ColorStringToSolidColorBrushConverter"/>
+            <conv:LineBreakConverter x:Key="LineBreakConverter"/>
 
             <!--Button Style-->
             <Style x:Key="ImageButtonStyle" TargetType="Button">

@@ -114,6 +114,7 @@
     <Compile Include="Converters\DefaultLocalizedStringIfNullConverter.cs" />
     <Compile Include="Converters\IndiaSizeToMarginSize.cs" />
     <Compile Include="Converters\IndiaSizeToReinforcerSizeConverter.cs" />
+    <Compile Include="Converters\LineBreakConverter.cs" />
     <Compile Include="Converters\ParentCategoryTextConverter.cs" />
     <Compile Include="Converters\TopAreaSizeToBottomAreaSizeConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

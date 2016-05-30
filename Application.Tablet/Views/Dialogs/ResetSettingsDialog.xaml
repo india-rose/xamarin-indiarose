@@ -6,8 +6,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:mvvm="using:Storm.Mvvm"
+    xmlns:local="using:Framework.Tablet.Converters"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminSettingsDialogsResetSettingsViewModel}">
 
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
@@ -22,14 +24,16 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         
+        
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
                    Grid.Column="1"
                    Style="{StaticResource PopupTitleStyle}"
                    x:Uid="ResetSettings_Title"/>
         
            <TextBlock Grid.Row="1"   Grid.Column="1"
-                   Style="{StaticResource PopupContentStyle}"
-                   x:Uid="ResetSettings_Explanation"/>
+                      Style="{StaticResource PopupContentStyle}"
+                      x:Name="TextBlockExplanation"/>
+                      <!-- x:Uid="ResetSettings_Explanation" -->
 
 
         <Button Style="{StaticResource SmallButton}" 
