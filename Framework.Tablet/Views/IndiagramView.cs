@@ -133,19 +133,20 @@ namespace Framework.Tablet.Views
                 Children.Clear();
                 return;
             }
-            //sortir la suppression ?
+
+            try
+            {
+                Children.Remove(Children[0]);
+            }
+            catch (ArgumentException)
+            {
+            }
+
             if (!string.IsNullOrEmpty(Indiagram.ImagePath))
             {
                 //si l'Indiagram a une image
                 if (Children[0] != _image)
                 {
-                    try
-                    {
-                        Children.Remove(Children[0]);
-                    }
-                    catch (ArgumentException)
-                    {
-                    }
                     Children.Insert(0, _image);
 
                     if (Children[1] == null)
@@ -156,13 +157,6 @@ namespace Framework.Tablet.Views
             else
             {
                 //si l'indiagram n'a pas d'image
-                try
-                {
-                    Children.Remove(Children[0]);
-                }
-                catch (ArgumentException)
-                {
-                }
                 Children.Insert(0, _redRect);
 
                 if (Children[1] == null)
