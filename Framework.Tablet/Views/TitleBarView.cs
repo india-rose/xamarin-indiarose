@@ -18,15 +18,12 @@ namespace Framework.Tablet.Views
     /// </summary>
     public class TitleBarView : Grid
     {
-        private Grid _tilteBar; 
+        private readonly Grid _titleBar; 
         /// <summary>
         /// Image de la Categorie courante
         /// </summary>
         private readonly Image _imagecategory;
-        /// <summary>
-        /// Image du logo
-        /// </summary>
-        private readonly Image _logo;
+
         /// <summary>
         /// Texte de la Catégorie courante
         /// </summary>
@@ -36,11 +33,6 @@ namespace Framework.Tablet.Views
         /// Carré rouge, servant lorsque la Catégorie courante n'a pas d'image
         /// </summary>
         private readonly StackPanel _redRect;
-
-        /// <summary>
-        /// Image du bouton back
-        /// </summary>
-        private readonly Image _buttonBack;
 
         /// <summary>
         /// Texte de la categorie parente
@@ -58,7 +50,7 @@ namespace Framework.Tablet.Views
         private static void Refresh(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as TitleBarView;
-            if (view != null) view.Refresh();
+            view?.Refresh();
         }
 
         private void Refresh()
@@ -70,31 +62,31 @@ namespace Framework.Tablet.Views
                 //si la catégorie n'a pas d'image on met le rectangle rouge
                 try
                 {
-                    _tilteBar.Children.RemoveAt(0);
+                    _titleBar.Children.RemoveAt(0);
                 }
                 catch (ArgumentException)
                 {
                 }
-                _tilteBar.Children.Insert(0, _redRect);
+                _titleBar.Children.Insert(0, _redRect);
             }
             else
             {
                 try
-                {;
-                    _tilteBar.Children.RemoveAt(0);
+                {
+                    _titleBar.Children.RemoveAt(0);
                 }
                 catch (ArgumentException)
                 {
                 }
                 _imagecategory.Source = new BitmapImage(new Uri(Category.ImagePath, UriKind.Absolute));
-                _tilteBar.Children.Insert(0, _imagecategory);
+                _titleBar.Children.Insert(0, _imagecategory);
             }
         }
 
         private static void RefreshParent(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as TitleBarView;
-            if (view != null) view.RefreshParent();
+            view?.RefreshParent();
         }
 
         private void RefreshParent()
@@ -138,7 +130,7 @@ namespace Framework.Tablet.Views
             var settingsService = LazyResolver<ISettingsService>.Service;
             var screenService = LazyResolver<IScreenService>.Service;
 
-            _tilteBar = new Grid();
+            _titleBar = new Grid();
 
             _textblock = new TextBlock
             {
@@ -167,13 +159,13 @@ namespace Framework.Tablet.Views
             Background = new SolidColorBrush(Colors.White);
 
             const string sourcelogo = "ms-appx:///Assets/logoIndiaRose.png";
-            _logo = new Image
+            var logo = new Image
             {
                 Source = new BitmapImage(new Uri(sourcelogo)),
                 Width = 256
             };
             string sourceBack = LazyResolver<IStorageService>.Service.ImageBackPath;
-            _buttonBack = new Image
+            var buttonBack = new Image
             {
                 Source = new BitmapImage(new Uri(sourceBack)),
                 Width = 60,
@@ -189,42 +181,43 @@ namespace Framework.Tablet.Views
                 Margin = new Thickness(0, 0, 10, 0)
             };
 
-            _tilteBar.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(_imagecategory.Width/*, GridUnitType.Star*/) });
+            //todo UTILITY
+            _titleBar.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(_imagecategory.Width/*, GridUnitType.Star*/) });
 
 
             if (!settingsService.IsBackButtonEnabled)
             {
-                _tilteBar.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(screenService.Width - _imagecategory.Width, GridUnitType.Star) });
-                _logo.HorizontalAlignment = HorizontalAlignment.Right;
-                _logo.SetValue(Grid.ColumnProperty, 1);
+                _titleBar.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(screenService.Width - _imagecategory.Width, GridUnitType.Star) });
+                logo.HorizontalAlignment = HorizontalAlignment.Right;
+                logo.SetValue(ColumnProperty, 1);
             }
             else
             {
-                _tilteBar.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(screenService.Width - (_imagecategory.Width + _buttonBack.Width), GridUnitType.Star) });
-                _tilteBar.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(_buttonBack.Width/*, GridUnitType.Star*/) });
+                _titleBar.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(screenService.Width - (_imagecategory.Width + buttonBack.Width), GridUnitType.Star) });
+                _titleBar.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(buttonBack.Width/*, GridUnitType.Star*/) });
 
-                _logo.SetValue(Grid.ColumnProperty, 1);
-                _logo.HorizontalAlignment = HorizontalAlignment.Center;
+                logo.SetValue(ColumnProperty, 1);
+                logo.HorizontalAlignment = HorizontalAlignment.Center;
 
-                _buttonBack.SetValue(Grid.ColumnProperty, 2);
+                buttonBack.SetValue(ColumnProperty, 2);
                 _oldCategory.HorizontalAlignment = HorizontalAlignment.Right;
-                _oldCategory.SetValue(Grid.ColumnProperty, 1);
+                _oldCategory.SetValue(ColumnProperty, 1);
 
-                _tilteBar.Children.Add(_buttonBack);
-                _tilteBar.Children.Add(_oldCategory);
+                _titleBar.Children.Add(buttonBack);
+                _titleBar.Children.Add(_oldCategory);
             }
 
-            _buttonBack.Tapped += _backButton_Tapped;
+            buttonBack.Tapped += _backButton_Tapped;
             
-            _tilteBar.Children.Insert(0, _imagecategory);
+            _titleBar.Children.Insert(0, _imagecategory);
 
-            _textblock.SetValue(Grid.ColumnProperty, 1);
+            _textblock.SetValue(ColumnProperty, 1);
             _textblock.HorizontalAlignment = HorizontalAlignment.Left;
-            _tilteBar.Children.Add(_textblock);
+            _titleBar.Children.Add(_textblock);
 
-            _tilteBar.Children.Add(_logo);
+            _titleBar.Children.Add(logo);
 
-            Children.Insert(0, _tilteBar);
+            Children.Insert(0, _titleBar);
             
 
         }

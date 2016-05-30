@@ -25,7 +25,7 @@ namespace Framework.Tablet.Views
         private static void RefreshStyle(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as TabletPreviewView;
-            if (view != null) view.RefreshStyle();
+            view?.RefreshStyle();
         }
 
         private void RefreshStyle()
@@ -59,7 +59,7 @@ namespace Framework.Tablet.Views
         private static void RefreshSize(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as TabletPreviewView;
-            if (view != null) view.RefreshSize();
+            view?.RefreshSize();
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Framework.Tablet.Views
         private static void RefreshTopButtonColor(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as TabletPreviewView;
-            if (view != null) view.RefreshTopButtonColor();
+            view?.RefreshTopButtonColor();
         }
 
         public void RefreshTopButtonColor()
@@ -102,7 +102,7 @@ namespace Framework.Tablet.Views
         private static void RefreshBotButtonColor(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as TabletPreviewView;
-            if (view != null) view.RefreshBotButtonColor();
+            view?.RefreshBotButtonColor();
         }
 
         private void RefreshBotButtonColor()

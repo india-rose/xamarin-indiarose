@@ -23,8 +23,6 @@ namespace Framework.Tablet.Views
         /// </summary>
         private readonly StackPanel _redRect;
 
-        private bool _draggable;
-
         #region TextColor
         public static readonly DependencyProperty TextColorProperty = DependencyProperty.Register(
                 "TextColor", typeof(SolidColorBrush), typeof(IndiagramView), new PropertyMetadata(default(SolidColorBrush), RefreshColor));
@@ -57,7 +55,7 @@ namespace Framework.Tablet.Views
             DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
             var indiaView = dependencyObject as IndiagramView;
-            if (indiaView != null) indiaView.RefreshDisplay();
+            indiaView?.RefreshDisplay();
         }
 
         #endregion
@@ -73,21 +71,14 @@ namespace Framework.Tablet.Views
                 SetValue(IndiagramProperty, value);
                 if (value != null)
                 {
-                    if (value.IsCategory)
-                        CanDrag = false;
-                    else if (LazyResolver<ISettingsService>.Service.IsDragAndDropEnabled)
-                        CanDrag = /*_draggable*/ true;
-                    else
-                        CanDrag = false;
+                    CanDrag = !value.IsCategory && LazyResolver<ISettingsService>.Service.IsDragAndDropEnabled;
                 }
-                
+
             }
         }
 
-        public IndiagramView(bool draggable = false)
+        public IndiagramView()
         {
-            _draggable = draggable;
-
             Orientation = Orientation.Vertical;
             var indiaSize = SettingsService.IndiagramDisplaySize;
             var margin = indiaSize / 10;
@@ -116,7 +107,6 @@ namespace Framework.Tablet.Views
                 Background = new SolidColorBrush(Colors.Red)
             };
 
-            //CanDrag = LazyResolver<ISettingsService>.Service.IsDragAndDropEnabled;
             DragStarting += (sender, e) =>
             {
                 e.Data.SetText(Indiagram.Id.ToString());
@@ -154,15 +144,13 @@ namespace Framework.Tablet.Views
                     try
                     {
                         Children.Remove(Children[0]);
-                        //Children.RemoveAt(0);
-
                     }
                     catch (ArgumentException)
                     {
                     }
                     Children.Insert(0, _image);
 
-                    if(Children[1] == null)
+                    if (Children[1] == null)
                         Children.Insert(1, _textBlock);
                 }
                 _image.Source = new BitmapImage(new Uri(Indiagram.ImagePath, UriKind.Absolute));
@@ -196,8 +184,8 @@ namespace Framework.Tablet.Views
                 _textBlock.Text = Indiagram.Text;
 
             //if (Indiagram.HasChildren)
-                //_image.CanDrag = false;
-            
+            //_image.CanDrag = false;
+
         }
 
         /// <summary>

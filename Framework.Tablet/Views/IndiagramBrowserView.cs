@@ -248,7 +248,7 @@ namespace Framework.Tablet.Views
                 _displayableViews[line] = new IndiagramView[_columnCount - (line == 0 ? 1 : 0)];
                 for (int column = 0; column < _displayableViews[line].Length; ++column)
                 {
-                    var view = new IndiagramView(DraggableIndiagrams) { TextColor = TextColor };
+                    var view = new IndiagramView { TextColor = TextColor };
                     view.Tapped += view_Tapped;
                     _displayableViews[line][column] = view;
                 }
