@@ -54,7 +54,8 @@
 
         <Button Style="{StaticResource PurpleButton}"
                 Grid.Column="3" Grid.Row="2"
-                Command="{Binding BackCategoryCommand}">
+                Command="{Binding BackCategoryCommand}"
+                IsEnabled="{Binding CurrentCategory , Converter={StaticResource CategoryNameToBoolConverter}}">
             <TextBlock Style="{StaticResource TextButton}"
                 x:Uid="BackCategory"/>
         </Button>
