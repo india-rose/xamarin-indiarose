@@ -37,7 +37,7 @@ namespace Framework.Tablet.Views
         private static void Refresh(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var imageView = d as BindableImageView;
-            if (imageView != null) imageView.Refresh();
+            imageView?.Refresh();
         }
 
         private void Refresh()

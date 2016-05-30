@@ -22,7 +22,7 @@ namespace Application.Tablet.Views.Dialogs
         {
             this.InitializeComponent();
 
-           Color.SelectedColorChanged += (object sender, EventArgs args) =>
+           Color.SelectedColorChanged += (sender, args) =>
             {
                 MainGridLayout.Background = Color.SelectedColor;
             };
@@ -30,7 +30,7 @@ namespace Application.Tablet.Views.Dialogs
             Window.Current.SizeChanged += (sender, args) =>
             {
                 Width = ScreenService.Width;
-                Height = ScreenService.Height - (ScreenService.Height*10/100);
+                Height = ScreenService.Height - ScreenService.Height*10/100;
             };
         }
 

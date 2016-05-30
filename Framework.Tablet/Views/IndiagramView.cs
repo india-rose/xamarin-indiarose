@@ -14,10 +14,7 @@ namespace Framework.Tablet.Views
 {
     public class IndiagramView : StackPanel
     {
-        protected static ISettingsService SettingsService
-        {
-            get { return LazyResolver<ISettingsService>.Service; }
-        }
+        protected static ISettingsService SettingsService => LazyResolver<ISettingsService>.Service;
 
         private readonly TextBlock _textBlock;
         private readonly Image _image;
@@ -206,23 +203,11 @@ namespace Framework.Tablet.Views
         /// <summary>
         /// Largeur attendu pour la Vue
         /// </summary>
-        public static int DefaultWidth
-        {
-            get
-            {
-                return (int)(SettingsService.IndiagramDisplaySize * 1.2);
-            }
-        }
+        public static int DefaultWidth => (int)(SettingsService.IndiagramDisplaySize * 1.2);
 
         /// <summary>
         /// Hauteur attendu pour la Vue (avec une seul ligne de texte)
         /// </summary>
-        public static int DefaultHeight
-        {
-            get
-            {
-                return (int)(SettingsService.IndiagramDisplaySize * 1.2 + SettingsService.FontSize);
-            }
-        }
+        public static int DefaultHeight => (int)(SettingsService.IndiagramDisplaySize * 1.2 + SettingsService.FontSize);
     }
 }

@@ -34,7 +34,7 @@ namespace Application.Tablet.Views
 
         public SplashScreen()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
             Loaded += SplashScreen_Loaded;
         }
