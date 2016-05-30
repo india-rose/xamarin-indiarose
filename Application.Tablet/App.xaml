@@ -28,6 +28,8 @@
             <conv:ColorStringToIntConverter x:Key="ColorStringToIntConverter"/>
             <conv:ColorStringToSolidColorBrushConverter x:Key="ColorStringToSolidColorBrushConverter"/>
             <conv:LineBreakConverter x:Key="LineBreakConverter"/>
+            <conv:CategoryNameToBoolConverter x:Key="CategoryNameToBoolConverter"/>
+
 
             <!--Button Style-->
             <Style x:Key="ImageButtonStyle" TargetType="Button">
