@@ -257,7 +257,7 @@ namespace Framework.Tablet.Views
         /// <summary>
         /// Callback lorsqu'un Indiagram a été sélectionné
         /// </summary>=
-        void view_Tapped(object sender, TappedRoutedEventArgs e)
+        private void view_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var senderView = sender as IndiagramView;
             if (senderView == null)

@@ -113,17 +113,8 @@ namespace Framework.Tablet.Views
                 Width = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize,
                 Height = LazyResolver<ISettingsService>.Service.IndiagramDisplaySize,
                 IsHoldingEnabled = true,
-                //CanDrag=true
+                CanDrag = true
             };
-
-            /*_playButton.DragStarting += (sender, args) =>
-            {
-                if (CorrectionCommand != null && CorrectionCommand.CanExecute(null))
-                {
-                    CorrectionCommand.Execute(null);
-                } 
-            };*/
-
             _playButton.Tapped += (sender, args) =>
             {
                 if (ReadCommand != null && ReadCommand.CanExecute(null))
@@ -131,39 +122,17 @@ namespace Framework.Tablet.Views
                     ReadCommand.Execute(null);
                 }
             };
-
-            DoubleTapped += (sender, args) =>
-            {
-                if (CorrectionCommand != null && CorrectionCommand.CanExecute(null))
-                {
-                    CorrectionCommand.Execute(null);
-                }
-            };
-
             DragEnter += (sender, e) =>
             {
                 e.AcceptedOperation = LazyResolver<ISettingsService>.Service.IsMultipleIndiagramSelectionEnabled ? DataPackageOperation.Copy : DataPackageOperation.Move;
             };
 
-            Drop += async (sender, e) =>
+            Drop += (sender, e) =>
             {
-                if (DragStarCommand != null && DragStarCommand.CanExecute(null))
+                if (e.GetPosition(this).X < ActualWidth / 3)
                 {
-                    //var indiagram =  e.quelquechose.get..(le truc dans lequel tu as stocké l'indiagram) as Indiagram
-
-                    string indID = await e.DataView.GetTextAsync();
-                    Indiagram indiagram = GetIndiagramById(Int32.Parse(indID), LazyResolver<ICollectionStorageService>.Service.Collection);
-                    IndiagramUIModel indiaUi = new IndiagramUIModel(indiagram);
-                    if (CanAddIndiagrams)
-                    {
-                        Indiagrams.Add(indiaUi);
-                        DragStarCommand.Execute(indiagram);
-                    }
-
-
+                    CorrectionCommand?.Execute(null);
                 }
-
-                //todo voir pour le click 
             };
         }
 
