@@ -2,26 +2,20 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Windows.ApplicationModel.DataTransfer;
-using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
-using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
 
 namespace Framework.Tablet.Views
 {
     /// <summary>
     /// Affiche la partie utilisateur
-    /// Est composé de 2 parties : IndiagramBrowserView et SentenceAreaView
+    /// Est composé de 2 parties : <see cref="IndiagramBrowserView"/> et <see cref="SentenceAreaView"/>
     /// </summary> 
-    /// <see cref="IndiagramBrowserView"/>
-    /// <see cref="SentenceAreaView"/>
     public class UserView : StackPanel
     {
         private readonly SentenceAreaView _botScreen;
@@ -36,7 +30,7 @@ namespace Framework.Tablet.Views
         private static void RefreshTopBackgroundColor(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as UserView;
-            if (view != null) view.RefreshTopBackgroundColor();
+            view?.RefreshTopBackgroundColor();
         }
 
         private void RefreshTopBackgroundColor()
@@ -58,7 +52,7 @@ namespace Framework.Tablet.Views
         private static void RefreshBotBackgroundColor(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as UserView;
-            if (view != null) view.RefreshBotBackground();
+            view?.RefreshBotBackground();
         }
 
         private void RefreshBotBackground()
@@ -80,7 +74,7 @@ namespace Framework.Tablet.Views
         private static void RefreshTopCount(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as UserView;
-            if (view != null) view.RefreshTopCount();
+            view?.RefreshTopCount();
         }
 
         private void RefreshTopCount()
@@ -102,7 +96,7 @@ namespace Framework.Tablet.Views
         private static void RefreshTopOffset(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as UserView;
-            if (view != null) view.RefreshTopOffset();
+            view?.RefreshTopOffset();
         }
 
         private void RefreshTopOffset()
@@ -124,7 +118,7 @@ namespace Framework.Tablet.Views
         private static void RefreshTopIndiagrams(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as UserView;
-            if (view != null) view.RefreshTopIndiagrams();
+            view?.RefreshTopIndiagrams();
         }
 
         private void RefreshTopIndiagrams()
@@ -147,7 +141,7 @@ namespace Framework.Tablet.Views
         private static void RefreshTopTextColor(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as UserView;
-            if (view != null) view.RefreshTopTextColor();
+            view?.RefreshTopTextColor();
         }
 
         private void RefreshTopTextColor()
@@ -170,7 +164,7 @@ namespace Framework.Tablet.Views
         private static void RefreshTopIndiSelectedCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as UserView;
-            if (view != null) view.RefreshTopIndiaSelectedCommand();
+            view?.RefreshTopIndiaSelectedCommand();
         }
 
         private void RefreshTopIndiaSelectedCommand()
@@ -192,7 +186,7 @@ namespace Framework.Tablet.Views
         private static void RefreshTopNextCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as UserView;
-            if (view != null) view.RefreshTopNextCommand();
+            view?.RefreshTopNextCommand();
         }
 
         private void RefreshTopNextCommand()
@@ -226,7 +220,7 @@ namespace Framework.Tablet.Views
         private static void RefreshBotIndiagrams(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as UserView;
-            if (view != null) view.RefreshBotIndiagrams();
+            view?.RefreshBotIndiagrams();
         }
 
         private void RefreshBotIndiagrams()
@@ -248,7 +242,7 @@ namespace Framework.Tablet.Views
         private static void RefreshCanAddIndiagram(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as UserView;
-            if (view != null) view.RefreshCanAddIndiagram();
+            view?.RefreshCanAddIndiagram();
         }
 
         private void RefreshCanAddIndiagram()
@@ -271,7 +265,7 @@ namespace Framework.Tablet.Views
         private static void RefreshBotIndiagramDragStartCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as UserView;
-            if (view != null) view.RefreshBotIndiagramDragStartCommand();
+            view?.RefreshBotIndiagramDragStartCommand();
         }
 
         private void RefreshBotIndiagramDragStartCommand()
@@ -294,7 +288,7 @@ namespace Framework.Tablet.Views
         private static void RefreshBotReadCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as UserView;
-            if (view != null) view.RefreshBotReadCommand();
+            view?.RefreshBotReadCommand();
         }
 
         private void RefreshBotReadCommand()
@@ -316,7 +310,7 @@ namespace Framework.Tablet.Views
         private static void RefreshBotIndiagramSelectedCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as UserView;
-            if (view != null) view.RefreshBotIndiagramSelectedCommand();
+            view?.RefreshBotIndiagramSelectedCommand();
         }
 
         private void RefreshBotIndiagramSelectedCommand()
@@ -338,7 +332,7 @@ namespace Framework.Tablet.Views
         private static void RefreshBotCorrectionCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as UserView;
-            if (view != null) view.RefreshBotCorrectionCommand();
+            view?.RefreshBotCorrectionCommand();
         }
 
         private void RefreshBotCorrectionCommand()

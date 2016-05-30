@@ -35,15 +35,12 @@ namespace Framework.Tablet.Views
         private static void CountChangedRaising(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as IndiagramBrowserView;
-            if (view != null) view.RaiseCountChanged();
+            view?.RaiseCountChanged();
         }
 
         public void RaiseCountChanged()
         {
-            if (CountChanged != null)
-            {
-                CountChanged(this, null);
-            }
+            CountChanged?.Invoke(this, null);
         }
 
         public static readonly DependencyProperty OffsetProperty = DependencyProperty.Register(
@@ -156,13 +153,13 @@ namespace Framework.Tablet.Views
         private static void Refresh(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var indiaBrowserView = d as IndiagramBrowserView;
-            if (indiaBrowserView != null) indiaBrowserView.RefreshDisplay();
+            indiaBrowserView?.RefreshDisplay();
         }
 
         private static void RefreshTextColor(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
             var indiaBrowserView = dependencyObject as IndiagramBrowserView;
-            if (indiaBrowserView != null) indiaBrowserView.RefreshTextColor();
+            indiaBrowserView?.RefreshTextColor();
         }
         #endregion
 
@@ -326,9 +323,11 @@ namespace Framework.Tablet.Views
             var view = sender as IndiagramView;
             if (view != null) view.SizeChanged -= LastLineVerification;
             var totalHeight = 0.0;
+            //On fait la somme des hauteurs des lignes d'Indiagram
             foreach (var line in _displayableViews)
             {
                 var lineHeight = 0.0;
+                //On récupère la hauteur des lignes d'Indiagram
                 foreach (var cell in line)
                 {
                     if (cell.Indiagram != null)
@@ -337,6 +336,7 @@ namespace Framework.Tablet.Views
                 }
                 totalHeight += lineHeight;
             }
+            //On regarde si la dernière ligne s'affiche bien
             if (totalHeight > DesiredSize.Height)
             {
                 var displayCount = 0;

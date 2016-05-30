@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using Windows.ApplicationModel.DataTransfer;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;

@@ -5,16 +5,13 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Windows.Input;
 using Windows.ApplicationModel.DataTransfer;
-using Windows.Foundation;
 using Windows.UI;
-using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Framework.Tablet.Converters;
-using IndiaRose.Business.ViewModels.User;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
@@ -30,9 +27,8 @@ namespace Framework.Tablet.Views
     public class SentenceAreaView : Grid
     {
         /// <summary>
-        /// Événement indiquant qu'il y a un changement de la propriété CannAddIndiagrams
+        /// Événement indiquant qu'il y a un changement de la propriété <see cref="CanAddIndiagrams"/>
         /// </summary>
-        /// <see cref="CanAddIndiagrams"/>
         public event EventHandler CanAddIndiagramsChanged;
 
         #region Private fields
@@ -151,13 +147,13 @@ namespace Framework.Tablet.Views
 
             Drop += async (sender, e) =>
             {
-                if (DragStarCommand!= null && DragStarCommand.CanExecute(null))
+                if (DragStarCommand != null && DragStarCommand.CanExecute(null))
                 {
-                //var indiagram =  e.quelquechose.get..(le truc dans lequel tu as stocker l'indiagram) as Indiagram
+                    //var indiagram =  e.quelquechose.get..(le truc dans lequel tu as stocké l'indiagram) as Indiagram
 
-                string indID = await e.DataView.GetTextAsync();
-                Indiagram indiagram = GetIndiagramById(Int32.Parse(indID), LazyResolver<ICollectionStorageService>.Service.Collection);
-                IndiagramUIModel indiaUi = new IndiagramUIModel(indiagram);
+                    string indID = await e.DataView.GetTextAsync();
+                    Indiagram indiagram = GetIndiagramById(Int32.Parse(indID), LazyResolver<ICollectionStorageService>.Service.Collection);
+                    IndiagramUIModel indiaUi = new IndiagramUIModel(indiagram);
                     if (CanAddIndiagrams)
                     {
                         Indiagrams.Add(indiaUi);
@@ -172,15 +168,15 @@ namespace Framework.Tablet.Views
         }
 
         /// <summary>
-        /// Méthode pour rechercher un indiagram dans une ObservableCollection<Indiagram>
-        /// Tout en sachant qu'un indiagram peut être une catégorie, qui va elle même contenir une ObservableCollection<Indiagram>
+        /// Méthode pour rechercher un indiagram dans une Collection d'Indiagram
+        /// Tout en sachant qu'un indiagram peut être une catégorie, qui va elle même contenir une Collection d'Indiagram
         /// Et ainsi de suite, il fallait donc faire une méthode récursive
         /// Elle n'est pas contre surement pas au bon endroit ; la déplacer dans le CollectionStorageService ?
         /// </summary>
         /// <param name="searchedId"></param>
         /// <param name="list"></param>
         /// <returns></returns>
-        private Indiagram GetIndiagramById(int searchedId, ObservableCollection<Indiagram> list)
+        private static Indiagram GetIndiagramById(int searchedId, ObservableCollection<Indiagram> list)
         {
             if (list == null)
                 return null;
@@ -206,7 +202,7 @@ namespace Framework.Tablet.Views
         /// Callback lorsque la taille de la vue a changé
         /// Réinitialise l'affichage de la vue
         /// </summary>
-        void SentenceAreaView_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void SentenceAreaView_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             var oldmaxnumber = _maxNumberOfIndiagrams;
             _maxNumberOfIndiagrams = ((int)ActualWidth / IndiagramView.DefaultWidth) - 1;
@@ -261,7 +257,7 @@ namespace Framework.Tablet.Views
                 {
                     model.ReinforcerStateChanged += IndiagramReinforcerChanged;
                 }
-            }   
+            }
 
             //refresh everything
             var i = 0;
@@ -273,7 +269,7 @@ namespace Framework.Tablet.Views
             {
                 _indiagramViews[i].Indiagram = null;
             }
-            CanAddIndiagrams = (_indiagrams.Count < _indiagramViews.Count);
+            CanAddIndiagrams = _indiagrams.Count < _indiagramViews.Count;
 
             CheckViewsHeight();
         }
@@ -339,25 +335,25 @@ namespace Framework.Tablet.Views
         {
             foreach (var view in _indiagramViews)
             {
-                if (view != null && view.Indiagram != null)
+                if (view?.Indiagram != null)
                 {
-                    int h = IndiagramView.DefaultHeight;
-                    int w = IndiagramView.DefaultWidth;
+                    int height = IndiagramView.DefaultHeight;
+                    int width = IndiagramView.DefaultWidth;
                     int length = view.Indiagram.Text.Length;
                     int fontSize = LazyResolver<ISettingsService>.Service.FontSize;
-                    int n = length / (w / fontSize);
-                    h += n * fontSize;
+                    int n = length / (width / fontSize);
+                    height += n * fontSize;
                     // En théorie, il faudrait utiliser h += --n * fontSize, mais on ne peut pas à cause de l'indiagram lieux/page2/parc d'attraction
                     // Du coup on a une ligne en trop sur la majorité des indiagrams, à régler...
 
-                    if (h > _heightOfBiggerIndiagram)
-                        _heightOfBiggerIndiagram = h;
+                    if (height > _heightOfBiggerIndiagram)
+                        _heightOfBiggerIndiagram = height;
                 }
             }
 
             foreach (var view in _indiagramViews)
             {
-                if (view != null && view.Indiagram != null)
+                if (view?.Indiagram != null)
                     view.Height = _heightOfBiggerIndiagram;
             }
         }
