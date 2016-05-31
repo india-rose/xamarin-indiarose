@@ -62,9 +62,8 @@ namespace Application.Tablet.Views
             if (!SecondaryTile.Exists(secondaryTileId))
             {
                 Uri square150x150Logo = new Uri("ms-appx:///Assets/150winUser.png");
-                Uri square30x30Logo = new Uri("ms-appx:///Assets/30winUser.png");
                 string tileActivationArguments = secondaryTileId + " was pinned at = " + DateTime.Now.ToLocalTime();
-                string displayName = "IndiaRose.User";
+                string displayName = "IndiaRose";
 
                 TileSize newTileDesiredSize = TileSize.Square150x150;
 
@@ -73,10 +72,10 @@ namespace Application.Tablet.Views
                                                                 tileActivationArguments,
                                                                 square150x150Logo,
                                                                 newTileDesiredSize);
-
-                secondaryTile.VisualElements.Square30x30Logo = square30x30Logo;
+                
                 secondaryTile.VisualElements.ForegroundText = ForegroundText.Dark;
                 secondaryTile.VisualElements.BackgroundColor = Colors.White;
+                secondaryTile.VisualElements.ShowNameOnSquare150x150Logo = true;
                 await secondaryTile.RequestCreateAsync();
             }
 
@@ -85,9 +84,8 @@ namespace Application.Tablet.Views
             if (!SecondaryTile.Exists(secondaryTileId))
             {
                 Uri square150x150Logo = new Uri("ms-appx:///Assets/150winAdmin.png");
-                Uri square30x30Logo = new Uri("ms-appx:///Assets/30winAdmin.png");
                 string tileActivationArguments = secondaryTileId + " was pinned at = " + DateTime.Now.ToLocalTime();
-                string displayName = "IndiaRose.Admin";
+                string displayName = "IndiaRose Administrateur";
 
                 TileSize newTileDesiredSize = TileSize.Square150x150;
 
@@ -96,10 +94,10 @@ namespace Application.Tablet.Views
                                                                 tileActivationArguments,
                                                                 square150x150Logo,
                                                                 newTileDesiredSize);
-
-                secondaryTile.VisualElements.Square30x30Logo = square30x30Logo;
+                
                 secondaryTile.VisualElements.ForegroundText = ForegroundText.Dark;
-                secondaryTile.VisualElements.BackgroundColor = Colors.LightGray;
+                secondaryTile.VisualElements.BackgroundColor = Colors.White;
+                secondaryTile.VisualElements.ShowNameOnSquare150x150Logo = true;
                 await secondaryTile.RequestCreateAsync();
             }
         }
