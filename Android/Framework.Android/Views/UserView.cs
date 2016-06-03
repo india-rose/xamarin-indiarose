@@ -23,10 +23,8 @@ namespace IndiaRose.Framework.Views
 {
     /// <summary>
     /// Affiche la partie utilisateur
-    /// Est composé de 2 parties : IndiagramBrowserView et SentenceAreaView
+    /// Est composé de 2 parties : <see cref="IndiagramBrowserView"/> et <see cref="SentenceAreaView"/>
     /// </summary> 
-    /// <see cref="IndiagramBrowserView"/>
-    /// <see cref="SentenceAreaView"/>
 	public class UserView : AbsoluteLayout
 	{
 		#region Services
