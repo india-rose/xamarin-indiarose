@@ -55,28 +55,20 @@ namespace Framework.Tablet.Views
         private void Refresh()
         {
             _textblock.Text = Category.Text;
-            //pourquoi ne pas sortir la suppression ?
+            try
+            {
+                _titleBar.Children.RemoveAt(0);
+            }
+            catch (ArgumentException)
+            { }
+
             if (Category.ImagePath == null)
             {
                 //si la catégorie n'a pas d'image on met le rectangle rouge
-                try
-                {
-                    _titleBar.Children.RemoveAt(0);
-                }
-                catch (ArgumentException)
-                {
-                }
                 _titleBar.Children.Insert(0, _redRect);
             }
             else
             {
-                try
-                {
-                    _titleBar.Children.RemoveAt(0);
-                }
-                catch (ArgumentException)
-                {
-                }
                 _imagecategory.Source = new BitmapImage(new Uri(Category.ImagePath, UriKind.Absolute));
                 _titleBar.Children.Insert(0, _imagecategory);
             }

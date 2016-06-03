@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -14,7 +15,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using IndiaRose.Interfaces;
 using Storm.Mvvm;
+using Storm.Mvvm.Inject;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, voir la page http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,6 +32,12 @@ namespace Application.Tablet.Views.Admin
         {
             this.InitializeComponent();
             //Loaded += MainPage_Loaded;
+
+            /*SizeChanged += (sender, args) =>
+            {
+                Debug.WriteLine(LazyResolver<IScreenService>.Service.Height + " x " + LazyResolver<IScreenService>.Service.Width);
+                LinkIndiaRose.FontSize = LazyResolver<IScreenService>.Service.Height / 27;
+            };*/
         }
 
         /*async void MainPage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)

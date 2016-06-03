@@ -50,7 +50,7 @@
                 Command="{Binding ContactCommand}">
             <TextBlock Style="{StaticResource TextButton}" x:Uid="Home_Contact"/>
         </Button>
-
+        
         <Button Style="{StaticResource BigPurpleButton}"
                 Grid.Row="3" Grid.ColumnSpan="4"
                 Command="{Binding CreditsCommand}" >

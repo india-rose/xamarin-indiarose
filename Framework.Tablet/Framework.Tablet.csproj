@@ -109,9 +109,11 @@
   <ItemGroup>
     <Compile Include="Converters\BooleanToColumnSpanConverter.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\CategoryNameToBoolConverter.cs" />
     <Compile Include="Converters\ColorStringToIntConverter.cs" />
     <Compile Include="Converters\ColorStringToSolidColorBrushConverter.cs" />
     <Compile Include="Converters\DefaultLocalizedStringIfNullConverter.cs" />
+    <Compile Include="Converters\FontSizeConverter.cs" />
     <Compile Include="Converters\IndiaSizeToMarginSize.cs" />
     <Compile Include="Converters\IndiaSizeToReinforcerSizeConverter.cs" />
     <Compile Include="Converters\LineBreakConverter.cs" />
