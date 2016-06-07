@@ -26,8 +26,8 @@
               TopIndiagramSelectedCommand="{Binding CollectionIndiagramSelectedCommand}"
 	          TopNextCommand="{Binding CollectionNextCommand}"
 	          TopNextButtonVisibility="{Binding IsCorrectionModeEnabled, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Negation}"
-
-              BotIndiagramDragStartCommand="{Binding CollectionIndiagramDragStartCommand}"
+              TopIndiagramDragStartCommand="{Binding CollectionIndiagramDragStartCommand}"
+              IsCorrectionModeEnabled="{Binding IsCorrectionModeEnabled}"
             
 			  BotBackground="{Binding SettingsService.BottomBackgroundColor, Converter={StaticResource ColorStringToSolidColorBrushConverter}}"
 	          BotIndiagrams="{Binding SentenceIndiagrams}" 
