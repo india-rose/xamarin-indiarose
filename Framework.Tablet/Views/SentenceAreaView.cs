@@ -129,9 +129,19 @@ namespace Framework.Tablet.Views
 
             Drop += (sender, e) =>
             {
-                if (e.GetPosition(this).X < ActualWidth / 3)
+                if (!(e.DataView != null && e.DataView.Properties.ContainsKey("item")))
                 {
-                    CorrectionCommand?.Execute(null);
+                    if (e.GetPosition(this).X < ActualWidth / 3)
+                    {
+                        if (CorrectionCommand.CanExecute(null))
+                        {
+                            CorrectionCommand.Execute(null);
+                        }
+                    }
+                }
+                else
+                {
+                    var i = 0;
                 }
             };
         }

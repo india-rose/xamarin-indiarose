@@ -103,6 +103,7 @@
                 </Setter>
             </Style>
             <Style x:Key="Button" TargetType="Button">
+                <!--todo color click-->
                 <Setter Property="Foreground" Value="White"/>
                 <Setter Property="VerticalAlignment" Value="Stretch"/>
                 <Setter Property="FontSize" Value="35"/>

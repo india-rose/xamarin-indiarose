@@ -257,26 +257,26 @@ namespace Framework.Tablet.Views
         }
         #endregion
 
-        #region BotIndiagramDragStartCommand
+        #region TopIndiagramDragStartCommand
 
-        public static readonly DependencyProperty BotIndiagramDragStartCommandProperty = DependencyProperty.Register(
-            "BotIndiagramDragStartCommand", typeof(ICommand), typeof(UserView), new PropertyMetadata(default(ICommand), RefreshBotIndiagramDragStartCommand));
+        public static readonly DependencyProperty TopIndiagramDragStartCommandProperty = DependencyProperty.Register(
+            "TopIndiagramDragStartCommand", typeof(ICommand), typeof(UserView), new PropertyMetadata(default(ICommand), RefreshTopIndiagramDragStartCommand));
 
-        private static void RefreshBotIndiagramDragStartCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void RefreshTopIndiagramDragStartCommand(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as UserView;
-            view?.RefreshBotIndiagramDragStartCommand();
+            view?.RefreshTopIndiagramDragStartCommand();
         }
 
-        private void RefreshBotIndiagramDragStartCommand()
+        private void RefreshTopIndiagramDragStartCommand()
         {
-            _botScreen.DragStarCommand = BotIndiagramDragStartCommand;
+            _botScreen.DragStarCommand = TopIndiagramDragStartCommand;
         }
 
-        public ICommand BotIndiagramDragStartCommand
+        public ICommand TopIndiagramDragStartCommand
         {
-            get { return (ICommand)GetValue(BotIndiagramDragStartCommandProperty); }
-            set { SetValue(BotIndiagramDragStartCommandProperty, value); }
+            get { return (ICommand)GetValue(TopIndiagramDragStartCommandProperty); }
+            set { SetValue(TopIndiagramDragStartCommandProperty, value); }
         }
 
         #endregion
@@ -346,7 +346,12 @@ namespace Framework.Tablet.Views
             set { SetValue(BotCorrectionCommandProperty, value); }
         }
         #endregion
-       
+
+        #region IsCorrectionModeEnabled
+        //todo IsCorrectionModeEnabled
+
+        #endregion
+
         #endregion
 
         public UserView()

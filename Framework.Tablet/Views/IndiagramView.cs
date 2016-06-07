@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.Storage;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -105,16 +106,9 @@ namespace Framework.Tablet.Views
                 Background = new SolidColorBrush(Colors.Red)
             };
 
-            DragStarting += (sender, e) =>
+            DragStarting += (sender, args) =>
             {
-                e.Data.SetText(Indiagram.Id.ToString());
-
-                // TODO utiliser SetData au lieu de SetText
-                /* Pour éviter de passer l'id, puis de devoir faire une recherche pour trouver le bon Indiagram dans la collection
-                 * il faudrait pouvoir passer l'Indiagram directement, avec SetData, mais il faut un formatId
-                 * et je comprends pas ce que c'est.
-                 */
-                //e.Data.SetData(StandardDataFormats.Text, Indiagram);
+                args.Data.Properties.Add("item",Indiagram);
             };
 
             Children.Insert(0, _image);
