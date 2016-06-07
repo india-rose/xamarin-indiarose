@@ -348,8 +348,15 @@ namespace Framework.Tablet.Views
         #endregion
 
         #region IsCorrectionModeEnabled
-        //todo IsCorrectionModeEnabled
+        public static readonly DependencyProperty IsCorrectionModeEnabledProperty = DependencyProperty.Register(
+            "IsCorrectionModeEnabled", typeof(bool), typeof(UserView), new PropertyMetadata(default(bool)));
 
+
+        public bool IsCorrectionModeEnabled
+        {
+            get { return (bool)GetValue(IsCorrectionModeEnabledProperty); }
+            set { SetValue(IsCorrectionModeEnabledProperty, value); }
+        }
         #endregion
 
         #endregion
