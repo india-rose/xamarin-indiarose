@@ -8,6 +8,7 @@ using Windows.UI.Xaml.Media;
 using IndiaRose.Data.Model;
 using IndiaRose.Data.UIModel;
 using IndiaRose.Interfaces;
+using Storm.Mvvm.Commands;
 using Storm.Mvvm.Inject;
 
 namespace Framework.Tablet.Views
@@ -357,8 +358,15 @@ namespace Framework.Tablet.Views
         public UserView()
         {
             Orientation = Orientation.Vertical;
-            _botScreen = new SentenceAreaView();
-            _topScreen = new IndiagramBrowserView();
+            _botScreen = new SentenceAreaView()
+            {
+                IndiagramSelectedCommand = BotIndiagramSelectedCommand
+            };
+            _topScreen = new IndiagramBrowserView
+            {
+                IndiagramSelected = TopIndiagramSelectedCommand,
+                IndiagramViewSelected = TopIndiagramDragStartCommand
+            };
             Children.Add(_topScreen);
             Children.Add(_botScreen);
             SizeChanged += UserView_SizeChanged;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Input;
 using Windows.Storage;
 using Windows.UI;
 using Windows.UI.Xaml;
@@ -59,6 +60,19 @@ namespace Framework.Tablet.Views
 
         #endregion
 
+        #region D&D Callback
+
+        public static readonly DependencyProperty DragAndDropCommandProperty = DependencyProperty.Register(
+            "DragAndDropCommand", typeof(ICommand), typeof(IndiagramView), new PropertyMetadata(default(ICommand)));
+
+        public ICommand DragAndDropCommand
+        {
+            get { return (ICommand)GetValue(DragAndDropCommandProperty); }
+            set { SetValue(DragAndDropCommandProperty, value); }
+        }
+        #endregion
+
+
         /// <summary>
         /// Indiagram à afficher
         /// </summary>
@@ -108,7 +122,11 @@ namespace Framework.Tablet.Views
 
             DragStarting += (sender, args) =>
             {
-                args.Data.Properties.Add("item",Indiagram);
+                args.Data.Properties.Add("item", this);
+                if (DragAndDropCommand != null && DragAndDropCommand.CanExecute(Indiagram))
+                {
+                    DragAndDropCommand.Execute(Indiagram);
+                }
             };
 
             Children.Insert(0, _image);

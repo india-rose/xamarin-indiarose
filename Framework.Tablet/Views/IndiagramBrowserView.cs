@@ -58,6 +58,9 @@ namespace Framework.Tablet.Views
         public static readonly DependencyProperty NextCommandProperty = DependencyProperty.Register(
                    "NextCommand", typeof(ICommand), typeof(IndiagramBrowserView), new PropertyMetadata(default(ICommand)));
 
+        public static readonly DependencyProperty IndiagramViewSelectedProperty = DependencyProperty.Register(
+                   "IndiagramViewSelectedProperty", typeof(ICommand), typeof(IndiagramBrowserView), new PropertyMetadata(default(ICommand)));
+
         #endregion
 
         #region Public Properties
@@ -104,6 +107,15 @@ namespace Framework.Tablet.Views
         {
             get { return (ICommand)GetValue(IndiagramSelectedProperty); }
             set { SetValue(IndiagramSelectedProperty, value); }
+        }
+
+        /// <summary>
+        /// Commande lorsqu'un indiagram est sélectionné (version drag and drop)
+        /// </summary>
+        public ICommand IndiagramViewSelected
+        {
+            get { return (ICommand)GetValue(IndiagramViewSelectedProperty); }
+            set { SetValue(IndiagramViewSelectedProperty, value); }
         }
 
         /// <summary>
@@ -245,7 +257,11 @@ namespace Framework.Tablet.Views
                 _displayableViews[line] = new IndiagramView[_columnCount - (line == 0 ? 1 : 0)];
                 for (int column = 0; column < _displayableViews[line].Length; ++column)
                 {
-                    var view = new IndiagramView { TextColor = TextColor };
+                    var view = new IndiagramView
+                    {
+                        TextColor = TextColor,
+                        DragAndDropCommand = IndiagramViewSelected
+                    };
                     view.Tapped += view_Tapped;
                     _displayableViews[line][column] = view;
                 }
