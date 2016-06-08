@@ -171,6 +171,8 @@ namespace Framework.Tablet.Views
         private void RefreshTopIndiaSelectedCommand()
         {
             _topScreen.IndiagramSelected = TopIndiagramSelectedCommand;
+            _botScreen.PutCommand = TopIndiagramSelectedCommand;
+
         }
 
         public ICommand TopIndiagramSelectedCommand
@@ -271,7 +273,6 @@ namespace Framework.Tablet.Views
 
         private void RefreshTopIndiagramDragStartCommand()
         {
-            _botScreen.DragStarCommand = TopIndiagramDragStartCommand;
         }
 
         public ICommand TopIndiagramDragStartCommand
@@ -365,15 +366,8 @@ namespace Framework.Tablet.Views
         public UserView()
         {
             Orientation = Orientation.Vertical;
-            _botScreen = new SentenceAreaView()
-            {
-                IndiagramSelectedCommand = BotIndiagramSelectedCommand
-            };
-            _topScreen = new IndiagramBrowserView
-            {
-                IndiagramSelected = TopIndiagramSelectedCommand,
-                IndiagramViewSelected = TopIndiagramDragStartCommand
-            };
+            _botScreen = new SentenceAreaView();
+            _topScreen = new IndiagramBrowserView();
             Children.Add(_topScreen);
             Children.Add(_botScreen);
             SizeChanged += UserView_SizeChanged;

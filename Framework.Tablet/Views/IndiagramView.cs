@@ -30,7 +30,7 @@ namespace Framework.Tablet.Views
         private static void RefreshColor(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
             var indiaView = dependencyObject as IndiagramView;
-            if (indiaView != null) indiaView.RefreshColor();
+            indiaView?.RefreshColor();
         }
 
         /// <summary>

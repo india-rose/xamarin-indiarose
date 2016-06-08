@@ -281,10 +281,13 @@ namespace Framework.Tablet.Views
                 return;
             }
             var indiagram = senderView.Indiagram;
-            if (IndiagramSelected != null && IndiagramSelected.CanExecute(indiagram))
+            if (indiagram.IsCategory || !LazyResolver<ISettingsService>.Service.IsDragAndDropEnabled)
             {
-                IndiagramSelected.Execute(indiagram);
-                RefreshDisplay();
+                if (IndiagramSelected != null && IndiagramSelected.CanExecute(indiagram))
+                {
+                    IndiagramSelected.Execute(indiagram);
+                    RefreshDisplay();
+                }
             }
         }
 

@@ -57,6 +57,8 @@ namespace Framework.Tablet.Views
         /// </summary>
         public ICommand CorrectionCommand { get; set; }
 
+        public ICommand PutCommand { get; set; }
+
         /// <summary>
         /// Indiagrams devant être affichés
         /// </summary>
@@ -129,7 +131,7 @@ namespace Framework.Tablet.Views
             {
                 if (!(e.DataView != null && e.DataView.Properties.ContainsKey("item")))
                 {
-                    if (e.GetPosition(this).X < ActualWidth/3)
+                    if (e.GetPosition(this).X < ActualWidth / 3)
                     {
                         if (CorrectionCommand.CanExecute(null))
                         {
@@ -139,8 +141,14 @@ namespace Framework.Tablet.Views
                 }
                 else
                 {
-                    object v;
-                    e.DataView.Properties.TryGetValue("item", out v);
+                    if (CanAddIndiagrams)
+                    {
+                        object v;
+                        e.DataView.Properties.TryGetValue("item", out v);
+                        var s = v as IndiagramView;
+                        if (PutCommand != null && PutCommand.CanExecute(s.Indiagram))
+                            PutCommand.Execute(s.Indiagram);
+                    }
 
                 }
 
