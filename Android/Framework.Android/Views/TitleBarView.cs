@@ -111,7 +111,7 @@ namespace IndiaRose.Framework.Views
             LayoutParams lp;
             _oldCategory = new TextView(Context);
 
-            if (SettingsService.IsBackCategoryEnabled)
+            if (SettingsService.IsBackButtonEnabled)
             {
                 //Initialisation du bouton retour
                 _backButton = new ImageView(Context);

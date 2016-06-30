@@ -293,8 +293,8 @@ namespace IndiaRose.Services
 
         #endregion
 
-        #region Initialize Settings from old format 
-        
+        #region Initialize settings from old format 
+
 
         public async Task<bool> HasOldSettingsAsync()
         {
@@ -306,7 +306,7 @@ namespace IndiaRose.Services
         {
             if (!await HasOldSettingsAsync())
                 return;
-
+            SettingService.Reset();
             IFolder appFolder = await FileSystem.Current.GetFolderFromPathAsync(StorageService.AppPath);
             IFile settingFile = await appFolder.GetFileAsync(StorageService.OldSettingsFileName);
             Stream settingStream = await settingFile.OpenAsync(FileAccess.Read);
@@ -337,8 +337,8 @@ namespace IndiaRose.Services
                     SettingService.FontSize = num;
                 SettingService.TimeOfSilenceBetweenWords = float.Parse(wordsReadindDelay?.Value, CultureInfo.InvariantCulture.NumberFormat);
 
-                //Difference d'encodage
-                //Voir si pas manière plus jolie pour le subString (enleve le # de la valeur)
+                //Difference d'encodage (manque l'alpha sur la version java)
+                //SubString pour enlever le # de la valeur
                 SettingService.TopBackgroundColor = "#FF" + backgroundSelection?.Value.ToUpper().Substring(1, 6);
                 SettingService.ReinforcerColor = "#FF" + reiforcerReadingColor?.Value.ToUpper().Substring(1, 6);
                 SettingService.BottomBackgroundColor = "#FF" + sentenceArea?.Value.ToUpper().Substring(1, 6);
@@ -347,12 +347,6 @@ namespace IndiaRose.Services
                 SettingService.IsDragAndDropEnabled = dragAndDrop?.Value == "1";
                 SettingService.IsCategoryNameReadingEnabled = categoryReading?.Value == "1"; ;
                 SettingService.IsReinforcerEnabled = readingReinforcer?.Value == "1";
-
-                SettingService.IsBackHomeAfterSelectionEnabled = true;
-                SettingService.IsMultipleIndiagramSelectionEnabled = false;
-                SettingService.TextColor = "#FFFFFFFF";
-                SettingService.IsBackCategoryEnabled = true;
-                //have to be modified every time a feature is added
 
                 await SettingService.SaveAsync();
             }

@@ -61,7 +61,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
         {
             DragAndDrop = SettingsService.IsDragAndDropEnabled;
             CategoryReading = SettingsService.IsCategoryNameReadingEnabled;
-            BackButtonActivated = SettingsService.IsBackCategoryEnabled;
+            BackButtonActivated = SettingsService.IsBackButtonEnabled;
             Delay = SettingsService.TimeOfSilenceBetweenWords;
             
             SliderValue = Convert.ToInt32(Delay*10.0f);
@@ -76,7 +76,7 @@ namespace IndiaRose.Business.ViewModels.Admin.Settings
         {
             SettingsService.IsDragAndDropEnabled = DragAndDrop;
             SettingsService.IsCategoryNameReadingEnabled = CategoryReading;
-            SettingsService.IsBackCategoryEnabled = BackButtonActivated;
+            SettingsService.IsBackButtonEnabled = BackButtonActivated;
             SettingsService.TimeOfSilenceBetweenWords = Delay;
 
             base.SaveAction();

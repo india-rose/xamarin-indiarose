@@ -132,7 +132,7 @@ namespace IndiaRose.Services
 			set { SetProperty(ref _topBackgroundColor, value); }
 		}
 
-	    public bool IsBackCategoryEnabled
+	    public bool IsBackButtonEnabled
 	    {
 	        get { return _isBackCategoryEnabled; }
             set { SetProperty(ref _isBackCategoryEnabled, value); }
@@ -182,7 +182,7 @@ namespace IndiaRose.Services
 				TimeOfSilenceBetweenWords = TimeOfSilenceBetweenWords,
 				ReinforcerColor = ReinforcerColor,
                 TextColor = TextColor,
-                IsBackCategoryEnabled = IsBackCategoryEnabled
+                IsBackButtonEnabled = IsBackButtonEnabled
 			};
 
 			await SaveOnDiskAsync(model);
@@ -224,7 +224,7 @@ namespace IndiaRose.Services
 			TimeOfSilenceBetweenWords = model.TimeOfSilenceBetweenWords;
 			ReinforcerColor = model.ReinforcerColor;
 		    TextColor = model.TextColor;
-		    IsBackCategoryEnabled = model.IsBackCategoryEnabled;
+		    IsBackButtonEnabled = model.IsBackButtonEnabled;
 
 
             IsLoaded = true;
@@ -248,7 +248,7 @@ namespace IndiaRose.Services
 			TimeOfSilenceBetweenWords = 1.0f;
 			ReinforcerColor = "#FFFF00FF";
 		    TextColor = "#FFFFFFFF";
-		    IsBackCategoryEnabled = true;
+		    IsBackButtonEnabled = true;
 
 		}
 
