@@ -28,14 +28,5 @@ namespace IndiaRose.Application.Activities.Admin
 			LazyResolver<ITextToSpeechService>.Service.Close();
 		    base.OnDestroy();
 	    }
-
-	    public override void OnBackPressed()
-	    {
-            //Il faudrait récupérer _navigationStack.Count lié à l'AbstractBrowserViewModel
-            //Pour savoir dans quel catégorie on se trouve
-            //Afin de determiner la bonne utilisation du bouton back
-            //Ainsi que tous ce qui est nécessaire pour l'appel de la méthode PopCategory(bool force=false)
-            base.OnBackPressed();
-	    }
 	}
 }

@@ -12,6 +12,8 @@ using Storm.Mvvm.Inject;
 
 namespace IndiaRose.Framework.Views
 {
+    //todo réduire la taille de la title bar pour les petits écrans
+
     /// <summary>
     /// View préfabriqué de la barre de titre de la page utilisateur
     /// </summary>
@@ -131,16 +133,19 @@ namespace IndiaRose.Framework.Views
                 _oldCategory.SetTextSize(ComplexUnitType.Sp, 15);
                 _oldCategory.Gravity = GravityFlags.CenterVertical;
 
+                //Paramètre layout pour logo
                 lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
                 lp.AddRule(LayoutRules.CenterInParent);
                 lp.AddRule(LayoutRules.CenterVertical);
                 AddView(logo, lp);
 
+                //Paramètre layout pour backbutton
                 lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
                 lp.AddRule(LayoutRules.AlignParentRight);
                 lp.AddRule(LayoutRules.CenterVertical);
                 AddView(_backButton, lp);
 
+                //Paramètre layout pour catégorie précédente
                 lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
                 lp.AddRule(LayoutRules.LeftOf, _backButton.Id);
                 lp.AddRule(LayoutRules.CenterVertical);
@@ -149,16 +154,19 @@ namespace IndiaRose.Framework.Views
             }
             else
             {
+                //Paramètre layout pour logo
                 lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
                 lp.AddRule(LayoutRules.AlignParentRight);
                 lp.AddRule(LayoutRules.CenterVertical);
                 AddView(logo, lp);
             }
+            //Paramètre layout pour l'image de la catégorie
             lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
             lp.AddRule(LayoutRules.AlignParentLeft);
             lp.AddRule(LayoutRules.CenterVertical);
             AddView(_imageCategoryView, lp);
 
+            //Paramètre layout pour le texte de la catégorie
             lp = new LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
             lp.AddRule(LayoutRules.RightOf, _imageCategoryView.Id);
             lp.AddRule(LayoutRules.CenterVertical);
