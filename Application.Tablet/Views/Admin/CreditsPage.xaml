@@ -71,6 +71,8 @@
                 <TextBlock Style="{StaticResource PeopleTextStyle}"  x:Uid="Credits_OfficerTeam" Text="" />
                 <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Graphics" Text="" />
                 <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_GraphicsTeam" Text="" />
+                <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Support" Text="" />
+                <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_SupportTeam" Text="" />
                 <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_University" Text="" />
                 <TextBlock Style="{StaticResource PeopleTextStyle}" x:Uid="Credits_UniversityTeam" Text="" />
                 <TextBlock Style="{StaticResource SectionTextStyle}" x:Uid="Credits_Trainee2015" Text=""/>
