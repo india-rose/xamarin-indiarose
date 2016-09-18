@@ -1,9 +1,5 @@
-﻿using System;
-using Windows.UI;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Media;
+﻿using Windows.UI.Xaml;
 using IndiaRose.Interfaces;
-using SharpDX.Direct2D1.Effects;
 using Storm.Mvvm.Inject;
 
 // Pour en savoir plus sur le modèle d'élément Page vierge, consultez la page http://go.microsoft.com/fwlink/?LinkId=234238
@@ -18,22 +14,15 @@ namespace Application.Tablet.Views.Dialogs
         public IScreenService ScreenService => LazyResolver<IScreenService>.Service;
 
         public ColorPickerDialog()
-            : base((int) Window.Current.Bounds.Height - (int)Window.Current.Bounds.Height *10/100)
+            : base((int)Window.Current.Bounds.Height - (int)Window.Current.Bounds.Height * 10 / 100)
         {
             this.InitializeComponent();
 
-           Color.SelectedColorChanged += (sender, args) =>
-            {
-                MainGridLayout.Background = Color.SelectedColor;
-            };
-            
             Window.Current.SizeChanged += (sender, args) =>
             {
                 Width = ScreenService.Width;
-                Height = ScreenService.Height - ScreenService.Height*10/100;
+                Height = ScreenService.Height - ScreenService.Height * 10 / 100;
             };
-        }
-
-        public Color BorderColor { get; set; }
+        }        
     }
 }

@@ -29,6 +29,7 @@
             <conv:ColorStringToSolidColorBrushConverter x:Key="ColorStringToSolidColorBrushConverter"/>
             <conv:LineBreakConverter x:Key="LineBreakConverter"/>
             <conv:CategoryNameToBoolConverter x:Key="CategoryNameToBoolConverter"/>
+            <conv:ColorStringToColorConverter x:Key="ColorStringToColorConverter"/>
 
 
             <!--Button Style-->

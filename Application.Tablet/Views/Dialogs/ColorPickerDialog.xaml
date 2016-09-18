@@ -5,13 +5,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvvm="using:Storm.Mvvm"
+    xmlns:uwpColor="using:UWPColor"
     mc:Ignorable="d"
-    xmlns:xc="using:ColorPicker"
     DataContext="{Binding Source={StaticResource Locator}, Path=AdminSettingsDialogsColorPickerViewModel}"
     > 
 
 
-    <Grid Name="Grid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="20*" />
             <RowDefinition Height="40*" />
@@ -31,16 +31,14 @@
                    x:Uid="ColorPicker_Title"
                    />
 
-<!--TODO parametre du color picker pas opti a voir -->
         <Grid 
             Grid.Row="1" 
             Grid.ColumnSpan="4" 
-            Grid.Column="0" 
-            Name="MainGridLayout" 
-            Background="{Binding CurrentColor,Mode=TwoWay,Converter={StaticResource ColorStringToSolidColorBrushConverter}}">
-            <xc:ColorPicker 
-                SelectedColor="{Binding CurrentColor}" 
-                x:Name="Color"/>
+            Grid.Column="0" >
+            <uwpColor:ColorPicker
+                SpectrePointerColor="Black"
+                ActualColor="{Binding CurrentColor, Mode=TwoWay, Converter={StaticResource ColorStringToColorConverter}}"
+                />
         </Grid>
 
         <!-- button ok and cancel -->
