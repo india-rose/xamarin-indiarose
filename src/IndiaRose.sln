@@ -3,8 +3,52 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndiaRose.Core", "IndiaRose\Core\IndiaRose.Core\IndiaRose.Core.csproj", "{97BDAF57-683A-416B-9C51-BE9C75DC2C2C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Core", "01-Core", "{40B8C7AB-9564-400F-AD4E-8923EE161EB7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00-Resources", "00-Resources", "{60631C81-2BB5-43F1-A5AB-963E4501B49D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-Android", "02-Android", "{3C165D5C-68FA-4259-AFE3-96F6A892E7E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndiaRose.Android", "IndiaRose\Android\IndiaRose.Android\IndiaRose.Android.csproj", "{F8EC6342-603A-418B-85D0-65449F4770FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndiaRose.Core.Admins", "IndiaRose\Core\IndiaRose.Core.Admins\IndiaRose.Core.Admins.csproj", "{85FDAF65-8D9E-4E50-AE23-57DCB8A0AD18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndiaRose.Core.Users", "IndiaRose\Core\IndiaRose.Core.Users\IndiaRose.Core.Users.csproj", "{FA7BE9D7-9C37-4D1F-B74A-9C160EA778C0}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97BDAF57-683A-416B-9C51-BE9C75DC2C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97BDAF57-683A-416B-9C51-BE9C75DC2C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97BDAF57-683A-416B-9C51-BE9C75DC2C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97BDAF57-683A-416B-9C51-BE9C75DC2C2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8EC6342-603A-418B-85D0-65449F4770FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8EC6342-603A-418B-85D0-65449F4770FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8EC6342-603A-418B-85D0-65449F4770FC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F8EC6342-603A-418B-85D0-65449F4770FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8EC6342-603A-418B-85D0-65449F4770FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8EC6342-603A-418B-85D0-65449F4770FC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{85FDAF65-8D9E-4E50-AE23-57DCB8A0AD18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85FDAF65-8D9E-4E50-AE23-57DCB8A0AD18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85FDAF65-8D9E-4E50-AE23-57DCB8A0AD18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85FDAF65-8D9E-4E50-AE23-57DCB8A0AD18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA7BE9D7-9C37-4D1F-B74A-9C160EA778C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA7BE9D7-9C37-4D1F-B74A-9C160EA778C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA7BE9D7-9C37-4D1F-B74A-9C160EA778C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA7BE9D7-9C37-4D1F-B74A-9C160EA778C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{97BDAF57-683A-416B-9C51-BE9C75DC2C2C} = {40B8C7AB-9564-400F-AD4E-8923EE161EB7}
+		{F8EC6342-603A-418B-85D0-65449F4770FC} = {3C165D5C-68FA-4259-AFE3-96F6A892E7E7}
+		{85FDAF65-8D9E-4E50-AE23-57DCB8A0AD18} = {40B8C7AB-9564-400F-AD4E-8923EE161EB7}
+		{FA7BE9D7-9C37-4D1F-B74A-9C160EA778C0} = {40B8C7AB-9564-400F-AD4E-8923EE161EB7}
 	EndGlobalSection
 EndGlobal
