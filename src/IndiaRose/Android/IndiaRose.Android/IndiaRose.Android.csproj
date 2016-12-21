@@ -100,6 +100,6 @@
       <Name>IndiaRose.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="build_helpers.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <Import Project="build_helpers.targets" />
 </Project>

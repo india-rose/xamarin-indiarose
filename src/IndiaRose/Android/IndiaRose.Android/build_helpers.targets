@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<ItemGroup>
-		<AndroidAxmlFiles Include="Views/**/*.axml" />
-		<DestinationAxmlFiles Include="@(AndroidAxmlFiles->'$(ProjectDir)%(Identity)')" />
-		<AndroidResource Include="@(DestinationAxmlFiles)" />
+		<AndroidAxmlFiles Include="Views\**\*.axml" />
+		<DestinationAxmlFiles Include="@(AndroidAxmlFiles->'$(ProjectDir)Resources\layout\%(Filename)%(Extension)')" />
+		<AndroidResource Include="@(AndroidAxmlFiles->'Resources\layout\%(Filename)%(Extension)')" />
 	</ItemGroup>
 
 	<Target Name="CopyAxmlFiles" 
 			BeforeTargets="PrepareForBuild"
-			Inputs="@(AndroidAxmlFiles)"
-			Outputs="@(DestinationAxmlFiles)">
-		<Copy SourceFiles="@(AndroidAxmlFiles)" DestinationFiles="@(DestinationAxmlFiles)">
+			>
+		<ItemGroup>
+			<AndroidResource Remove="@(AndroidAxmlFiles)" />
+		</ItemGroup>
+		<Copy SourceFiles="@(AndroidAxmlFiles)" DestinationFiles="@(DestinationAxmlFiles)" SkipUnchangedFiles="true"/>
 	</Target>
+
 </Project>
