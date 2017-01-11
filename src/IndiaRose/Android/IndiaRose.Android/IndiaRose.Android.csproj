@@ -53,6 +53,10 @@
       <HintPath>..\..\..\packages\reactiveui-core.7.0.0\lib\MonoAndroid403\ReactiveUI.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ReactiveUI.Events, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\reactiveui-events.7.0.0\lib\MonoAndroid403\ReactiveUI.Events.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Splat, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Splat.1.4.0\lib\monoandroid\Splat.dll</HintPath>
       <Private>True</Private>
@@ -95,6 +99,14 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\IndiaRose.Core.Admins\IndiaRose.Core.Admins.csproj">
+      <Project>{85fdaf65-8d9e-4e50-ae23-57dcb8a0ad18}</Project>
+      <Name>IndiaRose.Core.Admins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\IndiaRose.Core.Users\IndiaRose.Core.Users.csproj">
+      <Project>{fa7be9d7-9c37-4d1f-b74a-9c160ea778c0}</Project>
+      <Name>IndiaRose.Core.Users</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Core\IndiaRose.Core\IndiaRose.Core.csproj">
       <Project>{97bdaf57-683a-416b-9c51-be9c75dc2c2c}</Project>
       <Name>IndiaRose.Core</Name>
