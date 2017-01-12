@@ -86,8 +86,12 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\BaseActivity.cs" />
-    <Compile Include="Views\HomeActivity.cs">
+    <Compile Include="Views\HomeView.cs">
       <DependentUpon>HomeViewLayout.axml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\SettingsView.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>SettingsViewLayout.axml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +99,9 @@
     <None Include="packages.config" />
     <None Include="Properties\AndroidManifest.xml" />
     <AndroidResource Include="Views\HomeViewLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Views\Settings\SettingsViewLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

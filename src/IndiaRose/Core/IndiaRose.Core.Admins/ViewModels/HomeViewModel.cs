@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive;
 using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,13 +12,13 @@ using Splat;
 
 namespace IndiaRose.Core.Admins.ViewModels
 {
-	public class HomeViewModel : ReactiveObject
+	public class HomeViewModel : BaseViewModel
 	{
-		public ICommand OpenAppSettingsCommand { get; private set; }
+		public ReactiveCommand<Unit, bool> OpenAppSettingsCommand { get; private set; }
 
 		public HomeViewModel()
 		{
-			OpenAppSettingsCommand = ReactiveCommand.Create(() => Locator.Current.GetService<INavigationService>().ShowAppSettings());
+			OpenAppSettingsCommand = ReactiveCommand.Create(() => true);
 		}
 	}
 }
