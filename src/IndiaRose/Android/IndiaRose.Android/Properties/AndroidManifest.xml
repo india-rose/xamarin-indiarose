@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="dev.indiarose" android:versionCode="10" android:versionName="2.0" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="16" />
-	<application android:label="India Rose" android:icon="@mipmap/icon"></application>
+	<application android:label="India Rose" android:icon="@mipmap/icon" android:theme="@style/AppTheme"></application>
 </manifest>

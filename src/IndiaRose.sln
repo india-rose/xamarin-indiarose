@@ -17,6 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndiaRose.Core.Admins", "In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndiaRose.Core.Users", "IndiaRose\Core\IndiaRose.Core.Users\IndiaRose.Core.Users.csproj", "{FA7BE9D7-9C37-4D1F-B74A-9C160EA778C0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "en", "en", "{CAE938D2-591A-4621-98D9-147A1019DB2F}"
+	ProjectSection(SolutionItems) = preProject
+		IndiaRose\Resources\en\en.resw = IndiaRose\Resources\en\en.resw
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,5 +55,6 @@ Global
 		{F8EC6342-603A-418B-85D0-65449F4770FC} = {3C165D5C-68FA-4259-AFE3-96F6A892E7E7}
 		{85FDAF65-8D9E-4E50-AE23-57DCB8A0AD18} = {40B8C7AB-9564-400F-AD4E-8923EE161EB7}
 		{FA7BE9D7-9C37-4D1F-B74A-9C160EA778C0} = {40B8C7AB-9564-400F-AD4E-8923EE161EB7}
+		{CAE938D2-591A-4621-98D9-147A1019DB2F} = {60631C81-2BB5-43F1-A5AB-963E4501B49D}
 	EndGlobalSection
 EndGlobal

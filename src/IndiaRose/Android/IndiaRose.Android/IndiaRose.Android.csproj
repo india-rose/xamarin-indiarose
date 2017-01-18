@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\packages\Storm.CrossLocalization.0.0.13\build\monoandroid\Storm.CrossLocalization.props" Condition="Exists('..\..\..\packages\Storm.CrossLocalization.0.0.13\build\monoandroid\Storm.CrossLocalization.props')" />
   <Import Project="..\..\..\packages\Storm.ImageResizeTask.0.1.0\build\monoandroid\Storm.ImageResizeTask.props" Condition="Exists('..\..\..\packages\Storm.ImageResizeTask.0.1.0\build\monoandroid\Storm.ImageResizeTask.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -89,21 +90,32 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\BaseActivity.cs" />
+    <Compile Include="Views\BaseFragment.cs" />
     <Compile Include="Views\HomeView.cs">
-      <DependentUpon>HomeViewLayout.axml</DependentUpon>
+      <DependentUpon>HomeView.axml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuFragment.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MenuFragment.axml</DependentUpon>
     </Compile>
     <Compile Include="Views\Settings\SettingsView.cs">
       <SubType>Code</SubType>
-      <DependentUpon>SettingsViewLayout.axml</DependentUpon>
+      <DependentUpon>SettingsView.axml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <LocalizationFile Include="..\..\Resources\en\en.resw">
+      <Link>Resources\values\en.resw</Link>
+    </LocalizationFile>
     <None Include="packages.config" />
     <None Include="Properties\AndroidManifest.xml" />
-    <AndroidResource Include="Views\HomeViewLayout.axml">
+    <AndroidResource Include="Views\HomeView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Views\Settings\SettingsViewLayout.axml">
+    <AndroidResource Include="Views\Settings\SettingsView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Views\MenuFragment.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -122,7 +134,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\button_styles.xml">
+    <AndroidResource Include="Resources\values\styles_button.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -132,13 +144,32 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <AndroidResource Include="Resources\drawable\menu_button_text.xml" />
   </ItemGroup>
   <ItemGroup>
     <ResizableImage Include="Resources\mipmap-xxxhdpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <ResizableImage Include="Resources\mipmap-xxxhdpi\icon_admin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\themes.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\styles_menu.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\menu_button_background.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResizableImage Include="Resources\drawable-xxxhdpi\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="build_helpers.targets" />
@@ -148,6 +179,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\..\packages\Storm.ImageResizeTask.0.1.0\build\monoandroid\Storm.ImageResizeTask.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Storm.ImageResizeTask.0.1.0\build\monoandroid\Storm.ImageResizeTask.props'))" />
     <Error Condition="!Exists('..\..\..\packages\Storm.ImageResizeTask.0.1.0\build\monoandroid\Storm.ImageResizeTask.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Storm.ImageResizeTask.0.1.0\build\monoandroid\Storm.ImageResizeTask.targets'))" />
+    <Error Condition="!Exists('..\..\..\packages\Storm.CrossLocalization.0.0.13\build\monoandroid\Storm.CrossLocalization.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Storm.CrossLocalization.0.0.13\build\monoandroid\Storm.CrossLocalization.props'))" />
+    <Error Condition="!Exists('..\..\..\packages\Storm.CrossLocalization.0.0.13\build\monoandroid\Storm.CrossLocalization.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Storm.CrossLocalization.0.0.13\build\monoandroid\Storm.CrossLocalization.targets'))" />
   </Target>
   <Import Project="..\..\..\packages\Storm.ImageResizeTask.0.1.0\build\monoandroid\Storm.ImageResizeTask.targets" Condition="Exists('..\..\..\packages\Storm.ImageResizeTask.0.1.0\build\monoandroid\Storm.ImageResizeTask.targets')" />
+  <Import Project="..\..\..\packages\Storm.CrossLocalization.0.0.13\build\monoandroid\Storm.CrossLocalization.targets" Condition="Exists('..\..\..\packages\Storm.CrossLocalization.0.0.13\build\monoandroid\Storm.CrossLocalization.targets')" />
 </Project>
