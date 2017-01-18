@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="Pink">#FFA1F0</color>
+	<color name="Green">#8CF467</color>
+
+	<color name="menu_text_normal">#0072BB</color>
+	<color name="menu_text_selected">#DDDDDD</color>
+	<color name="menu_background_normal">#DDDDDD</color>
+	<color name="menu_background_selected">#0072BB</color>
+
+	<color name="button_main_text_enabled">#444444</color>
+	<color name="button_main_text_disabled">#80444444</color>
+	
+	<color name="button_main_ok_background_enabled">#87E064</color>
+	<color name="button_main_ok_background_disabled">#8087E064</color>
+	<color name="button_main_ok_background_pressed">#67AA4C</color>
+
+	<color name="button_main_cancel_background_enabled">#FF5964</color>
+	<color name="button_main_cancel_background_disabled">#80FF5964</color>
+	<color name="button_main_cancel_background_pressed">#CC4750</color>
+
+	<color name="button_main_neutral_background_enabled">#49BFFF</color>
+	<color name="button_main_neutral_background_disabled">#8049BFFF</color>
+	<color name="button_main_neutral_background_pressed">#3B99CC</color>
+</resources>
