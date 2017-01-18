@@ -9,7 +9,7 @@ using ReactiveUI;
 
 namespace IndiaRose.Droid.Views
 {
-	[Activity(MainLauncher = true, Label = "India Rose", Icon = "@drawable/Icon")]
+	[Activity(MainLauncher = true, Label = "India Rose", Icon = "@mipmap/icon")]
 	public class HomeView : BaseActivity<HomeViewModel>
 	{
 		private Button NavigationButton { get; set; }

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\packages\Storm.ImageResizeTask.0.1.0\build\monoandroid\Storm.ImageResizeTask.props" Condition="Exists('..\..\..\packages\Storm.ImageResizeTask.0.1.0\build\monoandroid\Storm.ImageResizeTask.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -18,6 +19,8 @@
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,16 +52,16 @@
       <HintPath>..\..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ReactiveUI, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\reactiveui-core.7.0.0\lib\MonoAndroid403\ReactiveUI.dll</HintPath>
+    <Reference Include="ReactiveUI, Version=7.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\reactiveui-core.7.1.0\lib\MonoAndroid403\ReactiveUI.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ReactiveUI.Events, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\reactiveui-events.7.0.0\lib\MonoAndroid403\ReactiveUI.Events.dll</HintPath>
+    <Reference Include="ReactiveUI.Events, Version=7.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\reactiveui-events.7.1.0\lib\MonoAndroid403\ReactiveUI.Events.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Splat, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Splat.1.4.0\lib\monoandroid\Splat.dll</HintPath>
+    <Reference Include="Splat, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Splat.1.6.2\lib\monoandroid\Splat.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -130,14 +133,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
-    <Folder Include="Resources\mipmap-hdpi\" />
-    <Folder Include="Resources\mipmap-ldpi\" />
-    <Folder Include="Resources\mipmap-mdpi\" />
-    <Folder Include="Resources\mipmap-tvdpi\" />
-    <Folder Include="Resources\mipmap-xhdpi\" />
-    <Folder Include="Resources\mipmap-xxhdpi\" />
-    <Folder Include="Resources\mipmap-xxxhdpi\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResizableImage Include="Resources\mipmap-xxxhdpi\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResizableImage Include="Resources\mipmap-xxxhdpi\icon_admin.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="build_helpers.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\Storm.ImageResizeTask.0.1.0\build\monoandroid\Storm.ImageResizeTask.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Storm.ImageResizeTask.0.1.0\build\monoandroid\Storm.ImageResizeTask.props'))" />
+    <Error Condition="!Exists('..\..\..\packages\Storm.ImageResizeTask.0.1.0\build\monoandroid\Storm.ImageResizeTask.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Storm.ImageResizeTask.0.1.0\build\monoandroid\Storm.ImageResizeTask.targets'))" />
+  </Target>
+  <Import Project="..\..\..\packages\Storm.ImageResizeTask.0.1.0\build\monoandroid\Storm.ImageResizeTask.targets" Condition="Exists('..\..\..\packages\Storm.ImageResizeTask.0.1.0\build\monoandroid\Storm.ImageResizeTask.targets')" />
 </Project>
