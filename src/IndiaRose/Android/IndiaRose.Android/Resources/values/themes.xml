@@ -1,7 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<style name="AppTheme" parent="android:Theme.Material.Light">
+	<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+		<item name="android:windowTranslucentStatus">true</item>
+		<!--
 		<item name="android:windowNoTitle">true</item>
 		<item name="android:windowActionBar">false</item>
+		-->
+		<item name="colorPrimaryDark">@color/Pink</item>
+		<item name="colorPrimary">@color/DarkPink</item>
+		<item name="colorAccent">@color/Green</item>
+		<item name="actionBarSize">73dp</item>
 	</style>
 </resources>

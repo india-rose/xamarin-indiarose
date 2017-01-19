@@ -1,10 +1,11 @@
 using Android.App;
 using Android.OS;
 using ReactiveUI;
+using ReactiveUI.AndroidSupport;
 
 namespace IndiaRose.Droid.Views
 {
-	public abstract class BaseActivity<TViewModel> : ReactiveActivity<TViewModel> where TViewModel : class
+	public abstract class BaseActivity<TViewModel> : ReactiveAppCompatActivity<TViewModel> where TViewModel : class
 	{
 		private readonly int _layoutId;
 
