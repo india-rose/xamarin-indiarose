@@ -3,7 +3,9 @@ using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using Android.App;
 using Android.Content.PM;
+using Android.OS;
 using Android.Support.V4.Content;
+using Android.Views;
 using Android.Widget;
 using IndiaRose.Core.Admins.ViewModels;
 using IndiaRose.Droid.Views.Settings;
@@ -19,17 +21,24 @@ namespace IndiaRose.Droid.Views
 
 		public HomeView() : base(Resource.Layout.HomeView)
 		{
-		}
 
+		}
+		
 		protected override void BindControls()
 		{
 			base.BindControls();
 
+			if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
+			{
+				Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
+			}
+			else
+			{
+				Window.AddFlags(WindowManagerFlags.TranslucentStatus);
+			}
+
 			Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
 			SetSupportActionBar(toolbar);
-#pragma warning disable 618
-			Window.SetStatusBarColor(Resources.GetColor(Resource.Color.DarkPink));
-#pragma warning restore 618
 			toolbar.Title = "Test toolbar";
 
 			ViewModel = new HomeViewModel();
