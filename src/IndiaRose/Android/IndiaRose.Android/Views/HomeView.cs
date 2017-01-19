@@ -1,27 +1,27 @@
 using System;
-using System.Reactive.Disposables;
-using System.Reactive.Linq;
+using System.Collections;
+using System.Collections.Generic;
 using Android.App;
-using Android.Content.PM;
 using Android.OS;
-using Android.Support.V4.Content;
+using Android.Runtime;
+using Android.Support.Design.Widget;
+using Android.Support.V4.App;
+using Android.Support.V4.View;
 using Android.Views;
-using Android.Widget;
 using IndiaRose.Core.Admins.ViewModels;
 using IndiaRose.Droid.Views.Settings;
-using ReactiveUI;
+using Java.Lang;
+using Fragment = Android.Support.V4.App.Fragment;
+using FragmentManager = Android.Support.V4.App.FragmentManager;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace IndiaRose.Droid.Views
 {
-	[Activity(MainLauncher = true, Theme = "@style/AppTheme", Label = "India Rose", Icon = "@mipmap/icon", ScreenOrientation = ScreenOrientation.Landscape)]
+	[Activity(MainLauncher = true, Theme = "@style/AppTheme", Label = "India Rose", Icon = "@mipmap/icon")]
 	public class HomeView : BaseActivity<HomeViewModel>
 	{
-		private Button NavigationButton { get; set; }
-
 		public HomeView() : base(Resource.Layout.HomeView)
 		{
-
 		}
 		
 		protected override void BindControls()
@@ -39,34 +39,54 @@ namespace IndiaRose.Droid.Views
 
 			Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
 			SetSupportActionBar(toolbar);
-			toolbar.Title = "Test toolbar";
+			Title = "Test toolbar 2";
+			SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
-			ViewModel = new HomeViewModel();
-			NavigationButton = FindViewById<Button>(Resource.Id.Button);
-
-			FragmentManager.BeginTransaction()
-				.Replace(Resource.Id.MenuFragmentContainer, new MenuFragment())
-				.Commit();
-
-			this.WhenActivated(() =>
+			ViewPager viewPager = FindViewById<ViewPager>(Resource.Id.viewPager);
+			viewPager.Adapter = new ViewPagerAdapter(SupportFragmentManager)
 			{
-				CompositeDisposable disposables = new CompositeDisposable();
+				{LocalizedStrings.Menu_Settings, new SettingsFragment()},
+				{"Collection", new MenuFragment()},
+				{"About", new MenuFragment()},
+				{"Credits", new MenuFragment()},
+				{"Contact", new MenuFragment()},
+			};
+			TabLayout tabs = FindViewById<TabLayout>(Resource.Id.tabs);
+			tabs.SetupWithViewPager(viewPager);
+		}
 
-				this.BindCommand(ViewModel, vm => vm.OpenAppSettingsCommand, v => v.NavigationButton)
-					.DisposeWith(disposables);
+		class ViewPagerAdapter : FragmentPagerAdapter, IEnumerable
+		{
+			private readonly List<Tuple<string, Fragment>> _fragments = new List<Tuple<string, Fragment>>();
+			
+			public ViewPagerAdapter(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
+			{
+			}
 
-				ViewModel.OpenAppSettingsCommand
-					.ObserveOn(RxApp.MainThreadScheduler)
-					.Subscribe(result =>
-					{
-						if (result)
-						{
-							StartActivity(typeof(SettingsView));
-						}
-					}).DisposeWith(disposables);
+			public ViewPagerAdapter(FragmentManager fm) : base(fm)
+			{
+			}
 
-				return disposables;
-			});
+			public override int Count => _fragments.Count;
+			public override Fragment GetItem(int position)
+			{
+				return _fragments[position].Item2;
+			}
+
+			public override ICharSequence GetPageTitleFormatted(int position)
+			{
+				return new Java.Lang.String(_fragments[position].Item1);
+			}
+
+			public void Add(string title, Fragment fragment)
+			{
+				_fragments.Add(Tuple.Create(title, fragment));
+			}
+
+			public IEnumerator GetEnumerator()
+			{
+				return _fragments.GetEnumerator();
+			}
 		}
 	}
 }

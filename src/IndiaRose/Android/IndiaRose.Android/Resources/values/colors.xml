@@ -4,8 +4,12 @@
 	<color name="primary100">#F8BBD0</color>
 	<color name="primary500">#E91E63</color>
 	<color name="primary700">#C2185B</color>
-	<color name="accent200">#B2FF59</color>
-	<color name="accent400">#76FF03</color>
+	<color name="accent200">#69f0ae</color>
+	<color name="accent400">#00e676</color>
+	<color name="accent700">#00c853</color>
+	
+
+	<color name="page_background">#DDDDDD</color>
 	
 	<color name="Pink">#FFA1F0</color>
 	<color name="DarkPink">#F481CB</color>

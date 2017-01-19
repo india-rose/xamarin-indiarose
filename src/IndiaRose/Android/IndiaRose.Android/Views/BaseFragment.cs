@@ -1,10 +1,10 @@
 using Android.OS;
 using Android.Views;
-using ReactiveUI;
+using ReactiveUI.AndroidSupport;
 
 namespace IndiaRose.Droid.Views
 {
-	public abstract class BaseFragment<TViewModel> : ReactiveFragment where TViewModel : class
+	public abstract class BaseFragment<TViewModel> : ReactiveFragment<TViewModel> where TViewModel : class
 	{
 		private readonly int _layoutId;
 		protected View RootView { get; private set; }
