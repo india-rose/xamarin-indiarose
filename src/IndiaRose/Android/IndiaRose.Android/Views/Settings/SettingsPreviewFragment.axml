@@ -25,10 +25,42 @@
 			  />
 		<View android:id="@+id/bottomBackground"
 			  android:layout_width="match_parent"
-			  android:layout_height="50dp"
+			  android:layout_height="60dp"
 			  android:layout_alignParentBottom="true"
 			  android:background="#0000FF"
 			  />
+		<ImageView android:id="@+id/indiagramTopSample"
+				   android:layout_width="50dp"
+				   android:layout_height="50dp"
+				   android:src="@drawable/indiagram_sample"
+				   android:layout_alignParentLeft="true"
+				   android:layout_alignParentTop="true"
+				   android:layout_margin="2dp"
+				   />
+		<ImageView android:id="@+id/nextButton"
+				   android:layout_width="50dp"
+				   android:layout_height="50dp"
+				   android:src="@drawable/indiagram_right"
+				   android:layout_alignParentRight="true"
+				   android:layout_alignParentTop="true"
+				   android:layout_margin="2dp"
+				   />
+		<ImageView android:id="@+id/indiagramBottomSample"
+				   android:layout_width="50dp"
+				   android:layout_height="50dp"
+				   android:src="@drawable/indiagram_sample"
+				   android:layout_alignParentLeft="true"
+				   android:layout_alignParentBottom="true"
+				   android:layout_margin="2dp"
+				   />
+		<ImageView android:id="@+id/playButton"
+				   android:layout_width="50dp"
+				   android:layout_height="50dp"
+				   android:src="@drawable/indiagram_play"
+				   android:layout_alignParentRight="true"
+				   android:layout_alignParentBottom="true"
+				   android:layout_margin="2dp"
+				   />
 	</RelativeLayout>
-	
+
 </LinearLayout>

@@ -14,7 +14,7 @@ namespace IndiaRose.Droid
 		public override void OnCreate()
 		{
 			base.OnCreate();
-			LocalizedStrings.Initialize(this);
+			Bootstrap.Initialize(this);
 		}
 	}
 }

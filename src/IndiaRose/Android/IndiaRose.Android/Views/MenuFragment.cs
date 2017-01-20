@@ -20,6 +20,8 @@ namespace IndiaRose.Droid.Views
 		{
 		}
 
+		protected override MenuViewModel CreateViewModel() => new MenuViewModel();
+
 		protected override void BindControls()
 		{
 			base.BindControls();

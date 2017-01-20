@@ -135,11 +135,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrap.cs" />
     <Compile Include="Controls\StickyScrollView.cs" />
+    <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Helpers\BundleSave.cs" />
+    <Compile Include="Helpers\DimensionsHelper.cs" />
     <Compile Include="IndiaRoseApplication.cs" />
     <Compile Include="LocalizedStrings.Localization.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DeviceInfoService.cs" />
     <Compile Include="Views\BaseActivity.cs" />
     <Compile Include="Views\BaseFragment.cs" />
     <Compile Include="Views\HomeView.cs">
@@ -262,6 +267,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\preview_tab.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="build_helpers.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

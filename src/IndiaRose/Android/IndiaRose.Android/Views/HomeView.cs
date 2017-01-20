@@ -27,7 +27,9 @@ namespace IndiaRose.Droid.Views
 		public HomeView() : base(Resource.Layout.HomeView)
 		{
 		}
-		
+
+		protected override HomeViewModel CreateViewModel() => new HomeViewModel();
+
 		protected override void BindControls()
 		{
 			base.BindControls();

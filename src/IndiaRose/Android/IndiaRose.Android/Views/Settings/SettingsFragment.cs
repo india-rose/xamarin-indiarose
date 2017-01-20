@@ -1,6 +1,7 @@
 using System;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
+using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Widget;
 using IndiaRose.Core.Admins.ViewModels;
@@ -17,35 +18,62 @@ namespace IndiaRose.Droid.Views.Settings
 		{
 		}
 
+		protected override void CreateFragments()
+		{
+			base.CreateFragments();
+			ChildFragmentManager.BeginTransaction()
+				.Replace(Resource.Id.settings_preview, new SettingsPreviewFragment
+				{
+					ViewModel = ViewModel
+				}, nameof(SettingsPreviewFragment))
+				.Replace(Resource.Id.settings_display, new SettingsDisplayFragment
+				{
+					ViewModel = ViewModel
+				}, nameof(SettingsDisplayFragment))
+				.Replace(Resource.Id.settings_behavior, new SettingsBehaviorFragment
+				{
+					ViewModel = ViewModel
+				}, nameof(SettingsBehaviorFragment))
+				.Commit();
+		}
+
+		protected override void RestoreFragments()
+		{
+			base.RestoreFragments();
+
+			SettingsPreviewFragment preview = ChildFragmentManager.FindFragmentByTag(nameof(SettingsPreviewFragment)) as SettingsPreviewFragment;
+			if (preview != null)
+			{
+				preview.ViewModel = ViewModel;
+			}
+
+			SettingsDisplayFragment display = ChildFragmentManager.FindFragmentByTag(nameof(SettingsDisplayFragment)) as SettingsDisplayFragment;
+			if (display != null)
+			{
+				display.ViewModel = ViewModel;
+			}
+
+			SettingsBehaviorFragment behavior = ChildFragmentManager.FindFragmentByTag(nameof(SettingsBehaviorFragment)) as SettingsBehaviorFragment;
+			if (behavior != null)
+			{
+				behavior.ViewModel = ViewModel;
+			}
+		}
+
 		protected override void BindControls()
 		{
 			base.BindControls();
-			ViewModel = new SettingsViewModel();
 
 			_coordinatorLayout = RootView as CoordinatorLayout;
 			_saveButton = RootView.FindViewById<FloatingActionButton>(Resource.Id.saveButton);
 
-			ChildFragmentManager.BeginTransaction()
-				.Add(Resource.Id.settings_preview, new SettingsPreviewFragment
-				{
-					ViewModel = ViewModel
-				})
-				.Add(Resource.Id.settings_display, new SettingsDisplayFragment
-				{
-					ViewModel = ViewModel
-				})
-				.Add(Resource.Id.settings_behavior, new SettingsBehaviorFragment
-				{
-					ViewModel = ViewModel
-				})
-				.Commit();
-
 			this.WhenActivated(disposables =>
 			{
+
 				this.BindCommand(ViewModel, vm => vm.SaveCommand, v => v._saveButton)
 					.DisposeWith(disposables);
 
-				ViewModel.SaveCommand
+				this.WhenAnyObservable(x => x.ViewModel.SaveCommand)
 					.ObserveOn(RxApp.MainThreadScheduler)
 					.Subscribe(result =>
 					{
@@ -61,6 +89,11 @@ namespace IndiaRose.Droid.Views.Settings
 						}
 					}).DisposeWith(disposables);
 			});
+		}
+
+		protected override SettingsViewModel CreateViewModel()
+		{
+			return new SettingsViewModel();
 		}
 	}
 }

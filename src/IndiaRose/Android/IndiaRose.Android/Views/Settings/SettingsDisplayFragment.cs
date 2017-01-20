@@ -8,5 +8,10 @@ namespace IndiaRose.Droid.Views.Settings
 		{
 			
 		}
+
+		protected override SettingsViewModel CreateViewModel()
+		{
+			return null; //on purpose, will be affected from parent
+		}
 	}
 }
