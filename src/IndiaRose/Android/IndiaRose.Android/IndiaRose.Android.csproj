@@ -135,6 +135,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\StickyScrollView.cs" />
     <Compile Include="IndiaRoseApplication.cs" />
     <Compile Include="LocalizedStrings.Localization.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -148,9 +149,20 @@
       <SubType>Code</SubType>
       <DependentUpon>MenuFragment.axml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Settings\SettingsBehaviorFragment.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>SettingsBehaviorFragment.axml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\SettingsDisplayFragment.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>SettingsDisplayFragment.axml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Settings\SettingsFragment.cs">
       <SubType>Code</SubType>
       <DependentUpon>SettingsFragment.axml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\SettingsPreviewFragment.cs">
+      <DependentUpon>SettingsPreviewFragment.axml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +178,15 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Views\Settings\SettingsFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Views\Settings\SettingsDisplayFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Views\Settings\SettingsBehaviorFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Views\Settings\SettingsPreviewFragment.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -228,6 +249,18 @@
   </ItemGroup>
   <ItemGroup>
     <ResizableImage Include="Resources\drawable-xxxhdpi\ic_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\indiagram_play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\indiagram_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\indiagram_sample.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\preview_tab.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="build_helpers.targets" />
