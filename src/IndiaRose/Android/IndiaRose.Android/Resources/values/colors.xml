@@ -4,9 +4,12 @@
 	<color name="primary100">#F8BBD0</color>
 	<color name="primary500">#E91E63</color>
 	<color name="primary700">#C2185B</color>
+	<color name="accent100">#b9f6ca</color>
 	<color name="accent200">#69f0ae</color>
 	<color name="accent400">#00e676</color>
 	<color name="accent700">#00c853</color>
+
+	<color name="secondaryButtonTextColor">#EE000000</color>
 	
 
 	<color name="page_background">#DDDDDD</color>
