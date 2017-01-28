@@ -12,9 +12,10 @@ namespace IndiaRose.Core.Admins.ViewModels
 {
 	public class SettingsViewModel : BaseViewModel
 	{
-		public ReactiveCommand<Unit, bool> Save { get; private set; }
-		public ReactiveCommand<Unit, Unit> ChangeTopColor { get; private set; }
-		public ReactiveCommand<Unit, Unit> ChangeBottomColor { get; private set; }
+		public ReactiveCommand<Unit, bool> Save { get; }
+		public ReactiveCommand<Unit, Unit> ChangeTopColor { get; }
+		public ReactiveCommand<Unit, Unit> ChangeBottomColor { get; }
+		public ReactiveCommand<string, Unit> UpdateCurrentColor { get; }
 
 		private readonly ObservableAsPropertyHelper<int> _bottomSize;
 
@@ -73,6 +74,17 @@ namespace IndiaRose.Core.Admins.ViewModels
 
 			ChangeTopColor = ReactiveCommand.Create(() => { IsTopColorChanging = !IsTopColorChanging; });
 			ChangeBottomColor = ReactiveCommand.Create(() => { IsBottomColorChanging = !IsBottomColorChanging; });
+			UpdateCurrentColor = ReactiveCommand.Create((string color) =>
+			{
+				if (IsTopColorChanging)
+				{
+					TopColor = color;
+				}
+				else if (IsBottomColorChanging)
+				{
+					BottomColor = color;
+				}
+			});
 
 			//compute correct size
 			_bottomSize = this.WhenAny(x => x.IndiagramSize, indiagram => (int)(indiagram.Value * 1.2))

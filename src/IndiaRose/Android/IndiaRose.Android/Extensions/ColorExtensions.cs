@@ -29,5 +29,10 @@ namespace IndiaRose.Droid.Extensions
 				(byte)(input >> 24 & 0xFF)
 				);
 		}
+
+		public static string StringFromColor(this int input)
+		{
+			return $"#{input:X6}";
+		}
 	}
 }

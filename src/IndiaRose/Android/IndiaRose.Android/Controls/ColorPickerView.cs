@@ -94,11 +94,7 @@ namespace IndiaRose.Droid.Controls
 
 		protected void RaiseColorChanged(int newColor)
 		{
-			EventHandler<int> handler = OnColorChanged;
-			if (handler != null)
-			{
-				handler(this, newColor);
-			}
+			OnColorChanged?.Invoke(this, newColor);
 		}
 
 		// ReSharper disable once UnusedParameter.Local

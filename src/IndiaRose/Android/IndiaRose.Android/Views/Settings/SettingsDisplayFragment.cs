@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using IndiaRose.Core.Admins.ViewModels;
 using IndiaRose.Droid.Controls;
+using IndiaRose.Droid.Extensions;
 using ReactiveUI;
 
 namespace IndiaRose.Droid.Views.Settings
@@ -48,6 +49,11 @@ namespace IndiaRose.Droid.Views.Settings
 					.Select(selected => selected ? ViewStates.Visible : ViewStates.Gone)
 					.ObserveOn(RxApp.MainThreadScheduler)
 					.Subscribe(visibility => _colorPickerView.Visibility = visibility)
+					.DisposeWith(disposables);
+
+				IObservable<EventPattern<int>> colorChangedObservable = Observable.FromEventPattern<EventHandler<int>, int>(handler => _colorPickerView.OnColorChanged += handler, handler => _colorPickerView.OnColorChanged -= handler);
+				colorChangedObservable.Select(color => color.EventArgs.StringFromColor())
+					.Subscribe(color => ViewModel.UpdateCurrentColor.Execute(color))
 					.DisposeWith(disposables);
 			});
 		}
