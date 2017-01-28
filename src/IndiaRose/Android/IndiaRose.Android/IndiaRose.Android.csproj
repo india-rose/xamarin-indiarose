@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
+    <Compile Include="Controls\ColorPickerView.cs" />
     <Compile Include="Controls\StickyScrollView.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Helpers\BundleSave.cs" />
@@ -269,6 +270,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\secondary_button_background.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\colorpicker_button_background.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="build_helpers.targets" />

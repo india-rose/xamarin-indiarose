@@ -70,10 +70,10 @@ namespace IndiaRose.Droid.Views.Settings
 			this.WhenActivated(disposables =>
 			{
 
-				this.BindCommand(ViewModel, vm => vm.SaveCommand, v => v._saveButton)
+				this.BindCommand(ViewModel, vm => vm.Save, v => v._saveButton)
 					.DisposeWith(disposables);
 
-				this.WhenAnyObservable(x => x.ViewModel.SaveCommand)
+				this.WhenAnyObservable(x => x.ViewModel.Save)
 					.ObserveOn(RxApp.MainThreadScheduler)
 					.Subscribe(result =>
 					{
@@ -84,7 +84,7 @@ namespace IndiaRose.Droid.Views.Settings
 						else
 						{
 							Snackbar.Make(_coordinatorLayout, "Error while saving !", Snackbar.LengthLong)
-								.SetAction("Retry", v => ViewModel.SaveCommand.Execute().Subscribe())
+								.SetAction("Retry", v => ViewModel.Save.Execute().Subscribe())
 								.Show();
 						}
 					}).DisposeWith(disposables);

@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+			  android:orientation="vertical"
+			  android:layout_width="match_parent"
+			  android:layout_height="match_parent"
+			  android:paddingLeft="16dp"
+			  android:paddingRight="16dp">
 
 	<LinearLayout android:orientation="horizontal"
 				  android:layout_width="match_parent"
 				  android:layout_height="wrap_content"
-				  android:layout_marginLeft="16dp"
-				  android:layout_marginRight="16dp"
 				  >
 		<Button style="@style/SecondaryButtonStyle"
 				android:layout_width="0dp"
 				android:layout_weight="1"
+				android:background="@drawable/colorpicker_button_background"
 				android:text="Top color"
+				android:id="@+id/ChangeTopColorButton"
 				/>
 
 		<Button style="@style/SecondaryButtonStyle"
 				android:layout_width="0dp"
 				android:layout_weight="1"
+				android:background="@drawable/colorpicker_button_background"
 				android:text="Bottom color"
+				android:id="@+id/ChangeBottomColorButton"
 				/>
 	</LinearLayout>
 	
+	<indiarose.droid.controls.ColorPickerView android:layout_width="match_parent"
+											  android:layout_height="240dp"
+											  android:visibility="gone"
+											  android:id="@+id/ColorPickerView"
+											  />
+
 </LinearLayout>

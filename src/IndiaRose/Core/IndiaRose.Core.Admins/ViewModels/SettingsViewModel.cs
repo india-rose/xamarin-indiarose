@@ -12,7 +12,9 @@ namespace IndiaRose.Core.Admins.ViewModels
 {
 	public class SettingsViewModel : BaseViewModel
 	{
-		public ReactiveCommand<Unit, bool> SaveCommand { get; private set; }
+		public ReactiveCommand<Unit, bool> Save { get; private set; }
+		public ReactiveCommand<Unit, Unit> ChangeTopColor { get; private set; }
+		public ReactiveCommand<Unit, Unit> ChangeBottomColor { get; private set; }
 
 		private readonly ObservableAsPropertyHelper<int> _bottomSize;
 
@@ -20,7 +22,7 @@ namespace IndiaRose.Core.Admins.ViewModels
 		private string _bottomColor;
 		private int _indiagramSize;
 		private int _fontSize;
-		
+
 		public string TopColor
 		{
 			get { return _topColor; }
@@ -46,15 +48,31 @@ namespace IndiaRose.Core.Admins.ViewModels
 		}
 
 		public int BottomSize => _bottomSize.Value;
-		
+
+		private bool _isTopColorChanging;
+		private bool _isBottomColorChanging;
+		public bool IsBottomColorChanging
+		{
+			get { return _isBottomColorChanging; }
+			set { this.RaiseAndSetIfChanged(ref _isBottomColorChanging, value); }
+		}
+
+		public bool IsTopColorChanging
+		{
+			get { return _isTopColorChanging; }
+			set { this.RaiseAndSetIfChanged(ref _isTopColorChanging, value); }
+		}
 
 		public SettingsViewModel()
 		{
-			SaveCommand = ReactiveCommand.CreateFromTask(async _ =>
+			Save = ReactiveCommand.CreateFromTask(async _ =>
 			{
 				await Task.Delay(1000);
 				return new Random(DateTime.Now.Millisecond).Next(0, 10) < 5;
 			});
+
+			ChangeTopColor = ReactiveCommand.Create(() => { IsTopColorChanging = !IsTopColorChanging; });
+			ChangeBottomColor = ReactiveCommand.Create(() => { IsBottomColorChanging = !IsBottomColorChanging; });
 
 			//compute correct size
 			_bottomSize = this.WhenAny(x => x.IndiagramSize, indiagram => (int)(indiagram.Value * 1.2))
@@ -70,6 +88,16 @@ namespace IndiaRose.Core.Admins.ViewModels
 						IndiagramSize = settings.IndiagramDisplaySize;
 						FontSize = settings.FontSize;
 					}).DisposeWith(disposables);
+
+				this.WhenAnyValue(vm => vm.IsBottomColorChanging)
+					.Where(x => x)
+					.Subscribe(_ => IsTopColorChanging = false)
+					.DisposeWith(disposables);
+
+				this.WhenAnyValue(vm => vm.IsTopColorChanging)
+					.Where(x => x)
+					.Subscribe(_ => IsBottomColorChanging = false)
+					.DisposeWith(disposables);
 			});
 		}
 	}
