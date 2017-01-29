@@ -51,6 +51,18 @@ namespace IndiaRose.Droid.Views.Settings
 					.Subscribe(visibility => _colorPickerView.Visibility = visibility)
 					.DisposeWith(disposables);
 
+				this.WhenAnyValue(v => v.ViewModel.IsTopColorChanging)
+					.Where(x => x)
+					.ObserveOn(RxApp.MainThreadScheduler)
+					.Subscribe(_ => _colorPickerView.SetColor(ViewModel.TopColor.ToIntColor()))
+					.DisposeWith(disposables);
+
+				this.WhenAnyValue(v => v.ViewModel.IsBottomColorChanging)
+					.Where(x => x)
+					.ObserveOn(RxApp.MainThreadScheduler)
+					.Subscribe(_ => _colorPickerView.SetColor(ViewModel.BottomColor.ToIntColor()))
+					.DisposeWith(disposables);
+
 				IObservable<EventPattern<int>> colorChangedObservable = Observable.FromEventPattern<EventHandler<int>, int>(handler => _colorPickerView.OnColorChanged += handler, handler => _colorPickerView.OnColorChanged -= handler);
 				colorChangedObservable.Select(color => color.EventArgs.StringFromColor())
 					.Subscribe(color => ViewModel.UpdateCurrentColor.Execute(color))

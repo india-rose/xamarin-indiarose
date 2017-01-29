@@ -30,6 +30,8 @@ namespace IndiaRose.Droid.Extensions
 				);
 		}
 
+		public static int ToIntColor(this string input) => input.ToColor().ToArgb();
+
 		public static string StringFromColor(this int input)
 		{
 			return $"#{input:X6}";
