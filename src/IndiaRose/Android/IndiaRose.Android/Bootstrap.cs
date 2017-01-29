@@ -35,6 +35,7 @@ namespace IndiaRose.Droid
 			Core.Users.Bootstrap.Initialize();
 
 			Locator.CurrentMutable.RegisterLazySingleton(() => new DeviceInfoService(applicationContext), typeof(IDeviceInfoService));
+			Locator.CurrentMutable.RegisterLazySingleton(() => new FontService(), typeof(IFontService));
 		}
 	}
 }

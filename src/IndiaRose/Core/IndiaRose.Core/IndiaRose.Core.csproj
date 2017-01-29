@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
     <Compile Include="Interfaces\IDeviceInfoService.cs" />
+    <Compile Include="Interfaces\IFontService.cs" />
     <Compile Include="Interfaces\ILoggerService.cs" />
     <Compile Include="Interfaces\ISettingsService.cs" />
     <Compile Include="Models\Category.cs" />

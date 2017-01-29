@@ -20,6 +20,8 @@ namespace IndiaRose.Droid.Views.Settings
 		private TextView _indiagramSizeLabel;
 		private SeekBar _indiagramSizePicker;
 
+		private Spinner _fontFamilyPicker;
+
 		public SettingsDisplayFragment() : base(Resource.Layout.SettingsDisplayFragment)
 		{
 			
@@ -40,6 +42,8 @@ namespace IndiaRose.Droid.Views.Settings
 
 			_indiagramSizeLabel = RootView.FindViewById<TextView>(Resource.Id.IndiagramSizeValueLabel);
 			_indiagramSizePicker = RootView.FindViewById<SeekBar>(Resource.Id.IndiagramSizeValuePicker);
+
+			_fontFamilyPicker = RootView.FindViewById<Spinner>(Resource.Id.FontFamilyPicker);
 
 			this.WhenActivated(disposables =>
 			{
@@ -85,7 +89,20 @@ namespace IndiaRose.Droid.Views.Settings
 
 				#endregion
 
+				#region Fonts
 
+				this.WhenAnyValue(v => v.ViewModel.FontNames)
+					.ObserveOn(RxApp.MainThreadScheduler)
+					.Subscribe(fonts =>
+					{
+						if (fonts != null)
+						{
+							_fontFamilyPicker.Adapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleListItem1, fonts);
+						}
+					})
+					.DisposeWith(disposables);
+
+				#endregion
 			});
 		}
 	}

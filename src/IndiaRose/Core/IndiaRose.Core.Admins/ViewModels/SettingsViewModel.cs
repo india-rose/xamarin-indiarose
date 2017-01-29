@@ -27,6 +27,7 @@ namespace IndiaRose.Core.Admins.ViewModels
 		private string _bottomColor;
 		private int _indiagramSizePercentage;
 		private int _fontSize;
+		private List<string> _fontNames;
 
 		public string TopColor
 		{
@@ -50,6 +51,12 @@ namespace IndiaRose.Core.Admins.ViewModels
 		{
 			get { return _fontSize; }
 			set { this.RaiseAndSetIfChanged(ref _fontSize, value); }
+		}
+
+		public List<string> FontNames
+		{
+			get { return _fontNames; }
+			set { this.RaiseAndSetIfChanged(ref _fontNames, value); }
 		}
 
 		public int BottomSize => _bottomSize.Value;
@@ -102,6 +109,10 @@ namespace IndiaRose.Core.Admins.ViewModels
 						IndiagramSizePercentage = settings.IndiagramSizePercentage;
 						FontSize = settings.FontSize;
 					}).DisposeWith(disposables);
+
+				Observable.FromAsync(ct => ServiceLocator.FontService.GetFontDisplayNames())
+					.Subscribe(fontNames => FontNames = fontNames)
+					.DisposeWith(disposables);
 
 				this.WhenAnyValue(vm => vm.IsBottomColorChanging)
 					.Where(x => x)
