@@ -14,7 +14,7 @@
 				android:layout_width="0dp"
 				android:layout_weight="1"
 				android:background="@drawable/colorpicker_button_background"
-				android:text="Top color"
+				android:text="@string/Settings_BottomColorButton"
 				android:id="@+id/ChangeTopColorButton"
 				/>
 
@@ -22,7 +22,7 @@
 				android:layout_width="0dp"
 				android:layout_weight="1"
 				android:background="@drawable/colorpicker_button_background"
-				android:text="Bottom color"
+				android:text="@string/Settings_TopColorButton"
 				android:id="@+id/ChangeBottomColorButton"
 				/>
 	</LinearLayout>
@@ -30,7 +30,33 @@
 	<indiarose.droid.controls.ColorPickerView android:layout_width="match_parent"
 											  android:layout_height="240dp"
 											  android:visibility="gone"
-											  android:id="@+id/ColorPickerView"
+											  android:id="@+id/BackgroundColorPickerView"
 											  />
+
+	<TextView android:layout_width="match_parent"
+			  android:layout_height="wrap_content"
+			  android:layout_marginTop="12dp"
+			  android:layout_marginLeft="4dp"
+			  android:text="@string/Settings_IndiagramSizeLabel"
+			  />
+	<RelativeLayout android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					>
+		<SeekBar android:layout_width="match_parent"
+				 android:layout_height="wrap_content"
+				 android:layout_alignParentLeft="true"
+				 android:layout_toLeftOf="@+id/IndiagramSizeValueLabel"
+				 android:id="@+id/IndiagramSizeValuePicker"
+				 android:max="100"
+				 android:progress="25"
+				 />
+		<TextView android:layout_width="wrap_content"
+				  android:layout_height="wrap_content"
+				  android:layout_alignParentRight="true"
+				  android:layout_centerVertical="true"
+				  android:id="@+id/IndiagramSizeValueLabel"
+				  android:text="25%"
+				  />
+	</RelativeLayout>
 
 </LinearLayout>

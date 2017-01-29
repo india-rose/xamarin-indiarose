@@ -36,6 +36,42 @@ namespace IndiaRose
 			{
 				return this._ctx.GetString(Resource.String.Menu_Settings);
 			}
+			if ((key == EnumStrings.Settings_BottomColorButton))
+			{
+				return this._ctx.GetString(Resource.String.Settings_BottomColorButton);
+			}
+			if ((key == EnumStrings.Settings_FontFamilyLabel))
+			{
+				return this._ctx.GetString(Resource.String.Settings_FontFamilyLabel);
+			}
+			if ((key == EnumStrings.Settings_FontSizeLabel))
+			{
+				return this._ctx.GetString(Resource.String.Settings_FontSizeLabel);
+			}
+			if ((key == EnumStrings.Settings_IndiagramBottomPreviewText))
+			{
+				return this._ctx.GetString(Resource.String.Settings_IndiagramBottomPreviewText);
+			}
+			if ((key == EnumStrings.Settings_IndiagramSizeLabel))
+			{
+				return this._ctx.GetString(Resource.String.Settings_IndiagramSizeLabel);
+			}
+			if ((key == EnumStrings.Settings_IndiagramTopPreviewText))
+			{
+				return this._ctx.GetString(Resource.String.Settings_IndiagramTopPreviewText);
+			}
+			if ((key == EnumStrings.Settings_ReinforcerColorButton))
+			{
+				return this._ctx.GetString(Resource.String.Settings_ReinforcerColorButton);
+			}
+			if ((key == EnumStrings.Settings_TextColorLabel))
+			{
+				return this._ctx.GetString(Resource.String.Settings_TextColorLabel);
+			}
+			if ((key == EnumStrings.Settings_TopColorButton))
+			{
+				return this._ctx.GetString(Resource.String.Settings_TopColorButton);
+			}
 			throw new System.ArgumentOutOfRangeException();
 		}
 	}

@@ -13,15 +13,19 @@ namespace IndiaRose.Core.Admins.ViewModels
 	public class SettingsViewModel : BaseViewModel
 	{
 		public ReactiveCommand<Unit, bool> Save { get; }
-		public ReactiveCommand<Unit, Unit> ChangeTopColor { get; }
-		public ReactiveCommand<Unit, Unit> ChangeBottomColor { get; }
-		public ReactiveCommand<string, Unit> UpdateCurrentColor { get; }
+		public ReactiveCommand<Unit, Unit> ChangeTopBackgroundColor { get; }
+		public ReactiveCommand<Unit, Unit> ChangeBottomBackgroundColor { get; }
+		public ReactiveCommand<string, Unit> UpdateBackgroundColor { get; }
+		public ReactiveCommand<int, Unit> UpdateIndiagramSize { get; }
 
 		private readonly ObservableAsPropertyHelper<int> _bottomSize;
+		private readonly ObservableAsPropertyHelper<int> _indiagramSize;
+
+		private readonly double _indiagramMaxSize;
 
 		private string _topColor;
 		private string _bottomColor;
-		private int _indiagramSize;
+		private int _indiagramSizePercentage;
 		private int _fontSize;
 
 		public string TopColor
@@ -30,10 +34,10 @@ namespace IndiaRose.Core.Admins.ViewModels
 			set { this.RaiseAndSetIfChanged(ref _topColor, value); }
 		}
 
-		public int IndiagramSize
+		public int IndiagramSizePercentage
 		{
-			get { return _indiagramSize; }
-			set { this.RaiseAndSetIfChanged(ref _indiagramSize, value); }
+			get { return _indiagramSizePercentage; }
+			set { this.RaiseAndSetIfChanged(ref _indiagramSizePercentage, value); }
 		}
 
 		public string BottomColor
@@ -49,6 +53,8 @@ namespace IndiaRose.Core.Admins.ViewModels
 		}
 
 		public int BottomSize => _bottomSize.Value;
+
+		public int IndiagramSize => _indiagramSize.Value;
 
 		private bool _isTopColorChanging;
 		private bool _isBottomColorChanging;
@@ -66,29 +72,25 @@ namespace IndiaRose.Core.Admins.ViewModels
 
 		public SettingsViewModel()
 		{
+			_indiagramMaxSize = Math.Min(ServiceLocator.DeviceInfoService.Height, ServiceLocator.DeviceInfoService.Width) / 2.0 * 0.9;
 			Save = ReactiveCommand.CreateFromTask(async _ =>
 			{
 				await Task.Delay(1000);
 				return new Random(DateTime.Now.Millisecond).Next(0, 10) < 5;
 			});
 
-			ChangeTopColor = ReactiveCommand.Create(() => { IsTopColorChanging = !IsTopColorChanging; });
-			ChangeBottomColor = ReactiveCommand.Create(() => { IsBottomColorChanging = !IsBottomColorChanging; });
-			UpdateCurrentColor = ReactiveCommand.Create((string color) =>
-			{
-				if (IsTopColorChanging)
-				{
-					TopColor = color;
-				}
-				else if (IsBottomColorChanging)
-				{
-					BottomColor = color;
-				}
-			});
+			ChangeTopBackgroundColor = ReactiveCommand.Create(() => { IsTopColorChanging = !IsTopColorChanging; });
+			ChangeBottomBackgroundColor = ReactiveCommand.Create(() => { IsBottomColorChanging = !IsBottomColorChanging; });
+			UpdateBackgroundColor = ReactiveCommand.Create<string>(UpdateBackgroundColorAction);
+			UpdateIndiagramSize = ReactiveCommand.Create<int>(UpdateIndiagramSizeAction);
 
 			//compute correct size
-			_bottomSize = this.WhenAny(x => x.IndiagramSize, indiagram => (int)(indiagram.Value * 1.2))
-								.ToProperty(this, x => x.FontSize);
+			_indiagramSize = this.WhenAnyValue(x => x.IndiagramSizePercentage)
+								.Select(percent => (int) (percent / 100.0 * _indiagramMaxSize))
+								.ToProperty(this, x => x.IndiagramSize);
+			_bottomSize = this.WhenAnyValue(x => x.IndiagramSize)
+								.Select(indiagramSize => (int)(indiagramSize * 1.2))
+								.ToProperty(this, x => x.BottomSize);
 
 			this.WhenActivated(disposables =>
 			{
@@ -97,7 +99,7 @@ namespace IndiaRose.Core.Admins.ViewModels
 					{
 						TopColor = settings.TopBackgroundColor;
 						BottomColor = settings.BottomBackgroundColor;
-						IndiagramSize = settings.IndiagramDisplaySize;
+						IndiagramSizePercentage = settings.IndiagramSizePercentage;
 						FontSize = settings.FontSize;
 					}).DisposeWith(disposables);
 
@@ -111,6 +113,23 @@ namespace IndiaRose.Core.Admins.ViewModels
 					.Subscribe(_ => IsBottomColorChanging = false)
 					.DisposeWith(disposables);
 			});
+		}
+
+		private void UpdateBackgroundColorAction(string color)
+		{
+			if (IsTopColorChanging)
+			{
+				TopColor = color;
+			}
+			else if (IsBottomColorChanging)
+			{
+				BottomColor = color;
+			}
+		}
+
+		private void UpdateIndiagramSizeAction(int sizePercentage)
+		{
+			IndiagramSizePercentage = sizePercentage;
 		}
 	}
 }

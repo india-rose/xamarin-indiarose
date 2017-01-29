@@ -26,7 +26,7 @@ namespace IndiaRose.Core.Services
 					TopBackgroundColor = "#FF00FF",
 					BottomBackgroundColor = "#FF0000",
 					FontSize = 14,
-					IndiagramDisplaySize = 512
+					IndiagramSizePercentage = 80
 				};
 				return _settings;
 			}

@@ -17,7 +17,7 @@
 		//size
 		public int SelectionAreaHeight { get; set; }
 
-		public int IndiagramDisplaySize { get; set; }
+		public int IndiagramSizePercentage { get; set; }
 
 		//font
 		public string FontName { get; set; }

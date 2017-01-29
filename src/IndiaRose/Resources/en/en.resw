@@ -132,4 +132,31 @@
   <data name="Menu_Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="Settings_BottomColorButton" xml:space="preserve">
+    <value>Bottom color</value>
+  </data>
+  <data name="Settings_FontFamilyLabel" xml:space="preserve">
+    <value>Font : </value>
+  </data>
+  <data name="Settings_FontSizeLabel" xml:space="preserve">
+    <value>Text size : </value>
+  </data>
+  <data name="Settings_IndiagramBottomPreviewText" xml:space="preserve">
+    <value>Indiagram bottom</value>
+  </data>
+  <data name="Settings_IndiagramSizeLabel" xml:space="preserve">
+    <value>Indiagram size : </value>
+  </data>
+  <data name="Settings_IndiagramTopPreviewText" xml:space="preserve">
+    <value>Indiagram top</value>
+  </data>
+  <data name="Settings_ReinforcerColorButton" xml:space="preserve">
+    <value>Reinforcer color</value>
+  </data>
+  <data name="Settings_TextColorLabel" xml:space="preserve">
+    <value>Text color</value>
+  </data>
+  <data name="Settings_TopColorButton" xml:space="preserve">
+    <value>Top color</value>
+  </data>
 </root>

@@ -48,6 +48,69 @@ namespace IndiaRose
 				return LocalizedStrings._ctx.GetString(Resource.String.Menu_Settings);
 			}
 		}
+		public static string Settings_BottomColorButton
+		{
+			get
+			{
+				return LocalizedStrings._ctx.GetString(Resource.String.Settings_BottomColorButton);
+			}
+		}
+		public static string Settings_FontFamilyLabel
+		{
+			get
+			{
+				return LocalizedStrings._ctx.GetString(Resource.String.Settings_FontFamilyLabel);
+			}
+		}
+		public static string Settings_FontSizeLabel
+		{
+			get
+			{
+				return LocalizedStrings._ctx.GetString(Resource.String.Settings_FontSizeLabel);
+			}
+		}
+		public static string Settings_IndiagramBottomPreviewText
+		{
+			get
+			{
+				return LocalizedStrings._ctx.GetString(Resource.String.Settings_IndiagramBottomPreviewText);
+			}
+		}
+		public static string Settings_IndiagramSizeLabel
+		{
+			get
+			{
+				return LocalizedStrings._ctx.GetString(Resource.String.Settings_IndiagramSizeLabel);
+			}
+		}
+		public static string Settings_IndiagramTopPreviewText
+		{
+			get
+			{
+				return LocalizedStrings._ctx.GetString(Resource.String.Settings_IndiagramTopPreviewText);
+			}
+		}
+		public static string Settings_ReinforcerColorButton
+		{
+			get
+			{
+				return LocalizedStrings._ctx.GetString(Resource.String.Settings_ReinforcerColorButton);
+			}
+		}
+		public static string Settings_TextColorLabel
+		{
+			get
+			{
+				return LocalizedStrings._ctx.GetString(Resource.String.Settings_TextColorLabel);
+			}
+		}
+		public static string Settings_TopColorButton
+		{
+			get
+			{
+				return LocalizedStrings._ctx.GetString(Resource.String.Settings_TopColorButton);
+			}
+		}
 		public static void Initialize(Context ctx)
 		{
 			LocalizedStrings._ctx = ctx;

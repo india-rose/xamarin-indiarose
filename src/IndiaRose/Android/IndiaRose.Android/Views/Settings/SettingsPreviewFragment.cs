@@ -66,6 +66,17 @@ namespace IndiaRose.Droid.Views.Settings
 						SetDimension(_nextButton, previewSize);
 
 					}).DisposeWith(disposables);
+
+				this.WhenAnyValue(x => x.ViewModel.BottomSize)
+					.ObserveOn(RxApp.MainThreadScheduler)
+					.Subscribe(bottomSize =>
+					{
+						float availableSize = DimensionsHelper.DpToPixels(120);
+						float deviceSize = ServiceLocator.DeviceInfoService.Height;
+
+						_bottomView.LayoutParameters.Height = (int) (bottomSize * availableSize / deviceSize);
+						_bottomView.RequestLayout();
+					}).DisposeWith(disposables);
 			});
 		}
 
