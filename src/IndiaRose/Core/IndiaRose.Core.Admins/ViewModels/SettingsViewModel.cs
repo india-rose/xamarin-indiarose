@@ -17,8 +17,8 @@ namespace IndiaRose.Core.Admins.ViewModels
 		public ReactiveCommand<Unit, Unit> ChangeBottomBackgroundColor { get; }
 		public ReactiveCommand<string, Unit> UpdateBackgroundColor { get; }
 		public ReactiveCommand<int, Unit> UpdateIndiagramSize { get; }
-
 		public ReactiveCommand<int, Unit> SelectFont { get; }
+		public ReactiveCommand<int, Unit> UpdateFontSize { get; }
 
 		private readonly ObservableAsPropertyHelper<int> _bottomSize;
 		private readonly ObservableAsPropertyHelper<int> _indiagramSize;
@@ -100,6 +100,7 @@ namespace IndiaRose.Core.Admins.ViewModels
 			UpdateBackgroundColor = ReactiveCommand.Create<string>(UpdateBackgroundColorAction);
 			UpdateIndiagramSize = ReactiveCommand.Create<int>(UpdateIndiagramSizeAction);
 			SelectFont = ReactiveCommand.Create<int>(SelectFontAction);
+			UpdateFontSize = ReactiveCommand.Create<int>(UpdateFontSizeAction);
 
 			//compute correct size
 			_indiagramSize = this.WhenAnyValue(x => x.IndiagramSizePercentage)
@@ -160,6 +161,11 @@ namespace IndiaRose.Core.Admins.ViewModels
 			{
 				SelectedFont = FontNames[fontIndex];
 			}
+		}
+
+		private void UpdateFontSizeAction(int fontSize)
+		{
+			FontSize = fontSize;
 		}
 	}
 }

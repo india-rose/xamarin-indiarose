@@ -22,6 +22,9 @@ namespace IndiaRose.Droid.Views.Settings
 
 		private Spinner _fontFamilyPicker;
 
+		private TextView _fontSizeLabel;
+		private SeekBar _fontSizePicker;
+
 		public SettingsDisplayFragment() : base(Resource.Layout.SettingsDisplayFragment)
 		{
 			
@@ -44,6 +47,9 @@ namespace IndiaRose.Droid.Views.Settings
 			_indiagramSizePicker = RootView.FindViewById<SeekBar>(Resource.Id.IndiagramSizeValuePicker);
 
 			_fontFamilyPicker = RootView.FindViewById<Spinner>(Resource.Id.FontFamilyPicker);
+
+			_fontSizeLabel = RootView.FindViewById<TextView>(Resource.Id.FontSizeValueLabel);
+			_fontSizePicker = RootView.FindViewById<SeekBar>(Resource.Id.FontSizeValuePicker);
 
 			this.WhenActivated(disposables =>
 			{
@@ -90,7 +96,7 @@ namespace IndiaRose.Droid.Views.Settings
 				#endregion
 
 				#region Fonts
-
+				//family
 				this.WhenAnyValue(v => v.ViewModel.FontNames)
 					.ObserveOn(RxApp.MainThreadScheduler)
 					.Subscribe(fonts =>
@@ -114,9 +120,17 @@ namespace IndiaRose.Droid.Views.Settings
 						}
 					}).DisposeWith(disposables);
 
-				var selectedFontChangedObservable = Observable.FromEventPattern<AdapterView.ItemSelectedEventArgs>(handler => _fontFamilyPicker.ItemSelected += handler, handler => _fontFamilyPicker.ItemSelected -= handler);
+				IObservable<EventPattern<AdapterView.ItemSelectedEventArgs>> selectedFontChangedObservable = Observable.FromEventPattern<AdapterView.ItemSelectedEventArgs>(handler => _fontFamilyPicker.ItemSelected += handler, handler => _fontFamilyPicker.ItemSelected -= handler);
 				selectedFontChangedObservable.Select(x => x.EventArgs.Position)
 					.Subscribe(fontIndex => ViewModel?.SelectFont?.Execute(fontIndex))
+					.DisposeWith(disposables);
+
+				//size
+				this.OneWayBind(ViewModel, vm => vm.FontSize, v => v._fontSizeLabel.Text).DisposeWith(disposables);
+				_fontSizePicker.Progress = ViewModel?.FontSize ?? 0;
+				var fontSizeChangedObservable = Observable.FromEventPattern<EventHandler<SeekBar.ProgressChangedEventArgs>, SeekBar.ProgressChangedEventArgs>(handler => _fontSizePicker.ProgressChanged += handler, handler => _fontSizePicker.ProgressChanged -= handler);
+				fontSizeChangedObservable.Select(args => args.EventArgs.Progress)
+					.Subscribe(fontSize => ViewModel.UpdateFontSize.Execute(fontSize))
 					.DisposeWith(disposables);
 
 				#endregion
