@@ -18,6 +18,8 @@ namespace IndiaRose.Core.Admins.ViewModels
 		public ReactiveCommand<string, Unit> UpdateBackgroundColor { get; }
 		public ReactiveCommand<int, Unit> UpdateIndiagramSize { get; }
 
+		public ReactiveCommand<int, Unit> SelectFont { get; }
+
 		private readonly ObservableAsPropertyHelper<int> _bottomSize;
 		private readonly ObservableAsPropertyHelper<int> _indiagramSize;
 
@@ -28,6 +30,7 @@ namespace IndiaRose.Core.Admins.ViewModels
 		private int _indiagramSizePercentage;
 		private int _fontSize;
 		private List<string> _fontNames;
+		private string _selectedFont;
 
 		public string TopColor
 		{
@@ -57,6 +60,12 @@ namespace IndiaRose.Core.Admins.ViewModels
 		{
 			get { return _fontNames; }
 			set { this.RaiseAndSetIfChanged(ref _fontNames, value); }
+		}
+
+		public string SelectedFont
+		{
+			get { return _selectedFont; }
+			set { this.RaiseAndSetIfChanged(ref _selectedFont, value); }
 		}
 
 		public int BottomSize => _bottomSize.Value;
@@ -90,6 +99,7 @@ namespace IndiaRose.Core.Admins.ViewModels
 			ChangeBottomBackgroundColor = ReactiveCommand.Create(() => { IsBottomColorChanging = !IsBottomColorChanging; });
 			UpdateBackgroundColor = ReactiveCommand.Create<string>(UpdateBackgroundColorAction);
 			UpdateIndiagramSize = ReactiveCommand.Create<int>(UpdateIndiagramSizeAction);
+			SelectFont = ReactiveCommand.Create<int>(SelectFontAction);
 
 			//compute correct size
 			_indiagramSize = this.WhenAnyValue(x => x.IndiagramSizePercentage)
@@ -108,6 +118,7 @@ namespace IndiaRose.Core.Admins.ViewModels
 						BottomColor = settings.BottomBackgroundColor;
 						IndiagramSizePercentage = settings.IndiagramSizePercentage;
 						FontSize = settings.FontSize;
+						SelectedFont = settings.FontName;
 					}).DisposeWith(disposables);
 
 				Observable.FromAsync(ct => ServiceLocator.FontService.GetFontDisplayNames())
@@ -141,6 +152,14 @@ namespace IndiaRose.Core.Admins.ViewModels
 		private void UpdateIndiagramSizeAction(int sizePercentage)
 		{
 			IndiagramSizePercentage = sizePercentage;
+		}
+
+		private void SelectFontAction(int fontIndex)
+		{
+			if (fontIndex >= 0 && fontIndex < FontNames.Count)
+			{
+				SelectedFont = FontNames[fontIndex];
+			}
 		}
 	}
 }

@@ -101,6 +101,23 @@ namespace IndiaRose.Droid.Views.Settings
 						}
 					})
 					.DisposeWith(disposables);
+				
+				this.WhenAnyValue(v => v.ViewModel.SelectedFont, v => v.ViewModel.FontNames)
+					.Where(x => x.Item1 != null && x.Item2 != null)
+					.ObserveOn(RxApp.MainThreadScheduler)
+					.Subscribe(fontInfo =>
+					{
+						int index = fontInfo.Item2.FindIndex(x => x.Equals(fontInfo.Item1, StringComparison.OrdinalIgnoreCase));
+						if (index >= 0)
+						{
+							_fontFamilyPicker.SetSelection(index);
+						}
+					}).DisposeWith(disposables);
+
+				var selectedFontChangedObservable = Observable.FromEventPattern<AdapterView.ItemSelectedEventArgs>(handler => _fontFamilyPicker.ItemSelected += handler, handler => _fontFamilyPicker.ItemSelected -= handler);
+				selectedFontChangedObservable.Select(x => x.EventArgs.Position)
+					.Subscribe(fontIndex => ViewModel?.SelectFont?.Execute(fontIndex))
+					.DisposeWith(disposables);
 
 				#endregion
 			});
