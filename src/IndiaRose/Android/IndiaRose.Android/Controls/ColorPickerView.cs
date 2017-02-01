@@ -565,8 +565,6 @@ namespace IndiaRose.Droid.Controls
 					_hasFocus = false;
 					Parent.RequestDisallowInterceptTouchEvent(false);
 					break;
-				default:
-					throw new ArgumentOutOfRangeException();
 			}
 			
 			if (update)

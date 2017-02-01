@@ -142,13 +142,13 @@
     <value>Text size : </value>
   </data>
   <data name="Settings_IndiagramBottomPreviewText" xml:space="preserve">
-    <value>Indiagram bottom</value>
+    <value>Preview text bottom</value>
   </data>
   <data name="Settings_IndiagramSizeLabel" xml:space="preserve">
     <value>Indiagram size : </value>
   </data>
   <data name="Settings_IndiagramTopPreviewText" xml:space="preserve">
-    <value>Indiagram top</value>
+    <value>Preview text top</value>
   </data>
   <data name="Settings_ReinforcerColorButton" xml:space="preserve">
     <value>Reinforcer color</value>

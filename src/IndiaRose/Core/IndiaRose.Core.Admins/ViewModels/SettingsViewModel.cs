@@ -15,7 +15,9 @@ namespace IndiaRose.Core.Admins.ViewModels
 		public ReactiveCommand<Unit, bool> Save { get; }
 		public ReactiveCommand<Unit, Unit> ChangeTopBackgroundColor { get; }
 		public ReactiveCommand<Unit, Unit> ChangeBottomBackgroundColor { get; }
+		public ReactiveCommand<Unit, Unit> ChangeTextColor { get; }
 		public ReactiveCommand<string, Unit> UpdateBackgroundColor { get; }
+		public ReactiveCommand<string, Unit> UpdateTextColor { get; }
 		public ReactiveCommand<int, Unit> UpdateIndiagramSize { get; }
 		public ReactiveCommand<int, Unit> SelectFont { get; }
 		public ReactiveCommand<int, Unit> UpdateFontSize { get; }
@@ -27,6 +29,8 @@ namespace IndiaRose.Core.Admins.ViewModels
 
 		private string _topColor;
 		private string _bottomColor;
+		private string _textColor;
+
 		private int _indiagramSizePercentage;
 		private int _fontSize;
 		private List<string> _fontNames;
@@ -38,16 +42,22 @@ namespace IndiaRose.Core.Admins.ViewModels
 			set { this.RaiseAndSetIfChanged(ref _topColor, value); }
 		}
 
-		public int IndiagramSizePercentage
-		{
-			get { return _indiagramSizePercentage; }
-			set { this.RaiseAndSetIfChanged(ref _indiagramSizePercentage, value); }
-		}
-
 		public string BottomColor
 		{
 			get { return _bottomColor; }
 			set { this.RaiseAndSetIfChanged(ref _bottomColor, value); }
+		}
+
+		public string TextColor
+		{
+			get { return _textColor; }
+			set { this.RaiseAndSetIfChanged(ref _textColor, value); }
+		}
+
+		public int IndiagramSizePercentage
+		{
+			get { return _indiagramSizePercentage; }
+			set { this.RaiseAndSetIfChanged(ref _indiagramSizePercentage, value); }
 		}
 
 		public int FontSize
@@ -74,6 +84,8 @@ namespace IndiaRose.Core.Admins.ViewModels
 
 		private bool _isTopColorChanging;
 		private bool _isBottomColorChanging;
+		private bool _isTextColorChanging;
+
 		public bool IsBottomColorChanging
 		{
 			get { return _isBottomColorChanging; }
@@ -84,6 +96,12 @@ namespace IndiaRose.Core.Admins.ViewModels
 		{
 			get { return _isTopColorChanging; }
 			set { this.RaiseAndSetIfChanged(ref _isTopColorChanging, value); }
+		}
+
+		public bool IsTextColorChanging
+		{
+			get { return _isTextColorChanging; }
+			set { this.RaiseAndSetIfChanged(ref _isTextColorChanging, value); }
 		}
 
 		public SettingsViewModel()
@@ -97,7 +115,9 @@ namespace IndiaRose.Core.Admins.ViewModels
 
 			ChangeTopBackgroundColor = ReactiveCommand.Create(() => { IsTopColorChanging = !IsTopColorChanging; });
 			ChangeBottomBackgroundColor = ReactiveCommand.Create(() => { IsBottomColorChanging = !IsBottomColorChanging; });
+			ChangeTextColor = ReactiveCommand.Create(() => { IsTextColorChanging = !IsTextColorChanging; });
 			UpdateBackgroundColor = ReactiveCommand.Create<string>(UpdateBackgroundColorAction);
+			UpdateTextColor = ReactiveCommand.Create<string>(UpdateTextColorAction);
 			UpdateIndiagramSize = ReactiveCommand.Create<int>(UpdateIndiagramSizeAction);
 			SelectFont = ReactiveCommand.Create<int>(SelectFontAction);
 			UpdateFontSize = ReactiveCommand.Create<int>(UpdateFontSizeAction);
@@ -120,6 +140,7 @@ namespace IndiaRose.Core.Admins.ViewModels
 						IndiagramSizePercentage = settings.IndiagramSizePercentage;
 						FontSize = settings.FontSize;
 						SelectedFont = settings.FontName;
+						TextColor = settings.TextColor;
 					}).DisposeWith(disposables);
 
 				Observable.FromAsync(ct => ServiceLocator.FontService.GetFontDisplayNames())
@@ -136,6 +157,11 @@ namespace IndiaRose.Core.Admins.ViewModels
 					.Subscribe(_ => IsBottomColorChanging = false)
 					.DisposeWith(disposables);
 			});
+		}
+
+		private void UpdateTextColorAction(string color)
+		{
+			TextColor = color;
 		}
 
 		private void UpdateBackgroundColorAction(string color)

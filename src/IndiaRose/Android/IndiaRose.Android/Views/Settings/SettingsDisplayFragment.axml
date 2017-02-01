@@ -15,7 +15,7 @@
 				android:layout_width="0dp"
 				android:layout_weight="1"
 				android:background="@drawable/colorpicker_button_background"
-				android:text="@string/Settings_BottomColorButton"
+				android:text="@string/Settings_TopColorButton"
 				android:id="@+id/ChangeTopColorButton"
 				/>
 
@@ -23,7 +23,7 @@
 				android:layout_width="0dp"
 				android:layout_weight="1"
 				android:background="@drawable/colorpicker_button_background"
-				android:text="@string/Settings_TopColorButton"
+				android:text="@string/Settings_BottomColorButton"
 				android:id="@+id/ChangeBottomColorButton"
 				/>
 	</LinearLayout>
@@ -77,6 +77,7 @@
 				 />
 	</LinearLayout>
 
+	<!-- font size -->
 	<TextView android:layout_width="match_parent"
 			  android:layout_height="wrap_content"
 			  android:layout_marginTop="32dp"
@@ -102,7 +103,53 @@
 				  android:text="25%"
 				  />
 	</RelativeLayout>
+
+	<!-- font preview -->
+	<LinearLayout android:layout_width="match_parent"
+				  android:layout_height="wrap_content"
+				  android:orientation="horizontal"
+				  android:layout_marginLeft="2dp"
+				  android:layout_marginRight="2dp"
+				  android:layout_marginTop="16dp"
+				  >
+		<TextView android:layout_width="match_parent"
+				  android:layout_height="30dp"
+				  android:layout_weight="1"
+				  android:id="@+id/FontPreviewTop"
+				  android:layout_marginRight="4dp"
+				  android:text="@string/Settings_IndiagramTopPreviewText"
+				  android:gravity="center"
+				  android:maxLines="1"
+				  android:ellipsize="end"
+				  />
+
+		<TextView android:layout_width="match_parent"
+				  android:layout_height="30dp"
+				  android:layout_weight="1"
+				  android:layout_marginLeft="4dp"
+				  android:id="@+id/FontPreviewBottom"
+				  android:text="@string/Settings_IndiagramBottomPreviewText"
+				  android:gravity="center"
+				  android:maxLines="1"
+				  android:ellipsize="end"
+				  />
+	</LinearLayout>
 	
+	<!-- font color -->
+	<Button style="@style/SecondaryButtonStyle"
+			android:background="@drawable/colorpicker_button_background"
+			android:text="@string/Settings_TextColorLabel"
+			android:id="@+id/ChangeTextColorButton"
+			android:layout_marginTop="16dp"
+			/>
+
+	<indiarose.droid.controls.ColorPickerView android:layout_width="match_parent"
+											  android:layout_height="240dp"
+											  android:visibility="gone"
+											  android:id="@+id/TextColorPickerView"
+											  />
+
+
 	<!-- Reinforcer -->
 	
 </LinearLayout>

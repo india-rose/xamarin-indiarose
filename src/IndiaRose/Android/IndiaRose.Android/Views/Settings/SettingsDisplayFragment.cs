@@ -2,6 +2,8 @@ using System;
 using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
+using Android.Graphics;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
 using IndiaRose.Core.Admins.ViewModels;
@@ -13,7 +15,7 @@ namespace IndiaRose.Droid.Views.Settings
 {
 	public class SettingsDisplayFragment : BaseFragment<SettingsViewModel>
 	{
-		private ColorPickerView _colorPickerView;
+		private ColorPickerView _backgroundColorPicker;
 		private Button _changeTopColorButton;
 		private Button _changeBottomColorButton;
 
@@ -24,6 +26,12 @@ namespace IndiaRose.Droid.Views.Settings
 
 		private TextView _fontSizeLabel;
 		private SeekBar _fontSizePicker;
+
+		private TextView _fontPreviewTop;
+		private TextView _fontPreviewBottom;
+
+		private Button _changeTextColorButton;
+		private ColorPickerView _textColorPicker;
 
 		public SettingsDisplayFragment() : base(Resource.Layout.SettingsDisplayFragment)
 		{
@@ -41,7 +49,7 @@ namespace IndiaRose.Droid.Views.Settings
 
 			_changeTopColorButton = RootView.FindViewById<Button>(Resource.Id.ChangeTopColorButton);
 			_changeBottomColorButton = RootView.FindViewById<Button>(Resource.Id.ChangeBottomColorButton);
-			_colorPickerView = RootView.FindViewById<ColorPickerView>(Resource.Id.BackgroundColorPickerView);
+			_backgroundColorPicker = RootView.FindViewById<ColorPickerView>(Resource.Id.BackgroundColorPickerView);
 
 			_indiagramSizeLabel = RootView.FindViewById<TextView>(Resource.Id.IndiagramSizeValueLabel);
 			_indiagramSizePicker = RootView.FindViewById<SeekBar>(Resource.Id.IndiagramSizeValuePicker);
@@ -50,6 +58,13 @@ namespace IndiaRose.Droid.Views.Settings
 
 			_fontSizeLabel = RootView.FindViewById<TextView>(Resource.Id.FontSizeValueLabel);
 			_fontSizePicker = RootView.FindViewById<SeekBar>(Resource.Id.FontSizeValuePicker);
+
+			_fontPreviewTop = RootView.FindViewById<TextView>(Resource.Id.FontPreviewTop);
+			_fontPreviewBottom = RootView.FindViewById<TextView>(Resource.Id.FontPreviewBottom);
+
+			_textColorPicker = RootView.FindViewById<ColorPickerView>(Resource.Id.TextColorPickerView);
+			_changeTextColorButton = RootView.FindViewById<Button>(Resource.Id.ChangeTextColorButton);
+
 
 			this.WhenActivated(disposables =>
 			{
@@ -65,22 +80,22 @@ namespace IndiaRose.Droid.Views.Settings
 				this.WhenAnyValue(v => v.ViewModel.IsTopColorChanging, v => v.ViewModel.IsBottomColorChanging, (x, y) => x || y)
 					.Select(selected => selected ? ViewStates.Visible : ViewStates.Gone)
 					.ObserveOn(RxApp.MainThreadScheduler)
-					.Subscribe(visibility => _colorPickerView.Visibility = visibility)
+					.Subscribe(visibility => _backgroundColorPicker.Visibility = visibility)
 					.DisposeWith(disposables);
 
 				this.WhenAnyValue(v => v.ViewModel.IsTopColorChanging)
 					.Where(x => x)
 					.ObserveOn(RxApp.MainThreadScheduler)
-					.Subscribe(_ => _colorPickerView.SetColor(ViewModel.TopColor.ToIntColor()))
+					.Subscribe(_ => _backgroundColorPicker.SetColor(ViewModel.TopColor.ToIntColor()))
 					.DisposeWith(disposables);
 
 				this.WhenAnyValue(v => v.ViewModel.IsBottomColorChanging)
 					.Where(x => x)
 					.ObserveOn(RxApp.MainThreadScheduler)
-					.Subscribe(_ => _colorPickerView.SetColor(ViewModel.BottomColor.ToIntColor()))
+					.Subscribe(_ => _backgroundColorPicker.SetColor(ViewModel.BottomColor.ToIntColor()))
 					.DisposeWith(disposables);
 
-				IObservable<EventPattern<int>> backgroundColorChangedObservable = Observable.FromEventPattern<EventHandler<int>, int>(handler => _colorPickerView.OnColorChanged += handler, handler => _colorPickerView.OnColorChanged -= handler);
+				IObservable<EventPattern<int>> backgroundColorChangedObservable = Observable.FromEventPattern<EventHandler<int>, int>(handler => _backgroundColorPicker.OnColorChanged += handler, handler => _backgroundColorPicker.OnColorChanged -= handler);
 				backgroundColorChangedObservable.Select(color => color.EventArgs.StringFromColor())
 					.Subscribe(color => ViewModel.UpdateBackgroundColor.Execute(color))
 					.DisposeWith(disposables);
@@ -132,6 +147,70 @@ namespace IndiaRose.Droid.Views.Settings
 				fontSizeChangedObservable.Select(args => args.EventArgs.Progress)
 					.Subscribe(fontSize => ViewModel.UpdateFontSize.Execute(fontSize))
 					.DisposeWith(disposables);
+
+				//color
+				this.OneWayBind(ViewModel, vm => vm.IsTextColorChanging, v => v._changeTextColorButton.Selected).DisposeWith(disposables);
+				this.BindCommand(ViewModel, vm => vm.ChangeTextColor, v => v._changeTextColorButton).DisposeWith(disposables);
+
+				this.WhenAnyValue(v => v.ViewModel.IsTextColorChanging)
+					.Select(selected => selected ? ViewStates.Visible : ViewStates.Gone)
+					.ObserveOn(RxApp.MainThreadScheduler)
+					.Subscribe(visibility => _textColorPicker.Visibility = visibility)
+					.DisposeWith(disposables);
+				
+				this.WhenAnyValue(v => v.ViewModel.IsTextColorChanging)
+					.Where(x => x)
+					.ObserveOn(RxApp.MainThreadScheduler)
+					.Subscribe(_ => _textColorPicker.SetColor(ViewModel.TextColor.ToIntColor()))
+					.DisposeWith(disposables);
+				
+				IObservable<EventPattern<int>> textColorChangedObservable = Observable.FromEventPattern<EventHandler<int>, int>(handler => _textColorPicker.OnColorChanged += handler, handler => _textColorPicker.OnColorChanged -= handler);
+				textColorChangedObservable.Select(color => color.EventArgs.StringFromColor())
+					.Subscribe(color => ViewModel.UpdateTextColor.Execute(color))
+					.DisposeWith(disposables);
+
+				//preview
+				this.WhenAnyValue(v => v.ViewModel.TopColor)
+					.Select(colorString => colorString.ToColor())
+					.ObserveOn(RxApp.MainThreadScheduler)
+					.Subscribe(color => _fontPreviewTop.SetBackgroundColor(color))
+					.DisposeWith(disposables);
+
+				this.WhenAnyValue(v => v.ViewModel.BottomColor)
+					.Select(colorString => colorString.ToColor())
+					.ObserveOn(RxApp.MainThreadScheduler)
+					.Subscribe(color => _fontPreviewBottom.SetBackgroundColor(color))
+					.DisposeWith(disposables);
+
+				this.WhenAnyValue(v => v.ViewModel.TextColor)
+					.Select(colorString => colorString.ToColor())
+					.ObserveOn(RxApp.MainThreadScheduler)
+					.Subscribe(color =>
+					{
+						_fontPreviewTop.SetTextColor(color);
+						_fontPreviewBottom.SetTextColor(color);
+					}).DisposeWith(disposables);
+
+				this.WhenAnyValue(v => v.ViewModel.FontSize)
+					.ObserveOn(RxApp.MainThreadScheduler)
+					.Subscribe(size =>
+					{
+						_fontPreviewTop.SetTextSize(ComplexUnitType.Sp, size);
+						_fontPreviewBottom.SetTextSize(ComplexUnitType.Sp, size);
+						
+						int pixelSize = (int)TypedValue.ApplyDimension(ComplexUnitType.Sp, size, Resources.DisplayMetrics) * 2;
+						_fontPreviewTop.LayoutParameters.Height = pixelSize;
+						_fontPreviewBottom.LayoutParameters.Height = pixelSize;
+					}).DisposeWith(disposables);
+
+				this.WhenAnyValue(v => v.ViewModel.SelectedFont)
+					.Select(fontName => Typeface.Create(fontName, TypefaceStyle.Normal))
+					.ObserveOn(RxApp.MainThreadScheduler)
+					.Subscribe(font =>
+					{
+						_fontPreviewTop.SetTypeface(font, TypefaceStyle.Normal);
+						_fontPreviewBottom.Typeface = font;
+					}).DisposeWith(disposables);
 
 				#endregion
 			});

@@ -27,7 +27,8 @@ namespace IndiaRose.Core.Services
 					BottomBackgroundColor = "#FF0000",
 					FontSize = 14,
 					IndiagramSizePercentage = 80,
-					FontName = "Roboto"
+					FontName = "Roboto",
+					TextColor = "#000000",
 				};
 				return _settings;
 			}

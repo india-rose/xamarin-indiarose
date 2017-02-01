@@ -8,6 +8,11 @@ namespace IndiaRose.Droid.Extensions
 	{
 		public static Color ToColor(this string input)
 		{
+			if(string.IsNullOrEmpty(input))
+			{
+				return new Color(0);
+			}
+
 			string colorString = input.Trim('#');
 			if (colorString.Length == 6 || colorString.Length == 8)
 			{
@@ -17,7 +22,7 @@ namespace IndiaRose.Droid.Extensions
 				}
 				return uint.Parse(colorString, NumberStyles.HexNumber).ToColor();
 			}
-			throw new ArgumentOutOfRangeException(nameof(input), $@"Input string should contains 6 or 8 hexadecimal character to be converter to color ({input})");
+			return new Color(0);
 		}
 
 		public static Color ToColor(this uint input)
