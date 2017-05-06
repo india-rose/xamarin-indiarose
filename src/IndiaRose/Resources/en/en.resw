@@ -135,6 +135,9 @@
   <data name="Settings_BottomColorButton" xml:space="preserve">
     <value>Bottom color</value>
   </data>
+  <data name="Settings_EnableReinforcer" xml:space="preserve">
+    <value>Enable reading reinforcer</value>
+  </data>
   <data name="Settings_FontFamilyLabel" xml:space="preserve">
     <value>Font : </value>
   </data>
@@ -150,7 +153,7 @@
   <data name="Settings_IndiagramTopPreviewText" xml:space="preserve">
     <value>Preview text top</value>
   </data>
-  <data name="Settings_ReinforcerColorButton" xml:space="preserve">
+  <data name="Settings_ReinforcerColorLabel" xml:space="preserve">
     <value>Reinforcer color</value>
   </data>
   <data name="Settings_TextColorLabel" xml:space="preserve">

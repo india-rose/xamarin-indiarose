@@ -55,6 +55,13 @@ namespace IndiaRose
 				return LocalizedStrings._ctx.GetString(Resource.String.Settings_BottomColorButton);
 			}
 		}
+		public static string Settings_EnableReinforcer
+		{
+			get
+			{
+				return LocalizedStrings._ctx.GetString(Resource.String.Settings_EnableReinforcer);
+			}
+		}
 		public static string Settings_FontFamilyLabel
 		{
 			get
@@ -90,11 +97,11 @@ namespace IndiaRose
 				return LocalizedStrings._ctx.GetString(Resource.String.Settings_IndiagramTopPreviewText);
 			}
 		}
-		public static string Settings_ReinforcerColorButton
+		public static string Settings_ReinforcerColorLabel
 		{
 			get
 			{
-				return LocalizedStrings._ctx.GetString(Resource.String.Settings_ReinforcerColorButton);
+				return LocalizedStrings._ctx.GetString(Resource.String.Settings_ReinforcerColorLabel);
 			}
 		}
 		public static string Settings_TextColorLabel

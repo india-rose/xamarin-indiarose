@@ -33,6 +33,11 @@ namespace IndiaRose.Droid.Views.Settings
 		private Button _changeTextColorButton;
 		private ColorPickerView _textColorPicker;
 
+		private CheckBox _isReinforcerEnabledCheckBox;
+		private Button _changeReinforcerColorButton;
+		private ColorPickerView _reinforcerColorPicker;
+		//private View _previewReinforcer;
+
 		public SettingsDisplayFragment() : base(Resource.Layout.SettingsDisplayFragment)
 		{
 			
@@ -65,6 +70,10 @@ namespace IndiaRose.Droid.Views.Settings
 			_textColorPicker = RootView.FindViewById<ColorPickerView>(Resource.Id.TextColorPickerView);
 			_changeTextColorButton = RootView.FindViewById<Button>(Resource.Id.ChangeTextColorButton);
 
+			_isReinforcerEnabledCheckBox = RootView.FindViewById<CheckBox>(Resource.Id.EnableReinforcerCheckbox);
+			_changeReinforcerColorButton = RootView.FindViewById<Button>(Resource.Id.ChangeReinforcerColorButton);
+			_reinforcerColorPicker = RootView.FindViewById<ColorPickerView>(Resource.Id.ReinforcerColorPickerView);
+			//_previewReinforcer = RootView.FindViewById(Resource.Id.ReinforcerPreviewColor);
 
 			this.WhenActivated(disposables =>
 			{
@@ -211,6 +220,46 @@ namespace IndiaRose.Droid.Views.Settings
 						_fontPreviewTop.SetTypeface(font, TypefaceStyle.Normal);
 						_fontPreviewBottom.Typeface = font;
 					}).DisposeWith(disposables);
+
+				#endregion
+
+				#region Reinforcer
+
+				this.OneWayBind(ViewModel, vm => vm.IsReinforcerColorChanging, v => v._changeReinforcerColorButton.Selected).DisposeWith(disposables);
+				this.BindCommand(ViewModel, vm => vm.ChangeReinforcerColor, v => v._changeReinforcerColorButton).DisposeWith(disposables);
+
+				this.WhenAnyValue(v => v.ViewModel.IsReinforcerColorChanging)
+					.Select(selected => selected ? ViewStates.Visible : ViewStates.Gone)
+					.ObserveOn(RxApp.MainThreadScheduler)
+					.Subscribe(visibility => _reinforcerColorPicker.Visibility = visibility)
+					.DisposeWith(disposables);
+
+				this.WhenAnyValue(v => v.ViewModel.IsReinforcerColorChanging)
+					.Where(x => x)
+					.ObserveOn(RxApp.MainThreadScheduler)
+					.Subscribe(_ => _reinforcerColorPicker.SetColor(ViewModel.ReinforcerColor.ToIntColor()))
+					.DisposeWith(disposables);
+				/*
+				this.WhenAnyValue(v => v.ViewModel.ReinforcerColor)
+					.Select(colorString => colorString.ToColor())
+					.ObserveOn(RxApp.MainThreadScheduler)
+					.Subscribe(color => _previewReinforcer.SetBackgroundColor(color))
+					.DisposeWith(disposables);
+					*/
+				this.WhenAnyValue(v => v.ViewModel.IsReinforcerEnabled)
+					.ObserveOn(RxApp.MainThreadScheduler)
+					.Subscribe(enabled => _isReinforcerEnabledCheckBox.Checked = enabled)
+					.DisposeWith(disposables);
+
+				IObservable<EventPattern<int>> reinforcerColorChangedObservable = Observable.FromEventPattern<EventHandler<int>, int>(handler => _reinforcerColorPicker.OnColorChanged += handler, handler => _reinforcerColorPicker.OnColorChanged -= handler);
+				reinforcerColorChangedObservable.Select(color => color.EventArgs.StringFromColor())
+					.Subscribe(color => ViewModel.UpdateReinforcerColor.Execute(color))
+					.DisposeWith(disposables);
+
+				IObservable<EventPattern<CompoundButton.CheckedChangeEventArgs>> isReinforcerCheckedObservable = Observable.FromEventPattern<EventHandler<CompoundButton.CheckedChangeEventArgs>, CompoundButton.CheckedChangeEventArgs>(handler => _isReinforcerEnabledCheckBox.CheckedChange += handler, handler => _isReinforcerEnabledCheckBox.CheckedChange -= handler);
+				isReinforcerCheckedObservable.Select(enabled => enabled.EventArgs.IsChecked)
+					.Subscribe(enabled => ViewModel.IsReinforcerEnabled = enabled)
+					.DisposeWith(disposables);
 
 				#endregion
 			});

@@ -151,5 +151,23 @@
 
 
 	<!-- Reinforcer -->
+	<CheckBox android:id="@+id/EnableReinforcerCheckbox"
+			  android:layout_width="match_parent"
+			  android:layout_height="wrap_content"
+			  android:text="@string/Settings_EnableReinforcer"
+			  android:layout_marginTop="16dp"
+			  />
 	
+	<Button style="@style/SecondaryButtonStyle"
+			android:background="@drawable/colorpicker_button_background"
+			android:text="@string/Settings_ReinforcerColorLabel"
+			android:id="@+id/ChangeReinforcerColorButton"
+			android:layout_marginTop="16dp"
+			/>
+	<indiarose.droid.controls.ColorPickerView android:layout_width="match_parent"
+											  android:layout_height="240dp"
+											  android:visibility="gone"
+											  android:id="@+id/ReinforcerColorPickerView"
+											  />
+
 </LinearLayout>

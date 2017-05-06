@@ -40,6 +40,10 @@ namespace IndiaRose
 			{
 				return this._ctx.GetString(Resource.String.Settings_BottomColorButton);
 			}
+			if ((key == EnumStrings.Settings_EnableReinforcer))
+			{
+				return this._ctx.GetString(Resource.String.Settings_EnableReinforcer);
+			}
 			if ((key == EnumStrings.Settings_FontFamilyLabel))
 			{
 				return this._ctx.GetString(Resource.String.Settings_FontFamilyLabel);
@@ -60,9 +64,9 @@ namespace IndiaRose
 			{
 				return this._ctx.GetString(Resource.String.Settings_IndiagramTopPreviewText);
 			}
-			if ((key == EnumStrings.Settings_ReinforcerColorButton))
+			if ((key == EnumStrings.Settings_ReinforcerColorLabel))
 			{
-				return this._ctx.GetString(Resource.String.Settings_ReinforcerColorButton);
+				return this._ctx.GetString(Resource.String.Settings_ReinforcerColorLabel);
 			}
 			if ((key == EnumStrings.Settings_TextColorLabel))
 			{
